@@ -13,6 +13,7 @@ description: |
   set in the _output.yml file.
 link-citations: yes
 github-repo: rstudio/bookdown-demo
+# rmarkdown::render_site(output_format = 'bookdown::gitbook', encoding = 'UTF-8')
 ---
 
 # About
