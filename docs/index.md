@@ -1,7 +1,7 @@
 ---
 title: "Manual de análisis de encuestas postcensales"
 author: "Andrés Gutiérrez^[Comisión Económica para América Latina y el Caribe (CEPAL) -  andres.gutierrez@cepal.org], Giovany Babativa, Stalyn Guerrero"
-date: "`r Sys.Date()`"
+date: "2025-02-12"
 documentclass: book
 bibliography: book.bib
 biblio-style: apalike
@@ -24,13 +24,7 @@ output:
 ---
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE, 
-                      message = FALSE,
-                      cache = TRUE)
-## bookdown::render_book("index.Rmd", "bookdown::pdf_book")
-## bookdown::render_book("index.Rmd", "bookdown::word_document2")
-```
+
 
 # Abstract {-}
 

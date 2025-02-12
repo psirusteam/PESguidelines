@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Manual de análisis de encuestas postcensales</title>
+  <title>2.1 El estimador | Manual de análisis de encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Manual de análisis de encuestas postcensales" />
+  <meta property="og:title" content="2.1 El estimador | Manual de análisis de encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Manual de análisis de encuestas postcensales" />
+  <meta name="twitter:title" content="2.1 El estimador | Manual de análisis de encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="la-muestra-e-y-la-muestra-p.html"/>
+<link rel="prev" href="el-sistema-de-estimación-dual.html"/>
+<link rel="next" href="insesgamiento-del-estimador.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -131,29 +131,71 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Manual de análisis de encuestas postcensales</h1>
-<p class="author"><em>Andrés Gutiérrez<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, Giovany Babativa, Stalyn Guerrero</em></p>
-<p class="date"><em>2025-02-12</em></p>
-</div>
-<div id="abstract" class="section level1 unnumbered hasAnchor">
-<h1>Abstract<a href="index.html#abstract" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Este es el repositorio inicial para la Serie de Estudios Estadísticos sobre el análisis de las encuestas post-censales para la medición de la cobertura en los censos de población</p>
-
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>Comisión Económica para América Latina y el Caribe (CEPAL) - <a href="mailto:andres.gutierrez@cepal.org" class="email">andres.gutierrez@cepal.org</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
+<div id="el-estimador" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> El estimador<a href="el-estimador.html#el-estimador" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Planteamiento del problema: queremos estimar el tamaño total de una población <span class="math inline">\(N_{++}\)</span> usando dos fuentes de información. En primer lugar, el , que captura a <span class="math inline">\(N_{+1}\)</span> individuos de la población correctamente capturados por el censo; luego, la , que captura correctamente a <span class="math inline">\(N_{1+}\)</span> individuos de la población. El número de individuos que fueron capturados en ambas fuentes se denota como <span class="math inline">\(N_{11}\)</span>.</p>
+<p>Este esquema de captura se puede representar en la siguiente tabla de dos entradas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Censo - Encuesta</th>
+<th align="center">Sí</th>
+<th align="center">No</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Sí</td>
+<td align="center"><span class="math inline">\(N_{11}\)</span></td>
+<td align="center"><span class="math inline">\(N_{12}\)</span></td>
+<td align="center"><span class="math inline">\(N_{1+}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center">No</td>
+<td align="center"><span class="math inline">\(N_{21}\)</span></td>
+<td align="center"><span class="math inline">\(N_{22}\)</span></td>
+<td align="center"><span class="math inline">\(N_{2+}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">Total</td>
+<td align="center"><span class="math inline">\(N_{+1}\)</span></td>
+<td align="center"><span class="math inline">\(N_{+2}\)</span></td>
+<td align="center"><span class="math inline">\(N_{++}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Uno de los supuestos del sistema de estimación dual es que el evento de que una persona sea encontrada se puede modelar como un proceso estocástico de tipo Bernoulli. Esto quiere decir que <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> se asumen como variables aleatorias binomiales al ser sumas de eventos Bernoulli.</p>
+<p>En esta instancia, denotamos a <span class="math inline">\(p_{1+}\)</span> como la probabilidad de que una persona sea correctamente encontrada por el censo y <span class="math inline">\(p_{+1}\)</span>, la probabilidad de que una persona sea correctamente encontrada en la encuesta de cobertura. El sistema de estimación dual también supone que ambas operaciones estadísticas son independientes una de la otra; es decir que la probabilidad de que una persona sea correctamente encontrada tanto en el censo como en la encuesta será:</p>
+<p><span class="math display">\[
+p_{11} = p_{1+} \cdot p_{+1}
+\]</span></p>
+<p>Bajo este modelo, las variables aleatorias siguen distribuciones binomiales:</p>
+<p><span class="math display">\[
+N_{1+} \sim \text{Bin}(N_{++}, p_{1+}), \quad N_{+1} \sim \text{Bin}(N_{++}, p_{+1}), \quad N_{11} \sim \text{Bin}(N_{++}, p_{11})
+\]</span></p>
+<p>Una vez que los datos hayan sido recolectados y clasificados bajo este esquema, es bien sabido en la literatura estadística, que los estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:</p>
+<p><span class="math display">\[
+\hat p_{11} = \frac{N_{11}}{N_{++}},  \quad
+\hat p_{1+} = \frac{N_{1+}}{N_{++}},  \quad
+\hat p_{+1} = \frac{N_{+1}}{N_{++}}
+\]</span></p>
+<p>Al asumir independencia entre la captura en el censo y la captura en la encuesta, entonces <span class="math inline">\(\hat p_{11} = \hat p_{1+} \cdot \hat p_{+1}\)</span>, y por ende:</p>
+<p><span class="math display">\[
+\frac{N_{11}}{N_{++}} = \frac{N_{1+}}{N_{++}} \cdot \frac{N_{+1}}{N_{++}}
+\]</span></p>
+<p>Luego, al despejar convenientemente, se encuentra que el estimador del sistema dual para el total poblacional <span class="math inline">\(N_{++}\)</span> está dado por</p>
+<p><span class="math display">\[
+\hat N_{++} = \frac{N_{1+} \cdot N_{+1}}{N_{11}}
+\]</span></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="la-muestra-e-y-la-muestra-p.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="el-sistema-de-estimación-dual.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="insesgamiento-del-estimador.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -184,7 +226,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/index.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/02-Dual.rmd",
 "text": "Edit"
 },
 "history": {

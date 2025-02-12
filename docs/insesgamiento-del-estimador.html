@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Manual de análisis de encuestas postcensales</title>
+  <title>2.2 Insesgamiento del estimador | Manual de análisis de encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Manual de análisis de encuestas postcensales" />
+  <meta property="og:title" content="2.2 Insesgamiento del estimador | Manual de análisis de encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Manual de análisis de encuestas postcensales" />
+  <meta name="twitter:title" content="2.2 Insesgamiento del estimador | Manual de análisis de encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="la-muestra-e-y-la-muestra-p.html"/>
+<link rel="prev" href="el-estimador.html"/>
+<link rel="next" href="supuestos-imprescindibles-del-estimador.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -131,29 +131,49 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Manual de análisis de encuestas postcensales</h1>
-<p class="author"><em>Andrés Gutiérrez<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, Giovany Babativa, Stalyn Guerrero</em></p>
-<p class="date"><em>2025-02-12</em></p>
+<div id="insesgamiento-del-estimador" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Insesgamiento del estimador<a href="insesgamiento-del-estimador.html#insesgamiento-del-estimador" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El estimador <span class="math inline">\(\hat N_{++}\)</span>, es conocido como el método de Petersen, y es utilizado en estudios de captura y recaptura para estimar el tamaño de una población. Este método fue desarrollado por el biólogo danés Carl Georg Johannes Petersen <span class="citation">(<a href="#ref-petersen1896">Petersen 1896</a>)</span> y más tarde popularizado por C. Chandra Sekar y W. Edwards Deming en 1949 para estimar tasas de nacimientos y defunciones, así como la cobertura de los registros vitales <span class="citation">(<a href="#ref-sekar1949">Sekar and Deming 1949</a>)</span>.</p>
+<p>Para demostrar que este estimador es insesgado, se debe verificar que <span class="math inline">\(E[\hat{N}_{++}] = N_{++}\)</span>. En primer lugar, por la propiedad de la esperanza en distribuciones binomiales, se tiene que:</p>
+<p><span class="math display">\[
+E[N_{1+}] = N_{++} p_{1+}, \quad E[N_{+1}] = N_{++} p_{+1}, \quad E[N_{11}] = N_{++} p_{11}
+\]</span></p>
+<p>Ahora, la esperanza del estimador toma la siguiente forma:</p>
+<p><span class="math display">\[
+E[\hat{N}_{++}] = E\left[ \frac{N_{1+} \cdot N_{+1}}{N_{11}} \right]
+\]</span></p>
+<p>En primera instancia como <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> son variables aleatorias, es necesario apelar a las propiedades de la esperanza condicional, de la siguiente manera:</p>
+<p><span class="math display">\[
+E[\hat{N}_{++}] = E \left[ E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) \right]
+\]</span></p>
+<p>Además, como <span class="math inline">\(N_{11}\)</span> también es una variable aleatoria, entonces bajo condiciones de regularidad que permitan utilizar la expansión de Taylor, es posible aproximar la esperanza de este cociente al cociente de las esperanzas <span class="citation">(<a href="#ref-casella2002statistical">Casella and Berger 2002</a>)</span>. De esta forma, se tiene que:</p>
+<p><span class="math display">\[
+E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) =  \frac{E (N_{1+} \cdot N_{+1}| N_{1+}, N_{+1} )}{E (N_{11}| N_{1+}, N_{+1} )}
+\]</span></p>
+<p>Dado que <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> son independientes, entonces <span class="math inline">\(E[N_{1+} \cdot N_{+1}] = E[N_{1+}] E[N_{+1}]\)</span>. Reemplazando convenientemente, se tiene que</p>
+<p><span class="math display">\[
+E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} = N_{++}
+\]</span></p>
 </div>
-<div id="abstract" class="section level1 unnumbered hasAnchor">
-<h1>Abstract<a href="index.html#abstract" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Este es el repositorio inicial para la Serie de Estudios Estadísticos sobre el análisis de las encuestas post-censales para la medición de la cobertura en los censos de población</p>
-
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-casella2002statistical" class="csl-entry">
+Casella, George, and Roger L. Berger. 2002. <em>Statistical Inference</em>. 2nd ed. Duxbury Press.
 </div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>Comisión Económica para América Latina y el Caribe (CEPAL) - <a href="mailto:andres.gutierrez@cepal.org" class="email">andres.gutierrez@cepal.org</a><a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
+<div id="ref-petersen1896" class="csl-entry">
+Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
+</div>
+<div id="ref-sekar1949" class="csl-entry">
+Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimating Birth and Death Rates and the Extent of Registration.”</span> <em>Journal of the American Statistical Association</em> 44 (245): 101–15.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="la-muestra-e-y-la-muestra-p.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="el-estimador.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="supuestos-imprescindibles-del-estimador.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -184,7 +204,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/index.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/02-Dual.rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,5 +1,10 @@
+book_filename: "Encuesta PostCensal"
 delete_merged_file: true
-language:
-  ui:
-    chapter_name: "Chapter "
-output_dir: "docs" 
+output_dir: "docs"
+new_session: yes
+
+rmd_files: [
+  "index.rmd", 
+  "01-MuestrasEyP.rmd",
+  "02-Dual.rmd"
+]
