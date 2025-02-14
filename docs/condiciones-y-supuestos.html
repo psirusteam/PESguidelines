@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1.2 Condiciones y supuestos | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
-  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1.2 Condiciones y supuestos | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa, Stalyn Guerrero" />
 
 
-<meta name="date" content="2025-02-13" />
+<meta name="date" content="2025-02-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="planteamiento-del-problema.html"/>
-<link rel="next" href="el-estimador.html"/>
+<link rel="next" href="inferencia.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -112,9 +112,11 @@ div.csl-indent {
 <li class="chapter" data-level="1.2.6" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#eventos-espurios"><i class="fa fa-check"></i><b>1.2.6</b> Eventos espurios</a></li>
 <li class="chapter" data-level="1.2.7" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#postestratificación"><i class="fa fa-check"></i><b>1.2.7</b> Postestratificación</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="el-estimador.html"><a href="el-estimador.html"><i class="fa fa-check"></i><b>1.3</b> El estimador</a></li>
-<li class="chapter" data-level="1.4" data-path="insesgamiento-del-estimador.html"><a href="insesgamiento-del-estimador.html"><i class="fa fa-check"></i><b>1.4</b> Insesgamiento del estimador</a></li>
-<li class="chapter" data-level="1.5" data-path="supuestos-imprescindibles-del-estimador.html"><a href="supuestos-imprescindibles-del-estimador.html"><i class="fa fa-check"></i><b>1.5</b> Supuestos imprescindibles del estimador</a></li>
+<li class="chapter" data-level="1.3" data-path="inferencia.html"><a href="inferencia.html"><i class="fa fa-check"></i><b>1.3</b> Inferencia</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="inferencia.html"><a href="inferencia.html#los-estimadores-del-sistema-dual"><i class="fa fa-check"></i><b>1.3.1</b> Los estimadores del sistema dual</a></li>
+<li class="chapter" data-level="1.3.2" data-path="inferencia.html"><a href="inferencia.html#propiedades-del-estimador"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades del estimador</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="la-encuesta-de-cobertura-como-lista-b.html"><a href="la-encuesta-de-cobertura-como-lista-b.html"><i class="fa fa-check"></i><b>2</b> La encuesta de cobertura como lista B</a></li>
 <li class="chapter" data-level="3" data-path="la-muestra-e-y-la-muestra-p.html"><a href="la-muestra-e-y-la-muestra-p.html"><i class="fa fa-check"></i><b>3</b> La muestra E y la muestra P</a>
@@ -177,8 +179,8 @@ div.csl-indent {
 </ul>
 <p>Asimismo, en términos de las probabilidades marginales, se definen las siguientes cantidades:</p>
 <ul>
-<li><span class="math inline">\(p_{1+}\)</span> es la probabilidad de que un individuo sea encontrado en el censo.</li>
-<li><span class="math inline">\(p_{+1}\)</span> es la probabilidad de que un individuo sea encontrado en la encuesta.</li>
+<li><span class="math inline">\(p_{1+}\)</span> es la probabilidad de que un individuo sea correctamente encontrado en el censo.</li>
+<li><span class="math inline">\(p_{+1}\)</span> es la probabilidad de que un individuo sea correctamente encontrado en la encuesta.</li>
 </ul>
 <p>Esto quiere decir que el individuo tiene chance de ser clasificado en cualquiera de los cuatro estados definidos por las entradas de la tabla anterior; pero que al momento de la recolección de los datos, el individuo sólo puede pertenecer a uno y solo uno de estos estados.</p>
 </div>
@@ -274,7 +276,7 @@ Bureau, US Census. 2022. <span>“2020 Post-Enumeration Survey Estimation Design
         </div>
       </div>
 <a href="planteamiento-del-problema.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="el-estimador.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="inferencia.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

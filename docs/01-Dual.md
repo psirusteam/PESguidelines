@@ -50,8 +50,8 @@ En donde:
 
 Asimismo, en términos de las probabilidades marginales, se definen las siguientes cantidades:
 
-- $p_{1+}$ es la probabilidad de que un individuo sea encontrado en el censo. 
-- $p_{+1}$ es la probabilidad de que un individuo sea encontrado en la encuesta. 
+- $p_{1+}$ es la probabilidad de que un individuo sea correctamente encontrado en el censo. 
+- $p_{+1}$ es la probabilidad de que un individuo sea correctamente encontrado en la encuesta. 
 
 Esto quiere decir que el individuo tiene chance de ser clasificado en cualquiera de los cuatro estados definidos por las entradas de la tabla anterior; pero que al momento de la recolección de los datos, el individuo sólo puede pertenecer a uno y solo uno de estos estados. 
 
@@ -153,33 +153,21 @@ Por ejemplo, una forma común de postestratificación es por edad. En este caso,
 La postestratificación no se limita solo a la edad; también se puede aplicar a otras variables demográficas y socioeconómicas, como sexo, etnia, nivel educativo, región geográfica, entre otras. Es fundamental que cualquier variable utilizada para la postestratificación esté correctamente registrada para todos los individuos tanto en el censo como en la encuesta. 
 
 
-## El estimador
+## Inferencia
 
-Planteamiento del problema: queremos estimar el tamaño total de una población $N_{++}$ usando dos fuentes de información. En primer lugar, el \textbf{censo}, que captura a $N_{+1}$ individuos de la población correctamente capturados por el censo; luego, la \textbf{encuesta de cobertura}, que captura correctamente a $N_{1+}$ individuos de la población. El número de individuos que fueron capturados en ambas fuentes se denota como $N_{11}$.
-
-Este esquema de captura se puede representar en la siguiente tabla de dos entradas:
-
-| Censo - Encuesta | Sí | No | Total |
-|:----------------:|:---:|:---:|:-----:|
-| Sí               | $N_{11}$  | $N_{12}$  | $N_{1+}$     |
-| No               | $N_{21}$  | $N_{22}$  | $N_{2+}$     |
-| Total            | $N_{+1}$  | $N_{+2}$  | $N_{++}$     |
+Nuestro objetivo es estimar el tamaño total de una población, denotado como $N_{++}$, utilizando dos fuentes de información complementarias. La primera fuente es el censo, el cual logra capturar correctamente a $N_{+1}$ individuos de la población. La segunda fuente es la encuesta, que captura de manera precisa a $N_{1+}$ individuos. 
 
 Uno de los supuestos del sistema de estimación dual es que el evento de que una persona sea encontrada se puede modelar como un proceso estocástico de tipo Bernoulli. Esto quiere decir que $N_{11}$, $N_{1+}$ y $N_{+1}$ se asumen como variables aleatorias binomiales al ser sumas de eventos Bernoulli.  
 
-En esta instancia, denotamos a $p_{1+}$ como la probabilidad de que una persona sea correctamente encontrada por el censo y $p_{+1}$, la probabilidad de que una persona sea correctamente encontrada en la encuesta de cobertura. El sistema de estimación dual también supone que ambas operaciones estadísticas son independientes una de la otra; es decir que la probabilidad de que una persona sea correctamente encontrada tanto en el censo como en la encuesta será:
+### Los estimadores del sistema dual
 
-$$
-p_{11} = p_{1+} \cdot p_{+1}
-$$
-
-Bajo este modelo, las variables aleatorias siguen distribuciones binomiales:
+Bajo este modelo, las variables aleatorias siguen distribuciones binomiales condicionales:
 
 \[
 N_{1+} \sim \text{Bin}(N_{++}, p_{1+}), \quad N_{+1} \sim \text{Bin}(N_{++}, p_{+1}), \quad N_{11} \sim \text{Bin}(N_{++}, p_{11})
 \]
 
-Una vez que los datos hayan sido recolectados y clasificados bajo este esquema, es bien sabido en la literatura estadística, que los estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:
+Una vez que los datos hayan sido recolectados y clasificados bajo este esquema, es bien sabido en la literatura estadística, que los estimadores para las probabilidades de interés toman la siguiente forma:
 
 \[
 \hat p_{11} = \frac{N_{11}}{N_{++}},  \quad 
@@ -199,8 +187,30 @@ $$
 \hat N_{++} = \frac{N_{1+} \cdot N_{+1}}{N_{11}} 
 $$
 
+A partir de este resultado, podemos reemplazar en las expresiones $\hat p_{11}$, $\hat p_{1+}$ y $\hat p_{+1}$ para obtener estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:
 
-## Insesgamiento del estimador
+$$
+\hat p_{11} = \frac{N_{11}}{\hat N_{++}} = \frac{N_{11}^2}{N_{1+} \cdot N_{+1}}
+$$
+
+$$
+\hat p_{1+} = \frac{N_{1+}}{\hat N_{++}} = \frac{N_{11}}{N_{+1}}
+$$
+
+$$
+\hat p_{+1} = \frac{N_{+1}}{\hat N_{++}} = \frac{N_{11}}{N_{1+}}
+$$
+
+@wolter1986coverage[sección 2.4] plantea un esquema conjunto que induce estos mismos estimadores a partir de la función de verosimilitud asociada al modelo, la cual está dada por la siguiente expresión:
+
+$$
+L(N, p_{i+}, p_{+i}) = \binom{N}{x_{11}, x_{12}, x_{21}} p_{1+}^{x_{1+}} (1 - p_{1+})^{N - x_{1+}} p_{+1}^{x_{+1}} (1 - p_{+1})^{N - x_{+1}}.
+$$
+
+Los estimadores de máxima verosimilitud de los parámetros de interés se encuentran maximizando la anterior expresión. 
+
+
+### Propiedades del estimador
 
 El estimador $\hat N_{++}$, es conocido como el método de Petersen, y es utilizado en estudios de captura y recaptura para estimar el tamaño de una población. Este método fue desarrollado por el biólogo danés Carl Georg Johannes Petersen [@petersen1896] y más tarde popularizado por C. Chandra Sekar y W. Edwards Deming en 1949 para estimar tasas de nacimientos y defunciones, así como la cobertura de los registros vitales [@sekar1949].
 
@@ -234,7 +244,9 @@ Dado que $N_{1+}$ y $N_{+1}$ son independientes, entonces $E[N_{1+} \cdot N_{+1}
 E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} = N_{++}
 \]
 
+Por otro lado, @wolter1986coverage afirma que la varianza del estimador puede ser estimada mediante la siguiente expresión:
 
-## Supuestos imprescindibles del estimador
+$$
+\hat V[\hat{N}_{++}] = \frac{N_{1+} \cdot N_{+1} \cdot N_{12} \cdot N_{21}  }{N_{11}^3}
+$$
 
-El estimador dual es insesgado bajo el supuesto de independencia entre el censo y la encuesta de cobertura. Si esta independencia no se cumple, el estimador puede estar sesgado. 

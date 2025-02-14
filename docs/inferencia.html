@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.3 Clasificación de los errores | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>1.3 Inferencia | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.3 Clasificación de los errores | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="1.3 Inferencia | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.3 Clasificación de los errores | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="1.3 Inferencia | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="la-muestra-p-muestra-de-población.html"/>
-
+<link rel="prev" href="condiciones-y-supuestos.html"/>
+<link rel="next" href="la-encuesta-de-cobertura-como-lista-b.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,47 +145,99 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="clasificación-de-los-errores" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Clasificación de los errores<a href="clasificación-de-los-errores.html#clasificación-de-los-errores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="inferencia" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Inferencia<a href="inferencia.html#inferencia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nuestro objetivo es estimar el tamaño total de una población, denotado como <span class="math inline">\(N_{++}\)</span>, utilizando dos fuentes de información complementarias. La primera fuente es el censo, el cual logra capturar correctamente a <span class="math inline">\(N_{+1}\)</span> individuos de la población. La segunda fuente es la encuesta, que captura de manera precisa a <span class="math inline">\(N_{1+}\)</span> individuos.</p>
+<p>Uno de los supuestos del sistema de estimación dual es que el evento de que una persona sea encontrada se puede modelar como un proceso estocástico de tipo Bernoulli. Esto quiere decir que <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> se asumen como variables aleatorias binomiales al ser sumas de eventos Bernoulli.</p>
+<div id="los-estimadores-del-sistema-dual" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Los estimadores del sistema dual<a href="inferencia.html#los-estimadores-del-sistema-dual" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bajo este modelo, las variables aleatorias siguen distribuciones binomiales condicionales:</p>
+<p><span class="math display">\[
+N_{1+} \sim \text{Bin}(N_{++}, p_{1+}), \quad N_{+1} \sim \text{Bin}(N_{++}, p_{+1}), \quad N_{11} \sim \text{Bin}(N_{++}, p_{11})
+\]</span></p>
+<p>Una vez que los datos hayan sido recolectados y clasificados bajo este esquema, es bien sabido en la literatura estadística, que los estimadores para las probabilidades de interés toman la siguiente forma:</p>
+<p><span class="math display">\[
+\hat p_{11} = \frac{N_{11}}{N_{++}},  \quad
+\hat p_{1+} = \frac{N_{1+}}{N_{++}},  \quad
+\hat p_{+1} = \frac{N_{+1}}{N_{++}}
+\]</span></p>
+<p>Al asumir independencia entre la captura en el censo y la captura en la encuesta, entonces <span class="math inline">\(\hat p_{11} = \hat p_{1+} \cdot \hat p_{+1}\)</span>, y por ende:</p>
+<p><span class="math display">\[
+\frac{N_{11}}{N_{++}} = \frac{N_{1+}}{N_{++}} \cdot \frac{N_{+1}}{N_{++}}
+\]</span></p>
+<p>Luego, al despejar convenientemente, se encuentra que el estimador del sistema dual para el total poblacional <span class="math inline">\(N_{++}\)</span> está dado por</p>
+<p><span class="math display">\[
+\hat N_{++} = \frac{N_{1+} \cdot N_{+1}}{N_{11}}
+\]</span></p>
+<p>A partir de este resultado, podemos reemplazar en las expresiones <span class="math inline">\(\hat p_{11}\)</span>, <span class="math inline">\(\hat p_{1+}\)</span> y <span class="math inline">\(\hat p_{+1}\)</span> para obtener estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:</p>
+<p><span class="math display">\[
+\hat p_{11} = \frac{N_{11}}{\hat N_{++}} = \frac{N_{11}^2}{N_{1+} \cdot N_{+1}}
+\]</span></p>
+<p><span class="math display">\[
+\hat p_{1+} = \frac{N_{1+}}{\hat N_{++}} = \frac{N_{11}}{N_{+1}}
+\]</span></p>
+<p><span class="math display">\[
+\hat p_{+1} = \frac{N_{+1}}{\hat N_{++}} = \frac{N_{11}}{N_{1+}}
+\]</span></p>
+<p><span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>, sección 2.4)</span> plantea un esquema conjunto que induce estos mismos estimadores a partir de la función de verosimilitud asociada al modelo, la cual está dada por la siguiente expresión:</p>
+<p><span class="math display">\[
+L(N, p_{i+}, p_{+i}) = \binom{N}{x_{11}, x_{12}, x_{21}} p_{1+}^{x_{1+}} (1 - p_{1+})^{N - x_{1+}} p_{+1}^{x_{+1}} (1 - p_{+1})^{N - x_{+1}}.
+\]</span></p>
+<p>Los estimadores de máxima verosimilitud de los parámetros de interés se encuentran maximizando la anterior expresión.</p>
+</div>
+<div id="propiedades-del-estimador" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Propiedades del estimador<a href="inferencia.html#propiedades-del-estimador" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El estimador <span class="math inline">\(\hat N_{++}\)</span>, es conocido como el método de Petersen, y es utilizado en estudios de captura y recaptura para estimar el tamaño de una población. Este método fue desarrollado por el biólogo danés Carl Georg Johannes Petersen <span class="citation">(<a href="#ref-petersen1896">Petersen 1896</a>)</span> y más tarde popularizado por C. Chandra Sekar y W. Edwards Deming en 1949 para estimar tasas de nacimientos y defunciones, así como la cobertura de los registros vitales <span class="citation">(<a href="#ref-sekar1949">Sekar and Deming 1949</a>)</span>.</p>
+<p>Para demostrar que este estimador es insesgado, se debe verificar que <span class="math inline">\(E[\hat{N}_{++}] = N_{++}\)</span>. En primer lugar, por la propiedad de la esperanza en distribuciones binomiales, se tiene que:</p>
+<p><span class="math display">\[
+E[N_{1+}] = N_{++} p_{1+}, \quad E[N_{+1}] = N_{++} p_{+1}, \quad E[N_{11}] = N_{++} p_{11}
+\]</span></p>
+<p>Ahora, la esperanza del estimador toma la siguiente forma:</p>
+<p><span class="math display">\[
+E[\hat{N}_{++}] = E\left[ \frac{N_{1+} \cdot N_{+1}}{N_{11}} \right]
+\]</span></p>
+<p>En primera instancia como <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> son variables aleatorias, es necesario apelar a las propiedades de la esperanza condicional, de la siguiente manera:</p>
+<p><span class="math display">\[
+E[\hat{N}_{++}] = E \left[ E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) \right]
+\]</span></p>
+<p>Además, como <span class="math inline">\(N_{11}\)</span> también es una variable aleatoria, entonces bajo condiciones de regularidad que permitan utilizar la expansión de Taylor, es posible aproximar la esperanza de este cociente al cociente de las esperanzas <span class="citation">(<a href="#ref-casella2002statistical">Casella and Berger 2002</a>)</span>. De esta forma, se tiene que:</p>
+<p><span class="math display">\[
+E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) =  \frac{E (N_{1+} \cdot N_{+1}| N_{1+}, N_{+1} )}{E (N_{11}| N_{1+}, N_{+1} )}
+\]</span></p>
+<p>Dado que <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> son independientes, entonces <span class="math inline">\(E[N_{1+} \cdot N_{+1}] = E[N_{1+}] E[N_{+1}]\)</span>. Reemplazando convenientemente, se tiene que</p>
+<p><span class="math display">\[
+E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} = N_{++}
+\]</span></p>
+<p>Por otro lado, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> afirma que la varianza del estimador puede ser estimada mediante la siguiente expresión:</p>
+<p><span class="math display">\[
+\hat V[\hat{N}_{++}] = \frac{N_{1+} \cdot N_{+1} \cdot N_{12} \cdot N_{21}  }{N_{11}^3}
+\]</span></p>
 
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div class="csl-entry">
-Bureau, US Census. 2022. <span>“2020 Post-Enumeration Survey Estimation Design.”</span>
-</div>
-<div class="csl-entry">
-Casella, George, and Roger L. Berger. 2002. <em>Statistical Inference</em>. 2nd ed. Duxbury Press.
-</div>
-<div class="csl-entry">
-Lincoln, F. C. 1930. <span>“Calculating Waterfowl Abundance on the Basis of Banding Returns.”</span> <em>Circular</em> 118: 1–4.
-</div>
-<div class="csl-entry">
-Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
-</div>
-<div class="csl-entry">
-Schnabel, Z. E. 1938. <span>“The Estimation of the Total Fish Population of a Lake.”</span> <em>American Mathematical Monthly</em> 45: 348–52.
-</div>
-<div class="csl-entry">
-Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimating Birth and Death Rates and the Extent of Registration.”</span> <em>Journal of the American Statistical Association</em> 44 (245): 101–15.
-</div>
-<div class="csl-entry">
-Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
-</div>
 </div>
 </div>
 <!-- </div> -->
-
-
-
-
-
-
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-casella2002statistical" class="csl-entry">
+Casella, George, and Roger L. Berger. 2002. <em>Statistical Inference</em>. 2nd ed. Duxbury Press.
+</div>
+<div id="ref-petersen1896" class="csl-entry">
+Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
+</div>
+<div id="ref-sekar1949" class="csl-entry">
+Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimating Birth and Death Rates and the Extent of Registration.”</span> <em>Journal of the American Statistical Association</em> 44 (245): 101–15.
+</div>
+<div id="ref-wolter1986coverage" class="csl-entry">
+Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="la-muestra-p-muestra-de-población.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="condiciones-y-supuestos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="la-encuesta-de-cobertura-como-lista-b.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -216,7 +268,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/03-MuestrasEyP.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/01-Dual.rmd",
 "text": "Edit"
 },
 "history": {

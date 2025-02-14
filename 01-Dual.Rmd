@@ -153,7 +153,7 @@ Por ejemplo, una forma común de postestratificación es por edad. En este caso,
 La postestratificación no se limita solo a la edad; también se puede aplicar a otras variables demográficas y socioeconómicas, como sexo, etnia, nivel educativo, región geográfica, entre otras. Es fundamental que cualquier variable utilizada para la postestratificación esté correctamente registrada para todos los individuos tanto en el censo como en la encuesta. 
 
 
-## El estimador
+## Inferencia
 
 Nuestro objetivo es estimar el tamaño total de una población, denotado como $N_{++}$, utilizando dos fuentes de información complementarias. La primera fuente es el censo, el cual logra capturar correctamente a $N_{+1}$ individuos de la población. La segunda fuente es la encuesta, que captura de manera precisa a $N_{1+}$ individuos. 
 
@@ -161,7 +161,7 @@ Uno de los supuestos del sistema de estimación dual es que el evento de que una
 
 ### Los estimadores del sistema dual
 
-Bajo este modelo, las variables aleatorias siguen distribuciones binomiales:
+Bajo este modelo, las variables aleatorias siguen distribuciones binomiales condicionales:
 
 \[
 N_{1+} \sim \text{Bin}(N_{++}, p_{1+}), \quad N_{+1} \sim \text{Bin}(N_{++}, p_{+1}), \quad N_{11} \sim \text{Bin}(N_{++}, p_{11})
@@ -201,8 +201,16 @@ $$
 \hat p_{+1} = \frac{N_{+1}}{\hat N_{++}} = \frac{N_{11}}{N_{1+}}
 $$
 
+@wolter1986coverage[sección 2.4] plantea un esquema conjunto que induce estos mismos estimadores a partir de la función de verosimilitud asociada al modelo, la cual está dada por la siguiente expresión:
 
-### Insesgamiento del estimador
+$$
+L(N, p_{i+}, p_{+i}) = \binom{N}{x_{11}, x_{12}, x_{21}} p_{1+}^{x_{1+}} (1 - p_{1+})^{N - x_{1+}} p_{+1}^{x_{+1}} (1 - p_{+1})^{N - x_{+1}}.
+$$
+
+Los estimadores de máxima verosimilitud de los parámetros de interés se encuentran maximizando la anterior expresión. 
+
+
+### Propiedades del estimador
 
 El estimador $\hat N_{++}$, es conocido como el método de Petersen, y es utilizado en estudios de captura y recaptura para estimar el tamaño de una población. Este método fue desarrollado por el biólogo danés Carl Georg Johannes Petersen [@petersen1896] y más tarde popularizado por C. Chandra Sekar y W. Edwards Deming en 1949 para estimar tasas de nacimientos y defunciones, así como la cobertura de los registros vitales [@sekar1949].
 
@@ -235,3 +243,10 @@ Dado que $N_{1+}$ y $N_{+1}$ son independientes, entonces $E[N_{1+} \cdot N_{+1}
 \[
 E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} = N_{++}
 \]
+
+Por otro lado, @wolter1986coverage afirma que la varianza del estimador puede ser estimada mediante la siguiente expresión:
+
+$$
+\hat V[\hat{N}_{++}] = \frac{N_{1+} \cdot N_{+1} \cdot N_{12} \cdot N_{21}  }{N_{11}^3}
+$$
+
