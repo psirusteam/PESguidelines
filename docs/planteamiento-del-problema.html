@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 El estimador | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>1.1 Planteamiento del problema | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 El estimador | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="1.1 Planteamiento del problema | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 El estimador | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="1.1 Planteamiento del problema | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="condiciones-y-supuestos.html"/>
-<link rel="next" href="insesgamiento-del-estimador.html"/>
+<link rel="prev" href="el-sistema-de-estimación-dual.html"/>
+<link rel="next" href="condiciones-y-supuestos.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -143,71 +143,25 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="el-estimador" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> El estimador<a href="el-estimador.html#el-estimador" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Planteamiento del problema: queremos estimar el tamaño total de una población <span class="math inline">\(N_{++}\)</span> usando dos fuentes de información. En primer lugar, el , que captura a <span class="math inline">\(N_{+1}\)</span> individuos de la población correctamente capturados por el censo; luego, la , que captura correctamente a <span class="math inline">\(N_{1+}\)</span> individuos de la población. El número de individuos que fueron capturados en ambas fuentes se denota como <span class="math inline">\(N_{11}\)</span>.</p>
-<p>Este esquema de captura se puede representar en la siguiente tabla de dos entradas:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center">Censo - Encuesta</th>
-<th align="center">Sí</th>
-<th align="center">No</th>
-<th align="center">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">Sí</td>
-<td align="center"><span class="math inline">\(N_{11}\)</span></td>
-<td align="center"><span class="math inline">\(N_{12}\)</span></td>
-<td align="center"><span class="math inline">\(N_{1+}\)</span></td>
-</tr>
-<tr class="even">
-<td align="center">No</td>
-<td align="center"><span class="math inline">\(N_{21}\)</span></td>
-<td align="center"><span class="math inline">\(N_{22}\)</span></td>
-<td align="center"><span class="math inline">\(N_{2+}\)</span></td>
-</tr>
-<tr class="odd">
-<td align="center">Total</td>
-<td align="center"><span class="math inline">\(N_{+1}\)</span></td>
-<td align="center"><span class="math inline">\(N_{+2}\)</span></td>
-<td align="center"><span class="math inline">\(N_{++}\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>Uno de los supuestos del sistema de estimación dual es que el evento de que una persona sea encontrada se puede modelar como un proceso estocástico de tipo Bernoulli. Esto quiere decir que <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> se asumen como variables aleatorias binomiales al ser sumas de eventos Bernoulli.</p>
-<p>En esta instancia, denotamos a <span class="math inline">\(p_{1+}\)</span> como la probabilidad de que una persona sea correctamente encontrada por el censo y <span class="math inline">\(p_{+1}\)</span>, la probabilidad de que una persona sea correctamente encontrada en la encuesta de cobertura. El sistema de estimación dual también supone que ambas operaciones estadísticas son independientes una de la otra; es decir que la probabilidad de que una persona sea correctamente encontrada tanto en el censo como en la encuesta será:</p>
-<p><span class="math display">\[
-p_{11} = p_{1+} \cdot p_{+1}
-\]</span></p>
-<p>Bajo este modelo, las variables aleatorias siguen distribuciones binomiales:</p>
-<p><span class="math display">\[
-N_{1+} \sim \text{Bin}(N_{++}, p_{1+}), \quad N_{+1} \sim \text{Bin}(N_{++}, p_{+1}), \quad N_{11} \sim \text{Bin}(N_{++}, p_{11})
-\]</span></p>
-<p>Una vez que los datos hayan sido recolectados y clasificados bajo este esquema, es bien sabido en la literatura estadística, que los estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:</p>
-<p><span class="math display">\[
-\hat p_{11} = \frac{N_{11}}{N_{++}},  \quad
-\hat p_{1+} = \frac{N_{1+}}{N_{++}},  \quad
-\hat p_{+1} = \frac{N_{+1}}{N_{++}}
-\]</span></p>
-<p>Al asumir independencia entre la captura en el censo y la captura en la encuesta, entonces <span class="math inline">\(\hat p_{11} = \hat p_{1+} \cdot \hat p_{+1}\)</span>, y por ende:</p>
-<p><span class="math display">\[
-\frac{N_{11}}{N_{++}} = \frac{N_{1+}}{N_{++}} \cdot \frac{N_{+1}}{N_{++}}
-\]</span></p>
-<p>Luego, al despejar convenientemente, se encuentra que el estimador del sistema dual para el total poblacional <span class="math inline">\(N_{++}\)</span> está dado por</p>
-<p><span class="math display">\[
-\hat N_{++} = \frac{N_{1+} \cdot N_{+1}}{N_{11}}
-\]</span></p>
+<div id="planteamiento-del-problema" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Planteamiento del problema<a href="planteamiento-del-problema.html#planteamiento-del-problema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> considera una población humana <span class="math inline">\(U\)</span>, de tamaño <span class="math inline">\(N\)</span>, el cual es fijo pero desconocido y es precisamente el parámetro de interés sobre el cual se requiere una inferencia precisa. En una primera instancia, se supone que se realiza un censo de la población en un momento específico en el tiempo, y que el censo intenta enumerar a cada individuo. Sin embargo, por diversas razones, algunos individuos no son contados en el censo. La diferencia entre el conteo censal y <span class="math inline">\(N\)</span> se denotará como el <em>error de cobertura</em>.</p>
+<p>Una de las principales complicaciones del error de cobertura es que su magnitud no puede determinarse únicamente a partir de los datos del censo. Para cuantificar este error, es imprescindible disponer de información adicional, la cual se obtiene generalmente mediante una encuesta por muestreo aplicada a la misma población objetivo. Esta encuesta (conocida como encuesta de postenumeración o encuesta de cobertura) se realiza habitualmente después del censo, utilizando el mismo período de referencia temporal. La encuesta permite estimar la magnitud del error de cobertura al comparar los resultados obtenidos con los datos del censo, proporcionando así una medida más precisa y ajustada de la población real.</p>
+<p>Inicialmente, considérese que la encuesta representa una enumeración completa de toda la población, lo cual no es cierto en la práctica, pero este paso es necesario para esclarecer las propiedades estadísticas del sistema de estimación dual. Por supuesto, en los próximos capítulos de este documento se abordarán los acercamientos necesarios para ajustar la inferencia al caso real en el que la encuesta únicamente llega a una fracción de la población.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-wolter1986coverage" class="csl-entry">
+Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="condiciones-y-supuestos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="insesgamiento-del-estimador.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="el-sistema-de-estimación-dual.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="condiciones-y-supuestos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

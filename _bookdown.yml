@@ -5,6 +5,7 @@ new_session: yes
 
 rmd_files: [
   "index.rmd", 
-  "01-MuestrasEyP.rmd",
-  "02-Dual.rmd"
+  "01-Dual.rmd",
+  "02-MuestreoEncuesta.rmd",
+  "03-MuestrasEyP.rmd"
 ]

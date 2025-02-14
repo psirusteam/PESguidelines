@@ -1,8 +1,0 @@
-la-muestra-e-y-la-muestra-p
-la-muestra-e-muestra-de-enumeración
-la-muestra-p-muestra-de-población
-clasificación-de-los-errores
-el-sistema-de-estimación-dual
-el-estimador
-insesgamiento-del-estimador
-supuestos-imprescindibles-del-estimador
