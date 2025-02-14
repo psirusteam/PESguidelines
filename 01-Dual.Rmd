@@ -207,7 +207,7 @@ $$
 L(N, p_{i+}, p_{+i}) = \binom{N}{x_{11}, x_{12}, x_{21}} p_{1+}^{x_{1+}} (1 - p_{1+})^{N - x_{1+}} p_{+1}^{x_{+1}} (1 - p_{+1})^{N - x_{+1}}.
 $$
 
-Los estimadores de máxima verosimilitud de los parámetros de interés se encuentran maximizando la anterior expresión. 
+Los estimadores de máxima verosimilitud de los parámetros de interés se encuentran maximizando la anterior expresión sujeta a las restricciones pertinentes sobre las sumas de las probabilidades. 
 
 
 ### Propiedades del estimador
@@ -241,7 +241,8 @@ E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) =  \fr
 Dado que $N_{1+}$ y $N_{+1}$ son independientes, entonces $E[N_{1+} \cdot N_{+1}] = E[N_{1+}] E[N_{+1}]$. Reemplazando convenientemente, se tiene que
 
 \[
-E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} = N_{++}
+E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} 
+= N_{++} = N
 \]
 
 Por otro lado, @wolter1986coverage afirma que la varianza del estimador puede ser estimada mediante la siguiente expresión:

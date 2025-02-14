@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="condiciones-y-supuestos.html"/>
-<link rel="next" href="la-encuesta-de-cobertura-como-lista-b.html"/>
+<link rel="next" href="estimación-dual-con-la-muestra-de-la-enceusta.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -118,7 +118,11 @@ div.csl-indent {
 <li class="chapter" data-level="1.3.2" data-path="inferencia.html"><a href="inferencia.html#propiedades-del-estimador"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades del estimador</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="la-encuesta-de-cobertura-como-lista-b.html"><a href="la-encuesta-de-cobertura-como-lista-b.html"><i class="fa fa-check"></i><b>2</b> La encuesta de cobertura como lista B</a></li>
+<li class="chapter" data-level="2" data-path="estimación-dual-con-la-muestra-de-la-enceusta.html"><a href="estimación-dual-con-la-muestra-de-la-enceusta.html"><i class="fa fa-check"></i><b>2</b> Estimación dual con la muestra de la enceusta</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="el-diseño-de-muestreo.html"><a href="el-diseño-de-muestreo.html"><i class="fa fa-check"></i><b>2.1</b> El diseño de muestreo</a></li>
+<li class="chapter" data-level="2.2" data-path="los-estimadores-de-muestreo.html"><a href="los-estimadores-de-muestreo.html"><i class="fa fa-check"></i><b>2.2</b> Los estimadores de muestreo</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="la-muestra-e-y-la-muestra-p.html"><a href="la-muestra-e-y-la-muestra-p.html"><i class="fa fa-check"></i><b>3</b> La muestra E y la muestra P</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="la-muestra-e-muestra-de-enumeración.html"><a href="la-muestra-e-muestra-de-enumeración.html"><i class="fa fa-check"></i><b>3.1</b> La muestra E (Muestra de Enumeración)</a></li>
@@ -183,7 +187,7 @@ N_{1+} \sim \text{Bin}(N_{++}, p_{1+}), \quad N_{+1} \sim \text{Bin}(N_{++}, p_{
 <p><span class="math display">\[
 L(N, p_{i+}, p_{+i}) = \binom{N}{x_{11}, x_{12}, x_{21}} p_{1+}^{x_{1+}} (1 - p_{1+})^{N - x_{1+}} p_{+1}^{x_{+1}} (1 - p_{+1})^{N - x_{+1}}.
 \]</span></p>
-<p>Los estimadores de máxima verosimilitud de los parámetros de interés se encuentran maximizando la anterior expresión.</p>
+<p>Los estimadores de máxima verosimilitud de los parámetros de interés se encuentran maximizando la anterior expresión sujeta a las restricciones pertinentes sobre las sumas de las probabilidades.</p>
 </div>
 <div id="propiedades-del-estimador" class="section level3 hasAnchor" number="1.3.2">
 <h3><span class="header-section-number">1.3.2</span> Propiedades del estimador<a href="inferencia.html#propiedades-del-estimador" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -206,7 +210,8 @@ E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) =  \fr
 \]</span></p>
 <p>Dado que <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> son independientes, entonces <span class="math inline">\(E[N_{1+} \cdot N_{+1}] = E[N_{1+}] E[N_{+1}]\)</span>. Reemplazando convenientemente, se tiene que</p>
 <p><span class="math display">\[
-E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} = N_{++}
+E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}}
+= N_{++} = N
 \]</span></p>
 <p>Por otro lado, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> afirma que la varianza del estimador puede ser estimada mediante la siguiente expresión:</p>
 <p><span class="math display">\[
@@ -237,7 +242,7 @@ Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</s
         </div>
       </div>
 <a href="condiciones-y-supuestos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="la-encuesta-de-cobertura-como-lista-b.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estimación-dual-con-la-muestra-de-la-enceusta.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -11,7 +11,9 @@ postestratificación
 inferencia
 los-estimadores-del-sistema-dual
 propiedades-del-estimador
-la-encuesta-de-cobertura-como-lista-b
+estimación-dual-con-la-muestra-de-la-enceusta
+el-diseño-de-muestreo
+los-estimadores-de-muestreo
 la-muestra-e-y-la-muestra-p
 la-muestra-e-muestra-de-enumeración
 la-muestra-p-muestra-de-población
