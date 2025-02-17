@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa, Stalyn Guerrero" />
 
 
-<meta name="date" content="2025-02-14" />
+<meta name="date" content="2025-02-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -151,9 +151,58 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="los-estimadores-de-muestreo" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Los estimadores de muestreo<a href="los-estimadores-de-muestreo.html#los-estimadores-de-muestreo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como la encuesta representa una muestra de la población que viene de una medida de probabilidad, y a su vez, existe un modelo multinomial, entonces se introduce una complejidad metodológica clave: la necesidad de establecer las bases inferenciales para incluir dos fuentes de incertidumbre: el modelo y el muestreo <span class="citation">(<a href="#ref-Binder_2011">Binder 2011</a>)</span>. <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> afirma que este cambio de enfoque implica que la estimación del error de cobertura debe considerar dos fuentes principales de incertidumbre: (1) la variabilidad debida a la selección muestral de la encuesta, y (2) la variabilidad del modelo asociada con el modelo de error de cobertura.</p>
+<p>La variabilidad inducida por la selección de la muestra de la encuesta implica que las estimaciones derivadas de ella (como <span class="math inline">\(N_{+1}\)</span> o <span class="math inline">\(N_{11}\)</span>) están afectadas por la aleatoriedad inherente a la selección de unidades en la muestra. Si la encuesta utiliza un diseño complejo (como estratificación o conglomerados), la variabilidad aumenta debido a los efectos de diseño. Este tipo de variabilidad se mide con los métodos clásicos de inferencia estadística en encuestas de hogares. En segundo lugar, está la variabilidad derivada del modelo multinomial. En esta instancia, la novedad radica en integrar estas incertidumbres por medio de una inferencia doble, usando los resultados bien conocidos de las esperanzas y varianzas condicionales.</p>
+<p>La existencia de individuos que no fueron capturados en ninguno de los dos listados representa un desafío significativo, ya que su número solo puede ser estimado indirectamente a partir de la superposición observada entre la encuesta y el censo. Recordando que el estimador del modelo para <span class="math inline">\(N\)</span> es <span class="math inline">\(\hat N = \frac{N_{1+} \cdot N_{+1}}{N_{11}}\)</span>; entonces, su estimador insesgado bajo el diseño de muestreo se encuentra reemplazando <span class="math inline">\(N_{+1}\)</span> y <span class="math inline">\(N_{11}\)</span> por sus respectivos estimadores insesgados en la muestra. Por consiguiente, se tiene que el estimador de muestreo del tamaño poblacional <span class="math inline">\(N\)</span> tomará la siguiente forma:</p>
+<p><span class="math display">\[
+\tilde N_{++} = \tilde N = \frac{N_{1+} \cdot \tilde{N}_{+1}}{\tilde{N}_{11}}
+\]</span></p>
+<p>Si <span class="math inline">\(\pi_k\)</span> denota la probabilidad de inclusión del elemento <span class="math inline">\(k\)</span> a la muestra <span class="math inline">\(s\)</span>, la cual es inducida por su selección probabilística, entonces <span class="math inline">\(w_k= \pi_k^{-1}\)</span> es el peso de muestreo del elemento. Asumiendo que <span class="math inline">\(x_{k, 11}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue encontrado tanto en la muestra como en el censo y, cero, en otro caso, entonces los estimadores de muestreo de <span class="math inline">\({N}_{+1}\)</span> y <span class="math inline">\({N}_{11}\)</span>, serán respectivamente:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{N}_{+1} &amp;= \sum_{k \in s} w_k \\
+\tilde{N}_{11} &amp;= \sum_{k \in s} w_k \ x_{k, 11}
+\end{aligned}
+\]</span></p>
+<p>Nótese que los estimadores de muestreo para <span class="math inline">\({N}_{12}\)</span> y <span class="math inline">\({N}_{21}\)</span> toman la siguiente forma:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\tilde{N}_{12} &amp;= N_{1+} - \tilde N_{11} \\
+\tilde{N}_{21} &amp;= \tilde N_{+1} - \tilde N_{11}
+\end{aligned}
+\]</span></p>
+<p>Por otro lado, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> establece las condiciones sobre las cuales estos estimadores son insesgados y además propone el siguiente estimador aproximadamente insesgado de su varianza:</p>
+<p><span class="math display">\[
+\hat V (\tilde N) =  \hat V_m (\hat N) + \hat V_p (\tilde N)
+\]</span></p>
+<p>En donde <span class="math inline">\(\hat V_m (\hat N)\)</span> es el estimador de la varianza de <span class="math inline">\(\hat N\)</span> bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, de la siguiente forma:</p>
+<p><span class="math display">\[
+\hat V_m (\hat N) = \frac{N_{1+} \cdot \tilde N_{+1} \cdot (N_{1+} - \tilde N_{11}) \cdot (\tilde N_{+1} - \tilde N_{11})  }{\tilde N_{11}^3}
+\]</span></p>
+<p>Asimismo, <span class="math inline">\(\hat V_p (\tilde N)\)</span> corresponde con un estimador tradicional de varianzas para estimadores de muestreo <span class="citation">(<a href="#ref-CEPAL_2023">CEPAL 2023</a>)</span>. De esta forma, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>, sección 3.1.)</span> afirma que</p>
+<p><span class="math display">\[
+\hat V_p (\tilde N) \approx \frac{M^2}{m}(1-f)S^2_{d}
+\]</span></p>
+<p>Definiendo a <span class="math inline">\(\hat N_{i, +1}\)</span> como la estimación del tamaño del <span class="math inline">\(i\)</span>-ésimo conglomerado en la muestra, se tiene que <span class="math inline">\(S^2_{d} = \frac{1}{m-1}\sum_{i=1}^m d_i^2\)</span> y además:</p>
+<p><span class="math display">\[
+d_i = \frac{N_{1+}}{\tilde N_{11}}
+\left(\hat N_{k, +1} - \frac{\tilde N_{+1}}{\tilde N_{11}}x_{k, 11} \right)  
+\]</span></p>
 
 </div>
 <!-- </div> -->
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Binder_2011" class="csl-entry">
+Binder, David A. 2011. <span>“Estimating Model Parameters from a Complex Survey Under a Model-Design Randomization Framework.”</span> <em>Pakistan Journal of Statistics</em> 27 (4): 371–90.
+</div>
+<div id="ref-CEPAL_2023" class="csl-entry">
+CEPAL. 2023. <em>Diseño y Análisis Estadístico de Las Encuestas de Hogares de América Latina</em>. Metodologías de La CEPAL.
+</div>
+<div id="ref-wolter1986coverage" class="csl-entry">
+Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
+</div>
+</div>
             </section>
 
           </div>

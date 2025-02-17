@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa, Stalyn Guerrero" />
 
 
-<meta name="date" content="2025-02-14" />
+<meta name="date" content="2025-02-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -151,8 +151,17 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="el-diseño-de-muestreo" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> El diseño de muestreo<a href="el-diseño-de-muestreo.html#el-diseño-de-muestreo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Si la encuesta que se utiliza para medir el error de cobertura tiene el formato de una encuesta de hogares, entonces la población de interés únicamente podrá ser definida en términos de las personas civiles no institucionalizadas y el error de cobertura únicamente podrá ser estimado en esta subpoblación.</p>
-<p>XXXXX</p>
+<p>Por lo general, el diseño de muestreo para una encuesta postcensal sigue una estructura compleja que contempla al menos dos procesos: el primero es la estratificación y el segundo es la selección de conglomerados. Estos dos procesos introducen un efecto de diseño que, por lo general, aumenta el error estándar de los estimadores debido a la alta correlación intra-clase de los conglomerados en los estratos:</p>
+<ol style="list-style-type: decimal">
+<li>En el caso de la estratificación, este es un procedimiento que divide la población en grupos homogéneos (casi siempre supeditados a divisiones geográficas). Esta división pretende reducir la varianza de los estimadores, asegurando un tamaño de muestra óptimo para la representación de zonas o regiones.</li>
+<li>Las unidades primarias de muestreo (UPM) son pequeños conglomerados geográficos, como manzanas o sectores censales, que en la mayoría de casos se seleccionan mediante probabilidad proporcional al número de viviendas, hogares o personas. Por lo general, en las UPM seleccionadas, se realiza un barrido total de todas sus estructuras y en cada vivienda se enlista a cada una de las personas de cada una de las viviendas. Este muestreo se conoce como muestreo de conglomerados. En otras ocasiones, es posible hacer un submuestreo de viviendas en las UPM seleccionadas.</li>
+</ol>
+<p>Siguiendo la notación de la litera consideremos un diseño estándar estratificado con selección de conglomerados en una sola etapa. La población se agrupa en <span class="math inline">\(M\)</span> UPM y se asume que se selecciona una muestra aleatoria simple sin reemplazo de <span class="math inline">\(m\)</span> UPM. Asumimos que la población de la encuesta se enumera completamente dentro de los conglomerados seleccionados. Además, se supone que la lista de conglomerados es completa. Cada miembro de la población pertenece a uno y solo un conglomerado, y no hay miembros de la población que no estén cubiertos por uno de los <span class="math inline">\(M\)</span> conglomerados.</p>
+<p>tiene el formato de una encuesta de hogares, en donde la selección de las viviendas se realiza en dos etapas; por lo general, la segunda etapa de muestreo selecciona a viviendas que están ocupadas por hogares al momento de la recolección de los datos. Esta selección de viviendas ocupadas al momento del trabajo de campo introduce limitaciones críticas, como las siguientes:</p>
+<ol style="list-style-type: decimal">
+<li><p>Limitación en la definición de la población de interés: la segunda etapa del muestreo (selección de viviendas ocupadas) inmediatamente restringe la población objetivo a las <strong>personas civiles no institucionalizadas</strong>, lo que genera sesgos en la medición de cobertura, puesto que se excluyen poblaciones no cubiertas como las personas en cárceles, hospitales, residencias de ancianos o bases militares (población institucionalizada). Todas estas personas quedan fuera del marco muestral, ya que estas viviendas colectivas no se incluyen en la selección de hogares tradicionales. Asimismo, los individuos en situación de calle, migrantes temporales o trabajadores itinerantes no tienen una “vivienda ocupada” fija durante el trabajo de campo (población móvil o sin techo).</p></li>
+<li><p>Desfase temporal entre el censo y la encuesta: si hay un intervalo prolongado (meses o años) entre el censo y la encuesta postcensal, se violan algunos supuestos clave. Supongamos que, durante el censo, una vivienda estaba ocupada, pero al momento de la encuesta está deshabitada (ej.: migración, desastres naturales). Esta vivienda tendrá probabilidad nula de ser seleccionada en la encuesta, a pesar de haber albergado a un hogar censado. Asimismo, las viviendas construidas después del censo podrían contener hogares no censados.</p></li>
+</ol>
 </div>
             </section>
 

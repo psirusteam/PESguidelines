@@ -87,7 +87,7 @@
 
 \title{Fundamentos estadísticos para el análisis de las encuestas postcensales}
 \author{Andrés Gutiérrez\footnote{Comisión Económica para América Latina y el Caribe (CEPAL) - \href{mailto:andres.gutierrez@cepal.org}{\nolinkurl{andres.gutierrez@cepal.org}}}, Giovany Babativa, Stalyn Guerrero}
-\date{2025-02-13}
+\date{2025-02-14}
 
 \begin{document}
 \maketitle
@@ -176,9 +176,9 @@ Asimismo, en términos de las probabilidades marginales, se definen las siguient
 \begin{itemize}
 \tightlist
 \item
-  \(p_{1+}\) es la probabilidad de que un individuo sea encontrado en el censo.
+  \(p_{1+}\) es la probabilidad de que un individuo sea correctamente encontrado en el censo.
 \item
-  \(p_{+1}\) es la probabilidad de que un individuo sea encontrado en la encuesta.
+  \(p_{+1}\) es la probabilidad de que un individuo sea correctamente encontrado en la encuesta.
 \end{itemize}
 
 Esto quiere decir que el individuo tiene chance de ser clasificado en cualquiera de los cuatro estados definidos por las entradas de la tabla anterior; pero que al momento de la recolección de los datos, el individuo sólo puede pertenecer a uno y solo uno de estos estados.
@@ -304,40 +304,23 @@ Por ejemplo, una forma común de postestratificación es por edad. En este caso,
 
 La postestratificación no se limita solo a la edad; también se puede aplicar a otras variables demográficas y socioeconómicas, como sexo, etnia, nivel educativo, región geográfica, entre otras. Es fundamental que cualquier variable utilizada para la postestratificación esté correctamente registrada para todos los individuos tanto en el censo como en la encuesta.
 
-\hypertarget{el-estimador}{%
-\section{El estimador}\label{el-estimador}}
+\hypertarget{inferencia}{%
+\section{Inferencia}\label{inferencia}}
 
-Planteamiento del problema: queremos estimar el tamaño total de una población \(N_{++}\) usando dos fuentes de información. En primer lugar, el \textbf{censo}, que captura a \(N_{+1}\) individuos de la población correctamente capturados por el censo; luego, la \textbf{encuesta de cobertura}, que captura correctamente a \(N_{1+}\) individuos de la población. El número de individuos que fueron capturados en ambas fuentes se denota como \(N_{11}\).
-
-Este esquema de captura se puede representar en la siguiente tabla de dos entradas:
-
-\begin{longtable}[]{@{}cccc@{}}
-\toprule\noalign{}
-Censo - Encuesta & Sí & No & Total \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Sí & \(N_{11}\) & \(N_{12}\) & \(N_{1+}\) \\
-No & \(N_{21}\) & \(N_{22}\) & \(N_{2+}\) \\
-Total & \(N_{+1}\) & \(N_{+2}\) & \(N_{++}\) \\
-\end{longtable}
+Nuestro objetivo es estimar el tamaño total de una población, denotado como \(N_{++}\), utilizando dos fuentes de información complementarias. La primera fuente es el censo, el cual logra capturar correctamente a \(N_{+1}\) individuos de la población. La segunda fuente es la encuesta, que captura de manera precisa a \(N_{1+}\) individuos.
 
 Uno de los supuestos del sistema de estimación dual es que el evento de que una persona sea encontrada se puede modelar como un proceso estocástico de tipo Bernoulli. Esto quiere decir que \(N_{11}\), \(N_{1+}\) y \(N_{+1}\) se asumen como variables aleatorias binomiales al ser sumas de eventos Bernoulli.
 
-En esta instancia, denotamos a \(p_{1+}\) como la probabilidad de que una persona sea correctamente encontrada por el censo y \(p_{+1}\), la probabilidad de que una persona sea correctamente encontrada en la encuesta de cobertura. El sistema de estimación dual también supone que ambas operaciones estadísticas son independientes una de la otra; es decir que la probabilidad de que una persona sea correctamente encontrada tanto en el censo como en la encuesta será:
+\hypertarget{los-estimadores-del-sistema-dual}{%
+\subsection{Los estimadores del sistema dual}\label{los-estimadores-del-sistema-dual}}
 
-\[
-p_{11} = p_{1+} \cdot p_{+1}
-\]
-
-Bajo este modelo, las variables aleatorias siguen distribuciones binomiales:
+Bajo este modelo, las variables aleatorias siguen distribuciones binomiales condicionales:
 
 \[
 N_{1+} \sim \text{Bin}(N_{++}, p_{1+}), \quad N_{+1} \sim \text{Bin}(N_{++}, p_{+1}), \quad N_{11} \sim \text{Bin}(N_{++}, p_{11})
 \]
 
-Una vez que los datos hayan sido recolectados y clasificados bajo este esquema, es bien sabido en la literatura estadística, que los estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:
+Una vez que los datos hayan sido recolectados y clasificados bajo este esquema, es bien sabido en la literatura estadística, que los estimadores para las probabilidades de interés toman la siguiente forma:
 
 \[
 \hat p_{11} = \frac{N_{11}}{N_{++}},  \quad 
@@ -357,8 +340,30 @@ Luego, al despejar convenientemente, se encuentra que el estimador del sistema d
 \hat N_{++} = \frac{N_{1+} \cdot N_{+1}}{N_{11}} 
 \]
 
-\hypertarget{insesgamiento-del-estimador}{%
-\section{Insesgamiento del estimador}\label{insesgamiento-del-estimador}}
+A partir de este resultado, podemos reemplazar en las expresiones \(\hat p_{11}\), \(\hat p_{1+}\) y \(\hat p_{+1}\) para obtener estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:
+
+\[
+\hat p_{11} = \frac{N_{11}}{\hat N_{++}} = \frac{N_{11}^2}{N_{1+} \cdot N_{+1}}
+\]
+
+\[
+\hat p_{1+} = \frac{N_{1+}}{\hat N_{++}} = \frac{N_{11}}{N_{+1}}
+\]
+
+\[
+\hat p_{+1} = \frac{N_{+1}}{\hat N_{++}} = \frac{N_{11}}{N_{1+}}
+\]
+
+\citet[sección 2.4]{wolter1986coverage} plantea un esquema conjunto que induce estos mismos estimadores a partir de la función de verosimilitud asociada al modelo, la cual está dada por la siguiente expresión:
+
+\[
+L(N, p_{i+}, p_{+i}) = \binom{N}{x_{11}, x_{12}, x_{21}} p_{1+}^{x_{1+}} (1 - p_{1+})^{N - x_{1+}} p_{+1}^{x_{+1}} (1 - p_{+1})^{N - x_{+1}}.
+\]
+
+Los estimadores de máxima verosimilitud de los parámetros de interés se encuentran maximizando la anterior expresión sujeta a las restricciones pertinentes sobre las sumas de las probabilidades.
+
+\hypertarget{propiedades-del-estimador}{%
+\subsection{Propiedades del estimador}\label{propiedades-del-estimador}}
 
 El estimador \(\hat N_{++}\), es conocido como el método de Petersen, y es utilizado en estudios de captura y recaptura para estimar el tamaño de una población. Este método fue desarrollado por el biólogo danés Carl Georg Johannes Petersen \citep{petersen1896} y más tarde popularizado por C. Chandra Sekar y W. Edwards Deming en 1949 para estimar tasas de nacimientos y defunciones, así como la cobertura de los registros vitales \citep{sekar1949}.
 
@@ -389,18 +394,47 @@ E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) =  \fr
 Dado que \(N_{1+}\) y \(N_{+1}\) son independientes, entonces \(E[N_{1+} \cdot N_{+1}] = E[N_{1+}] E[N_{+1}]\). Reemplazando convenientemente, se tiene que
 
 \[
-E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} = N_{++}
+E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} 
+= N_{++} = N
 \]
 
-\hypertarget{supuestos-imprescindibles-del-estimador}{%
-\section{Supuestos imprescindibles del estimador}\label{supuestos-imprescindibles-del-estimador}}
+Por otro lado, \citet{wolter1986coverage} afirma que la varianza del estimador puede ser estimada mediante la siguiente expresión:
 
-El estimador dual es insesgado bajo el supuesto de independencia entre el censo y la encuesta de cobertura. Si esta independencia no se cumple, el estimador puede estar sesgado.
+\[
+\hat V[\hat{N}_{++}] = \frac{N_{1+} \cdot N_{+1} \cdot N_{12} \cdot N_{21}  }{N_{11}^3}
+\]
 
-\hypertarget{la-encuesta-de-cobertura-como-lista-b}{%
-\chapter{La encuesta de cobertura como lista B}\label{la-encuesta-de-cobertura-como-lista-b}}
+\hypertarget{estimaciuxf3n-dual-con-la-muestra-de-la-enceusta}{%
+\chapter{Estimación dual con la muestra de la enceusta}\label{estimaciuxf3n-dual-con-la-muestra-de-la-enceusta}}
+
+En el capítulo anterior, se partió de un supuesto simplificador: que todos los \(N\) miembros de la población tenían la posibilidad de ser incluidos tanto en el censo como en la encuesta. Esta suposición, aunque útil para establecer un marco teórico inicial, no refleja la realidad en la mayoría de los estudios de error de cobertura. En la práctica, es poco común que todos los individuos de una población estén expuestos a ser captados por ambas fuentes de información. Por ello, es necesario ajustar este enfoque para abordar situaciones más realistas.
+
+En este contexto, ahora consideraremos un escenario más plausible: mientras que todos los miembros de la población están expuestos a ser incluidos en el censo (es decir, el censo intenta cubrir a toda la población), solo una muestra de la población tendrá la posibilidad de ser incluida en la encuesta. Esta distinción es fundamental, ya que introduce una asimetría en la forma en que ambas fuentes de datos interactúan con la población. El censo, al ser un esfuerzo exhaustivo, busca contar a todos los individuos dentro de un territorio o grupo definido. Sin embargo, la encuesta, por su naturaleza muestral, solo abarca una fracción de la población.
+
+Este cambio en los supuestos implica una modificación significativa en los métodos de análisis, ya que se altera la estructura de la información disponible y las cantidades que se consideran conocidas o desconocidas. Anteriormente, se podía asumir que ciertos totales poblacionales eran observables o directamente medibles, pero bajo este nuevo enfoque, solo el total del censo, denotado como \(N_{1+}\), se considera conocido. Esto significa que el número de individuos capturados correctamente por el censo es la única cantidad que se toma como dada y confiable.
+
+Por otro lado, el total de la población capturado por la encuesta, representado como \(N_{+1}\), ahora se considera no observable.Además, otras cantidades clave, como \(N_{11}\) (el número de individuos capturados por ambas fuentes), \(N_{12}\) (individuos capturados por el censo pero no por la encuesta), y \(N_{21}\) (individuos capturados por la encuesta pero no por el censo), también se consideran desconocidas. Sin embargo, todas estas cantidades pueden estimarse indirectamente a partir de los datos de la encuesta, utilizando los métodos estadísticos adecuados. En resumen, la estructura de los datos y estimaciones necesarias para realizar la medición del error de cobertura usando ambas operaciones estadísticas puede ser descrita de la siguiente manera:
+
+\[
+    \begin{array}{c|cc|c}
+    & \text{En la encuesta} & \text{Fuera de la encuesta} & \text{Total} \\
+    \hline
+    \text{En el censo} & \hat N_{11} & \hat N_{12} = N_{1+} - \hat N_{11} & N_{1+} \\
+    \text{Fuera del censo} & \hat N_{21} = \hat N_{+1} - \hat N_{11} &  &  \\
+    \hline
+    \text{Total} & \hat N_{+1} &  & N_{++} = N
+    \end{array}
+    \]
+
+\hypertarget{el-diseuxf1o-de-muestreo}{%
+\section{El diseño de muestreo}\label{el-diseuxf1o-de-muestreo}}
 
 Si la encuesta que se utiliza para medir el error de cobertura tiene el formato de una encuesta de hogares, entonces la población de interés únicamente podrá ser definida en términos de las personas civiles no institucionalizadas y el error de cobertura únicamente podrá ser estimado en esta subpoblación.
+
+XXXXX
+
+\hypertarget{los-estimadores-de-muestreo}{%
+\section{Los estimadores de muestreo}\label{los-estimadores-de-muestreo}}
 
 \hypertarget{la-muestra-e-y-la-muestra-p}{%
 \chapter{La muestra E y la muestra P}\label{la-muestra-e-y-la-muestra-p}}
