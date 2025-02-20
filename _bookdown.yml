@@ -7,5 +7,5 @@ rmd_files: [
   "index.rmd", 
   "01-Dual.rmd",
   "02-MuestreoEncuesta.rmd",
-  "03-MuestrasEyP.rmd"
+  "03-InclusionesMovers.rmd"
 ]

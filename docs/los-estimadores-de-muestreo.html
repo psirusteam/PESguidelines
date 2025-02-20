@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="la-muestra-e-y-la-muestra-p.html"/>
-<link rel="next" href="clasificación-de-los-errores.html"/>
+<link rel="next" href="enumeraciones-y-procedimientos.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -124,7 +124,16 @@ div.csl-indent {
 <li class="chapter" data-level="2.2" data-path="la-muestra-e-y-la-muestra-p.html"><a href="la-muestra-e-y-la-muestra-p.html"><i class="fa fa-check"></i><b>2.2</b> La muestra E y la muestra P</a></li>
 <li class="chapter" data-level="2.3" data-path="los-estimadores-de-muestreo.html"><a href="los-estimadores-de-muestreo.html"><i class="fa fa-check"></i><b>2.3</b> Los estimadores de muestreo</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="clasificación-de-los-errores.html"><a href="clasificación-de-los-errores.html"><i class="fa fa-check"></i><b>3</b> Clasificación de los errores</a></li>
+<li class="chapter" data-level="3" data-path="enumeraciones-y-procedimientos.html"><a href="enumeraciones-y-procedimientos.html"><i class="fa fa-check"></i><b>3</b> Enumeraciones y procedimientos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="enumeraciones-correctas-con-la-muestra-e.html"><a href="enumeraciones-correctas-con-la-muestra-e.html"><i class="fa fa-check"></i><b>3.1</b> Enumeraciones correctas con la muestra E</a></li>
+<li class="chapter" data-level="3.2" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html"><i class="fa fa-check"></i><b>3.2</b> Reconsturcción de los hogares con la muestra P</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-a"><i class="fa fa-check"></i><b>3.2.1</b> Procedimiento A</a></li>
+<li class="chapter" data-level="3.2.2" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-b"><i class="fa fa-check"></i><b>3.2.2</b> Procedimiento B</a></li>
+<li class="chapter" data-level="3.2.3" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-c"><i class="fa fa-check"></i><b>3.2.3</b> Procedimiento C</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
 
@@ -157,11 +166,11 @@ div.csl-indent {
 \hat{N}_{11} &amp;= \sum_{k \in s_P} w_k \ x_{k, 11}
 \end{aligned}
 \]</span></p>
-<p>Asimismo, si <span class="math inline">\(z_{k}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue correctamente incluido en el censo y, cero, en otro caso, entonces el estimador de muestreo de <span class="math inline">\({N}_{1+}\)</span> será:</p>
+<p>Asimismo, si <span class="math inline">\(z_{k}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue correctamente enumerado en el censo y, cero, en otro caso, entonces el estimador de muestreo de <span class="math inline">\(N_{1+}\)</span> será:</p>
 <p><span class="math display">\[
 \hat{N}_{1+} = {N}_{1+}^0 - \sum_{k \in s_E} w_k (1 - \ z_{k})
 \]</span></p>
-<p>En donde <span class="math inline">\({N}_{1+}^0\)</span> denota el conteo no corregido de personas en el censo. Esta cifra debe basarse exclusivamente en los datos recopilados durante el operativo censal, sin incluir imputaciones, proyecciones ni ningún otro tipo de ajustes estadísticos. Esto garantiza que los resultados reflejen fielmente la información obtenida en el campo. Para los anteriores estimadores, es claro que <span class="math inline">\(x_{k, 11}\)</span> es una variable aletaoria que se define en la muestra <span class="math inline">\(s_P\)</span>, mientras que <span class="math inline">\(z_{k}\)</span> es una variable aleatoria que se define en la muestra <span class="math inline">\(s_E\)</span>. Por otro lado, <span class="citation">Bureau (<a href="#ref-USCensusBureau_2022">2022</a>)</span> propone un estimador directo alternativo para <span class="math inline">\({N}_{1+}\)</span>, que se define a partir de la muestra E, y que corresponde a un conteo ponderado de enumeraciones correctas. Este estimador toma la siguiente forma:</p>
+<p>En donde <span class="math inline">\({N}_{1+}^0\)</span> denota el número de registros censales, el cual difiere del conteo de personas en el censo, y puede representar el conteo no corregido de personas en el censo. Esta cifra debe basarse exclusivamente en los datos recopilados durante el operativo censal, sin incluir imputaciones, proyecciones ni ningún otro tipo de ajustes estadísticos. Esto garantiza que los resultados reflejen fielmente la información obtenida en el campo. Para los anteriores estimadores, es claro que <span class="math inline">\(x_{k, 11}\)</span> es una variable aletaoria que se define en la muestra <span class="math inline">\(s_P\)</span>, mientras que <span class="math inline">\(z_{k}\)</span> es una variable aleatoria que se define en la muestra <span class="math inline">\(s_E\)</span>. Por otro lado, <span class="citation">Bureau (<a href="#ref-USCensusBureau_2022">2022</a>)</span> propone un estimador directo alternativo para <span class="math inline">\({N}_{1+}\)</span>, que se define a partir de la muestra E, y que corresponde a un conteo ponderado de enumeraciones correctas. Este estimador toma la siguiente forma:</p>
 <p><span class="math display">\[
 \hat{N}_{1+} = \sum_{k \in s_E} w_k \ z_{k}
 \]</span></p>
@@ -193,7 +202,7 @@ div.csl-indent {
 d_i = \frac{\hat{N}_{1+}}{\hat{N}_{11}}
 \left(\tilde{N}_{k, +1} - \frac{\hat{N}_{+1}}{\hat{N}_{11}}x_{k, 11}\right)  
 \]</span></p>
-<p>Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información recolectada en el censo para crear otro tipo de estimadores. Siendo <span class="math inline">\(\hat{N}_{1+}^0 = \sum_{k \in s_E}w_k\)</span> un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:</p>
+<p>Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información de los registros censales para crear otro tipo de estimadores. Siendo <span class="math inline">\(\hat{N}_{1+}^0 = \sum_{k \in s_E}w_k\)</span> un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:</p>
 <p><span class="math display">\[
 \hat{N}_{++}^{ratio} = \frac{N_{1+}^0}{\hat{N}_{1+}^0} \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
 \]</span></p>
@@ -202,11 +211,11 @@ d_i = \frac{\hat{N}_{1+}}{\hat{N}_{11}}
 \hat{N}_{++}^{post} = \sum_{g=1}^G \left[ \frac{N_{g1+}^0}{\hat{N}_{g1+}^0} \frac{\hat{N}_{g1+} \cdot \hat{N}_{g+1}}{\hat{N}_{g11}} \right] =
 \sum_{g=1}^G \left[N_{g1+}^0 \frac{\hat{p}_{g1+}}{\hat{p}_{g11}}  \right]
 \]</span></p>
-<p>En donde <span class="math inline">\(\hat{p}_{g1+} = \frac{\hat{N}_{g+1}}{\hat{N}_{g1+}^0}\)</span> y <span class="math inline">\(\hat{p}_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}\)</span> son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato <span class="math inline">\(g\)</span>.</p>
+<p>En donde <span class="math inline">\(\hat{p}_{g1+} = \frac{\hat{N}_{g+1}}{\hat{N}_{g1+}^0}\)</span> y <span class="math inline">\(\hat{p}_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}\)</span> son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato <span class="math inline">\(g\)</span>. Esta última expresión resultará muy valiosa para desarrollar modelos de estimación en áreas pequeñas, permitiendo calcular con mayor precisión la omisión censal.</p>
 
 </div>
 <!-- </div> -->
-<h3> Clasificación de los errores<a href="clasificación-de-los-errores.html#clasificación-de-los-errores" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Binder_2011" class="csl-entry">
 Binder, David A. 2011. <span>“Estimating Model Parameters from a Complex Survey Under a Model-Design Randomization Framework.”</span> <em>Pakistan Journal of Statistics</em> 27 (4): 371–90.
@@ -230,7 +239,7 @@ Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</s
         </div>
       </div>
 <a href="la-muestra-e-y-la-muestra-p.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="clasificación-de-los-errores.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="enumeraciones-y-procedimientos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

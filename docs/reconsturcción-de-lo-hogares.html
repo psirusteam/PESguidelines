@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 El sistema de estimación dual | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>3.2 Reconsturcción de lo hogares | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 El sistema de estimación dual | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="3.2 Reconsturcción de lo hogares | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 El sistema de estimación dual | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="3.2 Reconsturcción de lo hogares | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="planteamiento-del-problema.html"/>
+<link rel="prev" href="inclusiones-erróneas.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -124,14 +124,13 @@ div.csl-indent {
 <li class="chapter" data-level="2.2" data-path="la-muestra-e-y-la-muestra-p.html"><a href="la-muestra-e-y-la-muestra-p.html"><i class="fa fa-check"></i><b>2.2</b> La muestra E y la muestra P</a></li>
 <li class="chapter" data-level="2.3" data-path="los-estimadores-de-muestreo.html"><a href="los-estimadores-de-muestreo.html"><i class="fa fa-check"></i><b>2.3</b> Los estimadores de muestreo</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="enumeraciones-y-procedimientos.html"><a href="enumeraciones-y-procedimientos.html"><i class="fa fa-check"></i><b>3</b> Enumeraciones y procedimientos</a>
+<li class="chapter" data-level="3" data-path="inclusiones-y-procedimientos.html"><a href="inclusiones-y-procedimientos.html"><i class="fa fa-check"></i><b>3</b> Inclusiones y procedimientos</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="enumeraciones-correctas-con-la-muestra-e.html"><a href="enumeraciones-correctas-con-la-muestra-e.html"><i class="fa fa-check"></i><b>3.1</b> Enumeraciones correctas con la muestra E</a></li>
-<li class="chapter" data-level="3.2" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html"><i class="fa fa-check"></i><b>3.2</b> Reconsturcción de los hogares con la muestra P</a>
+<li class="chapter" data-level="3.1" data-path="inclusiones-erróneas.html"><a href="inclusiones-erróneas.html"><i class="fa fa-check"></i><b>3.1</b> Inclusiones erróneas</a></li>
+<li class="chapter" data-level="3.2" data-path="reconsturcción-de-lo-hogares.html"><a href="reconsturcción-de-lo-hogares.html"><i class="fa fa-check"></i><b>3.2</b> Reconsturcción de lo hogares</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-a"><i class="fa fa-check"></i><b>3.2.1</b> Procedimiento A</a></li>
-<li class="chapter" data-level="3.2.2" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-b"><i class="fa fa-check"></i><b>3.2.2</b> Procedimiento B</a></li>
-<li class="chapter" data-level="3.2.3" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-c"><i class="fa fa-check"></i><b>3.2.3</b> Procedimiento C</a></li>
+<li class="chapter" data-level="3.2.1" data-path="reconsturcción-de-lo-hogares.html"><a href="reconsturcción-de-lo-hogares.html#procedimiento-a"><i class="fa fa-check"></i><b>3.2.1</b> Procedimiento A</a></li>
+<li class="chapter" data-level="3.2.2" data-path="reconsturcción-de-lo-hogares.html"><a href="reconsturcción-de-lo-hogares.html#procedimiento-c"><i class="fa fa-check"></i><b>3.2.2</b> Procedimiento C</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -154,24 +153,70 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="el-sistema-de-estimación-dual" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> El sistema de estimación dual<a href="el-sistema-de-estimación-dual.html#el-sistema-de-estimación-dual" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Para poder hacer un análisis estadístico apropiado de las encuestas de cobertura como instrumentos que pretenden medir la omisión de un censo, es necesario remitirse a los rudimentos originales de su proceso inferencial, el cual está basado en el sistema de estimación dual. Este enfoque fue primeramente utilizado en modelos de captura y recaptura que se originaron en el siglo XVII, con desarrollos modernos a partir de <span class="citation">Petersen (<a href="#ref-petersen1896">1896</a>)</span>, <span class="citation">Lincoln (<a href="#ref-lincoln1930">1930</a>)</span> y <span class="citation">Schnabel (<a href="#ref-schnabel1938">1938</a>)</span>. La aplicación a eventos vitales humanos fue iniciada por el trabajo de <span class="citation">Sekar and Deming (<a href="#ref-sekar1949">1949</a>)</span>.</p>
-<p>Este capítulo pretende establecer las condiciones iniciales bajo las cuales es apropiado utilizar este enfoque, así como los supuestos que se deben cumplir para que esta metodología produzca estimadores insesgados y precisos.</p>
+<div id="reconsturcción-de-lo-hogares" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Reconsturcción de lo hogares<a href="reconsturcción-de-lo-hogares.html#reconsturcción-de-lo-hogares" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="procedimiento-a" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Procedimiento A<a href="reconsturcción-de-lo-hogares.html#procedimiento-a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Según <span class="citation">Bureau (<a href="#ref-USCensusBureau_1985">1985</a>)</span>, este procedimiento se basa en reconstruir los hogares tal como existían el día del censo. Mediante entrevistas retrospectivas, un informante (como el jefe del hogar) identifica a todas las personas que residían o se alojaban en la vivienda durante la fecha censal, incluyendo a quienes ya no viven allí (<em>out-movers</em>, en inglés). Esta información se contrasta con los registros censales para detectar omisiones (personas ausentes en el censo) o enumeraciones erróneas. El emparejamiento utiliza datos demográficos clave (nombre, edad, sexo) y verifica coincidencias geográficas.</p>
+<p>Este método es eficaz en contextos de baja movilidad, donde la mayoría de los residentes permanecen en el mismo hogar, ya que simplifica el emparejamiento al reducir la necesidad de buscar registros en múltiples áreas. Sin embargo, enfrenta desafíos en poblaciones dinámicas: la dependencia de informantes auxiliares para rastrear a las personas que se mudaron genera datos incompletos o inexactos, subestimando omisiones en zonas urbanas o migrantes.
+### Procedimiento B</p>
+<p>En este caso se identifican todas las personas que residen en el hogar al momento de la encuesta. Durante la entrevista, se solicita a cada informante que proporcione la dirección donde vivía en la fecha del censo. Este enfoque permite rastrear a las personas llegaron al hogar después del censo (<em>in-movers</em>, en inglés), así como a quienes ya no residen allí (<em>out-movers</em>). La información recopilada se compara con los registros censales para determinar si estas personas fueron correctamente enumeradas en su ubicación censal original.</p>
+<p>En este procedimiento es necesario buscar a las personas que se mudaron en las áreas en que fueron enumerados al momento del censo. Estas áreas pueden no formar necesariamente parte de la muestra y por lo tanto hay que extender la operación de apareamiento a otras áreas.</p>
+<p>Este método es especialmente útil en áreas con alta movilidad, ya que captura mejor a las personas que se mudaron y proporciona una visión más completa de los errores de cobertura. Sin embargo, enfrenta desafíos en la validación de direcciones, especialmente en zonas rurales o donde la información es imprecisa.</p>
 </div>
-<h3>References</h3>
+<div id="procedimiento-c" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Procedimiento C<a href="reconsturcción-de-lo-hogares.html#procedimiento-c" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Este enfoque combina elementos de los procedimientos A y B, con el objetivo de identificar tanto a los miembros actuales del hogar al momento de la encuesta como a cualquier otro residente que vivía allí en la fecha de referencia del censo. Esto incluye a las personas que se mudaron (<em>in-movers</em> y <em>out-movers</em>). Durante la entrevista, se recopila información sobre los residentes actuales y se solicita detalles sobre quienes vivían en el hogar durante el censo, lo que permite reconstruir la composición del hogar en ambas fechas.</p>
+<p>Sin embargo, sólo los residentes a la fecha del censo, es decir las personas que permanecen (<em>non-movers</em>) y las personas que ya no residen allí (<em>out-movers</em>) se emparejan con los registros censales. Este método ofrece una visión más completa de los errores de cobertura, ya que captura tanto a los residentes actuales como a los anteriores, lo que es especialmente útil en áreas con alta movilidad.</p>
+
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-lincoln1930" class="csl-entry">
+<div class="csl-entry">
+Binder, David A. 2011. <span>“Estimating Model Parameters from a Complex Survey Under a Model-Design Randomization Framework.”</span> <em>Pakistan Journal of Statistics</em> 27 (4): 371–90.
+</div>
+<div class="csl-entry">
+Bureau, US Census. 1985. <span>“Evaluating Censuses of Population and Housing.”</span>
+</div>
+<div class="csl-entry">
+———. 2022. <span>“2020 Post-Enumeration Survey Estimation Design.”</span>
+</div>
+<div class="csl-entry">
+Casella, George, and Roger L. Berger. 2002. <em>Statistical Inference</em>. 2nd ed. Duxbury Press.
+</div>
+<div class="csl-entry">
+CEPAL. 2023. <em>Diseño y Análisis Estadístico de Las Encuestas de Hogares de América Latina</em>. Metodologías de La CEPAL.
+</div>
+<div class="csl-entry">
+Gutiérrez, Hugo Andrés. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Estimación de Parámetros</em>. Segunda edición. Ediciones de la U.
+</div>
+<div class="csl-entry">
 Lincoln, F. C. 1930. <span>“Calculating Waterfowl Abundance on the Basis of Banding Returns.”</span> <em>Circular</em> 118: 1–4.
 </div>
-<div id="ref-petersen1896" class="csl-entry">
+<div class="csl-entry">
 Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
 </div>
-<div id="ref-schnabel1938" class="csl-entry">
+<div class="csl-entry">
 Schnabel, Z. E. 1938. <span>“The Estimation of the Total Fish Population of a Lake.”</span> <em>American Mathematical Monthly</em> 45: 348–52.
 </div>
-<div id="ref-sekar1949" class="csl-entry">
+<div class="csl-entry">
 Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimating Birth and Death Rates and the Extent of Registration.”</span> <em>Journal of the American Statistical Association</em> 44 (245): 101–15.
+</div>
+<div class="csl-entry">
+Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
+</div>
+</div>
+</div>
+</div>
+<!-- </div> -->
+
+
+
+
+
+
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-USCensusBureau_1985" class="csl-entry">
+Bureau, US Census. 1985. <span>“Evaluating Censuses of Population and Housing.”</span>
 </div>
 </div>
             </section>
@@ -179,8 +224,8 @@ Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimati
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="planteamiento-del-problema.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="inclusiones-erróneas.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -211,7 +256,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/01-Dual.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/03-InclusionesMovers.rmd",
 "text": "Edit"
 },
 "history": {

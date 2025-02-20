@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1 El sistema de estimación dual | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>3.1 Enumeraciones correctas con la muestra E | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1 El sistema de estimación dual | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="3.1 Enumeraciones correctas con la muestra E | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 El sistema de estimación dual | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="3.1 Enumeraciones correctas con la muestra E | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="planteamiento-del-problema.html"/>
+<link rel="prev" href="enumeraciones-y-procedimientos.html"/>
+<link rel="next" href="reconsturcción-de-los-hogares-con-la-muestra-p.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -154,24 +154,24 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="el-sistema-de-estimación-dual" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">1</span> El sistema de estimación dual<a href="el-sistema-de-estimación-dual.html#el-sistema-de-estimación-dual" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Para poder hacer un análisis estadístico apropiado de las encuestas de cobertura como instrumentos que pretenden medir la omisión de un censo, es necesario remitirse a los rudimentos originales de su proceso inferencial, el cual está basado en el sistema de estimación dual. Este enfoque fue primeramente utilizado en modelos de captura y recaptura que se originaron en el siglo XVII, con desarrollos modernos a partir de <span class="citation">Petersen (<a href="#ref-petersen1896">1896</a>)</span>, <span class="citation">Lincoln (<a href="#ref-lincoln1930">1930</a>)</span> y <span class="citation">Schnabel (<a href="#ref-schnabel1938">1938</a>)</span>. La aplicación a eventos vitales humanos fue iniciada por el trabajo de <span class="citation">Sekar and Deming (<a href="#ref-sekar1949">1949</a>)</span>.</p>
-<p>Este capítulo pretende establecer las condiciones iniciales bajo las cuales es apropiado utilizar este enfoque, así como los supuestos que se deben cumplir para que esta metodología produzca estimadores insesgados y precisos.</p>
+<div id="enumeraciones-correctas-con-la-muestra-e" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Enumeraciones correctas con la muestra E<a href="enumeraciones-correctas-con-la-muestra-e.html#enumeraciones-correctas-con-la-muestra-e" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para poder estimar <span class="math inline">\(N_{1+}\)</span> de forma apropiada es fundamental definir en la muestra E, las condiciones bajo las cuales la variable <span class="math inline">\(z_{k}\)</span> tomará el valor de uno; es decir cuándo el individuo se considera correctamente enumerado en el censo. Este proceso implica identificar y eliminar errores como duplicaciones, casos inexistentes o personas fuera del alcance del censo. Según <span class="citation">Hogan (<a href="#ref-hogan2003">2003</a>)</span>, una enumeración se considera correcta si cumple con la siguientes cuatro dimensiones clave:</p>
+<ol style="list-style-type: decimal">
+<li>Adecuación: una persona debe ser incluida en el censo solo si forma parte de la población objetivo. En este sentido es necesario excluir a quienes fallecieron antes del día del censo o nacieron después de esa fecha, ya que no pertenecen al grupo poblacional que se busca medir. <span class="citation">Bureau (<a href="#ref-USCensusBureau_2022">2022</a>)</span> menciona que también se excluyen registros que corresponden a individuos fuera de alcance, como turistas, animales o personas ficticias. Además, las personas que deberían haber sido contadas en alojamientos colectivos (como residencias estudiantiles o cárceles) no se consideran parte del universo objetivo de la Encuesta Post-Censal (EPC), por lo que sus registros se clasifican como fuera de alcance.</li>
+<li>Unicidad: el objetivo es contar a cada persona una sola vez. Si un individuo aparece en más de un registro censal, se considera una duplicación y es esencial eliminar estos duplicados, ya que distorsionarían el conteo poblacional. La unicidad asegura que el número de registros coincida con el número real de personas. Es posible realizar una búsqueda exhaustiva en las bases de datos censales para identificar posibles duplicados.</li>
+<li>Completitud: un registro censal debe contener información suficiente para identificar de manera única a una persona. Si falta información clave (como nombre, edad o dirección), no es posible determinar si la persona fue correctamente incluida en el censo o si también fue captada en la encuesta. Solo aquellos individuos que cumplan con el requisito mínimo de completitud podrán considerarse correctamente enumerados.</li>
+<li>Corrección geográfica: las personas deben estar enumeradas en la ubicación correcta según las reglas de residencia del censo. A partir de la encuesta se debe utilizar una definición específica para determinar la corrección geográfica. Por ejemplo, <span class="citation">Bureau (<a href="#ref-USCensusBureau_2022">2022</a>)</span> consideró que una persona está correctamente enumerada si fue contada en una vivienda dentro del segmento censal, o si fue incluida en una vivienda que es su residencia y está ubicada en un segmento adyacente. Esta definición amplía el área de búsqueda para incluir no solo la ubicación exacta, sino también las áreas circundantes, lo que permite corregir errores menores en la asignación geográfica. Sin embargo, un área de búsqueda más grande aumenta la complejidad del emparejamiento y el riesgo de coincidencias incorrectas entre personas diferentes.</li>
+</ol>
+<p>Los registros de la muestra E se deben revisar meticulosamente para verificar el cumplimiento de estas cuatro dimensiones.</p>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-lincoln1930" class="csl-entry">
-Lincoln, F. C. 1930. <span>“Calculating Waterfowl Abundance on the Basis of Banding Returns.”</span> <em>Circular</em> 118: 1–4.
+<div id="ref-USCensusBureau_2022" class="csl-entry">
+Bureau, US Census. 2022. <span>“2020 Post-Enumeration Survey Estimation Design.”</span>
 </div>
-<div id="ref-petersen1896" class="csl-entry">
-Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
-</div>
-<div id="ref-schnabel1938" class="csl-entry">
-Schnabel, Z. E. 1938. <span>“The Estimation of the Total Fish Population of a Lake.”</span> <em>American Mathematical Monthly</em> 45: 348–52.
-</div>
-<div id="ref-sekar1949" class="csl-entry">
-Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimating Birth and Death Rates and the Extent of Registration.”</span> <em>Journal of the American Statistical Association</em> 44 (245): 101–15.
+<div id="ref-hogan2003" class="csl-entry">
+Hogan, Howard. 2003. <span>“The Accuracy and Coverage Evaluation: Theory and Design.”</span> <em>Survey Methodology</em> 29 (2): 129–38. <a href="https://www150.statcan.gc.ca/n1/en/catalogue/12-001-X20030026444">https://www150.statcan.gc.ca/n1/en/catalogue/12-001-X20030026444</a>.
 </div>
 </div>
             </section>
@@ -179,8 +179,8 @@ Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimati
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="planteamiento-del-problema.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="enumeraciones-y-procedimientos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -211,7 +211,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/01-Dual.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/03-InclusionesMovers.rmd",
 "text": "Edit"
 },
 "history": {

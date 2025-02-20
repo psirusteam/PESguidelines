@@ -62,13 +62,13 @@ $$
 \end{aligned}
 $$
 
-Asimismo, si $z_{k}$ representa una variable aleatoria dicotómica que toma el valor de uno si el individuo $k$ fue correctamente incluido en el censo y, cero, en otro caso, entonces el estimador de muestreo de ${N}_{1+}$ será:  
+Asimismo, si $z_{k}$ representa una variable aleatoria dicotómica que toma el valor de uno si el individuo $k$ fue correctamente enumerado en el censo y, cero, en otro caso, entonces el estimador de muestreo de $N_{1+}$ será:  
 
 $$
 \hat{N}_{1+} = {N}_{1+}^0 - \sum_{k \in s_E} w_k (1 - \ z_{k})
 $$
 
-En donde ${N}_{1+}^0$ denota el conteo no corregido de personas en el censo. Esta cifra debe basarse exclusivamente en los datos recopilados durante el operativo censal, sin incluir imputaciones, proyecciones ni ningún otro tipo de ajustes estadísticos. Esto garantiza que los resultados reflejen fielmente la información obtenida en el campo. Para los anteriores estimadores, es claro que $x_{k, 11}$ es una variable aletaoria que se define en la muestra $s_P$, mientras que $z_{k}$ es una variable aleatoria que se define en la muestra $s_E$. Por otro lado, @USCensusBureau_2022 propone un estimador directo alternativo para ${N}_{1+}$, que se define a partir de la muestra E, y que corresponde a un conteo ponderado de enumeraciones correctas. Este estimador toma la siguiente forma:
+En donde ${N}_{1+}^0$ denota el número de registros censales, el cual difiere del conteo de personas en el censo, y puede representar el conteo no corregido de personas en el censo. Esta cifra debe basarse exclusivamente en los datos recopilados durante el operativo censal, sin incluir imputaciones, proyecciones ni ningún otro tipo de ajustes estadísticos. Esto garantiza que los resultados reflejen fielmente la información obtenida en el campo. Para los anteriores estimadores, es claro que $x_{k, 11}$ es una variable aletaoria que se define en la muestra $s_P$, mientras que $z_{k}$ es una variable aleatoria que se define en la muestra $s_E$. Por otro lado, @USCensusBureau_2022 propone un estimador directo alternativo para ${N}_{1+}$, que se define a partir de la muestra E, y que corresponde a un conteo ponderado de enumeraciones correctas. Este estimador toma la siguiente forma:
 
 $$
 \hat{N}_{1+} = \sum_{k \in s_E} w_k \ z_{k}
@@ -116,7 +116,7 @@ d_i = \frac{\hat{N}_{1+}}{\hat{N}_{11}}
 \left(\tilde{N}_{k, +1} - \frac{\hat{N}_{+1}}{\hat{N}_{11}}x_{k, 11}\right)  
 $$
 
-Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información recolectada en el censo para crear otro tipo de estimadores. Siendo $\hat{N}_{1+}^0 = \sum_{k \in s_E}w_k$ un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:
+Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información de los registros censales para crear otro tipo de estimadores. Siendo $\hat{N}_{1+}^0 = \sum_{k \in s_E}w_k$ un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:
 
 $$
 \hat{N}_{++}^{ratio} = \frac{N_{1+}^0}{\hat{N}_{1+}^0} \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
@@ -129,7 +129,7 @@ $$
 \sum_{g=1}^G \left[N_{g1+}^0 \frac{\hat{p}_{g1+}}{\hat{p}_{g11}}  \right]
 $$
 
-En donde $\hat{p}_{g1+} = \frac{\hat{N}_{g+1}}{\hat{N}_{g1+}^0}$ y $\hat{p}_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}$ son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato $g$.
+En donde $\hat{p}_{g1+} = \frac{\hat{N}_{g+1}}{\hat{N}_{g1+}^0}$ y $\hat{p}_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}$ son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato $g$. Esta última expresión resultará muy valiosa para desarrollar modelos de estimación en áreas pequeñas, permitiendo calcular con mayor precisión la omisión censal.
 
 
 

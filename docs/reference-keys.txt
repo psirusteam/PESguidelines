@@ -15,4 +15,9 @@ estimación-dual-con-la-muestra-de-la-encuesta
 el-diseño-de-muestreo
 la-muestra-e-y-la-muestra-p
 los-estimadores-de-muestreo
-clasificación-de-los-errores
+enumeraciones-y-procedimientos
+enumeraciones-correctas-con-la-muestra-e
+reconsturcción-de-los-hogares-con-la-muestra-p
+procedimiento-a
+procedimiento-b
+procedimiento-c
