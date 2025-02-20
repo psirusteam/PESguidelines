@@ -165,44 +165,44 @@ div.csl-indent {
 <p><span class="math display">\[
 \hat{N}_{1+} = \sum_{k \in s_E} w_k \ z_{k}
 \]</span></p>
-<p>Recordando que el estimador del modelo para <span class="math inline">\(N\)</span> es <span class="math inline">\(\tilde N = \frac{ N_{1+} \cdot N_{+1}}{N_{11}}\)</span>; entonces, su estimador insesgado bajo el diseño de muestreo se encuentra reemplazando <span class="math inline">\(N_{1+}\)</span>, <span class="math inline">\(N_{+1}\)</span> y <span class="math inline">\(N_{11}\)</span> por sus respectivos estimadores insesgados en la muestra. Por consiguiente, se tiene que el estimador de muestreo del tamaño poblacional <span class="math inline">\(N\)</span> tomará la siguiente forma:</p>
+<p>Recordando que el estimador del modelo para <span class="math inline">\(N\)</span> es <span class="math inline">\(\tilde{N} = \frac{ N_{1+} \cdot N_{+1}}{N_{11}}\)</span>; entonces, su estimador insesgado bajo el diseño de muestreo se encuentra reemplazando <span class="math inline">\(N_{1+}\)</span>, <span class="math inline">\(N_{+1}\)</span> y <span class="math inline">\(N_{11}\)</span> por sus respectivos estimadores insesgados en la muestra. Por consiguiente, se tiene que el estimador de muestreo del tamaño poblacional <span class="math inline">\(N\)</span> tomará la siguiente forma:</p>
 <p><span class="math display">\[
-\hat N_{++} = \hat N = \frac{\hat N_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
+\hat{N}_{++} = \hat{N} = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
 \]</span></p>
 <p>Nótese que los estimadores de muestreo para <span class="math inline">\({N}_{12}\)</span> y <span class="math inline">\({N}_{21}\)</span> toman la siguiente forma:</p>
 <p><span class="math display">\[
 \begin{aligned}
-\hat{N}_{12} &amp;= \hat N_{1+} - \hat N_{11} \\
-\hat{N}_{21} &amp;= \hat N_{+1} - \hat N_{11}
+\hat{N}_{12} &amp;= \hat{N}_{1+} - \hat{N}_{11} \\
+\hat{N}_{21} &amp;= \hat{N}_{+1} - \hat{N}_{11}
 \end{aligned}
 \]</span></p>
 <p>La existencia de individuos que no fueron capturados en ninguno de los dos listados representa un desafío significativo, ya que su número solo puede ser estimado indirectamente a partir de la superposición observada entre la encuesta y el censo. Por otro lado, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> establece las condiciones sobre las cuales estos estimadores son insesgados y además propone el siguiente estimador aproximadamente insesgado de su varianza:</p>
 <p><span class="math display">\[
-\tilde V (\hat N) =  \tilde V_m (\tilde N) + \tilde V_p (\hat N)
+\tilde{V}(\hat{N}) =  \tilde{V}_m(\tilde{N}) + \tilde{V}_p(\hat{N})
 \]</span></p>
-<p>En donde <span class="math inline">\(\tilde V_m (\tilde N)\)</span> es el estimador de la varianza de <span class="math inline">\(\tilde N\)</span> bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, de la siguiente forma:</p>
+<p>En donde <span class="math inline">\(\tilde{V}_m(\tilde{N})\)</span> es el estimador de la varianza de <span class="math inline">\(\tilde{N}\)</span> bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, de la siguiente forma:</p>
 <p><span class="math display">\[
-\tilde V_m (\tilde N) = \frac{\hat N_{1+} \cdot \hat N_{+1} \cdot (\hat N_{1+} - \hat N_{11}) \cdot (\hat N_{+1} - \hat N_{11})  }{\hat N_{11}^3}
+\tilde{V}_m(\tilde{N}) = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1} \cdot (\hat{N}_{1+} - \hat{N}_{11}) \cdot (\hat{N}_{+1} - \hat{N}_{11})}{\hat{N}_{11}^3}
 \]</span></p>
-<p>Asimismo, <span class="math inline">\(\tilde V_p (\hat N)\)</span> corresponde con un estimador tradicional de varianzas para estimadores de muestreo <span class="citation">(<a href="#ref-CEPAL_2023">CEPAL 2023</a>)</span>. De esta forma, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>, sección 3.1.)</span> afirma que</p>
+<p>Asimismo, <span class="math inline">\(\tilde V_p (\hat{N})\)</span> corresponde con un estimador tradicional de varianzas para estimadores de muestreo <span class="citation">(<a href="#ref-CEPAL_2023">CEPAL 2023</a>)</span>. De esta forma, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>, sección 3.1.)</span> afirma que</p>
 <p><span class="math display">\[
-\tilde V_p (\hat N) \approx \frac{M^2}{m}(1-f)S^2_{d}
+\tilde V_p (\hat{N}) \approx \frac{M^2}{m}(1-f)S^2_{d}
 \]</span></p>
-<p>Definiendo a <span class="math inline">\(\tilde N_{i, +1}\)</span> como la estimación del tamaño del <span class="math inline">\(i\)</span>-ésimo conglomerado a partir de la muestra <span class="math inline">\(s_P\)</span>, se tiene que <span class="math inline">\(S^2_{d} = \frac{1}{m-1}\sum_{i=1}^m d_i^2\)</span> y además:</p>
+<p>Definiendo a <span class="math inline">\(\tilde{N}_{i, +1}\)</span> como la estimación del tamaño del <span class="math inline">\(i\)</span>-ésimo conglomerado a partir de la muestra <span class="math inline">\(s_P\)</span>, se tiene que <span class="math inline">\(S^2_{d} = \frac{1}{m-1}\sum_{i=1}^m d_i^2\)</span> y además:</p>
 <p><span class="math display">\[
-d_i = \frac{\hat N_{1+}}{\hat N_{11}}
-\left(\tilde N_{k, +1} - \frac{\hat N_{+1}}{\hat N_{11}}x_{k, 11} \right)  
+d_i = \frac{\hat{N}_{1+}}{\hat{N}_{11}}
+\left(\tilde{N}_{k, +1} - \frac{\hat{N}_{+1}}{\hat{N}_{11}}x_{k, 11}\right)  
 \]</span></p>
-<p>Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información recolectada en el censo para crear otro tipo de estimadores. Siendo <span class="math inline">\(\hat {N}_{1+}^0 = \sum_{k \in s_E}w_k\)</span> un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:</p>
+<p>Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información recolectada en el censo para crear otro tipo de estimadores. Siendo <span class="math inline">\(\hat{N}_{1+}^0 = \sum_{k \in s_E}w_k\)</span> un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:</p>
 <p><span class="math display">\[
-\hat N_{++}^{ratio} = \frac{{N}_{1+}^0}{\hat {N}_{1+}^0} \frac{\hat N_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
+\hat{N}_{++}^{ratio} = \frac{{N}_{1+}^0}{\hat{N}_{1+}^0} \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
 \]</span></p>
 <p>De la misma manera, es posible refinar el estimador usando la postestratificación <span class="citation">(<a href="#ref-Gutierrez_2016">Gutiérrez 2016</a>)</span>. Esta es una técnica que particiona la población en subgrupos homogéneos y que permite minimizar el impacto del sesgo de correlación (que los individuos que no fueron enumerados en el censo serán más propensos a no ser incluidos en la encuesta). Como se mencionó anteriormente, es usual utilizar al menos las divisiones administrativas mayores, los grupos de edad y el sexo. Cada una de las particiones inducidas por el cruce de estas variables se conoce como post-estratos. Suponiendo que existen <span class="math inline">\(G\)</span> postestratos, entonces el estimador de razón post-estratificada toma la siguiente forma:</p>
 <p><span class="math display">\[
-\hat N_{++}^{post} = \sum_{g=1}^G \left[ \frac{{N}_{g1+}^0}{\hat {N}_{g1+}^0} \frac{\hat N_{g1+} \cdot \hat{N}_{g+1}}{\hat{N}_{g11}} \right] =
-\sum_{g=1}^G \left[ {N}_{g1+}^0 \frac{\hat p_{g1+}}{\hat p_{g11}}  \right]
+\hat{N}_{++}^{post} = \sum_{g=1}^G \left[ \frac{{N}_{g1+}^0}{\hat{N}_{g1+}^0} \frac{\hat{N}_{g1+} \cdot \hat{N}_{g+1}}{\hat{N}_{g11}} \right] =
+\sum_{g=1}^G \left[ {N}_{g1+}^0 \frac{\hat{p}_{g1+}}{\hat{p}_{g11}}  \right]
 \]</span></p>
-<p>En donde <span class="math inline">\(\hat p_{g1+} = \frac{\hat{N}_{g+1}}{\hat {N}_{g1+}^0}\)</span> y <span class="math inline">\(\hat p_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}\)</span> son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato <span class="math inline">\(g\)</span>.</p>
+<p>En donde <span class="math inline">\(\hat{p}_{g1+} = \frac{\hat{N}_{g+1}}{\hat{N}_{g1+}^0}\)</span> y <span class="math inline">\(\hat{p}_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}\)</span> son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato <span class="math inline">\(g\)</span>.</p>
 
 </div>
 <!-- </div> -->

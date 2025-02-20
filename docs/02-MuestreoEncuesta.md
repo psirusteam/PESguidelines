@@ -12,10 +12,10 @@ Por otro lado, el total de la población capturado por la encuesta, representado
     \begin{array}{c|cc|c}
     & \text{En la encuesta} & \text{Fuera de la encuesta} & \text{Total} \\
     \hline
-    \text{En el censo} & \hat N_{11} & \hat N_{12} = \hat N_{1+} - \hat N_{11} & \hat N_{1+} \\
-    \text{Fuera del censo} & \hat N_{21} = \hat N_{+1} - \hat N_{11} &  &  \\
+    \text{En el censo} & \hat{N}_{11} & \hat{N}_{12} = \hat{N}_{1+} - \hat{N}_{11} & \hat{N}_{1+} \\
+    \text{Fuera del censo} & \hat{N}_{21} = \hat{N}_{+1} - \hat{N}_{11} &  &  \\
     \hline
-    \text{Total} & \hat N_{+1} &  & \hat N_{++} = \hat N
+    \text{Total} & \hat{N}_{+1} &  & \hat{N}_{++} = \hat{N}
     \end{array}
     \]
 
@@ -74,10 +74,10 @@ $$
 \hat{N}_{1+} = \sum_{k \in s_E} w_k \ z_{k}
 $$
 
-Recordando que el estimador del modelo para $N$ es $\tilde N = \frac{ N_{1+} \cdot N_{+1}}{N_{11}}$; entonces, su estimador insesgado bajo el diseño de muestreo se encuentra reemplazando $N_{1+}$, $N_{+1}$ y $N_{11}$ por sus respectivos estimadores insesgados en la muestra. Por consiguiente, se tiene que el estimador de muestreo del tamaño poblacional $N$ tomará la siguiente forma:
+Recordando que el estimador del modelo para $N$ es $\tilde{N} = \frac{ N_{1+} \cdot N_{+1}}{N_{11}}$; entonces, su estimador insesgado bajo el diseño de muestreo se encuentra reemplazando $N_{1+}$, $N_{+1}$ y $N_{11}$ por sus respectivos estimadores insesgados en la muestra. Por consiguiente, se tiene que el estimador de muestreo del tamaño poblacional $N$ tomará la siguiente forma:
 
 $$
-\hat N_{++} = \hat N = \frac{\hat N_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
+\hat{N}_{++} = \hat{N} = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
 $$
 
 
@@ -85,51 +85,51 @@ Nótese que los estimadores de muestreo para ${N}_{12}$ y ${N}_{21}$ toman la si
 
 $$
 \begin{aligned}
-\hat{N}_{12} &= \hat N_{1+} - \hat N_{11} \\
-\hat{N}_{21} &= \hat N_{+1} - \hat N_{11}
+\hat{N}_{12} &= \hat{N}_{1+} - \hat{N}_{11} \\
+\hat{N}_{21} &= \hat{N}_{+1} - \hat{N}_{11}
 \end{aligned}
 $$
 
 La existencia de individuos que no fueron capturados en ninguno de los dos listados representa un desafío significativo, ya que su número solo puede ser estimado indirectamente a partir de la superposición observada entre la encuesta y el censo. Por otro lado, @wolter1986coverage establece las condiciones sobre las cuales estos estimadores son insesgados y además propone el siguiente estimador aproximadamente insesgado de su varianza:
 
 $$
-\tilde V (\hat N) =  \tilde V_m (\tilde N) + \tilde V_p (\hat N)
+\tilde{V}(\hat{N}) =  \tilde{V}_m(\tilde{N}) + \tilde{V}_p(\hat{N})
 $$
 
-En donde $\tilde V_m (\tilde N)$ es el estimador de la varianza de $\tilde N$ bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, de la siguiente forma:
+En donde $\tilde{V}_m(\tilde{N})$ es el estimador de la varianza de $\tilde{N}$ bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, de la siguiente forma:
 
 $$
-\tilde V_m (\tilde N) = \frac{\hat N_{1+} \cdot \hat N_{+1} \cdot (\hat N_{1+} - \hat N_{11}) \cdot (\hat N_{+1} - \hat N_{11})  }{\hat N_{11}^3}
+\tilde{V}_m(\tilde{N}) = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1} \cdot (\hat{N}_{1+} - \hat{N}_{11}) \cdot (\hat{N}_{+1} - \hat{N}_{11})}{\hat{N}_{11}^3}
 $$
 
-Asimismo, $\tilde V_p (\hat N)$ corresponde con un estimador tradicional de varianzas para estimadores de muestreo [@CEPAL_2023]. De esta forma, @wolter1986coverage[sección 3.1.] afirma que 
+Asimismo, $\tilde V_p (\hat{N})$ corresponde con un estimador tradicional de varianzas para estimadores de muestreo [@CEPAL_2023]. De esta forma, @wolter1986coverage[sección 3.1.] afirma que 
 
 $$
-\tilde V_p (\hat N) \approx \frac{M^2}{m}(1-f)S^2_{d}
+\tilde V_p (\hat{N}) \approx \frac{M^2}{m}(1-f)S^2_{d}
 $$
 
-Definiendo a $\tilde N_{i, +1}$ como la estimación del tamaño del $i$-ésimo conglomerado a partir de la muestra $s_P$, se tiene que $S^2_{d} = \frac{1}{m-1}\sum_{i=1}^m d_i^2$ y además:
+Definiendo a $\tilde{N}_{i, +1}$ como la estimación del tamaño del $i$-ésimo conglomerado a partir de la muestra $s_P$, se tiene que $S^2_{d} = \frac{1}{m-1}\sum_{i=1}^m d_i^2$ y además:
 
 
 $$
-d_i = \frac{\hat N_{1+}}{\hat N_{11}} 
-\left(\tilde N_{k, +1} - \frac{\hat N_{+1}}{\hat N_{11}}x_{k, 11} \right)  
+d_i = \frac{\hat{N}_{1+}}{\hat{N}_{11}} 
+\left(\tilde{N}_{k, +1} - \frac{\hat{N}_{+1}}{\hat{N}_{11}}x_{k, 11}\right)  
 $$
 
-Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información recolectada en el censo para crear otro tipo de estimadores. Siendo $\hat {N}_{1+}^0 = \sum_{k \in s_E}w_k$ un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:
+Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información recolectada en el censo para crear otro tipo de estimadores. Siendo $\hat{N}_{1+}^0 = \sum_{k \in s_E}w_k$ un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:
 
 $$
-\hat N_{++}^{ratio} = \frac{{N}_{1+}^0}{\hat {N}_{1+}^0} \frac{\hat N_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
+\hat{N}_{++}^{ratio} = \frac{{N}_{1+}^0}{\hat{N}_{1+}^0} \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
 $$
 
 De la misma manera, es posible refinar el estimador usando la postestratificación [@Gutierrez_2016]. Esta es una técnica que particiona la población en subgrupos homogéneos y que permite minimizar el impacto del sesgo de correlación (que los individuos que no fueron enumerados en el censo serán más propensos a no ser incluidos en la encuesta). Como se mencionó anteriormente, es usual utilizar al menos las divisiones administrativas mayores, los grupos de edad y el sexo. Cada una de las particiones inducidas por el cruce de estas variables se conoce como post-estratos. Suponiendo que existen $G$ postestratos, entonces el estimador de razón post-estratificada toma la siguiente forma:
 
 $$
-\hat N_{++}^{post} = \sum_{g=1}^G \left[ \frac{{N}_{g1+}^0}{\hat {N}_{g1+}^0} \frac{\hat N_{g1+} \cdot \hat{N}_{g+1}}{\hat{N}_{g11}} \right] =
-\sum_{g=1}^G \left[ {N}_{g1+}^0 \frac{\hat p_{g1+}}{\hat p_{g11}}  \right]
+\hat{N}_{++}^{post} = \sum_{g=1}^G \left[ \frac{{N}_{g1+}^0}{\hat{N}_{g1+}^0} \frac{\hat{N}_{g1+} \cdot \hat{N}_{g+1}}{\hat{N}_{g11}} \right] =
+\sum_{g=1}^G \left[ {N}_{g1+}^0 \frac{\hat{p}_{g1+}}{\hat{p}_{g11}}  \right]
 $$
 
-En donde $\hat p_{g1+} = \frac{\hat{N}_{g+1}}{\hat {N}_{g1+}^0}$ y $\hat p_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}$ son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato $g$.
+En donde $\hat{p}_{g1+} = \frac{\hat{N}_{g+1}}{\hat{N}_{g1+}^0}$ y $\hat{p}_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}$ son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato $g$.
 
 
 
