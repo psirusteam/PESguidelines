@@ -170,12 +170,12 @@ N_{1+} \sim \text{Bin}(N_{++}, p_{1+}), \quad N_{+1} \sim \text{Bin}(N_{++}, p_{
 Una vez que los datos hayan sido recolectados y clasificados bajo este esquema, es bien sabido en la literatura estadística, que los estimadores para las probabilidades de interés toman la siguiente forma:
 
 \[
-\hat p_{11} = \frac{N_{11}}{N_{++}},  \quad 
-\hat p_{1+} = \frac{N_{1+}}{N_{++}},  \quad 
-\hat p_{+1} = \frac{N_{+1}}{N_{++}}
+\tilde p_{11} = \frac{N_{11}}{N_{++}},  \quad 
+\tilde p_{1+} = \frac{N_{1+}}{N_{++}},  \quad 
+\tilde p_{+1} = \frac{N_{+1}}{N_{++}}
 \]
 
-Al asumir independencia entre la captura en el censo y la captura en la encuesta, entonces $\hat p_{11} = \hat p_{1+} \cdot \hat p_{+1}$, y por ende:
+Al asumir independencia entre la captura en el censo y la captura en la encuesta, entonces $\tilde p_{11} = \tilde p_{1+} \cdot \tilde p_{+1}$, y por ende:
 
 $$
 \frac{N_{11}}{N_{++}} = \frac{N_{1+}}{N_{++}} \cdot \frac{N_{+1}}{N_{++}}
@@ -184,21 +184,21 @@ $$
 Luego, al despejar convenientemente, se encuentra que el estimador del sistema dual para el total poblacional $N_{++}$ está dado por 
 
 $$
-\hat N_{++} = \frac{N_{1+} \cdot N_{+1}}{N_{11}} 
+\tilde N_{++} = \frac{N_{1+} \cdot N_{+1}}{N_{11}} 
 $$
 
-A partir de este resultado, podemos reemplazar en las expresiones $\hat p_{11}$, $\hat p_{1+}$ y $\hat p_{+1}$ para obtener estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:
+A partir de este resultado, podemos reemplazar en las expresiones $\tilde p_{11}$, $\tilde p_{1+}$ y $\tilde p_{+1}$ para obtener estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:
 
 $$
-\hat p_{11} = \frac{N_{11}}{\hat N_{++}} = \frac{N_{11}^2}{N_{1+} \cdot N_{+1}}
-$$
-
-$$
-\hat p_{1+} = \frac{N_{1+}}{\hat N_{++}} = \frac{N_{11}}{N_{+1}}
+\tilde p_{11} = \frac{N_{11}}{\tilde N_{++}} = \frac{N_{11}^2}{N_{1+} \cdot N_{+1}}
 $$
 
 $$
-\hat p_{+1} = \frac{N_{+1}}{\hat N_{++}} = \frac{N_{11}}{N_{1+}}
+\tilde p_{1+} = \frac{N_{1+}}{\tilde N_{++}} = \frac{N_{11}}{N_{+1}}
+$$
+
+$$
+\tilde p_{+1} = \frac{N_{+1}}{\tilde N_{++}} = \frac{N_{11}}{N_{1+}}
 $$
 
 @wolter1986coverage[sección 2.4] plantea un esquema conjunto que induce estos mismos estimadores a partir de la función de verosimilitud asociada al modelo, la cual está dada por la siguiente expresión:
@@ -212,9 +212,9 @@ Los estimadores de máxima verosimilitud de los parámetros de interés se encue
 
 ### Propiedades del estimador
 
-El estimador $\hat N_{++}$, es conocido como el método de Petersen, y es utilizado en estudios de captura y recaptura para estimar el tamaño de una población. Este método fue desarrollado por el biólogo danés Carl Georg Johannes Petersen [@petersen1896] y más tarde popularizado por C. Chandra Sekar y W. Edwards Deming en 1949 para estimar tasas de nacimientos y defunciones, así como la cobertura de los registros vitales [@sekar1949].
+El estimador $\tilde N_{++}$, es conocido como el método de Petersen, y es utilizado en estudios de captura y recaptura para estimar el tamaño de una población. Este método fue desarrollado por el biólogo danés Carl Georg Johannes Petersen [@petersen1896] y más tarde popularizado por C. Chandra Sekar y W. Edwards Deming en 1949 para estimar tasas de nacimientos y defunciones, así como la cobertura de los registros vitales [@sekar1949].
 
-Para demostrar que este estimador es insesgado, se debe verificar que $E[\hat{N}_{++}] = N_{++}$. En primer lugar, por la propiedad de la esperanza en distribuciones binomiales, se tiene que:
+Para demostrar que este estimador es insesgado, se debe verificar que $E[\tilde{N}_{++}] = N_{++}$. En primer lugar, por la propiedad de la esperanza en distribuciones binomiales, se tiene que:
 
 \[
 E[N_{1+}] = N_{++} p_{1+}, \quad E[N_{+1}] = N_{++} p_{+1}, \quad E[N_{11}] = N_{++} p_{11}
@@ -223,13 +223,13 @@ E[N_{1+}] = N_{++} p_{1+}, \quad E[N_{+1}] = N_{++} p_{+1}, \quad E[N_{11}] = N_
 Ahora, la esperanza del estimador toma la siguiente forma:
 
 \[
-E[\hat{N}_{++}] = E\left[ \frac{N_{1+} \cdot N_{+1}}{N_{11}} \right]
+E[\tilde{N}_{++}] = E\left[ \frac{N_{1+} \cdot N_{+1}}{N_{11}} \right]
 \]
 
 En primera instancia como $N_{1+}$ y $N_{+1}$ son variables aleatorias, es necesario apelar a las propiedades de la esperanza condicional, de la siguiente manera:
 
 \[
-E[\hat{N}_{++}] = E \left[ E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) \right]
+E[\tilde{N}_{++}] = E \left[ E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) \right]
 \]
 
 Además, como $N_{11}$ también es una variable aleatoria, entonces bajo condiciones de regularidad que permitan utilizar la expansión de Taylor, es posible aproximar la esperanza de este cociente al cociente de las esperanzas [@casella2002statistical]. De esta forma, se tiene que:
@@ -241,13 +241,13 @@ E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) =  \fr
 Dado que $N_{1+}$ y $N_{+1}$ son independientes, entonces $E[N_{1+} \cdot N_{+1}] = E[N_{1+}] E[N_{+1}]$. Reemplazando convenientemente, se tiene que
 
 \[
-E[\hat{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} 
+E[\tilde{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}} 
 = N_{++} = N
 \]
 
 Por otro lado, @wolter1986coverage afirma que la varianza del estimador puede ser estimada mediante la siguiente expresión:
 
 $$
-\hat V[\hat{N}_{++}] = \frac{N_{1+} \cdot N_{+1} \cdot N_{12} \cdot N_{21}  }{N_{11}^3}
+\tilde V[\tilde{N}_{++}] = \frac{N_{1+} \cdot N_{+1} \cdot N_{12} \cdot N_{21}  }{N_{11}^3}
 $$
 
