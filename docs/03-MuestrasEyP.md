@@ -1,3 +1,0 @@
-# Clasificación de los errores 
-
-

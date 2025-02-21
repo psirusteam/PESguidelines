@@ -1,0 +1,77 @@
+---
+title: "Análisis de las encuestas de cobertura (3)"
+author: "Andrés Gutiérrez"
+date: "`r Sys.Date()`"
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
+institute: Comisión Económica para América Latina y el Caribe
+header-includes:
+- \usepackage{graphicx}
+- \usepackage{amsmath}
+- \usepackage{booktabs}
+---
+
+# Enumeraciones y Procedimientos
+
+## Introducción
+
+- Este capítulo aborda las bases fundamentales para definir inclusiones erradas y emparejamientos.
+- Se analizarán las inclusiones erradas en la muestra E.
+- Se desarrollarán los fundamentos para definir emparejamientos en la muestra P.
+
+---
+
+## Enumeraciones Correctas con la Muestra E
+
+- Para estimar \(N_{1+}\) correctamente, se debe definir cuándo la variable \(z_{k}\) toma el valor de 1.
+- Una enumeración se considera correcta si cumple con cuatro dimensiones clave:
+  1. **Adecuación**: La persona debe ser parte de la población objetivo.
+  2. **Unicidad**: Cada persona debe ser contada una sola vez.
+  3. **Completitud**: El registro debe contener información suficiente para identificar a la persona.
+  4. **Corrección geográfica**: La persona debe estar enumerada en la ubicación correcta.
+
+---
+
+## Reconstrucción de Hogares con la Muestra P
+
+- Basado en @UnitedNations_2010.
+- Tres procedimientos principales:
+  1. **Procedimiento A**: Reconstrucción de hogares tal como existían el día del censo.
+  2. **Procedimiento B**: Identificación de personas que residen en el hogar al momento de la encuesta.
+  3. **Procedimiento C**: Combinación de elementos de los procedimientos A y B.
+
+---
+
+### Procedimiento A
+
+- Reconstrucción de hogares mediante entrevistas retrospectivas.
+- Informantes identifican a todas las personas que residían en la vivienda durante el censo.
+- Efectivo en contextos de baja movilidad.
+- Desafíos en poblaciones dinámicas: datos incompletos o inexactos.
+
+---
+
+### Procedimiento B
+
+- Identificación de personas que residen en el hogar al momento de la encuesta.
+- Se solicita la dirección donde vivían en la fecha del censo.
+- Útil en áreas con alta movilidad.
+- Desafíos en la validación de direcciones, especialmente en zonas rurales.
+
+---
+
+### Procedimiento C
+
+- Combina elementos de los procedimientos A y B.
+- Identifica tanto a los miembros actuales del hogar como a los residentes en la fecha del censo.
+- Captura a personas que se mudaron (*in-movers* y *out-movers*).
+- Ofrece una visión más completa de los errores de cobertura.
+
+---
+
+## Conclusión
+
+- La clasificación sistemática de inclusiones erradas facilita su identificación en los estimadores del sistema dual.
+- Los procedimientos de reconstrucción de hogares permiten una mejor comprensión de los errores de cobertura.
+- Es fundamental adaptar los procedimientos al contexto de movilidad de la población.
