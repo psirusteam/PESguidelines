@@ -1,4 +1,4 @@
-# Enumeraciones y procedimientos
+# Enumeraciones y procedimientos {#cap3}
 
 En este capítulo se abordarán de manera detallada las bases fundamentales para establecer la definición de las inclusiones erradas, las cuales se identificarán y analizarán específicamente en la muestra E. Este proceso buscará proporcionar un marco claro que permita clasificar estas inclusiones erradas de manera sistemática, facilitando su identificación para la inclusión en los estimadores del sistema dual.
 

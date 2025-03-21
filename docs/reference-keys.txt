@@ -1,3 +1,4 @@
+tab:t1
 el-sistema-de-estimación-dual
 planteamiento-del-problema
 condiciones-y-supuestos
@@ -15,9 +16,14 @@ estimación-dual-con-la-muestra-de-la-encuesta
 el-diseño-de-muestreo
 la-muestra-e-y-la-muestra-p
 los-estimadores-de-muestreo
-enumeraciones-y-procedimientos
+cap3
 enumeraciones-correctas-con-la-muestra-e
 reconsturcción-de-los-hogares-con-la-muestra-p
 procedimiento-a
 procedimiento-b
 procedimiento-c
+protocolo-de-clasificación
+componentes-de-cobertura
+tipos-de-enumeraciones
+protocolo-general
+flujo-de-trabajo

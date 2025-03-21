@@ -1,0 +1,94 @@
+# Procedimientos
+
+El propósito de la Encuesta Post-Enumeración (PES) es evaluar la cobertura de de unidades de vivienda y personas, así como proporcionar información que pueda ser utilizada para mejorar futuros censos. 
+
+Los principales objetivos de la PES son:
+
+- Proporcionar medidas del error de cobertura neta.
+- Producir medidas de los componentes de cobertura, incluyendo enumeraciones correctas, enumeraciones erróneas, imputaciones y omisiones.
+- Producir medidas de cobertura para grupos demográficos.
+
+El diseño de la Encuesta Post-Enumeración para el censo debe contar con un apropiado diseño de muestreo, recopilación de datos, emparejamiento y estimación. 
+
+## Componentes de cobertura
+
+Como se ha presentado hasta ahora, el sistema de estimación dual requiere de condiciones estrictas para que una enumeración se considere "correcta". A continuación se presentan algunos aspectos de relevancia con el fin de poder estimar la omisión.
+
+### Tipos de enumeraciones 
+
+Los cuatro componentes de cobertura a nivel de personas son:
+
+**Enumeraciones Correctas**
+
+Uno de los propósitos del PES es estimar el número de enumeraciones correctas en el conteo final del censo. De esta manera, si a nivel nacional, una persona debió ser enumerada en una unidad de vivienda y fue incluida en una unidad de vivienda en cualquier lugar del país, entonces la enumeración se debe considerar como correcta, incluso si esta en la ubicación incorrecta. 
+
+Para las estimaciones a nivel de área (región, departamento, municipio), una enumeración solo se considera correcta si la persona debería haber sido contada en una unidad de vivienda dentro de la misma área. De lo contrario, la enumeración se considera errónea.
+
+En cuanto a los duplicados, si una persona fue incluida varias veces, una de las enumeraciones se considera correcta y las otras enumeraciones se consideran erróneas. 
+
+**Enumeraciones Erróneas**
+
+De otra parte, desde el PES se debe estimar el número de enumeraciones erróneas en el conteo final del censo. 
+
+Existen varias razones por las cuales una enumeración se considera errónea. En general se clasifican en dos categorías: erróneas debido a duplicación y erróneas por otras razones. La Tabla XX documenta las principales razones por las cuales una enumeración se considera errónea. 
+   
+
+### Ubicaciones incorrectas
+### Estimación de las omisiones 
+
+## Emparejamiento a nivel de personas
+
+El proceso para el emparejamiento a nivel de personas debe estar diseñada para determinar si:
+
+1. las personas de la muestra P fueron enumeradas en el censo.
+2. las personas de la muestra E, enumeradas en el censo, fueron correctamente enumeradas. Si una persona de la muestra E fue erróneamente enumerada, el proceso de emparejamiento también debe determinar la razón del error.
+
+Durante la entrevista de personas, el encuestador hará la lista, independiente del censo, de las personas que vivían en la dirección en el momento de la entrevista y de aquellas que vivieron en la dirección el día del censo pero que ya no residen allí. Se deben levantar como mínimo los datos de sus nombres, apellidos, datos demográficos y relación de parentesco entre ellos.
+
+Las preguntas deben estar orientadas a determinar otros lugares donde la persona podría haber vivido o permanecido el día del censo buscando identificar si la persona habría mudado o si estaba de forma temporal en esa otra dirección. Si es una persona alterna entre direcciones, se debe intentar establecer cuánto tiempo pasa en cada dirección y así determinar su residencia habitual, es decir, en dónde debería contarse en el censo. Asimismo, si la conclusión es que una persona se mudó de la dirección de la muestra, se debe intentar obtener su nueva dirección.
+
+Las otras direcciones recopiladas durante la entrevista que son proporcionadas por el encuestado, pueden clasificarse como direcciones de inmigrante (*in-movers*, en inglés) o direcciones alternas. Las direcciones de inmigrante se recopilan cuando alguien que actualmente vive en la dirección de la muestra había vivido en otro lugar el día del censo. Mientras que las direcciones alternas se dan cuando alguien vive en otro lugar por razones laborales, de servicio militar, entre otras.
+
+La encuesta debe diseñarse para levantar la mayor cantidad posible de direcciones alternas con el fin de identificar todos los lugares donde una persona pudo haber sido contada en el censo y determinar si fue contabilizada más de una vez. Es posible que el encuestado no pueda proporcionar la dirección completa, en esos casos se debe intentar obtener cualquier información de referencia próximos a la dirección. 
+
+Durante el procesamiento de la PES, cada persona entrevistada debe asignarse con un código a un departamento y municipio de residencia. Los códigos del lugar de residencia indican dónde debía haberse contado a la persona el día del censo, también se debe agregar una codificación para identificar si la persona se mudó y si debía incluirse en la muestra P. Este proceso no necesariamente se puede lograr de forma automática y en algunos casos habrá la necesidad de hacer una revisión clerical, especialmente en los casos donde el encuestador agregue notas que puedan ser relevantes. 
+
+El primer paso consiste en geocodificar las direcciones proporcionadas por los encuestados y verificar que las mismas coinciden con los segmentos cartográficos seleccionados. En caso de que algunas direcciones no tengan una precisión a nivel de UPM (segmento cartográfico), entonces será necesaria una revisión clerical para verificar las direcciones proporcionadas por los encuestados.
+
+El paquete `tidygeocoder` puede ser útil para esa tarea, a continuación se presenta un ejemplo de juguete con cinco (5) direcciones en el departamento de Chuquisaca, Bolivia.
+
+```{r, warning=FALSE, message=FALSE}
+library(pacman)
+
+p_load(dplyr, tidygeocoder)
+
+datos <- tribble(
+  ~DIRECCION, ~MUNICIPIO,
+  "Av. Jaime Mendoza 123", "Sucre",
+  "Calle Bolívar 456", "Monteagudo",
+  "Plaza 25 de Mayo 789", "Camargo",
+  "Av. del Maestro 321", "Villa Serrano",
+  "Calle Potosí 654", "Zudáñez"
+)
+
+datos |>
+  mutate(addrs = paste0(DIRECCION, ", ", MUNICIPIO, ", Bolivia")) |>
+  geocode(addrs, method = "arcgis")
+```
+
+
+En caso de que algunos de los puntos de longitud y latitud no queden dentro de los segmentos de la muestra P, los revisores clericales deben verificar las direcciones y establecer si hay descritos algunos puntos de referencia que no se usaron durante el procesamiento automatizado que hubiera afectado la precisión del proceso automático. Los resultados de la geocodificación se utilizan durante el proceso de emparejamiento para identificar áreas de búsqueda alrededor de la dirección proporcionada por el encuestado. 
+
+Durante el proceso de geocodificación manual, los revisores asignan una coordenada que permita una mayor precisión. Si no es posible lograr una precisión que apunte a una UPM específica de la muestra P, entonces la misma podrá asociarse a más de una UPM para crear áreas de búsqueda que abarquen dicha dirección. Asimismo, es recomendable que se asigne un código que refleje el nivel de confianza que el revisor manual considera que hay en que la dirección se encuentra dentro del área de búsqueda.  
+
+Es recomendable que el emparejamiento automático de personas incluya los geocódigos asignados a las direcciones proporcionadas por los encuestados, así como los nombres, apellidos, la edad, el sexo, el día y mes de nacimiento. Otra información que puede ser usada en el proceso son: los números de teléfono de los encuestados del hogar, datos geográficos como el departamento, municipio o código del segmento. Con este propósito se puede usar un modelo de vinculación probabilística de registros conocido como *record linkage*.
+
+Con el objetivo de examinar la completitud de los nombres, es recomendable que el nombre o apellido se considere suficiente cuando la combinación del primer y segundo nombre, así como la combinación de los apellidos, tengan al menos dos caracteres cada uno. Posteriormente, los revisores clericales deben analizar todos los registros marcados como insuficientes y actualizar los nombres cuando sea posible. Por ejemplo, puede haberse registrado el primer nombre de un niño pero no su apellido, el revisor clerical podrá completar el apellido basándose en el de los padres cuando el parentesco sea determinado. En estos casos, se podrá cambiar el estado de insuficiente a suficiente. 
+
+Al finalizar este procesamiento, cada persona de la muestra P y cada persona de la muestra E deben ser codificadas como coincidencia, posible coincidencia, duplicado, posible duplicado o sin coincidencia, y al finalizar la revisión clerical, se usarán los vínculos asignados a las personas de la muestra P y muestra E como insumos para estimar la cobertura neta de la población y sus componentes.  
+
+
+## Procedimentos
+
+### Ajuste por ausencia de respuesta
+### Vinculación probabilística de registros

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>4 Protocolo de enumeraciones correctas e incorrectas | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
-  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="4 Protocolo de enumeraciones correctas e incorrectas | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="4 Protocolo de enumeraciones correctas e incorrectas | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa, Stalyn Guerrero" />
 
 
-<meta name="date" content="2025-02-21" />
+<meta name="date" content="2025-03-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="los-estimadores-de-muestreo.html"/>
-<link rel="next" href="enumeraciones-correctas-con-la-muestra-e.html"/>
+<link rel="prev" href="reconsturcción-de-los-hogares-con-la-muestra-p.html"/>
+<link rel="next" href="componentes-de-cobertura.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,6 +52,16 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
 
 
 
@@ -64,6 +74,7 @@
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -124,7 +135,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2" data-path="la-muestra-e-y-la-muestra-p.html"><a href="la-muestra-e-y-la-muestra-p.html"><i class="fa fa-check"></i><b>2.2</b> La muestra E y la muestra P</a></li>
 <li class="chapter" data-level="2.3" data-path="los-estimadores-de-muestreo.html"><a href="los-estimadores-de-muestreo.html"><i class="fa fa-check"></i><b>2.3</b> Los estimadores de muestreo</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="enumeraciones-y-procedimientos.html"><a href="enumeraciones-y-procedimientos.html"><i class="fa fa-check"></i><b>3</b> Enumeraciones y procedimientos</a>
+<li class="chapter" data-level="3" data-path="cap3.html"><a href="cap3.html"><i class="fa fa-check"></i><b>3</b> Enumeraciones y procedimientos</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="enumeraciones-correctas-con-la-muestra-e.html"><a href="enumeraciones-correctas-con-la-muestra-e.html"><i class="fa fa-check"></i><b>3.1</b> Enumeraciones correctas con la muestra E</a></li>
 <li class="chapter" data-level="3.2" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html"><i class="fa fa-check"></i><b>3.2</b> Reconsturcción de los hogares con la muestra P</a>
@@ -133,6 +144,15 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.2" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-b"><i class="fa fa-check"></i><b>3.2.2</b> Procedimiento B</a></li>
 <li class="chapter" data-level="3.2.3" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-c"><i class="fa fa-check"></i><b>3.2.3</b> Procedimiento C</a></li>
 </ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="protocolo-de-enumeraciones-correctas-e-incorrectas.html"><a href="protocolo-de-enumeraciones-correctas-e-incorrectas.html"><i class="fa fa-check"></i><b>4</b> Protocolo de enumeraciones correctas e incorrectas</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="componentes-de-cobertura.html"><a href="componentes-de-cobertura.html"><i class="fa fa-check"></i><b>4.1</b> Componentes de cobertura</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="componentes-de-cobertura.html"><a href="componentes-de-cobertura.html#tipos-de-enumeraciones"><i class="fa fa-check"></i><b>4.1.1</b> Tipos de enumeraciones</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="protocolo-general.html"><a href="protocolo-general.html"><i class="fa fa-check"></i><b>4.2</b> Protocolo general</a></li>
+<li class="chapter" data-level="4.3" data-path="flujo-de-trabajo.html"><a href="flujo-de-trabajo.html"><i class="fa fa-check"></i><b>4.3</b> Flujo de trabajo</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
@@ -154,18 +174,27 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="enumeraciones-y-procedimientos" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Enumeraciones y procedimientos<a href="enumeraciones-y-procedimientos.html#enumeraciones-y-procedimientos" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>En este capítulo se abordarán de manera detallada las bases fundamentales para establecer la definición de las inclusiones erradas, las cuales se identificarán y analizarán específicamente en la muestra E. Este proceso buscará proporcionar un marco claro que permita clasificar estas inclusiones erradas de manera sistemática, facilitando su identificación para la inclusión en los estimadores del sistema dual.</p>
-<p>Por otro lado, también se desarrollarán los fundamentos para la definición de los emparejamientos, los cuales serán establecidos a partir de la muestra P. Este apartado se centrará en establecer las condiciones bajo las cuales se realizarán y se profundizará en los procedimientos empleados para la reconstrucción de los hogares.</p>
+<div id="protocolo-de-enumeraciones-correctas-e-incorrectas" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Protocolo de enumeraciones correctas e incorrectas<a href="protocolo-de-enumeraciones-correctas-e-incorrectas.html#protocolo-de-enumeraciones-correctas-e-incorrectas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>La <strong>Encuesta Post-Censal (EPC)</strong> es un estudio complementario al censo cuyo propósito principal es evaluar la cobertura y calidad de la información recolectada sobre unidades de vivienda y personas. Su implementación permite identificar posibles errores en la enumeración, incluyendo omisiones, duplicaciones o clasificaciones incorrectas, lo que contribuye a mejorar la precisión de los datos censales y proporciona insumos fundamentales para el diseño de futuras operaciones estadísticas.</p>
+<p>Más allá de la evaluación de la cobertura, la EPC también permite analizar el impacto de diferentes factores que pueden influir en la calidad del censo, como la movilidad poblacional, las estrategias de recolección de datos y el desempeño de los enumeradores en campo. Además, esta encuesta juega un papel clave en la identificación de subgrupos poblacionales que podrían haber sido subrepresentados en el censo.</p>
+<p>Los principales objetivos de la EPC son:</p>
+<ul>
+<li><strong>Proporcionar medidas del error de cobertura neta</strong>, comparando los resultados del censo con los datos recolectados en la encuesta para cuantificar las diferencias.<br />
+</li>
+<li><strong>Identificar y analizar los componentes de cobertura</strong>, incluyendo enumeraciones correctas, errores de enumeración (duplicaciones, omisiones y errores de clasificación) e imputaciones y omisiones.<br />
+</li>
+<li><strong>Medir la cobertura en distintos grupos demográficos</strong>, asegurando que la información censal sea represente a los diversos segmentos de la población, como son la edad, género, nivel socioeconómico o ubicación geográfica.</li>
+</ul>
+<p>Para garantizar la calidad y confiabilidad de los resultados, el diseño de la EPC debe contar con un apropiado diseño de muestreo, estrategias eficientes de recopilación de datos, un proceso riguroso de emparejamiento con los registros censales y métodos de estimación estadística adecuados. Estos elementos aseguran que la encuesta proporcione información precisa para optimizar futuras operaciones estadísticas censales.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="los-estimadores-de-muestreo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="enumeraciones-correctas-con-la-muestra-e.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="componentes-de-cobertura.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -196,7 +225,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/03-InclusionesMovers.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/04-Protocolo.rmd",
 "text": "Edit"
 },
 "history": {
