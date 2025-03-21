@@ -124,19 +124,19 @@ graph TD;
     D -- Match --> J[Estimacion de Omisiones];
     D -- No Match --> E[Emparejamiento Automatico];
     E --> F[Revisar Umbral];
-    F --> H{Clasificar el tipo de coincidencia};
+    F --> H{Tipo de Coincidencia?};
     H -- Efectivos --> J;
     H -- Similares --> I[Revision Clerical];
     H -- Distintos --> K[Aumentar el area de busqueda];
     K --> E;
-    I --> L{¿Se detectan errores?};
+    I --> L{Errores Detectados?};
     L -- Si --> C;
     L -- No --> M[Clasificacion Final];
     F -- No --> M;
     M --> J;
-    J --> N[Ajuste y Calibracion];
+    J --> N[Ajustes y Calibraciones];
     N --> O[Validacion de Resultados];
-    O --> P[informe];
+    O --> P[Documentacion y Reporte];
     P --> Q[Fin del Proceso];
 ", height = '100%', width = '100%')
 
