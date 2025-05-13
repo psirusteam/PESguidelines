@@ -1,40 +1,8 @@
-# Procedimientos
+# Introducción
 
-El propósito de la Encuesta Post-Enumeración (PES) es evaluar la cobertura de de unidades de vivienda y personas, así como proporcionar información que pueda ser utilizada para mejorar futuros censos. 
+* fastLink en R
+* SPLink en Phyton
 
-Los principales objetivos de la PES son:
-
-- Proporcionar medidas del error de cobertura neta.
-- Producir medidas de los componentes de cobertura, incluyendo enumeraciones correctas, enumeraciones erróneas, imputaciones y omisiones.
-- Producir medidas de cobertura para grupos demográficos.
-
-El diseño de la Encuesta Post-Enumeración para el censo debe contar con un apropiado diseño de muestreo, recopilación de datos, emparejamiento y estimación. 
-
-## Componentes de cobertura
-
-Como se ha presentado hasta ahora, el sistema de estimación dual requiere de condiciones estrictas para que una enumeración se considere "correcta". A continuación se presentan algunos aspectos de relevancia con el fin de poder estimar la omisión.
-
-### Tipos de enumeraciones 
-
-Los cuatro componentes de cobertura a nivel de personas son:
-
-**Enumeraciones Correctas**
-
-Uno de los propósitos del PES es estimar el número de enumeraciones correctas en el conteo final del censo. De esta manera, si a nivel nacional, una persona debió ser enumerada en una unidad de vivienda y fue incluida en una unidad de vivienda en cualquier lugar del país, entonces la enumeración se debe considerar como correcta, incluso si esta en la ubicación incorrecta. 
-
-Para las estimaciones a nivel de área (región, departamento, municipio), una enumeración solo se considera correcta si la persona debería haber sido contada en una unidad de vivienda dentro de la misma área. De lo contrario, la enumeración se considera errónea.
-
-En cuanto a los duplicados, si una persona fue incluida varias veces, una de las enumeraciones se considera correcta y las otras enumeraciones se consideran erróneas. 
-
-**Enumeraciones Erróneas**
-
-De otra parte, desde el PES se debe estimar el número de enumeraciones erróneas en el conteo final del censo. 
-
-Existen varias razones por las cuales una enumeración se considera errónea. En general se clasifican en dos categorías: erróneas debido a duplicación y erróneas por otras razones. La Tabla XX documenta las principales razones por las cuales una enumeración se considera errónea. 
-   
-
-### Ubicaciones incorrectas
-### Estimación de las omisiones 
 
 ## Emparejamiento a nivel de personas
 
