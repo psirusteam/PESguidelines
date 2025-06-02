@@ -3,7 +3,7 @@ el-sistema-de-estimación-dual
 planteamiento-del-problema
 condiciones-y-supuestos
 estabilidad-poblacional
-estructura-multinomial
+sec:multinomial
 independencia-autónoma
 independencia-causal
 emparejamiento
@@ -22,6 +22,13 @@ reconsturcción-de-los-hogares-con-la-muestra-p
 procedimiento-a
 procedimiento-b
 procedimiento-c
+estimadores
+estimador-de-petersen
+estimador-de-chapman
+estimador-de-nour
+estimador-de-chao
+estimador-de-webster-kemp
+estimador-de-zelterman
 protocolo-de-clasificación
 componentes-de-cobertura
 tipos-de-enumeraciones

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Inferencia | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>4.1 Estimador de Petersen | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Inferencia | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="4.1 Estimador de Petersen | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Inferencia | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="4.1 Estimador de Petersen | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="condiciones-y-supuestos.html"/>
-<link rel="next" href="estimación-dual-con-la-muestra-de-la-encuesta.html"/>
+<link rel="prev" href="estimadores.html"/>
+<link rel="next" href="estimador-de-chapman.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -183,91 +183,43 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="inferencia" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Inferencia<a href="inferencia.html#inferencia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Nuestro objetivo es estimar el tamaño total de una población, denotado como <span class="math inline">\(N_{++}\)</span>, utilizando dos fuentes de información complementarias. La primera fuente es el censo, el cual logra capturar correctamente a <span class="math inline">\(N_{+1}\)</span> individuos de la población. La segunda fuente es la encuesta, que captura de manera precisa a <span class="math inline">\(N_{1+}\)</span> individuos.</p>
-<p>Uno de los supuestos del sistema de estimación dual es que el evento de que una persona sea encontrada se puede modelar como un proceso estocástico de tipo Bernoulli. Esto quiere decir que <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> se asumen como variables aleatorias binomiales al ser sumas de eventos Bernoulli.</p>
-<div id="los-estimadores-del-sistema-dual" class="section level3 hasAnchor" number="1.3.1">
-<h3><span class="header-section-number">1.3.1</span> Los estimadores del sistema dual<a href="inferencia.html#los-estimadores-del-sistema-dual" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Bajo este modelo, las variables aleatorias siguen distribuciones binomiales condicionales:</p>
+<div id="estimador-de-petersen" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Estimador de Petersen<a href="estimador-de-petersen.html#estimador-de-petersen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El estimador de <span class="citation">Petersen (<a href="#ref-petersen1896">1896</a>)</span> se basa en la razón de odds, asume que las fuentes de identificación son independientes y que los casos tienen la misma probabilidad de ser identificados en cada fuente.</p>
+<p>Teniendo en cuenta lo establecido en <a href="#multinomial"><strong>??</strong></a>, el evento conjunto de que un individuo esté o no esté en el censo y esté o no en la encuesta se puede modelar correctamente usando una distribución multinomial con los siguientes parámetros:</p>
 <p><span class="math display">\[
-N_{1+} \sim \text{Bin}(N_{++}, p_{1+}), \quad N_{+1} \sim \text{Bin}(N_{++}, p_{+1}), \quad N_{11} \sim \text{Bin}(N_{++}, p_{11})
-\]</span></p>
-<p>Una vez que los datos hayan sido recolectados y clasificados bajo este esquema, es bien sabido en la literatura estadística, que los estimadores para las probabilidades de interés toman la siguiente forma:</p>
-<p><span class="math display">\[
-\tilde{p}_{11} = \frac{N_{11}}{N_{++}},  \quad
-\tilde{p}_{1+} = \frac{N_{1+}}{N_{++}},  \quad
-\tilde{p}_{+1} = \frac{N_{+1}}{N_{++}}
-\]</span></p>
-<p>Al asumir independencia entre la captura en el censo y la captura en la encuesta, entonces <span class="math inline">\(\tilde{p}_{11} = \tilde{p}_{1+} \cdot \tilde{p}_{+1}\)</span>, y por ende:</p>
-<p><span class="math display">\[
-\frac{N_{11}}{N_{++}} = \frac{N_{1+}}{N_{++}} \cdot \frac{N_{+1}}{N_{++}}
-\]</span></p>
-<p>Luego, al despejar convenientemente, se encuentra que el estimador del sistema dual para el total poblacional <span class="math inline">\(N_{++}\)</span> está dado por</p>
-<p><span class="math display">\[
-\tilde{N}_{++} = \frac{N_{1+} \cdot N_{+1}}{N_{11}}
-\]</span></p>
-<p>A partir de este resultado, podemos reemplazar en las expresiones <span class="math inline">\(\tilde{p}_{11}\)</span>, <span class="math inline">\(\tilde{p}_{1+}\)</span> y <span class="math inline">\(\tilde{p}_{+1}\)</span> para obtener estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:</p>
-<p><span class="math display">\[
-\tilde{p}_{11} = \frac{N_{11}}{\tilde{N}_{++}} = \frac{N_{11}^2}{N_{1+} \cdot N_{+1}}
-\]</span></p>
-<p><span class="math display">\[
-\tilde{p}_{1+} = \frac{N_{1+}}{\tilde{N}_{++}} = \frac{N_{11}}{N_{+1}}
-\]</span></p>
-<p><span class="math display">\[
-\tilde{p}_{+1} = \frac{N_{+1}}{\tilde{N}_{++}} = \frac{N_{11}}{N_{1+}}
-\]</span></p>
-<p><span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>, sección 2.4)</span> plantea un esquema conjunto que induce estos mismos estimadores a partir de la función de verosimilitud asociada al modelo, la cual está dada por la siguiente expresión:</p>
-<p><span class="math display">\[
-L(N, p_{i+}, p_{+i}) = \binom{N}{x_{11}, x_{12}, x_{21}} p_{1+}^{x_{1+}} (1 - p_{1+})^{N - x_{1+}} p_{+1}^{x_{+1}} (1 - p_{+1})^{N - x_{+1}}.
-\]</span></p>
-<p>Los estimadores de máxima verosimilitud de los parámetros de interés se encuentran maximizando la anterior expresión sujeta a las restricciones pertinentes sobre las sumas de las probabilidades.</p>
+    \begin{array}{c|cc|c}
+    &amp; \text{En la encuesta} &amp; \text{Fuera de la encuesta} &amp; \text{Total} \\
+    \hline
+    \text{En el censo} &amp; p_{11} &amp; p_{12} &amp; p_{1+} \\
+    \text{Fuera del censo} &amp; p_{21} &amp; p_{22} &amp; p_{2+} \\
+    \hline
+    \text{Total} &amp; p_{+1} &amp; p_{+2} &amp; 1
+    \end{array}
+    \]</span></p>
+<p>Bajo el supuesto de independencia causal, tenemos:</p>
+<p><span class="math display">\[\frac{p_{11} \cdot p_{22}}{p_{21} \cdot  p_{12}} = 1\]</span></p>
+<p>Bajo este supuesto se puede estimar:</p>
+<p><span class="math display">\[ \hat{p}_{22} = \frac{p_{21}\cdot p_{12}}{p_{11}} \]</span></p>
+<p>Al tener en cuenta que <span class="math inline">\(\hat{N}_{11}\)</span> es la cantidad de personas en ambas fuentes y que <span class="math inline">\(\hat{N}_{+1}\)</span> y <span class="math inline">\(\hat{N}_{1+}\)</span> es la cantidad observada en cada fuente, el estimador de Lincoln–Petersen es:</p>
+<p><span class="math display">\[\begin{align}
+\hat{N}_{LP} &amp;= \hat{p}_{11} + \hat{p}_{12} + \hat{p}_{22} + \hat{p}_{21} \\
+             &amp;= \hat{N}_{11} + (\hat{N}_{+1} - \hat{N}_{11}) + (\hat{N}_{1+} - \hat{N}_{11}) + \frac{(\hat{N}_{+1} - \hat{N}_{11}) \cdot (\hat{N}_{1+} - \hat{N}_{11})}{\hat{N}_{11}} \\
+             &amp;= \frac{\hat{N}_{+1} \cdot \hat{N}_{1+}}{\hat{N}_{11}}
+             
+\end{align}\]</span></p>
+<p>El estimador de Petersen es el más conocido de los estimadores de tamaño poblacional en el sistema dual y puede demostrarse que es un estimador de máxima verosimilitud condicional para el modelo log-lineal de independencia con dos variables <span class="citation">(<a href="#ref-fienberg1972multiple">Fienberg 1972</a>; <a href="#ref-bishop2007discrete">Bishop, Fienberg, and Holland 2007</a>)</span>.</p>
 </div>
-<div id="propiedades-del-estimador" class="section level3 hasAnchor" number="1.3.2">
-<h3><span class="header-section-number">1.3.2</span> Propiedades del estimador<a href="inferencia.html#propiedades-del-estimador" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>El estimador <span class="math inline">\(\tilde{N}_{++}\)</span>, es conocido como el método de Petersen, y es utilizado en estudios de captura y recaptura para estimar el tamaño de una población. Este método fue desarrollado por el biólogo danés Carl Georg Johannes Petersen <span class="citation">(<a href="#ref-petersen1896">Petersen 1896</a>)</span> y más tarde popularizado por C. Chandra Sekar y W. Edwards Deming en 1949 para estimar tasas de nacimientos y defunciones, así como la cobertura de los registros vitales <span class="citation">(<a href="#ref-sekar1949">Sekar and Deming 1949</a>)</span>.</p>
-<p>Para demostrar que este estimador es insesgado, se debe verificar que <span class="math inline">\(E[\tilde{N}_{++}] = N_{++}\)</span>. En primer lugar, por la propiedad de la esperanza en distribuciones binomiales, se tiene que:</p>
-<p><span class="math display">\[
-E[N_{1+}] = N_{++} p_{1+}, \quad E[N_{+1}] = N_{++} p_{+1}, \quad E[N_{11}] = N_{++} p_{11}
-\]</span></p>
-<p>Ahora, la esperanza del estimador toma la siguiente forma:</p>
-<p><span class="math display">\[
-E[\tilde{N}_{++}] = E\left[ \frac{N_{1+} \cdot N_{+1}}{N_{11}} \right]
-\]</span></p>
-<p>En primera instancia como <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> son variables aleatorias, es necesario apelar a las propiedades de la esperanza condicional, de la siguiente manera:</p>
-<p><span class="math display">\[
-E[\tilde{N}_{++}] = E \left[ E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) \right]
-\]</span></p>
-<p>Además, como <span class="math inline">\(N_{11}\)</span> también es una variable aleatoria, entonces bajo condiciones de regularidad que permitan utilizar la expansión de Taylor, es posible aproximar la esperanza de este cociente al cociente de las esperanzas <span class="citation">(<a href="#ref-casella2002statistical">Casella and Berger 2002</a>)</span>. De esta forma, se tiene que:</p>
-<p><span class="math display">\[
-E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) =  \frac{E (N_{1+} \cdot N_{+1}| N_{1+}, N_{+1} )}{E (N_{11}| N_{1+}, N_{+1} )}
-\]</span></p>
-<p>Dado que <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> son independientes, entonces <span class="math inline">\(E[N_{1+} \cdot N_{+1}] = E[N_{1+}] E[N_{+1}]\)</span>. Reemplazando convenientemente, se tiene que</p>
-<p><span class="math display">\[
-E[\tilde{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}}
-= N_{++} = N
-\]</span></p>
-<p>Por otro lado, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> afirma que la varianza del estimador puede ser estimada mediante la siguiente expresión:</p>
-<p><span class="math display">\[
-\tilde V[\tilde{N}_{++}] = \frac{N_{1+} \cdot N_{+1} \cdot N_{12} \cdot N_{21}  }{N_{11}^3}
-\]</span></p>
-
-</div>
-</div>
-<!-- </div> -->
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-casella2002statistical" class="csl-entry">
-Casella, George, and Roger L. Berger. 2002. <em>Statistical Inference</em>. 2nd ed. Duxbury Press.
+<div id="ref-bishop2007discrete" class="csl-entry">
+Bishop, Yvonne M, Stephen E Fienberg, and Paul W Holland. 2007. <em>Discrete Multivariate Analysis: Theory and Practice</em>. Springer Science &amp; Business Media.
+</div>
+<div id="ref-fienberg1972multiple" class="csl-entry">
+Fienberg, Stephen E. 1972. <span>“The Multiple Recapture Census for Closed Populations and Incomplete 2k Contingency Tables.”</span> <em>Biometrika</em> 59 (3): 591–603.
 </div>
 <div id="ref-petersen1896" class="csl-entry">
 Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
-</div>
-<div id="ref-sekar1949" class="csl-entry">
-Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimating Birth and Death Rates and the Extent of Registration.”</span> <em>Journal of the American Statistical Association</em> 44 (245): 101–15.
-</div>
-<div id="ref-wolter1986coverage" class="csl-entry">
-Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
 </div>
 </div>
             </section>
@@ -275,8 +227,8 @@ Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</s
           </div>
         </div>
       </div>
-<a href="condiciones-y-supuestos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="estimación-dual-con-la-muestra-de-la-encuesta.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estimadores.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="estimador-de-chapman.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -307,7 +259,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/01-Dual.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/04-Estimacion.rmd",
 "text": "Edit"
 },
 "history": {

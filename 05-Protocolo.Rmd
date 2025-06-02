@@ -1,6 +1,7 @@
 # Protocolo de clasificación
 
-La **Encuesta Post-Censal (EPC)** es un estudio complementario al censo cuyo propósito principal es evaluar la cobertura y calidad de la información recolectada sobre unidades de vivienda y personas. Su implementación permite identificar posibles errores en la enumeración, incluyendo omisiones, duplicados o clasificaciones incorrectas, lo que contribuye a mejorar la precisión de los datos censales y proporciona insumos fundamentales para el diseño de futuras operaciones estadísticas.  
+La **Encuesta de cobertura o encuesta Post-Censal (EPC)** es un estudio complementario al censo cuyo propósito principal es evaluar la cobertura y calidad de la información recolectada sobre unidades de vivienda y personas. Su implementación permite identificar posibles errores en la enumeración, incluyendo omisiones, duplicados o clasificaciones incorrectas, lo que contribuye a mejorar la precisión de los datos censales y proporciona insumos fundamentales para el diseño de futuras operaciones estadísticas.  
+
 Más allá de la evaluación de la cobertura, la EPC también permite analizar el impacto de diferentes factores que pueden influir en la calidad del censo, como la movilidad poblacional, las estrategias de recolección de datos, el desempeño de los enumeradores en campo, entre otros.
 
 Los principales objetivos de la EPC son:  
@@ -72,7 +73,7 @@ kable(tabla, format = "markdown", col.names = c("**Tipo**", "**Descripción**"))
 
 El procedimiento que se debe seguir puede ser específico en cada país, acá se presenta un protocolo general de las condiciones mínimas que se deben considerar. Es probable que todos los registros no se puedan clasificar como enumeraciones correctas o incorrectas, y que se deba acudir a procedimientos de emparejamiento mediante técnicas de vinculación probabilística de registros. Los pasos generales son:
 
-1. Establecer las reglas para definir las enumeraciones correctas e incorrectas (veáse el capítulo \@ref(cap3))
+1. Establecer las reglas para definir las enumeraciones correctas e incorrectas (véase el capítulo \@ref(cap3))
 
    - **Criterios para enumeraciones correctas**: Adecuación, unicidad, completitud y corrección geográfica.
    - **Criterios para enumeraciones incorrectas**: Duplicados, fuera de alcance y errores geográficos..

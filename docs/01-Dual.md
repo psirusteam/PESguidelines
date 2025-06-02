@@ -26,9 +26,9 @@ Se supone que la población $U$ es cerrada y de tamaño fijo $N$. En la práctic
 
 3. No existen pérdidas; es decir que se asume que no ocurren **defunciones** ni **emigraciones** durante el período de referencia. Esto asegura que no se restan individuos de la población censada. 
 
-### Estructura multinomial 
+### Estructura multinomial {#sec:multinomial}
 
-El evento conjunto de que un individuo esté o no esté en el censo y esté o no en la encuesta se puede modelar correctamente usando una distrución multinomial con los siguientes parámetros:
+El evento conjunto de que un individuo esté o no esté en el censo y esté o no en la encuesta se puede modelar correctamente usando una distribución multinomial con los siguientes parámetros:
 
   \[
     \begin{array}{c|cc|c}

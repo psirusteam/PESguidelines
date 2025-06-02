@@ -8,5 +8,6 @@ rmd_files: [
   "01-Dual.rmd",
   "02-MuestreoEncuesta.rmd",
   "03-InclusionesMovers.rmd",
-  "04-Protocolo.rmd"
+  "04-Estimacion.rmd",
+  "05-Protocolo.rmd"
 ]
