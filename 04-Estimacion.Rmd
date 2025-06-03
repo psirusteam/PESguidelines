@@ -44,7 +44,7 @@ El estimador de Petersen es el más conocido de los estimadores de tamaño pobla
 
 ## Estimador de Chapman
 
-El estimador de Petersen produce estimaciones sesgadas del tamaño poblacional cuando los tamaños de muestra son pequeños @chapman1951some. Se han sugerido varias modificaciones para reducir este sesgo, siendo la más común el estimador de Chapman, que sugiere estimar
+El estimador de Petersen produce estimaciones sesgadas del tamaño poblacional cuando los tamaños de muestra son pequeños [@chapman1951some]. Se han sugerido varias modificaciones para reducir este sesgo, siendo la más común el estimador de Chapman, que sugiere estimar
 
 $$ \hat{p}_{22} = \frac{p_{21}\cdot p_{12}}{p_{11} + 1},$$
 
@@ -70,13 +70,13 @@ Chao [@chao1987; @chao1989] propuso un estimador para el tamaño poblacional que
 
 $$E(N_j) = N \int_0^1 \binom{2}{j} p^j (1-p)^{2-j} f(p) dp, \quad j = 0, 1, 2,$$
 
-donde $N_j$ es el número de individuos presentes en $j$ fuentes, y específicamente, $N_1 = N_{21} + N_{12} = N_{1+}$ y $N_2 = N_{11}$.
+donde $N_j$ es el número de individuos presentes en $j$ fuentes, de esta forma $N_1 = N_{21} + N_{12}$ y $N_2 = N_{11}$.
 
-Al aplicar la desigualdad de Cauchy-Schwarz a dos variables aleatorias $X$ e $Y$:
+Al aplicar la desigualdad de Cauchy-Schwarz a dos variables aleatorias $X$ e $Y$, donde se cumple que:
 
-$$[E(XY)]^2 \leq E(X^2)E(Y^2).$$
+$$[E(XY)]^2 \leq E(X^2)E(Y^2),$$
 
-Eligiendo $X = p$ y $Y = (1-p)$, obtenemos:
+Si elegimos $X = p$ y $Y = (1-p)$, obtenemos:
 
 $$\left(\int_0^1 p(1-p)f(p) dp\right)^2 \leq \int_0^1 (1-p)^2 f(p)dp \int_0^1 p^2 f(p)dp,$$
 

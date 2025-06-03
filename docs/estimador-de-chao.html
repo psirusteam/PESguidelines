@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa, Stalyn Guerrero" />
 
 
-<meta name="date" content="2025-06-02" />
+<meta name="date" content="2025-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,10 +187,10 @@ div.csl-indent {
 <h2><span class="header-section-number">4.4</span> Estimador de Chao<a href="estimador-de-chao.html#estimador-de-chao" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Chao <span class="citation">(<a href="#ref-chao1987">Chao 1987</a>, <a href="#ref-chao1989">1989</a>)</span> propuso un estimador para el tamaño poblacional que relaja el supuesto de independencia entre las fuentes del censo y la encuesta de cobertura. El modelo binomial mixto con parámetro 2 equivalente al número de fuentes usadas, se puede formular como:</p>
 <p><span class="math display">\[E(N_j) = N \int_0^1 \binom{2}{j} p^j (1-p)^{2-j} f(p) dp, \quad j = 0, 1, 2,\]</span></p>
-<p>donde <span class="math inline">\(N_j\)</span> es el número de individuos presentes en <span class="math inline">\(j\)</span> fuentes, y específicamente, <span class="math inline">\(N_1 = N_{21} + N_{12} = N_{1+}\)</span> y <span class="math inline">\(N_2 = N_{11}\)</span>.</p>
-<p>Al aplicar la desigualdad de Cauchy-Schwarz a dos variables aleatorias <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>:</p>
-<p><span class="math display">\[[E(XY)]^2 \leq E(X^2)E(Y^2).\]</span></p>
-<p>Eligiendo <span class="math inline">\(X = p\)</span> y <span class="math inline">\(Y = (1-p)\)</span>, obtenemos:</p>
+<p>donde <span class="math inline">\(N_j\)</span> es el número de individuos presentes en <span class="math inline">\(j\)</span> fuentes, de esta forma <span class="math inline">\(N_1 = N_{21} + N_{12}\)</span> y <span class="math inline">\(N_2 = N_{11}\)</span>.</p>
+<p>Al aplicar la desigualdad de Cauchy-Schwarz a dos variables aleatorias <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, donde se cumple que:</p>
+<p><span class="math display">\[[E(XY)]^2 \leq E(X^2)E(Y^2),\]</span></p>
+<p>Si elegimos <span class="math inline">\(X = p\)</span> y <span class="math inline">\(Y = (1-p)\)</span>, obtenemos:</p>
 <p><span class="math display">\[\left(\int_0^1 p(1-p)f(p) dp\right)^2 \leq \int_0^1 (1-p)^2 f(p)dp \int_0^1 p^2 f(p)dp,\]</span></p>
 <p>que puede reescribirse como:</p>
 <p><span class="math display">\[\left(\frac{1}{2}E(N_1)\right)^2 \leq E(N_0)E(N_2),\]</span></p>
