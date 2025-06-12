@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.6 Estimador de Zelterman | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>4.10 Relevancia de estimadores DSE según condiciones | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.6 Estimador de Zelterman | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="4.10 Relevancia de estimadores DSE según condiciones | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.6 Estimador de Zelterman | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="4.10 Relevancia de estimadores DSE según condiciones | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="estimador-de-webster-kemp.html"/>
-<link rel="next" href="modelos-log-lineales-bivariados.html"/>
+<link rel="prev" href="notas-adicionales.html"/>
+<link rel="next" href="protocolo-de-clasificación.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -220,7 +220,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.7" data-path="modelos-log-lineales-bivariados.html"><a href="modelos-log-lineales-bivariados.html"><i class="fa fa-check"></i><b>4.7</b> Modelos log-lineales bivariados</a></li>
 <li class="chapter" data-level="4.8" data-path="otros-modelos.html"><a href="otros-modelos.html"><i class="fa fa-check"></i><b>4.8</b> Otros modelos</a></li>
 <li class="chapter" data-level="4.9" data-path="notas-adicionales.html"><a href="notas-adicionales.html"><i class="fa fa-check"></i><b>4.9</b> Notas adicionales</a></li>
-<li class="chapter" data-level="4.10" data-path="cuadro-comparativo-de-los-estimadores.html"><a href="cuadro-comparativo-de-los-estimadores.html"><i class="fa fa-check"></i><b>4.10</b> Cuadro comparativo de los estimadores</a></li>
+<li class="chapter" data-level="4.10" data-path="relevancia-de-estimadores-dse-según-condiciones.html"><a href="relevancia-de-estimadores-dse-según-condiciones.html"><i class="fa fa-check"></i><b>4.10</b> Relevancia de estimadores DSE según condiciones</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html"><i class="fa fa-check"></i><b>5</b> Protocolo de clasificación</a>
 <ul>
@@ -251,33 +251,121 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="estimador-de-zelterman" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> Estimador de Zelterman<a href="estimador-de-zelterman.html#estimador-de-zelterman" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><span class="citation">Zelterman (<a href="#ref-zelterman1988robust">1988</a>)</span> propuso estimar el tamaño poblacional en estudios de captura y recaptura usando un enfoque basado en el estimador de Horvitz–Thompson. El estimador se basa en que los datos siguen una distribución de Poisson truncada (es decir, cuando no se observan los ceros), y hay heterogeneidad en las probabilidades de ser capturado.</p>
-<p>El objetivo es estimar <span class="math inline">\(p_0\)</span> utilizando solamente los conteos de los individuos observados una vez, <span class="math inline">\(N_{1}=N_{12}+N_{21}\)</span>, y los que son observados exactamente dos veces, <span class="math inline">\(N_{2}=N_{11}\)</span>, de la distribución de conteos truncada en cero. El estimador del tamaño poblacional propuesto por Zelterman es:</p>
-<p><span class="math display">\[
-\hat{N}_{\text{Zel}} = \frac{\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}}{1 - \exp\left(-\frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}\right)}
-\]</span></p>
-<p>y con aproximación de la varianza dada por:</p>
-<p><span class="math display">\[
-\hat{V}(\hat{N}_{\text{Zel}}) = \left( \frac{(\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}) \cdot \exp(-\lambda)}{1 - \exp(-\lambda)} \right)^2 \cdot \left( \frac{4 \hat{N}_{11}^2}{(\hat{N}_{12} + \hat{N}_{21})^4} + \frac{2}{(\hat{N}_{12} + \hat{N}_{21})^2} \right)
-\]</span></p>
-<p>donde</p>
-<p><span class="math display">\[\lambda = \frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}.\]</span></p>
+<div id="relevancia-de-estimadores-dse-según-condiciones" class="section level2 hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> Relevancia de estimadores DSE según condiciones<a href="relevancia-de-estimadores-dse-según-condiciones.html#relevancia-de-estimadores-dse-según-condiciones" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La elección del estimador adecuado para el tamaño poblacional en un sistema de dual depende de varios factores que afectan la validez de los supuestos de cada modelo. Entre los más relevantes se encuentran:</p>
+<ul>
+<li><strong>Dependencia entre listas</strong>: Ocurre cuando la probabilidad de inclusión en una lista está relacionada con la inclusión en la otra, violando el supuesto de independencia del modelo clásico como el de Petersen.</li>
+<li><strong>Heterogeneidad en las probabilidades de captura</strong>: Las personas tienen diferentes probabilidades de ser capturadas debido a características individuales no observadas (edad, ubicación, comportamiento migratorio, etc.).</li>
+<li><strong>Diseño complejo de muestreo</strong>: La encuesta de cobertura puede tener estratificación, conglomerados, y factores de expansión que deben ser incorporados en la estimación.</li>
+</ul>
+<p>El siguiente cuadro resume la relevancia de los distintos estimadores y cada uno, se indica si incorpora o ignora cada tipo de complejidad, y se sugiere su aplicabilidad en función del contexto de uso.</p>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="17%" />
+<col width="18%" />
+<col width="11%" />
+<col width="29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estimador</th>
+<th>Dependencia entre listas</th>
+<th>Heterogeneidad de captura</th>
+<th>Diseño complejo</th>
+<th>Aplicación recomendada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chapman post-estratificado</td>
+<td>❌</td>
+<td>❌</td>
+<td>✔</td>
+<td>Censos grandes con dominios definidos</td>
+</tr>
+<tr class="even">
+<td>Nour</td>
+<td>✔</td>
+<td>❌</td>
+<td>⚠</td>
+<td>Dependencia positiva esperada</td>
+</tr>
+<tr class="odd">
+<td>Chao</td>
+<td>✔</td>
+<td>✔</td>
+<td>⚠</td>
+<td>Estimación conservadora</td>
+</tr>
+<tr class="even">
+<td>Webster-Kemp</td>
+<td>✔</td>
+<td>❌</td>
+<td>⚠</td>
+<td>Baja recaptura entre listas</td>
+</tr>
+<tr class="odd">
+<td>Zelterman</td>
+<td>❌</td>
+<td>✔</td>
+<td>⚠</td>
+<td>Alta heterogeneidad, pocos recapturados</td>
+</tr>
+<tr class="even">
+<td>Modelo log-lineal</td>
+<td>✔✔</td>
+<td>✔</td>
+<td>⚠</td>
+<td>Modelado completo con dependencia</td>
+</tr>
+<tr class="odd">
+<td>Modelo bayesiano jerárquico</td>
+<td>✔✔</td>
+<td>✔✔</td>
+<td>✔</td>
+<td>Estimación por dominio, baja muestra</td>
+</tr>
+<tr class="even">
+<td>Estimadores MSE (3+ fuentes)</td>
+<td>✔✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>Fuentes múltiples, registros administrativos</td>
+</tr>
+<tr class="odd">
+<td>Modelos mixtos / NPMLE</td>
+<td>❌</td>
+<td>✔✔</td>
+<td>⚠</td>
+<td>Captura-recaptura con heterogeneidad fuerte</td>
+</tr>
+</tbody>
+</table>
+<div id="nota" class="section level4 hasAnchor" number="4.10.0.1">
+<h4><span class="header-section-number">4.10.0.1</span> Nota:<a href="relevancia-de-estimadores-dse-según-condiciones.html#nota" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>✔✔ : El estimador <strong>modela directamente</strong> el fenómeno (dependencia, heterogeneidad o diseño complejo).</p></li>
+<li><p>✔   : El estimador <strong>incorpora parcialmente</strong> el fenómeno o lo aborda de forma indirecta o limitada.</p></li>
+<li><p>❌  : El estimador <strong>asume que el fenómeno no está presente</strong> y no lo incorpora.</p></li>
+<li><p>⚠   : El estimador <strong>requiere ajustes externos</strong> (como bootstrap, posestratificación o ponderación) para manejar adecuadamente el fenómeno.</p></li>
+<li><p>✔✔ : modelo lo maneja directamente</p></li>
+<li><p>✔ : modelo lo incorpora</p></li>
+<li><p>❌ : el modelo lo asume como ausente</p></li>
+<li><p>⚠ : requiere ajustes o métodos adicionales</p></li>
+</ul>
+
 </div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-zelterman1988robust" class="csl-entry">
-Zelterman, Daniel. 1988. <span>“Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.”</span> <em>Journal of Statistical Planning and Inference</em> 18 (2): 225–37.
 </div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="estimador-de-webster-kemp.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="modelos-log-lineales-bivariados.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="notas-adicionales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="protocolo-de-clasificación.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

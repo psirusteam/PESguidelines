@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.6 Estimador de Zelterman | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>4.9 Notas adicionales | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.6 Estimador de Zelterman | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="4.9 Notas adicionales | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.6 Estimador de Zelterman | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="4.9 Notas adicionales | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="estimador-de-webster-kemp.html"/>
-<link rel="next" href="modelos-log-lineales-bivariados.html"/>
+<link rel="prev" href="otros-modelos.html"/>
+<link rel="next" href="cuadro-comparativo-de-los-estimadores.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -251,33 +251,21 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="estimador-de-zelterman" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> Estimador de Zelterman<a href="estimador-de-zelterman.html#estimador-de-zelterman" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><span class="citation">Zelterman (<a href="#ref-zelterman1988robust">1988</a>)</span> propuso estimar el tamaño poblacional en estudios de captura y recaptura usando un enfoque basado en el estimador de Horvitz–Thompson. El estimador se basa en que los datos siguen una distribución de Poisson truncada (es decir, cuando no se observan los ceros), y hay heterogeneidad en las probabilidades de ser capturado.</p>
-<p>El objetivo es estimar <span class="math inline">\(p_0\)</span> utilizando solamente los conteos de los individuos observados una vez, <span class="math inline">\(N_{1}=N_{12}+N_{21}\)</span>, y los que son observados exactamente dos veces, <span class="math inline">\(N_{2}=N_{11}\)</span>, de la distribución de conteos truncada en cero. El estimador del tamaño poblacional propuesto por Zelterman es:</p>
-<p><span class="math display">\[
-\hat{N}_{\text{Zel}} = \frac{\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}}{1 - \exp\left(-\frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}\right)}
-\]</span></p>
-<p>y con aproximación de la varianza dada por:</p>
-<p><span class="math display">\[
-\hat{V}(\hat{N}_{\text{Zel}}) = \left( \frac{(\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}) \cdot \exp(-\lambda)}{1 - \exp(-\lambda)} \right)^2 \cdot \left( \frac{4 \hat{N}_{11}^2}{(\hat{N}_{12} + \hat{N}_{21})^4} + \frac{2}{(\hat{N}_{12} + \hat{N}_{21})^2} \right)
-\]</span></p>
-<p>donde</p>
-<p><span class="math display">\[\lambda = \frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}.\]</span></p>
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-zelterman1988robust" class="csl-entry">
-Zelterman, Daniel. 1988. <span>“Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.”</span> <em>Journal of Statistical Planning and Inference</em> 18 (2): 225–37.
-</div>
+<div id="notas-adicionales" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Notas adicionales<a href="notas-adicionales.html#notas-adicionales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los estimadores suelen aplicarse usando post-estratos homogéneos, usualmente por edad, sexo, región, etc. Y de esta forma estimar el tamaño poblacional en cada post-estrato.</p>
+<p>Por ejemplo al aplicar el estimador de Chapman en cada post-estrato <span class="math inline">\(h\)</span>, se tendría:</p>
+<p><span class="math display">\[\hat{N}^{(h)} = \frac{(N_{1+}^{(h)} + 1)(N_{+1}^{(h)} + 1)}{N_{11}^{(h)} + 1} - 1\]</span></p>
+<p>Con lo cual el tamaño poblacional se obtiene como:</p>
+<p><span class="math display">\[\hat{N} = \sum_{h} \hat{N}^{(h)}\]</span></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="estimador-de-webster-kemp.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="modelos-log-lineales-bivariados.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="otros-modelos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cuadro-comparativo-de-los-estimadores.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

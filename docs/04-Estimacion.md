@@ -1,4 +1,4 @@
-# Estimadores
+# Estimadores del sistema dual
 
 
 Los métodos de captura y recaptura en poblaciones humanas han continuado sus investigaciones y aunque se utilizan de manera más frecuente para estimar el tamaño de poblaciones de fauna silvestre, en epidemiología y ciencias sociales los han usado para estimar la prevalencia de una enfermedad específica o el tamaño de la población sin hogar en una determinada área [@brittain2009estimators]. 
@@ -6,7 +6,9 @@ Los métodos de captura y recaptura en poblaciones humanas han continuado sus in
 
 ## Estimador de Petersen
 
-El estimador de @petersen1896 se basa en la razón de odds, asume que las fuentes de identificación son independientes y que los casos tienen la misma probabilidad de ser identificados en cada fuente.
+El estimador de @petersen1896, también conocido como el estimador de Lincoln-Petersen, fue originalmente desarrollado para estudios de fauna, pero su uso se ha extendido a otros campos.
+
+El supuesto fundamental es que la población es cerrada entre los dos eventos (sin nacimientos, muertes, inmigración o emigración), que todos los individuos tienen la misma probabilidad de captura, y que la marcación no afecta la probabilidad de recaptura, es decir, asume que las fuentes de identificación son independientes.
 
 Teniendo en cuenta lo establecido en \@ref(multinomial), el evento conjunto de que un individuo esté o no esté en el censo y esté o no en la encuesta se puede modelar correctamente usando una distribución multinomial con los siguientes parámetros:
 
@@ -41,10 +43,17 @@ Al tener en cuenta que $\hat{N}_{11}$ es la cantidad de personas en ambas fuente
 
 El estimador de Petersen es el más conocido de los estimadores de tamaño poblacional en el sistema dual y puede demostrarse que es un estimador de máxima verosimilitud condicional para el modelo log-lineal de independencia con dos variables [@fienberg1972multiple; @bishop2007discrete].
 
+El estimador de la varianza de $\hat{N}$ bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, es:
+
+$$
+\hat{V}_{LP}(\hat{N}) = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1} \cdot (\hat{N}_{1+} - \hat{N}_{11}) \cdot (\hat{N}_{+1} - \hat{N}_{11})}{\hat{N}_{11}^3}
+$$
 
 ## Estimador de Chapman
 
-El estimador de Petersen produce estimaciones sesgadas del tamaño poblacional cuando los tamaños de muestra son pequeños [@chapman1951some]. Se han sugerido varias modificaciones para reducir este sesgo, siendo la más común el estimador de Chapman, que sugiere estimar
+El Estimador de Chapman surge como una corrección al estimador de Petersen y especialmente útil cuando el número de recapturas $N_{11}$ es pequeño, ya que el estimador de Petersen tiende a ser sesgado en esos casos, lo cual es frecuente en estudios con poblaciones grandes o tasas de captura bajas.
+  
+@chapman1951some propuso una alternativa manteniendo el mismo marco de suposiciones que el estimador de Petersen: población cerrada, independencia y probabilidades homogéneas de captura. En este caso se sugiere estimar
 
 $$ \hat{p}_{22} = \frac{p_{21}\cdot p_{12}}{p_{11} + 1},$$
 
@@ -52,21 +61,87 @@ con lo cual el estimador está dado por:
 
 $$\hat{N}_{CHP} = \frac{(\hat{N}_{1+}  + 1) \cdot (\hat{N}_{+1} + 1)}{\hat{N}_{11} + 1} - 1 $$
 
+Este estimador, basado en la distribución hipergeométrica, garantiza momentos finitos debido a que el denominador no puede ser cero.  
 
-Este estimador, basado en la distribución hipergeométrica, garantiza momentos finitos debido a que el denominador no puede ser cero. @sadinle2009transformed propone un método para calcular intervalos de confianza robustos para las estimaciones que provienen del estimador de Chapman.
+La expresión para la estimación de la varianza se puede obtener usando expansión de Taylor bajo un modelo hipergeométrico o de una aproximación bayesiana [@seber1982estimation], donde se obtiene:
+
+$$\hat{V}(\hat{N}_{CHP}) = \frac{(N_{1+} + 1)(N_{+1} + 1)(N_{1+} - N_{11})(N_{+1} - N_{11})}{(N_{11} + 1)^2 (N_{11} + 2)}$$
+
+Posteriormente, @sadinle2009transformed propone un método para calcular intervalos de confianza robustos para las estimaciones que provienen del estimador de Chapman.
 
 ## Estimador de Nour
 
-@nour1982estimation propuso un estimador alternativo que corrige el sesgo por dependencia positiva entre los procedimientos de captura, buscando estimar la celda desconocida en la tabla de contingencia. El estimador es
+En muchas situaciones, el fracaso de capturar a un individuo en ambas listas puede deberse a causas comunes, lo que conduce a una asociación positiva entre las dos fuentes. En otros casos, los individuos pueden estar menos dispuestos a ser registrados en la segunda lista (tasas de rechazo), lo que resulta en una asociación negativa entre las listas. Estos fenómenos se conocen como variación de respuesta conductual [@wolter1986coverage] .
+
+El estimador de la **cota inferior del tamaño poblacional** propuesto por @nour1982estimation, se basa en una estimación para la cantidad no observada $N_{12}$ (correspondiente a individuos no capturados por ninguna de las dos listas), bajo los siguientes supuestos:
 
 
-$$\hat{N}_{N} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \frac{2 \hat{N}_{11}\hat{N}_{12}\hat{N}_{21}}{\hat{N}_{11}^2+\hat{N}_{12}\hat{N}_{21}}  $$
+**Supuesto 1 (S1):** Existe **correlación positiva** entre las listas, es decir que $$N_{11} \cdot N_{22} > N_{12} \cdot N_{21},$$ 
 
-Entre las limitaciones más fuertes del método es que asume probabilidades de captura mayores que 0.5.
+y el sistema de registro dual no es degenerado, $\forall i, j \in \{1, 2\}, \; N_{ij} > 0$
+
+**Supuesto 2 (S2):** La probabilidad de que una unidad sea registrada en alguna de las dos fuentes es mayor que 0.5, es decir:
+
+$$\frac{N_{1+}}{N}, \frac{N_{+1}}{N} > \frac{1}{2}.$$
+
+Este supuesto asegura que:
+
+$$N_{11} > N_{22}$$
+
+Conjuntamente, los supuestos S1 y S2 garantizan que:
+
+
+$$N_{11}^2 > N_{11} \cdot N_{22} > N_{12} \cdot N_{21}$$
+
+**Supuesto 3 (S3):** Se cumple que:
+
+$$N_{12} \cdot N_{21} - N_{22}^2 > 0$$
+
+y por tanto:
+
+
+$$N_{12} \cdot N_{21} < \left( \frac{N_{12} \cdot N_{21}}{N_{22}} \right)^2$$
+
+Bajo los supuestos S1, S2 y S3, @nour1982estimation mostró que la parte no observada de la población $N_{22}$ se encuentra en el intervalo:
+
+
+$$\left[ \frac{2 N_{12} N_{21} N_{11}}{N_{12} N_{21} + N_{11}^2}, \; \sqrt{N_{12} N_{21}} \right]$$
+
+y propuso el siguiente estimador puntual:
+
+
+$$\hat{N}_{22} = \frac{2 \hat{N}_{12} \hat{N}_{21} \hat{N}_{11}}{\hat{N}_{12} \hat{N}_{21} + \hat{N}_{11}^2}$$
+
+con la justificación de que es más robusto frente a la posible violación del supuesto S3 (el cual en la práctica es difícil de verificar).
+
+En caso de que el supuesto S3 **no** se vea violado, también se pueden considerar otros estimadores para $N_{22}$, tales como:
+
+$$\hat{N}_{22} = \sqrt{\hat{N}_{12} \hat{N}_{21}}$$
+
+o incluso cualquier punto dentro del intervalo:
+
+$$\left[ \frac{2 \hat{N}_{12} \hat{N}_{21} \hat{N}_{11}}{\hat{N}_{12} \hat{N}_{21} + \hat{N}_{11}^2}, \; \sqrt{\hat{N}_{12} \hat{N}_{21}} \right]$$
+
+
+
+Dependiendo de la selección del estimador para $N_{22}$, se obtienen dos estimadores del tamaño total de la población bajo dependencia positiva, denotados como:
+
+- **Cota inferior** $\hat{N}_L$:
+
+
+$$\hat{N}_L = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \frac{2 \hat{N}_{12} \hat{N}_{21} \hat{N}_{11}}{\hat{N}_{12} \hat{N}_{21} + \hat{N}_{11}^2}$$
+
+- **Cota superior** $\hat{N}_U$:
+
+$$\hat{N}_U = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \sqrt{\hat{N}_{12} \hat{N}_{21}}$$
+
+Los estimadores no no cuentan con una expresión analítica que permita estimar la varianza, por lo que es necesario usar métodos basados en réplicas.
 
 ## Estimador de Chao
 
-Chao [@chao1987; @chao1989] propuso un estimador para el tamaño poblacional que relaja el supuesto de independencia entre las fuentes del censo y la encuesta de cobertura. El modelo binomial mixto con parámetro 2 equivalente al número de fuentes usadas, se puede formular como:
+Chao [@chao1987; @chao1989] propuso un estimador para el tamaño poblacional que relaja el supuesto de independencia entre las fuentes del censo y la encuesta de cobertura, y permite heterogeneidad no observada en las probabilidades de captura. Este estimador se enfoca en el número mínimo de individuos no observados $N_{22}$ que puede explicarse a partir de los datos observados.
+
+El modelo binomial mixto con parámetro 2 equivalente al número de fuentes usadas, se puede formular como:
 
 $$E(N_j) = N \int_0^1 \binom{2}{j} p^j (1-p)^{2-j} f(p) dp, \quad j = 0, 1, 2,$$
 
@@ -94,30 +169,174 @@ Así el estimador de Chao para el tamaño poblacional total se obtiene como:
 
 \begin{align}
 \hat{N}_{CH} &= \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \frac{\hat{N}_{1}^2}{4\hat{N}_{2}}\\
-             &= \hat{N}_{11} + (\hat{N}_{1+} - \hat{N}_{11}) + (\hat{N}_{+1} - \hat{N}_{11}) + \frac{(\hat{N}_{12}+\hat{N}_{21})^2}{4\hat{N}_{11}}
+             &= \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \frac{(\hat{N}_{21}+\hat{N}_{12})^2}{4\hat{N}_{11}}
 \end{align}
 
+La aproximación de la varianza de estimador es:
 
+$$
+\hat{V}(\hat{N}_{CH}) \approx \frac{(\hat{N}_{21}+\hat{N}_{12
+})^2}{4\hat{N}_{11}^3} \left( \frac{(\hat{N}_{21}+\hat{N}_{12})^2}{4\hat{N}_{11}} + \hat{N}_{21}+\hat{N}_{12} + \hat{N}_{11} \right)$$
 
 
 ## Estimador de Webster-Kemp
 
-@webster2013estimating usan un enfoque bayesiano basado en que la probabilidad de encontrar un número específico de coincidencias depende de $N$ y usan el teorema de Bayes. Lo que permite escribir:
+@webster2013estimating usan una perspectiva bayesiana no informativa para estimar el tamaño total de la población bajo un modelo de captura y recaptura con dos fuentes. El modelo se basa en que la probabilidad de encontrar un número específico de coincidencias depende de $N$ y usan el teorema de Bayes. Lo que permite escribir:
 
 $$P(N|N_{+1}, N_{1+}, N_{11}) = \frac{P(N_{1+}, N_{+1}, N_{11}|N)P(N)}{P(N_{1+}, N_{+1}, N_{11})}$$
-El desarrollo conduce al siguiente estimador:
+
+Bajo el enfoque bayesiano propuesto, el estimador del número de elementos no observados es:
+
+$$\hat{N}_{22} = \frac{(\hat{N}_{12}+1)(\hat{N}_{21}+1)}{\hat{N}_{11} + 2}, \text{  si } \hat{N}_{11} > 2$$
+
+Dado que \( \hat{N}_{11} > 2 \), el estimador bayesiano del total poblacional es:
+
+$$
+\hat{N}_{\text{WK}} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \frac{(\hat{N}_{12} + 1)(\hat{N}_{21} + 1)}{\hat{N}_{11} - 2}$$
 
 
-$$\hat{N}_{WK} = \frac{(\hat{N}_{1+}-\hat{N}_{11}+1)(\hat{N}_{+1}-\hat{N}_{11}+1)}{\hat{N}_{11}}+\hat{N}_{1+} + \hat{N}_{+1} + \hat{N}_{11} $$
+y si $\hat{N}_{11} > 3$, el estimador de la varianza para $\hat{N}_{\text{22}}$ es:
+
+$$\hat{V}(\hat{N}_{\text{22}}) = \frac{(\hat{N}_{12} + 1)(\hat{N}_{21} + 1)(\hat{N}_{+1} - 1)(\hat{N}_{1+} - 1)}{(\hat{N}_{11} - 2)^2(\hat{N}_{11} - 3)}$$
+Por lo tanto
+
+$$\hat{V}(\hat{N}_{\text{NW}}) = \hat{V}(\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \hat{N}_{22})$$
+
+En algunos casos se asume que los valores de $N_{11}, N_{12}$ y $N_{21}$ son observados de manera exacta, por lo que $\hat{V}(\hat{N}_{\text{NW}}) = \hat{V}(\hat{N}_{22})$. Sin embargo, en un muestreo complejo como el de las encuestas de cobertura, los $\hat{N}_{ij}$ son estimaciones obtenidas con el estimador Horvitz-Thompson o estimadores de calibración, y por tanto se debe incorporar la incertidumbre proveniente del diseño, así que sugerimos usar un método basado en réplicas para estimar la varianza.
 
 ## Estimador de Zelterman
 
-@zelterman1988robust propuso estimar el tamaño poblacional en estudios de captura y recapturauna usando un enfoque basado en el estimador de Horvitz–Thompson. El estimador se basa en una reparametrización de la verosimilitud binomial truncada en cero, donde se propone estimar $p_0$ utilizando solamente los conteos de los individuos observados una vez, $N_{1}=N_{12}+N_{21}$, y los que son observados exactamente dos veces, $N_{2}=N_{11}$, de la distribución de conteos truncada en cero. El estimador del tamaño poblacional propuesto por Zelterman es:
+@zelterman1988robust propuso estimar el tamaño poblacional en estudios de captura y recaptura usando un enfoque basado en el estimador de Horvitz–Thompson. El estimador se basa en que los datos siguen una distribución de Poisson truncada (es decir, cuando no se observan los ceros), y hay heterogeneidad en las probabilidades de ser capturado.
 
-$$\hat{N}_Z = \frac{\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}}{1 - \left( \frac{\hat{N}_{12}+\hat{N}_{21}}{\hat{N}_{12}+\hat{N}_{21} + 2\hat{N}_{11}} \right)^2}$$
+El objetivo es estimar $p_0$ utilizando solamente los conteos de los individuos observados una vez, $N_{1}=N_{12}+N_{21}$, y los que son observados exactamente dos veces, $N_{2}=N_{11}$, de la distribución de conteos truncada en cero. El estimador del tamaño poblacional propuesto por Zelterman es:
+
+$$
+\hat{N}_{\text{Zel}} = \frac{\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}}{1 - \exp\left(-\frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}\right)}
+$$
 
 
 
-* Utilizar modelos de regresión logística en lugar de la post-estratificación. El uso de la regresión logística nos permite reducir el sesgo de correlación en nuestras estimaciones de la población total sin necesidad de incluir interacciones de alto orden innecesarias, como ocurre al formar celdas de post-estratificación. Al evitar interacciones complejas e innecesarias, podemos incluir variables adicionales en el modelo que potencialmente ayudan a reducir el error sintético en las estimaciones de subpoblaciones. MUle
+y con aproximación de la varianza dada por:
 
+$$
+\hat{V}(\hat{N}_{\text{Zel}}) = \left( \frac{(\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}) \cdot \exp(-\lambda)}{1 - \exp(-\lambda)} \right)^2 \cdot \left( \frac{4 \hat{N}_{11}^2}{(\hat{N}_{12} + \hat{N}_{21})^4} + \frac{2}{(\hat{N}_{12} + \hat{N}_{21})^2} \right)
+$$
+
+donde 
+
+$$\lambda = \frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}.$$
+
+## Modelos log-lineales bivariados
+
+Estiman la celda no observada $N_{22}$ usando un modelo log-lineal. El modelo permite estimar el tamaño de la población cuando se tienen dos fuentes de captura, y puede modelar explícitamente la dependencia entre las fuentes.
+
+Bajo este modelo, se asume que la distribución conjunta de los $N_{ij}$ siguen de forma independiente una distribución de Poisson, y que el logaritmo del valor esperado de cada celda se modela como:
+
+$$
+\log(\mathbb{E}[N_{ij}]) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)}
+$$
+
+donde:
+
+- $\lambda$: parámetro de intercepto general.
+- $\lambda_1^{(i)}$: mide el efecto de estar en la lista 1 (presencia o ausencia).
+- $\lambda_2^{(j)}$: mide el efecto de estar en la lista 2 (presencia o ausencia).
+
+Este modelo asume independencia entre listas, es decir, que la probabilidad de ser observado en una lista no depende de haber sido observado en la otra.
+
+Cuando se sospecha que existe una dependencia entre listas, que podría ocurrir en contextos como censos y encuestas de cobertura, se incluye un término de interacción:
+
+$$
+\log(\mathbb{E}[N_{ij}]) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)} + \lambda_{12}^{(ij)}
+$$
+
+Aquí:
+
+- $\lambda_{12}^{(ij)}$: representa la interacción entre pertenencia a la lista 1 y la lista 2.
+  - Si $\lambda_{12}^{(11)} > 0$: hay dependencia positiva, es decir, más coincidencias de lo esperado.
+  - Si $\lambda_{12}^{(11)} < 0$: hay dependencia negativa, así que habrán menos coincidencias de lo esperado.
+
+Este modelo permite estimar la celda $N_{22}$  a partir del ajuste del modelo a las tres celdas observadas. Para ello se usa  un estimador de máxima verosimilitud y el valor estimado de $\hat{N}_{22}$ se obtiene por predicción del modelo, y por tanto:
+
+$$
+\hat{N} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \hat{N}_{22}
+$$
+
+Se pueden implementar en R con `Rcapture::closedp()`. Suponiendo que la muestra E y muestra P se han organizado en un `df` con las variables binarias lista1 y lista2 codificadas como 1 y 0, entonces se puede usar el siguiente código para realizar la estimación
+
+
+``` r
+library(Rcapture)
+closedp.t(df, df$lista1, df$lista2)
+```
+
+En caso de contar con la tabla de frecuencias de las celdas $N_{11}$, $N_{12}$ y $N_{21}$ se puede hacer así:
+
+
+``` r
+tabla <- matrix(c(N11, N12, N21), ncol = 3)
+closedp(tabla)
+```
+
+
+## Otros modelos
+
+- **Modelo jerárquico bayesiano**
+
+Permiten incluir efectos del diseño muestral, efectos aleatorios por dominio y se usa especialmente cuando se tienen pocos datos o muchos grupos. Para su implementación se puede usar `Stan`, `JAGS` o `LCMCR`.
+
+- **Estimadores basados en Sistemas de Estimación Multiple**
+
+Los modelos de Sistemas de Estimación Multiple (MSE por sus siglas en inglés), permiten incorporar más de dos fuentes, por ejemplo, es posible que se tenga acceso al censo, encuesta de cobertura y registros administrativos. Su implementación se puede realizar con paquetes de R como `LCMCR`.
+
+- **Modelos de respuesta heterogénea**
+
+Suponen que las probabilidades de inclusión varían entre individuos. Se modela con distribuciones gamma o beta sobre la propensión a ser capturado. Algunos de estos son:
+
+- Modelo Poisson-Gamma (bayesiano)
+- NPMLE (Nonparametric Maximum Likelihood Estimation)
+
+La implementación en R se puede hacer con paquetes como `Rcapture`.
+
+## Notas adicionales
+
+Los estimadores suelen aplicarse usando post-estratos homogéneos, usualmente por edad, sexo, región, etc. Y de esta forma estimar el tamaño poblacional en cada post-estrato.
+
+Por ejemplo al aplicar el estimador de Chapman en cada post-estrato $h$, se tendría:
+
+$$\hat{N}^{(h)} = \frac{(N_{1+}^{(h)} + 1)(N_{+1}^{(h)} + 1)}{N_{11}^{(h)} + 1} - 1$$
+
+Con lo cual el tamaño poblacional se obtiene como:
+
+$$\hat{N} = \sum_{h} \hat{N}^{(h)}$$
+
+
+## Cuadro comparativo de los estimadores
+
+La elección del estimador adecuado para el tamaño poblacional en un sistema de dual depende de varios factores que afectan la validez de los supuestos de cada modelo. Entre los más relevantes se encuentran:
+
+- **Dependencia entre listas**: Ocurre cuando la probabilidad de inclusión en una lista está relacionada con la inclusión en la otra, violando el supuesto de independencia del modelo clásico como el de Petersen.
+- **Heterogeneidad en las probabilidades de captura**: Las personas tienen diferentes probabilidades de ser capturadas debido a características individuales no observadas (edad, ubicación, comportamiento migratorio, etc.).
+- **Diseño complejo de muestreo**: La encuesta de cobertura puede tener estratificación, conglomerados, y factores de expansión que deben ser incorporados en la estimación.
+
+El siguiente cuadro resume la relevancia de los distintos estimadores y cada uno, se indica si incorpora o ignora cada tipo de complejidad, y se sugiere su aplicabilidad en función del contexto de uso.
+
+
+| Estimador                         | Dependencia entre listas | Heterogeneidad de captura | Diseño complejo | Aplicación recomendada                     |
+|----------------------------------|---------------------------|----------------------------|------------------|---------------------------------------------|
+| Chapman post-estratificado       | ❌                       | ❌                        | ✔              | Censos grandes con dominios definidos       |
+| Nour                             | ✔                       | ❌                        | ⚠              | Dependencia positiva esperada               |
+| Chao                             | ✔                       | ✔                        | ⚠              | Estimación conservadora                     |
+| Webster-Kemp                     | ✔                       | ❌                        | ⚠              | Baja recaptura entre listas                 |
+| Zelterman                        | ❌                       | ✔                        | ⚠              | Alta heterogeneidad, pocos recapturados     |
+| Modelo log-lineal                | ✔✔                      | ✔                        | ⚠              | Modelado completo con dependencia           |
+| Modelo bayesiano jerárquico      | ✔✔                      | ✔✔                       | ✔              | Estimación por dominio, baja muestra        |
+| Estimadores MSE (3+ fuentes)     | ✔✔                      | ✔                        | ✔              | Fuentes múltiples, registros administrativos|
+| Modelos NPMLE           | ❌                       | ✔✔                       | ⚠              | Captura y recaptura con heterogeneidad fuerte |
+
+
+- ✔✔ : El estimador  incorpora directamente el fenómeno (dependencia, heterogeneidad o diseño complejo).
+- ✔   : El estimador incorpora parcialmente el fenómeno o lo aborda de forma indirecta o limitada.
+- ❌  : El estimador  asume que se cumple este requisito y no lo incorpora.
+- ⚠   : El estimador requiere de ajustes definidos por el usuario (como bootstrap, posestratificación o ponderación) para manejar adecuadamente el fenómeno.
 

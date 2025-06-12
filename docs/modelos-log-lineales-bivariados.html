@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.6 Estimador de Zelterman | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>4.7 Modelos log-lineales bivariados | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.6 Estimador de Zelterman | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="4.7 Modelos log-lineales bivariados | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.6 Estimador de Zelterman | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="4.7 Modelos log-lineales bivariados | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="estimador-de-webster-kemp.html"/>
-<link rel="next" href="modelos-log-lineales-bivariados.html"/>
+<link rel="prev" href="estimador-de-zelterman.html"/>
+<link rel="next" href="otros-modelos.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -251,33 +251,50 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="estimador-de-zelterman" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> Estimador de Zelterman<a href="estimador-de-zelterman.html#estimador-de-zelterman" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><span class="citation">Zelterman (<a href="#ref-zelterman1988robust">1988</a>)</span> propuso estimar el tamaño poblacional en estudios de captura y recaptura usando un enfoque basado en el estimador de Horvitz–Thompson. El estimador se basa en que los datos siguen una distribución de Poisson truncada (es decir, cuando no se observan los ceros), y hay heterogeneidad en las probabilidades de ser capturado.</p>
-<p>El objetivo es estimar <span class="math inline">\(p_0\)</span> utilizando solamente los conteos de los individuos observados una vez, <span class="math inline">\(N_{1}=N_{12}+N_{21}\)</span>, y los que son observados exactamente dos veces, <span class="math inline">\(N_{2}=N_{11}\)</span>, de la distribución de conteos truncada en cero. El estimador del tamaño poblacional propuesto por Zelterman es:</p>
+<div id="modelos-log-lineales-bivariados" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Modelos log-lineales bivariados<a href="modelos-log-lineales-bivariados.html#modelos-log-lineales-bivariados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Estiman la celda no observada <span class="math inline">\(N_{22}\)</span> usando un modelo log-lineal. El modelo permite estimar el tamaño de la población cuando se tienen dos fuentes de captura, y puede modelar explícitamente la dependencia entre las fuentes.</p>
+<p>Bajo este modelo, se asume que la distribución conjunta de los <span class="math inline">\(N_{ij}\)</span> siguen de forma independiente una distribución de Poisson, y que el logaritmo del valor esperado de cada celda se modela como:</p>
 <p><span class="math display">\[
-\hat{N}_{\text{Zel}} = \frac{\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}}{1 - \exp\left(-\frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}\right)}
+\log(\mathbb{E}[N_{ij}]) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)}
 \]</span></p>
-<p>y con aproximación de la varianza dada por:</p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\lambda\)</span>: parámetro de intercepto general.</li>
+<li><span class="math inline">\(\lambda_1^{(i)}\)</span>: mide el efecto de estar en la lista 1 (presencia o ausencia).</li>
+<li><span class="math inline">\(\lambda_2^{(j)}\)</span>: mide el efecto de estar en la lista 2 (presencia o ausencia).</li>
+</ul>
+<p>Este modelo asume independencia entre listas, es decir, que la probabilidad de ser observado en una lista no depende de haber sido observado en la otra.</p>
+<p>Cuando se sospecha que existe una dependencia entre listas, que podría ocurrir en contextos como censos y encuestas de cobertura, se incluye un término de interacción:</p>
 <p><span class="math display">\[
-\hat{V}(\hat{N}_{\text{Zel}}) = \left( \frac{(\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}) \cdot \exp(-\lambda)}{1 - \exp(-\lambda)} \right)^2 \cdot \left( \frac{4 \hat{N}_{11}^2}{(\hat{N}_{12} + \hat{N}_{21})^4} + \frac{2}{(\hat{N}_{12} + \hat{N}_{21})^2} \right)
+\log(\mathbb{E}[N_{ij}]) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)} + \lambda_{12}^{(ij)}
 \]</span></p>
-<p>donde</p>
-<p><span class="math display">\[\lambda = \frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}.\]</span></p>
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-zelterman1988robust" class="csl-entry">
-Zelterman, Daniel. 1988. <span>“Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.”</span> <em>Journal of Statistical Planning and Inference</em> 18 (2): 225–37.
-</div>
+<p>Aquí:</p>
+<ul>
+<li><span class="math inline">\(\lambda_{12}^{(ij)}\)</span>: representa la interacción entre pertenencia a la lista 1 y la lista 2.
+<ul>
+<li>Si <span class="math inline">\(\lambda_{12}^{(11)} &gt; 0\)</span>: hay dependencia positiva, es decir, más coincidencias de lo esperado.</li>
+<li>Si <span class="math inline">\(\lambda_{12}^{(11)} &lt; 0\)</span>: hay dependencia negativa, así que habrán menos coincidencias de lo esperado.</li>
+</ul></li>
+</ul>
+<p>Este modelo permite estimar la celda <span class="math inline">\(N_{22}\)</span> a partir del ajuste del modelo a las tres celdas observadas. Para ello se usa un estimador de máxima verosimilitud y el valor estimado de <span class="math inline">\(\hat{N}_{22}\)</span> se obtiene por predicción del modelo, y por tanto:</p>
+<p><span class="math display">\[
+\hat{N} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \hat{N}_{22}
+\]</span></p>
+<p>Se pueden implementar en R con <code>Rcapture::closedp()</code>. Suponiendo que la muestra E y muestra P se han organizado en un <code>df</code> con las variables binarias lista1 y lista2 codificadas como 1 y 0, entonces se puede usar el siguiente código para realizar la estimación</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelos-log-lineales-bivariados.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(Rcapture)</span>
+<span id="cb1-2"><a href="modelos-log-lineales-bivariados.html#cb1-2" tabindex="-1"></a><span class="fu">closedp.t</span>(df, df<span class="sc">$</span>lista1, df<span class="sc">$</span>lista2)</span></code></pre></div>
+<p>En caso de contar con la tabla de frecuencias de las celdas <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{12}\)</span> y <span class="math inline">\(N_{21}\)</span> se puede hacer así:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelos-log-lineales-bivariados.html#cb2-1" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(N11, N12, N21), <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb2-2"><a href="modelos-log-lineales-bivariados.html#cb2-2" tabindex="-1"></a><span class="fu">closedp</span>(tabla)</span></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="estimador-de-webster-kemp.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="modelos-log-lineales-bivariados.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estimador-de-zelterman.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="otros-modelos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
