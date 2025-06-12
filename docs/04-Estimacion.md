@@ -278,6 +278,7 @@ tabla <- matrix(c(N11, N12, N21), ncol = 3)
 closedp(tabla)
 ```
 
+Para más detalles se recomiendar revisar @baillargeon2007rcapture y @rivest2014capture.
 
 ## Otros modelos
 
