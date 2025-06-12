@@ -1,44 +1,39 @@
-# Protocolo de clasificación
+# Evaluación de la cobertura censal
 
-La **Encuesta de cobertura o encuesta Post-Censal (EPC)** es un estudio complementario al censo cuyo propósito principal es evaluar la cobertura y calidad de la información recolectada sobre unidades de vivienda y personas. Su implementación permite identificar posibles errores en la enumeración, incluyendo omisiones, duplicados o clasificaciones incorrectas, lo que contribuye a mejorar la precisión de los datos censales y proporciona insumos fundamentales para el diseño de futuras operaciones estadísticas.  
+Como se ha mencionado en los capítulos anteriores, la **encuesta de cobertura** es un estudio complementario al censo cuyo propósito principal es evaluar la cobertura y calidad de la información recolectada sobre unidades de vivienda y personas. Su implementación permite identificar posibles errores en la enumeración —como omisiones, duplicados o clasificaciones incorrectas— lo que contribuye a mejorar la precisión de los datos censales y proporciona insumos fundamentales para el diseño de futuras operaciones estadísticas.
 
-Más allá de la evaluación de la cobertura, la EPC también permite analizar el impacto de diferentes factores que pueden influir en la calidad del censo, como la movilidad poblacional, las estrategias de recolección de datos, el desempeño de los enumeradores en campo, entre otros.
+Más allá de la evaluación general, la encuesta de cobertura también permite analizar el impacto de factores que pueden afectar la calidad del censo, como la movilidad poblacional, las estrategias de recolección de datos, y el desempeño de los enumeradores en el campo.
+ 
 
-Los principales objetivos de la EPC son:  
+## Objetivos de la encuesta de cobertura
 
-- **Proporcionar medidas del error de cobertura neta**, comparando los resultados del censo con los datos recolectados en la encuesta para cuantificar las diferencias.  
-- **Identificar y analizar los componentes de cobertura**, incluyendo enumeraciones correctas, errores de enumeración (duplicados, omisiones y errores de clasificación) e imputaciones.  
-- **Medir la cobertura en distintos grupos demográficos**, asegurando que la información censal represente a los diversos segmentos de la población, como son la edad, género, nivel socioeconómico o ubicación geográfica.  
+- **Medir el error neto de la cobertura**, comparando los datos del censo con los de la encuesta para cuantificar las diferencias.
+- **Identificar y analizar los componentes de cobertura**, incluyendo errores de duplicación, omisiones y otras clasificaciones incorrectas.
+- **Evaluar la cobertura por grupos demográficos**, como edad, sexo, etnia, región y condición socioeconómica.
 
-Para garantizar la calidad y confiabilidad de los resultados, el diseño de la EPC debe contar con un apropiado diseño de muestreo, estrategias eficientes de recopilación de datos, un proceso riguroso de emparejamiento con los registros censales y métodos de estimación estadística adecuados. Estos elementos aseguran que la encuesta proporcione información precisa para optimizar futuras operaciones estadísticas censales.
+El éxito de la encuesta depende de un diseño muestral probabilístico sólido, una logística eficiente de recolección de datos, un sistema robusto de emparejamiento de registros censales y métodos de estimación estadística apropiados. Estos elementos aseguran que la encuesta sea confiable, representativa y útil para la planificación de futuros censos.
 
-## Componentes de cobertura
+## Componentes de la cobertura censal
 
-Como se ha presentado hasta ahora, el sistema de estimación dual requiere de condiciones estrictas para que una enumeración se considere "correcta". A continuación se presentan algunos aspectos de relevancia con el fin de poder estimar la omisión.
+La clasificación de registros en la encuesta se fundamenta en la comparación entre el universo censal y el universo observado por la encuesta. Los cuatro componentes fundamentales de cobertura, a nivel de personas, son:
 
-### Tipos de enumeraciones 
 
-Los cuatro componentes de cobertura a nivel de personas son:
+### Enumeraciones correctas
 
-**Enumeraciones correctas**
+Una enumeración se considera correcta si una persona que debió ser contada fue incluida efectivamente en el censo. A nivel nacional, esto se cumple incluso si la persona fue ubicada en una dirección o vivienda distinta a la correcta, es decir, si una persona debió ser enumerada en una unidad de vivienda y fue incluida en una unidad de vivienda en cualquier otro lugar del país, entonces la enumeración se debe considerar como correcta, a pesar de que la persona esta enumerada en la ubicación incorrecta. Sin embargo, a nivel de área (región, departamento, municipio), la ubicación geográfica debe coincidir para que sea considerada como una enumeración correcta a ese nivel.
 
-Uno de los propósitos de la EPC es estimar el número de enumeraciones correctas en el conteo final del censo. De esta manera, si a nivel nacional, una persona debió ser enumerada en una unidad de vivienda y fue incluida en una unidad de vivienda en cualquier lugar del país, entonces la enumeración se debe considerar como correcta, incluso si esta en la ubicación incorrecta. 
-
-Para las estimaciones a nivel de área (región, departamento, municipio), una enumeración solo se considera correcta si la persona debería haber sido contada en una unidad de vivienda dentro de la misma área. De lo contrario, la enumeración se considera errónea.
-
-En cuanto a los duplicados, si una persona fue incluida varias veces, una de las enumeraciones se considera correcta y las otras enumeraciones se consideran erróneas. Para ello se consideran las variables
-
+Cuando una persona fue contada múltiples veces, solo una de las enumeraciones se clasifica como correcta; las demás son duplicados erróneos. Esto se formaliza con la siguiente función indicadora:
 
 $$I_k^{d} = \begin{cases} 
 1 \ \ \ \text{si el elemento } k \ \text{fue enumerado en el área } d \\
 0 \ \ \ \text{si el elemento } k \ \text{fue enumerado fuera del área } d \\
 \end{cases} $$
 
-**Enumeraciones erróneas**
 
-De otra parte, desde la EPC se debe estimar el número de enumeraciones erróneas en el conteo final del censo. 
+### Enumeraciones erróneas
 
-Existen varias razones por las cuales una enumeración se considera errónea. En general se clasifican en dos categorías: erróneas debido a duplicación y erróneas por otras razones. La Tabla \@ref(tab:t1) documenta las principales razones por las cuales una enumeración se considera errónea. 
+
+Desde la encuesta de cobertura también se debe estimar el número de enumeraciones erróneas, existen varias razones por las cuales una enumeración se considera de este tipo. En general se clasifican en dos categorías: erróneas debido a duplicación y erróneas por otras razones. La Tabla \@ref(tab:t1) describe los principales motivos de clasificación como errónea. 
    
 
 <table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -80,49 +75,79 @@ Existen varias razones por las cuales una enumeración se considera errónea. En
   </tr>
 </tbody>
 </table>
+
+### Omisiones
+
+Las omisiones corresponden a personas que debieron ser incluidas en el censo pero no aparecen en ningún registro censal emparejado con la encuesta. Estas ocurren por diversas razones: errores de cobertura, dificultades en la enumeración de poblaciones móviles, desconfianza o rechazo en la participación, o errores operacionales.
+
+La identificación de omisiones es uno de los objetivos más importantes de la encuesta de cobertura. Para determinar que un individuo fue omitido, es necesario que cumpla con los siguientes criterios:
+
+- Debe residir en el país al momento del censo.
+- Debe estar correctamente vinculado a una unidad censal en la encuesta.
+- No debe haber sido emparejado con ningún registro censal, incluso después del emparejamiento ampliado y la revisión clerical.
+
+Las omisiones se cuantifican usando los factores de expansión de la encuesta de cobertura y se incorporan en el cálculo del error neto de cobertura mediante alguno de los estimadores presentados en el capítulo anterior. Su impacto se analiza por grupos demográficos, lo que permite evaluar la cobertura diferencial del censo [@wolter1986coverage; @USCensusBureau_2022].
+
+
+### Imputación
+
+En los censos se realizan imputaciones cuando no se logra recolectar información completa de una persona o un hogar, para esto se pueden usar diferentes enfoques, la literatura sobre los modelos de imputación es extensa y definir el modelo apropiado depende en gran medida del patrón de la ausencia de respuesta [@van2012flexible]. 
+
+La encuesta de cobertura permite evaluar cuántos registros en el censo fueron imputados y en qué medida esas imputaciones representan correctamente a personas reales. En particular:
+
+- Se estima la proporción de registros imputados que coinciden con la encuesta de cobertura.
+- Se identifica si hay sesgos sistemáticos en los registros imputados, como sobrerepresentación de ciertos grupos.
+- Se analizan imputaciones completas (sin nombre ni edad) frente a parciales.
+
+Estas evaluaciones ayudan a medir la calidad de la información censal y a mejorar las reglas futuras de imputación [@biemer2003introduction; @USCensusBureau_2022].
+
+
+## Protocolo de clasificación
+
+El protocolo operativo para clasificar registros como correctos o incorrectos implica tres grandes fases: preprocesamiento de datos, emparejamiento de registros, y evaluación de coincidencias.
+
+### Preprocesamiento de datos
+
+Esta fase estandariza y valida la información recolectada, y prepara las bases para el emparejamiento:
+
+- **Geocodificación**: Consiste en validar que las direcciones estén en los segmentos de la muestra.
+- **Consistencia Lógica**: Busca asegurar que los datos tengan una consistencia desde la lógica de la composición del hogar, edades y relaciones. por ejemplo, verificar que las relaciones de parentesco sean coherentes un hijo/a no puede ser mayor que el jefe de hogar, validar que las edades sean consistentes con las fechas de nacimiento, revisar inconsistencias en la estructura del hogar como que un hogar no puede tener más de un jefe de hogar.
+- **Normalización de nombres**: Se establecen reglas para que los nombres y los apellidos sea válidos. Por ejemplo, que mínimo el primer nombre y primer apellido tengan al menos dos caracteres, eliminar caracteres especiales, espacios innecesarios y normalizar formatos como convertir todo a mayúsculas o minúsculas. 
+- **Estandarización**: Consiste en verificar y ajustar los formatos de fechas, sexo, edad y las demás variables que se usarán en el emparejamiento. Por ejemplo, los formatos de fechas deben estar en formato DD/MM/AAAA, unificar categorías de variables categóricas que puedan originar errores (sexo: "M" para masculino, "F" para femenino), revisar y ajustar errores tipográficos o de codificación en variables clave como edad, sexo y relación de parentesco.
+- **Identificación de duplicados**: Detectar registros múltiples del mismo individuo.
+- **Casos no válidos**: Busca identificar individuos ficticios o registros que no corresponden a personas (mascotas, errores de registro, etc).
+- **Análisis descriptivo**: Presentar los resultados del preprocesamiento con el fin de establecer las frecuencias de los valores faltantes. Por ejemplo, porcentaje de registros sin fecha de nacimiento, sin primer nombre, sin segundo nombre, sin departamento, etc.
+- **Tratamiento de datos faltantes**:  Imputar datos faltantes o excluir registros no recuperables. Estos corresponden a registros donde no se puede determinar si la enumeración es correcta o incorrecta debido a falta de información. Es importante que exista la evidencia de la decisión, esto se obtiene al marcar los registros con un estado de "imputado" o "excluido".
    
 
-## Protocolo general
+### Emparejamiento de registros
 
-El procedimiento que se debe seguir puede ser específico en cada país, acá se presenta un protocolo general de las condiciones mínimas que se deben considerar. Es probable que todos los registros no se puedan clasificar como enumeraciones correctas o incorrectas, y que se deba acudir a procedimientos de emparejamiento mediante técnicas de vinculación probabilística de registros. Los pasos generales son:
+Esta etapa inicia con la muestra E y muestra P. Si al final del proceso existen registros que no se han logrado emparejar, entonces la muestra E se amplia a otras áreas para identificar si la persona encontrada en la muestra P si fue censada pero en un segmento diferente. A continuación se enuncian las etapas del proceso.
 
-1. Establecer las reglas para definir las enumeraciones correctas e incorrectas (véase el capítulo \@ref(cap3))
-
-   - **Criterios para enumeraciones correctas**: Adecuación, unicidad, completitud y corrección geográfica.
-   - **Criterios para enumeraciones incorrectas**: Duplicados, fuera de alcance y errores geográficos..
-
- 
-2. Preprocesamiento de Datos
-
-En esta fase se debe realizar un preprocesamiento para canonicalizar las variables de texto, garantizando aspectos como: 
-
-
-   - **Geocodificación de direcciones**: Asegurar que las direcciones estén en los segmentos de la muestra P.
-   - **Verificación de consistencia Lógica**: Se busca asegurar que los datos tengan una consistencia desde la lógica de la composición del hogar. por ejemplo, verificar que las relaciones de parentesco sean coherentes un hijo/a no puede ser mayor que el jefe de hogar, validar que las edades sean consistentes con las fechas de nacimiento, revisar inconsistencias en la estructura del hogar como que un hogar no puede tener más de un jefe de hogar.
-   - **Validación de nombres y apellidos**: Establecer reglas para que los nombres y los apellidos sea válidos. Por ejemplo, que mínimo el primer nombre y primer apellido tengan al menos dos caracteres, eliminar caracteres especiales, espacios innecesarios y normalizar formatos como convertir todo a mayúsculas o minúsculas. 
-   - **Estandarización de variables**: Normalizar formatos de fechas, sexo, edad y las demás variables que se usarán en el emparejamiento. Por ejemplo, los formatos de fechasllevarlos a DD/MM/AAAA, unificar categorías de variables categóricas que puedan originar errores (sexo: "M" para masculino, "F" para femenino), revisar y ajustar errores tipográficos o de codificación en variables clave como edad, sexo y relación de parentesco.
-   - **Identificació de casos duplicados**: Identificar y marcar registros duplicados.
-   - **Análisis descriptivo**: Presentar los resultados del preprocesamiento con el fin de establecer las frecuencias de los valores faltantes. Por ejemplo, porcentaje de registros sin fecha de nacimiento, sin primer nombre, sin segundo nombre, sin departamento, etc.
-   - **Tratamiento de datos faltantes**:  Imputar datos faltantes o excluir registros no recuperables. Estos corresponden a registros donde no se puede determinar si la enumeración es correcta o incorrecta debido a falta de información, en estos casos se debe marcar los registros con un estado de "imputado".
-   
-
- 3. Emparejamiento de registros
- 
- - **Emparejamiento exacto**: Establecer las variables que se usarán para establecer las coincidencias exactas.
- - **Emparejamiento probabilístico**: Usar técnicas de vinculación para los registros en los que no se logró una coincidencia exacta.
+ - **Determinístico (exacto)**: Establecer las variables que se usarán para establecer las coincidencias exactas. Es recomendable que el censo y la encuesta de cobertura levanten información sobre el tipo de documento y número de documento de identidad, esto ayuda a que el proceso de emparejamiento sea más efectivo.
+ - **Probabilístico**: Usar técnicas de vinculación para los registros (record linkage), para los registros que no tuvieron una coincidencia exacta.
  - **Áreas o bloques de búsqueda**: Establecer reglas para limitar el emparejamiento a segmentos censales y áreas adyacentes.
- - **Definición del umbral**: Definir el umbral para establecer las coincidencias es un aspecto relevante, el propósito es minimizar la probabilidad de que un emparejamiento erróneo. En este caso se pueden establecer algunas reglas, si la probabilidad de emparejamiento es superior al 99.9% se considera efectivo, si está entre el 90% y 99.9% se considera similar y si está por debajo del 90% se considera distinto.
- - **Revisión de los emparejamientos**: Los emparejamientos con estado "similar" deben pasar por una revisión clerical que los clasifique en "efectivo" o en "distinto".   
- - **Evaluación de resultados**: A nivel nacional y para cada bloque se debe presentar el resultado con la distribución del porcentaje de registros que se emparejaron de manera exacta, con estado "efectivo" en la vinculación probabilística, y los que quedan en estado "distinto" después de la revisión clerical.
- - **Ampliación del área de búsqueda**: Para los registros que aún se encuentran con estado "distinto" se debe llevar a cabo el proceso de vinculación probabilística ampliando el área de búsqueda hasta llegar al nivel nacional. Como las probabilidades de error de emparejamiento se incrementan cuando se aumenta el área de búsqueda, es recomendable que se haga una revisión clerical de estos registros luego de ser emparejados.
- - **Omisiones**: Si al finalizar el proceso de emparejamiento, aún existen casos que no fueron emparejados, se hará una revisión clerical y si su estado persiste, entonces se marcan como "omisiones", es decir, personas que no enumeradas en el censo.
+ - **Definición del umbral**: Definir el umbral para establecer las coincidencias es un aspecto relevante, el propósito es minimizar la probabilidad de que un emparejamiento erróneo. En este caso se pueden establecer algunas reglas, si la probabilidad de emparejamiento es superior al 99% se considera "emparejado", si está entre el 90% y 99% se considera "emparejamiento potencial" y si está por debajo del 90% se considera "no emparejado".
+ - **Revisión clerical y clasificación**: Los registros marcados como "emparejamiento potencial" son revisadas por personal capacitado.
+
+La Figura \@ref(fig:match) presenta una ilustración general de las fases del proceso de emparejamiento y revisión clerical.
+
+<div class="figure" style="text-align: center">
+<img src="images/FlujoMatch.png" alt="Flujo general del proceso de emparejamiento en la encuesta de cobertura" width="100%" />
+<p class="caption">(\#fig:match)Flujo general del proceso de emparejamiento en la encuesta de cobertura</p>
+</div>
+
+
+Para los registros que tienen estado "no emparejado" se amplia el área de búsqueda hasta llegar al nivel nacional. Como las probabilidades de error de emparejamiento se incrementan cuando se aumenta el área de búsqueda, es recomendable que se haga una revisión clerical de estos registros luego de ser emparejados, incluso si su probabilidad es alta.
+ 
+Si no hay coincidencia tras ampliar el área de búsqueda, el caso se clasifica como omisión, es decir, personas que no estuvieron enumeradas en el censo.
  
 
-## Flujo de trabajo
+## Flujo general del procedimiento
  
 
 
 ```{=html}
-<div id="htmlwidget-f615ca2186cc04451d1d" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f615ca2186cc04451d1d">{"x":{"diagram":"\ngraph TD;\n    A[Inicio del Proceso] --> B[Definir Universo de Estudio];\n    B --> C[Preprocesamiento de Datos];\n    C --> D[Emparejamiento Deterministico];\n    D -- Match --> J[Estimacion de Omisiones];\n    D -- No Match --> E[Emparejamiento Automatico];\n    E --> F[Revisar Umbral];\n    F --> H{Tipo de Coincidencia?};\n    H -- Efectivos --> J;\n    H -- Similares --> I[Revision Clerical];\n    H -- Distintos --> K[Aumentar el area de busqueda];\n    K --> E;\n    I --> L{Errores Detectados?};\n    L -- Si --> C;\n    L -- No --> M[Clasificacion Final];\n    F -- No --> M;\n    M --> J;\n    J --> N[Ajustes y Calibraciones];\n    N --> O[Validacion de Resultados];\n    O --> P[Documentacion y Reporte];\n    P --> Q[Fin del Proceso];\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e476444d29ed501caadb" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e476444d29ed501caadb">{"x":{"diagram":"\ngraph TD;\n    A[Inicio del Proceso] --> B[Establecer la muestra E y P];\n    B --> C[Preprocesamiento de Datos];\n    C --> D[Emparejamiento Deterministico];\n    D -- Match --> J[Estimación de Omisiones];\n    D -- No Match --> E[Emparejamiento Probabilístico];\n    E --> F[Evaluación del Umbral];\n    F --> H{Tipo de coincidencia?};\n    H -- Emperejados --> J;\n    H -- Potenciales --> I[Revisión clerical];\n    H -- No emparejados --> K[Aumentar el área de búsqueda];\n    K --> X[Ampliar muestra E];\n    X --> E;\n    I --> L{Emparejado?};\n    L -- Sí --> M[Clasificacion Final];\n    L -- No --> K;\n    M --> J;\n    J --> N[Ajustes y Calibraciones];\n    N --> O[Validacion de Resultados];\n    O --> P[Documentacion y Reporte];\n    P --> Q[Fin del Proceso];\n"},"evals":[],"jsHooks":[]}</script>
 ```

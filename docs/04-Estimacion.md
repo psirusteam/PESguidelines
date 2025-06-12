@@ -226,7 +226,7 @@ donde
 
 $$\lambda = \frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}.$$
 
-## Modelos log-lineales bivariados
+## Modelos log-lineales
 
 Estiman la celda no observada $N_{22}$ usando un modelo log-lineal. El modelo permite estimar el tamaño de la población cuando se tienen dos fuentes de captura, y puede modelar explícitamente la dependencia entre las fuentes.
 

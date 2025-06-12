@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 Reconsturcción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>4.7 Modelos log-lineales | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.2 Reconsturcción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="4.7 Modelos log-lineales | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 Reconsturcción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="4.7 Modelos log-lineales | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="enumeraciones-correctas-con-la-muestra-e.html"/>
-<link rel="next" href="estimadores-del-sistema-dual.html"/>
+<link rel="prev" href="estimador-de-zelterman.html"/>
+<link rel="next" href="otros-modelos.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -259,32 +259,51 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="reconsturcción-de-los-hogares-con-la-muestra-p" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Reconsturcción de los hogares con la muestra P<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#reconsturcción-de-los-hogares-con-la-muestra-p" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La descripción de los siguientes procedimientos se basa en <span class="citation">Nations (<a href="#ref-UnitedNations_2010">2010</a>)</span>.</p>
-<div id="procedimiento-a" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Procedimiento A<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Este procedimiento se basa en reconstruir los hogares tal como existían el día del censo. Mediante entrevistas retrospectivas, un informante (como el jefe del hogar) identifica a todas las personas que residían o se alojaban en la vivienda durante la fecha censal, incluyendo a quienes ya no viven allí (<em>out-movers</em>, en inglés). Esta información se contrasta con los registros censales para detectar omisiones (personas ausentes en el censo) o enumeraciones erróneas. El emparejamiento utiliza datos demográficos clave (nombre, edad, sexo) y verifica coincidencias geográficas.</p>
-<p>Este método es eficaz en contextos de baja movilidad, donde la mayoría de los residentes permanecen en el mismo hogar, ya que simplifica el emparejamiento al reducir la necesidad de buscar registros en múltiples áreas. Sin embargo, enfrenta desafíos en poblaciones dinámicas: la dependencia de informantes auxiliares para rastrear a las personas que se mudaron genera datos incompletos o inexactos, subestimando omisiones en zonas urbanas o migrantes.</p>
+<div id="modelos-log-lineales" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Modelos log-lineales<a href="modelos-log-lineales.html#modelos-log-lineales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Estiman la celda no observada <span class="math inline">\(N_{22}\)</span> usando un modelo log-lineal. El modelo permite estimar el tamaño de la población cuando se tienen dos fuentes de captura, y puede modelar explícitamente la dependencia entre las fuentes.</p>
+<p>Bajo este modelo, se asume que la distribución conjunta de los <span class="math inline">\(N_{ij}\)</span> siguen de forma independiente una distribución de Poisson, y que el logaritmo del valor esperado de cada celda se modela como:</p>
+<p><span class="math display">\[
+\log(\mathbb{E}[N_{ij}]) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\lambda\)</span>: parámetro de intercepto general.</li>
+<li><span class="math inline">\(\lambda_1^{(i)}\)</span>: mide el efecto de estar en la lista 1 (presencia o ausencia).</li>
+<li><span class="math inline">\(\lambda_2^{(j)}\)</span>: mide el efecto de estar en la lista 2 (presencia o ausencia).</li>
+</ul>
+<p>Este modelo asume independencia entre listas, es decir, que la probabilidad de ser observado en una lista no depende de haber sido observado en la otra.</p>
+<p>Cuando se sospecha que existe una dependencia entre listas, que podría ocurrir en contextos como censos y encuestas de cobertura, se incluye un término de interacción:</p>
+<p><span class="math display">\[
+\log(\mathbb{E}[N_{ij}]) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)} + \lambda_{12}^{(ij)}
+\]</span></p>
+<p>Aquí:</p>
+<ul>
+<li><span class="math inline">\(\lambda_{12}^{(ij)}\)</span>: representa la interacción entre pertenencia a la lista 1 y la lista 2.
+<ul>
+<li>Si <span class="math inline">\(\lambda_{12}^{(11)} &gt; 0\)</span>: hay dependencia positiva, es decir, más coincidencias de lo esperado.</li>
+<li>Si <span class="math inline">\(\lambda_{12}^{(11)} &lt; 0\)</span>: hay dependencia negativa, así que habrán menos coincidencias de lo esperado.</li>
+</ul></li>
+</ul>
+<p>Este modelo permite estimar la celda <span class="math inline">\(N_{22}\)</span> a partir del ajuste del modelo a las tres celdas observadas. Para ello se usa un estimador de máxima verosimilitud y el valor estimado de <span class="math inline">\(\hat{N}_{22}\)</span> se obtiene por predicción del modelo, y por tanto:</p>
+<p><span class="math display">\[
+\hat{N} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \hat{N}_{22}
+\]</span></p>
+<p>Se pueden implementar en R con <code>Rcapture::closedp()</code>. Suponiendo que la muestra E y muestra P se han organizado en un <code>df</code> con las variables binarias lista1 y lista2 codificadas como 1 y 0, entonces se puede usar el siguiente código para realizar la estimación</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelos-log-lineales.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(Rcapture)</span>
+<span id="cb1-2"><a href="modelos-log-lineales.html#cb1-2" tabindex="-1"></a><span class="fu">closedp.t</span>(df, df<span class="sc">$</span>lista1, df<span class="sc">$</span>lista2)</span></code></pre></div>
+<p>En caso de contar con la tabla de frecuencias de las celdas <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{12}\)</span> y <span class="math inline">\(N_{21}\)</span> se puede hacer así:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelos-log-lineales.html#cb2-1" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(N11, N12, N21), <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb2-2"><a href="modelos-log-lineales.html#cb2-2" tabindex="-1"></a><span class="fu">closedp</span>(tabla)</span></code></pre></div>
+<p>Para más detalles se recomiendar revisar <span class="citation">Baillargeon and Rivest (<a href="#ref-baillargeon2007rcapture">2007</a>)</span> y <span class="citation">Rivest and Baillargeon (<a href="#ref-rivest2014capture">2014</a>)</span>.</p>
 </div>
-<div id="procedimiento-b" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Procedimiento B<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-b" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>En este caso se identifican todas las personas que residen en el hogar al momento de la encuesta. Durante la entrevista, se solicita a cada informante que proporcione la dirección donde vivía en la fecha del censo. Este enfoque permite rastrear a las personas llegaron al hogar después del censo (<em>in-movers</em>, en inglés), así como a quienes ya no residen allí (<em>out-movers</em>). La información recopilada se compara con los registros censales para determinar si estas personas fueron correctamente enumeradas en su ubicación censal original.</p>
-<p>En este procedimiento es necesario buscar a las personas que se mudaron en las áreas en que fueron enumerados al momento del censo. Estas áreas pueden no formar necesariamente parte de la muestra y por lo tanto hay que extender la operación de apareamiento a otras áreas.</p>
-<p>Este método es especialmente útil en áreas con alta movilidad, ya que captura mejor a las personas que se mudaron y proporciona una visión más completa de los errores de cobertura. Sin embargo, enfrenta desafíos en la validación de direcciones, especialmente en zonas rurales o donde la información es imprecisa.</p>
-</div>
-<div id="procedimiento-c" class="section level3 hasAnchor" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Procedimiento C<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-c" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Este enfoque combina elementos de los procedimientos A y B, con el objetivo de identificar tanto a los miembros actuales del hogar al momento de la encuesta como a cualquier otro residente que vivía allí en la fecha de referencia del censo. Esto incluye a las personas que se mudaron (<em>in-movers</em> y <em>out-movers</em>). Durante la entrevista, se recopila información sobre los residentes actuales y se solicita detalles sobre quienes vivían en el hogar durante el censo, lo que permite reconstruir la composición del hogar en ambas fechas.</p>
-<p>Sin embargo, sólo los residentes a la fecha del censo, es decir las personas que permanecen (<em>non-movers</em>) y las personas que ya no residen allí (<em>out-movers</em>) se emparejan con los registros censales. Este método ofrece una visión más completa de los errores de cobertura, ya que captura tanto a los residentes actuales como a los anteriores, lo que es especialmente útil en áreas con alta movilidad.</p>
-
-</div>
-</div>
-<!-- </div> -->
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-UnitedNations_2010" class="csl-entry">
-Nations, United. 2010. <em>Post Enumeration Surveys - Operational Guidelines</em>. 2010 World Population and Housing Census Programme.
+<div id="ref-baillargeon2007rcapture" class="csl-entry">
+Baillargeon, Sophie, and Louis-Paul Rivest. 2007. <span>“Rcapture: Loglinear Models for Capture-Recapture in r.”</span> <em>Journal of Statistical Software</em> 19: 1–31.
+</div>
+<div id="ref-rivest2014capture" class="csl-entry">
+Rivest, Louis-Paul, and Sophie Baillargeon. 2014. <span>“Capture-Recapture Methods for Estimating the Size of a Population: Dealing with Variable Capture Probabilities.”</span> <em>Statistics in Action: A Canadian Outlook</em> 40: 289–304.
 </div>
 </div>
             </section>
@@ -292,8 +311,8 @@ Nations, United. 2010. <em>Post Enumeration Surveys - Operational Guidelines</em
           </div>
         </div>
       </div>
-<a href="enumeraciones-correctas-con-la-muestra-e.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="estimadores-del-sistema-dual.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="estimador-de-zelterman.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="otros-modelos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -324,7 +343,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/03-InclusionesMovers.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/04-Estimacion.rmd",
 "text": "Edit"
 },
 "history": {

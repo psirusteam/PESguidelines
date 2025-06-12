@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 Reconsturcción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>5.2 Componentes de la cobertura censal | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.2 Reconsturcción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="5.2 Componentes de la cobertura censal | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 Reconsturcción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="5.2 Componentes de la cobertura censal | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="enumeraciones-correctas-con-la-muestra-e.html"/>
-<link rel="next" href="estimadores-del-sistema-dual.html"/>
+<link rel="prev" href="objetivos-de-la-encuesta-de-cobertura.html"/>
+<link rel="next" href="protocolo-de-clasificación.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -259,32 +259,126 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="reconsturcción-de-los-hogares-con-la-muestra-p" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Reconsturcción de los hogares con la muestra P<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#reconsturcción-de-los-hogares-con-la-muestra-p" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La descripción de los siguientes procedimientos se basa en <span class="citation">Nations (<a href="#ref-UnitedNations_2010">2010</a>)</span>.</p>
-<div id="procedimiento-a" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Procedimiento A<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Este procedimiento se basa en reconstruir los hogares tal como existían el día del censo. Mediante entrevistas retrospectivas, un informante (como el jefe del hogar) identifica a todas las personas que residían o se alojaban en la vivienda durante la fecha censal, incluyendo a quienes ya no viven allí (<em>out-movers</em>, en inglés). Esta información se contrasta con los registros censales para detectar omisiones (personas ausentes en el censo) o enumeraciones erróneas. El emparejamiento utiliza datos demográficos clave (nombre, edad, sexo) y verifica coincidencias geográficas.</p>
-<p>Este método es eficaz en contextos de baja movilidad, donde la mayoría de los residentes permanecen en el mismo hogar, ya que simplifica el emparejamiento al reducir la necesidad de buscar registros en múltiples áreas. Sin embargo, enfrenta desafíos en poblaciones dinámicas: la dependencia de informantes auxiliares para rastrear a las personas que se mudaron genera datos incompletos o inexactos, subestimando omisiones en zonas urbanas o migrantes.</p>
+<div id="componentes-de-la-cobertura-censal" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Componentes de la cobertura censal<a href="componentes-de-la-cobertura-censal.html#componentes-de-la-cobertura-censal" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La clasificación de registros en la encuesta se fundamenta en la comparación entre el universo censal y el universo observado por la encuesta. Los cuatro componentes fundamentales de cobertura, a nivel de personas, son:</p>
+<div id="enumeraciones-correctas" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Enumeraciones correctas<a href="componentes-de-la-cobertura-censal.html#enumeraciones-correctas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una enumeración se considera correcta si una persona que debió ser contada fue incluida efectivamente en el censo. A nivel nacional, esto se cumple incluso si la persona fue ubicada en una dirección o vivienda distinta a la correcta, es decir, si una persona debió ser enumerada en una unidad de vivienda y fue incluida en una unidad de vivienda en cualquier otro lugar del país, entonces la enumeración se debe considerar como correcta, a pesar de que la persona esta enumerada en la ubicación incorrecta. Sin embargo, a nivel de área (región, departamento, municipio), la ubicación geográfica debe coincidir para que sea considerada como una enumeración correcta a ese nivel.</p>
+<p>Cuando una persona fue contada múltiples veces, solo una de las enumeraciones se clasifica como correcta; las demás son duplicados erróneos. Esto se formaliza con la siguiente función indicadora:</p>
+<p><span class="math display">\[I_k^{d} = \begin{cases}
+1 \ \ \ \text{si el elemento } k \ \text{fue enumerado en el área } d \\
+0 \ \ \ \text{si el elemento } k \ \text{fue enumerado fuera del área } d \\
+\end{cases} \]</span></p>
 </div>
-<div id="procedimiento-b" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Procedimiento B<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-b" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>En este caso se identifican todas las personas que residen en el hogar al momento de la encuesta. Durante la entrevista, se solicita a cada informante que proporcione la dirección donde vivía en la fecha del censo. Este enfoque permite rastrear a las personas llegaron al hogar después del censo (<em>in-movers</em>, en inglés), así como a quienes ya no residen allí (<em>out-movers</em>). La información recopilada se compara con los registros censales para determinar si estas personas fueron correctamente enumeradas en su ubicación censal original.</p>
-<p>En este procedimiento es necesario buscar a las personas que se mudaron en las áreas en que fueron enumerados al momento del censo. Estas áreas pueden no formar necesariamente parte de la muestra y por lo tanto hay que extender la operación de apareamiento a otras áreas.</p>
-<p>Este método es especialmente útil en áreas con alta movilidad, ya que captura mejor a las personas que se mudaron y proporciona una visión más completa de los errores de cobertura. Sin embargo, enfrenta desafíos en la validación de direcciones, especialmente en zonas rurales o donde la información es imprecisa.</p>
+<div id="enumeraciones-erróneas" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Enumeraciones erróneas<a href="componentes-de-la-cobertura-censal.html#enumeraciones-erróneas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Desde la encuesta de cobertura también se debe estimar el número de enumeraciones erróneas, existen varias razones por las cuales una enumeración se considera de este tipo. En general se clasifican en dos categorías: erróneas debido a duplicación y erróneas por otras razones. La Tabla <a href="componentes-de-la-cobertura-censal.html#tab:t1">5.1</a> describe los principales motivos de clasificación como errónea.</p>
+<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:t1">Table 5.1: </span><span id="tab:t1">Table 5.2: </span>Tipos de enumeraciones erróneas
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+<strong>Tipo</strong>
+</th>
+<th style="text-align:left;">
+<strong>Descripción</strong>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 30%; ">
+Erróneo por duplicación
+</td>
+<td style="text-align:left;width: 70%; ">
+La enumeración es un duplicado de una persona que fue contada correctamente en una unidad de vivienda o en el universo de viviendas colectivas en el censo.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 30%; ">
+Erróneo por otras razones
+</td>
+<td style="text-align:left;width: 70%; ">
+El registro es ficticio y no corresponde a una persona real.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 30%; ">
+</td>
+<td style="text-align:left;width: 70%; ">
+La persona fue enumerada en el universo de unidades de vivienda, pero debería haber sido enumerada en el universo de viviendas colectivas o estaba en situación de calle el día del censo.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 30%; ">
+</td>
+<td style="text-align:left;width: 70%; ">
+La persona nació después del día del censo.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 30%; ">
+</td>
+<td style="text-align:left;width: 70%; ">
+La persona falleció antes del día del censo.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 30%; ">
+</td>
+<td style="text-align:left;width: 70%; ">
+La persona estaba trabajando, estudiando o viviendo fuera del país el día del censo.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 30%; ">
+</td>
+<td style="text-align:left;width: 70%; ">
+La persona es un visitante con residencia habitual en el extranjero que estaba temporalmente en el país el día del censo.
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="procedimiento-c" class="section level3 hasAnchor" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Procedimiento C<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-c" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Este enfoque combina elementos de los procedimientos A y B, con el objetivo de identificar tanto a los miembros actuales del hogar al momento de la encuesta como a cualquier otro residente que vivía allí en la fecha de referencia del censo. Esto incluye a las personas que se mudaron (<em>in-movers</em> y <em>out-movers</em>). Durante la entrevista, se recopila información sobre los residentes actuales y se solicita detalles sobre quienes vivían en el hogar durante el censo, lo que permite reconstruir la composición del hogar en ambas fechas.</p>
-<p>Sin embargo, sólo los residentes a la fecha del censo, es decir las personas que permanecen (<em>non-movers</em>) y las personas que ya no residen allí (<em>out-movers</em>) se emparejan con los registros censales. Este método ofrece una visión más completa de los errores de cobertura, ya que captura tanto a los residentes actuales como a los anteriores, lo que es especialmente útil en áreas con alta movilidad.</p>
-
+<div id="omisiones" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Omisiones<a href="componentes-de-la-cobertura-censal.html#omisiones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Las omisiones corresponden a personas que debieron ser incluidas en el censo pero no aparecen en ningún registro censal emparejado con la encuesta. Estas ocurren por diversas razones: errores de cobertura, dificultades en la enumeración de poblaciones móviles, desconfianza o rechazo en la participación, o errores operacionales.</p>
+<p>La identificación de omisiones es uno de los objetivos más importantes de la encuesta de cobertura. Para determinar que un individuo fue omitido, es necesario que cumpla con los siguientes criterios:</p>
+<ul>
+<li>Debe residir en el país al momento del censo.</li>
+<li>Debe estar correctamente vinculado a una unidad censal en la encuesta.</li>
+<li>No debe haber sido emparejado con ningún registro censal, incluso después del emparejamiento ampliado y la revisión clerical.</li>
+</ul>
+<p>Las omisiones se cuantifican usando los factores de expansión de la encuesta de cobertura y se incorporan en el cálculo del error neto de cobertura mediante alguno de los estimadores presentados en el capítulo anterior. Su impacto se analiza por grupos demográficos, lo que permite evaluar la cobertura diferencial del censo <span class="citation">(<a href="#ref-wolter1986coverage">Wolter 1986</a>; <a href="#ref-USCensusBureau_2022">Bureau 2022</a>)</span>.</p>
+</div>
+<div id="imputación" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> Imputación<a href="componentes-de-la-cobertura-censal.html#imputación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En los censos se realizan imputaciones cuando no se logra recolectar información completa de una persona o un hogar, para esto se pueden usar diferentes enfoques, la literatura sobre los modelos de imputación es extensa y definir el modelo apropiado depende en gran medida del patrón de la ausencia de respuesta <span class="citation">(<a href="#ref-van2012flexible">Van Buuren and Van Buuren 2012</a>)</span>.</p>
+<p>La encuesta de cobertura permite evaluar cuántos registros en el censo fueron imputados y en qué medida esas imputaciones representan correctamente a personas reales. En particular:</p>
+<ul>
+<li>Se estima la proporción de registros imputados que coinciden con la encuesta de cobertura.</li>
+<li>Se identifica si hay sesgos sistemáticos en los registros imputados, como sobrerepresentación de ciertos grupos.</li>
+<li>Se analizan imputaciones completas (sin nombre ni edad) frente a parciales.</li>
+</ul>
+<p>Estas evaluaciones ayudan a medir la calidad de la información censal y a mejorar las reglas futuras de imputación <span class="citation">(<a href="#ref-biemer2003introduction">Biemer and Lyberg 2003</a>; <a href="#ref-USCensusBureau_2022">Bureau 2022</a>)</span>.</p>
 </div>
 </div>
-<!-- </div> -->
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-UnitedNations_2010" class="csl-entry">
-Nations, United. 2010. <em>Post Enumeration Surveys - Operational Guidelines</em>. 2010 World Population and Housing Census Programme.
+<div id="ref-biemer2003introduction" class="csl-entry">
+Biemer, Paul P, and Lars E Lyberg. 2003. <em>Introduction to Survey Quality</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-USCensusBureau_2022" class="csl-entry">
+Bureau, US Census. 2022. <span>“2020 Post-Enumeration Survey Estimation Design.”</span>
+</div>
+<div id="ref-van2012flexible" class="csl-entry">
+Van Buuren, Stef, and Stef Van Buuren. 2012. <em>Flexible Imputation of Missing Data</em>. Vol. 10. CRC press Boca Raton, FL.
+</div>
+<div id="ref-wolter1986coverage" class="csl-entry">
+Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
 </div>
 </div>
             </section>
@@ -292,8 +386,8 @@ Nations, United. 2010. <em>Post Enumeration Surveys - Operational Guidelines</em
           </div>
         </div>
       </div>
-<a href="enumeraciones-correctas-con-la-muestra-e.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="estimadores-del-sistema-dual.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="objetivos-de-la-encuesta-de-cobertura.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="protocolo-de-clasificación.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -324,7 +418,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/03-InclusionesMovers.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/05-Protocolo.rmd",
 "text": "Edit"
 },
 "history": {
