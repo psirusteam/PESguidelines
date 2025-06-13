@@ -228,12 +228,12 @@ $$\lambda = \frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}.$$
 
 ## Modelos log-lineales
 
-Estiman la celda no observada $N_{22}$ usando un modelo log-lineal. El modelo permite estimar el tamaño de la población cuando se tienen dos fuentes de captura, y puede modelar explícitamente la dependencia entre las fuentes.
+Los modelos log-lineales proporcionan un enfoque alternativo y generalizado para estimar la población total en estudios de captura y recaptura, y se pueden usar cuando hay dos o más fuentes o listas [@fienberg1972multiple; @cormack1989log]. Para el caso de un sistema de estimación dual, el modelo log-lineal, puede representarse como un modelo lineal generalizado de Poisson (GLM), aplicado sobre los tres conteos observados, $N_{11}$, $N_{12}$, y $N_{21}$, así:
 
-Bajo este modelo, se asume que la distribución conjunta de los $N_{ij}$ siguen de forma independiente una distribución de Poisson, y que el logaritmo del valor esperado de cada celda se modela como:
+$$N_{ij} \sim Poisson(\theta_{ij})$$
 
 $$
-\log(\mathbb{E}[N_{ij}]) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)}
+\log(\theta_{ij}) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)}
 $$
 
 donde:
@@ -242,12 +242,14 @@ donde:
 - $\lambda_1^{(i)}$: mide el efecto de estar en la lista 1 (presencia o ausencia).
 - $\lambda_2^{(j)}$: mide el efecto de estar en la lista 2 (presencia o ausencia).
 
-Este modelo asume independencia entre listas, es decir, que la probabilidad de ser observado en una lista no depende de haber sido observado en la otra.
+De esta forma $\hat{N}_{22}=\exp(\hat{\lambda})$, donde $\hat{\lambda}$ es el estimador de máxima verosimilitud de $\lambda$. Por lo tanto, el total poblacional estimado es:
 
-Cuando se sospecha que existe una dependencia entre listas, que podría ocurrir en contextos como censos y encuestas de cobertura, se incluye un término de interacción:
+$$\hat{N} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \hat{N}_{22}$$
+
+Este modelo asume independencia entre listas, es decir, que la probabilidad de ser observado en una lista no depende de haber sido observado en la otra. Si se sospecha alguna dependencia entre listas, que es una situación que podría ocurrir en contextos como censos y encuestas de cobertura, se incluye un término de interacción:
 
 $$
-\log(\mathbb{E}[N_{ij}]) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)} + \lambda_{12}^{(ij)}
+\log(\theta_{ij}) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)} + \lambda_{12}^{(ij)}
 $$
 
 Aquí:
@@ -256,13 +258,7 @@ Aquí:
   - Si $\lambda_{12}^{(11)} > 0$: hay dependencia positiva, es decir, más coincidencias de lo esperado.
   - Si $\lambda_{12}^{(11)} < 0$: hay dependencia negativa, así que habrán menos coincidencias de lo esperado.
 
-Este modelo permite estimar la celda $N_{22}$  a partir del ajuste del modelo a las tres celdas observadas. Para ello se usa  un estimador de máxima verosimilitud y el valor estimado de $\hat{N}_{22}$ se obtiene por predicción del modelo, y por tanto:
-
-$$
-\hat{N} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \hat{N}_{22}
-$$
-
-Se pueden implementar en R con `Rcapture::closedp()`. Suponiendo que la muestra E y muestra P se han organizado en un `df` con las variables binarias lista1 y lista2 codificadas como 1 y 0, entonces se puede usar el siguiente código para realizar la estimación
+El modelo se puede implementar en R con `Rcapture::closedp()`. Suponiendo que la muestra E y muestra P se han organizado en un `df` con las variables binarias lista1 y lista2 codificadas como 1 y 0, entonces se puede usar el siguiente código para realizar la estimación
 
 
 ``` r
@@ -278,7 +274,7 @@ tabla <- matrix(c(N11, N12, N21), ncol = 3)
 closedp(tabla)
 ```
 
-Para más detalles se recomiendar revisar @baillargeon2007rcapture y @rivest2014capture.
+Para más detalles se recomienda revisar @baillargeon2007rcapture y @rivest2014capture.
 
 ## Otros modelos
 
@@ -286,9 +282,11 @@ Para más detalles se recomiendar revisar @baillargeon2007rcapture y @rivest2014
 
 Permiten incluir efectos del diseño muestral, efectos aleatorios por dominio y se usa especialmente cuando se tienen pocos datos o muchos grupos. Para su implementación se puede usar `Stan`, `JAGS` o `LCMCR`.
 
-- **Estimadores basados en Sistemas de Estimación Multiple**
+- **Estimadores basados en Estimación de Sistemas Multiples**
 
-Los modelos de Sistemas de Estimación Multiple (MSE por sus siglas en inglés), permiten incorporar más de dos fuentes, por ejemplo, es posible que se tenga acceso al censo, encuesta de cobertura y registros administrativos. Su implementación se puede realizar con paquetes de R como `LCMCR`.
+Los modelos de Estimación de Sistemas Multiples (MSE por sus siglas en inglés), permiten incorporar más de dos fuentes, por ejemplo, es posible que se tenga acceso al censo, encuesta de cobertura y registros administrativos. Su implementación se puede realizar con paquetes de R como `LCMCR`.
+
+
 
 - **Modelos de respuesta heterogénea**
 

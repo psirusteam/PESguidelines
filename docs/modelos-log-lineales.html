@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa, Stalyn Guerrero" />
 
 
-<meta name="date" content="2025-06-12" />
+<meta name="date" content="2025-06-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -261,10 +261,10 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="modelos-log-lineales" class="section level2 hasAnchor" number="4.7">
 <h2><span class="header-section-number">4.7</span> Modelos log-lineales<a href="modelos-log-lineales.html#modelos-log-lineales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Estiman la celda no observada <span class="math inline">\(N_{22}\)</span> usando un modelo log-lineal. El modelo permite estimar el tamaño de la población cuando se tienen dos fuentes de captura, y puede modelar explícitamente la dependencia entre las fuentes.</p>
-<p>Bajo este modelo, se asume que la distribución conjunta de los <span class="math inline">\(N_{ij}\)</span> siguen de forma independiente una distribución de Poisson, y que el logaritmo del valor esperado de cada celda se modela como:</p>
+<p>Los modelos log-lineales proporcionan un enfoque alternativo y generalizado para estimar la población total en estudios de captura y recaptura, y se pueden usar cuando hay dos o más fuentes o listas <span class="citation">(<a href="#ref-fienberg1972multiple">Fienberg 1972</a>; <a href="#ref-cormack1989log">Cormack 1989</a>)</span>. Para el caso de un sistema de estimación dual, el modelo log-lineal, puede representarse como un modelo lineal generalizado de Poisson (GLM), aplicado sobre los tres conteos observados, <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{12}\)</span>, y <span class="math inline">\(N_{21}\)</span>, así:</p>
+<p><span class="math display">\[N_{ij} \sim Poisson(\theta_{ij})\]</span></p>
 <p><span class="math display">\[
-\log(\mathbb{E}[N_{ij}]) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)}
+\log(\theta_{ij}) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)}
 \]</span></p>
 <p>donde:</p>
 <ul>
@@ -272,10 +272,11 @@ div.csl-indent {
 <li><span class="math inline">\(\lambda_1^{(i)}\)</span>: mide el efecto de estar en la lista 1 (presencia o ausencia).</li>
 <li><span class="math inline">\(\lambda_2^{(j)}\)</span>: mide el efecto de estar en la lista 2 (presencia o ausencia).</li>
 </ul>
-<p>Este modelo asume independencia entre listas, es decir, que la probabilidad de ser observado en una lista no depende de haber sido observado en la otra.</p>
-<p>Cuando se sospecha que existe una dependencia entre listas, que podría ocurrir en contextos como censos y encuestas de cobertura, se incluye un término de interacción:</p>
+<p>De esta forma <span class="math inline">\(\hat{N}_{22}=\exp(\hat{\lambda})\)</span>, donde <span class="math inline">\(\hat{\lambda}\)</span> es el estimador de máxima verosimilitud de <span class="math inline">\(\lambda\)</span>. Por lo tanto, el total poblacional estimado es:</p>
+<p><span class="math display">\[\hat{N} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \hat{N}_{22}\]</span></p>
+<p>Este modelo asume independencia entre listas, es decir, que la probabilidad de ser observado en una lista no depende de haber sido observado en la otra. Si se sospecha alguna dependencia entre listas, que es una situación que podría ocurrir en contextos como censos y encuestas de cobertura, se incluye un término de interacción:</p>
 <p><span class="math display">\[
-\log(\mathbb{E}[N_{ij}]) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)} + \lambda_{12}^{(ij)}
+\log(\theta_{ij}) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)} + \lambda_{12}^{(ij)}
 \]</span></p>
 <p>Aquí:</p>
 <ul>
@@ -285,22 +286,24 @@ div.csl-indent {
 <li>Si <span class="math inline">\(\lambda_{12}^{(11)} &lt; 0\)</span>: hay dependencia negativa, así que habrán menos coincidencias de lo esperado.</li>
 </ul></li>
 </ul>
-<p>Este modelo permite estimar la celda <span class="math inline">\(N_{22}\)</span> a partir del ajuste del modelo a las tres celdas observadas. Para ello se usa un estimador de máxima verosimilitud y el valor estimado de <span class="math inline">\(\hat{N}_{22}\)</span> se obtiene por predicción del modelo, y por tanto:</p>
-<p><span class="math display">\[
-\hat{N} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \hat{N}_{22}
-\]</span></p>
-<p>Se pueden implementar en R con <code>Rcapture::closedp()</code>. Suponiendo que la muestra E y muestra P se han organizado en un <code>df</code> con las variables binarias lista1 y lista2 codificadas como 1 y 0, entonces se puede usar el siguiente código para realizar la estimación</p>
+<p>El modelo se puede implementar en R con <code>Rcapture::closedp()</code>. Suponiendo que la muestra E y muestra P se han organizado en un <code>df</code> con las variables binarias lista1 y lista2 codificadas como 1 y 0, entonces se puede usar el siguiente código para realizar la estimación</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modelos-log-lineales.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(Rcapture)</span>
 <span id="cb1-2"><a href="modelos-log-lineales.html#cb1-2" tabindex="-1"></a><span class="fu">closedp.t</span>(df, df<span class="sc">$</span>lista1, df<span class="sc">$</span>lista2)</span></code></pre></div>
 <p>En caso de contar con la tabla de frecuencias de las celdas <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{12}\)</span> y <span class="math inline">\(N_{21}\)</span> se puede hacer así:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="modelos-log-lineales.html#cb2-1" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(N11, N12, N21), <span class="at">ncol =</span> <span class="dv">3</span>)</span>
 <span id="cb2-2"><a href="modelos-log-lineales.html#cb2-2" tabindex="-1"></a><span class="fu">closedp</span>(tabla)</span></code></pre></div>
-<p>Para más detalles se recomiendar revisar <span class="citation">Baillargeon and Rivest (<a href="#ref-baillargeon2007rcapture">2007</a>)</span> y <span class="citation">Rivest and Baillargeon (<a href="#ref-rivest2014capture">2014</a>)</span>.</p>
+<p>Para más detalles se recomienda revisar <span class="citation">Baillargeon and Rivest (<a href="#ref-baillargeon2007rcapture">2007</a>)</span> y <span class="citation">Rivest and Baillargeon (<a href="#ref-rivest2014capture">2014</a>)</span>.</p>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-baillargeon2007rcapture" class="csl-entry">
 Baillargeon, Sophie, and Louis-Paul Rivest. 2007. <span>“Rcapture: Loglinear Models for Capture-Recapture in r.”</span> <em>Journal of Statistical Software</em> 19: 1–31.
+</div>
+<div id="ref-cormack1989log" class="csl-entry">
+Cormack, Richard M. 1989. <span>“Log-Linear Models for Capture-Recapture.”</span> <em>Biometrics</em>, 395–413.
+</div>
+<div id="ref-fienberg1972multiple" class="csl-entry">
+Fienberg, Stephen E. 1972. <span>“The Multiple Recapture Census for Closed Populations and Incomplete 2k Contingency Tables.”</span> <em>Biometrika</em> 59 (3): 591–603.
 </div>
 <div id="ref-rivest2014capture" class="csl-entry">
 Rivest, Louis-Paul, and Sophie Baillargeon. 2014. <span>“Capture-Recapture Methods for Estimating the Size of a Population: Dealing with Variable Capture Probabilities.”</span> <em>Statistics in Action: A Canadian Outlook</em> 40: 289–304.
