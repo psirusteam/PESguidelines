@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.1 Emparejamiento a nivel de personas | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <meta name="description" content="Encuestas Postcensales" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.1 Emparejamiento a nivel de personas | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Encuestas Postcensales" />
+  <meta name="github-repo" content="psirusteam/PESguidelines" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.1 Emparejamiento a nivel de personas | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  
+  <meta name="twitter:description" content="Encuestas Postcensales" />
+  
+
+<meta name="author" content="Andrés Gutiérrez, Giovany Babativa, Stalyn Guerrero" />
+
+
+<meta name="date" content="2025-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="proceso-de-vinculación-de-registros.html"/>
+<link rel="next" href="proceso-de-emparejamiento.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Encuestas postcensales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="el-sistema-de-estimación-dual.html"><a href="el-sistema-de-estimación-dual.html"><i class="fa fa-check"></i><b>1</b> El sistema de estimación dual</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="planteamiento-del-problema.html"><a href="planteamiento-del-problema.html"><i class="fa fa-check"></i><b>1.1</b> Planteamiento del problema</a></li>
+<li class="chapter" data-level="1.2" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html"><i class="fa fa-check"></i><b>1.2</b> Condiciones y supuestos</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#estabilidad-poblacional"><i class="fa fa-check"></i><b>1.2.1</b> Estabilidad poblacional</a></li>
+<li class="chapter" data-level="1.2.2" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#sec:multinomial"><i class="fa fa-check"></i><b>1.2.2</b> Estructura multinomial</a></li>
+<li class="chapter" data-level="1.2.3" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#independencia-autónoma"><i class="fa fa-check"></i><b>1.2.3</b> Independencia autónoma</a></li>
+<li class="chapter" data-level="1.2.4" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#independencia-causal"><i class="fa fa-check"></i><b>1.2.4</b> Independencia causal</a></li>
+<li class="chapter" data-level="1.2.5" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#emparejamiento"><i class="fa fa-check"></i><b>1.2.5</b> Emparejamiento</a></li>
+<li class="chapter" data-level="1.2.6" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#eventos-espurios"><i class="fa fa-check"></i><b>1.2.6</b> Eventos espurios</a></li>
+<li class="chapter" data-level="1.2.7" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#postestratificación"><i class="fa fa-check"></i><b>1.2.7</b> Postestratificación</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="inferencia.html"><a href="inferencia.html"><i class="fa fa-check"></i><b>1.3</b> Inferencia</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="inferencia.html"><a href="inferencia.html#los-estimadores-del-sistema-dual"><i class="fa fa-check"></i><b>1.3.1</b> Los estimadores del sistema dual</a></li>
+<li class="chapter" data-level="1.3.2" data-path="inferencia.html"><a href="inferencia.html#propiedades-del-estimador"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades del estimador</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="estimación-dual-con-la-muestra-de-la-encuesta.html"><a href="estimación-dual-con-la-muestra-de-la-encuesta.html"><i class="fa fa-check"></i><b>2</b> Estimación dual con la muestra de la encuesta</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="el-diseño-de-muestreo.html"><a href="el-diseño-de-muestreo.html"><i class="fa fa-check"></i><b>2.1</b> El diseño de muestreo</a></li>
+<li class="chapter" data-level="2.2" data-path="la-muestra-e-y-la-muestra-p.html"><a href="la-muestra-e-y-la-muestra-p.html"><i class="fa fa-check"></i><b>2.2</b> La muestra E y la muestra P</a></li>
+<li class="chapter" data-level="2.3" data-path="los-estimadores-de-muestreo.html"><a href="los-estimadores-de-muestreo.html"><i class="fa fa-check"></i><b>2.3</b> Los estimadores de muestreo</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cap3.html"><a href="cap3.html"><i class="fa fa-check"></i><b>3</b> Enumeraciones y procedimientos</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="enumeraciones-correctas-con-la-muestra-e.html"><a href="enumeraciones-correctas-con-la-muestra-e.html"><i class="fa fa-check"></i><b>3.1</b> Enumeraciones correctas con la muestra E</a></li>
+<li class="chapter" data-level="3.2" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html"><i class="fa fa-check"></i><b>3.2</b> Reconsturcción de los hogares con la muestra P</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-a"><i class="fa fa-check"></i><b>3.2.1</b> Procedimiento A</a></li>
+<li class="chapter" data-level="3.2.2" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-b"><i class="fa fa-check"></i><b>3.2.2</b> Procedimiento B</a></li>
+<li class="chapter" data-level="3.2.3" data-path="reconsturcción-de-los-hogares-con-la-muestra-p.html"><a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-c"><i class="fa fa-check"></i><b>3.2.3</b> Procedimiento C</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="estimadores-del-sistema-dual.html"><a href="estimadores-del-sistema-dual.html"><i class="fa fa-check"></i><b>4</b> Estimadores del sistema dual</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="estimador-de-petersen.html"><a href="estimador-de-petersen.html"><i class="fa fa-check"></i><b>4.1</b> Estimador de Petersen</a></li>
+<li class="chapter" data-level="4.2" data-path="estimador-de-chapman.html"><a href="estimador-de-chapman.html"><i class="fa fa-check"></i><b>4.2</b> Estimador de Chapman</a></li>
+<li class="chapter" data-level="4.3" data-path="estimador-de-nour.html"><a href="estimador-de-nour.html"><i class="fa fa-check"></i><b>4.3</b> Estimador de Nour</a></li>
+<li class="chapter" data-level="4.4" data-path="estimador-de-chao.html"><a href="estimador-de-chao.html"><i class="fa fa-check"></i><b>4.4</b> Estimador de Chao</a></li>
+<li class="chapter" data-level="4.5" data-path="estimador-de-webster-kemp.html"><a href="estimador-de-webster-kemp.html"><i class="fa fa-check"></i><b>4.5</b> Estimador de Webster-Kemp</a></li>
+<li class="chapter" data-level="4.6" data-path="estimador-de-zelterman.html"><a href="estimador-de-zelterman.html"><i class="fa fa-check"></i><b>4.6</b> Estimador de Zelterman</a></li>
+<li class="chapter" data-level="4.7" data-path="modelos-log-lineales.html"><a href="modelos-log-lineales.html"><i class="fa fa-check"></i><b>4.7</b> Modelos log-lineales</a></li>
+<li class="chapter" data-level="4.8" data-path="otros-modelos.html"><a href="otros-modelos.html"><i class="fa fa-check"></i><b>4.8</b> Otros modelos</a></li>
+<li class="chapter" data-level="4.9" data-path="notas-adicionales.html"><a href="notas-adicionales.html"><i class="fa fa-check"></i><b>4.9</b> Notas adicionales</a></li>
+<li class="chapter" data-level="4.10" data-path="cuadro-comparativo-de-los-estimadores.html"><a href="cuadro-comparativo-de-los-estimadores.html"><i class="fa fa-check"></i><b>4.10</b> Cuadro comparativo de los estimadores</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="evaluación-de-la-cobertura-censal.html"><a href="evaluación-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-de-cobertura.html"><a href="objetivos-de-la-encuesta-de-cobertura.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta de cobertura</a></li>
+<li class="chapter" data-level="5.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5.2</b> Componentes de la cobertura censal</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-correctas"><i class="fa fa-check"></i><b>5.2.1</b> Enumeraciones correctas</a></li>
+<li class="chapter" data-level="5.2.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-erróneas"><i class="fa fa-check"></i><b>5.2.2</b> Enumeraciones erróneas</a></li>
+<li class="chapter" data-level="5.2.3" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#omisiones"><i class="fa fa-check"></i><b>5.2.3</b> Omisiones</a></li>
+<li class="chapter" data-level="5.2.4" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#imputación"><i class="fa fa-check"></i><b>5.2.4</b> Imputación</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html"><i class="fa fa-check"></i><b>5.3</b> Protocolo de clasificación</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html#preprocesamiento-de-datos"><i class="fa fa-check"></i><b>5.3.1</b> Preprocesamiento de datos</a></li>
+<li class="chapter" data-level="5.3.2" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html#emparejamiento-de-registros"><i class="fa fa-check"></i><b>5.3.2</b> Emparejamiento de registros</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="flujo-general-del-procedimiento.html"><a href="flujo-general-del-procedimiento.html"><i class="fa fa-check"></i><b>5.4</b> Flujo general del procedimiento</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="proceso-de-vinculación-de-registros.html"><a href="proceso-de-vinculación-de-registros.html"><i class="fa fa-check"></i><b>6</b> Proceso de vinculación de registros</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="emparejamiento-a-nivel-de-personas.html"><a href="emparejamiento-a-nivel-de-personas.html"><i class="fa fa-check"></i><b>6.1</b> Emparejamiento a nivel de personas</a></li>
+<li class="chapter" data-level="6.2" data-path="proceso-de-emparejamiento.html"><a href="proceso-de-emparejamiento.html"><i class="fa fa-check"></i><b>6.2</b> Proceso de emparejamiento</a></li>
+<li class="chapter" data-level="6.3" data-path="preprocesamiento.html"><a href="preprocesamiento.html"><i class="fa fa-check"></i><b>6.3</b> Preprocesamiento</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="preprocesamiento.html"><a href="preprocesamiento.html#limpieza-de-los-datos"><i class="fa fa-check"></i><b>6.3.1</b> Limpieza de los datos</a></li>
+<li class="chapter" data-level="6.3.2" data-path="preprocesamiento.html"><a href="preprocesamiento.html#codificación-fonética"><i class="fa fa-check"></i><b>6.3.2</b> Codificación fonética</a></li>
+<li class="chapter" data-level="6.3.3" data-path="preprocesamiento.html"><a href="preprocesamiento.html#metaphone"><i class="fa fa-check"></i><b>6.3.3</b> Metaphone</a></li>
+<li class="chapter" data-level="6.3.4" data-path="preprocesamiento.html"><a href="preprocesamiento.html#algoritmo-statistics-canada"><i class="fa fa-check"></i><b>6.3.4</b> Algoritmo Statistics Canada</a></li>
+<li class="chapter" data-level="6.3.5" data-path="preprocesamiento.html"><a href="preprocesamiento.html#adaptación-para-encuestas-de-américa-latina"><i class="fa fa-check"></i><b>6.3.5</b> Adaptación para Encuestas de América Latina</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="indexación.html"><a href="indexación.html"><i class="fa fa-check"></i><b>6.4</b> Indexación</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a Encuestas postcensales </a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos estadísticos para el análisis de las encuestas postcensales</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="emparejamiento-a-nivel-de-personas" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Emparejamiento a nivel de personas<a href="emparejamiento-a-nivel-de-personas.html#emparejamiento-a-nivel-de-personas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El proceso para el emparejamiento a nivel de personas debe estar diseñado para determinar si:</p>
+<ol style="list-style-type: decimal">
+<li>las personas de la muestra P fueron enumeradas en el censo.</li>
+<li>las personas de la muestra E, enumeradas en el censo, fueron correctamente enumeradas. Si una persona de la muestra E fue erróneamente enumerada, el proceso de emparejamiento también debe determinar la razón del error.</li>
+</ol>
+<p>Durante la encuesta de cobertura, el encuestador hará la lista, independiente del censo, de las personas que viven en la dirección en el momento de la encuesta y de aquellas que vivieron en la dirección el día del censo pero que ya no residen allí. Se deben levantar como mínimo los datos de sus nombres, apellidos, datos demográficos y relación de parentesco entre ellos, en caso de ser posible, se debería incluir el número de identificación personal.</p>
+<p>Las preguntas deben estar orientadas a determinar otros lugares donde la persona podría haber vivido o permanecido el día del censo buscando identificar si la persona se habría mudado o si estaba de forma temporal en esa otra dirección. Si es una persona alterna entre direcciones, se debe intentar establecer cuánto tiempo pasa en cada dirección y así determinar su residencia habitual, es decir, en dónde debería contarse en el censo. Asimismo, si la conclusión es que una persona se mudó de la dirección de la muestra, se debe intentar obtener su nueva dirección.</p>
+<p>Las otras direcciones recopiladas durante la entrevista que son proporcionadas por el encuestado, pueden clasificarse como direcciones de inmigrante (<em>in-movers</em>, en inglés) o direcciones alternas. Las direcciones de inmigrante se recopilan cuando alguien que actualmente vive en la dirección de la muestra había vivido en otro lugar el día del censo. Mientras que las direcciones alternas se dan cuando alguien vive en otro lugar por razones laborales, estudios, servicio militar, entre otras.</p>
+<p>La encuesta debe diseñarse para levantar la mayor cantidad posible de direcciones alternas con el fin de identificar todos los lugares donde una persona pudo haber sido contada en el censo y determinar si fue contabilizada más de una vez. Es posible que el encuestado no pueda proporcionar la dirección completa, en esos casos se debe intentar obtener cualquier información de referencia próximos a la dirección.</p>
+<p>Durante el procesamiento de la encuesta de cobertura, cada persona entrevistada debe asignarse con un código a un departamento y municipio de residencia. Los códigos del lugar de residencia indican dónde debía haberse contado a la persona el día del censo, también se debe agregar una codificación para identificar si la persona se mudó y si debía incluirse en la muestra P. Este proceso no necesariamente se puede lograr de forma automática y en algunos casos habrá la necesidad de hacer una revisión clerical, especialmente en los casos donde el encuestador agregue observaciones que puedan resultar relevantes.</p>
+<p>El primer paso consiste en geocodificar las direcciones proporcionadas por los encuestados y verificar que las mismas coinciden con los segmentos cartográficos seleccionados. En caso de que algunas direcciones no tengan una precisión a nivel de segmento cartográfico, entonces será necesaria una revisión clerical para verificar las direcciones proporcionadas por los encuestados.</p>
+<p>El paquete <code>tidygeocoder</code> <span class="citation">(<a href="#ref-tidygeocoder">Cambon et al. 2021</a>)</span> puede ser útil para esa tarea, a continuación se presenta un ejemplo de juguete con cinco (5) direcciones en el departamento de Chuquisaca, Bolivia.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="emparejamiento-a-nivel-de-personas.html#cb3-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb3-2"><a href="emparejamiento-a-nivel-de-personas.html#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="emparejamiento-a-nivel-de-personas.html#cb3-3" tabindex="-1"></a><span class="fu">p_load</span>(dplyr, tidygeocoder)</span>
+<span id="cb3-4"><a href="emparejamiento-a-nivel-de-personas.html#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="emparejamiento-a-nivel-de-personas.html#cb3-5" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb3-6"><a href="emparejamiento-a-nivel-de-personas.html#cb3-6" tabindex="-1"></a>  <span class="sc">~</span>DIRECCION, <span class="sc">~</span>MUNICIPIO,</span>
+<span id="cb3-7"><a href="emparejamiento-a-nivel-de-personas.html#cb3-7" tabindex="-1"></a>  <span class="st">&quot;Av. Jaime Mendoza 123&quot;</span>, <span class="st">&quot;Sucre&quot;</span>,</span>
+<span id="cb3-8"><a href="emparejamiento-a-nivel-de-personas.html#cb3-8" tabindex="-1"></a>  <span class="st">&quot;Calle Bolívar 456&quot;</span>, <span class="st">&quot;Monteagudo&quot;</span>,</span>
+<span id="cb3-9"><a href="emparejamiento-a-nivel-de-personas.html#cb3-9" tabindex="-1"></a>  <span class="st">&quot;Plaza 25 de Mayo 789&quot;</span>, <span class="st">&quot;Camargo&quot;</span>,</span>
+<span id="cb3-10"><a href="emparejamiento-a-nivel-de-personas.html#cb3-10" tabindex="-1"></a>  <span class="st">&quot;Av. del Maestro 321&quot;</span>, <span class="st">&quot;Villa Serrano&quot;</span>,</span>
+<span id="cb3-11"><a href="emparejamiento-a-nivel-de-personas.html#cb3-11" tabindex="-1"></a>  <span class="st">&quot;Calle Potosí 654&quot;</span>, <span class="st">&quot;Zudáñez&quot;</span></span>
+<span id="cb3-12"><a href="emparejamiento-a-nivel-de-personas.html#cb3-12" tabindex="-1"></a>)</span>
+<span id="cb3-13"><a href="emparejamiento-a-nivel-de-personas.html#cb3-13" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="emparejamiento-a-nivel-de-personas.html#cb3-14" tabindex="-1"></a>datos <span class="sc">|&gt;</span></span>
+<span id="cb3-15"><a href="emparejamiento-a-nivel-de-personas.html#cb3-15" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">addrs =</span> <span class="fu">paste0</span>(DIRECCION, <span class="st">&quot;, &quot;</span>, MUNICIPIO, <span class="st">&quot;, Bolivia&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-16"><a href="emparejamiento-a-nivel-de-personas.html#cb3-16" tabindex="-1"></a>  <span class="fu">geocode</span>(addrs, <span class="at">method =</span> <span class="st">&quot;arcgis&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 5
+##   DIRECCION             MUNICIPIO     addrs                            lat  long
+##   &lt;chr&gt;                 &lt;chr&gt;         &lt;chr&gt;                          &lt;dbl&gt; &lt;dbl&gt;
+## 1 Av. Jaime Mendoza 123 Sucre         Av. Jaime Mendoza 123, Sucre,… -19.0 -65.3
+## 2 Calle Bolívar 456     Monteagudo    Calle Bolívar 456, Monteagudo… -19.8 -64.0
+## 3 Plaza 25 de Mayo 789  Camargo       Plaza 25 de Mayo 789, Camargo… -18.0 -62.7
+## 4 Av. del Maestro 321   Villa Serrano Av. del Maestro 321, Villa Se… -19.1 -64.3
+## 5 Calle Potosí 654      Zudáñez       Calle Potosí 654, Zudáñez, Bo… -19.0 -64.8</code></pre>
+<p>En caso de que algunos de los puntos de longitud y latitud no queden dentro de los segmentos de la muestra P, los revisores clericales deben verificar las direcciones y establecer si hay descritos algunos puntos de referencia que no se usaron durante el procesamiento automatizado que hubiera afectado la precisión del proceso automático. Los resultados de la geocodificación se utilizan durante el proceso de emparejamiento para identificar áreas de búsqueda alrededor de la dirección proporcionada por el encuestado.</p>
+<p>Durante el proceso de geocodificación manual, los revisores asignan una coordenada que permita una mayor precisión. Si no es posible lograr una precisión que apunte a una UPM específica de la muestra P, entonces la misma podrá asociarse a más de una UPM para crear áreas de búsqueda que abarquen dicha dirección. Asimismo, es recomendable que se asigne un código que refleje el nivel de confianza que el revisor manual considera que hay en que la dirección se encuentra dentro del área de búsqueda.</p>
+<p>Es recomendable que el emparejamiento automático de personas incluya los geocódigos asignados a las direcciones proporcionadas por los encuestados, así como los nombres, apellidos, la edad, el sexo, el día y mes de nacimiento. Otra información que puede ser usada en el proceso son: los números de teléfono de los encuestados del hogar, datos geográficos como el departamento, municipio o código del segmento. Con este propósito se puede usar un modelo de vinculación probabilística de registros conocido como <em>record linkage</em>.</p>
+<p>Con el objetivo de examinar la completitud de los nombres, es recomendable que el nombre o apellido se considere suficiente cuando la combinación del primer y segundo nombre, así como la combinación de los apellidos, tengan al menos dos caracteres cada uno. Posteriormente, los revisores clericales deben analizar todos los registros marcados como insuficientes y actualizar los nombres cuando sea posible. Por ejemplo, puede haberse registrado el primer nombre de un niño pero no su apellido, el revisor clerical podrá completar el apellido basándose en el de los padres cuando el parentesco sea determinado. En estos casos, se podrá cambiar el estado de insuficiente a suficiente.</p>
+<p>Al finalizar este procesamiento, cada persona de la muestra P y cada persona de la muestra E deben ser codificadas como coincidencia, posible coincidencia, duplicado, posible duplicado o sin coincidencia, y al finalizar la revisión clerical, se usarán los vínculos asignados a las personas de la muestra P y muestra E como insumos para estimar la cobertura neta de la población y sus componentes.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-tidygeocoder" class="csl-entry">
+Cambon, Jesse, Diego Hernangómez, Christopher Belanger, and Daniel Possenriede. 2021. <span>“Tidygeocoder: An r Package for Geocoding.”</span> <em>Journal of Open Source Software</em> 6 (65): 3544. <a href="https://doi.org/10.21105/joss.03544">https://doi.org/10.21105/joss.03544</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="proceso-de-vinculación-de-registros.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="proceso-de-emparejamiento.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/psirusteam/PESguidelines/06-Emparejamiento.rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Encuesta PostCensal.pdf", "Encuesta PostCensal.epub", "Encuesta PostCensal.mobi"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+},
+"tconfig": null
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
