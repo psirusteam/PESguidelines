@@ -897,5 +897,5 @@ En conclusión, el uso de bloqueo combinado con comparaciones textuales permite 
 
 Se recomienda ajustar adecuadamente el argumento blockfld para optimizar la eficiencia del proceso, y seleccionar el método de comparación textual (por ejemplo, Jaro-Winkler o Levenshtein) de acuerdo con la calidad y naturaleza de los nombres en los datos.
 
-Finalmente, es importante validar los resultados obtenidos, ya sea mediante revisión manual o a través de reglas adicionales de negocio, para asegurar la confiabilidad del proceso de deduplicación.
+Finalmente, es importante validar los resultados obtenidos, ya sea mediante revisión clerical o a través de otras reglas, para asegurar la confiabilidad del proceso de deduplicación.
 

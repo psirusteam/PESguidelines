@@ -466,7 +466,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <span id="cb41-5"><a href="implementación.html#cb41-5" tabindex="-1"></a>                        <span class="at">strcmpfun =</span> jarowinkler)</span></code></pre></div>
 <p>En conclusión, el uso de bloqueo combinado con comparaciones textuales permite reducir significativamente el esfuerzo computacional, en este caso, más del 90%, al evitar comparaciones innecesarias entre todos los registros. Además, este enfoque es efectivo para detectar duplicados incluso cuando existen errores de tipeo o inconsistencias en los datos, logrando una clasificación precisa de los pares potencialmente duplicados.</p>
 <p>Se recomienda ajustar adecuadamente el argumento blockfld para optimizar la eficiencia del proceso, y seleccionar el método de comparación textual (por ejemplo, Jaro-Winkler o Levenshtein) de acuerdo con la calidad y naturaleza de los nombres en los datos.</p>
-<p>Finalmente, es importante validar los resultados obtenidos, ya sea mediante revisión manual o a través de reglas adicionales de negocio, para asegurar la confiabilidad del proceso de deduplicación.</p>
+<p>Finalmente, es importante validar los resultados obtenidos, ya sea mediante revisión clerical o a través de otras reglas, para asegurar la confiabilidad del proceso de deduplicación.</p>
 
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div class="csl-entry">
