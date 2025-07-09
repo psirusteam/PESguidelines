@@ -46,7 +46,7 @@ protocolo-de-clasificación
 preprocesamiento-de-datos
 emparejamiento-de-registros
 flujo-general-del-procedimiento
-proceso-de-vinculación-de-registros
+proceso-de-emparejamiento-probabilístico
 geolocalización
 flujo-general
 preprocesamiento

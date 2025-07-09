@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa, Stalyn Guerrero" />
 
 
-<meta name="date" content="2025-07-08" />
+<meta name="date" content="2025-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -239,7 +239,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="flujo-general-del-procedimiento.html"><a href="flujo-general-del-procedimiento.html"><i class="fa fa-check"></i><b>5.4</b> Flujo general del procedimiento</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="proceso-de-vinculación-de-registros.html"><a href="proceso-de-vinculación-de-registros.html"><i class="fa fa-check"></i><b>6</b> Proceso de vinculación de registros</a>
+<li class="chapter" data-level="6" data-path="proceso-de-emparejamiento-probabilístico.html"><a href="proceso-de-emparejamiento-probabilístico.html"><i class="fa fa-check"></i><b>6</b> Proceso de emparejamiento probabilístico</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="geolocalización.html"><a href="geolocalización.html"><i class="fa fa-check"></i><b>6.1</b> Geolocalización</a></li>
 <li class="chapter" data-level="6.2" data-path="flujo-general.html"><a href="flujo-general.html"><i class="fa fa-check"></i><b>6.2</b> Flujo general</a></li>
@@ -456,8 +456,8 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 ##       FALSE 2659    0    0
 ##       TRUE     4    0   46</code></pre>
 <p>Se observa que la gran mayoría de los pares comparados presentan baja evidencia de coincidencia, con 2318 pares concentrados en el intervalo de peso [0.2, 0.25]. Por otra parte, solo 46 pares alcanzan un peso mayor a 0.7, lo que sugiere una alta probabilidad de ser duplicados.</p>
-<p>Según la matriz de clasificación, de los 50 pares realmente duplicados, el modelo identificó correctamente a 46, mientras que 4 no fueron detectados, lo que corresponde a una tasa de falsos negativos de <span class="math inline">\(\alpha = 8%\)</span>. Por otro lado, la tasa de falsos positivos es cero, ya que ningún par no duplicado fue clasificado erróneamente como duplicado.</p>
-<p>En conjunto, el modelo alcanzó una exactitud del 99.85%, lo que indica un desempeño altamente preciso en la tarea de deduplicación.</p>
+<p>Según la matriz de clasificación, de los 50 pares realmente duplicados, el modelo identificó correctamente a 46, mientras que 4 no fueron detectados, lo que corresponde a una tasa de falsos negativos de <span class="math inline">\(\alpha = 8\)</span>%. Por otro lado, la tasa de falsos positivos es cero, ya que ningún par no duplicado fue clasificado erróneamente como duplicado.</p>
+<p>En conjunto, el modelo alcanzó una exactitud del 99.85%, lo que indica un alto rendimiento en la tarea de deduplicación.</p>
 <p>Una vez se ha entrenado el modelo, se puede aplicar una comparación difusa (fuzzy) a todos los datos, para ampliar las posibilidades del ejemplo se usará con la métrica de Jaro-Winkler para todas las variables de cadena (<code>strcmp = TRUE</code>). Se omite el uso de funciones fonéticas (<code>phonetic = FALSE</code>), lo cual es útil cuando queremos detectar errores ortográficos leves y los bloques se arman solo por año de nacimiento. Aunque en la práctica se debe especificar el modelo entrenado.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="implementación.html#cb41-1" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">compare.dedup</span>(RLdata500c[,<span class="sc">-</span><span class="dv">6</span>],</span>
 <span id="cb41-2"><a href="implementación.html#cb41-2" tabindex="-1"></a>                        <span class="at">phonetic =</span> <span class="cn">FALSE</span>,</span>
