@@ -268,11 +268,15 @@ closedp.t(df, df$lista1, df$lista2)
 En caso de contar con la tabla de frecuencias de las celdas $N_{11}$, $N_{12}$ y $N_{21}$ se puede hacer así:
 
 ```{r, echo=TRUE, eval=FALSE}
-tabla <- matrix(c(N11, N12, N21), ncol = 3)
-closedp(tabla)
+tabla <- round(matrix(c(1,1,N11,
+                        1,0,N12,
+                        0,1,N21), byrow = TRUE, ncol = 3))
+colnames(tabla) <- c("E", "P", "freq")
+
+closedp(tabla, dfreq = TRUE)
 ```
 
-Para más detalles se recomienda revisar @baillargeon2007rcapture y @rivest2014capture.
+Es importante destacar que existen diferentes enfoques que puede ser utilizados para realizar la estimación del total poblacional a partir de este tipo de modelos [@otis1978statistical; @rivest2007applications; @baillargeon2007rcapture; @rivest2014capture].
 
 ## Otros modelos
 

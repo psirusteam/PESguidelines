@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 Reconsturcción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>6 Emparejamiento probabilístico | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.2 Reconsturcción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="6 Emparejamiento probabilístico | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 Reconsturcción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="6 Emparejamiento probabilístico | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="enumeraciones-correctas-con-la-muestra-e.html"/>
-<link rel="next" href="estimadores-del-sistema-dual.html"/>
+<link rel="prev" href="flujo-general-del-procedimiento.html"/>
+<link rel="next" href="geolocalización.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -292,41 +292,74 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="reconsturcción-de-los-hogares-con-la-muestra-p" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Reconsturcción de los hogares con la muestra P<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#reconsturcción-de-los-hogares-con-la-muestra-p" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>La descripción de los siguientes procedimientos se basa en <span class="citation">Nations (<a href="#ref-UnitedNations_2010">2010</a>)</span>.</p>
-<div id="procedimiento-a" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Procedimiento A<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Este procedimiento se basa en reconstruir los hogares tal como existían el día del censo. Mediante entrevistas retrospectivas, un informante (como el jefe del hogar) identifica a todas las personas que residían o se alojaban en la vivienda durante la fecha censal, incluyendo a quienes ya no viven allí (<em>out-movers</em>, en inglés). Esta información se contrasta con los registros censales para detectar omisiones (personas ausentes en el censo) o enumeraciones erróneas. El emparejamiento utiliza datos demográficos clave (nombre, edad, sexo) y verifica coincidencias geográficas.</p>
-<p>Este método es eficaz en contextos de baja movilidad, donde la mayoría de los residentes permanecen en el mismo hogar, ya que simplifica el emparejamiento al reducir la necesidad de buscar registros en múltiples áreas. Sin embargo, enfrenta desafíos en poblaciones dinámicas: la dependencia de informantes auxiliares para rastrear a las personas que se mudaron genera datos incompletos o inexactos, subestimando omisiones en zonas urbanas o migrantes.</p>
+<div id="emparejamiento-probabilístico" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Emparejamiento probabilístico<a href="emparejamiento-probabilístico.html#emparejamiento-probabilístico" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Las bases de datos censales, rara vez se cuentan con identificadores únicos fiables y completos. Esto hace que el emparejamiento exacto basado en igualdad absoluta de valores en atributos clave, como el número de identificación, sea insuficiente. Además, las variaciones en nombres, errores tipográficos, diferencias de formato y registros incompletos son frecuentes.</p>
+<p>Por ejemplo, los registros:</p>
+<ul>
+<li><em>Nohora Rodriguez, nacida el 8/10/1960</em></li>
+<li><em>Nora Rodrigues, nacida el 19601008”</em></li>
+</ul>
+<p>pueden referirse a la misma persona, pero un algoritmo exacto no quedarán emparejados. El enfoque probabilístico permite capturar estas coincidencias aproximadas mediante modelos estadísticos, como el propuesto por Fellegi y Sunter <span class="citation">(<a href="#ref-fellegi1969theory">Fellegi and Sunter 1969</a>)</span>.</p>
+<p>El emparejamiento probabilístico de registros, también conocido como <em>record linkage</em>, tiene una historia extensa en el campo de la estadística y es una técnica fundamental en el contexto de los censos y las encuestas de cobertura. Su objetivo es identificar registros que se refieren a la misma entidad<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> entre diferentes fuentes de datos, incluso cuando no se cuenta con un identificador único o cuando los datos contienen errores, inconsistencias o formatos distintos.</p>
+<p>La primera vez que se introdujo formalmente el término <em>record linkage</em> fue en el año 1946, para describir la idea de construir un “libro de vida” de cada individuo, desde el nacimiento hasta la muerte, incluyendo eventos relevantes como matrimonios, divorcios, registros médicos y de seguridad social <span class="citation">(<a href="#ref-dunn1946">Dunn 1946</a>)</span>. Esta visión anticipaba muchos de los principios de lo que hoy se conoce como integración de datos longitudinales, fundamentales para la planificación de servicios públicos y la mejora de la calidad de las estadísticas nacionales.</p>
+<p>Durante las décadas de 1950 y 1960, el avance tecnológico permitió se comenzara a automatizar el proceso de vinculación de registros utilizando computadoras. Además, se introdujo el enfoque probabilístico, en el cual se asignan pesos de acuerdo con los atributos comparados, considerando la frecuencia relativa de los valores <span class="citation">Howard B. Newcombe and Kennedy (<a href="#ref-newcombe1962">1962</a>)</span>. Este enfoque sentó las bases para el desarrollo del modelo probabilístico propuesto formalmente por Fellegi y Sunter en 1969, quienes demostraron que bajo ciertas condiciones, es posible derivar una regla óptima para decidir si dos registros corresponden a la misma entidad <span class="citation">(<a href="#ref-fellegi1969theory">Fellegi and Sunter 1969</a>)</span>.</p>
+<p>A lo largo de las décadas siguientes, este marco teórico fue ampliado por William Winkler en el U.S. Census Bureau, incorporando funciones de comparación aproximada de cadenas, ponderaciones basadas en frecuencia y algoritmos como EM para mejorar la estimación de parámetros del modelo de vinculación probabilística <span class="citation">William E. Winkler et al. (<a href="#ref-winkler2006overview">2006</a>)</span>. En el contexto de los censos de población y vivienda, estas técnicas han sido fundamentales para evaluar la omisión censal mediante encuestas de cobertura, al comparar registros del censo con los de la encuesta y estimar la omisión neta de forma robusta.</p>
+<p>La necesidad de vincular datos de múltiples fuentes ha crecido en paralelo con el aumento en la cantidad de información recolectada por Oficinas Nacionales de Estadística (ONE). En este contexto, el emparejamiento de registros cumple múltiples funciones:</p>
+<ul>
+<li><strong>Mejorar la calidad de los datos</strong>, al eliminar duplicados y enriquecer registros incompletos.</li>
+<li><strong>Optimizar los costos</strong> de operaciones estadísticas al reutilizar datos existentes. Un caso práctico es el Censo Combinado 2023 de Uruguay.</li>
+<li><strong>Viabilizar el análisis longitudinal y de múltiples fuentes</strong>, especialmente en contextos censales donde los datos se recolectan en por intervalos de tiempo <span class="citation">(<a href="#ref-bleiholder2009data">Bleiholder and Naumann 2009</a>)</span>.</li>
+</ul>
+<p>El proceso de emparejamiento consta generalmente de cinco etapas principales:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Normalización y preprocesamiento</strong>: limpieza, estandarización y codificación de atributos.</li>
+<li><strong>Reducción del espacio de búsqueda</strong>: indexación o bloques</li>
+<li><strong>Comparación de registros</strong>: evaluación de similitudes en atributos comunes (nombre, sexo, fecha de nacimiento, dirección).</li>
+<li><strong>Clasificación</strong>: asignación de un estado de emparejado (match), no emparejado (non-match) o revisión clerical (posible match), usualmente mediante reglas probabilísticas <span class="citation">(<a href="#ref-fellegi1969theory">Fellegi and Sunter 1969</a>)</span>.</li>
+<li><strong>Predicción final</strong>: umbral de clasificación y validación.</li>
+</ol>
+<p>El emparejamiento completo entre dos bases con <span class="math inline">\(n\)</span> y <span class="math inline">\(m\)</span> registros implica comparar hasta <span class="math inline">\(n \times m\)</span> pares, lo que resulta en complejidad cuadrática. Para mitigar este costo, se emplean técnicas de indexación conocidas como <em>bloqueo o blocking</em>, que reducen el espacio de comparación considerando solo subconjuntos plausibles de registros.</p>
+<p>Una dificultad adicional en el emparejamiento probabilístico es la falta de verdad conocida como <em>ground truth</em>, esto ocurre cuando no se dispone de datos que indiquen con certeza si dos registros corresponden a la misma persona. Esto obliga a realizar revisiones clericales para evaluar la calidad de los emparejamientos. Por esta razón, los procesos logísticos de la encuesta de cobertura deben considerar una fase de sensibilización para que la población esté dispuesta a colaborar y a entregar información fiable, debido a la resistencia que pueden tener porque fueron censadas hace poco tiempo.</p>
+<p>El emparejamiento de registros frecuentemente involucra información sensible como nombres, direcciones y fechas de nacimiento. Por tanto, la privacidad y confidencialidad deben ser cuidadosamente protegidas. En particular, cuando el emparejamiento ocurre entre bases de diferentes entidades, se deben aplicar las técnicas de emparejamiento preservando la privacidad (PPRL) <span class="citation">(<a href="#ref-christen2023privacy">V. Christen et al. 2023</a>; <a href="#ref-Vatsalan2020">Vatsalan, Karapiperis, and Verykios 2020</a>)</span>. Estas consideraciones son especialmente importantes en contextos censales y gubernamentales, donde los datos personales son confidenciales por ley.</p>
 </div>
-<div id="procedimiento-b" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Procedimiento B<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-b" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>En este caso se identifican todas las personas que residen en el hogar al momento de la encuesta. Durante la entrevista, se solicita a cada informante que proporcione la dirección donde vivía en la fecha del censo. Este enfoque permite rastrear a las personas llegaron al hogar después del censo (<em>in-movers</em>, en inglés), así como a quienes ya no residen allí (<em>out-movers</em>). La información recopilada se compara con los registros censales para determinar si estas personas fueron correctamente enumeradas en su ubicación censal original.</p>
-<p>En este procedimiento es necesario buscar a las personas que se mudaron en las áreas en que fueron enumerados al momento del censo. Estas áreas pueden no formar necesariamente parte de la muestra y por lo tanto hay que extender la operación de apareamiento a otras áreas.</p>
-<p>Este método es especialmente útil en áreas con alta movilidad, ya que captura mejor a las personas que se mudaron y proporciona una visión más completa de los errores de cobertura. Sin embargo, enfrenta desafíos en la validación de direcciones, especialmente en zonas rurales o donde la información es imprecisa.</p>
-</div>
-<div id="procedimiento-c" class="section level3 hasAnchor" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Procedimiento C<a href="reconsturcción-de-los-hogares-con-la-muestra-p.html#procedimiento-c" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Este enfoque combina elementos de los procedimientos A y B, con el objetivo de identificar tanto a los miembros actuales del hogar al momento de la encuesta como a cualquier otro residente que vivía allí en la fecha de referencia del censo. Esto incluye a las personas que se mudaron (<em>in-movers</em> y <em>out-movers</em>). Durante la entrevista, se recopila información sobre los residentes actuales y se solicita detalles sobre quienes vivían en el hogar durante el censo, lo que permite reconstruir la composición del hogar en ambas fechas.</p>
-<p>Sin embargo, sólo los residentes a la fecha del censo, es decir las personas que permanecen (<em>non-movers</em>) y las personas que ya no residen allí (<em>out-movers</em>) se emparejan con los registros censales. Este método ofrece una visión más completa de los errores de cobertura, ya que captura tanto a los residentes actuales como a los anteriores, lo que es especialmente útil en áreas con alta movilidad.</p>
-
-</div>
-</div>
-<!-- </div> -->
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-UnitedNations_2010" class="csl-entry">
-Nations, United. 2010. <em>Post Enumeration Surveys - Operational Guidelines</em>. 2010 World Population and Housing Census Programme.
+<div id="ref-bleiholder2009data" class="csl-entry">
+Bleiholder, Jens, and Felix Naumann. 2009. <span>“Data Fusion.”</span> <em>ACM Computing Surveys (CSUR)</em> 41 (1): 1–41.
 </div>
+<div id="ref-christen2023privacy" class="csl-entry">
+Christen, Victor, Tim Häntschel, Peter Christen, and Erhard Rahm. 2023. <span>“Privacy-Preserving Record Linkage Using Autoencoders.”</span> <em>International Journal of Data Science and Analytics</em> 15 (4): 347–57.
+</div>
+<div id="ref-dunn1946" class="csl-entry">
+Dunn, H. L. 1946. <span>“Record Linkage.”</span> <em>American Journal of Public Health and the Nations Health</em> 36 (12): 1412–16. <a href="https://doi.org/10.2105/AJPH.36.12.1412">https://doi.org/10.2105/AJPH.36.12.1412</a>.
+</div>
+<div id="ref-fellegi1969theory" class="csl-entry">
+Fellegi, Ivan P, and Alan B Sunter. 1969. <span>“A Theory for Record Linkage.”</span> <em>Journal of the American Statistical Association</em> 64 (328): 1183–1210.
+</div>
+<div id="ref-newcombe1962" class="csl-entry">
+Newcombe, Howard B., and J. Michael Kennedy. 1962. <span>“Record Linkage: Making Maximum Use of the Discriminating Power of Identifying Information.”</span> <em>Communications of the ACM</em> 5 (11): 563–66. <a href="https://doi.org/10.1145/368996.369032">https://doi.org/10.1145/368996.369032</a>.
+</div>
+<div id="ref-Vatsalan2020" class="csl-entry">
+Vatsalan, Dinusha, Dimitrios Karapiperis, and Vassilios S. Verykios. 2020. <span>“Privacy-Preserving Record Linkage.”</span> In <em>Encyclopedia of Big Data Technologies</em>, edited by Albert Zomaya, Javid Taheri, and Sherif Sakr, 1–10. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-63962-8_17-2">https://doi.org/10.1007/978-3-319-63962-8_17-2</a>.
+</div>
+<div id="ref-winkler2006overview" class="csl-entry">
+Winkler, William E et al. 2006. <span>“Overview of Record Linkage and Current Research Directions.”</span> <em>Bureau of the Census</em> 25 (4): 603–23.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="2">
+<li id="fn2"><p>Una entidad puede ser un hogar, una persona, una empresa u otro tipo de unidad registrada.<a href="emparejamiento-probabilístico.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="enumeraciones-correctas-con-la-muestra-e.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="estimadores-del-sistema-dual.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="flujo-general-del-procedimiento.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="geolocalización.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -357,7 +390,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/03-InclusionesMovers.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/06-Emparejamiento.rmd",
 "text": "Edit"
 },
 "history": {

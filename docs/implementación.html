@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa, Stalyn Guerrero" />
 
 
-<meta name="date" content="2025-07-09" />
+<meta name="date" content="2025-07-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="evaluación.html"/>
-
+<link rel="next" href="vinculación.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -239,7 +239,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="flujo-general-del-procedimiento.html"><a href="flujo-general-del-procedimiento.html"><i class="fa fa-check"></i><b>5.4</b> Flujo general del procedimiento</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="proceso-de-emparejamiento-probabilístico.html"><a href="proceso-de-emparejamiento-probabilístico.html"><i class="fa fa-check"></i><b>6</b> Proceso de emparejamiento probabilístico</a>
+<li class="chapter" data-level="6" data-path="emparejamiento-probabilístico.html"><a href="emparejamiento-probabilístico.html"><i class="fa fa-check"></i><b>6</b> Emparejamiento probabilístico</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="geolocalización.html"><a href="geolocalización.html"><i class="fa fa-check"></i><b>6.1</b> Geolocalización</a></li>
 <li class="chapter" data-level="6.2" data-path="flujo-general.html"><a href="flujo-general.html"><i class="fa fa-check"></i><b>6.2</b> Flujo general</a></li>
@@ -270,6 +270,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="6.8.1" data-path="implementación.html"><a href="implementación.html#deduplicación-de-registros"><i class="fa fa-check"></i><b>6.8.1</b> Deduplicación de registros</a></li>
 </ul></li>
+<li class="chapter" data-level="6.9" data-path="vinculación.html"><a href="vinculación.html"><i class="fa fa-check"></i><b>6.9</b> Vinculación</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
@@ -348,6 +349,7 @@ div.csl-indent {
 <div id="deduplicación-de-registros" class="section level3 hasAnchor" number="6.8.1">
 <h3><span class="header-section-number">6.8.1</span> Deduplicación de registros<a href="implementación.html#deduplicación-de-registros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una etapa clave en el cálculo de la omisión censal, es asegurar que la base de enumeración de la encuesta de cobertura no tiene duplicados. Poder identificar si una persona ha sido enumerada más de una vez en el censo, se conoce como proceso de deduplicación.</p>
+<p><strong>Ejemplo usando el paquete RecodrLinkage</strong></p>
 <p>Para ilustrar este procedimiento se implementará un análisis supervisado utilizando los datos simulados <code>RLdata500</code> incluidos en el paquete <code>RecordLinkage</code>. El conjunto de datos contiene 500 registros simulados, incluyendo nombres, apellidos, fechas de nacimiento y un identificador de la persona real (<code>identity.RLdata500</code>). Suponga que este es un conjunto de entrenamiento que fue seleccionado con unos registros del censo, y en el cual se realizó un proceso de identificación y revisión clerical para identificar con certeza si un registro es duplicado o no, de esta manera es posible entrenar un modelo, realizar evaluaciones de precisión y entender mejor las decisiones del algoritmo.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="implementación.html#cb22-1" tabindex="-1"></a><span class="fu">library</span>(RecordLinkage)</span>
 <span id="cb22-2"><a href="implementación.html#cb22-2" tabindex="-1"></a><span class="fu">data</span>(RLdata500)</span>
@@ -467,176 +469,91 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <p>En conclusión, el uso de bloqueo combinado con comparaciones textuales permite reducir significativamente el esfuerzo computacional, en este caso, más del 90%, al evitar comparaciones innecesarias entre todos los registros. Además, este enfoque es efectivo para detectar duplicados incluso cuando existen errores de tipeo o inconsistencias en los datos, logrando una clasificación precisa de los pares potencialmente duplicados.</p>
 <p>Se recomienda ajustar adecuadamente el argumento blockfld para optimizar la eficiencia del proceso, y seleccionar el método de comparación textual (por ejemplo, Jaro-Winkler o Levenshtein) de acuerdo con la calidad y naturaleza de los nombres en los datos.</p>
 <p>Finalmente, es importante validar los resultados obtenidos, ya sea mediante revisión clerical o a través de otras reglas, para asegurar la confiabilidad del proceso de deduplicación.</p>
-
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div class="csl-entry">
-Baillargeon, Sophie, and Louis-Paul Rivest. 2007. <span>“Rcapture: Loglinear Models for Capture-Recapture in r.”</span> <em>Journal of Statistical Software</em> 19: 1–31.
-</div>
-<div class="csl-entry">
-Biemer, Paul P, and Lars E Lyberg. 2003. <em>Introduction to Survey Quality</em>. John Wiley &amp; Sons.
-</div>
-<div class="csl-entry">
-Binder, David A. 2011. <span>“Estimating Model Parameters from a Complex Survey Under a Model-Design Randomization Framework.”</span> <em>Pakistan Journal of Statistics</em> 27 (4): 371–90.
-</div>
-<div class="csl-entry">
-Bishop, Yvonne M, Stephen E Fienberg, and Paul W Holland. 2007. <em>Discrete Multivariate Analysis: Theory and Practice</em>. Springer Science &amp; Business Media.
-</div>
-<div class="csl-entry">
-Bleiholder, Jens, and Felix Naumann. 2009. <span>“Data Fusion.”</span> <em>ACM Computing Surveys (CSUR)</em> 41 (1): 1–41.
-</div>
-<div class="csl-entry">
-Brittain, Sarah, and Dankmar Böhning. 2009. <span>“Estimators in Capture–Recapture Studies with Two Sources.”</span> <em>AStA Advances in Statistical Analysis</em> 93 (1): 23–47.
-</div>
-<div class="csl-entry">
-Bureau, US Census. 2022. <span>“2020 Post-Enumeration Survey Estimation Design.”</span>
-</div>
-<div class="csl-entry">
-Cambon, Jesse, Diego Hernangómez, Christopher Belanger, and Daniel Possenriede. 2021. <span>“Tidygeocoder: An r Package for Geocoding.”</span> <em>Journal of Open Source Software</em> 6 (65): 3544. <a href="https://doi.org/10.21105/joss.03544">https://doi.org/10.21105/joss.03544</a>.
-</div>
-<div class="csl-entry">
-Casella, George, and Roger L. Berger. 2002. <em>Statistical Inference</em>. 2nd ed. Duxbury Press.
-</div>
-<div class="csl-entry">
-CEPAL. 2023. <em>Diseño y Análisis Estadístico de Las Encuestas de Hogares de América Latina</em>. Metodologías de La CEPAL.
-</div>
-<div class="csl-entry">
-Chao, Anne. 1987. <span>“Estimating the Population Size for Capture-Recapture Data with Unequal Catchability.”</span> <em>Biometrics</em>, 783–91.
-</div>
-<div class="csl-entry">
-———. 1989. <span>“Estimating Population Size for Sparse Data in Capture-Recapture Experiments.”</span> <em>Biometrics</em>, 427–38.
-</div>
-<div class="csl-entry">
-Chapman, Douglas George. 1951. <span>“Some Properties of the Hypergeometric Distribution with Applications to Zoological Censuses.”</span> <em>Univ. Calif. Stat.</em> 1: 60–131.
-</div>
-<div class="csl-entry">
-Christen, Peter. 2012. <em>Data Matching Concepts and Techniques for Record Linkage, Entity Resolution, and Duplicate Detection</em>. Springer.
-</div>
-<div class="csl-entry">
-Christen, Victor, Tim Häntschel, Peter Christen, and Erhard Rahm. 2023. <span>“Privacy-Preserving Record Linkage Using Autoencoders.”</span> <em>International Journal of Data Science and Analytics</em> 15 (4): 347–57.
-</div>
-<div class="csl-entry">
-Churches, Tim, Peter Christen, Kim Lim, and Justin Xi Zhu. 2002. <span>“Preparation of Name and Address Data for Record Linkage Using Hidden Markov Models.”</span> <em>BMC Medical Informatics and Decision Making</em> 2: 1–16.
-</div>
-<div class="csl-entry">
-Cormack, Richard M. 1989. <span>“Log-Linear Models for Capture-Recapture.”</span> <em>Biometrics</em>, 395–413.
-</div>
-<div class="csl-entry">
-Dunn, H. L. 1946. <span>“Record Linkage.”</span> <em>American Journal of Public Health and the Nations Health</em> 36 (12): 1412–16. <a href="https://doi.org/10.2105/AJPH.36.12.1412">https://doi.org/10.2105/AJPH.36.12.1412</a>.
-</div>
-<div class="csl-entry">
-Fellegi, Ivan P, and Alan B Sunter. 1969. <span>“A Theory for Record Linkage.”</span> <em>Journal of the American Statistical Association</em> 64 (328): 1183–1210.
-</div>
-<div class="csl-entry">
-Fienberg, Stephen E. 1972. <span>“The Multiple Recapture Census for Closed Populations and Incomplete 2k Contingency Tables.”</span> <em>Biometrika</em> 59 (3): 591–603.
-</div>
-<div class="csl-entry">
-Gutiérrez, Hugo Andrés. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Estimación de Parámetros</em>. Segunda edición. Ediciones de la U.
-</div>
-<div class="csl-entry">
-Herzog, Thomas N, Fritz J Scheuren, and William E Winkler. 2007. <em>Data Quality and Record Linkage Techniques</em>. Vol. 1. Springer.
-</div>
-<div class="csl-entry">
-Hogan, Howard. 2003. <span>“The Accuracy and Coverage Evaluation: Theory and Design.”</span> <em>Survey Methodology</em> 29 (2): 129–38. <a href="https://www150.statcan.gc.ca/n1/en/catalogue/12-001-X20030026444">https://www150.statcan.gc.ca/n1/en/catalogue/12-001-X20030026444</a>.
-</div>
-<div class="csl-entry">
-Howard, James P et al. 2020. <span>“Phonetic Spelling Algorithm Implementations for r.”</span> <em>Journal of Statistical Software</em> 95: 1–21.
-</div>
-<div class="csl-entry">
-Larsen, Michael D, and Donald B Rubin. 2001. <span>“Iterative Automated Record Linkage Using Mixture Models.”</span> <em>Journal of the American Statistical Association</em> 96 (453): 32–41.
-</div>
-<div class="csl-entry">
-Lincoln, F. C. 1930. <span>“Calculating Waterfowl Abundance on the Basis of Banding Returns.”</span> <em>Circular</em> 118: 1–4.
-</div>
-<div class="csl-entry">
-Lynch, Billy T, William L Arends, et al. 1977. <span>“Selection of a Surname Coding Procedure for the SRS Record Linkage System.”</span> <em>Washington, DC: US Department of Agriculture, Sample Survey Research Branch, Research Division</em>.
-</div>
-<div class="csl-entry">
-Menestrina, David, Steven Euijong Whang, and Hector Garcia-Molina. 2010. <span>“Evaluating Entity Resolution Results.”</span> <em>Proceedings of the VLDB Endowment</em> 3 (1-2): 208–19.
-</div>
-<div class="csl-entry">
-Nations, United. 2010. <em>Post Enumeration Surveys - Operational Guidelines</em>. 2010 World Population and Housing Census Programme.
-</div>
-<div class="csl-entry">
-Nauman, Felix, and Melanie Herschel. 2022. <em>An Introduction to Duplicate Detection</em>. Springer Nature.
-</div>
-<div class="csl-entry">
-Navarro, Gonzalo. 2001. <span>“A Guided Tour to Approximate String Matching.”</span> <em>ACM Computing Surveys (CSUR)</em> 33 (1): 31–88.
-</div>
-<div class="csl-entry">
-Newcombe, H. B., J. M. Kennedy, S. J. Axford, and A. P. James. 1959. <span>“Automatic Linkage of Vital Records: Computers Can Be Used to Extract" Follow-up" Statistics of Families from Files of Routine Records.”</span> <em>Science</em> 130 (3381): 954–59. <a href="https://doi.org/10.1126/science.130.3381.954">https://doi.org/10.1126/science.130.3381.954</a>.
-</div>
-<div class="csl-entry">
-Newcombe, Howard B., and J. Michael Kennedy. 1962. <span>“Record Linkage: Making Maximum Use of the Discriminating Power of Identifying Information.”</span> <em>Communications of the ACM</em> 5 (11): 563–66. <a href="https://doi.org/10.1145/368996.369032">https://doi.org/10.1145/368996.369032</a>.
-</div>
-<div class="csl-entry">
-Nour, El-Sayed. 1982. <span>“On the Estimation of the Total Number of Vital Events with Data from Dual Collection Systems.”</span> <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em> 145 (1): 106–16.
-</div>
-<div class="csl-entry">
-Odell, Margaret, and Robert Russell. 1918. <span>“The Soundex Coding System.”</span> <em>US Patents</em> 1261167: 9.
-</div>
-<div class="csl-entry">
-Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
-</div>
-<div class="csl-entry">
-Philips, Lawrence. 1990. <span>“Hanging on the Metaphone.”</span> <em>Computer Language</em> 7 (12): 39–43.
-</div>
-<div class="csl-entry">
-Rivest, Louis-Paul, and Sophie Baillargeon. 2014. <span>“Capture-Recapture Methods for Estimating the Size of a Population: Dealing with Variable Capture Probabilities.”</span> <em>Statistics in Action: A Canadian Outlook</em> 40: 289–304.
-</div>
-<div class="csl-entry">
-Sadinle, Mauricio. 2009. <span>“Transformed Logit Confidence Intervals for Small Populations in Single Capture–Recapture Estimation.”</span> <em>Communications in Statistics-Simulation and Computation</em> 38 (9): 1909–24.
-</div>
-<div class="csl-entry">
-Schnabel, Z. E. 1938. <span>“The Estimation of the Total Fish Population of a Lake.”</span> <em>American Mathematical Monthly</em> 45: 348–52.
-</div>
-<div class="csl-entry">
-Seber, George Arthur Frederick. 1982. <em>The Estimation of Animal Abundance and Related Parameters</em>.
-</div>
-<div class="csl-entry">
-Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimating Birth and Death Rates and the Extent of Registration.”</span> <em>Journal of the American Statistical Association</em> 44 (245): 101–15.
-</div>
-<div class="csl-entry">
-Van Buuren, Stef, and Stef Van Buuren. 2012. <em>Flexible Imputation of Missing Data</em>. Vol. 10. CRC press Boca Raton, FL.
-</div>
-<div class="csl-entry">
-Vatsalan, Dinusha, Dimitrios Karapiperis, and Vassilios S. Verykios. 2020. <span>“Privacy-Preserving Record Linkage.”</span> In <em>Encyclopedia of Big Data Technologies</em>, edited by Albert Zomaya, Javid Taheri, and Sherif Sakr, 1–10. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-63962-8_17-2">https://doi.org/10.1007/978-3-319-63962-8_17-2</a>.
-</div>
-<div class="csl-entry">
-Webster, Anthony J, and Richard Kemp. 2013. <span>“Estimating Omissions from Searches.”</span> <em>The American Statistician</em> 67 (2): 82–89.
-</div>
-<div class="csl-entry">
-Winkler, William E. 2000. <em>Using the EM Algorithm for Weight Computation in the Fellegi-Sunter Model of Record Linkage</em>. US Bureau of the Census Washington, DC.
-</div>
-<div class="csl-entry">
-Winkler, William E et al. 2006. <span>“Overview of Record Linkage and Current Research Directions.”</span> <em>Bureau of the Census</em> 25 (4): 603–23.
-</div>
-<div class="csl-entry">
-Winkler, William E. 1990. <span>“String Comparator Metrics and Enhanced Decision Rules in the Fellegi-Sunter Model of Record Linkage.”</span> RR91/9. U.S. Bureau of the Census.
-</div>
-<div class="csl-entry">
-Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
-</div>
-<div class="csl-entry">
-Zelterman, Daniel. 1988. <span>“Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.”</span> <em>Journal of Statistical Planning and Inference</em> 18 (2): 225–37.
+<p><strong>Ejemplo usando el paquete fastLink</strong></p>
+<p>Para explorar otras opciones, en este ejemplo se usará el conjunto de datos <code>RLdata10000</code> del paquete <code>RecordLinkage</code>, el cual contiene 10.000 registros con 1.000 duplicados y 8.000 no duplicados.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="implementación.html#cb42-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb42-2"><a href="implementación.html#cb42-2" tabindex="-1"></a><span class="fu">p_load</span>(tidyverse, janitor, fastLink, RecordLinkage, parallel)</span>
+<span id="cb42-3"><a href="implementación.html#cb42-3" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="implementación.html#cb42-4" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;RLdata10000&quot;</span>)</span>
+<span id="cb42-5"><a href="implementación.html#cb42-5" tabindex="-1"></a><span class="fu">head</span>(RLdata10000)</span></code></pre></div>
+<pre><code>##   fname_c1 fname_c2   lname_c1 lname_c2   by bm bd
+## 1    FRANK     &lt;NA&gt;    MUELLER     &lt;NA&gt; 1967  9 27
+## 2   MARTIN     &lt;NA&gt;    SCHWARZ     &lt;NA&gt; 1967  2 17
+## 3  HERBERT     &lt;NA&gt; ZIMMERMANN     &lt;NA&gt; 1961 11  6
+## 4     HANS     &lt;NA&gt;    SCHMITT     &lt;NA&gt; 1945  8 14
+## 5      UWE     &lt;NA&gt;     KELLER     &lt;NA&gt; 2000  7  5
+## 6   DANIEL     &lt;NA&gt;   HEINRICH     &lt;NA&gt; 1967  5  6</code></pre>
+<p>Al igual que en el ejemplo anterior, suponga que un subconjunto de los datos de la muestra E fue revisado de forma manual para establecer la coincidencia con la muestra P, y que ha conservado un id único que permite realizar el emparejamiento exacto.</p>
+<p>En el caso de <code>RLdata10000</code> se cuenta con el vector <code>identity.RLdata10000</code> que conserva el id único de cada registro, esto con fines de entrenamiento de un modelo o como en este caso, para mostrar el uso de los procedimientos. Note que solo hay 9.000 identificadores únicos, por lo que 1.000 son duplicados, el desafío es que los métodos de emparejamiento los identifique con el menor error.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="implementación.html#cb44-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(identity.RLdata10000))</span></code></pre></div>
+<pre><code>## [1] 9000</code></pre>
+<p>Se define el vector <code>var</code> con todas las variables que se hará el emparejamiento, en el vector <code>char_vars</code> se conservan las variables de cadena donde es posible hacer cálculos con métricas de similaridad, <code>cal_simil</code> especifica para cuales de las variables de <code>char_vars</code> no se exige coincidencias exactas. La métrica que se usa por defecto es Jaro-Winkler, pero hay otras opciones que se pueden implementar.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="implementación.html#cb46-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>, <span class="st">&quot;by&quot;</span>, <span class="st">&quot;bm&quot;</span>, <span class="st">&quot;bd&quot;</span>)</span>
+<span id="cb46-2"><a href="implementación.html#cb46-2" tabindex="-1"></a>char_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>)</span>
+<span id="cb46-3"><a href="implementación.html#cb46-3" tabindex="-1"></a>cal_simil <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>)</span></code></pre></div>
+<p>La función <code>fastLink</code> permite identificar los duplicados usando los mismos datos en los argumentos de los <code>dfA</code> y <code>dfB</code>, y cuenta con un argumento para distribuir en varios cores el procesamiento. <code>cut.a</code> es el umbral mínimo de probabilidad posterior para aceptar un <em>emparejamiento</em> y <code>cut.p</code> es el umbral inferior para considerar un registro como <em>emparejamiento potencial</em> (que pase a revisión clerical), es decir, si la probabilidad está entre <code>cut.p</code> y <code>cut.a</code>, el par se considera un <em>emparejamiento potencial</em> que requiere revisión manual. Si la probabilidad es menor que <code>cut.p</code>, el registro se considera como <em>no emparejado</em>. Se debe tener en cuenta que un valor muy alto de <code>cut.a</code> puede originar más precisión pero menos emparejamientos, pero si <code>cut.a</code> es bajo entonces se espera un mayor <em>recall</em> y un mayor riesgo de falsos positivos.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="implementación.html#cb47-1" tabindex="-1"></a>nCores <span class="ot">&lt;-</span> <span class="fu">detectCores</span>()</span>
+<span id="cb47-2"><a href="implementación.html#cb47-2" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">fastLink</span>(<span class="at">dfA =</span> RLdata10000, <span class="at">dfB =</span> RLdata10000,</span>
+<span id="cb47-3"><a href="implementación.html#cb47-3" tabindex="-1"></a>                <span class="at">varnames =</span> vars,</span>
+<span id="cb47-4"><a href="implementación.html#cb47-4" tabindex="-1"></a>                <span class="at">stringdist.match =</span> char_vars,</span>
+<span id="cb47-5"><a href="implementación.html#cb47-5" tabindex="-1"></a>                <span class="at">stringdist.method =</span> <span class="st">&quot;jw&quot;</span>,</span>
+<span id="cb47-6"><a href="implementación.html#cb47-6" tabindex="-1"></a>                <span class="at">partial.match =</span> cal_simil,</span>
+<span id="cb47-7"><a href="implementación.html#cb47-7" tabindex="-1"></a>                <span class="at">cut.a =</span> <span class="fl">0.94</span>,</span>
+<span id="cb47-8"><a href="implementación.html#cb47-8" tabindex="-1"></a>                <span class="at">cut.p =</span> <span class="fl">0.84</span>,</span>
+<span id="cb47-9"><a href="implementación.html#cb47-9" tabindex="-1"></a>                <span class="at">dedupe =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb47-10"><a href="implementación.html#cb47-10" tabindex="-1"></a>                <span class="at">n.cores =</span> nCores <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## 
+## ==================== 
+## fastLink(): Fast Probabilistic Record Linkage
+## ==================== 
+## 
+## If you set return.all to FALSE, you will not be able to calculate a confusion table as a summary statistic.
+## dfA and dfB are identical, assuming deduplication of a single data set.
+## Setting return.all to FALSE.
+## 
+## Calculating matches for each variable.
+## Getting counts for parameter estimation.
+##     Parallelizing calculation using OpenMP. 1 threads out of 8 are used.
+## Running the EM algorithm.
+## Getting the indices of estimated matches.
+##     Parallelizing calculation using OpenMP. 1 threads out of 8 are used.
+## Calculating the posterior for each pair of matched observations.
+## Getting the match patterns for each estimated match.</code></pre>
+<p>El procedimiento genera la variable <code>dedupe.ids</code> para todo el conjunto de datos. La función <code>getMatches</code> permite extraer el conjunto de datos con la variable de identificación.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="implementación.html#cb49-1" tabindex="-1"></a>index_dup <span class="ot">&lt;-</span> <span class="fu">getMatches</span>(<span class="at">dfA =</span> RLdata10000, <span class="at">dfB =</span> RLdata10000, <span class="at">fl.out =</span> res) </span>
+<span id="cb49-2"><a href="implementación.html#cb49-2" tabindex="-1"></a>index_dup <span class="ot">&lt;-</span> index_dup <span class="sc">|&gt;</span> <span class="fu">bind_cols</span>(<span class="fu">data.frame</span>(<span class="at">id =</span> identity.RLdata10000))</span>
+<span id="cb49-3"><a href="implementación.html#cb49-3" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="implementación.html#cb49-4" tabindex="-1"></a>duplicados <span class="ot">&lt;-</span> <span class="fu">get_dupes</span>(index_dup, dedupe.ids)</span>
+<span id="cb49-5"><a href="implementación.html#cb49-5" tabindex="-1"></a><span class="fu">head</span>(duplicados)</span></code></pre></div>
+<pre><code>##   dedupe.ids dupe_count fname_c1 fname_c2    lname_c1 lname_c2   by bm bd   id
+## 1        420          3 GUENTHER     &lt;NA&gt; ZIMMERMWANN     &lt;NA&gt; 1971  6 23 1794
+## 2        420          3 GUENTHER     &lt;NA&gt;  ZIMMERMANN     &lt;NA&gt; 1992  6 23 1864
+## 3        420          3 GUENTHER     &lt;NA&gt;  ZIMMERMANN     &lt;NA&gt; 1971  6 23 1794
+## 4       3969          3  GERTRUD     &lt;NA&gt;     MUELLER     &lt;NA&gt; 1964  7 27 8970
+## 5       3969          3  GERTRUD     &lt;NA&gt;     MUELOER     &lt;NA&gt; 1964  7 11 7616
+## 6       3969          3  GERTRUD     &lt;NA&gt;     MUELLER     &lt;NA&gt; 1964  7 11 7616</code></pre>
+<p>El desempeño del modelo se puede evaluar mediante una matriz de confusión que compara las predicciones del modelo con los valores reales. En este caso, el modelo identificó correctamente 982 verdaderos positivos, es decir, observaciones que efectivamente eran duplicados. Sin embargo, también generó 18 falsos negativos, que son casos verdaderos que el modelo no logró identificar correctamente. Además, el modelo produjo 63 falsos positivos, es decir, casos que fueron clasificados como verdaderos por el modelo, pero en realidad no eran duplicados.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="implementación.html#cb51-1" tabindex="-1"></a>ids_duplicados <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(identity.RLdata10000))[<span class="fu">table</span>(identity.RLdata10000) <span class="sc">&gt;</span> <span class="dv">1</span>]</span>
+<span id="cb51-2"><a href="implementación.html#cb51-2" tabindex="-1"></a>todos_ids <span class="ot">&lt;-</span> <span class="fu">union</span>(<span class="fu">unique</span>(duplicados<span class="sc">$</span>id), <span class="fu">unique</span>(ids_duplicados))</span>
+<span id="cb51-3"><a href="implementación.html#cb51-3" tabindex="-1"></a></span>
+<span id="cb51-4"><a href="implementación.html#cb51-4" tabindex="-1"></a>dupes_model <span class="ot">&lt;-</span> todos_ids <span class="sc">%in%</span> <span class="fu">unique</span>(duplicados<span class="sc">$</span>id)</span>
+<span id="cb51-5"><a href="implementación.html#cb51-5" tabindex="-1"></a>dupes_real <span class="ot">&lt;-</span> todos_ids <span class="sc">%in%</span> ids_duplicados</span>
+<span id="cb51-6"><a href="implementación.html#cb51-6" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="implementación.html#cb51-7" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">Real =</span> dupes_real, <span class="at">Modelo =</span> dupes_model)</span>
+<span id="cb51-8"><a href="implementación.html#cb51-8" tabindex="-1"></a><span class="fu">print</span>(matriz)</span></code></pre></div>
+<pre><code>##        Modelo
+## Real    FALSE TRUE
+##   FALSE     0   63
+##   TRUE     18  982</code></pre>
 </div>
 </div>
-</div>
-</div>
-<!-- </div> -->
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="evaluación.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="evaluación.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vinculación.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
