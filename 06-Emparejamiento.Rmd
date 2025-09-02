@@ -5,15 +5,15 @@ Las bases de datos censales, rara vez se cuentan con identificadores únicos fia
 Por ejemplo, los registros:
 
 - _Nohora Rodriguez, nacida el 8/10/1960_
-- _Nora Rodrigues, nacida el 19601008"_
+- _Nora Rodrigues, nacida el 19601008_
 
-pueden referirse a la misma persona, pero un algoritmo exacto no quedarán emparejados. El enfoque probabilístico permite capturar estas coincidencias aproximadas mediante modelos estadísticos, como el propuesto por Fellegi y Sunter [@fellegi1969theory].
+pueden referirse a la misma persona, pero un algoritmo exacto no emparejará estos registros. por el contrario, el enfoque probabilístico permite capturar estas coincidencias aproximadas mediante modelos estadísticos, como el propuesto por Fellegi y Sunter [@fellegi1969theory].
 
 El emparejamiento probabilístico de registros, también conocido como _record linkage_, tiene una historia extensa en el campo de la estadística y es una técnica fundamental en el contexto de los censos y las encuestas de cobertura. Su objetivo es identificar registros que se refieren a la misma entidad^[Una entidad puede ser un hogar, una persona, una empresa u otro tipo de unidad registrada.] entre diferentes fuentes de datos, incluso cuando no se cuenta con un identificador único o cuando los datos contienen errores, inconsistencias o formatos distintos.
 
-La primera vez que se introdujo formalmente el término _record linkage_ fue en el año 1946, para describir la idea de construir un “libro de vida” de cada individuo, desde el nacimiento hasta la muerte, incluyendo eventos relevantes como matrimonios, divorcios, registros médicos y de seguridad social [@dunn1946]. Esta visión anticipaba muchos de los principios de lo que hoy se conoce como integración de datos longitudinales, fundamentales para la planificación de servicios públicos y la mejora de la calidad de las estadísticas nacionales.
+La primera vez que se introdujo formalmente el término _record linkage_ fue en el año 1946, para construir un “libro de vida” a nivel de individuo, desde el nacimiento hasta la muerte, incluyendo eventos relevantes como matrimonios, divorcios, registros médicos y de seguridad social [@dunn1946]. Esta visión anticipaba muchos de los principios de lo que hoy se conoce como integración de datos longitudinales, fundamentales para la planificación de servicios públicos y la mejora de la calidad de las estadísticas nacionales.
 
-Durante las décadas de 1950 y 1960, el avance tecnológico permitió se comenzara a automatizar el proceso de vinculación de registros utilizando computadoras. Además, se introdujo el enfoque probabilístico, en el cual se asignan pesos de acuerdo con los atributos comparados, considerando la frecuencia relativa de los valores [@newcombe1959, @newcombe1962]. Este enfoque sentó las bases para el desarrollo del modelo probabilístico propuesto formalmente por Fellegi y Sunter en 1969, quienes demostraron que bajo ciertas condiciones, es posible derivar una regla óptima para decidir si dos registros corresponden a la misma entidad [@fellegi1969theory].
+Durante las décadas de 1950 y 1960, el avance tecnológico permitió que se comenzara con la automatización del proceso de vinculación de registros. Además, se introdujo el enfoque probabilístico, en el cual se asignan pesos de acuerdo con los atributos comparados, considerando la frecuencia relativa de los valores [@newcombe1959, @newcombe1962]. Este enfoque sentó las bases para el desarrollo del modelo probabilístico propuesto formalmente por Fellegi y Sunter en 1969, quienes demostraron que bajo ciertas condiciones, es posible derivar una regla óptima para decidir si dos registros corresponden a la misma entidad [@fellegi1969theory].
 
 A lo largo de las décadas siguientes, este marco teórico fue ampliado por William Winkler en el U.S. Census Bureau, incorporando funciones de comparación aproximada de cadenas, ponderaciones basadas en frecuencia y algoritmos como EM para mejorar la estimación de parámetros del modelo de vinculación probabilística [@winkler1990, @winkler2006overview]. En el contexto de los censos de población y vivienda, estas técnicas han sido fundamentales para evaluar la omisión censal mediante encuestas de cobertura, al comparar registros del censo con los de la encuesta y estimar la omisión neta de forma robusta.
 
@@ -35,15 +35,15 @@ El emparejamiento completo entre dos bases con $n$ y $m$ registros implica compa
 
 Una dificultad adicional en el emparejamiento probabilístico es la falta de verdad conocida como _ground truth_, esto ocurre cuando no se dispone de datos que indiquen con certeza si dos registros corresponden a la misma persona. Esto obliga a realizar revisiones clericales para evaluar la calidad de los emparejamientos. Por esta razón, los procesos logísticos de la encuesta de cobertura deben considerar una fase de sensibilización para que la población esté dispuesta a colaborar y a entregar información fiable, debido a la resistencia que pueden tener porque fueron censadas hace poco tiempo.
 
-El emparejamiento de registros frecuentemente involucra información sensible como nombres, direcciones y fechas de nacimiento. Por tanto, la privacidad y confidencialidad deben ser cuidadosamente protegidas. En particular, cuando el emparejamiento ocurre entre bases de diferentes entidades, se deben aplicar las técnicas de emparejamiento preservando la privacidad (PPRL) [@christen2023privacy; @Vatsalan2020]. Estas consideraciones son especialmente importantes en contextos censales y gubernamentales, donde los datos personales son confidenciales por ley.
+El emparejamiento de registros frecuentemente involucra información sensible como nombres, direcciones y fechas de nacimiento. Por tanto, la privacidad y confidencialidad deben ser cuidadosamente protegidas. En particular, cuando el emparejamiento ocurre entre bases de diferentes entidades, en estos casos se deben aplicar las técnicas de emparejamiento preservando la privacidad (PPRL) [@christen2023privacy; @Vatsalan2020]. Estas consideraciones son especialmente importantes en contextos censales y gubernamentales, donde los datos personales son confidenciales por ley.
 
 
 ## Geolocalización
 
-El proceso para el emparejamiento a nivel de personas debe estar diseñado para determinar si:
+El proceso para el emparejamiento a nivel de personas debe estar diseñado para determinar si las personas de la muestra:
 
-1. las personas de la muestra P fueron enumeradas en el censo.
-2. las personas de la muestra E, enumeradas en el censo, fueron correctamente enumeradas. Si una persona de la muestra E fue erróneamente enumerada, el proceso de emparejamiento también debe determinar la razón del error.
+1. P fueron enumeradas en el censo.
+2. E, enumeradas en el censo, fueron correctamente enumeradas. Si una persona de la muestra E fue erróneamente enumerada, el proceso de emparejamiento también debe determinar la razón del error.
 
 Durante la encuesta de cobertura, el encuestador hará la lista, independiente del censo, de las personas que viven en la dirección en el momento de la encuesta y de aquellas que vivieron en la dirección el día del censo pero que ya no residen allí. Se deben levantar como mínimo los datos de sus nombres, apellidos, datos demográficos y relación de parentesco entre ellos, en caso de ser posible, se debería incluir el número de identificación personal.
 
@@ -379,7 +379,7 @@ La función `codif_fonetico()` fue diseñada por los autores de este material pa
 3. Reglas específicas como ^j → y, ^hua → wa, y ^hu → w, comunes en nombres quechuas o aimaras.
 4. Normalización de acentos, letra ñ y otros caracteres mediante stri_trans_general(..., "Latin-ASCII").
 5. Eliminación de vocales y letras mudas para capturar la estructura fonética esencial.
-6. Conversión de v a b, y de z a s, fonéticamente indistinguibles en la mayoría de los dialectos del español latinoamericano.
+6. Conversión de v a b, y de z a s, fonéticamente indistinguibles en la mayoría de los dialectos del español latino.
 
 El orden en que se aplican las transformaciones también juega un rol especial, el usuario puede ampliar las reglas si así lo desea, incorporando nuevas líneas. 
 
@@ -661,8 +661,8 @@ $$A \cup B = M \times U$$
 
 En donde:
 
-- $M$: conjunto de pares que son emparejamientos verdaderos (matches)
-- $U$: conjunto de pares que no son emparejados (non-matches)
+- $M$: conjunto de pares que son emparejamientos
+- $U$: conjunto de pares que no son emparejados
 
 Para cada par $(a, b)$ se define una función de comparación:
 
@@ -770,12 +770,12 @@ A continuación se presenta un resumen de los principales paquetes de R y Python
 | Python   | `splink`         | Basado en Fellegi-Sunter, escalable con Spark, DuckDB o SQL. Visualización interactiva. Soporta paralelización.  |
 
 
-### Deduplicación de registros
+## Deduplicación de registros
 
 
 Una etapa clave en el cálculo de la omisión censal, es asegurar que la base de enumeración de la encuesta de cobertura no tiene duplicados. Poder identificar si una persona ha sido enumerada más de una vez en el censo, se conoce como proceso de deduplicación.
 
-**Ejemplo usando el paquete RecodrLinkage**
+**Ejemplo usando el paquete RecordLinkage**
 
 Para ilustrar este procedimiento se implementará un análisis supervisado utilizando los datos simulados `RLdata500` incluidos en el paquete `RecordLinkage`. El conjunto de datos contiene 500 registros simulados, incluyendo nombres, apellidos, fechas de nacimiento y un identificador de la persona real (`identity.RLdata500`). Suponga que este es un conjunto de entrenamiento que fue seleccionado con unos registros del censo, y en el cual se realizó un proceso de identificación y revisión clerical para identificar con certeza si un registro es duplicado o no, de esta manera es posible entrenar un modelo, realizar evaluaciones de precisión y entender mejor las decisiones del algoritmo.
 
@@ -842,8 +842,8 @@ levenshteinSim(c("SCHUTE", "SCHULTE"),
 
 
 ```{r}
-jarowinkler(c("SCHUTE", "CHRISTA"),
-            c("SCHULTE", "CHRISTAH"))
+jarowinkler(c("SCHUTE", "SCHULTE"),
+            c("CHRISTA", "CHRISTAH"))
 
 ```
 El algoritmo de Jaro-Winkler tiende a funcionar mejor cuando los errores son de tipeo o diferencias leves. También se puede aplicar codificación fonética como `soundex()` o cualquiera de las presentadas en este capítulo.
@@ -975,8 +975,134 @@ print(matriz)
 ```
 
 
+## Vinculación de registros
 
-## Vinculación
+Con el fin de integrar la información proveniente de la muestra E y la muestra P, se debe llevar a cabo un proceso de emparejamiento de registros. Este procedimiento es fundamental para identificar unidades observadas en ambas muestras y, de esta manera implementar el modelo basado en el sistema de estimación dual.
+
+El proceso de vinculación de registros entre la muestra E y la muestra P se fundamenta en la comparación de variables clave que están presentes en ambas bases de datos. Entre estas variables se incluyen información como nombres, apellidos, sexo y fecha de nacimiento, las cuales permiten establecer la correspondencia entre los individuos de cada muestra. Estas coincidencias constituyen la base para identificar si un mismo registro aparece en las dos fuentes de información.
+
+La forma de implementar este procedimiento es análoga al utilizado previamente para la detección de duplicados dentro de una misma base de datos. La diferencia principal radica en los conjuntos de datos que se introducen en los argumentos de la función de emparejamiento: en lugar de comparar una base consigo misma, en este caso se contrasta la muestra E frente a la muestra P. De esta manera, se logra identificar registros compartidos entre las dos muestras, manteniendo la misma lógica de comparación, pero adaptada a un contexto de integración de fuentes.
+
+En el caso del paquete `RecordLinkage`, se cuenta con dos funciones para la creación de patrones de comparación a partir de conjuntos de datos: `compare.dedup()` o `RLBigDataDedup()`, para la deduplicación de un único conjunto de datos como se presentó en la sección anterior, y `compare.linkage()` o `RLBigDataLinkage()`, para vincular dos conjuntos de datos diferentes, la diferencia es que la segunda función está diseñada para grandes conjuntos de datos.
+
+Considere los conjuntos de datos de la muestra E y de la muestra P, almacenados previamente en los objetos `censo_limpio` y `encuesta_limpia`. Ahora se creará la variable de fecha con el valor de la fecha de nacimiento. 
 
 
+```{r, warning=FALSE, message=FALSE}
+library(pacman)
+p_load(tidyverse, RecordLinkage, lubridate)
 
+df_censo <- censo_limpio |> 
+  mutate(fecha_nacimiento = make_date(year = anio_nac, month = mes_nac, day = dia_nac)) |> 
+    select(id_segmento, ends_with("cod"), sexo, fecha_nacimiento)
+
+df_encuesta <- encuesta_limpia |> 
+    mutate(fecha_nacimiento = make_date(year = anio_nac, month = mes_nac, day = dia_nac)) |> 
+    select(id_segmento, ends_with("cod"), sexo, fecha_nacimiento)
+
+```
+
+
+Para el ejemplo se usará el paquete `RecordLinkage`. En este caso la muestra P contiene `r nrow(df_encuesta)` registros y la muestra E contiene `r nrow(df_censo)` registros, en este caso se aplicará una indexación usando como bloques el `id_segmento`. La estructura de la base de la muestra E es la siguiente
+
+```{r}
+head(df_censo)
+```
+Mientras que la muestra P es la siguiente, es de recordar que los conjuntos de datos ya fueron sometidos a un preprocesamiento, y note que los conjuntos de datos se han alineado para que las variables se denominen de la misma forma:
+
+```{r}
+head(df_encuesta)
+```
+
+La función `compare.linkage()` construye los patrones para la vinculación de los registros, en este caso se compara la muestra E y la muestra P usando como bloque el segmento.
+
+```{r}
+empareja <- compare.linkage(dataset1 = df_encuesta,
+                            dataset2 = df_censo,
+                            blockfld = 1, #Bloque por id_segmento
+                            strcmp = c("nombre_cod", "apellido_cod", "sexo"),
+                            exclude = "id_segmento"
+                            )
+```
+
+Una vez realizadas las comparaciones utilizando los criterios especificados, se aplica el algoritmo para calcular la probabilidad de coincidencia. Para ello,  el paquete `RecordLinkage` cuenta con los algoritmos de Fellegi-Sunter, EpiLink y EM.
+
+```{r}
+empareja_fs <- RecordLinkage::fsWeights(empareja)
+#empareja_em <- RecordLinkage::emWeights(empareja)
+#empareja_ep <- RecordLinkage::epiWeights(empareja)
+summary(empareja_fs)
+```
+
+El análisis de la distribución de los pesos muestra que, aunque la mayoría de los pares se concentran en valores negativos, lo que indica una baja similitud y, por tanto, una baja probabilidad de coincidencia. Hay algunos pares que alcanzan valores positivos, y dentro de estos, se observa que algunos  se ubican en el rango más alto, por lo que tienen una alta probabilidad de ser emparejamientos verdaderos.
+
+Cuando los conjuntos de datos son muy grandes, se puede usar un enfoque basado en la función `RLBigDataLinkage` en vez de `compare.linkage`, solo debe tener en cuenta que al ser objetos S4 debe ver los resultados usando el simbolo `@`, por ejemplo `summary(empareja_fs@Wdata)`.
+
+Los algoritmos calculan la probabilidad de coincidencia para cada registro en `df_encuesta` con cada registro en el conjunto de `df_censo` cuando pertenecen al mismo segmento, basándose en los patrones de comparación especificados. Ahora, es necesario realizar la clasificación como _emparejado_, _emparejamiento potencial_ o _no emparejado_. Para hacer esta clasificación, es necesario establecer el umbral de clasificación. 
+
+
+La elección del umbral suele ser un aspecto relevante. Si es muy bajo, se podría estar aceptando demasiados falsos positivos; si es muy alto, se podría perder verdaderos emparejados. una de las herramientas del paquete `RecordLinkage` es la función `getParetoThreshold()`, que puede ser útil para identificar el umbral de aceptación. Sin embargo, con conjuntos de datos grandes podría tardar mucho en ejecutarse.
+
+La siguiente gráfica es interactiva y permite observar cómo cambia la vida residual media a medida que sube el umbral. Se ha comentado la línea debido a que no puede compilarse por bookdown, y se ha tomado el umbral automático. La idea básica es identificar el punto de cambio de la pendiente en la curva, para ello puede usar un criterio como el del codo.
+
+```{r}
+#Este es un diagrama interactivo, por lo que se comenta la línea 
+#umbral <- getParetoThreshold(empareja_fs) 
+umbral <- 5.86
+```
+
+Una vez definido el umbral, se puede extraer en un conjunto de datos a los registros clasificados como _emparejados_. La primera fila corresponde al registro en `df_encuesta` mientras que el segundo corresponde al registro en `df_censo`. 
+
+
+```{r}
+emparejado <- getPairs(empareja_fs, min.weight = umbral)
+```
+
+
+```{r, echo=FALSE}
+p_load(gt, DT)
+
+emparejado %>%
+  gt() %>%
+  tab_header(
+    title = "Registros emparejados"
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "#f9f9f9"),
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels()
+  ) %>%
+  tab_options(
+    table.width = pct(100),
+    container.height = px(400) # alto fijo con scroll vertical
+  )
+```
+
+De igual forma, usando la misma gráfica obtenida con `getParetoThreshold()` se puede establecer un umbral más flexible, y encontrar los _emparejamientos potenciales_. En nuestro ejemplo se tomarán como aquellos registros que tienen un ponderador entre 1.2 y el umbral, los cuales pasarán a una revisión clerical para establecer si se clasifican como _emparejados_ o _no emparejados_
+
+```{r}
+posibles <- getPairs(empareja_fs, min.weight = 1.2, max.weight = umbral)
+```
+
+```{r}
+posibles %>%
+  gt() %>%
+  tab_header(
+    title = "Emparejamientos potenciales"
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "#f9f9f9"),
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels()
+  ) %>%
+  tab_options(
+    table.width = pct(100),
+    container.height = px(400) 
+  )
+```
+
+Finalizado el proceso, los registros que se lograron emparejar deben ser retirados del conjunto de datos `df_encuesta` y el conjunto `df_censo` debe ampliarse con otros segmentos aledaños a la muestra E, para repetir el proceso.  

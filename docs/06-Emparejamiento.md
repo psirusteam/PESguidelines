@@ -5,15 +5,15 @@ Las bases de datos censales, rara vez se cuentan con identificadores únicos fia
 Por ejemplo, los registros:
 
 - _Nohora Rodriguez, nacida el 8/10/1960_
-- _Nora Rodrigues, nacida el 19601008"_
+- _Nora Rodrigues, nacida el 19601008_
 
-pueden referirse a la misma persona, pero un algoritmo exacto no quedarán emparejados. El enfoque probabilístico permite capturar estas coincidencias aproximadas mediante modelos estadísticos, como el propuesto por Fellegi y Sunter [@fellegi1969theory].
+pueden referirse a la misma persona, pero un algoritmo exacto no emparejará estos registros. por el contrario, el enfoque probabilístico permite capturar estas coincidencias aproximadas mediante modelos estadísticos, como el propuesto por Fellegi y Sunter [@fellegi1969theory].
 
 El emparejamiento probabilístico de registros, también conocido como _record linkage_, tiene una historia extensa en el campo de la estadística y es una técnica fundamental en el contexto de los censos y las encuestas de cobertura. Su objetivo es identificar registros que se refieren a la misma entidad^[Una entidad puede ser un hogar, una persona, una empresa u otro tipo de unidad registrada.] entre diferentes fuentes de datos, incluso cuando no se cuenta con un identificador único o cuando los datos contienen errores, inconsistencias o formatos distintos.
 
-La primera vez que se introdujo formalmente el término _record linkage_ fue en el año 1946, para describir la idea de construir un “libro de vida” de cada individuo, desde el nacimiento hasta la muerte, incluyendo eventos relevantes como matrimonios, divorcios, registros médicos y de seguridad social [@dunn1946]. Esta visión anticipaba muchos de los principios de lo que hoy se conoce como integración de datos longitudinales, fundamentales para la planificación de servicios públicos y la mejora de la calidad de las estadísticas nacionales.
+La primera vez que se introdujo formalmente el término _record linkage_ fue en el año 1946, para construir un “libro de vida” a nivel de individuo, desde el nacimiento hasta la muerte, incluyendo eventos relevantes como matrimonios, divorcios, registros médicos y de seguridad social [@dunn1946]. Esta visión anticipaba muchos de los principios de lo que hoy se conoce como integración de datos longitudinales, fundamentales para la planificación de servicios públicos y la mejora de la calidad de las estadísticas nacionales.
 
-Durante las décadas de 1950 y 1960, el avance tecnológico permitió se comenzara a automatizar el proceso de vinculación de registros utilizando computadoras. Además, se introdujo el enfoque probabilístico, en el cual se asignan pesos de acuerdo con los atributos comparados, considerando la frecuencia relativa de los valores [@newcombe1959, @newcombe1962]. Este enfoque sentó las bases para el desarrollo del modelo probabilístico propuesto formalmente por Fellegi y Sunter en 1969, quienes demostraron que bajo ciertas condiciones, es posible derivar una regla óptima para decidir si dos registros corresponden a la misma entidad [@fellegi1969theory].
+Durante las décadas de 1950 y 1960, el avance tecnológico permitió que se comenzara con la automatización del proceso de vinculación de registros. Además, se introdujo el enfoque probabilístico, en el cual se asignan pesos de acuerdo con los atributos comparados, considerando la frecuencia relativa de los valores [@newcombe1959, @newcombe1962]. Este enfoque sentó las bases para el desarrollo del modelo probabilístico propuesto formalmente por Fellegi y Sunter en 1969, quienes demostraron que bajo ciertas condiciones, es posible derivar una regla óptima para decidir si dos registros corresponden a la misma entidad [@fellegi1969theory].
 
 A lo largo de las décadas siguientes, este marco teórico fue ampliado por William Winkler en el U.S. Census Bureau, incorporando funciones de comparación aproximada de cadenas, ponderaciones basadas en frecuencia y algoritmos como EM para mejorar la estimación de parámetros del modelo de vinculación probabilística [@winkler1990, @winkler2006overview]. En el contexto de los censos de población y vivienda, estas técnicas han sido fundamentales para evaluar la omisión censal mediante encuestas de cobertura, al comparar registros del censo con los de la encuesta y estimar la omisión neta de forma robusta.
 
@@ -35,15 +35,15 @@ El emparejamiento completo entre dos bases con $n$ y $m$ registros implica compa
 
 Una dificultad adicional en el emparejamiento probabilístico es la falta de verdad conocida como _ground truth_, esto ocurre cuando no se dispone de datos que indiquen con certeza si dos registros corresponden a la misma persona. Esto obliga a realizar revisiones clericales para evaluar la calidad de los emparejamientos. Por esta razón, los procesos logísticos de la encuesta de cobertura deben considerar una fase de sensibilización para que la población esté dispuesta a colaborar y a entregar información fiable, debido a la resistencia que pueden tener porque fueron censadas hace poco tiempo.
 
-El emparejamiento de registros frecuentemente involucra información sensible como nombres, direcciones y fechas de nacimiento. Por tanto, la privacidad y confidencialidad deben ser cuidadosamente protegidas. En particular, cuando el emparejamiento ocurre entre bases de diferentes entidades, se deben aplicar las técnicas de emparejamiento preservando la privacidad (PPRL) [@christen2023privacy; @Vatsalan2020]. Estas consideraciones son especialmente importantes en contextos censales y gubernamentales, donde los datos personales son confidenciales por ley.
+El emparejamiento de registros frecuentemente involucra información sensible como nombres, direcciones y fechas de nacimiento. Por tanto, la privacidad y confidencialidad deben ser cuidadosamente protegidas. En particular, cuando el emparejamiento ocurre entre bases de diferentes entidades, en estos casos se deben aplicar las técnicas de emparejamiento preservando la privacidad (PPRL) [@christen2023privacy; @Vatsalan2020]. Estas consideraciones son especialmente importantes en contextos censales y gubernamentales, donde los datos personales son confidenciales por ley.
 
 
 ## Geolocalización
 
-El proceso para el emparejamiento a nivel de personas debe estar diseñado para determinar si:
+El proceso para el emparejamiento a nivel de personas debe estar diseñado para determinar si las personas de la muestra:
 
-1. las personas de la muestra P fueron enumeradas en el censo.
-2. las personas de la muestra E, enumeradas en el censo, fueron correctamente enumeradas. Si una persona de la muestra E fue erróneamente enumerada, el proceso de emparejamiento también debe determinar la razón del error.
+1. P fueron enumeradas en el censo.
+2. E, enumeradas en el censo, fueron correctamente enumeradas. Si una persona de la muestra E fue erróneamente enumerada, el proceso de emparejamiento también debe determinar la razón del error.
 
 Durante la encuesta de cobertura, el encuestador hará la lista, independiente del censo, de las personas que viven en la dirección en el momento de la encuesta y de aquellas que vivieron en la dirección el día del censo pero que ya no residen allí. Se deben levantar como mínimo los datos de sus nombres, apellidos, datos demográficos y relación de parentesco entre ellos, en caso de ser posible, se debería incluir el número de identificación personal.
 
@@ -131,24 +131,28 @@ load("data/encuesta.rda")
 A continuación se presenta la estructura para los primeros registros de la tabla censo:
 
 
+```
+## Warning: package 'gt' was built under R version 4.4.3
+```
+
 ```{=html}
-<div id="ttsxiyzqrp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ttsxiyzqrp table {
+<div id="esvvmumorn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#esvvmumorn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ttsxiyzqrp thead, #ttsxiyzqrp tbody, #ttsxiyzqrp tfoot, #ttsxiyzqrp tr, #ttsxiyzqrp td, #ttsxiyzqrp th {
+#esvvmumorn thead, #esvvmumorn tbody, #esvvmumorn tfoot, #esvvmumorn tr, #esvvmumorn td, #esvvmumorn th {
   border-style: none;
 }
 
-#ttsxiyzqrp p {
+#esvvmumorn p {
   margin: 0;
   padding: 0;
 }
 
-#ttsxiyzqrp .gt_table {
+#esvvmumorn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -174,12 +178,12 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-left-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_caption {
+#esvvmumorn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ttsxiyzqrp .gt_title {
+#esvvmumorn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -191,7 +195,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-bottom-width: 0;
 }
 
-#ttsxiyzqrp .gt_subtitle {
+#esvvmumorn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -203,7 +207,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-top-width: 0;
 }
 
-#ttsxiyzqrp .gt_heading {
+#esvvmumorn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -215,13 +219,13 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-right-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_bottom_border {
+#esvvmumorn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_col_headings {
+#esvvmumorn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -236,7 +240,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-right-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_col_heading {
+#esvvmumorn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -256,7 +260,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   overflow-x: hidden;
 }
 
-#ttsxiyzqrp .gt_column_spanner_outer {
+#esvvmumorn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -268,15 +272,15 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   padding-right: 4px;
 }
 
-#ttsxiyzqrp .gt_column_spanner_outer:first-child {
+#esvvmumorn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ttsxiyzqrp .gt_column_spanner_outer:last-child {
+#esvvmumorn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ttsxiyzqrp .gt_column_spanner {
+#esvvmumorn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -288,11 +292,11 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   width: 100%;
 }
 
-#ttsxiyzqrp .gt_spanner_row {
+#esvvmumorn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ttsxiyzqrp .gt_group_heading {
+#esvvmumorn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -318,7 +322,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   text-align: left;
 }
 
-#ttsxiyzqrp .gt_empty_group_heading {
+#esvvmumorn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -333,15 +337,15 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   vertical-align: middle;
 }
 
-#ttsxiyzqrp .gt_from_md > :first-child {
+#esvvmumorn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ttsxiyzqrp .gt_from_md > :last-child {
+#esvvmumorn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ttsxiyzqrp .gt_row {
+#esvvmumorn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -360,7 +364,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   overflow-x: hidden;
 }
 
-#ttsxiyzqrp .gt_stub {
+#esvvmumorn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -373,7 +377,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   padding-right: 5px;
 }
 
-#ttsxiyzqrp .gt_stub_row_group {
+#esvvmumorn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -387,15 +391,15 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   vertical-align: top;
 }
 
-#ttsxiyzqrp .gt_row_group_first td {
+#esvvmumorn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ttsxiyzqrp .gt_row_group_first th {
+#esvvmumorn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ttsxiyzqrp .gt_summary_row {
+#esvvmumorn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -405,16 +409,16 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   padding-right: 5px;
 }
 
-#ttsxiyzqrp .gt_first_summary_row {
+#esvvmumorn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_first_summary_row.thick {
+#esvvmumorn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ttsxiyzqrp .gt_last_summary_row {
+#esvvmumorn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -424,7 +428,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-bottom-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_grand_summary_row {
+#esvvmumorn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -434,7 +438,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   padding-right: 5px;
 }
 
-#ttsxiyzqrp .gt_first_grand_summary_row {
+#esvvmumorn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -444,7 +448,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-top-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_last_grand_summary_row_top {
+#esvvmumorn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -454,11 +458,11 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-bottom-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_striped {
+#esvvmumorn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ttsxiyzqrp .gt_table_body {
+#esvvmumorn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -467,7 +471,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-bottom-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_footnotes {
+#esvvmumorn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -481,7 +485,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-right-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_footnote {
+#esvvmumorn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -490,7 +494,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   padding-right: 5px;
 }
 
-#ttsxiyzqrp .gt_sourcenotes {
+#esvvmumorn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -504,7 +508,7 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   border-right-color: #D3D3D3;
 }
 
-#ttsxiyzqrp .gt_sourcenote {
+#esvvmumorn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -512,72 +516,72 @@ A continuación se presenta la estructura para los primeros registros de la tabl
   padding-right: 5px;
 }
 
-#ttsxiyzqrp .gt_left {
+#esvvmumorn .gt_left {
   text-align: left;
 }
 
-#ttsxiyzqrp .gt_center {
+#esvvmumorn .gt_center {
   text-align: center;
 }
 
-#ttsxiyzqrp .gt_right {
+#esvvmumorn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ttsxiyzqrp .gt_font_normal {
+#esvvmumorn .gt_font_normal {
   font-weight: normal;
 }
 
-#ttsxiyzqrp .gt_font_bold {
+#esvvmumorn .gt_font_bold {
   font-weight: bold;
 }
 
-#ttsxiyzqrp .gt_font_italic {
+#esvvmumorn .gt_font_italic {
   font-style: italic;
 }
 
-#ttsxiyzqrp .gt_super {
+#esvvmumorn .gt_super {
   font-size: 65%;
 }
 
-#ttsxiyzqrp .gt_footnote_marks {
+#esvvmumorn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ttsxiyzqrp .gt_asterisk {
+#esvvmumorn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ttsxiyzqrp .gt_indent_1 {
+#esvvmumorn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ttsxiyzqrp .gt_indent_2 {
+#esvvmumorn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ttsxiyzqrp .gt_indent_3 {
+#esvvmumorn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ttsxiyzqrp .gt_indent_4 {
+#esvvmumorn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ttsxiyzqrp .gt_indent_5 {
+#esvvmumorn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ttsxiyzqrp .katex-display {
+#esvvmumorn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ttsxiyzqrp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#esvvmumorn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -673,23 +677,23 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
 
 
 ```{=html}
-<div id="fbpvppjqhy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fbpvppjqhy table {
+<div id="wuqxjkukwt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wuqxjkukwt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fbpvppjqhy thead, #fbpvppjqhy tbody, #fbpvppjqhy tfoot, #fbpvppjqhy tr, #fbpvppjqhy td, #fbpvppjqhy th {
+#wuqxjkukwt thead, #wuqxjkukwt tbody, #wuqxjkukwt tfoot, #wuqxjkukwt tr, #wuqxjkukwt td, #wuqxjkukwt th {
   border-style: none;
 }
 
-#fbpvppjqhy p {
+#wuqxjkukwt p {
   margin: 0;
   padding: 0;
 }
 
-#fbpvppjqhy .gt_table {
+#wuqxjkukwt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -715,12 +719,12 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-left-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_caption {
+#wuqxjkukwt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fbpvppjqhy .gt_title {
+#wuqxjkukwt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -732,7 +736,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-bottom-width: 0;
 }
 
-#fbpvppjqhy .gt_subtitle {
+#wuqxjkukwt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -744,7 +748,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-top-width: 0;
 }
 
-#fbpvppjqhy .gt_heading {
+#wuqxjkukwt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -756,13 +760,13 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-right-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_bottom_border {
+#wuqxjkukwt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_col_headings {
+#wuqxjkukwt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -777,7 +781,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-right-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_col_heading {
+#wuqxjkukwt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -797,7 +801,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   overflow-x: hidden;
 }
 
-#fbpvppjqhy .gt_column_spanner_outer {
+#wuqxjkukwt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -809,15 +813,15 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   padding-right: 4px;
 }
 
-#fbpvppjqhy .gt_column_spanner_outer:first-child {
+#wuqxjkukwt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fbpvppjqhy .gt_column_spanner_outer:last-child {
+#wuqxjkukwt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fbpvppjqhy .gt_column_spanner {
+#wuqxjkukwt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -829,11 +833,11 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   width: 100%;
 }
 
-#fbpvppjqhy .gt_spanner_row {
+#wuqxjkukwt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fbpvppjqhy .gt_group_heading {
+#wuqxjkukwt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -859,7 +863,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   text-align: left;
 }
 
-#fbpvppjqhy .gt_empty_group_heading {
+#wuqxjkukwt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -874,15 +878,15 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   vertical-align: middle;
 }
 
-#fbpvppjqhy .gt_from_md > :first-child {
+#wuqxjkukwt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fbpvppjqhy .gt_from_md > :last-child {
+#wuqxjkukwt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fbpvppjqhy .gt_row {
+#wuqxjkukwt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -901,7 +905,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   overflow-x: hidden;
 }
 
-#fbpvppjqhy .gt_stub {
+#wuqxjkukwt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -914,7 +918,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   padding-right: 5px;
 }
 
-#fbpvppjqhy .gt_stub_row_group {
+#wuqxjkukwt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -928,15 +932,15 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   vertical-align: top;
 }
 
-#fbpvppjqhy .gt_row_group_first td {
+#wuqxjkukwt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fbpvppjqhy .gt_row_group_first th {
+#wuqxjkukwt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fbpvppjqhy .gt_summary_row {
+#wuqxjkukwt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -946,16 +950,16 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   padding-right: 5px;
 }
 
-#fbpvppjqhy .gt_first_summary_row {
+#wuqxjkukwt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_first_summary_row.thick {
+#wuqxjkukwt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fbpvppjqhy .gt_last_summary_row {
+#wuqxjkukwt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -965,7 +969,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-bottom-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_grand_summary_row {
+#wuqxjkukwt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -975,7 +979,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   padding-right: 5px;
 }
 
-#fbpvppjqhy .gt_first_grand_summary_row {
+#wuqxjkukwt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -985,7 +989,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-top-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_last_grand_summary_row_top {
+#wuqxjkukwt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -995,11 +999,11 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-bottom-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_striped {
+#wuqxjkukwt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fbpvppjqhy .gt_table_body {
+#wuqxjkukwt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1008,7 +1012,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-bottom-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_footnotes {
+#wuqxjkukwt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1022,7 +1026,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-right-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_footnote {
+#wuqxjkukwt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1031,7 +1035,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   padding-right: 5px;
 }
 
-#fbpvppjqhy .gt_sourcenotes {
+#wuqxjkukwt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1045,7 +1049,7 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   border-right-color: #D3D3D3;
 }
 
-#fbpvppjqhy .gt_sourcenote {
+#wuqxjkukwt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1053,72 +1057,72 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
   padding-right: 5px;
 }
 
-#fbpvppjqhy .gt_left {
+#wuqxjkukwt .gt_left {
   text-align: left;
 }
 
-#fbpvppjqhy .gt_center {
+#wuqxjkukwt .gt_center {
   text-align: center;
 }
 
-#fbpvppjqhy .gt_right {
+#wuqxjkukwt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fbpvppjqhy .gt_font_normal {
+#wuqxjkukwt .gt_font_normal {
   font-weight: normal;
 }
 
-#fbpvppjqhy .gt_font_bold {
+#wuqxjkukwt .gt_font_bold {
   font-weight: bold;
 }
 
-#fbpvppjqhy .gt_font_italic {
+#wuqxjkukwt .gt_font_italic {
   font-style: italic;
 }
 
-#fbpvppjqhy .gt_super {
+#wuqxjkukwt .gt_super {
   font-size: 65%;
 }
 
-#fbpvppjqhy .gt_footnote_marks {
+#wuqxjkukwt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fbpvppjqhy .gt_asterisk {
+#wuqxjkukwt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fbpvppjqhy .gt_indent_1 {
+#wuqxjkukwt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fbpvppjqhy .gt_indent_2 {
+#wuqxjkukwt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fbpvppjqhy .gt_indent_3 {
+#wuqxjkukwt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fbpvppjqhy .gt_indent_4 {
+#wuqxjkukwt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fbpvppjqhy .gt_indent_5 {
+#wuqxjkukwt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fbpvppjqhy .katex-display {
+#wuqxjkukwt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fbpvppjqhy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wuqxjkukwt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1257,23 +1261,23 @@ censo_limpio <- censo |>
 
 
 ```{=html}
-<div id="qouzjodpkc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qouzjodpkc table {
+<div id="anvppzdgkw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#anvppzdgkw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qouzjodpkc thead, #qouzjodpkc tbody, #qouzjodpkc tfoot, #qouzjodpkc tr, #qouzjodpkc td, #qouzjodpkc th {
+#anvppzdgkw thead, #anvppzdgkw tbody, #anvppzdgkw tfoot, #anvppzdgkw tr, #anvppzdgkw td, #anvppzdgkw th {
   border-style: none;
 }
 
-#qouzjodpkc p {
+#anvppzdgkw p {
   margin: 0;
   padding: 0;
 }
 
-#qouzjodpkc .gt_table {
+#anvppzdgkw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1299,12 +1303,12 @@ censo_limpio <- censo |>
   border-left-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_caption {
+#anvppzdgkw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qouzjodpkc .gt_title {
+#anvppzdgkw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1316,7 +1320,7 @@ censo_limpio <- censo |>
   border-bottom-width: 0;
 }
 
-#qouzjodpkc .gt_subtitle {
+#anvppzdgkw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1328,7 +1332,7 @@ censo_limpio <- censo |>
   border-top-width: 0;
 }
 
-#qouzjodpkc .gt_heading {
+#anvppzdgkw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1340,13 +1344,13 @@ censo_limpio <- censo |>
   border-right-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_bottom_border {
+#anvppzdgkw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_col_headings {
+#anvppzdgkw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1361,7 +1365,7 @@ censo_limpio <- censo |>
   border-right-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_col_heading {
+#anvppzdgkw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1381,7 +1385,7 @@ censo_limpio <- censo |>
   overflow-x: hidden;
 }
 
-#qouzjodpkc .gt_column_spanner_outer {
+#anvppzdgkw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1393,15 +1397,15 @@ censo_limpio <- censo |>
   padding-right: 4px;
 }
 
-#qouzjodpkc .gt_column_spanner_outer:first-child {
+#anvppzdgkw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qouzjodpkc .gt_column_spanner_outer:last-child {
+#anvppzdgkw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qouzjodpkc .gt_column_spanner {
+#anvppzdgkw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1413,11 +1417,11 @@ censo_limpio <- censo |>
   width: 100%;
 }
 
-#qouzjodpkc .gt_spanner_row {
+#anvppzdgkw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qouzjodpkc .gt_group_heading {
+#anvppzdgkw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1443,7 +1447,7 @@ censo_limpio <- censo |>
   text-align: left;
 }
 
-#qouzjodpkc .gt_empty_group_heading {
+#anvppzdgkw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1458,15 +1462,15 @@ censo_limpio <- censo |>
   vertical-align: middle;
 }
 
-#qouzjodpkc .gt_from_md > :first-child {
+#anvppzdgkw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qouzjodpkc .gt_from_md > :last-child {
+#anvppzdgkw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qouzjodpkc .gt_row {
+#anvppzdgkw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1485,7 +1489,7 @@ censo_limpio <- censo |>
   overflow-x: hidden;
 }
 
-#qouzjodpkc .gt_stub {
+#anvppzdgkw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1498,7 +1502,7 @@ censo_limpio <- censo |>
   padding-right: 5px;
 }
 
-#qouzjodpkc .gt_stub_row_group {
+#anvppzdgkw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1512,15 +1516,15 @@ censo_limpio <- censo |>
   vertical-align: top;
 }
 
-#qouzjodpkc .gt_row_group_first td {
+#anvppzdgkw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qouzjodpkc .gt_row_group_first th {
+#anvppzdgkw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qouzjodpkc .gt_summary_row {
+#anvppzdgkw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1530,16 +1534,16 @@ censo_limpio <- censo |>
   padding-right: 5px;
 }
 
-#qouzjodpkc .gt_first_summary_row {
+#anvppzdgkw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_first_summary_row.thick {
+#anvppzdgkw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qouzjodpkc .gt_last_summary_row {
+#anvppzdgkw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1549,7 +1553,7 @@ censo_limpio <- censo |>
   border-bottom-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_grand_summary_row {
+#anvppzdgkw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1559,7 +1563,7 @@ censo_limpio <- censo |>
   padding-right: 5px;
 }
 
-#qouzjodpkc .gt_first_grand_summary_row {
+#anvppzdgkw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1569,7 +1573,7 @@ censo_limpio <- censo |>
   border-top-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_last_grand_summary_row_top {
+#anvppzdgkw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1579,11 +1583,11 @@ censo_limpio <- censo |>
   border-bottom-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_striped {
+#anvppzdgkw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qouzjodpkc .gt_table_body {
+#anvppzdgkw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1592,7 +1596,7 @@ censo_limpio <- censo |>
   border-bottom-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_footnotes {
+#anvppzdgkw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1606,7 +1610,7 @@ censo_limpio <- censo |>
   border-right-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_footnote {
+#anvppzdgkw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1615,7 +1619,7 @@ censo_limpio <- censo |>
   padding-right: 5px;
 }
 
-#qouzjodpkc .gt_sourcenotes {
+#anvppzdgkw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1629,7 +1633,7 @@ censo_limpio <- censo |>
   border-right-color: #D3D3D3;
 }
 
-#qouzjodpkc .gt_sourcenote {
+#anvppzdgkw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1637,72 +1641,72 @@ censo_limpio <- censo |>
   padding-right: 5px;
 }
 
-#qouzjodpkc .gt_left {
+#anvppzdgkw .gt_left {
   text-align: left;
 }
 
-#qouzjodpkc .gt_center {
+#anvppzdgkw .gt_center {
   text-align: center;
 }
 
-#qouzjodpkc .gt_right {
+#anvppzdgkw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qouzjodpkc .gt_font_normal {
+#anvppzdgkw .gt_font_normal {
   font-weight: normal;
 }
 
-#qouzjodpkc .gt_font_bold {
+#anvppzdgkw .gt_font_bold {
   font-weight: bold;
 }
 
-#qouzjodpkc .gt_font_italic {
+#anvppzdgkw .gt_font_italic {
   font-style: italic;
 }
 
-#qouzjodpkc .gt_super {
+#anvppzdgkw .gt_super {
   font-size: 65%;
 }
 
-#qouzjodpkc .gt_footnote_marks {
+#anvppzdgkw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qouzjodpkc .gt_asterisk {
+#anvppzdgkw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qouzjodpkc .gt_indent_1 {
+#anvppzdgkw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qouzjodpkc .gt_indent_2 {
+#anvppzdgkw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qouzjodpkc .gt_indent_3 {
+#anvppzdgkw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qouzjodpkc .gt_indent_4 {
+#anvppzdgkw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qouzjodpkc .gt_indent_5 {
+#anvppzdgkw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qouzjodpkc .katex-display {
+#anvppzdgkw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qouzjodpkc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#anvppzdgkw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1807,23 +1811,23 @@ encuesta_limpia <- encuesta |>
 
 
 ```{=html}
-<div id="ytzrftbzsb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ytzrftbzsb table {
+<div id="kkdqbztlns" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kkdqbztlns table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ytzrftbzsb thead, #ytzrftbzsb tbody, #ytzrftbzsb tfoot, #ytzrftbzsb tr, #ytzrftbzsb td, #ytzrftbzsb th {
+#kkdqbztlns thead, #kkdqbztlns tbody, #kkdqbztlns tfoot, #kkdqbztlns tr, #kkdqbztlns td, #kkdqbztlns th {
   border-style: none;
 }
 
-#ytzrftbzsb p {
+#kkdqbztlns p {
   margin: 0;
   padding: 0;
 }
 
-#ytzrftbzsb .gt_table {
+#kkdqbztlns .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1849,12 +1853,12 @@ encuesta_limpia <- encuesta |>
   border-left-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_caption {
+#kkdqbztlns .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ytzrftbzsb .gt_title {
+#kkdqbztlns .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1866,7 +1870,7 @@ encuesta_limpia <- encuesta |>
   border-bottom-width: 0;
 }
 
-#ytzrftbzsb .gt_subtitle {
+#kkdqbztlns .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1878,7 +1882,7 @@ encuesta_limpia <- encuesta |>
   border-top-width: 0;
 }
 
-#ytzrftbzsb .gt_heading {
+#kkdqbztlns .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1890,13 +1894,13 @@ encuesta_limpia <- encuesta |>
   border-right-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_bottom_border {
+#kkdqbztlns .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_col_headings {
+#kkdqbztlns .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1911,7 +1915,7 @@ encuesta_limpia <- encuesta |>
   border-right-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_col_heading {
+#kkdqbztlns .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1931,7 +1935,7 @@ encuesta_limpia <- encuesta |>
   overflow-x: hidden;
 }
 
-#ytzrftbzsb .gt_column_spanner_outer {
+#kkdqbztlns .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1943,15 +1947,15 @@ encuesta_limpia <- encuesta |>
   padding-right: 4px;
 }
 
-#ytzrftbzsb .gt_column_spanner_outer:first-child {
+#kkdqbztlns .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ytzrftbzsb .gt_column_spanner_outer:last-child {
+#kkdqbztlns .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ytzrftbzsb .gt_column_spanner {
+#kkdqbztlns .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1963,11 +1967,11 @@ encuesta_limpia <- encuesta |>
   width: 100%;
 }
 
-#ytzrftbzsb .gt_spanner_row {
+#kkdqbztlns .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ytzrftbzsb .gt_group_heading {
+#kkdqbztlns .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1993,7 +1997,7 @@ encuesta_limpia <- encuesta |>
   text-align: left;
 }
 
-#ytzrftbzsb .gt_empty_group_heading {
+#kkdqbztlns .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2008,15 +2012,15 @@ encuesta_limpia <- encuesta |>
   vertical-align: middle;
 }
 
-#ytzrftbzsb .gt_from_md > :first-child {
+#kkdqbztlns .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ytzrftbzsb .gt_from_md > :last-child {
+#kkdqbztlns .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ytzrftbzsb .gt_row {
+#kkdqbztlns .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2035,7 +2039,7 @@ encuesta_limpia <- encuesta |>
   overflow-x: hidden;
 }
 
-#ytzrftbzsb .gt_stub {
+#kkdqbztlns .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2048,7 +2052,7 @@ encuesta_limpia <- encuesta |>
   padding-right: 5px;
 }
 
-#ytzrftbzsb .gt_stub_row_group {
+#kkdqbztlns .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2062,15 +2066,15 @@ encuesta_limpia <- encuesta |>
   vertical-align: top;
 }
 
-#ytzrftbzsb .gt_row_group_first td {
+#kkdqbztlns .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ytzrftbzsb .gt_row_group_first th {
+#kkdqbztlns .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ytzrftbzsb .gt_summary_row {
+#kkdqbztlns .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2080,16 +2084,16 @@ encuesta_limpia <- encuesta |>
   padding-right: 5px;
 }
 
-#ytzrftbzsb .gt_first_summary_row {
+#kkdqbztlns .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_first_summary_row.thick {
+#kkdqbztlns .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ytzrftbzsb .gt_last_summary_row {
+#kkdqbztlns .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2099,7 +2103,7 @@ encuesta_limpia <- encuesta |>
   border-bottom-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_grand_summary_row {
+#kkdqbztlns .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2109,7 +2113,7 @@ encuesta_limpia <- encuesta |>
   padding-right: 5px;
 }
 
-#ytzrftbzsb .gt_first_grand_summary_row {
+#kkdqbztlns .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2119,7 +2123,7 @@ encuesta_limpia <- encuesta |>
   border-top-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_last_grand_summary_row_top {
+#kkdqbztlns .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2129,11 +2133,11 @@ encuesta_limpia <- encuesta |>
   border-bottom-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_striped {
+#kkdqbztlns .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ytzrftbzsb .gt_table_body {
+#kkdqbztlns .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2142,7 +2146,7 @@ encuesta_limpia <- encuesta |>
   border-bottom-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_footnotes {
+#kkdqbztlns .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2156,7 +2160,7 @@ encuesta_limpia <- encuesta |>
   border-right-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_footnote {
+#kkdqbztlns .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2165,7 +2169,7 @@ encuesta_limpia <- encuesta |>
   padding-right: 5px;
 }
 
-#ytzrftbzsb .gt_sourcenotes {
+#kkdqbztlns .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2179,7 +2183,7 @@ encuesta_limpia <- encuesta |>
   border-right-color: #D3D3D3;
 }
 
-#ytzrftbzsb .gt_sourcenote {
+#kkdqbztlns .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2187,72 +2191,72 @@ encuesta_limpia <- encuesta |>
   padding-right: 5px;
 }
 
-#ytzrftbzsb .gt_left {
+#kkdqbztlns .gt_left {
   text-align: left;
 }
 
-#ytzrftbzsb .gt_center {
+#kkdqbztlns .gt_center {
   text-align: center;
 }
 
-#ytzrftbzsb .gt_right {
+#kkdqbztlns .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ytzrftbzsb .gt_font_normal {
+#kkdqbztlns .gt_font_normal {
   font-weight: normal;
 }
 
-#ytzrftbzsb .gt_font_bold {
+#kkdqbztlns .gt_font_bold {
   font-weight: bold;
 }
 
-#ytzrftbzsb .gt_font_italic {
+#kkdqbztlns .gt_font_italic {
   font-style: italic;
 }
 
-#ytzrftbzsb .gt_super {
+#kkdqbztlns .gt_super {
   font-size: 65%;
 }
 
-#ytzrftbzsb .gt_footnote_marks {
+#kkdqbztlns .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ytzrftbzsb .gt_asterisk {
+#kkdqbztlns .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ytzrftbzsb .gt_indent_1 {
+#kkdqbztlns .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ytzrftbzsb .gt_indent_2 {
+#kkdqbztlns .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ytzrftbzsb .gt_indent_3 {
+#kkdqbztlns .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ytzrftbzsb .gt_indent_4 {
+#kkdqbztlns .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ytzrftbzsb .gt_indent_5 {
+#kkdqbztlns .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ytzrftbzsb .katex-display {
+#kkdqbztlns .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ytzrftbzsb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kkdqbztlns div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2486,7 +2490,7 @@ La función `codif_fonetico()` fue diseñada por los autores de este material pa
 3. Reglas específicas como ^j → y, ^hua → wa, y ^hu → w, comunes en nombres quechuas o aimaras.
 4. Normalización de acentos, letra ñ y otros caracteres mediante stri_trans_general(..., "Latin-ASCII").
 5. Eliminación de vocales y letras mudas para capturar la estructura fonética esencial.
-6. Conversión de v a b, y de z a s, fonéticamente indistinguibles en la mayoría de los dialectos del español latinoamericano.
+6. Conversión de v a b, y de z a s, fonéticamente indistinguibles en la mayoría de los dialectos del español latino.
 
 El orden en que se aplican las transformaciones también juega un rol especial, el usuario puede ampliar las reglas si así lo desea, incorporando nuevas líneas. 
 
@@ -2536,23 +2540,23 @@ datos <- data.frame(nombre = nombres) |>
 
 
 ```{=html}
-<div id="ghmxcbmtts" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ghmxcbmtts table {
+<div id="ldntnsplza" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ldntnsplza table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ghmxcbmtts thead, #ghmxcbmtts tbody, #ghmxcbmtts tfoot, #ghmxcbmtts tr, #ghmxcbmtts td, #ghmxcbmtts th {
+#ldntnsplza thead, #ldntnsplza tbody, #ldntnsplza tfoot, #ldntnsplza tr, #ldntnsplza td, #ldntnsplza th {
   border-style: none;
 }
 
-#ghmxcbmtts p {
+#ldntnsplza p {
   margin: 0;
   padding: 0;
 }
 
-#ghmxcbmtts .gt_table {
+#ldntnsplza .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2578,12 +2582,12 @@ datos <- data.frame(nombre = nombres) |>
   border-left-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_caption {
+#ldntnsplza .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ghmxcbmtts .gt_title {
+#ldntnsplza .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2595,7 +2599,7 @@ datos <- data.frame(nombre = nombres) |>
   border-bottom-width: 0;
 }
 
-#ghmxcbmtts .gt_subtitle {
+#ldntnsplza .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2607,7 +2611,7 @@ datos <- data.frame(nombre = nombres) |>
   border-top-width: 0;
 }
 
-#ghmxcbmtts .gt_heading {
+#ldntnsplza .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2619,13 +2623,13 @@ datos <- data.frame(nombre = nombres) |>
   border-right-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_bottom_border {
+#ldntnsplza .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_col_headings {
+#ldntnsplza .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2640,7 +2644,7 @@ datos <- data.frame(nombre = nombres) |>
   border-right-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_col_heading {
+#ldntnsplza .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2660,7 +2664,7 @@ datos <- data.frame(nombre = nombres) |>
   overflow-x: hidden;
 }
 
-#ghmxcbmtts .gt_column_spanner_outer {
+#ldntnsplza .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2672,15 +2676,15 @@ datos <- data.frame(nombre = nombres) |>
   padding-right: 4px;
 }
 
-#ghmxcbmtts .gt_column_spanner_outer:first-child {
+#ldntnsplza .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ghmxcbmtts .gt_column_spanner_outer:last-child {
+#ldntnsplza .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ghmxcbmtts .gt_column_spanner {
+#ldntnsplza .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2692,11 +2696,11 @@ datos <- data.frame(nombre = nombres) |>
   width: 100%;
 }
 
-#ghmxcbmtts .gt_spanner_row {
+#ldntnsplza .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ghmxcbmtts .gt_group_heading {
+#ldntnsplza .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2722,7 +2726,7 @@ datos <- data.frame(nombre = nombres) |>
   text-align: left;
 }
 
-#ghmxcbmtts .gt_empty_group_heading {
+#ldntnsplza .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2737,15 +2741,15 @@ datos <- data.frame(nombre = nombres) |>
   vertical-align: middle;
 }
 
-#ghmxcbmtts .gt_from_md > :first-child {
+#ldntnsplza .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ghmxcbmtts .gt_from_md > :last-child {
+#ldntnsplza .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ghmxcbmtts .gt_row {
+#ldntnsplza .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2764,7 +2768,7 @@ datos <- data.frame(nombre = nombres) |>
   overflow-x: hidden;
 }
 
-#ghmxcbmtts .gt_stub {
+#ldntnsplza .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2777,7 +2781,7 @@ datos <- data.frame(nombre = nombres) |>
   padding-right: 5px;
 }
 
-#ghmxcbmtts .gt_stub_row_group {
+#ldntnsplza .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2791,15 +2795,15 @@ datos <- data.frame(nombre = nombres) |>
   vertical-align: top;
 }
 
-#ghmxcbmtts .gt_row_group_first td {
+#ldntnsplza .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ghmxcbmtts .gt_row_group_first th {
+#ldntnsplza .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ghmxcbmtts .gt_summary_row {
+#ldntnsplza .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2809,16 +2813,16 @@ datos <- data.frame(nombre = nombres) |>
   padding-right: 5px;
 }
 
-#ghmxcbmtts .gt_first_summary_row {
+#ldntnsplza .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_first_summary_row.thick {
+#ldntnsplza .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ghmxcbmtts .gt_last_summary_row {
+#ldntnsplza .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2828,7 +2832,7 @@ datos <- data.frame(nombre = nombres) |>
   border-bottom-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_grand_summary_row {
+#ldntnsplza .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2838,7 +2842,7 @@ datos <- data.frame(nombre = nombres) |>
   padding-right: 5px;
 }
 
-#ghmxcbmtts .gt_first_grand_summary_row {
+#ldntnsplza .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2848,7 +2852,7 @@ datos <- data.frame(nombre = nombres) |>
   border-top-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_last_grand_summary_row_top {
+#ldntnsplza .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2858,11 +2862,11 @@ datos <- data.frame(nombre = nombres) |>
   border-bottom-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_striped {
+#ldntnsplza .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ghmxcbmtts .gt_table_body {
+#ldntnsplza .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2871,7 +2875,7 @@ datos <- data.frame(nombre = nombres) |>
   border-bottom-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_footnotes {
+#ldntnsplza .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2885,7 +2889,7 @@ datos <- data.frame(nombre = nombres) |>
   border-right-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_footnote {
+#ldntnsplza .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2894,7 +2898,7 @@ datos <- data.frame(nombre = nombres) |>
   padding-right: 5px;
 }
 
-#ghmxcbmtts .gt_sourcenotes {
+#ldntnsplza .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2908,7 +2912,7 @@ datos <- data.frame(nombre = nombres) |>
   border-right-color: #D3D3D3;
 }
 
-#ghmxcbmtts .gt_sourcenote {
+#ldntnsplza .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2916,72 +2920,72 @@ datos <- data.frame(nombre = nombres) |>
   padding-right: 5px;
 }
 
-#ghmxcbmtts .gt_left {
+#ldntnsplza .gt_left {
   text-align: left;
 }
 
-#ghmxcbmtts .gt_center {
+#ldntnsplza .gt_center {
   text-align: center;
 }
 
-#ghmxcbmtts .gt_right {
+#ldntnsplza .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ghmxcbmtts .gt_font_normal {
+#ldntnsplza .gt_font_normal {
   font-weight: normal;
 }
 
-#ghmxcbmtts .gt_font_bold {
+#ldntnsplza .gt_font_bold {
   font-weight: bold;
 }
 
-#ghmxcbmtts .gt_font_italic {
+#ldntnsplza .gt_font_italic {
   font-style: italic;
 }
 
-#ghmxcbmtts .gt_super {
+#ldntnsplza .gt_super {
   font-size: 65%;
 }
 
-#ghmxcbmtts .gt_footnote_marks {
+#ldntnsplza .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ghmxcbmtts .gt_asterisk {
+#ldntnsplza .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ghmxcbmtts .gt_indent_1 {
+#ldntnsplza .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ghmxcbmtts .gt_indent_2 {
+#ldntnsplza .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ghmxcbmtts .gt_indent_3 {
+#ldntnsplza .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ghmxcbmtts .gt_indent_4 {
+#ldntnsplza .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ghmxcbmtts .gt_indent_5 {
+#ldntnsplza .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ghmxcbmtts .katex-display {
+#ldntnsplza .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ghmxcbmtts div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ldntnsplza div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3034,23 +3038,23 @@ nom <- df |>
 
 
 ```{=html}
-<div id="lzybxxvpib" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lzybxxvpib table {
+<div id="kpfjtbhgjq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kpfjtbhgjq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lzybxxvpib thead, #lzybxxvpib tbody, #lzybxxvpib tfoot, #lzybxxvpib tr, #lzybxxvpib td, #lzybxxvpib th {
+#kpfjtbhgjq thead, #kpfjtbhgjq tbody, #kpfjtbhgjq tfoot, #kpfjtbhgjq tr, #kpfjtbhgjq td, #kpfjtbhgjq th {
   border-style: none;
 }
 
-#lzybxxvpib p {
+#kpfjtbhgjq p {
   margin: 0;
   padding: 0;
 }
 
-#lzybxxvpib .gt_table {
+#kpfjtbhgjq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3076,12 +3080,12 @@ nom <- df |>
   border-left-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_caption {
+#kpfjtbhgjq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lzybxxvpib .gt_title {
+#kpfjtbhgjq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3093,7 +3097,7 @@ nom <- df |>
   border-bottom-width: 0;
 }
 
-#lzybxxvpib .gt_subtitle {
+#kpfjtbhgjq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3105,7 +3109,7 @@ nom <- df |>
   border-top-width: 0;
 }
 
-#lzybxxvpib .gt_heading {
+#kpfjtbhgjq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3117,13 +3121,13 @@ nom <- df |>
   border-right-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_bottom_border {
+#kpfjtbhgjq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_col_headings {
+#kpfjtbhgjq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3138,7 +3142,7 @@ nom <- df |>
   border-right-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_col_heading {
+#kpfjtbhgjq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3158,7 +3162,7 @@ nom <- df |>
   overflow-x: hidden;
 }
 
-#lzybxxvpib .gt_column_spanner_outer {
+#kpfjtbhgjq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3170,15 +3174,15 @@ nom <- df |>
   padding-right: 4px;
 }
 
-#lzybxxvpib .gt_column_spanner_outer:first-child {
+#kpfjtbhgjq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lzybxxvpib .gt_column_spanner_outer:last-child {
+#kpfjtbhgjq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lzybxxvpib .gt_column_spanner {
+#kpfjtbhgjq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3190,11 +3194,11 @@ nom <- df |>
   width: 100%;
 }
 
-#lzybxxvpib .gt_spanner_row {
+#kpfjtbhgjq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lzybxxvpib .gt_group_heading {
+#kpfjtbhgjq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3220,7 +3224,7 @@ nom <- df |>
   text-align: left;
 }
 
-#lzybxxvpib .gt_empty_group_heading {
+#kpfjtbhgjq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3235,15 +3239,15 @@ nom <- df |>
   vertical-align: middle;
 }
 
-#lzybxxvpib .gt_from_md > :first-child {
+#kpfjtbhgjq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lzybxxvpib .gt_from_md > :last-child {
+#kpfjtbhgjq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lzybxxvpib .gt_row {
+#kpfjtbhgjq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3262,7 +3266,7 @@ nom <- df |>
   overflow-x: hidden;
 }
 
-#lzybxxvpib .gt_stub {
+#kpfjtbhgjq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3275,7 +3279,7 @@ nom <- df |>
   padding-right: 5px;
 }
 
-#lzybxxvpib .gt_stub_row_group {
+#kpfjtbhgjq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3289,15 +3293,15 @@ nom <- df |>
   vertical-align: top;
 }
 
-#lzybxxvpib .gt_row_group_first td {
+#kpfjtbhgjq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lzybxxvpib .gt_row_group_first th {
+#kpfjtbhgjq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lzybxxvpib .gt_summary_row {
+#kpfjtbhgjq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3307,16 +3311,16 @@ nom <- df |>
   padding-right: 5px;
 }
 
-#lzybxxvpib .gt_first_summary_row {
+#kpfjtbhgjq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_first_summary_row.thick {
+#kpfjtbhgjq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lzybxxvpib .gt_last_summary_row {
+#kpfjtbhgjq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3326,7 +3330,7 @@ nom <- df |>
   border-bottom-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_grand_summary_row {
+#kpfjtbhgjq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3336,7 +3340,7 @@ nom <- df |>
   padding-right: 5px;
 }
 
-#lzybxxvpib .gt_first_grand_summary_row {
+#kpfjtbhgjq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3346,7 +3350,7 @@ nom <- df |>
   border-top-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_last_grand_summary_row_top {
+#kpfjtbhgjq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3356,11 +3360,11 @@ nom <- df |>
   border-bottom-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_striped {
+#kpfjtbhgjq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lzybxxvpib .gt_table_body {
+#kpfjtbhgjq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3369,7 +3373,7 @@ nom <- df |>
   border-bottom-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_footnotes {
+#kpfjtbhgjq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3383,7 +3387,7 @@ nom <- df |>
   border-right-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_footnote {
+#kpfjtbhgjq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3392,7 +3396,7 @@ nom <- df |>
   padding-right: 5px;
 }
 
-#lzybxxvpib .gt_sourcenotes {
+#kpfjtbhgjq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3406,7 +3410,7 @@ nom <- df |>
   border-right-color: #D3D3D3;
 }
 
-#lzybxxvpib .gt_sourcenote {
+#kpfjtbhgjq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3414,72 +3418,72 @@ nom <- df |>
   padding-right: 5px;
 }
 
-#lzybxxvpib .gt_left {
+#kpfjtbhgjq .gt_left {
   text-align: left;
 }
 
-#lzybxxvpib .gt_center {
+#kpfjtbhgjq .gt_center {
   text-align: center;
 }
 
-#lzybxxvpib .gt_right {
+#kpfjtbhgjq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lzybxxvpib .gt_font_normal {
+#kpfjtbhgjq .gt_font_normal {
   font-weight: normal;
 }
 
-#lzybxxvpib .gt_font_bold {
+#kpfjtbhgjq .gt_font_bold {
   font-weight: bold;
 }
 
-#lzybxxvpib .gt_font_italic {
+#kpfjtbhgjq .gt_font_italic {
   font-style: italic;
 }
 
-#lzybxxvpib .gt_super {
+#kpfjtbhgjq .gt_super {
   font-size: 65%;
 }
 
-#lzybxxvpib .gt_footnote_marks {
+#kpfjtbhgjq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lzybxxvpib .gt_asterisk {
+#kpfjtbhgjq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lzybxxvpib .gt_indent_1 {
+#kpfjtbhgjq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lzybxxvpib .gt_indent_2 {
+#kpfjtbhgjq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lzybxxvpib .gt_indent_3 {
+#kpfjtbhgjq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lzybxxvpib .gt_indent_4 {
+#kpfjtbhgjq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lzybxxvpib .gt_indent_5 {
+#kpfjtbhgjq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lzybxxvpib .katex-display {
+#kpfjtbhgjq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lzybxxvpib div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kpfjtbhgjq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3607,23 +3611,23 @@ apell <- df |>
 
 
 ```{=html}
-<div id="aqnbqxemxa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#aqnbqxemxa table {
+<div id="oragecblzk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oragecblzk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#aqnbqxemxa thead, #aqnbqxemxa tbody, #aqnbqxemxa tfoot, #aqnbqxemxa tr, #aqnbqxemxa td, #aqnbqxemxa th {
+#oragecblzk thead, #oragecblzk tbody, #oragecblzk tfoot, #oragecblzk tr, #oragecblzk td, #oragecblzk th {
   border-style: none;
 }
 
-#aqnbqxemxa p {
+#oragecblzk p {
   margin: 0;
   padding: 0;
 }
 
-#aqnbqxemxa .gt_table {
+#oragecblzk .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3649,12 +3653,12 @@ apell <- df |>
   border-left-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_caption {
+#oragecblzk .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#aqnbqxemxa .gt_title {
+#oragecblzk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3666,7 +3670,7 @@ apell <- df |>
   border-bottom-width: 0;
 }
 
-#aqnbqxemxa .gt_subtitle {
+#oragecblzk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3678,7 +3682,7 @@ apell <- df |>
   border-top-width: 0;
 }
 
-#aqnbqxemxa .gt_heading {
+#oragecblzk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3690,13 +3694,13 @@ apell <- df |>
   border-right-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_bottom_border {
+#oragecblzk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_col_headings {
+#oragecblzk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3711,7 +3715,7 @@ apell <- df |>
   border-right-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_col_heading {
+#oragecblzk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3731,7 +3735,7 @@ apell <- df |>
   overflow-x: hidden;
 }
 
-#aqnbqxemxa .gt_column_spanner_outer {
+#oragecblzk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3743,15 +3747,15 @@ apell <- df |>
   padding-right: 4px;
 }
 
-#aqnbqxemxa .gt_column_spanner_outer:first-child {
+#oragecblzk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#aqnbqxemxa .gt_column_spanner_outer:last-child {
+#oragecblzk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#aqnbqxemxa .gt_column_spanner {
+#oragecblzk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3763,11 +3767,11 @@ apell <- df |>
   width: 100%;
 }
 
-#aqnbqxemxa .gt_spanner_row {
+#oragecblzk .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#aqnbqxemxa .gt_group_heading {
+#oragecblzk .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3793,7 +3797,7 @@ apell <- df |>
   text-align: left;
 }
 
-#aqnbqxemxa .gt_empty_group_heading {
+#oragecblzk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3808,15 +3812,15 @@ apell <- df |>
   vertical-align: middle;
 }
 
-#aqnbqxemxa .gt_from_md > :first-child {
+#oragecblzk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#aqnbqxemxa .gt_from_md > :last-child {
+#oragecblzk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#aqnbqxemxa .gt_row {
+#oragecblzk .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3835,7 +3839,7 @@ apell <- df |>
   overflow-x: hidden;
 }
 
-#aqnbqxemxa .gt_stub {
+#oragecblzk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3848,7 +3852,7 @@ apell <- df |>
   padding-right: 5px;
 }
 
-#aqnbqxemxa .gt_stub_row_group {
+#oragecblzk .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3862,15 +3866,15 @@ apell <- df |>
   vertical-align: top;
 }
 
-#aqnbqxemxa .gt_row_group_first td {
+#oragecblzk .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#aqnbqxemxa .gt_row_group_first th {
+#oragecblzk .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#aqnbqxemxa .gt_summary_row {
+#oragecblzk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3880,16 +3884,16 @@ apell <- df |>
   padding-right: 5px;
 }
 
-#aqnbqxemxa .gt_first_summary_row {
+#oragecblzk .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_first_summary_row.thick {
+#oragecblzk .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#aqnbqxemxa .gt_last_summary_row {
+#oragecblzk .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3899,7 +3903,7 @@ apell <- df |>
   border-bottom-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_grand_summary_row {
+#oragecblzk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3909,7 +3913,7 @@ apell <- df |>
   padding-right: 5px;
 }
 
-#aqnbqxemxa .gt_first_grand_summary_row {
+#oragecblzk .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3919,7 +3923,7 @@ apell <- df |>
   border-top-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_last_grand_summary_row_top {
+#oragecblzk .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3929,11 +3933,11 @@ apell <- df |>
   border-bottom-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_striped {
+#oragecblzk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#aqnbqxemxa .gt_table_body {
+#oragecblzk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3942,7 +3946,7 @@ apell <- df |>
   border-bottom-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_footnotes {
+#oragecblzk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3956,7 +3960,7 @@ apell <- df |>
   border-right-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_footnote {
+#oragecblzk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3965,7 +3969,7 @@ apell <- df |>
   padding-right: 5px;
 }
 
-#aqnbqxemxa .gt_sourcenotes {
+#oragecblzk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3979,7 +3983,7 @@ apell <- df |>
   border-right-color: #D3D3D3;
 }
 
-#aqnbqxemxa .gt_sourcenote {
+#oragecblzk .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3987,72 +3991,72 @@ apell <- df |>
   padding-right: 5px;
 }
 
-#aqnbqxemxa .gt_left {
+#oragecblzk .gt_left {
   text-align: left;
 }
 
-#aqnbqxemxa .gt_center {
+#oragecblzk .gt_center {
   text-align: center;
 }
 
-#aqnbqxemxa .gt_right {
+#oragecblzk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#aqnbqxemxa .gt_font_normal {
+#oragecblzk .gt_font_normal {
   font-weight: normal;
 }
 
-#aqnbqxemxa .gt_font_bold {
+#oragecblzk .gt_font_bold {
   font-weight: bold;
 }
 
-#aqnbqxemxa .gt_font_italic {
+#oragecblzk .gt_font_italic {
   font-style: italic;
 }
 
-#aqnbqxemxa .gt_super {
+#oragecblzk .gt_super {
   font-size: 65%;
 }
 
-#aqnbqxemxa .gt_footnote_marks {
+#oragecblzk .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#aqnbqxemxa .gt_asterisk {
+#oragecblzk .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#aqnbqxemxa .gt_indent_1 {
+#oragecblzk .gt_indent_1 {
   text-indent: 5px;
 }
 
-#aqnbqxemxa .gt_indent_2 {
+#oragecblzk .gt_indent_2 {
   text-indent: 10px;
 }
 
-#aqnbqxemxa .gt_indent_3 {
+#oragecblzk .gt_indent_3 {
   text-indent: 15px;
 }
 
-#aqnbqxemxa .gt_indent_4 {
+#oragecblzk .gt_indent_4 {
   text-indent: 20px;
 }
 
-#aqnbqxemxa .gt_indent_5 {
+#oragecblzk .gt_indent_5 {
   text-indent: 25px;
 }
 
-#aqnbqxemxa .katex-display {
+#oragecblzk .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#aqnbqxemxa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#oragecblzk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4178,23 +4182,23 @@ res <- df |>
 
 
 ```{=html}
-<div id="aczacenhyy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#aczacenhyy table {
+<div id="vnaccxsucu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vnaccxsucu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#aczacenhyy thead, #aczacenhyy tbody, #aczacenhyy tfoot, #aczacenhyy tr, #aczacenhyy td, #aczacenhyy th {
+#vnaccxsucu thead, #vnaccxsucu tbody, #vnaccxsucu tfoot, #vnaccxsucu tr, #vnaccxsucu td, #vnaccxsucu th {
   border-style: none;
 }
 
-#aczacenhyy p {
+#vnaccxsucu p {
   margin: 0;
   padding: 0;
 }
 
-#aczacenhyy .gt_table {
+#vnaccxsucu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4220,12 +4224,12 @@ res <- df |>
   border-left-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_caption {
+#vnaccxsucu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#aczacenhyy .gt_title {
+#vnaccxsucu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4237,7 +4241,7 @@ res <- df |>
   border-bottom-width: 0;
 }
 
-#aczacenhyy .gt_subtitle {
+#vnaccxsucu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4249,7 +4253,7 @@ res <- df |>
   border-top-width: 0;
 }
 
-#aczacenhyy .gt_heading {
+#vnaccxsucu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4261,13 +4265,13 @@ res <- df |>
   border-right-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_bottom_border {
+#vnaccxsucu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_col_headings {
+#vnaccxsucu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4282,7 +4286,7 @@ res <- df |>
   border-right-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_col_heading {
+#vnaccxsucu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4302,7 +4306,7 @@ res <- df |>
   overflow-x: hidden;
 }
 
-#aczacenhyy .gt_column_spanner_outer {
+#vnaccxsucu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4314,15 +4318,15 @@ res <- df |>
   padding-right: 4px;
 }
 
-#aczacenhyy .gt_column_spanner_outer:first-child {
+#vnaccxsucu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#aczacenhyy .gt_column_spanner_outer:last-child {
+#vnaccxsucu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#aczacenhyy .gt_column_spanner {
+#vnaccxsucu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4334,11 +4338,11 @@ res <- df |>
   width: 100%;
 }
 
-#aczacenhyy .gt_spanner_row {
+#vnaccxsucu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#aczacenhyy .gt_group_heading {
+#vnaccxsucu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4364,7 +4368,7 @@ res <- df |>
   text-align: left;
 }
 
-#aczacenhyy .gt_empty_group_heading {
+#vnaccxsucu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4379,15 +4383,15 @@ res <- df |>
   vertical-align: middle;
 }
 
-#aczacenhyy .gt_from_md > :first-child {
+#vnaccxsucu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#aczacenhyy .gt_from_md > :last-child {
+#vnaccxsucu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#aczacenhyy .gt_row {
+#vnaccxsucu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4406,7 +4410,7 @@ res <- df |>
   overflow-x: hidden;
 }
 
-#aczacenhyy .gt_stub {
+#vnaccxsucu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4419,7 +4423,7 @@ res <- df |>
   padding-right: 5px;
 }
 
-#aczacenhyy .gt_stub_row_group {
+#vnaccxsucu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4433,15 +4437,15 @@ res <- df |>
   vertical-align: top;
 }
 
-#aczacenhyy .gt_row_group_first td {
+#vnaccxsucu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#aczacenhyy .gt_row_group_first th {
+#vnaccxsucu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#aczacenhyy .gt_summary_row {
+#vnaccxsucu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4451,16 +4455,16 @@ res <- df |>
   padding-right: 5px;
 }
 
-#aczacenhyy .gt_first_summary_row {
+#vnaccxsucu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_first_summary_row.thick {
+#vnaccxsucu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#aczacenhyy .gt_last_summary_row {
+#vnaccxsucu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4470,7 +4474,7 @@ res <- df |>
   border-bottom-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_grand_summary_row {
+#vnaccxsucu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4480,7 +4484,7 @@ res <- df |>
   padding-right: 5px;
 }
 
-#aczacenhyy .gt_first_grand_summary_row {
+#vnaccxsucu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4490,7 +4494,7 @@ res <- df |>
   border-top-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_last_grand_summary_row_top {
+#vnaccxsucu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4500,11 +4504,11 @@ res <- df |>
   border-bottom-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_striped {
+#vnaccxsucu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#aczacenhyy .gt_table_body {
+#vnaccxsucu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4513,7 +4517,7 @@ res <- df |>
   border-bottom-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_footnotes {
+#vnaccxsucu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4527,7 +4531,7 @@ res <- df |>
   border-right-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_footnote {
+#vnaccxsucu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4536,7 +4540,7 @@ res <- df |>
   padding-right: 5px;
 }
 
-#aczacenhyy .gt_sourcenotes {
+#vnaccxsucu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4550,7 +4554,7 @@ res <- df |>
   border-right-color: #D3D3D3;
 }
 
-#aczacenhyy .gt_sourcenote {
+#vnaccxsucu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4558,72 +4562,72 @@ res <- df |>
   padding-right: 5px;
 }
 
-#aczacenhyy .gt_left {
+#vnaccxsucu .gt_left {
   text-align: left;
 }
 
-#aczacenhyy .gt_center {
+#vnaccxsucu .gt_center {
   text-align: center;
 }
 
-#aczacenhyy .gt_right {
+#vnaccxsucu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#aczacenhyy .gt_font_normal {
+#vnaccxsucu .gt_font_normal {
   font-weight: normal;
 }
 
-#aczacenhyy .gt_font_bold {
+#vnaccxsucu .gt_font_bold {
   font-weight: bold;
 }
 
-#aczacenhyy .gt_font_italic {
+#vnaccxsucu .gt_font_italic {
   font-style: italic;
 }
 
-#aczacenhyy .gt_super {
+#vnaccxsucu .gt_super {
   font-size: 65%;
 }
 
-#aczacenhyy .gt_footnote_marks {
+#vnaccxsucu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#aczacenhyy .gt_asterisk {
+#vnaccxsucu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#aczacenhyy .gt_indent_1 {
+#vnaccxsucu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#aczacenhyy .gt_indent_2 {
+#vnaccxsucu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#aczacenhyy .gt_indent_3 {
+#vnaccxsucu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#aczacenhyy .gt_indent_4 {
+#vnaccxsucu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#aczacenhyy .gt_indent_5 {
+#vnaccxsucu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#aczacenhyy .katex-display {
+#vnaccxsucu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#aczacenhyy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vnaccxsucu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4843,8 +4847,8 @@ $$A \cup B = M \times U$$
 
 En donde:
 
-- $M$: conjunto de pares que son emparejamientos verdaderos (matches)
-- $U$: conjunto de pares que no son emparejados (non-matches)
+- $M$: conjunto de pares que son emparejamientos
+- $U$: conjunto de pares que no son emparejados
 
 Para cada par $(a, b)$ se define una función de comparación:
 
@@ -4952,12 +4956,12 @@ A continuación se presenta un resumen de los principales paquetes de R y Python
 | Python   | `splink`         | Basado en Fellegi-Sunter, escalable con Spark, DuckDB o SQL. Visualización interactiva. Soporta paralelización.  |
 
 
-### Deduplicación de registros
+## Deduplicación de registros
 
 
 Una etapa clave en el cálculo de la omisión censal, es asegurar que la base de enumeración de la encuesta de cobertura no tiene duplicados. Poder identificar si una persona ha sido enumerada más de una vez en el censo, se conoce como proceso de deduplicación.
 
-**Ejemplo usando el paquete RecodrLinkage**
+**Ejemplo usando el paquete RecordLinkage**
 
 Para ilustrar este procedimiento se implementará un análisis supervisado utilizando los datos simulados `RLdata500` incluidos en el paquete `RecordLinkage`. El conjunto de datos contiene 500 registros simulados, incluyendo nombres, apellidos, fechas de nacimiento y un identificador de la persona real (`identity.RLdata500`). Suponga que este es un conjunto de entrenamiento que fue seleccionado con unos registros del censo, y en el cual se realizó un proceso de identificación y revisión clerical para identificar con certeza si un registro es duplicado o no, de esta manera es posible entrenar un modelo, realizar evaluaciones de precisión y entender mejor las decisiones del algoritmo.
 
@@ -5074,12 +5078,12 @@ levenshteinSim(c("SCHUTE", "SCHULTE"),
 
 
 ``` r
-jarowinkler(c("SCHUTE", "CHRISTA"),
-            c("SCHULTE", "CHRISTAH"))
+jarowinkler(c("SCHUTE", "SCHULTE"),
+            c("CHRISTA", "CHRISTAH"))
 ```
 
 ```
-## [1] 0.9714286 0.9750000
+## [1] 0.6428571 0.6011905
 ```
 El algoritmo de Jaro-Winkler tiende a funcionar mejor cuando los errores son de tipeo o diferencias leves. También se puede aplicar codificación fonética como `soundex()` o cualquiera de las presentadas en este capítulo.
 
@@ -5251,6 +5255,9 @@ res <- fastLink(dfA = RLdata10000, dfB = RLdata10000,
 ## Setting return.all to FALSE.
 ## 
 ## Calculating matches for each variable.
+```
+
+```
 ## Getting counts for parameter estimation.
 ##     Parallelizing calculation using OpenMP. 1 threads out of 8 are used.
 ## Running the EM algorithm.
@@ -5307,8 +5314,2669 @@ print(matriz)
 ```
 
 
+## Vinculación de registros
 
-## Vinculación
+Con el fin de integrar la información proveniente de la muestra E y la muestra P, se debe llevar a cabo un proceso de emparejamiento de registros. Este procedimiento es fundamental para identificar unidades observadas en ambas muestras y, de esta manera implementar el modelo basado en el sistema de estimación dual.
+
+El proceso de vinculación de registros entre la muestra E y la muestra P se fundamenta en la comparación de variables clave que están presentes en ambas bases de datos. Entre estas variables se incluyen información como nombres, apellidos, sexo y fecha de nacimiento, las cuales permiten establecer la correspondencia entre los individuos de cada muestra. Estas coincidencias constituyen la base para identificar si un mismo registro aparece en las dos fuentes de información.
+
+La forma de implementar este procedimiento es análoga al utilizado previamente para la detección de duplicados dentro de una misma base de datos. La diferencia principal radica en los conjuntos de datos que se introducen en los argumentos de la función de emparejamiento: en lugar de comparar una base consigo misma, en este caso se contrasta la muestra E frente a la muestra P. De esta manera, se logra identificar registros compartidos entre las dos muestras, manteniendo la misma lógica de comparación, pero adaptada a un contexto de integración de fuentes.
+
+En el caso del paquete `RecordLinkage`, se cuenta con dos funciones para la creación de patrones de comparación a partir de conjuntos de datos: `compare.dedup()` o `RLBigDataDedup()`, para la deduplicación de un único conjunto de datos como se presentó en la sección anterior, y `compare.linkage()` o `RLBigDataLinkage()`, para vincular dos conjuntos de datos diferentes, la diferencia es que la segunda función está diseñada para grandes conjuntos de datos.
+
+Considere los conjuntos de datos de la muestra E y de la muestra P, almacenados previamente en los objetos `censo_limpio` y `encuesta_limpia`. Ahora se creará la variable de fecha con el valor de la fecha de nacimiento. 
 
 
 
+``` r
+library(pacman)
+p_load(tidyverse, RecordLinkage, lubridate)
+
+df_censo <- censo_limpio |> 
+  mutate(fecha_nacimiento = make_date(year = anio_nac, month = mes_nac, day = dia_nac)) |> 
+    select(id_segmento, ends_with("cod"), sexo, fecha_nacimiento)
+
+df_encuesta <- encuesta_limpia |> 
+    mutate(fecha_nacimiento = make_date(year = anio_nac, month = mes_nac, day = dia_nac)) |> 
+    select(id_segmento, ends_with("cod"), sexo, fecha_nacimiento)
+```
+
+
+Para el ejemplo se usará el paquete `RecordLinkage`. En este caso la muestra P contiene 54 registros y la muestra E contiene 97 registros, en este caso se aplicará una indexación usando como bloques el `id_segmento`. La estructura de la base de la muestra E es la siguiente
+
+
+``` r
+head(df_censo)
+```
+
+```
+## # A tibble: 6 × 5
+##   id_segmento nombre_cod apellido_cod sexo  fecha_nacimiento
+##         <int> <chr>      <chr>        <chr> <date>          
+## 1         101 KRLS       PRS          m     1947-01-01      
+## 2         101 LK         KSTR         f     1975-01-01      
+## 3         101 KML        KSTR         f     2012-01-01      
+## 4         101 MR         KSTR         f     1959-01-01      
+## 5         102 YRG        GMS          m     1954-01-01      
+## 6         102 SF         RMRS         f     2000-01-01
+```
+Mientras que la muestra P es la siguiente, es de recordar que los conjuntos de datos ya fueron sometidos a un preprocesamiento, y note que los conjuntos de datos se han alineado para que las variables se denominen de la misma forma:
+
+
+``` r
+head(df_encuesta)
+```
+
+```
+## # A tibble: 6 × 5
+##   id_segmento nombre_cod apellido_cod sexo  fecha_nacimiento
+##         <int> <chr>      <chr>        <chr> <date>          
+## 1         101 MR         KSTR         f     1959-01-01      
+## 2         101 KRLS       PRS          m     1947-01-01      
+## 3         101 LK         KSTR         f     1975-01-01      
+## 4         101 KML        RMRS         f     2010-01-01      
+## 5         101 SF         KSTR         f     1966-01-01      
+## 6         101 N          MRTNS        f     1973-01-01
+```
+
+La función `compare.linkage()` construye los patrones para la vinculación de los registros, en este caso se compara la muestra E y la muestra P usando como bloque el segmento.
+
+
+``` r
+empareja <- compare.linkage(dataset1 = df_encuesta,
+                            dataset2 = df_censo,
+                            blockfld = 1, #Bloque por id_segmento
+                            strcmp = c("nombre_cod", "apellido_cod", "sexo"),
+                            exclude = "id_segmento"
+                            )
+```
+
+Una vez realizadas las comparaciones utilizando los criterios especificados, se aplica el algoritmo para calcular la probabilidad de coincidencia. Para ello,  el paquete `RecordLinkage` cuenta con los algoritmos de Fellegi-Sunter, EpiLink y EM.
+
+
+``` r
+empareja_fs <- RecordLinkage::fsWeights(empareja)
+#empareja_em <- RecordLinkage::emWeights(empareja)
+#empareja_ep <- RecordLinkage::epiWeights(empareja)
+summary(empareja_fs)
+```
+
+```
+## 
+## Linkage Data Set
+## 
+## 54 records in data set 1 
+## 97 records in data set 2 
+## 1750 record pairs 
+## 
+## 0 matches
+## 0 non-matches
+## 1750 pairs with unknown status
+## 
+## 
+## Weight distribution:
+## 
+## [-16,-14] (-14,-12] (-12,-10]  (-10,-8]   (-8,-6]   (-6,-4]   (-4,-2]    (-2,0] 
+##       743         0       601       114         0       217         0         1 
+##     (0,2]     (2,4]     (4,6]     (6,8]    (8,10]   (10,12]   (12,14] 
+##         0        18         2         0         1         0        53
+```
+
+El análisis de la distribución de los pesos muestra que, aunque la mayoría de los pares se concentran en valores negativos, lo que indica una baja similitud y, por tanto, una baja probabilidad de coincidencia. Hay algunos pares que alcanzan valores positivos, y dentro de estos, se observa que algunos  se ubican en el rango más alto, por lo que tienen una alta probabilidad de ser emparejamientos verdaderos.
+
+Cuando los conjuntos de datos son muy grandes, se puede usar un enfoque basado en la función `RLBigDataLinkage` en vez de `compare.linkage`, solo debe tener en cuenta que al ser objetos S4 debe ver los resultados usando el simbolo `@`, por ejemplo `summary(empareja_fs@Wdata)`.
+
+Los algoritmos calculan la probabilidad de coincidencia para cada registro en `df_encuesta` con cada registro en el conjunto de `df_censo` cuando pertenecen al mismo segmento, basándose en los patrones de comparación especificados. Ahora, es necesario realizar la clasificación como _emparejado_, _emparejamiento potencial_ o _no emparejado_. Para hacer esta clasificación, es necesario establecer el umbral de clasificación. 
+
+
+La elección del umbral suele ser un aspecto relevante. Si es muy bajo, se podría estar aceptando demasiados falsos positivos; si es muy alto, se podría perder verdaderos emparejados. una de las herramientas del paquete `RecordLinkage` es la función `getParetoThreshold()`, que puede ser útil para identificar el umbral de aceptación. Sin embargo, con conjuntos de datos grandes podría tardar mucho en ejecutarse.
+
+La siguiente gráfica es interactiva y permite observar cómo cambia la vida residual media a medida que sube el umbral. Se ha comentado la línea debido a que no puede compilarse por bookdown, y se ha tomado el umbral automático. La idea básica es identificar el punto de cambio de la pendiente en la curva, para ello puede usar un criterio como el del codo.
+
+
+``` r
+#Este es un diagrama interactivo, por lo que se comenta la línea 
+#umbral <- getParetoThreshold(empareja_fs) 
+umbral <- 5.86
+```
+
+Una vez definido el umbral, se puede extraer en un conjunto de datos a los registros clasificados como _emparejados_. La primera fila corresponde al registro en `df_encuesta` mientras que el segundo corresponde al registro en `df_censo`. 
+
+
+
+``` r
+emparejado <- getPairs(empareja_fs, min.weight = umbral)
+```
+
+
+
+```{=html}
+<div id="zetiskzujv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
+<style>#zetiskzujv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#zetiskzujv thead, #zetiskzujv tbody, #zetiskzujv tfoot, #zetiskzujv tr, #zetiskzujv td, #zetiskzujv th {
+  border-style: none;
+}
+
+#zetiskzujv p {
+  margin: 0;
+  padding: 0;
+}
+
+#zetiskzujv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#zetiskzujv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zetiskzujv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zetiskzujv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zetiskzujv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zetiskzujv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zetiskzujv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zetiskzujv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zetiskzujv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#zetiskzujv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#zetiskzujv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zetiskzujv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zetiskzujv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zetiskzujv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zetiskzujv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zetiskzujv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zetiskzujv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zetiskzujv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#zetiskzujv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zetiskzujv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zetiskzujv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zetiskzujv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zetiskzujv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zetiskzujv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zetiskzujv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zetiskzujv .gt_left {
+  text-align: left;
+}
+
+#zetiskzujv .gt_center {
+  text-align: center;
+}
+
+#zetiskzujv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zetiskzujv .gt_font_normal {
+  font-weight: normal;
+}
+
+#zetiskzujv .gt_font_bold {
+  font-weight: bold;
+}
+
+#zetiskzujv .gt_font_italic {
+  font-style: italic;
+}
+
+#zetiskzujv .gt_super {
+  font-size: 65%;
+}
+
+#zetiskzujv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#zetiskzujv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zetiskzujv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zetiskzujv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zetiskzujv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zetiskzujv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zetiskzujv .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#zetiskzujv .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#zetiskzujv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Registros emparejados</td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="id">id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="id_segmento">id_segmento</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="nombre_cod">nombre_cod</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="apellido_cod">apellido_cod</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="sexo">sexo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="fecha_nacimiento">fecha_nacimiento</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="Weight">Weight</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="id" class="gt_row gt_right"> 1</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">MR</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1959-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 4</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">MR</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1959-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 2</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1947-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 1</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1947-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 3</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">LK</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1975-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 2</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">LK</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1975-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 4</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">KML</td>
+<td headers="apellido_cod" class="gt_row gt_left">RMRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2010-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">87</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">KML</td>
+<td headers="apellido_cod" class="gt_row gt_left">RMRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2010-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 5</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">SF</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1966-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 9</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">SF</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1966-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 6</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1973-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">12</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1973-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 7</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">LK</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2003-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">21</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">LK</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2003-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 8</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1955-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">19</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1955-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 9</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1936-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">28</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1936-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">10</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">TRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2017-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">29</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">TRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2017-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">11</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2001-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">42</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2001-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">12</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2015-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">41</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2015-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">13</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2001-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">50</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2001-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">14</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">RMRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2018-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">51</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">RMRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2018-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">15</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1946-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">59</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1946-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">16</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1988-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">57</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1988-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">17</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">SF</td>
+<td headers="apellido_cod" class="gt_row gt_left">GMS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2007-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">70</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">SF</td>
+<td headers="apellido_cod" class="gt_row gt_left">GMS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2007-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">18</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">TRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1969-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">79</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">TRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1969-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">19</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">GMS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1954-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 5</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">GMS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1954-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">20</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">RMRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1963-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">92</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">RMRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1963-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">21</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1985-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">13</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1985-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">22</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">RMRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1942-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">23</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">RMRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1942-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">23</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2006-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">32</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2006-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">24</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1990-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">34</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1990-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">25</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">MR</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1935-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">45</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">MR</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1935-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">26</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2020-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">44</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2020-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">27</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">RDRGS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2025-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">46</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">RDRGS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2025-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">28</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">53</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">29</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1987-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">64</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1987-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">30</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">RDRGS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1985-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">62</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">RDRGS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1985-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">31</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">GMS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1983-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">63</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">GMS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1983-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">32</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">KML</td>
+<td headers="apellido_cod" class="gt_row gt_left">TRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1973-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">71</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">KML</td>
+<td headers="apellido_cod" class="gt_row gt_left">TRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1973-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">33</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">TRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1976-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">74</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">TRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1976-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">34</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1998-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">72</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1998-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">35</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1990-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">83</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1990-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">36</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">LK</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2020-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">82</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">LK</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2020-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">38</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1950-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 7</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1950-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">39</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1945-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">96</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1945-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">40</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KML</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1974-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">17</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KML</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1974-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">41</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">MR</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1994-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">25</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">MR</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1994-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">42</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1939-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">38</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1939-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">43</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2010-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">37</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2010-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">44</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">GMS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">48</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">GMS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">45</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">SF</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1962-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">49</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">SF</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1962-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">46</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1995-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">47</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1995-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">47</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">54</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">48</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2024-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">55</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2024-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">49</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1977-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">56</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1977-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">50</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2000-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">67</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2000-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">51</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">LK</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1967-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">78</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">LK</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1967-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">52</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">MR</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1945-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">76</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">MR</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1945-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">53</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2001-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">84</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2001-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">54</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2022-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">85</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2022-01-01</td>
+<td headers="Weight" class="gt_row gt_right">13.278591201562502</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">37</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1986-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">81</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1986-01-01</td>
+<td headers="Weight" class="gt_row gt_right"> 9.030663688118919</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">44</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">GMS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">54</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
+<td headers="Weight" class="gt_row gt_right"> 5.860738686676607</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">47</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">48</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">GMS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
+<td headers="Weight" class="gt_row gt_right"> 5.860738686676607</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+```
+
+De igual forma, usando la misma gráfica obtenida con `getParetoThreshold()` se puede establecer un umbral más flexible, y encontrar los _emparejamientos potenciales_. En nuestro ejemplo se tomarán como aquellos registros que tienen un ponderador entre 1.2 y el umbral, los cuales pasarán a una revisión clerical para establecer si se clasifican como _emparejados_ o _no emparejados_
+
+
+``` r
+posibles <- getPairs(empareja_fs, min.weight = 1.2, max.weight = umbral)
+```
+
+
+``` r
+posibles %>%
+  gt() %>%
+  tab_header(
+    title = "Emparejamientos potenciales"
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "#f9f9f9"),
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels()
+  ) %>%
+  tab_options(
+    table.width = pct(100),
+    container.height = px(400) 
+  )
+```
+
+```{=html}
+<div id="pqfytrrwns" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
+<style>#pqfytrrwns table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pqfytrrwns thead, #pqfytrrwns tbody, #pqfytrrwns tfoot, #pqfytrrwns tr, #pqfytrrwns td, #pqfytrrwns th {
+  border-style: none;
+}
+
+#pqfytrrwns p {
+  margin: 0;
+  padding: 0;
+}
+
+#pqfytrrwns .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pqfytrrwns .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pqfytrrwns .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pqfytrrwns .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pqfytrrwns .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pqfytrrwns .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pqfytrrwns .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pqfytrrwns .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pqfytrrwns .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pqfytrrwns .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pqfytrrwns .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pqfytrrwns .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pqfytrrwns .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pqfytrrwns .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pqfytrrwns .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pqfytrrwns .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pqfytrrwns .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pqfytrrwns .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pqfytrrwns .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pqfytrrwns .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pqfytrrwns .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pqfytrrwns .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pqfytrrwns .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pqfytrrwns .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pqfytrrwns .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pqfytrrwns .gt_left {
+  text-align: left;
+}
+
+#pqfytrrwns .gt_center {
+  text-align: center;
+}
+
+#pqfytrrwns .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pqfytrrwns .gt_font_normal {
+  font-weight: normal;
+}
+
+#pqfytrrwns .gt_font_bold {
+  font-weight: bold;
+}
+
+#pqfytrrwns .gt_font_italic {
+  font-style: italic;
+}
+
+#pqfytrrwns .gt_super {
+  font-size: 65%;
+}
+
+#pqfytrrwns .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pqfytrrwns .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pqfytrrwns .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pqfytrrwns .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pqfytrrwns .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pqfytrrwns .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pqfytrrwns .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#pqfytrrwns .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pqfytrrwns div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="7" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Emparejamientos potenciales</td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="id">id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="id_segmento">id_segmento</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="nombre_cod">nombre_cod</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="apellido_cod">apellido_cod</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="sexo">sexo</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="fecha_nacimiento">fecha_nacimiento</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="background-color: #F9F9F9; font-weight: bold;" scope="col" id="Weight">Weight</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="id" class="gt_row gt_right"> 6</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1973-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">42</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2001-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 9</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1936-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">40</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1949-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">11</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2001-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">12</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRTNS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1973-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">12</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2015-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">10</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1973-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">13</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2001-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">11</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">LPS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2019-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">14</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">RMRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2018-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">58</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">RMRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1962-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">15</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1946-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">57</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1988-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">16</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1988-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">59</td>
+<td headers="id_segmento" class="gt_row gt_right">101</td>
+<td headers="nombre_cod" class="gt_row gt_left">YRG</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1946-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">21</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1985-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">83</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1990-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">23</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2006-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">43</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">YN</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2012-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">35</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1990-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">13</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">N</td>
+<td headers="apellido_cod" class="gt_row gt_left">GRK</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1985-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">36</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">LK</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2020-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">16</td>
+<td headers="id_segmento" class="gt_row gt_right">102</td>
+<td headers="nombre_cod" class="gt_row gt_left">LK</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1966-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">38</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1950-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">47</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1995-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">40</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KML</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1974-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">26</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KML</td>
+<td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
+<td headers="sexo" class="gt_row gt_left">f</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2019-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">42</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1939-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">55</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2024-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">43</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2010-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">18</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">NDRS</td>
+<td headers="apellido_cod" class="gt_row gt_left">PRS</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2004-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">46</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1995-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right"> 7</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">KRLS</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1950-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">48</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">2024-01-01</td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+    <tr><td headers="id" class="gt_row gt_right">38</td>
+<td headers="id_segmento" class="gt_row gt_right">103</td>
+<td headers="nombre_cod" class="gt_row gt_left">PDR</td>
+<td headers="apellido_cod" class="gt_row gt_left">MRN</td>
+<td headers="sexo" class="gt_row gt_left">m</td>
+<td headers="fecha_nacimiento" class="gt_row gt_right">1939-01-01</td>
+<td headers="Weight" class="gt_row gt_right">3.123773092510401</td></tr>
+    <tr><td headers="id" class="gt_row gt_right"></td>
+<td headers="id_segmento" class="gt_row gt_right"></td>
+<td headers="nombre_cod" class="gt_row gt_left"></td>
+<td headers="apellido_cod" class="gt_row gt_left"></td>
+<td headers="sexo" class="gt_row gt_left"></td>
+<td headers="fecha_nacimiento" class="gt_row gt_right"></td>
+<td headers="Weight" class="gt_row gt_right"></td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+```
+
+Finalizado el proceso, los registros que se lograron emparejar deben ser retirados del conjunto de datos `df_encuesta` y el conjunto `df_censo` debe ampliarse con otros segmentos aledaños a la muestra E, para repetir el proceso.  

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.3 Los estimadores de muestreo | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>7.3 Operativo de recolección | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.3 Los estimadores de muestreo | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="7.3 Operativo de recolección | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.3 Los estimadores de muestreo | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="7.3 Operativo de recolección | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="la-muestra-e-y-la-muestra-p.html"/>
-<link rel="next" href="cap3.html"/>
+<link rel="prev" href="diseño-de-la-muestra.html"/>
+<link rel="next" href="indicadores-principales.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -298,92 +298,16 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="los-estimadores-de-muestreo" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Los estimadores de muestreo<a href="los-estimadores-de-muestreo.html#los-estimadores-de-muestreo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Como la encuesta representa una muestra de la población que viene de una medida de probabilidad, y a su vez, existe un modelo multinomial, entonces se introduce una complejidad metodológica clave: la necesidad de establecer las bases inferenciales para incluir dos fuentes de incertidumbre: el modelo y el muestreo <span class="citation">(<a href="#ref-Binder_2011">Binder 2011</a>)</span>. <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> afirma que este cambio de enfoque implica que la estimación del error de cobertura debe considerar dos fuentes principales de incertidumbre: (1) la variabilidad debida a la selección muestral de la encuesta, y (2) la variabilidad del modelo asociada con el modelo de error de cobertura.</p>
-<p>La variabilidad inducida por la selección de la muestra de la encuesta implica que las estimaciones derivadas de ella (como <span class="math inline">\(N_{+1}\)</span> o <span class="math inline">\(N_{11}\)</span>) están afectadas por la aleatoriedad inherente a la selección de unidades en la muestra. Si la encuesta utiliza un diseño complejo (como estratificación o conglomerados), la variabilidad aumenta debido a los efectos de diseño. Este tipo de variabilidad se mide con los métodos clásicos de inferencia estadística en encuestas de hogares. En segundo lugar, está la variabilidad derivada del modelo multinomial. En esta instancia, la novedad radica en integrar estas incertidumbres por medio de una inferencia doble, usando los resultados bien conocidos de las esperanzas y varianzas condicionales.</p>
-<p>Si denotamos por <span class="math inline">\(\pi_k\)</span> la probabilidad de inclusión del elemento <span class="math inline">\(k\)</span> en la muestra <span class="math inline">\(s_P\)</span>, la cual está determinada por su selección probabilística, entonces el peso de muestreo del elemento <span class="math inline">\(k\)</span>-ésimo en la muestra P se define como <span class="math inline">\(w_k = \pi_k^{-1}\)</span>. Este peso refleja la inversa de la probabilidad de inclusión y se utiliza para ajustar las estimaciones en función del diseño de muestreo. De manera similar, los pesos de muestreo se definirán para la muestra <span class="math inline">\(s_E\)</span>. Para simplificar la notación, vincularemos la muestra correspondiente a través de los subíndices en las sumas. Por ejemplo, al referirnos a la muestra <span class="math inline">\(s_P\)</span>, utilizaremos el subíndice <span class="math inline">\(P\)</span> en las sumas, y para la muestra <span class="math inline">\(s_E\)</span>, emplearemos el subíndice <span class="math inline">\(E\)</span>.</p>
-<p>Asumiendo que <span class="math inline">\(x_{k, 11}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue encontrado tanto en la muestra como en el censo y, cero, en otro caso, entonces los estimadores de muestreo de <span class="math inline">\({N}_{+1}\)</span> y <span class="math inline">\({N}_{11}\)</span>, serán respectivamente:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\hat{N}_{+1} &amp;= \sum_{k \in s_P} w_k \\
-\hat{N}_{11} &amp;= \sum_{k \in s_P} w_k \ x_{k, 11}
-\end{aligned}
-\]</span></p>
-<p>Asimismo, si <span class="math inline">\(z_{k}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue correctamente enumerado en el censo y, cero, en otro caso, entonces el estimador de muestreo de <span class="math inline">\(N_{1+}\)</span> será:</p>
-<p><span class="math display">\[
-\hat{N}_{1+} = {N}_{1+}^0 - \sum_{k \in s_E} w_k (1 - \ z_{k})
-\]</span></p>
-<p>En donde <span class="math inline">\({N}_{1+}^0\)</span> denota el número de registros censales, el cual difiere del conteo de personas en el censo, y puede representar el conteo no corregido de personas en el censo. Esta cifra debe basarse exclusivamente en los datos recopilados durante el operativo censal, sin incluir imputaciones, proyecciones ni ningún otro tipo de ajustes estadísticos. Esto garantiza que los resultados reflejen fielmente la información obtenida en el campo. Para los anteriores estimadores, es claro que <span class="math inline">\(x_{k, 11}\)</span> es una variable aletaoria que se define en la muestra <span class="math inline">\(s_P\)</span>, mientras que <span class="math inline">\(z_{k}\)</span> es una variable aleatoria que se define en la muestra <span class="math inline">\(s_E\)</span>. Por otro lado, <span class="citation">Bureau (<a href="#ref-USCensusBureau_2022">2022</a>)</span> propone un estimador directo alternativo para <span class="math inline">\({N}_{1+}\)</span>, que se define a partir de la muestra E, y que corresponde a un conteo ponderado de enumeraciones correctas. Este estimador toma la siguiente forma:</p>
-<p><span class="math display">\[
-\hat{N}_{1+} = \sum_{k \in s_E} w_k \ z_{k}
-\]</span></p>
-<p>Recordando que el estimador del modelo para <span class="math inline">\(N\)</span> es <span class="math inline">\(\tilde{N} = \frac{ N_{1+} \cdot N_{+1}}{N_{11}}\)</span>; entonces, su estimador insesgado bajo el diseño de muestreo se encuentra reemplazando <span class="math inline">\(N_{1+}\)</span>, <span class="math inline">\(N_{+1}\)</span> y <span class="math inline">\(N_{11}\)</span> por sus respectivos estimadores insesgados en la muestra. Por consiguiente, se tiene que el estimador de muestreo del tamaño poblacional <span class="math inline">\(N\)</span> tomará la siguiente forma:</p>
-<p><span class="math display">\[
-\hat{N}_{++} = \hat{N} = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
-\]</span></p>
-<p>Nótese que los estimadores de muestreo para <span class="math inline">\({N}_{12}\)</span> y <span class="math inline">\({N}_{21}\)</span> toman la siguiente forma:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\hat{N}_{12} &amp;= \hat{N}_{1+} - \hat{N}_{11} \\
-\hat{N}_{21} &amp;= \hat{N}_{+1} - \hat{N}_{11}
-\end{aligned}
-\]</span></p>
-<p>La existencia de individuos que no fueron capturados en ninguno de los dos listados representa un desafío significativo, ya que su número solo puede ser estimado indirectamente a partir de la superposición observada entre la encuesta y el censo. Por otro lado, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> establece las condiciones sobre las cuales estos estimadores son insesgados y además propone el siguiente estimador aproximadamente insesgado de su varianza:</p>
-<p><span class="math display">\[
-\tilde{V}(\hat{N}) =  \tilde{V}_m(\tilde{N}) + \tilde{V}_p(\hat{N})
-\]</span></p>
-<p>En donde <span class="math inline">\(\tilde{V}_m(\tilde{N})\)</span> es el estimador de la varianza de <span class="math inline">\(\tilde{N}\)</span> bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, de la siguiente forma:</p>
-<p><span class="math display">\[
-\tilde{V}_m(\tilde{N}) = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1} \cdot (\hat{N}_{1+} - \hat{N}_{11}) \cdot (\hat{N}_{+1} - \hat{N}_{11})}{\hat{N}_{11}^3}
-\]</span></p>
-<p>Asimismo, <span class="math inline">\(\tilde V_p (\hat{N})\)</span> corresponde con un estimador tradicional de varianzas para estimadores de muestreo <span class="citation">(<a href="#ref-CEPAL_2023">CEPAL 2023</a>)</span>. De esta forma, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>, sección 3.1.)</span> afirma que</p>
-<p><span class="math display">\[
-\tilde V_p (\hat{N}) \approx \frac{M^2}{m}(1-f)S^2_{d}
-\]</span></p>
-<p>Definiendo a <span class="math inline">\(\tilde{N}_{i, +1}\)</span> como la estimación del tamaño del <span class="math inline">\(i\)</span>-ésimo conglomerado a partir de la muestra <span class="math inline">\(s_P\)</span>, se tiene que <span class="math inline">\(S^2_{d} = \frac{1}{m-1}\sum_{i=1}^m d_i^2\)</span> y además:</p>
-<p><span class="math display">\[
-d_i = \frac{\hat{N}_{1+}}{\hat{N}_{11}}
-\left(\tilde{N}_{k, +1} - \frac{\hat{N}_{+1}}{\hat{N}_{11}}x_{k, 11}\right)  
-\]</span></p>
-<p>Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información de los registros censales para crear otro tipo de estimadores. Siendo <span class="math inline">\(\hat{N}_{1+}^0 = \sum_{k \in s_E}w_k\)</span> un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:</p>
-<p><span class="math display">\[
-\hat{N}_{++}^{ratio} = \frac{N_{1+}^0}{\hat{N}_{1+}^0} \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
-\]</span></p>
-<p>De la misma manera, es posible refinar el estimador usando la postestratificación <span class="citation">(<a href="#ref-Gutierrez_2016">Gutiérrez 2016</a>)</span>. Esta es una técnica que particiona la población en subgrupos homogéneos y que permite minimizar el impacto del sesgo de correlación (que los individuos que no fueron enumerados en el censo serán más propensos a no ser incluidos en la encuesta). Como se mencionó anteriormente, es usual utilizar al menos las divisiones administrativas mayores, los grupos de edad y el sexo. Cada una de las particiones inducidas por el cruce de estas variables se conoce como post-estratos. Suponiendo que existen <span class="math inline">\(G\)</span> postestratos, entonces el estimador de razón post-estratificada toma la siguiente forma:</p>
-<p><span class="math display">\[
-\hat{N}_{++}^{post} = \sum_{g=1}^G \left[ \frac{N_{g1+}^0}{\hat{N}_{g1+}^0} \frac{\hat{N}_{g1+} \cdot \hat{N}_{g+1}}{\hat{N}_{g11}} \right] =
-\sum_{g=1}^G \left[N_{g1+}^0 \frac{\hat{p}_{g1+}}{\hat{p}_{g11}}  \right]
-\]</span></p>
-<p>En donde <span class="math inline">\(\hat{p}_{g1+} = \frac{\hat{N}_{g+1}}{\hat{N}_{g1+}^0}\)</span> y <span class="math inline">\(\hat{p}_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}\)</span> son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato <span class="math inline">\(g\)</span>. Esta última expresión resultará muy valiosa para desarrollar modelos de estimación en áreas pequeñas, permitiendo calcular con mayor precisión la omisión censal.</p>
-
-</div>
-<!-- </div> -->
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-Binder_2011" class="csl-entry">
-Binder, David A. 2011. <span>“Estimating Model Parameters from a Complex Survey Under a Model-Design Randomization Framework.”</span> <em>Pakistan Journal of Statistics</em> 27 (4): 371–90.
-</div>
-<div id="ref-USCensusBureau_2022" class="csl-entry">
-Bureau, US Census. 2022. <span>“2020 Post-Enumeration Survey Estimation Design.”</span>
-</div>
-<div id="ref-CEPAL_2023" class="csl-entry">
-CEPAL. 2023. <em>Diseño y Análisis Estadístico de Las Encuestas de Hogares de América Latina</em>. Metodologías de La CEPAL.
-</div>
-<div id="ref-Gutierrez_2016" class="csl-entry">
-Gutiérrez, Hugo Andrés. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Estimación de Parámetros</em>. Segunda edición. Ediciones de la U.
-</div>
-<div id="ref-wolter1986coverage" class="csl-entry">
-Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
-</div>
+<div id="operativo-de-recolección" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Operativo de recolección<a href="operativo-de-recolección.html#operativo-de-recolección" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="la-muestra-e-y-la-muestra-p.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cap3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="diseño-de-la-muestra.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="indicadores-principales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -414,7 +338,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/02-MuestreoEncuesta.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/07-Planeacion.rmd",
 "text": "Edit"
 },
 "history": {

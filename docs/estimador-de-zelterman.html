@@ -20,10 +20,10 @@
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
 
-<meta name="author" content="Andrés Gutiérrez, Giovany Babativa, Stalyn Guerrero" />
+<meta name="author" content="Andrés Gutiérrez, Giovany Babativa" />
 
 
-<meta name="date" content="2025-07-12" />
+<meta name="date" content="2025-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -266,12 +266,18 @@ div.csl-indent {
 <li class="chapter" data-level="6.7.2" data-path="evaluación.html"><a href="evaluación.html#métricas-de-eficiencia"><i class="fa fa-check"></i><b>6.7.2</b> Métricas de eficiencia</a></li>
 <li class="chapter" data-level="6.7.3" data-path="evaluación.html"><a href="evaluación.html#revisión-clerical"><i class="fa fa-check"></i><b>6.7.3</b> Revisión clerical</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="implementación.html"><a href="implementación.html"><i class="fa fa-check"></i><b>6.8</b> Implementación</a>
+<li class="chapter" data-level="6.8" data-path="implementación.html"><a href="implementación.html"><i class="fa fa-check"></i><b>6.8</b> Implementación</a></li>
+<li class="chapter" data-level="6.9" data-path="deduplicación-de-registros.html"><a href="deduplicación-de-registros.html"><i class="fa fa-check"></i><b>6.9</b> Deduplicación de registros</a></li>
+<li class="chapter" data-level="6.10" data-path="vinculación-de-registros.html"><a href="vinculación-de-registros.html"><i class="fa fa-check"></i><b>6.10</b> Vinculación de registros</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="planeación-de-la-operación-estadística.html"><a href="planeación-de-la-operación-estadística.html"><i class="fa fa-check"></i><b>7</b> Planeación de la operación estadística</a>
 <ul>
-<li class="chapter" data-level="6.8.1" data-path="implementación.html"><a href="implementación.html#deduplicación-de-registros"><i class="fa fa-check"></i><b>6.8.1</b> Deduplicación de registros</a></li>
+<li class="chapter" data-level="7.1" data-path="diseño-del-cuestionario.html"><a href="diseño-del-cuestionario.html"><i class="fa fa-check"></i><b>7.1</b> Diseño del cuestionario</a></li>
+<li class="chapter" data-level="7.2" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html"><i class="fa fa-check"></i><b>7.2</b> Diseño de la muestra</a></li>
+<li class="chapter" data-level="7.3" data-path="operativo-de-recolección.html"><a href="operativo-de-recolección.html"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
+<li class="chapter" data-level="7.4" data-path="indicadores-principales.html"><a href="indicadores-principales.html"><i class="fa fa-check"></i><b>7.4</b> Indicadores principales</a></li>
 </ul></li>
-<li class="chapter" data-level="6.9" data-path="vinculación.html"><a href="vinculación.html"><i class="fa fa-check"></i><b>6.9</b> Vinculación</a></li>
-</ul></li>
+<li class="chapter" data-level="8" data-path="modelos-de-regresión-en-el-sistema-dual.html"><a href="modelos-de-regresión-en-el-sistema-dual.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
 
@@ -305,9 +311,15 @@ div.csl-indent {
 \]</span></p>
 <p>donde</p>
 <p><span class="math display">\[\lambda = \frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}.\]</span></p>
+<p><span class="citation">Brittain and Böhning (<a href="#ref-brittain2009estimators">2009</a>)</span> presentaron una versión alternativa del estimador cuando se tienen dos fuentes. En este contexto, aplican el mismo método utilizado por Zelterman a la verosimilitud binomial mixta, con parámetro de tamaño 2, truncada en los ceros, dado que los casos que no aparecen en ninguna de las dos fuentes, y esto se incorpora en el estimador de Horvitz–Thompson para obtener el estimador de Zelterman del tamaño poblacional en el contexto binomial, que sería más apropiado en el contexto de una encuesta de cobertura, y que puede expresarse como:</p>
+<p><span class="math display">\[\hat{N}_{\text{Zel}} = \frac{\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}}
+{1 - \left(\frac{\hat{N}_{12}+\hat{N}_{21}}{\hat{N}_{12}+\hat{N}_{21}+2\hat{N}_{11}}\right)^2}.\]</span></p>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-brittain2009estimators" class="csl-entry">
+Brittain, Sarah, and Dankmar Böhning. 2009. <span>“Estimators in Capture–Recapture Studies with Two Sources.”</span> <em>AStA Advances in Statistical Analysis</em> 93 (1): 23–47.
+</div>
 <div id="ref-zelterman1988robust" class="csl-entry">
 Zelterman, Daniel. 1988. <span>“Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.”</span> <em>Journal of Statistical Planning and Inference</em> 18 (2): 225–37.
 </div>

@@ -71,7 +71,7 @@ Posteriormente, @sadinle2009transformed propone un método para calcular interva
 
 ## Estimador de Nour
 
-En muchas situaciones, el fracaso de capturar a un individuo en ambas listas puede deberse a causas comunes, lo que conduce a una asociación positiva entre las dos fuentes. En otros casos, los individuos pueden estar menos dispuestos a ser registrados en la segunda lista (tasas de rechazo), lo que resulta en una asociación negativa entre las listas. Estos fenómenos se conocen como variación de respuesta conductual [@wolter1986coverage] .
+En algunos casos, el fracaso de capturar a un individuo en ambas listas puede deberse a causas comunes, lo que conduce a una asociación positiva entre las dos fuentes. Esto es habitual en las encuestas de cobertura, donde los individuos pueden estar menos dispuestos a ser registrados generando altas tasas de rechazo, lo que resulta en una asociación negativa entre las listas. Estos fenómenos se conocen como variación de respuesta conductual [@wolter1986coverage] .
 
 El estimador de la **cota inferior del tamaño poblacional** propuesto por @nour1982estimation, se basa en una estimación para la cantidad no observada $N_{12}$ (correspondiente a individuos no capturados por ninguna de las dos listas), bajo los siguientes supuestos:
 
@@ -226,6 +226,13 @@ donde
 
 $$\lambda = \frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}.$$
 
+@brittain2009estimators presentaron una versión alternativa del estimador cuando se tienen dos fuentes. En este contexto, aplican el mismo método utilizado por Zelterman a la verosimilitud binomial mixta, con parámetro de tamaño 2, truncada en los ceros, dado que los casos que no aparecen en ninguna de las dos fuentes, y esto se incorpora en el estimador de Horvitz–Thompson para obtener el estimador de Zelterman del tamaño poblacional en el contexto binomial, que sería más apropiado en el contexto de una encuesta de cobertura, y que puede expresarse como:
+
+$$\hat{N}_{\text{Zel}} = \frac{\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}}
+{1 - \left(\frac{\hat{N}_{12}+\hat{N}_{21}}{\hat{N}_{12}+\hat{N}_{21}+2\hat{N}_{11}}\right)^2}.$$
+
+
+
 ## Modelos log-lineales
 
 Los modelos log-lineales proporcionan un enfoque alternativo y generalizado para estimar la población total en estudios de captura y recaptura, y se pueden usar cuando hay dos o más fuentes o listas [@fienberg1972multiple; @cormack1989log]. Para el caso de un sistema de estimación dual, el modelo log-lineal, puede representarse como un modelo lineal generalizado de Poisson (GLM), aplicado sobre los tres conteos observados, $N_{11}$, $N_{12}$, y $N_{21}$, así:
@@ -239,8 +246,8 @@ $$
 donde:
 
 - $\lambda$: parámetro de intercepto general.
-- $\lambda_1^{(i)}$: mide el efecto de estar en la lista 1 (presencia o ausencia).
-- $\lambda_2^{(j)}$: mide el efecto de estar en la lista 2 (presencia o ausencia).
+- $\lambda_1^{(i)}$: mide el efecto de estar en el censo.
+- $\lambda_2^{(j)}$: mide el efecto de estar en la muestra de cobertura.
 
 De esta forma $\hat{N}_{22}=\exp(\hat{\lambda})$, donde $\hat{\lambda}$ es el estimador de máxima verosimilitud de $\lambda$. Por lo tanto, el total poblacional estimado es:
 

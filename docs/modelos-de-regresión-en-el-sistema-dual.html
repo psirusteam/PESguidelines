@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.3 Los estimadores de muestreo | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>8 Modelos de regresión en el sistema dual | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.3 Los estimadores de muestreo | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="8 Modelos de regresión en el sistema dual | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.3 Los estimadores de muestreo | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="8 Modelos de regresión en el sistema dual | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="la-muestra-e-y-la-muestra-p.html"/>
-<link rel="next" href="cap3.html"/>
+<link rel="prev" href="indicadores-principales.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -298,92 +298,185 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="los-estimadores-de-muestreo" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Los estimadores de muestreo<a href="los-estimadores-de-muestreo.html#los-estimadores-de-muestreo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Como la encuesta representa una muestra de la población que viene de una medida de probabilidad, y a su vez, existe un modelo multinomial, entonces se introduce una complejidad metodológica clave: la necesidad de establecer las bases inferenciales para incluir dos fuentes de incertidumbre: el modelo y el muestreo <span class="citation">(<a href="#ref-Binder_2011">Binder 2011</a>)</span>. <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> afirma que este cambio de enfoque implica que la estimación del error de cobertura debe considerar dos fuentes principales de incertidumbre: (1) la variabilidad debida a la selección muestral de la encuesta, y (2) la variabilidad del modelo asociada con el modelo de error de cobertura.</p>
-<p>La variabilidad inducida por la selección de la muestra de la encuesta implica que las estimaciones derivadas de ella (como <span class="math inline">\(N_{+1}\)</span> o <span class="math inline">\(N_{11}\)</span>) están afectadas por la aleatoriedad inherente a la selección de unidades en la muestra. Si la encuesta utiliza un diseño complejo (como estratificación o conglomerados), la variabilidad aumenta debido a los efectos de diseño. Este tipo de variabilidad se mide con los métodos clásicos de inferencia estadística en encuestas de hogares. En segundo lugar, está la variabilidad derivada del modelo multinomial. En esta instancia, la novedad radica en integrar estas incertidumbres por medio de una inferencia doble, usando los resultados bien conocidos de las esperanzas y varianzas condicionales.</p>
-<p>Si denotamos por <span class="math inline">\(\pi_k\)</span> la probabilidad de inclusión del elemento <span class="math inline">\(k\)</span> en la muestra <span class="math inline">\(s_P\)</span>, la cual está determinada por su selección probabilística, entonces el peso de muestreo del elemento <span class="math inline">\(k\)</span>-ésimo en la muestra P se define como <span class="math inline">\(w_k = \pi_k^{-1}\)</span>. Este peso refleja la inversa de la probabilidad de inclusión y se utiliza para ajustar las estimaciones en función del diseño de muestreo. De manera similar, los pesos de muestreo se definirán para la muestra <span class="math inline">\(s_E\)</span>. Para simplificar la notación, vincularemos la muestra correspondiente a través de los subíndices en las sumas. Por ejemplo, al referirnos a la muestra <span class="math inline">\(s_P\)</span>, utilizaremos el subíndice <span class="math inline">\(P\)</span> en las sumas, y para la muestra <span class="math inline">\(s_E\)</span>, emplearemos el subíndice <span class="math inline">\(E\)</span>.</p>
-<p>Asumiendo que <span class="math inline">\(x_{k, 11}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue encontrado tanto en la muestra como en el censo y, cero, en otro caso, entonces los estimadores de muestreo de <span class="math inline">\({N}_{+1}\)</span> y <span class="math inline">\({N}_{11}\)</span>, serán respectivamente:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\hat{N}_{+1} &amp;= \sum_{k \in s_P} w_k \\
-\hat{N}_{11} &amp;= \sum_{k \in s_P} w_k \ x_{k, 11}
-\end{aligned}
-\]</span></p>
-<p>Asimismo, si <span class="math inline">\(z_{k}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue correctamente enumerado en el censo y, cero, en otro caso, entonces el estimador de muestreo de <span class="math inline">\(N_{1+}\)</span> será:</p>
-<p><span class="math display">\[
-\hat{N}_{1+} = {N}_{1+}^0 - \sum_{k \in s_E} w_k (1 - \ z_{k})
-\]</span></p>
-<p>En donde <span class="math inline">\({N}_{1+}^0\)</span> denota el número de registros censales, el cual difiere del conteo de personas en el censo, y puede representar el conteo no corregido de personas en el censo. Esta cifra debe basarse exclusivamente en los datos recopilados durante el operativo censal, sin incluir imputaciones, proyecciones ni ningún otro tipo de ajustes estadísticos. Esto garantiza que los resultados reflejen fielmente la información obtenida en el campo. Para los anteriores estimadores, es claro que <span class="math inline">\(x_{k, 11}\)</span> es una variable aletaoria que se define en la muestra <span class="math inline">\(s_P\)</span>, mientras que <span class="math inline">\(z_{k}\)</span> es una variable aleatoria que se define en la muestra <span class="math inline">\(s_E\)</span>. Por otro lado, <span class="citation">Bureau (<a href="#ref-USCensusBureau_2022">2022</a>)</span> propone un estimador directo alternativo para <span class="math inline">\({N}_{1+}\)</span>, que se define a partir de la muestra E, y que corresponde a un conteo ponderado de enumeraciones correctas. Este estimador toma la siguiente forma:</p>
-<p><span class="math display">\[
-\hat{N}_{1+} = \sum_{k \in s_E} w_k \ z_{k}
-\]</span></p>
-<p>Recordando que el estimador del modelo para <span class="math inline">\(N\)</span> es <span class="math inline">\(\tilde{N} = \frac{ N_{1+} \cdot N_{+1}}{N_{11}}\)</span>; entonces, su estimador insesgado bajo el diseño de muestreo se encuentra reemplazando <span class="math inline">\(N_{1+}\)</span>, <span class="math inline">\(N_{+1}\)</span> y <span class="math inline">\(N_{11}\)</span> por sus respectivos estimadores insesgados en la muestra. Por consiguiente, se tiene que el estimador de muestreo del tamaño poblacional <span class="math inline">\(N\)</span> tomará la siguiente forma:</p>
-<p><span class="math display">\[
-\hat{N}_{++} = \hat{N} = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
-\]</span></p>
-<p>Nótese que los estimadores de muestreo para <span class="math inline">\({N}_{12}\)</span> y <span class="math inline">\({N}_{21}\)</span> toman la siguiente forma:</p>
-<p><span class="math display">\[
-\begin{aligned}
-\hat{N}_{12} &amp;= \hat{N}_{1+} - \hat{N}_{11} \\
-\hat{N}_{21} &amp;= \hat{N}_{+1} - \hat{N}_{11}
-\end{aligned}
-\]</span></p>
-<p>La existencia de individuos que no fueron capturados en ninguno de los dos listados representa un desafío significativo, ya que su número solo puede ser estimado indirectamente a partir de la superposición observada entre la encuesta y el censo. Por otro lado, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> establece las condiciones sobre las cuales estos estimadores son insesgados y además propone el siguiente estimador aproximadamente insesgado de su varianza:</p>
-<p><span class="math display">\[
-\tilde{V}(\hat{N}) =  \tilde{V}_m(\tilde{N}) + \tilde{V}_p(\hat{N})
-\]</span></p>
-<p>En donde <span class="math inline">\(\tilde{V}_m(\tilde{N})\)</span> es el estimador de la varianza de <span class="math inline">\(\tilde{N}\)</span> bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, de la siguiente forma:</p>
-<p><span class="math display">\[
-\tilde{V}_m(\tilde{N}) = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1} \cdot (\hat{N}_{1+} - \hat{N}_{11}) \cdot (\hat{N}_{+1} - \hat{N}_{11})}{\hat{N}_{11}^3}
-\]</span></p>
-<p>Asimismo, <span class="math inline">\(\tilde V_p (\hat{N})\)</span> corresponde con un estimador tradicional de varianzas para estimadores de muestreo <span class="citation">(<a href="#ref-CEPAL_2023">CEPAL 2023</a>)</span>. De esta forma, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>, sección 3.1.)</span> afirma que</p>
-<p><span class="math display">\[
-\tilde V_p (\hat{N}) \approx \frac{M^2}{m}(1-f)S^2_{d}
-\]</span></p>
-<p>Definiendo a <span class="math inline">\(\tilde{N}_{i, +1}\)</span> como la estimación del tamaño del <span class="math inline">\(i\)</span>-ésimo conglomerado a partir de la muestra <span class="math inline">\(s_P\)</span>, se tiene que <span class="math inline">\(S^2_{d} = \frac{1}{m-1}\sum_{i=1}^m d_i^2\)</span> y además:</p>
-<p><span class="math display">\[
-d_i = \frac{\hat{N}_{1+}}{\hat{N}_{11}}
-\left(\tilde{N}_{k, +1} - \frac{\hat{N}_{+1}}{\hat{N}_{11}}x_{k, 11}\right)  
-\]</span></p>
-<p>Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información de los registros censales para crear otro tipo de estimadores. Siendo <span class="math inline">\(\hat{N}_{1+}^0 = \sum_{k \in s_E}w_k\)</span> un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:</p>
-<p><span class="math display">\[
-\hat{N}_{++}^{ratio} = \frac{N_{1+}^0}{\hat{N}_{1+}^0} \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
-\]</span></p>
-<p>De la misma manera, es posible refinar el estimador usando la postestratificación <span class="citation">(<a href="#ref-Gutierrez_2016">Gutiérrez 2016</a>)</span>. Esta es una técnica que particiona la población en subgrupos homogéneos y que permite minimizar el impacto del sesgo de correlación (que los individuos que no fueron enumerados en el censo serán más propensos a no ser incluidos en la encuesta). Como se mencionó anteriormente, es usual utilizar al menos las divisiones administrativas mayores, los grupos de edad y el sexo. Cada una de las particiones inducidas por el cruce de estas variables se conoce como post-estratos. Suponiendo que existen <span class="math inline">\(G\)</span> postestratos, entonces el estimador de razón post-estratificada toma la siguiente forma:</p>
-<p><span class="math display">\[
-\hat{N}_{++}^{post} = \sum_{g=1}^G \left[ \frac{N_{g1+}^0}{\hat{N}_{g1+}^0} \frac{\hat{N}_{g1+} \cdot \hat{N}_{g+1}}{\hat{N}_{g11}} \right] =
-\sum_{g=1}^G \left[N_{g1+}^0 \frac{\hat{p}_{g1+}}{\hat{p}_{g11}}  \right]
-\]</span></p>
-<p>En donde <span class="math inline">\(\hat{p}_{g1+} = \frac{\hat{N}_{g+1}}{\hat{N}_{g1+}^0}\)</span> y <span class="math inline">\(\hat{p}_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}\)</span> son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato <span class="math inline">\(g\)</span>. Esta última expresión resultará muy valiosa para desarrollar modelos de estimación en áreas pequeñas, permitiendo calcular con mayor precisión la omisión censal.</p>
+<div id="modelos-de-regresión-en-el-sistema-dual" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Modelos de regresión en el sistema dual<a href="modelos-de-regresión-en-el-sistema-dual.html#modelos-de-regresión-en-el-sistema-dual" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Utilizar modelos de regresión logística en lugar de la post-estratificación. El uso de la regresión logística nos permite reducir el sesgo de correlación en nuestras estimaciones de la población total sin necesidad de incluir interacciones de alto orden innecesarias, como ocurre al formar celdas de post-estratificación. Al evitar interacciones complejas e innecesarias, podemos incluir variables adicionales en el modelo que potencialmente ayudan a reducir el error sintético en las estimaciones de subpoblaciones. Citar Mule2008B</p>
+<p>En el modelo clásico se asume que los individuos tienen la misma probabilidad de ser encontrados tanto en el censo como en la encuesta posterior, lo cual, en la práctica, suele ser difícil de justificar. Por ello, en la mayoría de los casos se construyen postestratos, de forma que dentro de cada grupo los individuos se comporten de manera similar respecto a su cobertura en el censo o en la encuesta de cobertura. Regularmente los criterios se basan en características geográficos, étnicas y demográficas. Pero una especificación equivocada en la postestratificación conduce a sesgos en las estimaciones del tamaño poblacional.</p>
+<p>Una alternativa consiste en usar modelos de regresión logística, que es una técnica más flexible ya que puede manejar variables continuas, además de permitir la selección de modelos a partir de una amplia gama de predictores (Haberman, Jiang and Spencer (1998), Griffin (2005), Mule and Olson (2005), Mule (2008)).</p>
 
-</div>
-<!-- </div> -->
-<h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-Binder_2011" class="csl-entry">
+<div class="csl-entry">
+Baillargeon, Sophie, and Louis-Paul Rivest. 2007. <span>“Rcapture: Loglinear Models for Capture-Recapture in r.”</span> <em>Journal of Statistical Software</em> 19: 1–31.
+</div>
+<div class="csl-entry">
+Biemer, Paul P, and Lars E Lyberg. 2003. <em>Introduction to Survey Quality</em>. John Wiley &amp; Sons.
+</div>
+<div class="csl-entry">
 Binder, David A. 2011. <span>“Estimating Model Parameters from a Complex Survey Under a Model-Design Randomization Framework.”</span> <em>Pakistan Journal of Statistics</em> 27 (4): 371–90.
 </div>
-<div id="ref-USCensusBureau_2022" class="csl-entry">
+<div class="csl-entry">
+Bishop, Yvonne M, Stephen E Fienberg, and Paul W Holland. 2007. <em>Discrete Multivariate Analysis: Theory and Practice</em>. Springer Science &amp; Business Media.
+</div>
+<div class="csl-entry">
+Bleiholder, Jens, and Felix Naumann. 2009. <span>“Data Fusion.”</span> <em>ACM Computing Surveys (CSUR)</em> 41 (1): 1–41.
+</div>
+<div class="csl-entry">
+Brittain, Sarah, and Dankmar Böhning. 2009. <span>“Estimators in Capture–Recapture Studies with Two Sources.”</span> <em>AStA Advances in Statistical Analysis</em> 93 (1): 23–47.
+</div>
+<div class="csl-entry">
 Bureau, US Census. 2022. <span>“2020 Post-Enumeration Survey Estimation Design.”</span>
 </div>
-<div id="ref-CEPAL_2023" class="csl-entry">
+<div class="csl-entry">
+Cambon, Jesse, Diego Hernangómez, Christopher Belanger, and Daniel Possenriede. 2021. <span>“Tidygeocoder: An r Package for Geocoding.”</span> <em>Journal of Open Source Software</em> 6 (65): 3544. <a href="https://doi.org/10.21105/joss.03544">https://doi.org/10.21105/joss.03544</a>.
+</div>
+<div class="csl-entry">
+Casella, George, and Roger L. Berger. 2002. <em>Statistical Inference</em>. 2nd ed. Duxbury Press.
+</div>
+<div class="csl-entry">
 CEPAL. 2023. <em>Diseño y Análisis Estadístico de Las Encuestas de Hogares de América Latina</em>. Metodologías de La CEPAL.
 </div>
-<div id="ref-Gutierrez_2016" class="csl-entry">
+<div class="csl-entry">
+Chao, Anne. 1987. <span>“Estimating the Population Size for Capture-Recapture Data with Unequal Catchability.”</span> <em>Biometrics</em>, 783–91.
+</div>
+<div class="csl-entry">
+———. 1989. <span>“Estimating Population Size for Sparse Data in Capture-Recapture Experiments.”</span> <em>Biometrics</em>, 427–38.
+</div>
+<div class="csl-entry">
+Chapman, Douglas George. 1951. <span>“Some Properties of the Hypergeometric Distribution with Applications to Zoological Censuses.”</span> <em>Univ. Calif. Stat.</em> 1: 60–131.
+</div>
+<div class="csl-entry">
+Christen, Peter. 2012. <em>Data Matching Concepts and Techniques for Record Linkage, Entity Resolution, and Duplicate Detection</em>. Springer.
+</div>
+<div class="csl-entry">
+Christen, Victor, Tim Häntschel, Peter Christen, and Erhard Rahm. 2023. <span>“Privacy-Preserving Record Linkage Using Autoencoders.”</span> <em>International Journal of Data Science and Analytics</em> 15 (4): 347–57.
+</div>
+<div class="csl-entry">
+Churches, Tim, Peter Christen, Kim Lim, and Justin Xi Zhu. 2002. <span>“Preparation of Name and Address Data for Record Linkage Using Hidden Markov Models.”</span> <em>BMC Medical Informatics and Decision Making</em> 2: 1–16.
+</div>
+<div class="csl-entry">
+Cormack, Richard M. 1989. <span>“Log-Linear Models for Capture-Recapture.”</span> <em>Biometrics</em>, 395–413.
+</div>
+<div class="csl-entry">
+Dunn, H. L. 1946. <span>“Record Linkage.”</span> <em>American Journal of Public Health and the Nations Health</em> 36 (12): 1412–16. <a href="https://doi.org/10.2105/AJPH.36.12.1412">https://doi.org/10.2105/AJPH.36.12.1412</a>.
+</div>
+<div class="csl-entry">
+Fellegi, Ivan P, and Alan B Sunter. 1969. <span>“A Theory for Record Linkage.”</span> <em>Journal of the American Statistical Association</em> 64 (328): 1183–1210.
+</div>
+<div class="csl-entry">
+Fienberg, Stephen E. 1972. <span>“The Multiple Recapture Census for Closed Populations and Incomplete 2k Contingency Tables.”</span> <em>Biometrika</em> 59 (3): 591–603.
+</div>
+<div class="csl-entry">
 Gutiérrez, Hugo Andrés. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Estimación de Parámetros</em>. Segunda edición. Ediciones de la U.
 </div>
-<div id="ref-wolter1986coverage" class="csl-entry">
+<div class="csl-entry">
+Herzog, Thomas N, Fritz J Scheuren, and William E Winkler. 2007. <em>Data Quality and Record Linkage Techniques</em>. Vol. 1. Springer.
+</div>
+<div class="csl-entry">
+Hogan, Howard. 2003. <span>“The Accuracy and Coverage Evaluation: Theory and Design.”</span> <em>Survey Methodology</em> 29 (2): 129–38. <a href="https://www150.statcan.gc.ca/n1/en/catalogue/12-001-X20030026444">https://www150.statcan.gc.ca/n1/en/catalogue/12-001-X20030026444</a>.
+</div>
+<div class="csl-entry">
+Howard, James P et al. 2020. <span>“Phonetic Spelling Algorithm Implementations for r.”</span> <em>Journal of Statistical Software</em> 95: 1–21.
+</div>
+<div class="csl-entry">
+Larsen, Michael D, and Donald B Rubin. 2001. <span>“Iterative Automated Record Linkage Using Mixture Models.”</span> <em>Journal of the American Statistical Association</em> 96 (453): 32–41.
+</div>
+<div class="csl-entry">
+Lincoln, F. C. 1930. <span>“Calculating Waterfowl Abundance on the Basis of Banding Returns.”</span> <em>Circular</em> 118: 1–4.
+</div>
+<div class="csl-entry">
+Lynch, Billy T, William L Arends, et al. 1977. <span>“Selection of a Surname Coding Procedure for the SRS Record Linkage System.”</span> <em>Washington, DC: US Department of Agriculture, Sample Survey Research Branch, Research Division</em>.
+</div>
+<div class="csl-entry">
+Menestrina, David, Steven Euijong Whang, and Hector Garcia-Molina. 2010. <span>“Evaluating Entity Resolution Results.”</span> <em>Proceedings of the VLDB Endowment</em> 3 (1-2): 208–19.
+</div>
+<div class="csl-entry">
+Nations, United. 2010. <em>Post Enumeration Surveys - Operational Guidelines</em>. 2010 World Population and Housing Census Programme.
+</div>
+<div class="csl-entry">
+Nauman, Felix, and Melanie Herschel. 2022. <em>An Introduction to Duplicate Detection</em>. Springer Nature.
+</div>
+<div class="csl-entry">
+Navarro, Gonzalo. 2001. <span>“A Guided Tour to Approximate String Matching.”</span> <em>ACM Computing Surveys (CSUR)</em> 33 (1): 31–88.
+</div>
+<div class="csl-entry">
+Newcombe, H. B., J. M. Kennedy, S. J. Axford, and A. P. James. 1959. <span>“Automatic Linkage of Vital Records: Computers Can Be Used to Extract" Follow-up" Statistics of Families from Files of Routine Records.”</span> <em>Science</em> 130 (3381): 954–59. <a href="https://doi.org/10.1126/science.130.3381.954">https://doi.org/10.1126/science.130.3381.954</a>.
+</div>
+<div class="csl-entry">
+Newcombe, Howard B., and J. Michael Kennedy. 1962. <span>“Record Linkage: Making Maximum Use of the Discriminating Power of Identifying Information.”</span> <em>Communications of the ACM</em> 5 (11): 563–66. <a href="https://doi.org/10.1145/368996.369032">https://doi.org/10.1145/368996.369032</a>.
+</div>
+<div class="csl-entry">
+Nour, El-Sayed. 1982. <span>“On the Estimation of the Total Number of Vital Events with Data from Dual Collection Systems.”</span> <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em> 145 (1): 106–16.
+</div>
+<div class="csl-entry">
+Odell, Margaret, and Robert Russell. 1918. <span>“The Soundex Coding System.”</span> <em>US Patents</em> 1261167: 9.
+</div>
+<div class="csl-entry">
+Otis, David L, Kenneth P Burnham, Gary C White, and David R Anderson. 1978. <span>“Statistical Inference from Capture Data on Closed Animal Populations.”</span> <em>Wildlife Monographs</em>, no. 62: 3–135.
+</div>
+<div class="csl-entry">
+Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
+</div>
+<div class="csl-entry">
+Philips, Lawrence. 1990. <span>“Hanging on the Metaphone.”</span> <em>Computer Language</em> 7 (12): 39–43.
+</div>
+<div class="csl-entry">
+Rivest, Louis-Paul, and Sophie Baillargeon. 2007. <span>“Applications and Extensions of Chao’s Moment Estimator for the Size of a Closed Population.”</span> <em>Biometrics</em> 63 (4): 999–1006.
+</div>
+<div class="csl-entry">
+———. 2014. <span>“Capture-Recapture Methods for Estimating the Size of a Population: Dealing with Variable Capture Probabilities.”</span> <em>Statistics in Action: A Canadian Outlook</em> 40: 289–304.
+</div>
+<div class="csl-entry">
+Sadinle, Mauricio. 2009. <span>“Transformed Logit Confidence Intervals for Small Populations in Single Capture–Recapture Estimation.”</span> <em>Communications in Statistics-Simulation and Computation</em> 38 (9): 1909–24.
+</div>
+<div class="csl-entry">
+Schnabel, Z. E. 1938. <span>“The Estimation of the Total Fish Population of a Lake.”</span> <em>American Mathematical Monthly</em> 45: 348–52.
+</div>
+<div class="csl-entry">
+Seber, George Arthur Frederick. 1982. <em>The Estimation of Animal Abundance and Related Parameters</em>.
+</div>
+<div class="csl-entry">
+Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimating Birth and Death Rates and the Extent of Registration.”</span> <em>Journal of the American Statistical Association</em> 44 (245): 101–15.
+</div>
+<div class="csl-entry">
+Van Buuren, Stef, and Stef Van Buuren. 2012. <em>Flexible Imputation of Missing Data</em>. Vol. 10. CRC press Boca Raton, FL.
+</div>
+<div class="csl-entry">
+Vatsalan, Dinusha, Dimitrios Karapiperis, and Vassilios S. Verykios. 2020. <span>“Privacy-Preserving Record Linkage.”</span> In <em>Encyclopedia of Big Data Technologies</em>, edited by Albert Zomaya, Javid Taheri, and Sherif Sakr, 1–10. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-319-63962-8_17-2">https://doi.org/10.1007/978-3-319-63962-8_17-2</a>.
+</div>
+<div class="csl-entry">
+Webster, Anthony J, and Richard Kemp. 2013. <span>“Estimating Omissions from Searches.”</span> <em>The American Statistician</em> 67 (2): 82–89.
+</div>
+<div class="csl-entry">
+Winkler, William E. 2000. <em>Using the EM Algorithm for Weight Computation in the Fellegi-Sunter Model of Record Linkage</em>. US Bureau of the Census Washington, DC.
+</div>
+<div class="csl-entry">
+Winkler, William E et al. 2006. <span>“Overview of Record Linkage and Current Research Directions.”</span> <em>Bureau of the Census</em> 25 (4): 603–23.
+</div>
+<div class="csl-entry">
+Winkler, William E. 1990. <span>“String Comparator Metrics and Enhanced Decision Rules in the Fellegi-Sunter Model of Record Linkage.”</span> RR91/9. U.S. Bureau of the Census.
+</div>
+<div class="csl-entry">
 Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
 </div>
+<div class="csl-entry">
+Zelterman, Daniel. 1988. <span>“Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.”</span> <em>Journal of Statistical Planning and Inference</em> 18 (2): 225–37.
 </div>
+</div>
+</div>
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="la-muestra-e-y-la-muestra-p.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cap3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="indicadores-principales.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -414,7 +507,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/02-MuestreoEncuesta.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/08-Regresion.rmd",
 "text": "Edit"
 },
 "history": {

@@ -10,5 +10,7 @@ rmd_files: [
   "03-InclusionesMovers.rmd",
   "04-Estimacion.rmd",
   "05-Protocolo.rmd",
-  "06-Emparejamiento.rmd"
+  "06-Emparejamiento.rmd",
+  "07-Planeacion.rmd",
+  "08-Regresion.rmd"
 ]
