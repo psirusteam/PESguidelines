@@ -15,7 +15,7 @@ Para poder estimar $N_{1+}$ de forma apropiada es fundamental definir en la mues
 
 Los registros de la muestra E se deben revisar meticulosamente para verificar el cumplimiento de estas cuatro dimensiones.  
 
-## Reconsturcción de los hogares con la muestra P
+## Reconstrucción de los hogares con la muestra P {#sec-procedimientos}
 
 La descripción de los siguientes procedimientos se basa en @UnitedNations_2010.
 

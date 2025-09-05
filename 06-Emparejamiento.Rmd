@@ -40,21 +40,6 @@ El emparejamiento de registros frecuentemente involucra información sensible co
 
 ## Geolocalización
 
-El proceso para el emparejamiento a nivel de personas debe estar diseñado para determinar si las personas de la muestra:
-
-1. P fueron enumeradas en el censo.
-2. E, enumeradas en el censo, fueron correctamente enumeradas. Si una persona de la muestra E fue erróneamente enumerada, el proceso de emparejamiento también debe determinar la razón del error.
-
-Durante la encuesta de cobertura, el encuestador hará la lista, independiente del censo, de las personas que viven en la dirección en el momento de la encuesta y de aquellas que vivieron en la dirección el día del censo pero que ya no residen allí. Se deben levantar como mínimo los datos de sus nombres, apellidos, datos demográficos y relación de parentesco entre ellos, en caso de ser posible, se debería incluir el número de identificación personal.
-
-Las preguntas deben estar orientadas a determinar otros lugares donde la persona podría haber vivido o permanecido el día del censo buscando identificar si la persona se habría mudado o si estaba de forma temporal en esa otra dirección. Si es una persona alterna entre direcciones, se debe intentar establecer cuánto tiempo pasa en cada dirección y así determinar su residencia habitual, es decir, en dónde debería contarse en el censo. Asimismo, si la conclusión es que una persona se mudó de la dirección de la muestra, se debe intentar obtener su nueva dirección.
-
-Las otras direcciones recopiladas durante la entrevista que son proporcionadas por el encuestado, pueden clasificarse como direcciones de inmigrante (*in-movers*, en inglés) o direcciones alternas. Las direcciones de inmigrante se recopilan cuando alguien que actualmente vive en la dirección de la muestra había vivido en otro lugar el día del censo. Mientras que las direcciones alternas se dan cuando alguien vive en otro lugar por razones laborales, estudios, servicio militar, entre otras.
-
-La encuesta debe diseñarse para levantar la mayor cantidad posible de direcciones alternas con el fin de identificar todos los lugares donde una persona pudo haber sido contada en el censo y determinar si fue contabilizada más de una vez. Es posible que el encuestado no pueda proporcionar la dirección completa, en esos casos se debe intentar obtener cualquier información de referencia próximos a la dirección. 
-
-Durante el procesamiento de la encuesta de cobertura, cada persona entrevistada debe asignarse con un código a un departamento y municipio de residencia. Los códigos del lugar de residencia indican dónde debía haberse contado a la persona el día del censo, también se debe agregar una codificación para identificar si la persona se mudó y si debía incluirse en la muestra P. Este proceso no necesariamente se puede lograr de forma automática y en algunos casos habrá la necesidad de hacer una revisión clerical, especialmente en los casos donde el encuestador agregue observaciones que puedan resultar relevantes. 
-
 El primer paso consiste en geocodificar las direcciones proporcionadas por los encuestados y verificar que las mismas coinciden con los segmentos cartográficos seleccionados. En caso de que algunas direcciones no tengan una precisión a nivel de segmento cartográfico, entonces será necesaria una revisión clerical para verificar las direcciones proporcionadas por los encuestados.
 
 El paquete `tidygeocoder` [@tidygeocoder] puede ser útil para esa tarea, a continuación se presenta un ejemplo de juguete con cinco (5) direcciones en el departamento de Chuquisaca, Bolivia.

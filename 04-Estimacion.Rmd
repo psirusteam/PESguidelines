@@ -1,4 +1,4 @@
-# Estimadores del sistema dual
+# Estimadores del sistema dual {#cap-estim}
 
 
 Los métodos de captura y recaptura en poblaciones humanas han continuado sus investigaciones y aunque se utilizan de manera más frecuente para estimar el tamaño de poblaciones de fauna silvestre, en epidemiología y ciencias sociales los han usado para estimar la prevalencia de una enfermedad específica o el tamaño de la población sin hogar en una determinada área [@brittain2009estimators]. 

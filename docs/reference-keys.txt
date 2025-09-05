@@ -20,11 +20,11 @@ la-muestra-e-y-la-muestra-p
 los-estimadores-de-muestreo
 cap3
 enumeraciones-correctas-con-la-muestra-e
-reconsturcción-de-los-hogares-con-la-muestra-p
+sec-procedimientos
 procedimiento-a
 procedimiento-b
 procedimiento-c
-estimadores-del-sistema-dual
+cap-estim
 estimador-de-petersen
 estimador-de-chapman
 estimador-de-nour
@@ -73,6 +73,12 @@ vinculación-de-registros
 planeación-de-la-operación-estadística
 diseño-del-cuestionario
 diseño-de-la-muestra
+marco-de-muestreo
+construcción-de-las-upm
+estratos
+diseño-de-muestreo
+diseño-de-muestreo-estándar
+cálculo-del-tamaño-de-muestra
 operativo-de-recolección
 indicadores-principales
 modelos-de-regresión-en-el-sistema-dual

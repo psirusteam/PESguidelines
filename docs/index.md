@@ -1,7 +1,7 @@
 ---
 title: "Fundamentos estadísticos para el análisis de las encuestas postcensales"
 author: "Andrés Gutiérrez^[Comisión Económica para América Latina y el Caribe (CEPAL) -  andres.gutierrez@cepal.org], Giovany Babativa"
-date: "2025-09-01"
+date: "2025-09-05"
 documentclass: book
 bibliography: book.bib
 biblio-style: apalike
