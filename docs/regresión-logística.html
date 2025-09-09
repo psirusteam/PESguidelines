@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
 
-<meta name="author" content="Andrés Gutiérrez, Giovany Babativa" />
+<meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
 
 
 <meta name="date" content="2025-09-08" />
@@ -364,7 +364,7 @@ CI\left(\psi\right)=\exp\left(\hat{B}_{j}\pm t_{df,1-\frac{\alpha}{2}}se\left(\h
 <p>Para el ajuste del modelo es fundamental tener en cuenta el diseño muestral. Por esta razón, la estimación de los parámetros debe realizarse mediante la función <code>svyglm()</code> del paquete <code>survey</code> <span class="citation">(<a href="#ref-Lumley2010">Lumley 2010</a>)</span>. Para una explicación más detallada sobre el ajuste de modelos de regresión logística considerando el diseño muestral, puede consultarse <span class="citation">A. Gutiérrez, Téllez, and Guerrero (<a href="#ref-gutierrez2025generalizados">2025</a>)</span>.</p>
 <p>Usando las probabilidades predichas a partir de la regresión logística, calculadas como en la ecuación <a href="regresión-logística.html#eq:prob">(8.2)</a>, el estimador del total para un dominio o área <span class="math inline">\(t\)</span> se puede escribir como:</p>
 <p><span class="math display" id="eq:lestimator">\[\begin{equation}
-\hat{N}_{t} = \sum_{j \in t} I_{d,j} \left[ \hat{\pi}_{c,j} \, \hat{\pi}_{m,j} \right]
+\hat{N}_{t} = \sum_{j \in t} \left( I_{d,j} \cdot \frac{\hat{\pi}_{c,j}}{\hat{\pi}_{m,j}} \right)  
 \tag{8.3}
 \end{equation}\]</span></p>
 <p>En donde:</p>
@@ -379,7 +379,7 @@ CI\left(\psi\right)=\exp\left(\hat{B}_{j}\pm t_{df,1-\frac{\alpha}{2}}se\left(\h
 </ul>
 <p>A pesar de que <span class="math inline">\(I_{d,j}\)</span> es conocido para todo <span class="math inline">\(j\)</span> en el censo, censos como el de Estados Unidos usó en la PES el siguiente estimador</p>
 <p><span class="math display" id="eq:lestimator2">\[\begin{equation}
-\hat{N}_{t} = \sum_{j \in t} \hat{\pi}_{d,j} \left[ \hat{\pi}_{c,j} \, \hat{\pi}_{m,j} \right]
+\hat{N}_{t} = \sum_{j \in t} \left( \hat{\pi}_{d,j} \cdot \frac{\hat{\pi}_{c,j}}{\hat{\pi}_{m,j}} \right)
 \tag{8.4}
 \end{equation}\]</span></p>
 <p>En donde <span class="math inline">\(\hat{\pi}_{d,j}\)</span> representa la probabilidad predicha de que la enumeración <span class="math inline">\(j\)</span> esté definida por los datos, estimada a partir de un modelo de regresión logística. Dado que este modelo se ejecuta sobre todo el censo, no requiere de pesos de muestreo.</p>
@@ -389,7 +389,7 @@ CI\left(\psi\right)=\exp\left(\hat{B}_{j}\pm t_{df,1-\frac{\alpha}{2}}se\left(\h
 a_{i} = \hat{\pi}_{d,i} \frac{\hat{\pi}_{c,i}}{\hat{\pi}_{m,i}}
 \tag{8.5}
 \end{equation}\]</span></p>
-<p>De este modo, la estimación de la población en un área o dominio <span class="math inline">\(a\)</span> se obtiene como:</p>
+<p>De este modo, la estimación de la población en un área o dominio <span class="math inline">\(t\)</span> se obtiene como:</p>
 <p><span class="math display" id="eq:ccfdse">\[\begin{equation}
 \hat{N}_{t} = \sum_{i \in t} a_{i}
 \tag{8.6}

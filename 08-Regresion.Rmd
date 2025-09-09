@@ -144,7 +144,7 @@ Para el ajuste del modelo es fundamental tener en cuenta el diseño muestral. Po
 Usando las probabilidades predichas a partir de la regresión logística, calculadas como en la ecuación \@ref(eq:prob), el estimador del total para un dominio o área $t$ se puede escribir como:
 
 \begin{equation}
-\hat{N}_{t} = \sum_{j \in t} I_{d,j} \left[ \hat{\pi}_{c,j} \, \hat{\pi}_{m,j} \right]
+\hat{N}_{t} = \sum_{j \in t} \left( I_{d,j} \cdot \frac{\hat{\pi}_{c,j}}{\hat{\pi}_{m,j}} \right)  
 (\#eq:lestimator)
 \end{equation}
 
@@ -158,7 +158,7 @@ En donde:
 A pesar de que $I_{d,j}$ es conocido para todo $j$ en el censo, censos como el de Estados Unidos usó en la PES el siguiente estimador
 
 \begin{equation}
-\hat{N}_{t} = \sum_{j \in t} \hat{\pi}_{d,j} \left[ \hat{\pi}_{c,j} \, \hat{\pi}_{m,j} \right]
+\hat{N}_{t} = \sum_{j \in t} \left( \hat{\pi}_{d,j} \cdot \frac{\hat{\pi}_{c,j}}{\hat{\pi}_{m,j}} \right) 
 (\#eq:lestimator2)
 \end{equation}
 
@@ -173,7 +173,7 @@ a_{i} = \hat{\pi}_{d,i} \frac{\hat{\pi}_{c,i}}{\hat{\pi}_{m,i}}
 (\#eq:ccf)
 \end{equation}
 
-De este modo, la estimación de la población en un área o dominio $a$ se obtiene como:  
+De este modo, la estimación de la población en un área o dominio $t$ se obtiene como:  
 
 \begin{equation}
 \hat{N}_{t} = \sum_{i \in t} a_{i}
@@ -184,7 +184,7 @@ De este modo, la estimación de la población en un área o dominio $a$ se obtie
 
 En caso de que exista disponibilidad de información auxiliar basado en proyecciones o análisis demográficos (AD), se puede usar un factor de corrección, para reducir el sesgo de correlación. El objetivo es usar la razón de sexos (hombres/mujeres) en las estimaciones y así lograr una coherencia con los AD. Este procedimiento mitiga el sesgo de correlación al incrementar las estimaciones de sistema dual (DSE) regularmente en los hombres  [@Konicki2012].
 
-Los países regularmente cuentan con AD que utilizan diversas fuentes de información, tales como estadísticas administrativas de nacimientos, defunciones, migración internacional legal, afiliaciones sistemas de salud, así como estimaciones de emigración legal y migración no autorizada. Estas estimaciones se generan por sexo y edad simple. Aunque las estimaciones de DA tienen errores y limitaciones, se considera que estos errores no difieren por sexo [@Zamora2022].
+Los países regularmente cuentan con AD que utilizan diversas fuentes de información, tales como estadísticas administrativas de nacimientos, defunciones, migración internacional legal, afiliaciones sistemas de salud, así como estimaciones de emigración legal y migración no autorizada. Estas estimaciones se generan por sexo y edad simple. Aunque las estimaciones de DA tienen errores y limitaciones, se considera que estos errores no difieren por sexo [@zamora2022pesdesign].
 
 El factor de ajuste se calcula para cada grupo^[Los grupos se suelen construir por la interacción entre rangos de edad y raza o grupo étnico], así:
 
@@ -202,7 +202,7 @@ En donde:
 Con este ajuste, el estimador de sistema dual de la ecuación \@ref(eq:ccfdse) se redefine como:
 
 \begin{equation}
-\hat{N}_t = \sum{i \in t} a_i \times r_i
+\hat{N}_t = \sum_{i \in t} (a_i \cdot r_i)
 (\#eq:dseadj)
 \end{equation}
 

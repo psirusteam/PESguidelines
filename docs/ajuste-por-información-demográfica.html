@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
 
-<meta name="author" content="Andrés Gutiérrez, Giovany Babativa" />
+<meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
 
 
 <meta name="date" content="2025-09-08" />
@@ -314,7 +314,7 @@ div.csl-indent {
 <div id="ajuste-por-información-demográfica" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Ajuste por información demográfica<a href="ajuste-por-información-demográfica.html#ajuste-por-información-demográfica" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>En caso de que exista disponibilidad de información auxiliar basado en proyecciones o análisis demográficos (AD), se puede usar un factor de corrección, para reducir el sesgo de correlación. El objetivo es usar la razón de sexos (hombres/mujeres) en las estimaciones y así lograr una coherencia con los AD. Este procedimiento mitiga el sesgo de correlación al incrementar las estimaciones de sistema dual (DSE) regularmente en los hombres <span class="citation">(<a href="#ref-Konicki2012">Konicki 2012</a>)</span>.</p>
-<p>Los países regularmente cuentan con AD que utilizan diversas fuentes de información, tales como estadísticas administrativas de nacimientos, defunciones, migración internacional legal, afiliaciones sistemas de salud, así como estimaciones de emigración legal y migración no autorizada. Estas estimaciones se generan por sexo y edad simple. Aunque las estimaciones de DA tienen errores y limitaciones, se considera que estos errores no difieren por sexo <span class="citation">(<a href="#ref-Zamora2022">Zamora 2022b</a>)</span>.</p>
+<p>Los países regularmente cuentan con AD que utilizan diversas fuentes de información, tales como estadísticas administrativas de nacimientos, defunciones, migración internacional legal, afiliaciones sistemas de salud, así como estimaciones de emigración legal y migración no autorizada. Estas estimaciones se generan por sexo y edad simple. Aunque las estimaciones de DA tienen errores y limitaciones, se considera que estos errores no difieren por sexo <span class="citation">(<a href="#ref-zamora2022pesdesign">Zamora 2022</a>)</span>.</p>
 <p>El factor de ajuste se calcula para cada grupo<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>, así:</p>
 <p><span class="math display">\[r_{k,H} = \frac{\sum_{i \in k} a_i}{\sum_{i \in H \cap k} a_i} \cdot \frac{P_{k,H}}{P_k}\]</span></p>
 <p><span class="math display">\[r_{k,M} = \frac{\sum_{i \in k} a_i}{\sum_{i \in M \cap k} a_i} \cdot \frac{P_{k,M}}{P_k}\]</span></p>
@@ -327,7 +327,7 @@ div.csl-indent {
 </ul>
 <p>Con este ajuste, el estimador de sistema dual de la ecuación <a href="regresión-logística.html#eq:ccfdse">(8.6)</a> se redefine como:</p>
 <p><span class="math display" id="eq:dseadj">\[\begin{equation}
-\hat{N}_t = \sum{i \in t} a_i \times r_i
+\hat{N}_t = \sum_{i \in t} (a_i \cdot r_i)
 \tag{8.7}
 \end{equation}\]</span></p>
 <p>En donde:</p>
@@ -529,10 +529,7 @@ Winkler, William E. 1990. <span>“String Comparator Metrics and Enhanced Decisi
 Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
 </div>
 <div class="csl-entry">
-Zamora, J. 2022a. <span>“2020 Post-Enumeration Survey: Estimation Design.”</span> 2020-J-03. DSSD 2020 Post-Enumeration Survey Memorandum Series. U.S. Census Bureau.
-</div>
-<div class="csl-entry">
-———. 2022b. <span>“2020 Post-Enumeration Survey: Estimation Design.”</span> DSSD 2020 Post-Enumeration Survey Memorandum Series 2020-J-03. U.S. Census Bureau.
+Zamora, J. 2022. <span>“2020 Post-Enumeration Survey: Estimation Design.”</span> 2020-J-03. DSSD 2020 Post-Enumeration Survey Memorandum Series. U.S. Census Bureau.
 </div>
 <div class="csl-entry">
 Zelterman, Daniel. 1988. <span>“Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.”</span> <em>Journal of Statistical Planning and Inference</em> 18 (2): 225–37.
@@ -560,8 +557,8 @@ Heim, K., and C. Hill. 2022. <span>“Research on Reducing Correlation Bias in D
 <div id="ref-Konicki2012" class="csl-entry">
 Konicki, S. 2012. <span>“2010 Census Coverage Measurement Estimation Report: Adjustment for Correlation Bias.”</span> DSSD 2010 Census Coverage Measurement Memorandum Series 2010-G-11. U.S. Census Bureau.
 </div>
-<div id="ref-Zamora2022" class="csl-entry">
-———. 2022b. <span>“2020 Post-Enumeration Survey: Estimation Design.”</span> DSSD 2020 Post-Enumeration Survey Memorandum Series 2020-J-03. U.S. Census Bureau.
+<div id="ref-zamora2022pesdesign" class="csl-entry">
+Zamora, J. 2022. <span>“2020 Post-Enumeration Survey: Estimation Design.”</span> 2020-J-03. DSSD 2020 Post-Enumeration Survey Memorandum Series. U.S. Census Bureau.
 </div>
 </div>
 <div class="footnotes">
