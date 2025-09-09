@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>8 Modelos de regresión en el sistema dual | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="8 Modelos de regresión en el sistema dual | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="8 Modelos de regresión en el sistema dual | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="los-estimadores-de-muestreo.html"/>
-<link rel="next" href="enumeraciones-correctas-con-la-muestra-e.html"/>
+<link rel="prev" href="indicadores-principales.html"/>
+<link rel="next" href="post-estratificación.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -311,18 +311,44 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cap3" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Enumeraciones y procedimientos<a href="cap3.html#cap3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>En este capítulo se abordarán de manera detallada las bases fundamentales para establecer la definición de las inclusiones erradas, las cuales se identificarán y analizarán específicamente en la muestra E. Este proceso buscará proporcionar un marco claro que permita clasificar estas inclusiones erradas de manera sistemática, facilitando su identificación para la inclusión en los estimadores del sistema dual.</p>
-<p>Por otro lado, también se desarrollarán los fundamentos para la definición de los emparejamientos, los cuales serán establecidos a partir de la muestra P. Este apartado se centrará en establecer las condiciones bajo las cuales se realizarán y se profundizará en los procedimientos empleados para la reconstrucción de los hogares.</p>
+<div id="cap-reg" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Modelos de regresión en el sistema dual<a href="cap-reg.html#cap-reg" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>El sistema de estimación dual (DSE) fue descrito en el capítulo <a href="cap-dual.html#cap-dual">1</a>, mientras que los diferentes enfoques para la estimación fueron presentados en el capítulo <a href="cap-estim.html#cap-estim">4</a>. El estimador más clásico del DSE es el de Lincoln-Petersen <span class="citation">(<a href="#ref-petersen1896">Petersen 1896</a>)</span>, que se escribe como:</p>
+<p><span class="math display">\[\hat{N}_{LP} = \hat{N}_{1+} \left( \frac{\hat{N}_{+1}}{\hat{N}_{11}} \right)\]</span></p>
+<p>En donde el inverso del término entre paréntesis se denomina tasa de coincidencia (<em>match rate</em>). Sin embargo, el término
+<span class="math inline">\(\hat{N}_{1+}\)</span> requiere requiere ser ajustado para considerar la calidad de los registros censales. En la práctica, no todos los registros del censo son igualmente confiables, algunos corresponden a enumeraciones correctas, otros son registros con información incompleta o incluso duplicados. Para resolver este problema se define:</p>
+<ul>
+<li><p><span class="math inline">\(c_i\)</span>: Indica que el registro <span class="math inline">\(i\)</span> es de persona con una enumeración correcta, es decir, está incluido con precisión en el censo y en el lugar en el que la persona debería haber sido contada.</p></li>
+<li><p><span class="math inline">\(d_i\)</span>: Indica que el registro <span class="math inline">\(i\)</span> es persona que se considera definido por datos, esto es, que el registro contiene suficiente información para ser aceptado en el procesamiento censal<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. Lo cual es una condición necesaria para que la persona se considere como una enumeración correcta.</p></li>
+<li><p><span class="math inline">\(m_i\)</span>: Indica que el registro <span class="math inline">\(i\)</span> es una coincidencia real (emparejamiento) con la PES.</p></li>
+</ul>
+<p>La idea es asignar a cada registro censal un peso proporcional a la probabilidad de que sea válido. Para ello, se define el factor de corrección por cobertura como:</p>
+<p><span class="math display">\[a_i = \frac{p_{d_i}\cdot p_{c_i}}{p_{m_i}} \]</span></p>
+<p>En donde <span class="math inline">\(p_{d_i}\)</span>, <span class="math inline">\(p_{c_i}\)</span> y <span class="math inline">\(p_{m_i}\)</span> son las probabilidades estimadas de que el registro <span class="math inline">\(i\)</span> esté definido por los datos, sea una enumeración correcta y una coincidencia respectivamente.</p>
+<p>En algunas ocasiones, cuando se comparan los resultados de la PES con el Análisis Demográfico (AD), se observa que las proporciones de hombres y mujeres no coinciden. Esto debido a que los análisis son independientes y el AD tiene sus propias estimaciones de cuántos hombres y mujeres debería haber en cada grupo de edad, mientras que la PES depende exclusivamente del emparejamiento con el censo, lo que puede generar una proporción distinta, ya sea por omisiones diferenciales o errores en el censo. Por ejemplo, si la PES estima que hay 95 hombres por cada 100 mujeres, pero el AD indica que deberían ser 98, esa diferencia puede reflejar sesgos de correlación (hombres más difíciles de enumerar, errores de emparejamiento, etc.).</p>
+<p>Para reducir estos sesgos, se puede introducir un término adicional para ajustar las estimaciones de la PES de manera que las razones de sexo coincidan con las del AD, así:</p>
+<p><span class="math display">\[a_{i}^s = a_i \cdot r.\]</span>
+En donde <span class="math inline">\(r\)</span> es el ajuste por la razón de las proporciones del sexo, y de esta forma las estimaciones de la proporción de hombres y mujeres de la PES se alinean con el AD.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-petersen1896" class="csl-entry">
+Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p>Este concepto se aplica para cada registro individual de personas, obtenido como parte de una respuesta en el censo, y debe responder a la pregunta: ¿el registro de la persona contiene suficiente información?. Algunos registros de personas pueden contener respuestas válidas para el censo pero carecen de algunas o de todas las características que permiten identificar con precisión a una persona. La ONE debe determinar si un registro a nivel de persona se considera “definido por datos”, y en caso contrario, dicho registro debe pasar por un proceso de imputación. Por lo tanto, la cantidad de registros definidos por los datos es una cantidad conocida porque esta es una actividad que aplica para toda la base censal.<a href="cap-reg.html#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="los-estimadores-de-muestreo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="enumeraciones-correctas-con-la-muestra-e.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="indicadores-principales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="post-estratificación.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -353,7 +379,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/03-InclusionesMovers.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/08-Regresion.rmd",
 "text": "Edit"
 },
 "history": {

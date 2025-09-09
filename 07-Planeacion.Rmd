@@ -127,6 +127,7 @@ b. **Relación de parentesco** de cada persona con la jefa o el jefe del hogar.
 c. **Datos demográficos básicos**: fecha de nacimiento, edad y sexo de cada persona.
 d. **Condición de residencia actual**, verificando si cada persona continúa viviendo en el hogar. En caso contrario, se debe registrar su dirección actual.
 e. **Personas adicionales** que vivían en el hogar durante el censo pero que no fueron mencionadas inicialmente.
+f. **Pertenencia étnica** de las personas, esto debido a que algunos censos han presentado dificultades para capturar correctamente algunas comunidades, y tenerlo en la PES puede contribuir a la mejora a partir de los ajustes de cobertura.
 
 
 ## Diseño de la muestra
@@ -302,6 +303,19 @@ $$
 ## Operativo de recolección
 
 La independencia entre la PES y el censo es un requisito fundamental para la aplicación del sistema dual de estimación. En este sentido, la validez de las estimaciones de la PES depende directamente de la suposición de independencia entre ambas operaciones. Por lo tanto, se deben realizar todos los esfuerzos posibles para mantener esta separación.
+
+Como se ha mencionado en los diferentes capítulos, el modelo basado en el DSE requiere el supuesto de que las probabilidades de captura en los dos sistemas sean independientes para todos los individuos [@wolter1986coverage]. Este supuesto implica dos tipos de independencia: (1) independencia causal y (2) independencia heterogénea.
+
+La falla de alguno de los supuestos de independencia, produce un sesgo de correlación. [@griffin2000correlationbias] ofrece detalles sobre el impacto de la violación de este supuesto. Generalmente, el sesgo de correlación tiene un efecto a la baja en las estimaciones por sistemas duales, ya que suele significar que las personas omitidas en el censo también tienen mayor probabilidad de ser omitidas en la PES.
+
+El supuesto de independencia causal establece que la inclusión en el censo es independiente de la inclusión en la PES  [@wolter1986coverage]. El supuesto de independencia heterogénea plantea que la covarianza entre la probabilidad de ser incluido en el censo y la probabilidad de ser incluido en la PES es igual a cero. Una condición suficiente para la independencia heterogénea es la homogeneidad, esto es, que las probabilidades de inclusión en el censo  o en la PES sean iguales para todas las personas [@mulry1991total].
+
+Los supuestos de independencia pueden fallar ya sea por dependencia causal entre la enumeración censal y la PES, o por heterogeneidad en las probabilidades de captura. La dependencia causal ocurre cuando el hecho de que un individuo sea incluido o excluido de un sistema afecta su probabilidad de inclusión en el otro. Una forma de mitigar la dependencia causal es garantizar la independencia operativa entre la PES y el censo. Es decir, asegurar que las operaciones de recolección de datos de la PES y del censo sean independientes entre sí, por ejemplo:
+
+* Asignando al personal de la PES a áreas en las que no trabajaron durante el censo.
+* Realizando las entrevistas de la PES una vez finalizadas las operaciones censales en un área.
+* Restringiendo el acceso del personal del censo a la información sobre la muestra de la PES.
+* Restringiendo el acceso del personal de la PES a los resultados del censo durante la recolección de datos.
 
 Esto implica asignar la responsabilidad técnica de la PES a una unidad independiente del censo, la cual debería dedicar todo su tiempo a la planificación e implementación de la encuesta postcensal. Para conocer las acciones prácticas recomendadas que permiten garantizar dicha independencia entre el censo y la PES. Para ello, es recomendable contar con una unidad específicamente designada para la PES, dirigida por un(a) director(a) o gerente encargado(a) de orientar todos los aspectos de esta operación estadística.
 

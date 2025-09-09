@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>8.2 Regresión logística | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="8.2 Regresión logística | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="8.2 Regresión logística | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="los-estimadores-de-muestreo.html"/>
-<link rel="next" href="enumeraciones-correctas-con-la-muestra-e.html"/>
+<link rel="prev" href="post-estratificación.html"/>
+<link rel="next" href="ajuste-por-información-demográfica.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -311,18 +311,112 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cap3" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Enumeraciones y procedimientos<a href="cap3.html#cap3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>En este capítulo se abordarán de manera detallada las bases fundamentales para establecer la definición de las inclusiones erradas, las cuales se identificarán y analizarán específicamente en la muestra E. Este proceso buscará proporcionar un marco claro que permita clasificar estas inclusiones erradas de manera sistemática, facilitando su identificación para la inclusión en los estimadores del sistema dual.</p>
-<p>Por otro lado, también se desarrollarán los fundamentos para la definición de los emparejamientos, los cuales serán establecidos a partir de la muestra P. Este apartado se centrará en establecer las condiciones bajo las cuales se realizarán y se profundizará en los procedimientos empleados para la reconstrucción de los hogares.</p>
+<div id="regresión-logística" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Regresión logística<a href="regresión-logística.html#regresión-logística" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La regresión logística constituye una alternativa más flexible que la post-estratificación y ha demostrado reducir de manera más efectiva el sesgo en las estimaciones de la población total <span class="citation">(<a href="#ref-OlsonSands2012">Olson and Sands 2012</a>)</span>. A diferencia de la post-estratificación, que requiere dividir la población en celdas y, por ende, introducir interacciones de alto orden muchas veces innecesarias, la regresión logística permite modelar directamente la relación entre las covariables y la probabilidad de inclusión. Esto reduce el sesgo de correlación sin necesidad de recurrir a estructuras excesivamente complejas.</p>
+<p>Otra ventaja importante es que este enfoque admite la incorporación de un mayor número de covariables, tanto categóricas como continuas, ampliando así el conjunto de predictores potenciales que pueden contribuir a mejorar la precisión del ajuste. Asimismo, facilita procesos de selección de variables y comparación de modelos, lo que refuerza su utilidad práctica en aplicaciones de estimación poblacional.</p>
+<p>El modelo de regresión logística permite predecir la probabilidad de que una enumeración censal sea correcta y la probabilidad de coincidencia en el emparejamiento. Además, permite incluir variables continuas y utilizar únicamente los términos de interacción estadísticamente significativos, lo que contribuye a reducir tanto el sesgo por heterogeneidad como el error de muestreo. De forma análoga al enfoque de post-estratificación, la muestra E se utiliza para modelar la probabilidad de una enumeración correcta en el censo, mientras que la muestra P se emplea para modelar la probabilidad de coincidencia. En ambos casos se debe usar el diseño muestral para estimar los parámetros.</p>
+<p>Considere la variable binaria <span class="math inline">\(y_i\)</span> que en la muestra E se puede definir como:</p>
+<p><span class="math display">\[
+y_i \;=\;
+\begin{cases}
+1, &amp; \text{si la enumeración $i$ es correcta}\\
+0, &amp; \text{en caso contrario.}
+\end{cases}
+\]</span></p>
+<p>Del mismo modo, se podría definir la variable <span class="math inline">\(z_i\)</span> como indicar binario en la muestra P como</p>
+<p><span class="math display">\[
+z_i \;=\;
+\begin{cases}
+1, &amp; \text{si el registro $i$ es un emparejado}\\
+0, &amp; \text{si el registro $i$ es una omisión}
+\end{cases}
+\]</span></p>
+<p>La probabilidad aproximada del suceso se expresa mediante la función logística:</p>
+<p><span class="math display" id="eq:prob">\[\begin{equation}
+\pi(\textbf{x})= Pr(y = 1 | \textbf{x}) = \frac{\exp\{\textbf{x}&#39;\boldsymbol{\beta}\}}{1+\exp\{\textbf{x}&#39;\boldsymbol{\beta}\}}
+\tag{8.2}
+\end{equation}\]</span></p>
+<p>Usando técnicas apropiadas que incluyan el diseño de muestreo complejo en la inferencia, la probabilidad estimada de que la variable de interés tome el valor uno, que a su vez es también la esperanza de la variable de interés, en un modelo de regresión logística es la siguiente:</p>
+<p><span class="math display">\[
+\hat{\pi}(\textbf{x})= \frac{\exp\{\textbf{x}&#39;\hat{\boldsymbol{\beta}}\}}{1+\exp\{\textbf{x}&#39;\hat{\boldsymbol{\beta}\}}}
+\]</span></p>
+<p>La varianza de los parámetros estimados se calcula a partir de la siguiente expresión:</p>
+<p><span class="math display">\[
+var\left(\boldsymbol{\hat{B}}\right)=\boldsymbol{J}^{-1}var\left(S\left(\hat{\boldsymbol{B}}\right)\right)\boldsymbol{J}^{-1}
+\]</span></p>
+<p>En donde</p>
+<p><span class="math display">\[
+S\left(B\right)=\sum_{h}\sum_{a}\sum_{i}w_{hai}\boldsymbol{D}_{hai}^{t}\left[\left(\pi_{hai}\left(\boldsymbol{B}\right)\right)\left(1-\pi_{hai}\left(\boldsymbol{B}\right)\right)\right]^{-1}\left(y_{hai}-\pi_{hai}\left(\boldsymbol{B}\right)\right)=0
+\]</span>
+y,</p>
+<p><span class="math display">\[
+D_{hai} = \frac{\delta\left(\pi_{hai}\left(\boldsymbol{B}\right)\right)}{\delta B_{j}}
+\]</span></p>
+<p>Donde <span class="math inline">\(j=0,\dots,p\)</span>. Dado que el modelo tiene enlace logaritmo, para construir los intervalos de confianza se debe aplicar el función exponencial a cada parámetro,</p>
+<p><span class="math display">\[
+\hat{\psi}=\exp\left(\hat{B}_{1}\right)
+\]</span></p>
+<p>Por ende, el intervalo de confianza estará dado por la siguiente expresión:</p>
+<p><span class="math display">\[
+CI\left(\psi\right)=\exp\left(\hat{B}_{j}\pm t_{df,1-\frac{\alpha}{2}}se\left(\hat{B}_{j}\right)\right)
+\]</span></p>
+<p>Para el ajuste del modelo es fundamental tener en cuenta el diseño muestral. Por esta razón, la estimación de los parámetros debe realizarse mediante la función <code>svyglm()</code> del paquete <code>survey</code> <span class="citation">(<a href="#ref-Lumley2010">Lumley 2010</a>)</span>. Para una explicación más detallada sobre el ajuste de modelos de regresión logística considerando el diseño muestral, puede consultarse <span class="citation">A. Gutiérrez, Téllez, and Guerrero (<a href="#ref-gutierrez2025generalizados">2025</a>)</span>.</p>
+<p>Usando las probabilidades predichas a partir de la regresión logística, calculadas como en la ecuación <a href="regresión-logística.html#eq:prob">(8.2)</a>, el estimador del total para un dominio o área <span class="math inline">\(t\)</span> se puede escribir como:</p>
+<p><span class="math display" id="eq:lestimator">\[\begin{equation}
+\hat{N}_{t} = \sum_{j \in t} I_{d,j} \left[ \hat{\pi}_{c,j} \, \hat{\pi}_{m,j} \right]
+\tag{8.3}
+\end{equation}\]</span></p>
+<p>En donde:</p>
+<ul>
+<li><span class="math inline">\(\hat{N}_{t}\)</span> es la estimación del total poblacional usando el modelo DSE en el área o dominio <span class="math inline">\(t\)</span>.<br />
+</li>
+<li><span class="math inline">\(I_{d,j}\)</span> es una variable indicadora que toma el valor de 1 cuando la enumeración censal <span class="math inline">\(j\)</span> está definida por los datos, y 0 en caso contrario.<br />
+</li>
+<li><span class="math inline">\(\hat{\pi}_{c,j}\)</span> es la probabilidad predicha de que la enumeración <span class="math inline">\(j\)</span> sea una enumeración correcta.<br />
+</li>
+<li><span class="math inline">\(\hat{\pi}_{m,j}\)</span> es la probabilidad predicha de que la enumeración <span class="math inline">\(j\)</span> corresponda a un emparejamiento (<em>match</em>).</li>
+</ul>
+<p>A pesar de que <span class="math inline">\(I_{d,j}\)</span> es conocido para todo <span class="math inline">\(j\)</span> en el censo, censos como el de Estados Unidos usó en la PES el siguiente estimador</p>
+<p><span class="math display" id="eq:lestimator2">\[\begin{equation}
+\hat{N}_{t} = \sum_{j \in t} \hat{\pi}_{d,j} \left[ \hat{\pi}_{c,j} \, \hat{\pi}_{m,j} \right]
+\tag{8.4}
+\end{equation}\]</span></p>
+<p>En donde <span class="math inline">\(\hat{\pi}_{d,j}\)</span> representa la probabilidad predicha de que la enumeración <span class="math inline">\(j\)</span> esté definida por los datos, estimada a partir de un modelo de regresión logística. Dado que este modelo se ejecuta sobre todo el censo, no requiere de pesos de muestreo.</p>
+<p>Los estimadores de las ecuaciones <a href="regresión-logística.html#eq:lestimator">(8.3)</a> y <a href="regresión-logística.html#eq:lestimator2">(8.4)</a> generan diferencias mínimas en las estimaciones poblacionales de dominios grandes. Sin embargo, el estimador de la ecuación <a href="regresión-logística.html#eq:lestimator">(8.3)</a> puede producir estimaciones demasiado bajas en dominios pequeños con un número reducido de casos definidos por los datos <span class="citation">(<a href="#ref-mulry2008direct">Mulry et al. 2008</a>)</span>.</p>
+<p>Combinando las probabilidades predichas según la ecuación <a href="regresión-logística.html#eq:lestimator2">(8.4)</a>, para cada enumeración censal se obtiene el factor de corrección de cobertura (<span class="math inline">\(a_i\)</span>) y puede ser sumado para generar una estimación usando el modelo DSE en cualquier dominio, así:</p>
+<p><span class="math display" id="eq:ccf">\[\begin{equation}
+a_{i} = \hat{\pi}_{d,i} \frac{\hat{\pi}_{c,i}}{\hat{\pi}_{m,i}}
+\tag{8.5}
+\end{equation}\]</span></p>
+<p>De este modo, la estimación de la población en un área o dominio <span class="math inline">\(a\)</span> se obtiene como:</p>
+<p><span class="math display" id="eq:ccfdse">\[\begin{equation}
+\hat{N}_{t} = \sum_{i \in t} a_{i}
+\tag{8.6}
+\end{equation}\]</span></p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-gutierrez2025generalizados" class="csl-entry">
+Gutiérrez, Andrés, Cristian Téllez, and Stalyn Guerrero. 2025. <span>“Capítulo 8: Generalizados.”</span> In <em>Análisis de Encuestas de Hogares Con r</em>. <a href="https://github.com/psirusteam/LibroAEHR/blob/main/08-Generalizados.Rmd" class="uri">https://github.com/psirusteam/LibroAEHR/blob/main/08-Generalizados.Rmd</a>.
+</div>
+<div id="ref-Lumley2010" class="csl-entry">
+Lumley, Thomas. 2010. <em>Complex Surveys: A Guide to Analysis Using r: A Guide to Analysis Using r</em>. John Wiley; Sons.
+</div>
+<div id="ref-mulry2008direct" class="csl-entry">
+Mulry, Mary H, Bruce D Spencer, Tom Mule, and Nganha Nguyen. 2008. <span>“Direct Estimates as a Diagnostic for Dual System Estimators Based on Logistic Regression.”</span> In <em>Joint Statistical Meetings</em>. American Statistical Association.
+</div>
+<div id="ref-OlsonSands2012" class="csl-entry">
+Olson, D., and R. Sands. 2012. <span>“2010 Census Coverage Measurement Estimation Report: Net Coverage Comparison with Post-Stratification.”</span> DSSD 2010 Census Coverage Measurement Memorandum Series 2010-G-12. U.S. Census Bureau.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="los-estimadores-de-muestreo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="enumeraciones-correctas-con-la-muestra-e.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="post-estratificación.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ajuste-por-información-demográfica.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -353,7 +447,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/03-InclusionesMovers.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/08-Regresion.rmd",
 "text": "Edit"
 },
 "history": {

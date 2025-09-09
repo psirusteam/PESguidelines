@@ -1,4 +1,4 @@
-# El sistema de estimación dual
+# El sistema de estimación dual  {#cap-dual}
 
 Para poder hacer un análisis estadístico apropiado de las encuestas de cobertura como instrumentos que pretenden medir la omisión de un censo, es necesario remitirse a los rudimentos originales de su proceso inferencial, el cual está basado en el sistema de estimación dual. Este enfoque fue primeramente utilizado en modelos de captura y recaptura que se originaron en el siglo XVII, con desarrollos modernos a partir de @petersen1896, @lincoln1930 y @schnabel1938. La aplicación a eventos vitales humanos fue iniciada por el trabajo de @sekar1949.
 

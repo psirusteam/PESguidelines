@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa" />
 
 
-<meta name="date" content="2025-09-05" />
+<meta name="date" content="2025-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -174,7 +174,7 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="1" data-path="el-sistema-de-estimación-dual.html"><a href="el-sistema-de-estimación-dual.html"><i class="fa fa-check"></i><b>1</b> El sistema de estimación dual</a>
+<li class="chapter" data-level="1" data-path="cap-dual.html"><a href="cap-dual.html"><i class="fa fa-check"></i><b>1</b> El sistema de estimación dual</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="planteamiento-del-problema.html"><a href="planteamiento-del-problema.html"><i class="fa fa-check"></i><b>1.1</b> Planteamiento del problema</a></li>
 <li class="chapter" data-level="1.2" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html"><i class="fa fa-check"></i><b>1.2</b> Condiciones y supuestos</a>
@@ -224,7 +224,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="evaluación-de-la-cobertura-censal.html"><a href="evaluación-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-de-cobertura.html"><a href="objetivos-de-la-encuesta-de-cobertura.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta de cobertura</a></li>
+<li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-postcensal.html"><a href="objetivos-de-la-encuesta-postcensal.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta postcensal</a></li>
 <li class="chapter" data-level="5.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5.2</b> Componentes de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-correctas"><i class="fa fa-check"></i><b>5.2.1</b> Enumeraciones correctas</a></li>
@@ -285,7 +285,12 @@ div.csl-indent {
 <li class="chapter" data-level="7.3" data-path="operativo-de-recolección.html"><a href="operativo-de-recolección.html"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
 <li class="chapter" data-level="7.4" data-path="indicadores-principales.html"><a href="indicadores-principales.html"><i class="fa fa-check"></i><b>7.4</b> Indicadores principales</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="modelos-de-regresión-en-el-sistema-dual.html"><a href="modelos-de-regresión-en-el-sistema-dual.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a></li>
+<li class="chapter" data-level="8" data-path="cap-reg.html"><a href="cap-reg.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="post-estratificación.html"><a href="post-estratificación.html"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
+<li class="chapter" data-level="8.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
+<li class="chapter" data-level="8.3" data-path="ajuste-por-información-demográfica.html"><a href="ajuste-por-información-demográfica.html"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
 
@@ -309,12 +314,34 @@ div.csl-indent {
 <div id="operativo-de-recolección" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Operativo de recolección<a href="operativo-de-recolección.html#operativo-de-recolección" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>La independencia entre la PES y el censo es un requisito fundamental para la aplicación del sistema dual de estimación. En este sentido, la validez de las estimaciones de la PES depende directamente de la suposición de independencia entre ambas operaciones. Por lo tanto, se deben realizar todos los esfuerzos posibles para mantener esta separación.</p>
+<p>Como se ha mencionado en los diferentes capítulos, el modelo basado en el DSE requiere el supuesto de que las probabilidades de captura en los dos sistemas sean independientes para todos los individuos <span class="citation">(<a href="#ref-wolter1986coverage">Wolter 1986</a>)</span>. Este supuesto implica dos tipos de independencia: (1) independencia causal y (2) independencia heterogénea.</p>
+<p>La falla de alguno de los supuestos de independencia, produce un sesgo de correlación. <span class="citation">(<a href="#ref-griffin2000correlationbias">Griffin 2000</a>)</span> ofrece detalles sobre el impacto de la violación de este supuesto. Generalmente, el sesgo de correlación tiene un efecto a la baja en las estimaciones por sistemas duales, ya que suele significar que las personas omitidas en el censo también tienen mayor probabilidad de ser omitidas en la PES.</p>
+<p>El supuesto de independencia causal establece que la inclusión en el censo es independiente de la inclusión en la PES <span class="citation">(<a href="#ref-wolter1986coverage">Wolter 1986</a>)</span>. El supuesto de independencia heterogénea plantea que la covarianza entre la probabilidad de ser incluido en el censo y la probabilidad de ser incluido en la PES es igual a cero. Una condición suficiente para la independencia heterogénea es la homogeneidad, esto es, que las probabilidades de inclusión en el censo o en la PES sean iguales para todas las personas <span class="citation">(<a href="#ref-mulry1991total">Mulry and Spencer 1991</a>)</span>.</p>
+<p>Los supuestos de independencia pueden fallar ya sea por dependencia causal entre la enumeración censal y la PES, o por heterogeneidad en las probabilidades de captura. La dependencia causal ocurre cuando el hecho de que un individuo sea incluido o excluido de un sistema afecta su probabilidad de inclusión en el otro. Una forma de mitigar la dependencia causal es garantizar la independencia operativa entre la PES y el censo. Es decir, asegurar que las operaciones de recolección de datos de la PES y del censo sean independientes entre sí, por ejemplo:</p>
+<ul>
+<li>Asignando al personal de la PES a áreas en las que no trabajaron durante el censo.</li>
+<li>Realizando las entrevistas de la PES una vez finalizadas las operaciones censales en un área.</li>
+<li>Restringiendo el acceso del personal del censo a la información sobre la muestra de la PES.</li>
+<li>Restringiendo el acceso del personal de la PES a los resultados del censo durante la recolección de datos.</li>
+</ul>
 <p>Esto implica asignar la responsabilidad técnica de la PES a una unidad independiente del censo, la cual debería dedicar todo su tiempo a la planificación e implementación de la encuesta postcensal. Para conocer las acciones prácticas recomendadas que permiten garantizar dicha independencia entre el censo y la PES. Para ello, es recomendable contar con una unidad específicamente designada para la PES, dirigida por un(a) director(a) o gerente encargado(a) de orientar todos los aspectos de esta operación estadística.</p>
 <p>El director debería dedicar toda su atención a las actividades de la PES y no asumir responsabilidades relacionadas con el censo. De igual forma, el personal asignado a la unidad de evaluación debe concentrarse exclusivamente en la PES, sin tener funciones operativas vinculadas al censo. Asimismo, se recomienda que la planificación de la capacitación del personal se realice desde las primeras etapas del proceso, asegurando la preparación oportuna y adecuada de quienes participarán en la operación.</p>
 <p>El cronograma de la investigación es un aspecto clave, donde se debe detallar las actividades mediante cronogramas realistas para cada fase del proceso, como capacitación, prueba piloto, así como la fecha de inicio y finalización del trabajo de campo de la PES. Además, la planificación debe contemplar diseños alternativos, ya que puede ser necesario modificar algunos parámetros del diseño inicial. Por ejemplo, si se planifica utilizar el procedimiento C en la recolección de datos, también puede resultar necesario prever opciones alternativas como los procedimientos A o B.</p>
 <p>Es muy recomendable realizar una prueba piloto de todos los procedimientos de la PES. Esta prueba debe ser un ensayo general de la PES, donde se realizan todas las actividades, desde la capacitación, recolección y emparejamiento, esta muestra no es probabilística y puede llevarse a cabo en algunas áreas seleccionadas con el objetivo de evaluar la adecuación tanto del plan general como de la organización de la PES.</p>
 <p>El proceso de emparejamiento de registros entre la PES y el censo constituye uno de los elementos centrales para evaluar la cobertura. No obstante, se trata de una de las tareas más complejas y desafiantes dentro de la PES, y que su correcta ejecución resulta indispensable para garantizar la utilidad y validez de los resultados.</p>
 <p>En este sentido, los resultados obtenidos en el piloto de la PES son insumos fundamentales para planificar adecuadamente las operaciones de emparejamiento. Dichos resultados permiten establecer las reglas de emparejamiento, los procedimientos de reconciliación y el flujo de trabajo de documentos entre la PES y el censo.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-griffin2000correlationbias" class="csl-entry">
+Griffin, Robert. 2000. <span>“Accuracy and Coverage Evaluation Survey: Definition and Explanation of Correlation and Related Heterogeneity Bias.”</span> Q-35. DSSD Census 2000 Procedures and Operations Memorandum Series. U.S. Census Bureau.
+</div>
+<div id="ref-mulry1991total" class="csl-entry">
+Mulry, Mary H, and Bruce D Spencer. 1991. <span>“Total Error in PES Estimates of Population.”</span> <em>Journal of the American Statistical Association</em> 86 (416): 839–55.
+</div>
+<div id="ref-wolter1986coverage" class="csl-entry">
+Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
+</div>
 </div>
             </section>
 

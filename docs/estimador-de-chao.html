@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa" />
 
 
-<meta name="date" content="2025-09-05" />
+<meta name="date" content="2025-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -174,7 +174,7 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="1" data-path="el-sistema-de-estimación-dual.html"><a href="el-sistema-de-estimación-dual.html"><i class="fa fa-check"></i><b>1</b> El sistema de estimación dual</a>
+<li class="chapter" data-level="1" data-path="cap-dual.html"><a href="cap-dual.html"><i class="fa fa-check"></i><b>1</b> El sistema de estimación dual</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="planteamiento-del-problema.html"><a href="planteamiento-del-problema.html"><i class="fa fa-check"></i><b>1.1</b> Planteamiento del problema</a></li>
 <li class="chapter" data-level="1.2" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html"><i class="fa fa-check"></i><b>1.2</b> Condiciones y supuestos</a>
@@ -224,7 +224,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="evaluación-de-la-cobertura-censal.html"><a href="evaluación-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-de-cobertura.html"><a href="objetivos-de-la-encuesta-de-cobertura.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta de cobertura</a></li>
+<li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-postcensal.html"><a href="objetivos-de-la-encuesta-postcensal.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta postcensal</a></li>
 <li class="chapter" data-level="5.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5.2</b> Componentes de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-correctas"><i class="fa fa-check"></i><b>5.2.1</b> Enumeraciones correctas</a></li>
@@ -285,7 +285,12 @@ div.csl-indent {
 <li class="chapter" data-level="7.3" data-path="operativo-de-recolección.html"><a href="operativo-de-recolección.html"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
 <li class="chapter" data-level="7.4" data-path="indicadores-principales.html"><a href="indicadores-principales.html"><i class="fa fa-check"></i><b>7.4</b> Indicadores principales</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="modelos-de-regresión-en-el-sistema-dual.html"><a href="modelos-de-regresión-en-el-sistema-dual.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a></li>
+<li class="chapter" data-level="8" data-path="cap-reg.html"><a href="cap-reg.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="post-estratificación.html"><a href="post-estratificación.html"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
+<li class="chapter" data-level="8.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
+<li class="chapter" data-level="8.3" data-path="ajuste-por-información-demográfica.html"><a href="ajuste-por-información-demográfica.html"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
 
@@ -308,7 +313,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="estimador-de-chao" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Estimador de Chao<a href="estimador-de-chao.html#estimador-de-chao" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Chao <span class="citation">(<a href="#ref-chao1987">Chao 1987</a>, <a href="#ref-chao1989">1989</a>)</span> propuso un estimador para el tamaño poblacional que relaja el supuesto de independencia entre las fuentes del censo y la encuesta de cobertura, y permite heterogeneidad no observada en las probabilidades de captura. Este estimador se enfoca en el número mínimo de individuos no observados <span class="math inline">\(N_{22}\)</span> que puede explicarse a partir de los datos observados.</p>
+<p>Chao <span class="citation">(<a href="#ref-chao1987">Chao 1987</a>, <a href="#ref-chao1989">1989</a>)</span> propuso un estimador para el tamaño poblacional que relaja el supuesto de independencia entre las fuentes del censo y la PES, y permite heterogeneidad no observada en las probabilidades de captura. Este estimador se enfoca en el número mínimo de individuos no observados <span class="math inline">\(N_{22}\)</span> que puede explicarse a partir de los datos observados.</p>
 <p>El modelo binomial mixto con parámetro 2 equivalente al número de fuentes usadas, se puede formular como:</p>
 <p><span class="math display">\[E(N_j) = N \int_0^1 \binom{2}{j} p^j (1-p)^{2-j} f(p) dp, \quad j = 0, 1, 2,\]</span></p>
 <p>donde <span class="math inline">\(N_j\)</span> es el número de individuos presentes en <span class="math inline">\(j\)</span> fuentes, de esta forma <span class="math inline">\(N_1 = N_{21} + N_{12}\)</span> y <span class="math inline">\(N_2 = N_{11}\)</span>.</p>

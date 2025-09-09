@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa" />
 
 
-<meta name="date" content="2025-09-05" />
+<meta name="date" content="2025-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -174,7 +174,7 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="1" data-path="el-sistema-de-estimación-dual.html"><a href="el-sistema-de-estimación-dual.html"><i class="fa fa-check"></i><b>1</b> El sistema de estimación dual</a>
+<li class="chapter" data-level="1" data-path="cap-dual.html"><a href="cap-dual.html"><i class="fa fa-check"></i><b>1</b> El sistema de estimación dual</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="planteamiento-del-problema.html"><a href="planteamiento-del-problema.html"><i class="fa fa-check"></i><b>1.1</b> Planteamiento del problema</a></li>
 <li class="chapter" data-level="1.2" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html"><i class="fa fa-check"></i><b>1.2</b> Condiciones y supuestos</a>
@@ -224,7 +224,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="evaluación-de-la-cobertura-censal.html"><a href="evaluación-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-de-cobertura.html"><a href="objetivos-de-la-encuesta-de-cobertura.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta de cobertura</a></li>
+<li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-postcensal.html"><a href="objetivos-de-la-encuesta-postcensal.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta postcensal</a></li>
 <li class="chapter" data-level="5.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5.2</b> Componentes de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-correctas"><i class="fa fa-check"></i><b>5.2.1</b> Enumeraciones correctas</a></li>
@@ -285,7 +285,12 @@ div.csl-indent {
 <li class="chapter" data-level="7.3" data-path="operativo-de-recolección.html"><a href="operativo-de-recolección.html"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
 <li class="chapter" data-level="7.4" data-path="indicadores-principales.html"><a href="indicadores-principales.html"><i class="fa fa-check"></i><b>7.4</b> Indicadores principales</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="modelos-de-regresión-en-el-sistema-dual.html"><a href="modelos-de-regresión-en-el-sistema-dual.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a></li>
+<li class="chapter" data-level="8" data-path="cap-reg.html"><a href="cap-reg.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="post-estratificación.html"><a href="post-estratificación.html"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
+<li class="chapter" data-level="8.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
+<li class="chapter" data-level="8.3" data-path="ajuste-por-información-demográfica.html"><a href="ajuste-por-información-demográfica.html"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
 
@@ -308,8 +313,8 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="flujo-general-del-procedimiento" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Flujo general del procedimiento<a href="flujo-general-del-procedimiento.html#flujo-general-del-procedimiento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="htmlwidget-a363c17c48cb48b9036e" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a363c17c48cb48b9036e">{"x":{"diagram":"\ngraph TD;\n    A[Inicio del Proceso] --> B[Establecer la muestra E y P];\n    B --> C[Preprocesamiento de Datos];\n    C --> D[Emparejamiento Deterministico];\n    D -- Match --> J[Estimación de Omisiones];\n    D -- No Match --> E[Emparejamiento Probabilístico];\n    E --> F[Evaluación del Umbral];\n    F --> H{Tipo de coincidencia?};\n    H -- Emperejados --> J;\n    H -- Potenciales --> I[Revisión clerical];\n    H -- No emparejados --> K[Aumentar el área de búsqueda];\n    K --> X[Ampliar muestra E];\n    X --> E;\n    I --> L{Emparejado?};\n    L -- Sí --> M[Clasificacion Final];\n    L -- No --> K;\n    M --> J;\n    J --> N[Ajustes y Calibraciones];\n    N --> O[Validacion de Resultados];\n    O --> P[Documentacion y Reporte];\n    P --> Q[Fin del Proceso];\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fd735fc816aafd58025a" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fd735fc816aafd58025a">{"x":{"diagram":"\ngraph TD;\n    A[Inicio del Proceso] --> B[Establecer la muestra E y P];\n    B --> C[Preprocesamiento de Datos];\n    C --> D[Emparejamiento Deterministico];\n    D -- Match --> J[Estimación de Omisiones];\n    D -- No Match --> E[Emparejamiento Probabilístico];\n    E --> F[Evaluación del Umbral];\n    F --> H{Tipo de coincidencia?};\n    H -- Emperejados --> J;\n    H -- Potenciales --> I[Revisión clerical];\n    H -- No emparejados --> K[Aumentar el área de búsqueda];\n    K --> X[Ampliar muestra E];\n    X --> E;\n    I --> L{Emparejado?};\n    L -- Sí --> M[Clasificacion Final];\n    L -- No --> K;\n    M --> J;\n    J --> N[Ajustes y Calibraciones];\n    N --> O[Validacion de Resultados];\n    O --> P[Documentacion y Reporte];\n    P --> Q[Fin del Proceso];\n"},"evals":[],"jsHooks":[]}</script>
 
 </div>
 <!-- </div> -->

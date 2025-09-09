@@ -1,11 +1,11 @@
 # Evaluación de la cobertura censal
 
-Como se ha mencionado en los capítulos anteriores, la **encuesta de cobertura** es un estudio complementario al censo cuyo propósito principal es evaluar la cobertura y calidad de la información recolectada sobre unidades de vivienda y personas. Su implementación permite identificar posibles errores en la enumeración —como omisiones, duplicados o clasificaciones incorrectas— lo que contribuye a mejorar la precisión de los datos censales y proporciona insumos fundamentales para el diseño de futuras operaciones estadísticas.
+Como se ha mencionado en los capítulos anteriores, la encuesta postcensal (PES) es un estudio complementario al censo cuyo propósito principal es evaluar la cobertura y calidad de la información recolectada sobre unidades de vivienda y personas. Su implementación permite identificar posibles errores en la enumeración —como omisiones, duplicados o clasificaciones incorrectas— lo que contribuye a mejorar la precisión de los datos censales y proporciona insumos fundamentales para el diseño de futuras operaciones estadísticas.
 
-Más allá de la evaluación general, la encuesta de cobertura también permite analizar el impacto de factores que pueden afectar la calidad del censo, como la movilidad poblacional, las estrategias de recolección de datos, y el desempeño de los enumeradores en el campo.
+Más allá de la evaluación general, la PES también permite analizar el impacto de factores que pueden afectar la calidad del censo, como la movilidad poblacional, las estrategias de recolección de datos, y el desempeño de los enumeradores en el campo.
  
 
-## Objetivos de la encuesta de cobertura
+## Objetivos de la encuesta postcensal
 
 - **Medir el error neto de la cobertura**, comparando los datos del censo con los de la encuesta para cuantificar las diferencias.
 - **Identificar y analizar los componentes de cobertura**, incluyendo errores de duplicación, omisiones y otras clasificaciones incorrectas.
@@ -33,7 +33,7 @@ $$I_k^{d} = \begin{cases}
 ### Enumeraciones erróneas
 
 
-Desde la encuesta de cobertura también se debe estimar el número de enumeraciones erróneas, existen varias razones por las cuales una enumeración se considera de este tipo. En general se clasifican en dos categorías: erróneas debido a duplicación y erróneas por otras razones. La Tabla \@ref(tab:t1) describe los principales motivos de clasificación como errónea. 
+Desde la PES también se debe estimar el número de enumeraciones erróneas, existen varias razones por las cuales una enumeración se considera de este tipo. En general se clasifican en dos categorías: erróneas debido a duplicación y erróneas por otras razones. La Tabla \@ref(tab:t1) describe los principales motivos de clasificación como errónea. 
    
 
 <table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
@@ -80,22 +80,22 @@ Desde la encuesta de cobertura también se debe estimar el número de enumeracio
 
 Las omisiones corresponden a personas que debieron ser incluidas en el censo pero no aparecen en ningún registro censal emparejado con la encuesta. Estas ocurren por diversas razones: errores de cobertura, dificultades en la enumeración de poblaciones móviles, desconfianza o rechazo en la participación, o errores operacionales.
 
-La identificación de omisiones es uno de los objetivos más importantes de la encuesta de cobertura. Para determinar que un individuo fue omitido, es necesario que cumpla con los siguientes criterios:
+La identificación de omisiones es uno de los objetivos más importantes de la PES. Para determinar que un individuo fue omitido, es necesario que cumpla con los siguientes criterios:
 
 - Debe residir en el país al momento del censo.
 - Debe estar correctamente vinculado a una unidad censal en la encuesta.
 - No debe haber sido emparejado con ningún registro censal, incluso después del emparejamiento ampliado y la revisión clerical.
 
-Las omisiones se cuantifican usando los factores de expansión de la encuesta de cobertura y se incorporan en el cálculo del error neto de cobertura mediante alguno de los estimadores presentados en el capítulo anterior. Su impacto se analiza por grupos demográficos, lo que permite evaluar la cobertura diferencial del censo [@wolter1986coverage; @USCensusBureau_2022].
+Las omisiones se cuantifican usando los factores de expansión de la PES y se incorporan en el cálculo del error neto de cobertura mediante alguno de los estimadores presentados en el capítulo anterior. Su impacto se analiza por grupos demográficos, lo que permite evaluar la cobertura diferencial del censo [@wolter1986coverage; @USCensusBureau_2022].
 
 
 ### Imputación
 
 En los censos se realizan imputaciones cuando no se logra recolectar información completa de una persona o un hogar, para esto se pueden usar diferentes enfoques, la literatura sobre los modelos de imputación es extensa y definir el modelo apropiado depende en gran medida del patrón de la ausencia de respuesta [@van2012flexible]. 
 
-La encuesta de cobertura permite evaluar cuántos registros en el censo fueron imputados y en qué medida esas imputaciones representan correctamente a personas reales. En particular:
+La PES permite evaluar cuántos registros en el censo fueron imputados y en qué medida esas imputaciones representan correctamente a personas reales. En particular:
 
-- Se estima la proporción de registros imputados que coinciden con la encuesta de cobertura.
+- Se estima la proporción de registros imputados que coinciden con la PES.
 - Se identifica si hay sesgos sistemáticos en los registros imputados, como sobrerepresentación de ciertos grupos.
 - Se analizan imputaciones completas (sin nombre ni edad) frente a parciales.
 
@@ -124,7 +124,7 @@ Esta fase estandariza y valida la información recolectada, y prepara las bases 
 
 Esta etapa inicia con la muestra E y muestra P. Si al final del proceso existen registros que no se han logrado emparejar, entonces la muestra E se amplia a otras áreas para identificar si la persona encontrada en la muestra P si fue censada pero en un segmento diferente. A continuación se enuncian las etapas del proceso.
 
- - **Determinístico (exacto)**: Establecer las variables que se usarán para establecer las coincidencias exactas. Es recomendable que el censo y la encuesta de cobertura levanten información sobre el tipo de documento y número de documento de identidad, esto ayuda a que el proceso de emparejamiento sea más efectivo.
+ - **Determinístico (exacto)**: Establecer las variables que se usarán para establecer las coincidencias exactas. Es recomendable que el censo y la PES levanten información sobre el tipo de documento y número de documento de identidad, esto ayuda a que el proceso de emparejamiento sea más efectivo.
  - **Probabilístico**: Usar técnicas de vinculación para los registros (record linkage), para los registros que no tuvieron una coincidencia exacta.
  - **Áreas o bloques de búsqueda**: Establecer reglas para limitar el emparejamiento a segmentos censales y áreas adyacentes.
  - **Definición del umbral**: Definir el umbral para establecer las coincidencias es un aspecto relevante, el propósito es minimizar la probabilidad de que un emparejamiento erróneo. En este caso se pueden establecer algunas reglas, si la probabilidad de emparejamiento es superior al 99% se considera "emparejado", si está entre el 90% y 99% se considera "emparejamiento potencial" y si está por debajo del 90% se considera "no emparejado".
@@ -133,8 +133,8 @@ Esta etapa inicia con la muestra E y muestra P. Si al final del proceso existen 
 La Figura \@ref(fig:match) presenta una ilustración general de las fases del proceso de emparejamiento y revisión clerical.
 
 <div class="figure" style="text-align: center">
-<img src="images/FlujoMatch.png" alt="Flujo general del proceso de emparejamiento en la encuesta de cobertura" width="100%" />
-<p class="caption">(\#fig:match)Flujo general del proceso de emparejamiento en la encuesta de cobertura</p>
+<img src="images/FlujoMatch.png" alt="Flujo general del proceso de emparejamiento en la PES" width="100%" />
+<p class="caption">(\#fig:match)Flujo general del proceso de emparejamiento en la PES</p>
 </div>
 
 
@@ -148,6 +148,6 @@ Si no hay coincidencia tras ampliar el área de búsqueda, el caso se clasifica 
 
 
 ```{=html}
-<div id="htmlwidget-a363c17c48cb48b9036e" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a363c17c48cb48b9036e">{"x":{"diagram":"\ngraph TD;\n    A[Inicio del Proceso] --> B[Establecer la muestra E y P];\n    B --> C[Preprocesamiento de Datos];\n    C --> D[Emparejamiento Deterministico];\n    D -- Match --> J[Estimación de Omisiones];\n    D -- No Match --> E[Emparejamiento Probabilístico];\n    E --> F[Evaluación del Umbral];\n    F --> H{Tipo de coincidencia?};\n    H -- Emperejados --> J;\n    H -- Potenciales --> I[Revisión clerical];\n    H -- No emparejados --> K[Aumentar el área de búsqueda];\n    K --> X[Ampliar muestra E];\n    X --> E;\n    I --> L{Emparejado?};\n    L -- Sí --> M[Clasificacion Final];\n    L -- No --> K;\n    M --> J;\n    J --> N[Ajustes y Calibraciones];\n    N --> O[Validacion de Resultados];\n    O --> P[Documentacion y Reporte];\n    P --> Q[Fin del Proceso];\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fd735fc816aafd58025a" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fd735fc816aafd58025a">{"x":{"diagram":"\ngraph TD;\n    A[Inicio del Proceso] --> B[Establecer la muestra E y P];\n    B --> C[Preprocesamiento de Datos];\n    C --> D[Emparejamiento Deterministico];\n    D -- Match --> J[Estimación de Omisiones];\n    D -- No Match --> E[Emparejamiento Probabilístico];\n    E --> F[Evaluación del Umbral];\n    F --> H{Tipo de coincidencia?};\n    H -- Emperejados --> J;\n    H -- Potenciales --> I[Revisión clerical];\n    H -- No emparejados --> K[Aumentar el área de búsqueda];\n    K --> X[Ampliar muestra E];\n    X --> E;\n    I --> L{Emparejado?};\n    L -- Sí --> M[Clasificacion Final];\n    L -- No --> K;\n    M --> J;\n    J --> N[Ajustes y Calibraciones];\n    N --> O[Validacion de Resultados];\n    O --> P[Documentacion y Reporte];\n    P --> Q[Fin del Proceso];\n"},"evals":[],"jsHooks":[]}</script>
 ```

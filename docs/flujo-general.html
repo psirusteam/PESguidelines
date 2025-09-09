@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa" />
 
 
-<meta name="date" content="2025-09-05" />
+<meta name="date" content="2025-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -174,7 +174,7 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="1" data-path="el-sistema-de-estimación-dual.html"><a href="el-sistema-de-estimación-dual.html"><i class="fa fa-check"></i><b>1</b> El sistema de estimación dual</a>
+<li class="chapter" data-level="1" data-path="cap-dual.html"><a href="cap-dual.html"><i class="fa fa-check"></i><b>1</b> El sistema de estimación dual</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="planteamiento-del-problema.html"><a href="planteamiento-del-problema.html"><i class="fa fa-check"></i><b>1.1</b> Planteamiento del problema</a></li>
 <li class="chapter" data-level="1.2" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html"><i class="fa fa-check"></i><b>1.2</b> Condiciones y supuestos</a>
@@ -224,7 +224,7 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="5" data-path="evaluación-de-la-cobertura-censal.html"><a href="evaluación-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-de-cobertura.html"><a href="objetivos-de-la-encuesta-de-cobertura.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta de cobertura</a></li>
+<li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-postcensal.html"><a href="objetivos-de-la-encuesta-postcensal.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta postcensal</a></li>
 <li class="chapter" data-level="5.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5.2</b> Componentes de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-correctas"><i class="fa fa-check"></i><b>5.2.1</b> Enumeraciones correctas</a></li>
@@ -285,7 +285,12 @@ div.csl-indent {
 <li class="chapter" data-level="7.3" data-path="operativo-de-recolección.html"><a href="operativo-de-recolección.html"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
 <li class="chapter" data-level="7.4" data-path="indicadores-principales.html"><a href="indicadores-principales.html"><i class="fa fa-check"></i><b>7.4</b> Indicadores principales</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="modelos-de-regresión-en-el-sistema-dual.html"><a href="modelos-de-regresión-en-el-sistema-dual.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a></li>
+<li class="chapter" data-level="8" data-path="cap-reg.html"><a href="cap-reg.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="post-estratificación.html"><a href="post-estratificación.html"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
+<li class="chapter" data-level="8.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
+<li class="chapter" data-level="8.3" data-path="ajuste-por-información-demográfica.html"><a href="ajuste-por-información-demográfica.html"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
 
@@ -324,23 +329,23 @@ Figure 6.1: Flujo general del proceso de emparejamiento
 <span id="cb5-2"><a href="flujo-general.html#cb5-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/encuesta.rda&quot;</span>)</span></code></pre></div>
 <p>A continuación se presenta la estructura para los primeros registros de la tabla censo:</p>
 <pre><code>## Warning: package &#39;gt&#39; was built under R version 4.4.3</code></pre>
-<div id="wzoihhenya" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wzoihhenya table {
+<div id="judsrnwhej" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#judsrnwhej table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wzoihhenya thead, #wzoihhenya tbody, #wzoihhenya tfoot, #wzoihhenya tr, #wzoihhenya td, #wzoihhenya th {
+#judsrnwhej thead, #judsrnwhej tbody, #judsrnwhej tfoot, #judsrnwhej tr, #judsrnwhej td, #judsrnwhej th {
   border-style: none;
 }
 
-#wzoihhenya p {
+#judsrnwhej p {
   margin: 0;
   padding: 0;
 }
 
-#wzoihhenya .gt_table {
+#judsrnwhej .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -366,12 +371,12 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-left-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_caption {
+#judsrnwhej .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wzoihhenya .gt_title {
+#judsrnwhej .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -383,7 +388,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-bottom-width: 0;
 }
 
-#wzoihhenya .gt_subtitle {
+#judsrnwhej .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -395,7 +400,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-top-width: 0;
 }
 
-#wzoihhenya .gt_heading {
+#judsrnwhej .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -407,13 +412,13 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_bottom_border {
+#judsrnwhej .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_col_headings {
+#judsrnwhej .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -428,7 +433,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_col_heading {
+#judsrnwhej .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -448,7 +453,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#wzoihhenya .gt_column_spanner_outer {
+#judsrnwhej .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -460,15 +465,15 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 4px;
 }
 
-#wzoihhenya .gt_column_spanner_outer:first-child {
+#judsrnwhej .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wzoihhenya .gt_column_spanner_outer:last-child {
+#judsrnwhej .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wzoihhenya .gt_column_spanner {
+#judsrnwhej .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -480,11 +485,11 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   width: 100%;
 }
 
-#wzoihhenya .gt_spanner_row {
+#judsrnwhej .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wzoihhenya .gt_group_heading {
+#judsrnwhej .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -510,7 +515,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   text-align: left;
 }
 
-#wzoihhenya .gt_empty_group_heading {
+#judsrnwhej .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -525,15 +530,15 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   vertical-align: middle;
 }
 
-#wzoihhenya .gt_from_md > :first-child {
+#judsrnwhej .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wzoihhenya .gt_from_md > :last-child {
+#judsrnwhej .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wzoihhenya .gt_row {
+#judsrnwhej .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -552,7 +557,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#wzoihhenya .gt_stub {
+#judsrnwhej .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -565,7 +570,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#wzoihhenya .gt_stub_row_group {
+#judsrnwhej .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -579,15 +584,15 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   vertical-align: top;
 }
 
-#wzoihhenya .gt_row_group_first td {
+#judsrnwhej .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wzoihhenya .gt_row_group_first th {
+#judsrnwhej .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wzoihhenya .gt_summary_row {
+#judsrnwhej .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -597,16 +602,16 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#wzoihhenya .gt_first_summary_row {
+#judsrnwhej .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_first_summary_row.thick {
+#judsrnwhej .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wzoihhenya .gt_last_summary_row {
+#judsrnwhej .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -616,7 +621,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_grand_summary_row {
+#judsrnwhej .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -626,7 +631,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#wzoihhenya .gt_first_grand_summary_row {
+#judsrnwhej .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -636,7 +641,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-top-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_last_grand_summary_row_top {
+#judsrnwhej .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -646,11 +651,11 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_striped {
+#judsrnwhej .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wzoihhenya .gt_table_body {
+#judsrnwhej .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -659,7 +664,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_footnotes {
+#judsrnwhej .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -673,7 +678,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_footnote {
+#judsrnwhej .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -682,7 +687,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#wzoihhenya .gt_sourcenotes {
+#judsrnwhej .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -696,7 +701,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#wzoihhenya .gt_sourcenote {
+#judsrnwhej .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -704,72 +709,72 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#wzoihhenya .gt_left {
+#judsrnwhej .gt_left {
   text-align: left;
 }
 
-#wzoihhenya .gt_center {
+#judsrnwhej .gt_center {
   text-align: center;
 }
 
-#wzoihhenya .gt_right {
+#judsrnwhej .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wzoihhenya .gt_font_normal {
+#judsrnwhej .gt_font_normal {
   font-weight: normal;
 }
 
-#wzoihhenya .gt_font_bold {
+#judsrnwhej .gt_font_bold {
   font-weight: bold;
 }
 
-#wzoihhenya .gt_font_italic {
+#judsrnwhej .gt_font_italic {
   font-style: italic;
 }
 
-#wzoihhenya .gt_super {
+#judsrnwhej .gt_super {
   font-size: 65%;
 }
 
-#wzoihhenya .gt_footnote_marks {
+#judsrnwhej .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wzoihhenya .gt_asterisk {
+#judsrnwhej .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wzoihhenya .gt_indent_1 {
+#judsrnwhej .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wzoihhenya .gt_indent_2 {
+#judsrnwhej .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wzoihhenya .gt_indent_3 {
+#judsrnwhej .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wzoihhenya .gt_indent_4 {
+#judsrnwhej .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wzoihhenya .gt_indent_5 {
+#judsrnwhej .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wzoihhenya .katex-display {
+#judsrnwhej .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wzoihhenya div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#judsrnwhej div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -859,23 +864,23 @@ Figure 6.1: Flujo general del proceso de emparejamiento
 </table>
 </div>
 <p>La tabla encuesta presenta la siguiente estructura para los primeros registros:</p>
-<div id="ljlneckpif" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ljlneckpif table {
+<div id="vevdavnjop" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vevdavnjop table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ljlneckpif thead, #ljlneckpif tbody, #ljlneckpif tfoot, #ljlneckpif tr, #ljlneckpif td, #ljlneckpif th {
+#vevdavnjop thead, #vevdavnjop tbody, #vevdavnjop tfoot, #vevdavnjop tr, #vevdavnjop td, #vevdavnjop th {
   border-style: none;
 }
 
-#ljlneckpif p {
+#vevdavnjop p {
   margin: 0;
   padding: 0;
 }
 
-#ljlneckpif .gt_table {
+#vevdavnjop .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -901,12 +906,12 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-left-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_caption {
+#vevdavnjop .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ljlneckpif .gt_title {
+#vevdavnjop .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -918,7 +923,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-bottom-width: 0;
 }
 
-#ljlneckpif .gt_subtitle {
+#vevdavnjop .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -930,7 +935,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-top-width: 0;
 }
 
-#ljlneckpif .gt_heading {
+#vevdavnjop .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -942,13 +947,13 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_bottom_border {
+#vevdavnjop .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_col_headings {
+#vevdavnjop .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -963,7 +968,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_col_heading {
+#vevdavnjop .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -983,7 +988,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#ljlneckpif .gt_column_spanner_outer {
+#vevdavnjop .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -995,15 +1000,15 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 4px;
 }
 
-#ljlneckpif .gt_column_spanner_outer:first-child {
+#vevdavnjop .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ljlneckpif .gt_column_spanner_outer:last-child {
+#vevdavnjop .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ljlneckpif .gt_column_spanner {
+#vevdavnjop .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1015,11 +1020,11 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   width: 100%;
 }
 
-#ljlneckpif .gt_spanner_row {
+#vevdavnjop .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ljlneckpif .gt_group_heading {
+#vevdavnjop .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1045,7 +1050,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   text-align: left;
 }
 
-#ljlneckpif .gt_empty_group_heading {
+#vevdavnjop .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1060,15 +1065,15 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   vertical-align: middle;
 }
 
-#ljlneckpif .gt_from_md > :first-child {
+#vevdavnjop .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ljlneckpif .gt_from_md > :last-child {
+#vevdavnjop .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ljlneckpif .gt_row {
+#vevdavnjop .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1087,7 +1092,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#ljlneckpif .gt_stub {
+#vevdavnjop .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1100,7 +1105,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#ljlneckpif .gt_stub_row_group {
+#vevdavnjop .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1114,15 +1119,15 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   vertical-align: top;
 }
 
-#ljlneckpif .gt_row_group_first td {
+#vevdavnjop .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ljlneckpif .gt_row_group_first th {
+#vevdavnjop .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ljlneckpif .gt_summary_row {
+#vevdavnjop .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1132,16 +1137,16 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#ljlneckpif .gt_first_summary_row {
+#vevdavnjop .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_first_summary_row.thick {
+#vevdavnjop .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ljlneckpif .gt_last_summary_row {
+#vevdavnjop .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1151,7 +1156,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_grand_summary_row {
+#vevdavnjop .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1161,7 +1166,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#ljlneckpif .gt_first_grand_summary_row {
+#vevdavnjop .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1171,7 +1176,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-top-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_last_grand_summary_row_top {
+#vevdavnjop .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1181,11 +1186,11 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_striped {
+#vevdavnjop .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ljlneckpif .gt_table_body {
+#vevdavnjop .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1194,7 +1199,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_footnotes {
+#vevdavnjop .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1208,7 +1213,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_footnote {
+#vevdavnjop .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1217,7 +1222,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#ljlneckpif .gt_sourcenotes {
+#vevdavnjop .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1231,7 +1236,7 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#ljlneckpif .gt_sourcenote {
+#vevdavnjop .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1239,72 +1244,72 @@ Figure 6.1: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#ljlneckpif .gt_left {
+#vevdavnjop .gt_left {
   text-align: left;
 }
 
-#ljlneckpif .gt_center {
+#vevdavnjop .gt_center {
   text-align: center;
 }
 
-#ljlneckpif .gt_right {
+#vevdavnjop .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ljlneckpif .gt_font_normal {
+#vevdavnjop .gt_font_normal {
   font-weight: normal;
 }
 
-#ljlneckpif .gt_font_bold {
+#vevdavnjop .gt_font_bold {
   font-weight: bold;
 }
 
-#ljlneckpif .gt_font_italic {
+#vevdavnjop .gt_font_italic {
   font-style: italic;
 }
 
-#ljlneckpif .gt_super {
+#vevdavnjop .gt_super {
   font-size: 65%;
 }
 
-#ljlneckpif .gt_footnote_marks {
+#vevdavnjop .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ljlneckpif .gt_asterisk {
+#vevdavnjop .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ljlneckpif .gt_indent_1 {
+#vevdavnjop .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ljlneckpif .gt_indent_2 {
+#vevdavnjop .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ljlneckpif .gt_indent_3 {
+#vevdavnjop .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ljlneckpif .gt_indent_4 {
+#vevdavnjop .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ljlneckpif .gt_indent_5 {
+#vevdavnjop .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ljlneckpif .katex-display {
+#vevdavnjop .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ljlneckpif div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vevdavnjop div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

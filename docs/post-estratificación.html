@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
+  <title>8.1 Post-estratificación | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta property="og:title" content="8.1 Post-estratificación | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="Encuestas Postcensales" />
   <meta name="github-repo" content="psirusteam/PESguidelines" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Enumeraciones y procedimientos | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
+  <meta name="twitter:title" content="8.1 Post-estratificación | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   
   <meta name="twitter:description" content="Encuestas Postcensales" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="los-estimadores-de-muestreo.html"/>
-<link rel="next" href="enumeraciones-correctas-con-la-muestra-e.html"/>
+<link rel="prev" href="cap-reg.html"/>
+<link rel="next" href="regresión-logística.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -311,18 +311,52 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cap3" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Enumeraciones y procedimientos<a href="cap3.html#cap3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>En este capítulo se abordarán de manera detallada las bases fundamentales para establecer la definición de las inclusiones erradas, las cuales se identificarán y analizarán específicamente en la muestra E. Este proceso buscará proporcionar un marco claro que permita clasificar estas inclusiones erradas de manera sistemática, facilitando su identificación para la inclusión en los estimadores del sistema dual.</p>
-<p>Por otro lado, también se desarrollarán los fundamentos para la definición de los emparejamientos, los cuales serán establecidos a partir de la muestra P. Este apartado se centrará en establecer las condiciones bajo las cuales se realizarán y se profundizará en los procedimientos empleados para la reconstrucción de los hogares.</p>
+<div id="post-estratificación" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Post-estratificación<a href="post-estratificación.html#post-estratificación" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La estimación por sistema dual asume que las probabilidades de inclusión de cada individuo en el censo y en la encuesta son independientes <span class="citation">(<a href="#ref-wolter1986coverage">Wolter 1986</a>)</span>. El sesgo de correlación resulta de la falta de cumplimiento de este supuesto de independencia en el que se basan los DSE, debido a:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Dependencia causal</strong>: el hecho de estar incluido en el censo hace que una persona tenga más o menos probabilidad de ser incluida en la PES.</p></li>
+<li><p><strong>Heterogeneidad</strong>: las probabilidades de inclusión en el censo y en la PES varían entre personas.</p></li>
+</ol>
+<p>La dependencia causal puede generar tanto subestimaciones como sobreestimaciones en el DSE. Este fenómeno se conoce como sesgo negativo o positivo, y surge cuando la probabilidad de no ser contado en el censo incrementa (o reduce) la probabilidad de no ser contado también en la PES. Asimismo, la heterogeneidad en las probabilidades de inclusión de las personas dentro de un mismo grupo de estimación tiende a producir subestimaciones, es decir, un sesgo negativo en el DSE.</p>
+<p>En algunas encuestas de cobertura se recurre a la post-estratificación con el fin de reducir el impacto derivado del incumplimiento de estos supuestos. Este procedimiento consiste en dividir a la población en grupos con probabilidades de inclusión censal similares, aplicar el modelo DSE dentro de cada post-estrato y, posteriormente, agregar los resultados para obtener la estimación global. El objetivo de la post-estratificación es reducir la heterogeneidad y, por lo tanto,
+disminuir el sesgo de correlación.</p>
+<p>Al dividir la población en <span class="math inline">\(J\)</span> post-estratos, <span class="citation">Zamora (<a href="#ref-zamora2022pesdesign">2022a</a>)</span> presenta el siguiente estimador :</p>
+<p><span class="math display" id="eq:post">\[\begin{equation}
+\hat{N}_{++} = \sum_{j \in J} \left[ N_{d_j} \, \frac{\hat{N}_{c_j}}{\hat{N}_{t_{dj}}} \, \cdot \frac{\hat{N}_{+1,j}}{\hat{N}_{11,j}} \right]
+\tag{8.1}
+\end{equation}\]</span></p>
+<ul>
+<li><span class="math inline">\(N_{d_j}\)</span> es la cantidad de enumeraciones definidas por los datos en el censo en el post-estrato <span class="math inline">\(j\)</span>.</li>
+<li><span class="math inline">\(\hat{N}_{c_j}\)</span> es el total estimado de enumeraciones correctas en el post-estrato <span class="math inline">\(j\)</span>.</li>
+<li><span class="math inline">\(\hat{N}_{t_{dj}}\)</span> es el total estimado de las enumeraciones definidas por los datos en el censo, incluyendo las enumeraciones erróneas en el post-estrato <span class="math inline">\(j\)</span>.</li>
+</ul>
+<p>En este caso se usa <span class="math inline">\(N_{d_j} \, \frac{\hat{N}_{c_j}}{\hat{N}_{t_{dj}}}\)</span> como estimador de <span class="math inline">\(N_{1+, j}\)</span>. La ecuación <a href="post-estratificación.html#eq:post">(8.1)</a> se puede simplicar así:</p>
+<p><span class="math display">\[\begin{align*}
+\hat{N}_{++} &amp;= \sum_{j \in J} \left[ N_{d_j} \frac{\hat{N}_{c_j}/\hat{N}_{11,j}}{\hat{N}_{t_{dj}}/\hat{N}_{+1,j}}  \right] \\
+             &amp;= \sum_{j \in J} \left[ N_{d_j} \frac{\hat{R}_{c,j}}{\hat{R}_{m,j}}  \right]
+\end{align*}\]</span></p>
+<p>En donde <span class="math inline">\(\hat{R}_{c,j}\)</span> y <span class="math inline">\(\hat{R}_{m,j}\)</span> son los estimadores de razón de la enumeraciones correctas y emparejamientos en el post-estrato <span class="math inline">\(j\)</span>. Utilizando este estimador post-estratificado, es posible estimar el tamaño poblacional para un área o dominio <span class="math inline">\(t\)</span> con la siguiente fórmula:</p>
+<p><span class="math display">\[\hat{N}_t = \sum_{j \in J} \left[ N_{t, d_j} \frac{\hat{R}_{c,j}}{\hat{R}_{m,j}} \right]\]</span></p>
+<p>En donde <span class="math inline">\(\hat{N}_t\)</span> es la estimación del total poblacional obtenida por el modelo de sistema de estimación dual en el área o dominio <span class="math inline">\(t\)</span>, y <span class="math inline">\(N_{t, d_j}\)</span> es la cantidad de registros definidos por los datos en el post-estrato <span class="math inline">\(j\)</span> y en el área o dominio <span class="math inline">\(t\)</span>.</p>
+<p>La implementación de este enfoque resulta desafiante en la práctica, ya que exige fragmentar la población en numerosas celdas de tamaño reducido, lo que incrementa la incertidumbre y puede dejar fuera dinámicas relevantes dentro de los post-estratos. Asimismo, presenta varias limitaciones, entre ellas, que el número de factores (covariables) que pueden incorporarse es restringido, dado que cada nueva variable o cruce de clasificaciones aumenta el número de estratos y, en consecuencia, reduce el tamaño de muestra disponible en cada uno; otra limitación es que admite únicamente variables categóricas o, en su defecto, variables continuas previamente agrupadas.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-wolter1986coverage" class="csl-entry">
+Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
+</div>
+<div id="ref-zamora2022pesdesign" class="csl-entry">
+Zamora, J. 2022a. <span>“2020 Post-Enumeration Survey: Estimation Design.”</span> 2020-J-03. DSSD 2020 Post-Enumeration Survey Memorandum Series. U.S. Census Bureau.
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="los-estimadores-de-muestreo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="enumeraciones-correctas-con-la-muestra-e.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cap-reg.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="regresión-logística.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -353,7 +387,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/psirusteam/PESguidelines/03-InclusionesMovers.rmd",
+"link": "https://github.com/psirusteam/PESguidelines/08-Regresion.rmd",
 "text": "Edit"
 },
 "history": {

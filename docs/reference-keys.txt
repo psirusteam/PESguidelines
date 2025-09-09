@@ -1,7 +1,14 @@
 tab:t1
 fig:match
 fig:match1
-el-sistema-de-estimación-dual
+eq:post
+eq:prob
+eq:lestimator
+eq:lestimator2
+eq:ccf
+eq:ccfdse
+eq:dseadj
+cap-dual
 planteamiento-del-problema
 condiciones-y-supuestos
 estabilidad-poblacional
@@ -36,7 +43,7 @@ otros-modelos
 notas-adicionales
 cuadro-comparativo-de-los-estimadores
 evaluación-de-la-cobertura-censal
-objetivos-de-la-encuesta-de-cobertura
+objetivos-de-la-encuesta-postcensal
 componentes-de-la-cobertura-censal
 enumeraciones-correctas
 enumeraciones-erróneas
@@ -81,4 +88,7 @@ diseño-de-muestreo-estándar
 cálculo-del-tamaño-de-muestra
 operativo-de-recolección
 indicadores-principales
-modelos-de-regresión-en-el-sistema-dual
+cap-reg
+post-estratificación
+regresión-logística
+ajuste-por-información-demográfica

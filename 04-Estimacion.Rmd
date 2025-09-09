@@ -139,7 +139,7 @@ Los estimadores no no cuentan con una expresión analítica que permita estimar 
 
 ## Estimador de Chao
 
-Chao [@chao1987; @chao1989] propuso un estimador para el tamaño poblacional que relaja el supuesto de independencia entre las fuentes del censo y la encuesta de cobertura, y permite heterogeneidad no observada en las probabilidades de captura. Este estimador se enfoca en el número mínimo de individuos no observados $N_{22}$ que puede explicarse a partir de los datos observados.
+Chao [@chao1987; @chao1989] propuso un estimador para el tamaño poblacional que relaja el supuesto de independencia entre las fuentes del censo y la PES, y permite heterogeneidad no observada en las probabilidades de captura. Este estimador se enfoca en el número mínimo de individuos no observados $N_{22}$ que puede explicarse a partir de los datos observados.
 
 El modelo binomial mixto con parámetro 2 equivalente al número de fuentes usadas, se puede formular como:
 
@@ -226,7 +226,7 @@ donde
 
 $$\lambda = \frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}.$$
 
-@brittain2009estimators presentaron una versión alternativa del estimador cuando se tienen dos fuentes. En este contexto, aplican el mismo método utilizado por Zelterman a la verosimilitud binomial mixta, con parámetro de tamaño 2, truncada en los ceros, dado que los casos que no aparecen en ninguna de las dos fuentes, y esto se incorpora en el estimador de Horvitz–Thompson para obtener el estimador de Zelterman del tamaño poblacional en el contexto binomial, que sería más apropiado en el contexto de una encuesta de cobertura, y que puede expresarse como:
+@brittain2009estimators presentaron una versión alternativa del estimador cuando se tienen dos fuentes. En este contexto, aplican el mismo método utilizado por Zelterman a la verosimilitud binomial mixta, con parámetro de tamaño 2, truncada en los ceros, dado que los casos que no aparecen en ninguna de las dos fuentes, y esto se incorpora en el estimador de Horvitz–Thompson para obtener el estimador de Zelterman del tamaño poblacional en el contexto binomial, que sería más apropiado en el contexto de una encuesta postcensal, y que puede expresarse como:
 
 $$\hat{N}_{\text{Zel}} = \frac{\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}}
 {1 - \left(\frac{\hat{N}_{12}+\hat{N}_{21}}{\hat{N}_{12}+\hat{N}_{21}+2\hat{N}_{11}}\right)^2}.$$
@@ -318,6 +318,8 @@ Con lo cual el tamaño poblacional se obtiene como:
 
 $$\hat{N} = \sum_{h} \hat{N}^{(h)}$$
 
+Esto se presentará con más detalle en el capítulo \@ref(cap-reg)
+
 
 ## Cuadro comparativo de los estimadores
 
@@ -325,7 +327,7 @@ La elección del estimador adecuado para el tamaño poblacional en un sistema de
 
 - **Dependencia entre listas**: Ocurre cuando la probabilidad de inclusión en una lista está relacionada con la inclusión en la otra, violando el supuesto de independencia del modelo clásico como el de Petersen.
 - **Heterogeneidad en las probabilidades de captura**: Las personas tienen diferentes probabilidades de ser capturadas debido a características individuales no observadas (edad, ubicación, comportamiento migratorio, etc.).
-- **Diseño complejo de muestreo**: La encuesta de cobertura puede tener estratificación, conglomerados, y factores de expansión que deben ser incorporados en la estimación.
+- **Diseño complejo de muestreo**: La PES puede tener estratificación, conglomerados, y factores de expansión que deben ser incorporados en la estimación.
 
 El siguiente cuadro resume la relevancia de los distintos estimadores y cada uno, se indica si incorpora o ignora cada tipo de complejidad, y se sugiere su aplicabilidad en función del contexto de uso.
 
