@@ -2,13 +2,12 @@
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
 \documentclass[
   12pt,
 ]{book}
-\usepackage{xcolor}
-\usepackage[margin=3cm]{geometry}
 \usepackage{amsmath,amssymb}
-\setcounter{secnumdepth}{5}
+\usepackage{pifont}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -39,6 +38,8 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{xcolor}
+\usepackage[margin=3cm]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -91,32 +92,43 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\newsavebox\pandoc@box
-\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
-  \sbox\pandoc@box{#1}%
-  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
-  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
-  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
-  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
-  \else\usebox{\pandoc@box}%
-  \fi%
-}
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 % Set default figure placement to htbp
+\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{anyfontsize}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
-\usepackage{booktabs}
-\usepackage{booktabs}
-\usepackage{caption}
-\usepackage{longtable}
-\usepackage{colortbl}
-\usepackage{array}
-\usepackage{anyfontsize}
-\usepackage{multirow}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -665,7 +677,6 @@ Al tener en cuenta que \(\hat{N}_{11}\) es la cantidad de personas en ambas fuen
 \hat{N}_{LP} &= \hat{p}_{11} + \hat{p}_{12} + \hat{p}_{22} + \hat{p}_{21} \\ 
              &= \hat{N}_{11} + (\hat{N}_{+1} - \hat{N}_{11}) + (\hat{N}_{1+} - \hat{N}_{11}) + \frac{(\hat{N}_{+1} - \hat{N}_{11}) \cdot (\hat{N}_{1+} - \hat{N}_{11})}{\hat{N}_{11}} \\
              &= \frac{\hat{N}_{+1} \cdot \hat{N}_{1+}}{\hat{N}_{11}}
-             
 \end{align}
 
 El estimador de Petersen es el más conocido de los estimadores de tamaño poblacional en el sistema dual y puede demostrarse que es un estimador de máxima verosimilitud condicional para el modelo log-lineal de independencia con dos variables \citep{fienberg1972multiple, bishop2007discrete}.
@@ -990,52 +1001,52 @@ La elección del estimador adecuado para el tamaño poblacional en un sistema de
   \textbf{Diseño complejo de muestreo}: La PES puede tener estratificación, conglomerados, y factores de expansión que deben ser incorporados en la estimación.
 \end{itemize}
 
-El siguiente cuadro resume la relevancia de los distintos estimadores y cada uno, se indica si incorpora o ignora cada tipo de complejidad, y se sugiere su aplicabilidad en función del contexto de uso.
+\renewcommand{\arraystretch}{1.2} % un poco más de aire en filas
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2237}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1776}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1842}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1184}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2961}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Estimador
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Dependencia entre listas
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Heterogeneidad de captura
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Diseño complejo
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Aplicación recomendada
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-Chapman post-estratificado & ❌ & ❌ & ✔ & Censos grandes con dominios definidos \\
-Nour & ✔ & ❌ & ⚠ & Dependencia positiva esperada \\
-Chao & ✔ & ✔ & ⚠ & Estimación conservadora \\
-Webster-Kemp & ✔ & ❌ & ⚠ & Baja recaptura entre listas \\
-Zelterman & ❌ & ✔ & ⚠ & Alta heterogeneidad, pocos recapturados \\
-Modelo log-lineal & ✔✔ & ✔ & ⚠ & Modelado completo con dependencia \\
-Modelo bayesiano jerárquico & ✔✔ & ✔✔ & ✔ & Estimación por dominio, baja muestra \\
-Estimadores MSE (3+ fuentes) & ✔✔ & ✔ & ✔ & Fuentes múltiples, registros administrativos \\
-Modelos NPMLE & ❌ & ✔✔ & ⚠ & Captura y recaptura con heterogeneidad fuerte \\
+\begin{longtable}{@{}
+		>{\raggedright\arraybackslash}p{0.22\linewidth}
+		>{\centering\arraybackslash}p{0.15\linewidth}
+		>{\centering\arraybackslash}p{0.15\linewidth}
+		>{\centering\arraybackslash}p{0.12\linewidth}
+		>{\raggedright\arraybackslash}p{0.28\linewidth}@{}}
+	\caption{Resumen de estimadores y complejidades}\label{tab:estimadores} \\
+	\toprule
+	\textbf{Estimador} & \textbf{Dependencia entre listas} & \textbf{Heterogeneidad de captura} & \textbf{Diseño complejo} & \textbf{Aplicación recomendada} \\
+	\midrule
+	\endfirsthead
+	
+	\multicolumn{5}{c}{{\tablename\ \thetable{} -- continuación}} \\
+	\toprule
+	\textbf{Estimador} & \textbf{Dependencia entre listas} & \textbf{Heterogeneidad de captura} & \textbf{Diseño complejo} & \textbf{Aplicación recomendada} \\
+	\midrule
+	\endhead
+	
+	\midrule
+	\multicolumn{5}{r}{{Continúa en la siguiente página}} \\
+	\endfoot
+	
+	\bottomrule
+	\endlastfoot
+	
+	Chapman post-estratificado & \ding{55} & \ding{55} & \ding{51} & Censos grandes con dominios definidos \\
+	Nour                        & \ding{51} & \ding{55} & \ding{115} & Dependencia positiva esperada \\
+	Chao                        & \ding{51} & \ding{51} & \ding{115} & Estimación conservadora \\
+	Webster--Kemp               & \ding{51} & \ding{55} & \ding{115} & Baja recaptura entre listas \\
+	Zelterman                   & \ding{55} & \ding{51} & \ding{115} & Alta heterogeneidad, pocos recapturados \\
+	Modelo log-lineal           & \ding{51}\ding{51} & \ding{51} & \ding{115} & Modelado completo con dependencia \\
+	Modelo bayesiano jerárquico & \ding{51}\ding{51} & \ding{51}\ding{51} & \ding{51} & Estimación por dominio, baja muestra \\
+	Estimadores MSE (3+ fuentes)& \ding{51}\ding{51} & \ding{51} & \ding{51} & Fuentes múltiples, registros administrativos \\
+	Modelos NPMLE               & \ding{55} & \ding{51}\ding{51} & \ding{115} & Captura y recaptura con heterogeneidad fuerte \\
 \end{longtable}
 
+
 \begin{itemize}
-\tightlist
-\item
-  ✔✔ : El estimador incorpora directamente el fenómeno (dependencia, heterogeneidad o diseño complejo).
-\item
-  ✔~~~: El estimador incorpora parcialmente el fenómeno o lo aborda de forma indirecta o limitada.
-\item
-  ❌~~: El estimador asume que se cumple este requisito y no lo incorpora.
-\item
-  ⚠~~~: El estimador requiere de ajustes definidos por el usuario (como bootstrap, posestratificación o ponderación) para manejar adecuadamente el fenómeno.
+	\item \ding{51}\ding{51} : el estimador incorpora directamente el fenómeno.
+	\item \ding{51} : lo incorpora parcialmente o indirectamente.
+	\item \ding{55} : asume que se cumple y no lo incorpora.
+	\item \ding{115} : requiere ajustes definidos por el usuario (bootstrap, posestratificación o ponderación).
 \end{itemize}
+
 
 \chapter{Evaluación de la cobertura censal}\label{evaluaciuxf3n-de-la-cobertura-censal}
 
@@ -1076,20 +1087,30 @@ Cuando una persona fue contada múltiples veces, solo una de las enumeraciones s
 
 Desde la PES también se debe estimar el número de enumeraciones erróneas, existen varias razones por las cuales una enumeración se considera de este tipo. En general se clasifican en dos categorías: erróneas debido a duplicación y erróneas por otras razones. La Tabla \ref{tab:t1} describe los principales motivos de clasificación como errónea.
 
-\begin{longtable}[t]{>{\raggedright\arraybackslash}p{30%}>{\raggedright\arraybackslash}p{70%}}
-\caption{\label{tab:t1}\label{tab:t1}Tipos de enumeraciones erróneas}\\
-\toprule
-**Tipo** & **Descripción**\\
-\midrule
-Erróneo por duplicación & La enumeración es un duplicado de una persona que fue contada correctamente en una unidad de vivienda o en el universo de viviendas colectivas en el censo.\\
-Erróneo por otras razones & El registro es ficticio y no corresponde a una persona real.\\
- & La persona fue enumerada en el universo de unidades de vivienda, pero debería haber sido enumerada en el universo de viviendas colectivas o estaba en situación de calle el día del censo.\\
- & La persona nació después del día del censo.\\
- & La persona falleció antes del día del censo.\\
-\addlinespace
- & La persona estaba trabajando, estudiando o viviendo fuera del país el día del censo.\\
- & La persona es un visitante con residencia habitual en el extranjero que estaba temporalmente en el país el día del censo.\\
-\bottomrule
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.30\textwidth} >{\raggedright\arraybackslash}p{0.68\textwidth}}
+	\caption{Tipos de enumeraciones erróneas}\label{tab:t1}\\
+	\toprule
+	\textbf{Tipo} & \textbf{Descripción} \\
+	\midrule
+	\endfirsthead
+	
+	\multicolumn{2}{c}{\tablename\ \thetable\ -- \textit{Continuación}} \\
+	\toprule
+	\textbf{Tipo} & \textbf{Descripción} \\
+	\midrule
+	\endhead
+	
+	\midrule
+	\multicolumn{2}{r}{\textit{Continuado en la siguiente página}} \\
+	\endfoot
+	
+	\bottomrule
+	\endlastfoot
+	
+	Erróneo por duplicación & La enumeración es un duplicado de una persona que fue contada correctamente en una unidad de vivienda o en el universo de viviendas colectivas en el censo. \\[4pt]
+	
+	Erróneo por otras razones & El registro es ficticio y no corresponde a una persona real. La persona fue enumerada en el universo de unidades de vivienda, pero debería haber sido enumerada en el universo de viviendas colectivas o estaba en situación de calle el día del censo. La persona nació después del día del censo. La persona falleció antes del día del censo. La persona estaba trabajando, estudiando o viviendo fuera del país el día del censo. La persona es un visitante con residencia habitual en el extranjero que estaba temporalmente en el país el día del censo. \\
+	
 \end{longtable}
 
 \subsection{Omisiones}\label{omisiones}
@@ -1222,9 +1243,9 @@ El emparejamiento probabilístico de registros, también conocido como \emph{rec
 
 La primera vez que se introdujo formalmente el término \emph{record linkage} fue en el año 1946, para construir un ``libro de vida'' a nivel de individuo, desde el nacimiento hasta la muerte, incluyendo eventos relevantes como matrimonios, divorcios, registros médicos y de seguridad social \citep{dunn1946}. Esta visión anticipaba muchos de los principios de lo que hoy se conoce como integración de datos longitudinales, fundamentales para la planificación de servicios públicos y la mejora de la calidad de las estadísticas nacionales.
 
-Durante las décadas de 1950 y 1960, el avance tecnológico permitió que se comenzara con la automatización del proceso de vinculación de registros. Además, se introdujo el enfoque probabilístico, en el cual se asignan pesos de acuerdo con los atributos comparados, considerando la frecuencia relativa de los valores \citep[\citet{newcombe1962}]{newcombe1959}. Este enfoque sentó las bases para el desarrollo del modelo probabilístico propuesto formalmente por Fellegi y Sunter en 1969, quienes demostraron que bajo ciertas condiciones, es posible derivar una regla óptima para decidir si dos registros corresponden a la misma entidad \citep{fellegi1969theory}.
+Durante las décadas de 1950 y 1960, el avance tecnológico permitió que se comenzara con la automatización del proceso de vinculación de registros. Además, se introdujo el enfoque probabilístico, en el cual se asignan pesos de acuerdo con los atributos comparados, considerando la frecuencia relativa de los valores \citep[@newcombe1962]{newcombe1959}. Este enfoque sentó las bases para el desarrollo del modelo probabilístico propuesto formalmente por Fellegi y Sunter en 1969, quienes demostraron que bajo ciertas condiciones, es posible derivar una regla óptima para decidir si dos registros corresponden a la misma entidad \citep{fellegi1969theory}.
 
-A lo largo de las décadas siguientes, este marco teórico fue ampliado por William Winkler en el U.S. Census Bureau, incorporando funciones de comparación aproximada de cadenas, ponderaciones basadas en frecuencia y algoritmos como EM para mejorar la estimación de parámetros del modelo de vinculación probabilística \citep[\citet{winkler2006overview}]{winkler1990}. En el contexto de los censos de población y vivienda, estas técnicas han sido fundamentales para evaluar la omisión censal mediante encuestas de cobertura, al comparar registros del censo con los de la encuesta y estimar la omisión neta de forma robusta.
+A lo largo de las décadas siguientes, este marco teórico fue ampliado por William Winkler en el U.S. Census Bureau, incorporando funciones de comparación aproximada de cadenas, ponderaciones basadas en frecuencia y algoritmos como EM para mejorar la estimación de parámetros del modelo de vinculación probabilística \citep[@winkler2006overview]{winkler1990}. En el contexto de los censos de población y vivienda, estas técnicas han sido fundamentales para evaluar la omisión censal mediante encuestas de cobertura, al comparar registros del censo con los de la encuesta y estimar la omisión neta de forma robusta.
 
 La necesidad de vincular datos de múltiples fuentes ha crecido en paralelo con el aumento en la cantidad de información recolectada por Oficinas Nacionales de Estadística (ONE). En este contexto, el emparejamiento de registros cumple múltiples funciones:
 
@@ -1343,19 +1364,19 @@ A continuación se presenta la estructura para los primeros registros de la tabl
 
 \begin{table}[t]
 \caption*{
-{\fontsize{20}{25}\selectfont  Tabla censo\fontsize{12}{15}\selectfont }
+{\large Tabla censo}
 } 
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{12.0pt}{14.4pt}\selectfont
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rlllllrrrl}
 \toprule
 id\_segmento & id\_hogar & id\_censo & {\bfseries \cellcolor[HTML]{F9F9F9}{nombre}} & {\bfseries \cellcolor[HTML]{F9F9F9}{apellido}} & {\bfseries \cellcolor[HTML]{F9F9F9}{sexo}} & anio\_nac & mes\_nac & dia\_nac & {\bfseries \cellcolor[HTML]{F9F9F9}{parentesco}} \\ 
 \midrule\addlinespace[2.5pt]
-101 & H101\_1 & c1 & Carlos & P\\'erez & M & 1947 & 1 & 1 & Jefe \\ 
-101 & H101\_1 & c2 & Luc\\'ia & Castro & F & 1975 & 1 & 1 & Hijo/a \\ 
+101 & H101\_1 & c1 & Carlos & Pérez & M & 1947 & 1 & 1 & Jefe \\ 
+101 & H101\_1 & c2 & Lucía & Castro & F & 1975 & 1 & 1 & Hijo/a \\ 
 101 & H101\_1 & c3 & Camila & Castro & F & 2012 & 1 & 1 & Hijo/a \\ 
-101 & H101\_1 & c4 & Mar\\'ia & Castro & F & 1959 & 1 & 1 & Nieto/a \\ 
-102 & H102\_1 & c5 & Jorge & G\\'omez & M & 1954 & 1 & 1 & Jefe \\ 
-102 & H102\_1 & c6 & Sof\\'ia & Ram\\'irez & F & 2000 & 1 & 1 & Hijo/a \\ 
+101 & H101\_1 & c4 & María & Castro & F & 1959 & 1 & 1 & Nieto/a \\ 
+102 & H102\_1 & c5 & Jorge & Gómez & M & 1954 & 1 & 1 & Jefe \\ 
+102 & H102\_1 & c6 & Sofía & Ramírez & F & 2000 & 1 & 1 & Hijo/a \\ 
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -1364,19 +1385,19 @@ La tabla encuesta presenta la siguiente estructura para los primeros registros:
 
 \begin{table}[t]
 \caption*{
-{\fontsize{20}{25}\selectfont  Tabla encuesta\fontsize{12}{15}\selectfont }
+{\large Tabla encuesta}
 } 
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{12.0pt}{14.4pt}\selectfont
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rllllrl}
 \toprule
 id\_segmento & id\_hogar & id\_encuesta & nombre\_completo & {\bfseries \cellcolor[HTML]{F9F9F9}{sexo}} & fecha\_nacimiento & {\bfseries \cellcolor[HTML]{F9F9F9}{parentesco}} \\ 
 \midrule\addlinespace[2.5pt]
-101 & H101\_1 & e1 & Mar\\'ia Castro & F & 1959-1-1 & Nieto/a \\ 
-101 & H101\_1 & e2 & Carlos P\\'erez & M & 1947-1-1 & Jefe \\ 
-101 & H101\_1 & e3 & Luc\\'ia Castro & F & 1975-1-1 & Hijo/a \\ 
-101 & H101\_10 & e4 & Camila Ram\\'irez & F & 2010-1-1 & Hijo/a \\ 
-101 & H101\_2 & e5 & Sof\\'i\\'a C\\'astro & F & 1966-1-1 & Jefe \\ 
-101 & H101\_2 & e6 & Ana Mart\\'inez & F & 1973-1-1 & C\\'onyuge \\ 
+101 & H101\_1 & e1 & María Castro & F & 1959-1-1 & Nieto/a \\ 
+101 & H101\_1 & e2 & Carlos Pérez & M & 1947-1-1 & Jefe \\ 
+101 & H101\_1 & e3 & Lucía Castro & F & 1975-1-1 & Hijo/a \\ 
+101 & H101\_10 & e4 & Camila Ramírez & F & 2010-1-1 & Hijo/a \\ 
+101 & H101\_2 & e5 & Sofíá Cástro & F & 1966-1-1 & Jefe \\ 
+101 & H101\_2 & e6 & Ana Martínez & F & 1973-1-1 & Cónyuge \\ 
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -1453,9 +1474,9 @@ Ahora podemos aplicar nuestras funciones sobre las variables de interés en los 
 
 \begin{table}[t]
 \caption*{
-{\fontsize{20}{25}\selectfont  Tabla censo\_limpio\fontsize{12}{15}\selectfont }
+{\large Tabla censo\_limpio}
 } 
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{12.0pt}{14.4pt}\selectfont
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rlllllrrrl}
 \toprule
 id\_segmento & id\_hogar & id\_censo & {\bfseries \cellcolor[HTML]{F9F9F9}{nombre}} & {\bfseries \cellcolor[HTML]{F9F9F9}{apellido}} & {\bfseries \cellcolor[HTML]{F9F9F9}{sexo}} & anio\_nac & mes\_nac & dia\_nac & {\bfseries \cellcolor[HTML]{F9F9F9}{parentesco}} \\ 
@@ -1485,9 +1506,9 @@ En el caso de la tabla de la encuesta, primero se separa el nombre\_completo en 
 
 \begin{table}[t]
 \caption*{
-{\fontsize{20}{25}\selectfont  Tabla encuesta\_limpia\fontsize{12}{15}\selectfont }
+{\large Tabla encuesta\_limpia}
 } 
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{12.0pt}{14.4pt}\selectfont
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}rlllllrrrl}
 \toprule
 id\_segmento & id\_hogar & id\_encuesta & {\bfseries \cellcolor[HTML]{F9F9F9}{nombre}} & {\bfseries \cellcolor[HTML]{F9F9F9}{apellido}} & {\bfseries \cellcolor[HTML]{F9F9F9}{sexo}} & anio\_nac & mes\_nac & dia\_nac & {\bfseries \cellcolor[HTML]{F9F9F9}{parentesco}} \\ 
@@ -1738,7 +1759,7 @@ A continuación se presenta la aplicación para nuestro ejemplo
 \end{Shaded}
 
 \begin{table}[t]
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{12.0pt}{14.4pt}\selectfont
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}ll}
 \toprule
 {\bfseries \cellcolor[HTML]{F9F9F9}{nombre}} & {\bfseries \cellcolor[HTML]{F9F9F9}{codif}} \\ 
@@ -1769,7 +1790,7 @@ Considere otro ejemplo. La siguiente tabla presenta el resultado de aplicar los 
 \end{Shaded}
 
 \begin{table}[t]
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{12.0pt}{14.4pt}\selectfont
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llllll}
 \toprule
 {\bfseries \cellcolor[HTML]{F9F9F9}{nombre}} & {\bfseries \cellcolor[HTML]{F9F9F9}{apellido}} & {\bfseries \cellcolor[HTML]{F9F9F9}{soundex}} & {\bfseries \cellcolor[HTML]{F9F9F9}{metaphone}} & {\bfseries \cellcolor[HTML]{F9F9F9}{statcan}} & {\bfseries \cellcolor[HTML]{F9F9F9}{latino}} \\ 
@@ -1784,11 +1805,11 @@ Brayan & Qhispe & B650 & BRYN & BRN & BRYN \\
 Marleni & Rodriguez & M645 & MRLN & MRLN & MRLN \\ 
 Marleny & Rodrigues & M645 & MRLN & MRLN & MRLN \\ 
 Marlenni & Rodriwues & M645 & MRLN & MRLN & MRLN \\ 
-Nely & \~Nahui & N400 & NL & NL & NL \\ 
+Nely & Ñahui & N400 & NL & NL & NL \\ 
 Neli & Nahui & N400 & NL & NL & NL \\ 
 Nelly & Nahuy & N400 & NL & NL & NL \\ 
-Ximena & \~Nawi & X550 & SMN & XMN & YMN \\ 
-Jimena & \~Nahui & J550 & JMN & JMN & YMN \\ 
+Ximena & Ñawi & X550 & SMN & XMN & YMN \\ 
+Jimena & Ñahui & J550 & JMN & JMN & YMN \\ 
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -1806,7 +1827,7 @@ En el caso del apellido, es fundamental tener en cuenta las particularidades cul
 \end{Shaded}
 
 \begin{table}[t]
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{12.0pt}{14.4pt}\selectfont
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llllll}
 \toprule
 {\bfseries \cellcolor[HTML]{F9F9F9}{nombre}} & {\bfseries \cellcolor[HTML]{F9F9F9}{apellido}} & {\bfseries \cellcolor[HTML]{F9F9F9}{soundex}} & {\bfseries \cellcolor[HTML]{F9F9F9}{metaphone}} & {\bfseries \cellcolor[HTML]{F9F9F9}{statcan}} & {\bfseries \cellcolor[HTML]{F9F9F9}{latino}} \\ 
@@ -1821,11 +1842,11 @@ Brayan & Qhispe & Q210 & KHSP & QHSP & KSP \\
 Marleni & Rodriguez & R362 & RTRKS & RDRG & RDRGS \\ 
 Marleny & Rodrigues & R362 & RTRKS & RDRG & RDRGS \\ 
 Marlenni & Rodriwues & R362 & RTRWS & RDRW & RDRWS \\ 
-Nely & \~Nahui & N000 & NH & NH & NW \\ 
+Nely & Ñahui & N000 & NH & NH & NW \\ 
 Neli & Nahui & N000 & NH & NH & NW \\ 
 Nelly & Nahuy & N000 & NH & NH & NW \\ 
-Ximena & \~Nawi & N000 & NW & NW & NW \\ 
-Jimena & \~Nahui & N000 & NH & NH & NW \\ 
+Ximena & Ñawi & N000 & NW & NW & NW \\ 
+Jimena & Ñahui & N000 & NH & NH & NW \\ 
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -1841,7 +1862,7 @@ La siguiente tabla muestra el resultado de aplicar la función \texttt{codif\_fo
 \end{Shaded}
 
 \begin{table}[t]
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{12.0pt}{14.4pt}\selectfont
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llll}
 \toprule
 {\bfseries \cellcolor[HTML]{F9F9F9}{nombre}} & {\bfseries \cellcolor[HTML]{F9F9F9}{apellido}} & nom\_cod & ape\_cod \\ 
@@ -1856,11 +1877,11 @@ Brayan & Qhispe & BRYN & KSP \\
 Marleni & Rodriguez & MRLN & RDRGS \\ 
 Marleny & Rodrigues & MRLN & RDRGS \\ 
 Marlenni & Rodriwues & MRLN & RDRWS \\ 
-Nely & \~Nahui & NL & NW \\ 
+Nely & Ñahui & NL & NW \\ 
 Neli & Nahui & NL & NW \\ 
 Nelly & Nahuy & NL & NW \\ 
-Ximena & \~Nawi & YMN & NW \\ 
-Jimena & \~Nahui & YMN & NW \\ 
+Ximena & Ñawi & YMN & NW \\ 
+Jimena & Ñahui & YMN & NW \\ 
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -1975,19 +1996,20 @@ Las fechas y edades se comparan de forma directa, considerando:
 
 Una forma alternativa de comparar fechas es convertirlas en edades y luego calcular la diferencia en términos porcentuales, lo cual permite cierto grado de tolerancia. Para ello, las edades se deben calcular respecto a una fecha fija, que puede ser la fecha del cierre de la PES o la fecha del emparejamiento entre bases de datos o cualquier fecha relevante al contexto.
 
-Supongamos que \(d_1\) y \(d_2\) representan la edad (en días o años) calculada desde la fecha fija. Entonces, la diferencia porcentual de edad (DPE) se calcula como:
+Supongamos que \(d_1\) y \(d_2\) representan la edad (en días o años) calculada desde la fecha fija. Entonces, la diferencia porcentual de edad (dpe) se calcula como:
 
 \[\text{dpe} = \frac{|d_1 - d_2|}{\max(d_1, d_2)} \cdot 100.\]
 
 Con base en este valor, se puede calcular la similitud porcentual de edad como:
 
 \[
-\text{sim}_{\text{edad_porc}} =
+\mathrm{sim}_{\text{edad\_porc}} =
 \begin{cases}
-1.0 - \frac{\text{dpe}}{\text{dpe}_{\max}}, & \text{si } \text{dpe} < \text{dpe}_{\max} \\
-0.0, & \text{en otro caso}
+	1 - \dfrac{dpe}{dpe_{\max}}, & \text{si } dpe < dpe_{\max}, \\
+	0, & \text{en otro caso}.
 \end{cases}
 \]
+
 
 donde \(\text{dpe}_{\max} \in (0, 100)\) representa la diferencia porcentual máxima tolerada \citep{christen2012data}.
 
@@ -2148,9 +2170,9 @@ En resumen, la evaluación rigurosa del emparejamiento requiere no solo técnica
 A continuación se presenta un resumen de los principales paquetes de R y Python que se pueden utilizar para la vinculación probabilística de registros:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0709}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1277}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.8014}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.0709}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1277}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.8014}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Lenguaje
@@ -2231,7 +2253,7 @@ Lo anterior genera 20 bloques, donde el número de registros por bloque puede se
 ##    2.00    5.75    8.00   25.00   40.00  115.00
 \end{verbatim}
 
-A pesar de lo anterior, el número de pares posibles tras aplicar el bloqueo baja de \ensuremath{1.2475\times 10^{5}} a \ensuremath{1.4805\times 10^{4}} pares. Esta reducción es crucial para el rendimiento computacional del algoritmo. A continuación se observa el número de comparaciones por bloque.
+A pesar de lo anterior, el número de pares posibles tras aplicar el bloqueo baja de 124750 a 14805 pares. Esta reducción es crucial para el rendimiento computacional del algoritmo. A continuación se observa el número de comparaciones por bloque.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2679,9 +2701,9 @@ Una vez definido el umbral, se puede extraer en un conjunto de datos a los regis
 
 \begin{table}[t]
 \caption*{
-{\fontsize{20}{25}\selectfont  Registros emparejados\fontsize{12}{15}\selectfont }
+{\large Registros emparejados}
 } 
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{12.0pt}{14.4pt}\selectfont
 \begin{tabular*}{1\linewidth}{@{\extracolsep{\fill}}rrlllrr}
 \toprule
 {\bfseries \cellcolor[HTML]{F9F9F9}{id}} & id\_segmento & nombre\_cod & apellido\_cod & {\bfseries \cellcolor[HTML]{F9F9F9}{sexo}} & fecha\_nacimiento & {\bfseries \cellcolor[HTML]{F9F9F9}{Weight}} \\ 
@@ -2889,9 +2911,9 @@ De igual forma, usando la misma gráfica obtenida con \texttt{getParetoThreshold
 
 \begin{table}[t]
 \caption*{
-{\fontsize{20}{25}\selectfont  Emparejamientos potenciales\fontsize{12}{15}\selectfont }
+{\large Emparejamientos potenciales}
 } 
-\fontsize{12.0pt}{14.0pt}\selectfont
+\fontsize{12.0pt}{14.4pt}\selectfont
 \begin{tabular*}{1\linewidth}{@{\extracolsep{\fill}}rrlllrr}
 \toprule
 {\bfseries \cellcolor[HTML]{F9F9F9}{id}} & id\_segmento & nombre\_cod & apellido\_cod & {\bfseries \cellcolor[HTML]{F9F9F9}{sexo}} & fecha\_nacimiento & {\bfseries \cellcolor[HTML]{F9F9F9}{Weight}} \\ 
@@ -3096,10 +3118,10 @@ El estado de cada persona se clasifica de acuerdo con las siguientes definicione
 La siguiente tabla resume los casos más comunes:
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3175}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2540}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2540}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1746}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3175}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2540}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2540}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1746}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Caso: Persona que \ldots{}
@@ -3689,6 +3711,6 @@ En donde:
 
 Para información sobre el ajuste por razón de sexos aplicado regularmente en los censos, y específicamente en el caso del PES de Estados Unidos del año 2020, así como sobre los detalles de la investigación que condujo a dicho ajuste, véase \citet{Heim2022} y \citet{HeimHill2022}.
 
-\bibliography{book.bib}
+  \bibliography{book.bib}
 
 \end{document}

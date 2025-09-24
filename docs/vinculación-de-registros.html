@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.10 Vinculación de registros | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
-  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.10 Vinculación de registros | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
@@ -57,9 +57,8 @@
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -69,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -174,11 +173,11 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#estabilidad-poblacional"><i class="fa fa-check"></i><b>1.2.1</b> Estabilidad poblacional</a></li>
 <li class="chapter" data-level="1.2.2" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#sec:multinomial"><i class="fa fa-check"></i><b>1.2.2</b> Estructura multinomial</a></li>
-<li class="chapter" data-level="1.2.3" data-path="06-Emparejamiento.html"><a href="#independencia-aut%C3%B3noma"><i class="fa fa-check"></i><b>1.2.3</b> Independencia autónoma</a></li>
+<li class="chapter" data-level="1.2.3" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#independencia-autónoma"><i class="fa fa-check"></i><b>1.2.3</b> Independencia autónoma</a></li>
 <li class="chapter" data-level="1.2.4" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#independencia-causal"><i class="fa fa-check"></i><b>1.2.4</b> Independencia causal</a></li>
 <li class="chapter" data-level="1.2.5" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#emparejamiento"><i class="fa fa-check"></i><b>1.2.5</b> Emparejamiento</a></li>
 <li class="chapter" data-level="1.2.6" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#eventos-espurios"><i class="fa fa-check"></i><b>1.2.6</b> Eventos espurios</a></li>
-<li class="chapter" data-level="1.2.7" data-path="06-Emparejamiento.html"><a href="#postestratificaci%C3%B3n"><i class="fa fa-check"></i><b>1.2.7</b> Postestratificación</a></li>
+<li class="chapter" data-level="1.2.7" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#postestratificación"><i class="fa fa-check"></i><b>1.2.7</b> Postestratificación</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="inferencia.html"><a href="inferencia.html"><i class="fa fa-check"></i><b>1.3</b> Inferencia</a>
 <ul>
@@ -186,9 +185,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.3.2" data-path="inferencia.html"><a href="inferencia.html#propiedades-del-estimador"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades del estimador</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="06-Emparejamiento.html"><a href="#estimaci%C3%B3n-dual-con-la-muestra-de-la-encuesta"><i class="fa fa-check"></i><b>2</b> Estimación dual con la muestra de la encuesta</a>
+<li class="chapter" data-level="2" data-path="estimación-dual-con-la-muestra-de-la-encuesta.html"><a href="estimación-dual-con-la-muestra-de-la-encuesta.html"><i class="fa fa-check"></i><b>2</b> Estimación dual con la muestra de la encuesta</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="06-Emparejamiento.html"><a href="#el-dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>2.1</b> El diseño de muestreo</a></li>
+<li class="chapter" data-level="2.1" data-path="el-diseño-de-muestreo.html"><a href="el-diseño-de-muestreo.html"><i class="fa fa-check"></i><b>2.1</b> El diseño de muestreo</a></li>
 <li class="chapter" data-level="2.2" data-path="la-muestra-e-y-la-muestra-p.html"><a href="la-muestra-e-y-la-muestra-p.html"><i class="fa fa-check"></i><b>2.2</b> La muestra E y la muestra P</a></li>
 <li class="chapter" data-level="2.3" data-path="los-estimadores-de-muestreo.html"><a href="los-estimadores-de-muestreo.html"><i class="fa fa-check"></i><b>2.3</b> Los estimadores de muestreo</a></li>
 </ul></li>
@@ -215,74 +214,74 @@ div.csl-indent {
 <li class="chapter" data-level="4.9" data-path="notas-adicionales.html"><a href="notas-adicionales.html"><i class="fa fa-check"></i><b>4.9</b> Notas adicionales</a></li>
 <li class="chapter" data-level="4.10" data-path="cuadro-comparativo-de-los-estimadores.html"><a href="cuadro-comparativo-de-los-estimadores.html"><i class="fa fa-check"></i><b>4.10</b> Cuadro comparativo de los estimadores</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="06-Emparejamiento.html"><a href="#evaluaci%C3%B3n-de-la-cobertura-censal"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
+<li class="chapter" data-level="5" data-path="evaluación-de-la-cobertura-censal.html"><a href="evaluación-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-postcensal.html"><a href="objetivos-de-la-encuesta-postcensal.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta postcensal</a></li>
 <li class="chapter" data-level="5.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5.2</b> Componentes de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-correctas"><i class="fa fa-check"></i><b>5.2.1</b> Enumeraciones correctas</a></li>
-<li class="chapter" data-level="5.2.2" data-path="06-Emparejamiento.html"><a href="#enumeraciones-err%C3%B3neas"><i class="fa fa-check"></i><b>5.2.2</b> Enumeraciones erróneas</a></li>
+<li class="chapter" data-level="5.2.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-erróneas"><i class="fa fa-check"></i><b>5.2.2</b> Enumeraciones erróneas</a></li>
 <li class="chapter" data-level="5.2.3" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#omisiones"><i class="fa fa-check"></i><b>5.2.3</b> Omisiones</a></li>
-<li class="chapter" data-level="5.2.4" data-path="06-Emparejamiento.html"><a href="#imputaci%C3%B3n"><i class="fa fa-check"></i><b>5.2.4</b> Imputación</a></li>
+<li class="chapter" data-level="5.2.4" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#imputación"><i class="fa fa-check"></i><b>5.2.4</b> Imputación</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="06-Emparejamiento.html"><a href="#protocolo-de-clasificaci%C3%B3n"><i class="fa fa-check"></i><b>5.3</b> Protocolo de clasificación</a>
+<li class="chapter" data-level="5.3" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html"><i class="fa fa-check"></i><b>5.3</b> Protocolo de clasificación</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html"><i class="fa fa-check"></i><b>5.3.1</b> Preprocesamiento de datos</a></li>
+<li class="chapter" data-level="5.3.1" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html#preprocesamiento-de-datos"><i class="fa fa-check"></i><b>5.3.1</b> Preprocesamiento de datos</a></li>
 <li class="chapter" data-level="5.3.2" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html#emparejamiento-de-registros"><i class="fa fa-check"></i><b>5.3.2</b> Emparejamiento de registros</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="flujo-general-del-procedimiento.html"><a href="flujo-general-del-procedimiento.html"><i class="fa fa-check"></i><b>5.4</b> Flujo general del procedimiento</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="06-Emparejamiento.html"><a href="#emparejamiento-probabil%C3%ADstico"><i class="fa fa-check"></i><b>6</b> Emparejamiento probabilístico</a>
+<li class="chapter" data-level="6" data-path="emparejamiento-probabilístico.html"><a href="emparejamiento-probabilístico.html"><i class="fa fa-check"></i><b>6</b> Emparejamiento probabilístico</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="06-Emparejamiento.html"><a href="#geolocalizaci%C3%B3n"><i class="fa fa-check"></i><b>6.1</b> Geolocalización</a></li>
+<li class="chapter" data-level="6.1" data-path="geolocalización.html"><a href="geolocalización.html"><i class="fa fa-check"></i><b>6.1</b> Geolocalización</a></li>
 <li class="chapter" data-level="6.2" data-path="flujo-general.html"><a href="flujo-general.html"><i class="fa fa-check"></i><b>6.2</b> Flujo general</a></li>
 <li class="chapter" data-level="6.3" data-path="preprocesamiento.html"><a href="preprocesamiento.html"><i class="fa fa-check"></i><b>6.3</b> Preprocesamiento</a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="preprocesamiento.html"><a href="preprocesamiento.html#limpieza-de-los-datos"><i class="fa fa-check"></i><b>6.3.1</b> Limpieza de los datos</a></li>
-<li class="chapter" data-level="6.3.2" data-path="06-Emparejamiento.html"><a href="#codificaci%C3%B3n-fon%C3%A9tica"><i class="fa fa-check"></i><b>6.3.2</b> Codificación fonética</a></li>
+<li class="chapter" data-level="6.3.2" data-path="preprocesamiento.html"><a href="preprocesamiento.html#codificación-fonética"><i class="fa fa-check"></i><b>6.3.2</b> Codificación fonética</a></li>
 <li class="chapter" data-level="6.3.3" data-path="preprocesamiento.html"><a href="preprocesamiento.html#metaphone"><i class="fa fa-check"></i><b>6.3.3</b> Metaphone</a></li>
 <li class="chapter" data-level="6.3.4" data-path="preprocesamiento.html"><a href="preprocesamiento.html#algoritmo-statistics-canada"><i class="fa fa-check"></i><b>6.3.4</b> Algoritmo Statistics Canada</a></li>
-<li class="chapter" data-level="6.3.5" data-path="06-Emparejamiento.html"><a href="#adaptaci%C3%B3n-para-encuestas-de-am%C3%A9rica-latina"><i class="fa fa-check"></i><b>6.3.5</b> Adaptación para Encuestas de América Latina</a></li>
+<li class="chapter" data-level="6.3.5" data-path="preprocesamiento.html"><a href="preprocesamiento.html#adaptación-para-encuestas-de-américa-latina"><i class="fa fa-check"></i><b>6.3.5</b> Adaptación para Encuestas de América Latina</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="06-Emparejamiento.html"><a href="#indexaci%C3%B3n"><i class="fa fa-check"></i><b>6.4</b> Indexación</a></li>
-<li class="chapter" data-level="6.5" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n"><i class="fa fa-check"></i><b>6.5</b> Comparación</a>
+<li class="chapter" data-level="6.4" data-path="indexación.html"><a href="indexación.html"><i class="fa fa-check"></i><b>6.4</b> Indexación</a></li>
+<li class="chapter" data-level="6.5" data-path="comparación.html"><a href="comparación.html"><i class="fa fa-check"></i><b>6.5</b> Comparación</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="comparación.html"><a href="comparación.html"><i class="fa fa-check"></i><b>6.5.1</b> Distancia de Levenshtein</a></li>
-<li class="chapter" data-level="6.5.2" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n-de-jaro-y-winkler"><i class="fa fa-check"></i><b>6.5.2</b> Comparación de Jaro y Winkler</a></li>
-<li class="chapter" data-level="6.5.3" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n-de-fechas-y-edades"><i class="fa fa-check"></i><b>6.5.3</b> Comparación de fechas y edades</a></li>
-<li class="chapter" data-level="6.5.4" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n-geogr%C3%A1fica"><i class="fa fa-check"></i><b>6.5.4</b> Comparación geográfica</a></li>
+<li class="chapter" data-level="6.5.1" data-path="comparación.html"><a href="comparación.html#distancia-de-levenshtein"><i class="fa fa-check"></i><b>6.5.1</b> Distancia de Levenshtein</a></li>
+<li class="chapter" data-level="6.5.2" data-path="comparación.html"><a href="comparación.html#comparación-de-jaro-y-winkler"><i class="fa fa-check"></i><b>6.5.2</b> Comparación de Jaro y Winkler</a></li>
+<li class="chapter" data-level="6.5.3" data-path="comparación.html"><a href="comparación.html#comparación-de-fechas-y-edades"><i class="fa fa-check"></i><b>6.5.3</b> Comparación de fechas y edades</a></li>
+<li class="chapter" data-level="6.5.4" data-path="comparación.html"><a href="comparación.html#comparación-geográfica"><i class="fa fa-check"></i><b>6.5.4</b> Comparación geográfica</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="06-Emparejamiento.html"><a href="#clasificaci%C3%B3n"><i class="fa fa-check"></i><b>6.6</b> Clasificación</a></li>
-<li class="chapter" data-level="6.7" data-path="06-Emparejamiento.html"><a href="#evaluaci%C3%B3n"><i class="fa fa-check"></i><b>6.7</b> Evaluación</a>
+<li class="chapter" data-level="6.6" data-path="clasificación.html"><a href="clasificación.html"><i class="fa fa-check"></i><b>6.6</b> Clasificación</a></li>
+<li class="chapter" data-level="6.7" data-path="evaluación.html"><a href="evaluación.html"><i class="fa fa-check"></i><b>6.7</b> Evaluación</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="06-Emparejamiento.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o"><i class="fa fa-check"></i><b>6.7.1</b> Métricas de desempeño</a></li>
-<li class="chapter" data-level="6.7.2" data-path="06-Emparejamiento.html"><a href="#m%C3%A9tricas-de-eficiencia"><i class="fa fa-check"></i><b>6.7.2</b> Métricas de eficiencia</a></li>
-<li class="chapter" data-level="6.7.3" data-path="06-Emparejamiento.html"><a href="#revisi%C3%B3n-clerical"><i class="fa fa-check"></i><b>6.7.3</b> Revisión clerical</a></li>
+<li class="chapter" data-level="6.7.1" data-path="evaluación.html"><a href="evaluación.html#métricas-de-desempeño"><i class="fa fa-check"></i><b>6.7.1</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="6.7.2" data-path="evaluación.html"><a href="evaluación.html#métricas-de-eficiencia"><i class="fa fa-check"></i><b>6.7.2</b> Métricas de eficiencia</a></li>
+<li class="chapter" data-level="6.7.3" data-path="evaluación.html"><a href="evaluación.html#revisión-clerical"><i class="fa fa-check"></i><b>6.7.3</b> Revisión clerical</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="06-Emparejamiento.html"><a href="#implementaci%C3%B3n"><i class="fa fa-check"></i><b>6.8</b> Implementación</a></li>
-<li class="chapter" data-level="6.9" data-path="06-Emparejamiento.html"><a href="#deduplicaci%C3%B3n-de-registros"><i class="fa fa-check"></i><b>6.9</b> Deduplicación de registros</a></li>
-<li class="chapter" data-level="6.10" data-path="06-Emparejamiento.html"><a href="#vinculaci%C3%B3n-de-registros"><i class="fa fa-check"></i><b>6.10</b> Vinculación de registros</a></li>
+<li class="chapter" data-level="6.8" data-path="implementación.html"><a href="implementación.html"><i class="fa fa-check"></i><b>6.8</b> Implementación</a></li>
+<li class="chapter" data-level="6.9" data-path="deduplicación-de-registros.html"><a href="deduplicación-de-registros.html"><i class="fa fa-check"></i><b>6.9</b> Deduplicación de registros</a></li>
+<li class="chapter" data-level="6.10" data-path="vinculación-de-registros.html"><a href="vinculación-de-registros.html"><i class="fa fa-check"></i><b>6.10</b> Vinculación de registros</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="06-Emparejamiento.html"><a href="#planeaci%C3%B3n-de-la-operaci%C3%B3n-estad%C3%ADstica"><i class="fa fa-check"></i><b>7</b> Planeación de la operación estadística</a>
+<li class="chapter" data-level="7" data-path="planeación-de-la-operación-estadística.html"><a href="planeación-de-la-operación-estadística.html"><i class="fa fa-check"></i><b>7</b> Planeación de la operación estadística</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-del-cuestionario"><i class="fa fa-check"></i><b>7.1</b> Diseño del cuestionario</a></li>
-<li class="chapter" data-level="7.2" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-de-la-muestra"><i class="fa fa-check"></i><b>7.2</b> Diseño de la muestra</a>
+<li class="chapter" data-level="7.1" data-path="diseño-del-cuestionario.html"><a href="diseño-del-cuestionario.html"><i class="fa fa-check"></i><b>7.1</b> Diseño del cuestionario</a></li>
+<li class="chapter" data-level="7.2" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html"><i class="fa fa-check"></i><b>7.2</b> Diseño de la muestra</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html"><i class="fa fa-check"></i><b>7.2.1</b> Marco de muestreo</a></li>
-<li class="chapter" data-level="7.2.2" data-path="06-Emparejamiento.html"><a href="#construcci%C3%B3n-de-las-upm"><i class="fa fa-check"></i><b>7.2.2</b> Construcción de las UPM</a></li>
+<li class="chapter" data-level="7.2.1" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#marco-de-muestreo"><i class="fa fa-check"></i><b>7.2.1</b> Marco de muestreo</a></li>
+<li class="chapter" data-level="7.2.2" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#construcción-de-las-upm"><i class="fa fa-check"></i><b>7.2.2</b> Construcción de las UPM</a></li>
 <li class="chapter" data-level="7.2.3" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#estratos"><i class="fa fa-check"></i><b>7.2.3</b> Estratos</a></li>
-<li class="chapter" data-level="7.2.4" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>7.2.4</b> Diseño de muestreo</a></li>
-<li class="chapter" data-level="7.2.5" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-de-muestreo-est%C3%A1ndar"><i class="fa fa-check"></i><b>7.2.5</b> Diseño de muestreo estándar</a></li>
-<li class="chapter" data-level="7.2.6" data-path="06-Emparejamiento.html"><a href="#c%C3%A1lculo-del-tama%C3%B1o-de-muestra"><i class="fa fa-check"></i><b>7.2.6</b> Cálculo del tamaño de muestra</a></li>
+<li class="chapter" data-level="7.2.4" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#diseño-de-muestreo"><i class="fa fa-check"></i><b>7.2.4</b> Diseño de muestreo</a></li>
+<li class="chapter" data-level="7.2.5" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#diseño-de-muestreo-estándar"><i class="fa fa-check"></i><b>7.2.5</b> Diseño de muestreo estándar</a></li>
+<li class="chapter" data-level="7.2.6" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#cálculo-del-tamaño-de-muestra"><i class="fa fa-check"></i><b>7.2.6</b> Cálculo del tamaño de muestra</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="06-Emparejamiento.html"><a href="#operativo-de-recolecci%C3%B3n"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
+<li class="chapter" data-level="7.3" data-path="operativo-de-recolección.html"><a href="operativo-de-recolección.html"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
 <li class="chapter" data-level="7.4" data-path="indicadores-principales.html"><a href="indicadores-principales.html"><i class="fa fa-check"></i><b>7.4</b> Indicadores principales</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="cap-reg.html"><a href="cap-reg.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="06-Emparejamiento.html"><a href="#post-estratificaci%C3%B3n"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
-<li class="chapter" data-level="8.2" data-path="06-Emparejamiento.html"><a href="#regresi%C3%B3n-log%C3%ADstica"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
-<li class="chapter" data-level="8.3" data-path="06-Emparejamiento.html"><a href="#ajuste-por-informaci%C3%B3n-demogr%C3%A1fica"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
+<li class="chapter" data-level="8.1" data-path="post-estratificación.html"><a href="post-estratificación.html"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
+<li class="chapter" data-level="8.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
+<li class="chapter" data-level="8.3" data-path="ajuste-por-información-demográfica.html"><a href="ajuste-por-información-demográfica.html"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
@@ -305,7 +304,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="vinculación-de-registros" class="section level2 hasAnchor" number="6.10">
-<h2><span class="header-section-number">6.10</span> Vinculación de registros<a href="#vinculaci%C3%B3n-de-registros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">6.10</span> Vinculación de registros<a href="vinculación-de-registros.html#vinculación-de-registros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Con el fin de integrar la información proveniente de la muestra E y la muestra P, se debe llevar a cabo un proceso de emparejamiento de registros. Este procedimiento es fundamental para identificar unidades observadas en ambas muestras y, de esta manera implementar el modelo basado en el sistema de estimación dual.</p>
 <p>El proceso de vinculación de registros entre la muestra E y la muestra P se fundamenta en la comparación de variables clave que están presentes en ambas bases de datos. Entre estas variables se incluyen información como nombres, apellidos, sexo y fecha de nacimiento, las cuales permiten establecer la correspondencia entre los individuos de cada muestra. Estas coincidencias constituyen la base para identificar si un mismo registro aparece en las dos fuentes de información.</p>
 <p>La forma de implementar este procedimiento es análoga al utilizado previamente para la detección de duplicados dentro de una misma base de datos. La diferencia principal radica en los conjuntos de datos que se introducen en los argumentos de la función de emparejamiento: en lugar de comparar una base consigo misma, en este caso se contrasta la muestra E frente a la muestra P. De esta manera, se logra identificar registros compartidos entre las dos muestras, manteniendo la misma lógica de comparación, pero adaptada a un contexto de integración de fuentes.</p>
@@ -383,23 +382,23 @@ div.csl-indent {
 <span id="cb62-3"><a href="vinculación-de-registros.html#cb62-3" tabindex="-1"></a>umbral <span class="ot">&lt;-</span> <span class="fl">5.86</span></span></code></pre></div>
 <p>Una vez definido el umbral, se puede extraer en un conjunto de datos a los registros clasificados como <em>emparejados</em>. La primera fila corresponde al registro en <code>df_encuesta</code> mientras que el segundo corresponde al registro en <code>df_censo</code>.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="vinculación-de-registros.html#cb63-1" tabindex="-1"></a>emparejado <span class="ot">&lt;-</span> <span class="fu">getPairs</span>(empareja_fs, <span class="at">min.weight =</span> umbral)</span></code></pre></div>
-<div id="ktqkaekuzn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
-<style>#ktqkaekuzn table {
+<div id="ihvrjbhbwi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
+<style>#ihvrjbhbwi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ktqkaekuzn thead, #ktqkaekuzn tbody, #ktqkaekuzn tfoot, #ktqkaekuzn tr, #ktqkaekuzn td, #ktqkaekuzn th {
+#ihvrjbhbwi thead, #ihvrjbhbwi tbody, #ihvrjbhbwi tfoot, #ihvrjbhbwi tr, #ihvrjbhbwi td, #ihvrjbhbwi th {
   border-style: none;
 }
 
-#ktqkaekuzn p {
+#ihvrjbhbwi p {
   margin: 0;
   padding: 0;
 }
 
-#ktqkaekuzn .gt_table {
+#ihvrjbhbwi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -425,12 +424,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_caption {
+#ihvrjbhbwi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ktqkaekuzn .gt_title {
+#ihvrjbhbwi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -442,7 +441,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#ktqkaekuzn .gt_subtitle {
+#ihvrjbhbwi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -454,7 +453,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#ktqkaekuzn .gt_heading {
+#ihvrjbhbwi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -466,13 +465,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_bottom_border {
+#ihvrjbhbwi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_col_headings {
+#ihvrjbhbwi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -487,7 +486,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_col_heading {
+#ihvrjbhbwi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -507,7 +506,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#ktqkaekuzn .gt_column_spanner_outer {
+#ihvrjbhbwi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -519,15 +518,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#ktqkaekuzn .gt_column_spanner_outer:first-child {
+#ihvrjbhbwi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ktqkaekuzn .gt_column_spanner_outer:last-child {
+#ihvrjbhbwi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ktqkaekuzn .gt_column_spanner {
+#ihvrjbhbwi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -539,11 +538,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#ktqkaekuzn .gt_spanner_row {
+#ihvrjbhbwi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ktqkaekuzn .gt_group_heading {
+#ihvrjbhbwi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -569,7 +568,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#ktqkaekuzn .gt_empty_group_heading {
+#ihvrjbhbwi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -584,15 +583,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#ktqkaekuzn .gt_from_md > :first-child {
+#ihvrjbhbwi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ktqkaekuzn .gt_from_md > :last-child {
+#ihvrjbhbwi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ktqkaekuzn .gt_row {
+#ihvrjbhbwi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -611,7 +610,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#ktqkaekuzn .gt_stub {
+#ihvrjbhbwi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -624,7 +623,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ktqkaekuzn .gt_stub_row_group {
+#ihvrjbhbwi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -638,15 +637,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#ktqkaekuzn .gt_row_group_first td {
+#ihvrjbhbwi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ktqkaekuzn .gt_row_group_first th {
+#ihvrjbhbwi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ktqkaekuzn .gt_summary_row {
+#ihvrjbhbwi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -656,16 +655,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ktqkaekuzn .gt_first_summary_row {
+#ihvrjbhbwi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_first_summary_row.thick {
+#ihvrjbhbwi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ktqkaekuzn .gt_last_summary_row {
+#ihvrjbhbwi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -675,7 +674,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_grand_summary_row {
+#ihvrjbhbwi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -685,7 +684,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ktqkaekuzn .gt_first_grand_summary_row {
+#ihvrjbhbwi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -695,7 +694,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_last_grand_summary_row_top {
+#ihvrjbhbwi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -705,11 +704,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_striped {
+#ihvrjbhbwi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ktqkaekuzn .gt_table_body {
+#ihvrjbhbwi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -718,7 +717,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_footnotes {
+#ihvrjbhbwi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -732,7 +731,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_footnote {
+#ihvrjbhbwi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -741,7 +740,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ktqkaekuzn .gt_sourcenotes {
+#ihvrjbhbwi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -755,7 +754,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ktqkaekuzn .gt_sourcenote {
+#ihvrjbhbwi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -763,72 +762,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ktqkaekuzn .gt_left {
+#ihvrjbhbwi .gt_left {
   text-align: left;
 }
 
-#ktqkaekuzn .gt_center {
+#ihvrjbhbwi .gt_center {
   text-align: center;
 }
 
-#ktqkaekuzn .gt_right {
+#ihvrjbhbwi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ktqkaekuzn .gt_font_normal {
+#ihvrjbhbwi .gt_font_normal {
   font-weight: normal;
 }
 
-#ktqkaekuzn .gt_font_bold {
+#ihvrjbhbwi .gt_font_bold {
   font-weight: bold;
 }
 
-#ktqkaekuzn .gt_font_italic {
+#ihvrjbhbwi .gt_font_italic {
   font-style: italic;
 }
 
-#ktqkaekuzn .gt_super {
+#ihvrjbhbwi .gt_super {
   font-size: 65%;
 }
 
-#ktqkaekuzn .gt_footnote_marks {
+#ihvrjbhbwi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ktqkaekuzn .gt_asterisk {
+#ihvrjbhbwi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ktqkaekuzn .gt_indent_1 {
+#ihvrjbhbwi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ktqkaekuzn .gt_indent_2 {
+#ihvrjbhbwi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ktqkaekuzn .gt_indent_3 {
+#ihvrjbhbwi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ktqkaekuzn .gt_indent_4 {
+#ihvrjbhbwi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ktqkaekuzn .gt_indent_5 {
+#ihvrjbhbwi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ktqkaekuzn .katex-display {
+#ihvrjbhbwi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ktqkaekuzn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ihvrjbhbwi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2027,6 +2026,7 @@ div.csl-indent {
 <td headers="Weight" class="gt_row gt_right"></td></tr>
   </tbody>
   
+  
 </table>
 </div>
 <p>De igual forma, usando la misma gráfica obtenida con <code>getParetoThreshold()</code> se puede establecer un umbral más flexible, y encontrar los <em>emparejamientos potenciales</em>. En nuestro ejemplo se tomarán como aquellos registros que tienen un ponderador entre 1.2 y el umbral, los cuales pasarán a una revisión clerical para establecer si se clasifican como <em>emparejados</em> o <em>no emparejados</em></p>
@@ -2047,23 +2047,23 @@ div.csl-indent {
 <span id="cb65-14"><a href="vinculación-de-registros.html#cb65-14" tabindex="-1"></a>    <span class="at">table.width =</span> <span class="fu">pct</span>(<span class="dv">100</span>),</span>
 <span id="cb65-15"><a href="vinculación-de-registros.html#cb65-15" tabindex="-1"></a>    <span class="at">container.height =</span> <span class="fu">px</span>(<span class="dv">400</span>) </span>
 <span id="cb65-16"><a href="vinculación-de-registros.html#cb65-16" tabindex="-1"></a>  )</span></code></pre></div>
-<div id="wobapomxil" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
-<style>#wobapomxil table {
+<div id="mjzvbdwrfz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
+<style>#mjzvbdwrfz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wobapomxil thead, #wobapomxil tbody, #wobapomxil tfoot, #wobapomxil tr, #wobapomxil td, #wobapomxil th {
+#mjzvbdwrfz thead, #mjzvbdwrfz tbody, #mjzvbdwrfz tfoot, #mjzvbdwrfz tr, #mjzvbdwrfz td, #mjzvbdwrfz th {
   border-style: none;
 }
 
-#wobapomxil p {
+#mjzvbdwrfz p {
   margin: 0;
   padding: 0;
 }
 
-#wobapomxil .gt_table {
+#mjzvbdwrfz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2089,12 +2089,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#wobapomxil .gt_caption {
+#mjzvbdwrfz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wobapomxil .gt_title {
+#mjzvbdwrfz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2106,7 +2106,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#wobapomxil .gt_subtitle {
+#mjzvbdwrfz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2118,7 +2118,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#wobapomxil .gt_heading {
+#mjzvbdwrfz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2130,13 +2130,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wobapomxil .gt_bottom_border {
+#mjzvbdwrfz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wobapomxil .gt_col_headings {
+#mjzvbdwrfz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2151,7 +2151,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wobapomxil .gt_col_heading {
+#mjzvbdwrfz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2171,7 +2171,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#wobapomxil .gt_column_spanner_outer {
+#mjzvbdwrfz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2183,15 +2183,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#wobapomxil .gt_column_spanner_outer:first-child {
+#mjzvbdwrfz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wobapomxil .gt_column_spanner_outer:last-child {
+#mjzvbdwrfz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wobapomxil .gt_column_spanner {
+#mjzvbdwrfz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2203,11 +2203,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#wobapomxil .gt_spanner_row {
+#mjzvbdwrfz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wobapomxil .gt_group_heading {
+#mjzvbdwrfz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2233,7 +2233,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#wobapomxil .gt_empty_group_heading {
+#mjzvbdwrfz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2248,15 +2248,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#wobapomxil .gt_from_md > :first-child {
+#mjzvbdwrfz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wobapomxil .gt_from_md > :last-child {
+#mjzvbdwrfz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wobapomxil .gt_row {
+#mjzvbdwrfz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2275,7 +2275,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#wobapomxil .gt_stub {
+#mjzvbdwrfz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2288,7 +2288,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wobapomxil .gt_stub_row_group {
+#mjzvbdwrfz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2302,15 +2302,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#wobapomxil .gt_row_group_first td {
+#mjzvbdwrfz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wobapomxil .gt_row_group_first th {
+#mjzvbdwrfz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wobapomxil .gt_summary_row {
+#mjzvbdwrfz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2320,16 +2320,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wobapomxil .gt_first_summary_row {
+#mjzvbdwrfz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wobapomxil .gt_first_summary_row.thick {
+#mjzvbdwrfz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wobapomxil .gt_last_summary_row {
+#mjzvbdwrfz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2339,7 +2339,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#wobapomxil .gt_grand_summary_row {
+#mjzvbdwrfz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2349,7 +2349,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wobapomxil .gt_first_grand_summary_row {
+#mjzvbdwrfz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2359,7 +2359,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#wobapomxil .gt_last_grand_summary_row_top {
+#mjzvbdwrfz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2369,11 +2369,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#wobapomxil .gt_striped {
+#mjzvbdwrfz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wobapomxil .gt_table_body {
+#mjzvbdwrfz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2382,7 +2382,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#wobapomxil .gt_footnotes {
+#mjzvbdwrfz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2396,7 +2396,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wobapomxil .gt_footnote {
+#mjzvbdwrfz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2405,7 +2405,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wobapomxil .gt_sourcenotes {
+#mjzvbdwrfz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2419,7 +2419,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wobapomxil .gt_sourcenote {
+#mjzvbdwrfz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2427,72 +2427,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wobapomxil .gt_left {
+#mjzvbdwrfz .gt_left {
   text-align: left;
 }
 
-#wobapomxil .gt_center {
+#mjzvbdwrfz .gt_center {
   text-align: center;
 }
 
-#wobapomxil .gt_right {
+#mjzvbdwrfz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wobapomxil .gt_font_normal {
+#mjzvbdwrfz .gt_font_normal {
   font-weight: normal;
 }
 
-#wobapomxil .gt_font_bold {
+#mjzvbdwrfz .gt_font_bold {
   font-weight: bold;
 }
 
-#wobapomxil .gt_font_italic {
+#mjzvbdwrfz .gt_font_italic {
   font-style: italic;
 }
 
-#wobapomxil .gt_super {
+#mjzvbdwrfz .gt_super {
   font-size: 65%;
 }
 
-#wobapomxil .gt_footnote_marks {
+#mjzvbdwrfz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wobapomxil .gt_asterisk {
+#mjzvbdwrfz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wobapomxil .gt_indent_1 {
+#mjzvbdwrfz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wobapomxil .gt_indent_2 {
+#mjzvbdwrfz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wobapomxil .gt_indent_3 {
+#mjzvbdwrfz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wobapomxil .gt_indent_4 {
+#mjzvbdwrfz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wobapomxil .gt_indent_5 {
+#mjzvbdwrfz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wobapomxil .katex-display {
+#mjzvbdwrfz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wobapomxil div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mjzvbdwrfz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2892,6 +2892,7 @@ div.csl-indent {
 <td headers="fecha_nacimiento" class="gt_row gt_right"></td>
 <td headers="Weight" class="gt_row gt_right"></td></tr>
   </tbody>
+  
   
 </table>
 </div>

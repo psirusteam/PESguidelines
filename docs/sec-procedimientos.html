@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.2 Reconstrucción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
-  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.2 Reconstrucción de los hogares con la muestra P | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
@@ -57,9 +57,8 @@
 
 
 <style type="text/css">
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -69,7 +68,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -174,11 +173,11 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#estabilidad-poblacional"><i class="fa fa-check"></i><b>1.2.1</b> Estabilidad poblacional</a></li>
 <li class="chapter" data-level="1.2.2" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#sec:multinomial"><i class="fa fa-check"></i><b>1.2.2</b> Estructura multinomial</a></li>
-<li class="chapter" data-level="1.2.3" data-path="03-InclusionesMovers.html"><a href="#independencia-aut%C3%B3noma"><i class="fa fa-check"></i><b>1.2.3</b> Independencia autónoma</a></li>
+<li class="chapter" data-level="1.2.3" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#independencia-autónoma"><i class="fa fa-check"></i><b>1.2.3</b> Independencia autónoma</a></li>
 <li class="chapter" data-level="1.2.4" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#independencia-causal"><i class="fa fa-check"></i><b>1.2.4</b> Independencia causal</a></li>
 <li class="chapter" data-level="1.2.5" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#emparejamiento"><i class="fa fa-check"></i><b>1.2.5</b> Emparejamiento</a></li>
 <li class="chapter" data-level="1.2.6" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#eventos-espurios"><i class="fa fa-check"></i><b>1.2.6</b> Eventos espurios</a></li>
-<li class="chapter" data-level="1.2.7" data-path="03-InclusionesMovers.html"><a href="#postestratificaci%C3%B3n"><i class="fa fa-check"></i><b>1.2.7</b> Postestratificación</a></li>
+<li class="chapter" data-level="1.2.7" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#postestratificación"><i class="fa fa-check"></i><b>1.2.7</b> Postestratificación</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="inferencia.html"><a href="inferencia.html"><i class="fa fa-check"></i><b>1.3</b> Inferencia</a>
 <ul>
@@ -186,9 +185,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.3.2" data-path="inferencia.html"><a href="inferencia.html#propiedades-del-estimador"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades del estimador</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="03-InclusionesMovers.html"><a href="#estimaci%C3%B3n-dual-con-la-muestra-de-la-encuesta"><i class="fa fa-check"></i><b>2</b> Estimación dual con la muestra de la encuesta</a>
+<li class="chapter" data-level="2" data-path="estimación-dual-con-la-muestra-de-la-encuesta.html"><a href="estimación-dual-con-la-muestra-de-la-encuesta.html"><i class="fa fa-check"></i><b>2</b> Estimación dual con la muestra de la encuesta</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="03-InclusionesMovers.html"><a href="#el-dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>2.1</b> El diseño de muestreo</a></li>
+<li class="chapter" data-level="2.1" data-path="el-diseño-de-muestreo.html"><a href="el-diseño-de-muestreo.html"><i class="fa fa-check"></i><b>2.1</b> El diseño de muestreo</a></li>
 <li class="chapter" data-level="2.2" data-path="la-muestra-e-y-la-muestra-p.html"><a href="la-muestra-e-y-la-muestra-p.html"><i class="fa fa-check"></i><b>2.2</b> La muestra E y la muestra P</a></li>
 <li class="chapter" data-level="2.3" data-path="los-estimadores-de-muestreo.html"><a href="los-estimadores-de-muestreo.html"><i class="fa fa-check"></i><b>2.3</b> Los estimadores de muestreo</a></li>
 </ul></li>
@@ -215,74 +214,74 @@ div.csl-indent {
 <li class="chapter" data-level="4.9" data-path="notas-adicionales.html"><a href="notas-adicionales.html"><i class="fa fa-check"></i><b>4.9</b> Notas adicionales</a></li>
 <li class="chapter" data-level="4.10" data-path="cuadro-comparativo-de-los-estimadores.html"><a href="cuadro-comparativo-de-los-estimadores.html"><i class="fa fa-check"></i><b>4.10</b> Cuadro comparativo de los estimadores</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="03-InclusionesMovers.html"><a href="#evaluaci%C3%B3n-de-la-cobertura-censal"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
+<li class="chapter" data-level="5" data-path="evaluación-de-la-cobertura-censal.html"><a href="evaluación-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-postcensal.html"><a href="objetivos-de-la-encuesta-postcensal.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta postcensal</a></li>
 <li class="chapter" data-level="5.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5.2</b> Componentes de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-correctas"><i class="fa fa-check"></i><b>5.2.1</b> Enumeraciones correctas</a></li>
-<li class="chapter" data-level="5.2.2" data-path="03-InclusionesMovers.html"><a href="#enumeraciones-err%C3%B3neas"><i class="fa fa-check"></i><b>5.2.2</b> Enumeraciones erróneas</a></li>
+<li class="chapter" data-level="5.2.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-erróneas"><i class="fa fa-check"></i><b>5.2.2</b> Enumeraciones erróneas</a></li>
 <li class="chapter" data-level="5.2.3" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#omisiones"><i class="fa fa-check"></i><b>5.2.3</b> Omisiones</a></li>
-<li class="chapter" data-level="5.2.4" data-path="03-InclusionesMovers.html"><a href="#imputaci%C3%B3n"><i class="fa fa-check"></i><b>5.2.4</b> Imputación</a></li>
+<li class="chapter" data-level="5.2.4" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#imputación"><i class="fa fa-check"></i><b>5.2.4</b> Imputación</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="03-InclusionesMovers.html"><a href="#protocolo-de-clasificaci%C3%B3n"><i class="fa fa-check"></i><b>5.3</b> Protocolo de clasificación</a>
+<li class="chapter" data-level="5.3" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html"><i class="fa fa-check"></i><b>5.3</b> Protocolo de clasificación</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html"><i class="fa fa-check"></i><b>5.3.1</b> Preprocesamiento de datos</a></li>
+<li class="chapter" data-level="5.3.1" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html#preprocesamiento-de-datos"><i class="fa fa-check"></i><b>5.3.1</b> Preprocesamiento de datos</a></li>
 <li class="chapter" data-level="5.3.2" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html#emparejamiento-de-registros"><i class="fa fa-check"></i><b>5.3.2</b> Emparejamiento de registros</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="flujo-general-del-procedimiento.html"><a href="flujo-general-del-procedimiento.html"><i class="fa fa-check"></i><b>5.4</b> Flujo general del procedimiento</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="03-InclusionesMovers.html"><a href="#emparejamiento-probabil%C3%ADstico"><i class="fa fa-check"></i><b>6</b> Emparejamiento probabilístico</a>
+<li class="chapter" data-level="6" data-path="emparejamiento-probabilístico.html"><a href="emparejamiento-probabilístico.html"><i class="fa fa-check"></i><b>6</b> Emparejamiento probabilístico</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="03-InclusionesMovers.html"><a href="#geolocalizaci%C3%B3n"><i class="fa fa-check"></i><b>6.1</b> Geolocalización</a></li>
+<li class="chapter" data-level="6.1" data-path="geolocalización.html"><a href="geolocalización.html"><i class="fa fa-check"></i><b>6.1</b> Geolocalización</a></li>
 <li class="chapter" data-level="6.2" data-path="flujo-general.html"><a href="flujo-general.html"><i class="fa fa-check"></i><b>6.2</b> Flujo general</a></li>
 <li class="chapter" data-level="6.3" data-path="preprocesamiento.html"><a href="preprocesamiento.html"><i class="fa fa-check"></i><b>6.3</b> Preprocesamiento</a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="preprocesamiento.html"><a href="preprocesamiento.html#limpieza-de-los-datos"><i class="fa fa-check"></i><b>6.3.1</b> Limpieza de los datos</a></li>
-<li class="chapter" data-level="6.3.2" data-path="03-InclusionesMovers.html"><a href="#codificaci%C3%B3n-fon%C3%A9tica"><i class="fa fa-check"></i><b>6.3.2</b> Codificación fonética</a></li>
+<li class="chapter" data-level="6.3.2" data-path="preprocesamiento.html"><a href="preprocesamiento.html#codificación-fonética"><i class="fa fa-check"></i><b>6.3.2</b> Codificación fonética</a></li>
 <li class="chapter" data-level="6.3.3" data-path="preprocesamiento.html"><a href="preprocesamiento.html#metaphone"><i class="fa fa-check"></i><b>6.3.3</b> Metaphone</a></li>
 <li class="chapter" data-level="6.3.4" data-path="preprocesamiento.html"><a href="preprocesamiento.html#algoritmo-statistics-canada"><i class="fa fa-check"></i><b>6.3.4</b> Algoritmo Statistics Canada</a></li>
-<li class="chapter" data-level="6.3.5" data-path="03-InclusionesMovers.html"><a href="#adaptaci%C3%B3n-para-encuestas-de-am%C3%A9rica-latina"><i class="fa fa-check"></i><b>6.3.5</b> Adaptación para Encuestas de América Latina</a></li>
+<li class="chapter" data-level="6.3.5" data-path="preprocesamiento.html"><a href="preprocesamiento.html#adaptación-para-encuestas-de-américa-latina"><i class="fa fa-check"></i><b>6.3.5</b> Adaptación para Encuestas de América Latina</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="03-InclusionesMovers.html"><a href="#indexaci%C3%B3n"><i class="fa fa-check"></i><b>6.4</b> Indexación</a></li>
-<li class="chapter" data-level="6.5" data-path="03-InclusionesMovers.html"><a href="#comparaci%C3%B3n"><i class="fa fa-check"></i><b>6.5</b> Comparación</a>
+<li class="chapter" data-level="6.4" data-path="indexación.html"><a href="indexación.html"><i class="fa fa-check"></i><b>6.4</b> Indexación</a></li>
+<li class="chapter" data-level="6.5" data-path="comparación.html"><a href="comparación.html"><i class="fa fa-check"></i><b>6.5</b> Comparación</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="comparación.html"><a href="comparación.html"><i class="fa fa-check"></i><b>6.5.1</b> Distancia de Levenshtein</a></li>
-<li class="chapter" data-level="6.5.2" data-path="03-InclusionesMovers.html"><a href="#comparaci%C3%B3n-de-jaro-y-winkler"><i class="fa fa-check"></i><b>6.5.2</b> Comparación de Jaro y Winkler</a></li>
-<li class="chapter" data-level="6.5.3" data-path="03-InclusionesMovers.html"><a href="#comparaci%C3%B3n-de-fechas-y-edades"><i class="fa fa-check"></i><b>6.5.3</b> Comparación de fechas y edades</a></li>
-<li class="chapter" data-level="6.5.4" data-path="03-InclusionesMovers.html"><a href="#comparaci%C3%B3n-geogr%C3%A1fica"><i class="fa fa-check"></i><b>6.5.4</b> Comparación geográfica</a></li>
+<li class="chapter" data-level="6.5.1" data-path="comparación.html"><a href="comparación.html#distancia-de-levenshtein"><i class="fa fa-check"></i><b>6.5.1</b> Distancia de Levenshtein</a></li>
+<li class="chapter" data-level="6.5.2" data-path="comparación.html"><a href="comparación.html#comparación-de-jaro-y-winkler"><i class="fa fa-check"></i><b>6.5.2</b> Comparación de Jaro y Winkler</a></li>
+<li class="chapter" data-level="6.5.3" data-path="comparación.html"><a href="comparación.html#comparación-de-fechas-y-edades"><i class="fa fa-check"></i><b>6.5.3</b> Comparación de fechas y edades</a></li>
+<li class="chapter" data-level="6.5.4" data-path="comparación.html"><a href="comparación.html#comparación-geográfica"><i class="fa fa-check"></i><b>6.5.4</b> Comparación geográfica</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="03-InclusionesMovers.html"><a href="#clasificaci%C3%B3n"><i class="fa fa-check"></i><b>6.6</b> Clasificación</a></li>
-<li class="chapter" data-level="6.7" data-path="03-InclusionesMovers.html"><a href="#evaluaci%C3%B3n"><i class="fa fa-check"></i><b>6.7</b> Evaluación</a>
+<li class="chapter" data-level="6.6" data-path="clasificación.html"><a href="clasificación.html"><i class="fa fa-check"></i><b>6.6</b> Clasificación</a></li>
+<li class="chapter" data-level="6.7" data-path="evaluación.html"><a href="evaluación.html"><i class="fa fa-check"></i><b>6.7</b> Evaluación</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="03-InclusionesMovers.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o"><i class="fa fa-check"></i><b>6.7.1</b> Métricas de desempeño</a></li>
-<li class="chapter" data-level="6.7.2" data-path="03-InclusionesMovers.html"><a href="#m%C3%A9tricas-de-eficiencia"><i class="fa fa-check"></i><b>6.7.2</b> Métricas de eficiencia</a></li>
-<li class="chapter" data-level="6.7.3" data-path="03-InclusionesMovers.html"><a href="#revisi%C3%B3n-clerical"><i class="fa fa-check"></i><b>6.7.3</b> Revisión clerical</a></li>
+<li class="chapter" data-level="6.7.1" data-path="evaluación.html"><a href="evaluación.html#métricas-de-desempeño"><i class="fa fa-check"></i><b>6.7.1</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="6.7.2" data-path="evaluación.html"><a href="evaluación.html#métricas-de-eficiencia"><i class="fa fa-check"></i><b>6.7.2</b> Métricas de eficiencia</a></li>
+<li class="chapter" data-level="6.7.3" data-path="evaluación.html"><a href="evaluación.html#revisión-clerical"><i class="fa fa-check"></i><b>6.7.3</b> Revisión clerical</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="03-InclusionesMovers.html"><a href="#implementaci%C3%B3n"><i class="fa fa-check"></i><b>6.8</b> Implementación</a></li>
-<li class="chapter" data-level="6.9" data-path="03-InclusionesMovers.html"><a href="#deduplicaci%C3%B3n-de-registros"><i class="fa fa-check"></i><b>6.9</b> Deduplicación de registros</a></li>
-<li class="chapter" data-level="6.10" data-path="03-InclusionesMovers.html"><a href="#vinculaci%C3%B3n-de-registros"><i class="fa fa-check"></i><b>6.10</b> Vinculación de registros</a></li>
+<li class="chapter" data-level="6.8" data-path="implementación.html"><a href="implementación.html"><i class="fa fa-check"></i><b>6.8</b> Implementación</a></li>
+<li class="chapter" data-level="6.9" data-path="deduplicación-de-registros.html"><a href="deduplicación-de-registros.html"><i class="fa fa-check"></i><b>6.9</b> Deduplicación de registros</a></li>
+<li class="chapter" data-level="6.10" data-path="vinculación-de-registros.html"><a href="vinculación-de-registros.html"><i class="fa fa-check"></i><b>6.10</b> Vinculación de registros</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="03-InclusionesMovers.html"><a href="#planeaci%C3%B3n-de-la-operaci%C3%B3n-estad%C3%ADstica"><i class="fa fa-check"></i><b>7</b> Planeación de la operación estadística</a>
+<li class="chapter" data-level="7" data-path="planeación-de-la-operación-estadística.html"><a href="planeación-de-la-operación-estadística.html"><i class="fa fa-check"></i><b>7</b> Planeación de la operación estadística</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="03-InclusionesMovers.html"><a href="#dise%C3%B1o-del-cuestionario"><i class="fa fa-check"></i><b>7.1</b> Diseño del cuestionario</a></li>
-<li class="chapter" data-level="7.2" data-path="03-InclusionesMovers.html"><a href="#dise%C3%B1o-de-la-muestra"><i class="fa fa-check"></i><b>7.2</b> Diseño de la muestra</a>
+<li class="chapter" data-level="7.1" data-path="diseño-del-cuestionario.html"><a href="diseño-del-cuestionario.html"><i class="fa fa-check"></i><b>7.1</b> Diseño del cuestionario</a></li>
+<li class="chapter" data-level="7.2" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html"><i class="fa fa-check"></i><b>7.2</b> Diseño de la muestra</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html"><i class="fa fa-check"></i><b>7.2.1</b> Marco de muestreo</a></li>
-<li class="chapter" data-level="7.2.2" data-path="03-InclusionesMovers.html"><a href="#construcci%C3%B3n-de-las-upm"><i class="fa fa-check"></i><b>7.2.2</b> Construcción de las UPM</a></li>
+<li class="chapter" data-level="7.2.1" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#marco-de-muestreo"><i class="fa fa-check"></i><b>7.2.1</b> Marco de muestreo</a></li>
+<li class="chapter" data-level="7.2.2" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#construcción-de-las-upm"><i class="fa fa-check"></i><b>7.2.2</b> Construcción de las UPM</a></li>
 <li class="chapter" data-level="7.2.3" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#estratos"><i class="fa fa-check"></i><b>7.2.3</b> Estratos</a></li>
-<li class="chapter" data-level="7.2.4" data-path="03-InclusionesMovers.html"><a href="#dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>7.2.4</b> Diseño de muestreo</a></li>
-<li class="chapter" data-level="7.2.5" data-path="03-InclusionesMovers.html"><a href="#dise%C3%B1o-de-muestreo-est%C3%A1ndar"><i class="fa fa-check"></i><b>7.2.5</b> Diseño de muestreo estándar</a></li>
-<li class="chapter" data-level="7.2.6" data-path="03-InclusionesMovers.html"><a href="#c%C3%A1lculo-del-tama%C3%B1o-de-muestra"><i class="fa fa-check"></i><b>7.2.6</b> Cálculo del tamaño de muestra</a></li>
+<li class="chapter" data-level="7.2.4" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#diseño-de-muestreo"><i class="fa fa-check"></i><b>7.2.4</b> Diseño de muestreo</a></li>
+<li class="chapter" data-level="7.2.5" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#diseño-de-muestreo-estándar"><i class="fa fa-check"></i><b>7.2.5</b> Diseño de muestreo estándar</a></li>
+<li class="chapter" data-level="7.2.6" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#cálculo-del-tamaño-de-muestra"><i class="fa fa-check"></i><b>7.2.6</b> Cálculo del tamaño de muestra</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="03-InclusionesMovers.html"><a href="#operativo-de-recolecci%C3%B3n"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
+<li class="chapter" data-level="7.3" data-path="operativo-de-recolección.html"><a href="operativo-de-recolección.html"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
 <li class="chapter" data-level="7.4" data-path="indicadores-principales.html"><a href="indicadores-principales.html"><i class="fa fa-check"></i><b>7.4</b> Indicadores principales</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="cap-reg.html"><a href="cap-reg.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="03-InclusionesMovers.html"><a href="#post-estratificaci%C3%B3n"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
-<li class="chapter" data-level="8.2" data-path="03-InclusionesMovers.html"><a href="#regresi%C3%B3n-log%C3%ADstica"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
-<li class="chapter" data-level="8.3" data-path="03-InclusionesMovers.html"><a href="#ajuste-por-informaci%C3%B3n-demogr%C3%A1fica"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
+<li class="chapter" data-level="8.1" data-path="post-estratificación.html"><a href="post-estratificación.html"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
+<li class="chapter" data-level="8.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
+<li class="chapter" data-level="8.3" data-path="ajuste-por-información-demográfica.html"><a href="ajuste-por-información-demográfica.html"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>

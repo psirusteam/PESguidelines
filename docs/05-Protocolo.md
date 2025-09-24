@@ -38,45 +38,22 @@ $$I_k^{d} = \begin{cases}
 Desde la PES también se debe estimar el número de enumeraciones erróneas, existen varias razones por las cuales una enumeración se considera de este tipo. En general se clasifican en dos categorías: erróneas debido a duplicación y erróneas por otras razones. La Tabla \@ref(tab:t1) describe los principales motivos de clasificación como errónea. 
    
 
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>(\#tab:t1)(\#tab:t1)Tipos de enumeraciones erróneas</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> **Tipo** </th>
-   <th style="text-align:left;"> **Descripción** </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;width: 30%; "> Erróneo por duplicación </td>
-   <td style="text-align:left;width: 70%; "> La enumeración es un duplicado de una persona que fue contada correctamente en una unidad de vivienda o en el universo de viviendas colectivas en el censo. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;width: 30%; "> Erróneo por otras razones </td>
-   <td style="text-align:left;width: 70%; "> El registro es ficticio y no corresponde a una persona real. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;width: 30%; ">  </td>
-   <td style="text-align:left;width: 70%; "> La persona fue enumerada en el universo de unidades de vivienda, pero debería haber sido enumerada en el universo de viviendas colectivas o estaba en situación de calle el día del censo. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;width: 30%; ">  </td>
-   <td style="text-align:left;width: 70%; "> La persona nació después del día del censo. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;width: 30%; ">  </td>
-   <td style="text-align:left;width: 70%; "> La persona falleció antes del día del censo. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;width: 30%; ">  </td>
-   <td style="text-align:left;width: 70%; "> La persona estaba trabajando, estudiando o viviendo fuera del país el día del censo. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;width: 30%; ">  </td>
-   <td style="text-align:left;width: 70%; "> La persona es un visitante con residencia habitual en el extranjero que estaba temporalmente en el país el día del censo. </td>
-  </tr>
-</tbody>
-</table>
+
+\begin{longtable}[t]{>{\raggedright\arraybackslash}p{30%}>{\raggedright\arraybackslash}p{70%}}
+\caption{(\#tab:t1)(\#tab:t1)Tipos de enumeraciones erróneas}\\
+\toprule
+**Tipo** & **Descripción**\\
+\midrule
+Erróneo por duplicación & La enumeración es un duplicado de una persona que fue contada correctamente en una unidad de vivienda o en el universo de viviendas colectivas en el censo.\\
+Erróneo por otras razones & El registro es ficticio y no corresponde a una persona real.\\
+ & La persona fue enumerada en el universo de unidades de vivienda, pero debería haber sido enumerada en el universo de viviendas colectivas o estaba en situación de calle el día del censo.\\
+ & La persona nació después del día del censo.\\
+ & La persona falleció antes del día del censo.\\
+\addlinespace
+ & La persona estaba trabajando, estudiando o viviendo fuera del país el día del censo.\\
+ & La persona es un visitante con residencia habitual en el extranjero que estaba temporalmente en el país el día del censo.\\
+\bottomrule
+\end{longtable}
 
 ### Omisiones
 
@@ -134,10 +111,14 @@ Esta etapa inicia con la muestra E y muestra P. Si al final del proceso existen 
 
 La Figura \@ref(fig:match) presenta una ilustración general de las fases del proceso de emparejamiento y revisión clerical.
 
-<div class="figure" style="text-align: center">
-<img src="images/FlujoMatch.png" alt="Flujo general del proceso de emparejamiento en la PES" width="100%" />
-<p class="caption">(\#fig:match)Flujo general del proceso de emparejamiento en la PES</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/FlujoMatch} 
+
+}
+
+\caption{Flujo general del proceso de emparejamiento en la PES}(\#fig:match)
+\end{figure}
 
 
 Para los registros que tienen estado "no emparejado" se amplia el área de búsqueda hasta llegar al nivel nacional. Como las probabilidades de error de emparejamiento se incrementan cuando se aumenta el área de búsqueda, es recomendable que se haga una revisión clerical de estos registros luego de ser emparejados, incluso si su probabilidad es alta.
@@ -149,7 +130,11 @@ Si no hay coincidencia tras ampliar el área de búsqueda, el caso se clasifica 
  
 La Figura \@ref(fig:match1q) muestra el flujograma que se debría seguir para realizar este proceso. 
 
-<div class="figure" style="text-align: center">
-<img src="images/grafo.png" alt="Flujo general del proceso de emparejamiento en la PES" width="100%" />
-<p class="caption">(\#fig:match1q)Flujo general del proceso de emparejamiento en la PES</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/grafo} 
+
+}
+
+\caption{Flujo general del proceso de emparejamiento en la PES}(\#fig:match1q)
+\end{figure}

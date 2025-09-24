@@ -1,0 +1,69 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Encuesta-PostCensal.aux
+The style file: apalike.bst
+Database file #1: book.bib
+Repeated entry---line 383 of file book.bib
+ : @article{brittain2009estimators
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 553 of file book.bib
+ : @article{fienberg1972multiple
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1081 of file book.bib
+ : @book{nauman2022introduction
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1137 of file book.bib
+ : @article{brittain2009estimators
+ :                                ,
+I'm skipping whatever remains of this entry
+Warning--empty publisher in CEPAL_2023
+Warning--empty publisher in gutierrez2025generalizados
+Warning--there's a number but no volume in otis1978statistical
+Warning--empty publisher in seber1982estimation
+Warning--empty publisher in UnitedNations_2010
+Warning--can't use both author and editor fields in Vatsalan2020
+You've used 63 entries,
+            1935 wiz_defined-function locations,
+            864 strings with 13780 characters,
+and the built_in function-call counts, 22531 in all, are:
+= -- 2241
+> -- 733
+< -- 61
++ -- 250
+- -- 230
+* -- 1819
+:= -- 3958
+add.period$ -- 192
+call.type$ -- 63
+change.case$ -- 415
+chr.to.int$ -- 63
+cite$ -- 69
+duplicate$ -- 909
+empty$ -- 1667
+format.name$ -- 328
+if$ -- 4393
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 71
+newline$ -- 320
+num.names$ -- 189
+pop$ -- 356
+preamble$ -- 1
+purify$ -- 428
+quote$ -- 0
+skip$ -- 688
+stack$ -- 0
+substring$ -- 1612
+swap$ -- 97
+text.length$ -- 12
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 348
+warning$ -- 6
+while$ -- 199
+width$ -- 0
+write$ -- 812
+(There were 4 error messages)

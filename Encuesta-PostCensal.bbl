@@ -1,0 +1,320 @@
+\begin{thebibliography}{}
+
+\bibitem[Baffour et~al., 2013]{baffour2013modern}
+Baffour, B., King, T., and Valente, P. (2013).
+\newblock The modern census: evolution, examples and evaluation.
+\newblock {\em International Statistical Review}, 81(3):407--425.
+
+\bibitem[Baillargeon and Rivest, 2007]{baillargeon2007rcapture}
+Baillargeon, S. and Rivest, L.-P. (2007).
+\newblock Rcapture: loglinear models for capture-recapture in r.
+\newblock {\em Journal of statistical software}, 19:1--31.
+
+\bibitem[Biemer and Lyberg, 2003]{biemer2003introduction}
+Biemer, P.~P. and Lyberg, L.~E. (2003).
+\newblock {\em Introduction to survey quality}.
+\newblock John Wiley \& Sons.
+
+\bibitem[Binder, 2011]{Binder_2011}
+Binder, D.~A. (2011).
+\newblock Estimating model parameters from a complex survey under a model-design randomization framework.
+\newblock {\em Pakistan Journal of Statistics}, 27(4):371–390.
+
+\bibitem[Bishop et~al., 2007]{bishop2007discrete}
+Bishop, Y.~M., Fienberg, S.~E., and Holland, P.~W. (2007).
+\newblock {\em Discrete multivariate analysis: Theory and practice}.
+\newblock Springer Science \& Business Media.
+
+\bibitem[Bleiholder and Naumann, 2009]{bleiholder2009data}
+Bleiholder, J. and Naumann, F. (2009).
+\newblock Data fusion.
+\newblock {\em ACM computing surveys (CSUR)}, 41(1):1--41.
+
+\bibitem[Brittain and B{\"o}hning, 2009]{brittain2009estimators}
+Brittain, S. and B{\"o}hning, D. (2009).
+\newblock Estimators in capture--recapture studies with two sources.
+\newblock {\em AStA Advances in Statistical Analysis}, 93(1):23--47.
+
+\bibitem[Bureau, 2022]{USCensusBureau_2022}
+Bureau, U.~C. (2022).
+\newblock 2020 post-enumeration survey estimation design.
+
+\bibitem[Cambon et~al., 2021]{tidygeocoder}
+Cambon, J., Hernangómez, D., Belanger, C., and Possenriede, D. (2021).
+\newblock tidygeocoder: An r package for geocoding.
+\newblock {\em Journal of Open Source Software}, 6(65):3544.
+\newblock R package version 1.0.5.
+
+\bibitem[Casella and Berger, 2002]{casella2002statistical}
+Casella, G. and Berger, R.~L. (2002).
+\newblock {\em Statistical Inference}.
+\newblock Duxbury Press, 2nd edition.
+\newblock See section on the Delta Method for approximations involving expectations of functions of random variables.
+
+\bibitem[CEPAL, 2023]{CEPAL_2023}
+CEPAL (2023).
+\newblock {\em Diseño y análisis estadístico de las encuestas de hogares de América Latina}.
+\newblock Metodologías de la CEPAL.
+
+\bibitem[Chao, 1987]{chao1987}
+Chao, A. (1987).
+\newblock Estimating the population size for capture-recapture data with unequal catchability.
+\newblock {\em Biometrics}, pages 783--791.
+
+\bibitem[Chao, 1989]{chao1989}
+Chao, A. (1989).
+\newblock Estimating population size for sparse data in capture-recapture experiments.
+\newblock {\em Biometrics}, pages 427--438.
+
+\bibitem[Chapman, 1951]{chapman1951some}
+Chapman, D.~G. (1951).
+\newblock Some properties of the hypergeometric distribution with applications to zoological censuses.
+\newblock {\em Univ. Calif. Stat.}, 1:60--131.
+
+\bibitem[Christen, 2012]{christen2012data}
+Christen, P. (2012).
+\newblock {\em Data Matching Concepts and Techniques for Record Linkage, Entity Resolution, and Duplicate Detection}.
+\newblock Springer.
+
+\bibitem[Christen et~al., 2023]{christen2023privacy}
+Christen, V., H{\"a}ntschel, T., Christen, P., and Rahm, E. (2023).
+\newblock Privacy-preserving record linkage using autoencoders.
+\newblock {\em International Journal of Data Science and Analytics}, 15(4):347--357.
+
+\bibitem[Churches et~al., 2002]{churches2002preparation}
+Churches, T., Christen, P., Lim, K., and Zhu, J.~X. (2002).
+\newblock Preparation of name and address data for record linkage using hidden markov models.
+\newblock {\em BMC Medical Informatics and Decision Making}, 2:1--16.
+
+\bibitem[Cormack, 1989]{cormack1989log}
+Cormack, R.~M. (1989).
+\newblock Log-linear models for capture-recapture.
+\newblock {\em Biometrics}, pages 395--413.
+
+\bibitem[Dunn, 1946]{dunn1946}
+Dunn, H.~L. (1946).
+\newblock Record linkage.
+\newblock {\em American Journal of Public Health and the Nations Health}, 36(12):1412–1416.
+
+\bibitem[Fellegi and Sunter, 1969]{fellegi1969theory}
+Fellegi, I.~P. and Sunter, A.~B. (1969).
+\newblock A theory for record linkage.
+\newblock {\em Journal of the American statistical association}, 64(328):1183--1210.
+
+\bibitem[Fienberg, 1972]{fienberg1972multiple}
+Fienberg, S.~E. (1972).
+\newblock The multiple recapture census for closed populations and incomplete 2k contingency tables.
+\newblock {\em Biometrika}, 59(3):591--603.
+
+\bibitem[for Public Opinion~Research, 2016]{american2016standard}
+for Public Opinion~Research, A.~A. (2016).
+\newblock Standard definitions: Final dispositions of case codes and outcome rates for surveys.
+\newblock {\em Encyclopedia of Survey Research Methods}.
+
+\bibitem[Griffin, 2000]{griffin2000correlationbias}
+Griffin, R. (2000).
+\newblock Accuracy and coverage evaluation survey: Definition and explanation of correlation and related heterogeneity bias.
+\newblock Technical Report Q-35, U.S. Census Bureau.
+
+\bibitem[Gutiérrez et~al., 2025]{gutierrez2025generalizados}
+Gutiérrez, A., Téllez, C., and Guerrero, S. (2025).
+\newblock Capítulo 8: Generalizados.
+\newblock In {\em Análisis de encuestas de hogares con R}.
+
+\bibitem[Gutiérrez, 2016]{Gutierrez_2016}
+Gutiérrez, H.~A. (2016).
+\newblock {\em Estrategias de muestreo: diseño de encuestas y estimación de parámetros}.
+\newblock Ediciones de la U, segunda edición edition.
+\newblock Google-Books-ID: UlVmE5pkRwIC.
+
+\bibitem[Heim, 2022]{Heim2022}
+Heim, K. (2022).
+\newblock 2020 post-enumeration survey estimation methods: Net coverage estimation.
+\newblock DSSD 2020 Post-Enumeration Survey Memorandum Series 2020-J-07, U.S. Census Bureau.
+
+\bibitem[Heim and Hill, 2022]{HeimHill2022}
+Heim, K. and Hill, C. (2022).
+\newblock Research on reducing correlation bias in dual-system estimates.
+\newblock In {\em Proceedings of the Survey Research Methods Section, American Statistical Association}, Alexandria, VA.
+
+\bibitem[Herzog et~al., 2007]{herzog2007data}
+Herzog, T.~N., Scheuren, F.~J., and Winkler, W.~E. (2007).
+\newblock {\em Data quality and record linkage techniques}, volume~1.
+\newblock Springer.
+
+\bibitem[Hogan, 2003]{hogan2003}
+Hogan, H. (2003).
+\newblock The accuracy and coverage evaluation: Theory and design.
+\newblock {\em Survey Methodology}, 29(2):129--138.
+
+\bibitem[Howard et~al., 2020]{howard2020phonetic}
+Howard, J.~P. et~al. (2020).
+\newblock Phonetic spelling algorithm implementations for r.
+\newblock {\em Journal of Statistical Software}, 95:1--21.
+
+\bibitem[Konicki, 2012]{Konicki2012}
+Konicki, S. (2012).
+\newblock 2010 census coverage measurement estimation report: Adjustment for correlation bias.
+\newblock DSSD 2010 Census Coverage Measurement Memorandum Series 2010-G-11, U.S. Census Bureau.
+
+\bibitem[Larsen and Rubin, 2001]{larsen2001iterative}
+Larsen, M.~D. and Rubin, D.~B. (2001).
+\newblock Iterative automated record linkage using mixture models.
+\newblock {\em Journal of the American Statistical Association}, 96(453):32--41.
+
+\bibitem[Lincoln, 1930]{lincoln1930}
+Lincoln, F.~C. (1930).
+\newblock Calculating waterfowl abundance on the basis of banding returns.
+\newblock {\em Circular}, 118:1--4.
+
+\bibitem[Lumley, 2010]{Lumley2010}
+Lumley, T. (2010).
+\newblock {\em Complex Surveys: A Guide to Analysis Using R: A Guide to Analysis Using R}.
+\newblock John Wiley and Sons.
+
+\bibitem[Lynch et~al., 1977]{lynch1977selection}
+Lynch, B.~T., Arends, W.~L., et~al. (1977).
+\newblock Selection of a surname coding procedure for the srs record linkage system.
+\newblock {\em Washington, DC: US Department of Agriculture, Sample Survey Research Branch, Research Division}.
+
+\bibitem[Menestrina et~al., 2010]{menestrina2010evaluating}
+Menestrina, D., Whang, S.~E., and Garcia-Molina, H. (2010).
+\newblock Evaluating entity resolution results.
+\newblock {\em Proceedings of the VLDB Endowment}, 3(1-2):208--219.
+
+\bibitem[Mulry and Spencer, 1991]{mulry1991total}
+Mulry, M.~H. and Spencer, B.~D. (1991).
+\newblock Total error in pes estimates of population.
+\newblock {\em Journal of the American Statistical Association}, 86(416):839--855.
+
+\bibitem[Mulry et~al., 2008]{mulry2008direct}
+Mulry, M.~H., Spencer, B.~D., Mule, T., and Nguyen, N. (2008).
+\newblock Direct estimates as a diagnostic for dual system estimators based on logistic regression.
+\newblock In {\em Joint Statistical Meetings}. American Statistical Association.
+
+\bibitem[Nauman and Herschel, 2022]{nauman2022introduction}
+Nauman, F. and Herschel, M. (2022).
+\newblock {\em An introduction to duplicate detection}.
+\newblock Springer Nature.
+
+\bibitem[Navarro, 2001]{navarro2001guided}
+Navarro, G. (2001).
+\newblock A guided tour to approximate string matching.
+\newblock {\em ACM computing surveys (CSUR)}, 33(1):31--88.
+
+\bibitem[Newcombe et~al., 1959]{newcombe1959}
+Newcombe, H.~B., Kennedy, J.~M., Axford, S.~J., and James, A.~P. (1959).
+\newblock Automatic linkage of vital records: Computers can be used to extract" follow-up" statistics of families from files of routine records.
+\newblock {\em Science}, 130(3381):954–959.
+
+\bibitem[Nour, 1982]{nour1982estimation}
+Nour, E.-S. (1982).
+\newblock On the estimation of the total number of vital events with data from dual collection systems.
+\newblock {\em Journal of the Royal Statistical Society Series A: Statistics in Society}, 145(1):106--116.
+
+\bibitem[Odell and Russell, 1918]{odell1918soundex}
+Odell, M. and Russell, R. (1918).
+\newblock The soundex coding system.
+\newblock {\em US Patents}, 1261167:9.
+
+\bibitem[Olson and Sands, 2012]{OlsonSands2012}
+Olson, D. and Sands, R. (2012).
+\newblock 2010 census coverage measurement estimation report: Net coverage comparison with post-stratification.
+\newblock DSSD 2010 Census Coverage Measurement Memorandum Series 2010-G-12, U.S. Census Bureau.
+
+\bibitem[Otis et~al., 1978]{otis1978statistical}
+Otis, D.~L., Burnham, K.~P., White, G.~C., and Anderson, D.~R. (1978).
+\newblock Statistical inference from capture data on closed animal populations.
+\newblock {\em Wildlife monographs}, (62):3--135.
+
+\bibitem[Petersen, 1896]{petersen1896}
+Petersen, C. G.~J. (1896).
+\newblock The yearly immigration of young plaice into the limfjord from the german sea.
+\newblock {\em Report of the Danish Biological Station}, 6:1--48.
+
+\bibitem[Philips, 1990]{philips1990hanging}
+Philips, L. (1990).
+\newblock Hanging on the metaphone.
+\newblock {\em Computer Language}, 7(12):39--43.
+
+\bibitem[Rivest and Baillargeon, 2007]{rivest2007applications}
+Rivest, L.-P. and Baillargeon, S. (2007).
+\newblock Applications and extensions of chao's moment estimator for the size of a closed population.
+\newblock {\em Biometrics}, 63(4):999--1006.
+
+\bibitem[Rivest and Baillargeon, 2014]{rivest2014capture}
+Rivest, L.-P. and Baillargeon, S. (2014).
+\newblock Capture-recapture methods for estimating the size of a population: dealing with variable capture probabilities.
+\newblock {\em Statistics in Action: A Canadian Outlook}, 40:289--304.
+
+\bibitem[Sadinle, 2009]{sadinle2009transformed}
+Sadinle, M. (2009).
+\newblock Transformed logit confidence intervals for small populations in single capture--recapture estimation.
+\newblock {\em Communications in Statistics-Simulation and Computation}, 38(9):1909--1924.
+
+\bibitem[Schnabel, 1938]{schnabel1938}
+Schnabel, Z.~E. (1938).
+\newblock The estimation of the total fish population of a lake.
+\newblock {\em American Mathematical Monthly}, 45:348--352.
+
+\bibitem[Seber, 1982]{seber1982estimation}
+Seber, G. A.~F. (1982).
+\newblock {\em The estimation of animal abundance and related parameters}.
+
+\bibitem[Sekar and Deming, 1949]{sekar1949}
+Sekar, C.~C. and Deming, W.~E. (1949).
+\newblock On a method of estimating birth and death rates and the extent of registration.
+\newblock {\em Journal of the American Statistical Association}, 44(245):101--115.
+
+\bibitem[Särndal et~al., 2003]{Sarndal_Swensson_Wretman_2003}
+Särndal, C.-E., Swensson, B., and Wretman, J. (2003).
+\newblock {\em Model Assisted Survey Sampling}.
+\newblock Springer Science and Business Media.
+\newblock Google-Books-ID: ufdONK3E1TcC.
+
+\bibitem[UN, 2010]{UnitedNations_2010}
+UN (2010).
+\newblock {\em Post Enumeration Surveys: Operational guidelines}.
+\newblock 2010 World Population and Housing Census Programme.
+
+\bibitem[Van~Buuren and Van~Buuren, 2012]{van2012flexible}
+Van~Buuren, S. and Van~Buuren, S. (2012).
+\newblock {\em Flexible imputation of missing data}, volume~10.
+\newblock CRC press Boca Raton, FL.
+
+\bibitem[Vatsalan et~al., 2020]{Vatsalan2020}
+Vatsalan, D., Karapiperis, D., and Verykios, V.~S. (2020).
+\newblock {\em Privacy-Preserving Record Linkage}, pages 1--10.
+\newblock Springer International Publishing, Cham.
+
+\bibitem[Webster and Kemp, 2013]{webster2013estimating}
+Webster, A.~J. and Kemp, R. (2013).
+\newblock Estimating omissions from searches.
+\newblock {\em The American Statistician}, 67(2):82--89.
+
+\bibitem[Winkler, 1990]{winkler1990}
+Winkler, W.~E. (1990).
+\newblock String comparator metrics and enhanced decision rules in the fellegi-sunter model of record linkage.
+\newblock Technical Report RR91/9, U.S. Bureau of the Census.
+
+\bibitem[Winkler, 2000]{winkler2000using}
+Winkler, W.~E. (2000).
+\newblock {\em Using the EM algorithm for weight computation in the Fellegi-Sunter model of record linkage}.
+\newblock US Bureau of the Census Washington, DC.
+
+\bibitem[Wolter, 1986]{wolter1986coverage}
+Wolter, K.~M. (1986).
+\newblock Some coverage error models for census data.
+\newblock {\em Journal of the American Statistical Association}, 81(394):338--346.
+
+\bibitem[Zamora, 2022]{zamora2022pesdesign}
+Zamora, J. (2022).
+\newblock 2020 post-enumeration survey: Estimation design.
+\newblock Technical Report 2020-J-03, U.S. Census Bureau.
+
+\bibitem[Zelterman, 1988]{zelterman1988robust}
+Zelterman, D. (1988).
+\newblock Robust estimation in truncated discrete distributions with application to capture-recapture experiments.
+\newblock {\em Journal of statistical planning and inference}, 18(2):225--237.
+
+\end{thebibliography}
