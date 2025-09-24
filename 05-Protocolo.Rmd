@@ -1,6 +1,8 @@
+```{r, include=FALSE}
 knitr::opts_chunk$set(warning = FALSE, 
                       message = FALSE,
                       cache = TRUE)
+```
                       
 # Evaluación de la cobertura censal
 
@@ -135,38 +137,50 @@ Si no hay coincidencia tras ampliar el área de búsqueda, el caso se clasifica 
 
 ## Flujo general del procedimiento
  
+La Figura \@ref(fig:match1q) muestra el flujograma que se debría seguir para realizar este proceso. 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r match1q, fig.cap="Flujo general del proceso de emparejamiento en la PES", out.width="100%", fig.align='center', echo=FALSE}
+knitr::include_graphics("images/grafo.png")
 
-library(pacman)
-p_load(webshot)
-#webshot::install_phantomjs()
-
-
-library(DiagrammeR)
-
-mermaid("
-graph TD;
-    A[Inicio del Proceso] --> B[Establecer la muestra E y P];
-    B --> C[Preprocesamiento de Datos];
-    C --> D[Emparejamiento Deterministico];
-    D -- Match --> J[Estimación de Omisiones];
-    D -- No Match --> E[Emparejamiento Probabilístico];
-    E --> F[Evaluación del Umbral];
-    F --> H{Tipo de coincidencia?};
-    H -- Emperejados --> J;
-    H -- Potenciales --> I[Revisión clerical];
-    H -- No emparejados --> K[Aumentar el área de búsqueda];
-    K --> X[Ampliar muestra E];
-    X --> E;
-    I --> L{Emparejado?};
-    L -- Sí --> M[Clasificacion Final];
-    L -- No --> K;
-    M --> J;
-    J --> N[Ajustes y Calibraciones];
-    N --> O[Validacion de Resultados];
-    O --> P[Documentacion y Reporte];
-    P --> Q[Fin del Proceso];
-", height = '100%', width = '100%')
-
+# library(knitr)
+# library(pacman)
+# p_load(webshot)
+# #webshot::install_phantomjs()
+# 
+# 
+# library(DiagrammeR)
+# 
+# a <- mermaid("
+# graph TD;
+#     A[Inicio del Proceso] --> B[Establecer la muestra E y P];
+#     B --> C[Preprocesamiento de Datos];
+#     C --> D[Emparejamiento Deterministico];
+#     D -- Match --> J[Estimación de Omisiones];
+#     D -- No Match --> E[Emparejamiento Probabilístico];
+#     E --> F[Evaluación del Umbral];
+#     F --> H{Tipo de coincidencia?};
+#     H -- Emperejados --> J;
+#     H -- Potenciales --> I[Revisión clerical];
+#     H -- No emparejados --> K[Aumentar el área de búsqueda];
+#     K --> X[Ampliar muestra E];
+#     X --> E;
+#     I --> L{Emparejado?};
+#     L -- Sí --> M[Clasificacion Final];
+#     L -- No --> K;
+#     M --> J;
+#     J --> N[Ajustes y Calibraciones];
+#     N --> O[Validacion de Resultados];
+#     O --> P[Documentacion y Reporte];
+#     P --> Q[Fin del Proceso];
+# ", height = '100%', width = '100%')
+# 
+# library(webshot2)
+# library(htmlwidgets)
+# 
+# outfile <- "images/grafo.png"
+# saveWidget(a, "grafo.html", selfcontained = TRUE)
+# webshot("grafo.html", file = outfile, vwidth = 800, vheight = 600)
+# 
+# # Incluir en el PDF final
+# include_graphics(outfile)
 ```

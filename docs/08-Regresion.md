@@ -1,6 +1,5 @@
-knitr::opts_chunk$set(warning = FALSE, 
-                      message = FALSE,
-                      cache = TRUE)
+
+
                       
 # Modelos de regresión en el sistema dual {#cap-reg}
 

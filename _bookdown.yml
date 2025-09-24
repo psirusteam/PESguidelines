@@ -2,6 +2,7 @@ book_filename: "Encuesta PostCensal"
 delete_merged_file: true
 output_dir: "docs"
 new_session: yes
+always_allow_html: true
 
 rmd_files: [
   "index.rmd", 

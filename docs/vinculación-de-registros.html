@@ -54,14 +54,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/d3-3.3.8/d3.min.js"></script>
-<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
-<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
-<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -319,18 +311,18 @@ div.csl-indent {
 <p>La forma de implementar este procedimiento es análoga al utilizado previamente para la detección de duplicados dentro de una misma base de datos. La diferencia principal radica en los conjuntos de datos que se introducen en los argumentos de la función de emparejamiento: en lugar de comparar una base consigo misma, en este caso se contrasta la muestra E frente a la muestra P. De esta manera, se logra identificar registros compartidos entre las dos muestras, manteniendo la misma lógica de comparación, pero adaptada a un contexto de integración de fuentes.</p>
 <p>En el caso del paquete <code>RecordLinkage</code>, se cuenta con dos funciones para la creación de patrones de comparación a partir de conjuntos de datos: <code>compare.dedup()</code> o <code>RLBigDataDedup()</code>, para la deduplicación de un único conjunto de datos como se presentó en la sección anterior, y <code>compare.linkage()</code> o <code>RLBigDataLinkage()</code>, para vincular dos conjuntos de datos diferentes, la diferencia es que la segunda función está diseñada para grandes conjuntos de datos.</p>
 <p>Considere los conjuntos de datos de la muestra E y de la muestra P, almacenados previamente en los objetos <code>censo_limpio</code> y <code>encuesta_limpia</code>. Ahora se creará la variable de fecha con el valor de la fecha de nacimiento.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="vinculación-de-registros.html#cb55-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb55-2"><a href="vinculación-de-registros.html#cb55-2" tabindex="-1"></a><span class="fu">p_load</span>(tidyverse, RecordLinkage, lubridate)</span>
-<span id="cb55-3"><a href="vinculación-de-registros.html#cb55-3" tabindex="-1"></a></span>
-<span id="cb55-4"><a href="vinculación-de-registros.html#cb55-4" tabindex="-1"></a>df_censo <span class="ot">&lt;-</span> censo_limpio <span class="sc">|&gt;</span> </span>
-<span id="cb55-5"><a href="vinculación-de-registros.html#cb55-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fecha_nacimiento =</span> <span class="fu">make_date</span>(<span class="at">year =</span> anio_nac, <span class="at">month =</span> mes_nac, <span class="at">day =</span> dia_nac)) <span class="sc">|&gt;</span> </span>
-<span id="cb55-6"><a href="vinculación-de-registros.html#cb55-6" tabindex="-1"></a>    <span class="fu">select</span>(id_segmento, <span class="fu">ends_with</span>(<span class="st">&quot;cod&quot;</span>), sexo, fecha_nacimiento)</span>
-<span id="cb55-7"><a href="vinculación-de-registros.html#cb55-7" tabindex="-1"></a></span>
-<span id="cb55-8"><a href="vinculación-de-registros.html#cb55-8" tabindex="-1"></a>df_encuesta <span class="ot">&lt;-</span> encuesta_limpia <span class="sc">|&gt;</span> </span>
-<span id="cb55-9"><a href="vinculación-de-registros.html#cb55-9" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">fecha_nacimiento =</span> <span class="fu">make_date</span>(<span class="at">year =</span> anio_nac, <span class="at">month =</span> mes_nac, <span class="at">day =</span> dia_nac)) <span class="sc">|&gt;</span> </span>
-<span id="cb55-10"><a href="vinculación-de-registros.html#cb55-10" tabindex="-1"></a>    <span class="fu">select</span>(id_segmento, <span class="fu">ends_with</span>(<span class="st">&quot;cod&quot;</span>), sexo, fecha_nacimiento)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="vinculación-de-registros.html#cb54-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb54-2"><a href="vinculación-de-registros.html#cb54-2" tabindex="-1"></a><span class="fu">p_load</span>(tidyverse, RecordLinkage, lubridate)</span>
+<span id="cb54-3"><a href="vinculación-de-registros.html#cb54-3" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="vinculación-de-registros.html#cb54-4" tabindex="-1"></a>df_censo <span class="ot">&lt;-</span> censo_limpio <span class="sc">|&gt;</span> </span>
+<span id="cb54-5"><a href="vinculación-de-registros.html#cb54-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fecha_nacimiento =</span> <span class="fu">make_date</span>(<span class="at">year =</span> anio_nac, <span class="at">month =</span> mes_nac, <span class="at">day =</span> dia_nac)) <span class="sc">|&gt;</span> </span>
+<span id="cb54-6"><a href="vinculación-de-registros.html#cb54-6" tabindex="-1"></a>    <span class="fu">select</span>(id_segmento, <span class="fu">ends_with</span>(<span class="st">&quot;cod&quot;</span>), sexo, fecha_nacimiento)</span>
+<span id="cb54-7"><a href="vinculación-de-registros.html#cb54-7" tabindex="-1"></a></span>
+<span id="cb54-8"><a href="vinculación-de-registros.html#cb54-8" tabindex="-1"></a>df_encuesta <span class="ot">&lt;-</span> encuesta_limpia <span class="sc">|&gt;</span> </span>
+<span id="cb54-9"><a href="vinculación-de-registros.html#cb54-9" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">fecha_nacimiento =</span> <span class="fu">make_date</span>(<span class="at">year =</span> anio_nac, <span class="at">month =</span> mes_nac, <span class="at">day =</span> dia_nac)) <span class="sc">|&gt;</span> </span>
+<span id="cb54-10"><a href="vinculación-de-registros.html#cb54-10" tabindex="-1"></a>    <span class="fu">select</span>(id_segmento, <span class="fu">ends_with</span>(<span class="st">&quot;cod&quot;</span>), sexo, fecha_nacimiento)</span></code></pre></div>
 <p>Para el ejemplo se usará el paquete <code>RecordLinkage</code>. En este caso la muestra P contiene 54 registros y la muestra E contiene 97 registros, en este caso se aplicará una indexación usando como bloques el <code>id_segmento</code>. La estructura de la base de la muestra E es la siguiente</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="vinculación-de-registros.html#cb56-1" tabindex="-1"></a><span class="fu">head</span>(df_censo)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="vinculación-de-registros.html#cb55-1" tabindex="-1"></a><span class="fu">head</span>(df_censo)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ##   id_segmento nombre_cod apellido_cod sexo  fecha_nacimiento
 ##         &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt; &lt;date&gt;          
@@ -341,7 +333,7 @@ div.csl-indent {
 ## 5         102 YRG        GMS          m     1954-01-01      
 ## 6         102 SF         RMRS         f     2000-01-01</code></pre>
 <p>Mientras que la muestra P es la siguiente, es de recordar que los conjuntos de datos ya fueron sometidos a un preprocesamiento, y note que los conjuntos de datos se han alineado para que las variables se denominen de la misma forma:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="vinculación-de-registros.html#cb58-1" tabindex="-1"></a><span class="fu">head</span>(df_encuesta)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="vinculación-de-registros.html#cb57-1" tabindex="-1"></a><span class="fu">head</span>(df_encuesta)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ##   id_segmento nombre_cod apellido_cod sexo  fecha_nacimiento
 ##         &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt; &lt;date&gt;          
@@ -352,17 +344,17 @@ div.csl-indent {
 ## 5         101 SF         KSTR         f     1966-01-01      
 ## 6         101 N          MRTNS        f     1973-01-01</code></pre>
 <p>La función <code>compare.linkage()</code> construye los patrones para la vinculación de los registros, en este caso se compara la muestra E y la muestra P usando como bloque el segmento.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="vinculación-de-registros.html#cb60-1" tabindex="-1"></a>empareja <span class="ot">&lt;-</span> <span class="fu">compare.linkage</span>(<span class="at">dataset1 =</span> df_encuesta,</span>
-<span id="cb60-2"><a href="vinculación-de-registros.html#cb60-2" tabindex="-1"></a>                            <span class="at">dataset2 =</span> df_censo,</span>
-<span id="cb60-3"><a href="vinculación-de-registros.html#cb60-3" tabindex="-1"></a>                            <span class="at">blockfld =</span> <span class="dv">1</span>, <span class="co">#Bloque por id_segmento</span></span>
-<span id="cb60-4"><a href="vinculación-de-registros.html#cb60-4" tabindex="-1"></a>                            <span class="at">strcmp =</span> <span class="fu">c</span>(<span class="st">&quot;nombre_cod&quot;</span>, <span class="st">&quot;apellido_cod&quot;</span>, <span class="st">&quot;sexo&quot;</span>),</span>
-<span id="cb60-5"><a href="vinculación-de-registros.html#cb60-5" tabindex="-1"></a>                            <span class="at">exclude =</span> <span class="st">&quot;id_segmento&quot;</span></span>
-<span id="cb60-6"><a href="vinculación-de-registros.html#cb60-6" tabindex="-1"></a>                            )</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="vinculación-de-registros.html#cb59-1" tabindex="-1"></a>empareja <span class="ot">&lt;-</span> <span class="fu">compare.linkage</span>(<span class="at">dataset1 =</span> df_encuesta,</span>
+<span id="cb59-2"><a href="vinculación-de-registros.html#cb59-2" tabindex="-1"></a>                            <span class="at">dataset2 =</span> df_censo,</span>
+<span id="cb59-3"><a href="vinculación-de-registros.html#cb59-3" tabindex="-1"></a>                            <span class="at">blockfld =</span> <span class="dv">1</span>, <span class="co">#Bloque por id_segmento</span></span>
+<span id="cb59-4"><a href="vinculación-de-registros.html#cb59-4" tabindex="-1"></a>                            <span class="at">strcmp =</span> <span class="fu">c</span>(<span class="st">&quot;nombre_cod&quot;</span>, <span class="st">&quot;apellido_cod&quot;</span>, <span class="st">&quot;sexo&quot;</span>),</span>
+<span id="cb59-5"><a href="vinculación-de-registros.html#cb59-5" tabindex="-1"></a>                            <span class="at">exclude =</span> <span class="st">&quot;id_segmento&quot;</span></span>
+<span id="cb59-6"><a href="vinculación-de-registros.html#cb59-6" tabindex="-1"></a>                            )</span></code></pre></div>
 <p>Una vez realizadas las comparaciones utilizando los criterios especificados, se aplica el algoritmo para calcular la probabilidad de coincidencia. Para ello, el paquete <code>RecordLinkage</code> cuenta con los algoritmos de Fellegi-Sunter, EpiLink y EM.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="vinculación-de-registros.html#cb61-1" tabindex="-1"></a>empareja_fs <span class="ot">&lt;-</span> RecordLinkage<span class="sc">::</span><span class="fu">fsWeights</span>(empareja)</span>
-<span id="cb61-2"><a href="vinculación-de-registros.html#cb61-2" tabindex="-1"></a><span class="co">#empareja_em &lt;- RecordLinkage::emWeights(empareja)</span></span>
-<span id="cb61-3"><a href="vinculación-de-registros.html#cb61-3" tabindex="-1"></a><span class="co">#empareja_ep &lt;- RecordLinkage::epiWeights(empareja)</span></span>
-<span id="cb61-4"><a href="vinculación-de-registros.html#cb61-4" tabindex="-1"></a><span class="fu">summary</span>(empareja_fs)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="vinculación-de-registros.html#cb60-1" tabindex="-1"></a>empareja_fs <span class="ot">&lt;-</span> RecordLinkage<span class="sc">::</span><span class="fu">fsWeights</span>(empareja)</span>
+<span id="cb60-2"><a href="vinculación-de-registros.html#cb60-2" tabindex="-1"></a><span class="co">#empareja_em &lt;- RecordLinkage::emWeights(empareja)</span></span>
+<span id="cb60-3"><a href="vinculación-de-registros.html#cb60-3" tabindex="-1"></a><span class="co">#empareja_ep &lt;- RecordLinkage::epiWeights(empareja)</span></span>
+<span id="cb60-4"><a href="vinculación-de-registros.html#cb60-4" tabindex="-1"></a><span class="fu">summary</span>(empareja_fs)</span></code></pre></div>
 <pre><code>## 
 ## Linkage Data Set
 ## 
@@ -386,28 +378,28 @@ div.csl-indent {
 <p>Los algoritmos calculan la probabilidad de coincidencia para cada registro en <code>df_encuesta</code> con cada registro en el conjunto de <code>df_censo</code> cuando pertenecen al mismo segmento, basándose en los patrones de comparación especificados. Ahora, es necesario realizar la clasificación como <em>emparejado</em>, <em>emparejamiento potencial</em> o <em>no emparejado</em>. Para hacer esta clasificación, es necesario establecer el umbral de clasificación.</p>
 <p>La elección del umbral suele ser un aspecto relevante. Si es muy bajo, se podría estar aceptando demasiados falsos positivos; si es muy alto, se podría perder verdaderos emparejados. una de las herramientas del paquete <code>RecordLinkage</code> es la función <code>getParetoThreshold()</code>, que puede ser útil para identificar el umbral de aceptación. Sin embargo, con conjuntos de datos grandes podría tardar mucho en ejecutarse.</p>
 <p>La siguiente gráfica es interactiva y permite observar cómo cambia la vida residual media a medida que sube el umbral. Se ha comentado la línea debido a que no puede compilarse por bookdown, y se ha tomado el umbral automático. La idea básica es identificar el punto de cambio de la pendiente en la curva, para ello puede usar un criterio como el del codo.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="vinculación-de-registros.html#cb63-1" tabindex="-1"></a><span class="co">#Este es un diagrama interactivo, por lo que se comenta la línea </span></span>
-<span id="cb63-2"><a href="vinculación-de-registros.html#cb63-2" tabindex="-1"></a><span class="co">#umbral &lt;- getParetoThreshold(empareja_fs) </span></span>
-<span id="cb63-3"><a href="vinculación-de-registros.html#cb63-3" tabindex="-1"></a>umbral <span class="ot">&lt;-</span> <span class="fl">5.86</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="vinculación-de-registros.html#cb62-1" tabindex="-1"></a><span class="co">#Este es un diagrama interactivo, por lo que se comenta la línea </span></span>
+<span id="cb62-2"><a href="vinculación-de-registros.html#cb62-2" tabindex="-1"></a><span class="co">#umbral &lt;- getParetoThreshold(empareja_fs) </span></span>
+<span id="cb62-3"><a href="vinculación-de-registros.html#cb62-3" tabindex="-1"></a>umbral <span class="ot">&lt;-</span> <span class="fl">5.86</span></span></code></pre></div>
 <p>Una vez definido el umbral, se puede extraer en un conjunto de datos a los registros clasificados como <em>emparejados</em>. La primera fila corresponde al registro en <code>df_encuesta</code> mientras que el segundo corresponde al registro en <code>df_censo</code>.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="vinculación-de-registros.html#cb64-1" tabindex="-1"></a>emparejado <span class="ot">&lt;-</span> <span class="fu">getPairs</span>(empareja_fs, <span class="at">min.weight =</span> umbral)</span></code></pre></div>
-<div id="ogdxkndypk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
-<style>#ogdxkndypk table {
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="vinculación-de-registros.html#cb63-1" tabindex="-1"></a>emparejado <span class="ot">&lt;-</span> <span class="fu">getPairs</span>(empareja_fs, <span class="at">min.weight =</span> umbral)</span></code></pre></div>
+<div id="ktqkaekuzn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
+<style>#ktqkaekuzn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ogdxkndypk thead, #ogdxkndypk tbody, #ogdxkndypk tfoot, #ogdxkndypk tr, #ogdxkndypk td, #ogdxkndypk th {
+#ktqkaekuzn thead, #ktqkaekuzn tbody, #ktqkaekuzn tfoot, #ktqkaekuzn tr, #ktqkaekuzn td, #ktqkaekuzn th {
   border-style: none;
 }
 
-#ogdxkndypk p {
+#ktqkaekuzn p {
   margin: 0;
   padding: 0;
 }
 
-#ogdxkndypk .gt_table {
+#ktqkaekuzn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -433,12 +425,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_caption {
+#ktqkaekuzn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ogdxkndypk .gt_title {
+#ktqkaekuzn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -450,7 +442,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#ogdxkndypk .gt_subtitle {
+#ktqkaekuzn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -462,7 +454,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#ogdxkndypk .gt_heading {
+#ktqkaekuzn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -474,13 +466,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_bottom_border {
+#ktqkaekuzn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_col_headings {
+#ktqkaekuzn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -495,7 +487,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_col_heading {
+#ktqkaekuzn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -515,7 +507,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#ogdxkndypk .gt_column_spanner_outer {
+#ktqkaekuzn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -527,15 +519,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#ogdxkndypk .gt_column_spanner_outer:first-child {
+#ktqkaekuzn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ogdxkndypk .gt_column_spanner_outer:last-child {
+#ktqkaekuzn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ogdxkndypk .gt_column_spanner {
+#ktqkaekuzn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -547,11 +539,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#ogdxkndypk .gt_spanner_row {
+#ktqkaekuzn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ogdxkndypk .gt_group_heading {
+#ktqkaekuzn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -577,7 +569,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#ogdxkndypk .gt_empty_group_heading {
+#ktqkaekuzn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -592,15 +584,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#ogdxkndypk .gt_from_md > :first-child {
+#ktqkaekuzn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ogdxkndypk .gt_from_md > :last-child {
+#ktqkaekuzn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ogdxkndypk .gt_row {
+#ktqkaekuzn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -619,7 +611,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#ogdxkndypk .gt_stub {
+#ktqkaekuzn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -632,7 +624,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ogdxkndypk .gt_stub_row_group {
+#ktqkaekuzn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -646,15 +638,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#ogdxkndypk .gt_row_group_first td {
+#ktqkaekuzn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ogdxkndypk .gt_row_group_first th {
+#ktqkaekuzn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ogdxkndypk .gt_summary_row {
+#ktqkaekuzn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -664,16 +656,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ogdxkndypk .gt_first_summary_row {
+#ktqkaekuzn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_first_summary_row.thick {
+#ktqkaekuzn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ogdxkndypk .gt_last_summary_row {
+#ktqkaekuzn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -683,7 +675,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_grand_summary_row {
+#ktqkaekuzn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -693,7 +685,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ogdxkndypk .gt_first_grand_summary_row {
+#ktqkaekuzn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -703,7 +695,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_last_grand_summary_row_top {
+#ktqkaekuzn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -713,11 +705,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_striped {
+#ktqkaekuzn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ogdxkndypk .gt_table_body {
+#ktqkaekuzn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -726,7 +718,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_footnotes {
+#ktqkaekuzn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -740,7 +732,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_footnote {
+#ktqkaekuzn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -749,7 +741,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ogdxkndypk .gt_sourcenotes {
+#ktqkaekuzn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -763,7 +755,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ogdxkndypk .gt_sourcenote {
+#ktqkaekuzn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -771,72 +763,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ogdxkndypk .gt_left {
+#ktqkaekuzn .gt_left {
   text-align: left;
 }
 
-#ogdxkndypk .gt_center {
+#ktqkaekuzn .gt_center {
   text-align: center;
 }
 
-#ogdxkndypk .gt_right {
+#ktqkaekuzn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ogdxkndypk .gt_font_normal {
+#ktqkaekuzn .gt_font_normal {
   font-weight: normal;
 }
 
-#ogdxkndypk .gt_font_bold {
+#ktqkaekuzn .gt_font_bold {
   font-weight: bold;
 }
 
-#ogdxkndypk .gt_font_italic {
+#ktqkaekuzn .gt_font_italic {
   font-style: italic;
 }
 
-#ogdxkndypk .gt_super {
+#ktqkaekuzn .gt_super {
   font-size: 65%;
 }
 
-#ogdxkndypk .gt_footnote_marks {
+#ktqkaekuzn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ogdxkndypk .gt_asterisk {
+#ktqkaekuzn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ogdxkndypk .gt_indent_1 {
+#ktqkaekuzn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ogdxkndypk .gt_indent_2 {
+#ktqkaekuzn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ogdxkndypk .gt_indent_3 {
+#ktqkaekuzn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ogdxkndypk .gt_indent_4 {
+#ktqkaekuzn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ogdxkndypk .gt_indent_5 {
+#ktqkaekuzn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ogdxkndypk .katex-display {
+#ktqkaekuzn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ogdxkndypk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ktqkaekuzn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2038,40 +2030,40 @@ div.csl-indent {
 </table>
 </div>
 <p>De igual forma, usando la misma gráfica obtenida con <code>getParetoThreshold()</code> se puede establecer un umbral más flexible, y encontrar los <em>emparejamientos potenciales</em>. En nuestro ejemplo se tomarán como aquellos registros que tienen un ponderador entre 1.2 y el umbral, los cuales pasarán a una revisión clerical para establecer si se clasifican como <em>emparejados</em> o <em>no emparejados</em></p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="vinculación-de-registros.html#cb65-1" tabindex="-1"></a>posibles <span class="ot">&lt;-</span> <span class="fu">getPairs</span>(empareja_fs, <span class="at">min.weight =</span> <span class="fl">1.2</span>, <span class="at">max.weight =</span> umbral)</span></code></pre></div>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="vinculación-de-registros.html#cb66-1" tabindex="-1"></a>posibles <span class="sc">%&gt;%</span></span>
-<span id="cb66-2"><a href="vinculación-de-registros.html#cb66-2" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb66-3"><a href="vinculación-de-registros.html#cb66-3" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb66-4"><a href="vinculación-de-registros.html#cb66-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Emparejamientos potenciales&quot;</span></span>
-<span id="cb66-5"><a href="vinculación-de-registros.html#cb66-5" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb66-6"><a href="vinculación-de-registros.html#cb66-6" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb66-7"><a href="vinculación-de-registros.html#cb66-7" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
-<span id="cb66-8"><a href="vinculación-de-registros.html#cb66-8" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">&quot;#f9f9f9&quot;</span>),</span>
-<span id="cb66-9"><a href="vinculación-de-registros.html#cb66-9" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">&quot;bold&quot;</span>)</span>
-<span id="cb66-10"><a href="vinculación-de-registros.html#cb66-10" tabindex="-1"></a>    ),</span>
-<span id="cb66-11"><a href="vinculación-de-registros.html#cb66-11" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>()</span>
-<span id="cb66-12"><a href="vinculación-de-registros.html#cb66-12" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb66-13"><a href="vinculación-de-registros.html#cb66-13" tabindex="-1"></a>  <span class="fu">tab_options</span>(</span>
-<span id="cb66-14"><a href="vinculación-de-registros.html#cb66-14" tabindex="-1"></a>    <span class="at">table.width =</span> <span class="fu">pct</span>(<span class="dv">100</span>),</span>
-<span id="cb66-15"><a href="vinculación-de-registros.html#cb66-15" tabindex="-1"></a>    <span class="at">container.height =</span> <span class="fu">px</span>(<span class="dv">400</span>) </span>
-<span id="cb66-16"><a href="vinculación-de-registros.html#cb66-16" tabindex="-1"></a>  )</span></code></pre></div>
-<div id="ioeskldjas" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
-<style>#ioeskldjas table {
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="vinculación-de-registros.html#cb64-1" tabindex="-1"></a>posibles <span class="ot">&lt;-</span> <span class="fu">getPairs</span>(empareja_fs, <span class="at">min.weight =</span> <span class="fl">1.2</span>, <span class="at">max.weight =</span> umbral)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="vinculación-de-registros.html#cb65-1" tabindex="-1"></a>posibles <span class="sc">%&gt;%</span></span>
+<span id="cb65-2"><a href="vinculación-de-registros.html#cb65-2" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a href="vinculación-de-registros.html#cb65-3" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb65-4"><a href="vinculación-de-registros.html#cb65-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Emparejamientos potenciales&quot;</span></span>
+<span id="cb65-5"><a href="vinculación-de-registros.html#cb65-5" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb65-6"><a href="vinculación-de-registros.html#cb65-6" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb65-7"><a href="vinculación-de-registros.html#cb65-7" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb65-8"><a href="vinculación-de-registros.html#cb65-8" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">&quot;#f9f9f9&quot;</span>),</span>
+<span id="cb65-9"><a href="vinculación-de-registros.html#cb65-9" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">&quot;bold&quot;</span>)</span>
+<span id="cb65-10"><a href="vinculación-de-registros.html#cb65-10" tabindex="-1"></a>    ),</span>
+<span id="cb65-11"><a href="vinculación-de-registros.html#cb65-11" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>()</span>
+<span id="cb65-12"><a href="vinculación-de-registros.html#cb65-12" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb65-13"><a href="vinculación-de-registros.html#cb65-13" tabindex="-1"></a>  <span class="fu">tab_options</span>(</span>
+<span id="cb65-14"><a href="vinculación-de-registros.html#cb65-14" tabindex="-1"></a>    <span class="at">table.width =</span> <span class="fu">pct</span>(<span class="dv">100</span>),</span>
+<span id="cb65-15"><a href="vinculación-de-registros.html#cb65-15" tabindex="-1"></a>    <span class="at">container.height =</span> <span class="fu">px</span>(<span class="dv">400</span>) </span>
+<span id="cb65-16"><a href="vinculación-de-registros.html#cb65-16" tabindex="-1"></a>  )</span></code></pre></div>
+<div id="wobapomxil" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
+<style>#wobapomxil table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ioeskldjas thead, #ioeskldjas tbody, #ioeskldjas tfoot, #ioeskldjas tr, #ioeskldjas td, #ioeskldjas th {
+#wobapomxil thead, #wobapomxil tbody, #wobapomxil tfoot, #wobapomxil tr, #wobapomxil td, #wobapomxil th {
   border-style: none;
 }
 
-#ioeskldjas p {
+#wobapomxil p {
   margin: 0;
   padding: 0;
 }
 
-#ioeskldjas .gt_table {
+#wobapomxil .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2097,12 +2089,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_caption {
+#wobapomxil .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ioeskldjas .gt_title {
+#wobapomxil .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2114,7 +2106,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#ioeskldjas .gt_subtitle {
+#wobapomxil .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2126,7 +2118,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#ioeskldjas .gt_heading {
+#wobapomxil .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2138,13 +2130,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_bottom_border {
+#wobapomxil .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_col_headings {
+#wobapomxil .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2159,7 +2151,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_col_heading {
+#wobapomxil .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2179,7 +2171,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#ioeskldjas .gt_column_spanner_outer {
+#wobapomxil .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2191,15 +2183,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#ioeskldjas .gt_column_spanner_outer:first-child {
+#wobapomxil .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ioeskldjas .gt_column_spanner_outer:last-child {
+#wobapomxil .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ioeskldjas .gt_column_spanner {
+#wobapomxil .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2211,11 +2203,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#ioeskldjas .gt_spanner_row {
+#wobapomxil .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ioeskldjas .gt_group_heading {
+#wobapomxil .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2241,7 +2233,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#ioeskldjas .gt_empty_group_heading {
+#wobapomxil .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2256,15 +2248,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#ioeskldjas .gt_from_md > :first-child {
+#wobapomxil .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ioeskldjas .gt_from_md > :last-child {
+#wobapomxil .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ioeskldjas .gt_row {
+#wobapomxil .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2283,7 +2275,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#ioeskldjas .gt_stub {
+#wobapomxil .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2296,7 +2288,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ioeskldjas .gt_stub_row_group {
+#wobapomxil .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2310,15 +2302,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#ioeskldjas .gt_row_group_first td {
+#wobapomxil .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ioeskldjas .gt_row_group_first th {
+#wobapomxil .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ioeskldjas .gt_summary_row {
+#wobapomxil .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2328,16 +2320,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ioeskldjas .gt_first_summary_row {
+#wobapomxil .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_first_summary_row.thick {
+#wobapomxil .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ioeskldjas .gt_last_summary_row {
+#wobapomxil .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2347,7 +2339,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_grand_summary_row {
+#wobapomxil .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2357,7 +2349,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ioeskldjas .gt_first_grand_summary_row {
+#wobapomxil .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2367,7 +2359,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_last_grand_summary_row_top {
+#wobapomxil .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2377,11 +2369,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_striped {
+#wobapomxil .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ioeskldjas .gt_table_body {
+#wobapomxil .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2390,7 +2382,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_footnotes {
+#wobapomxil .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2404,7 +2396,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_footnote {
+#wobapomxil .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2413,7 +2405,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ioeskldjas .gt_sourcenotes {
+#wobapomxil .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2427,7 +2419,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ioeskldjas .gt_sourcenote {
+#wobapomxil .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2435,72 +2427,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ioeskldjas .gt_left {
+#wobapomxil .gt_left {
   text-align: left;
 }
 
-#ioeskldjas .gt_center {
+#wobapomxil .gt_center {
   text-align: center;
 }
 
-#ioeskldjas .gt_right {
+#wobapomxil .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ioeskldjas .gt_font_normal {
+#wobapomxil .gt_font_normal {
   font-weight: normal;
 }
 
-#ioeskldjas .gt_font_bold {
+#wobapomxil .gt_font_bold {
   font-weight: bold;
 }
 
-#ioeskldjas .gt_font_italic {
+#wobapomxil .gt_font_italic {
   font-style: italic;
 }
 
-#ioeskldjas .gt_super {
+#wobapomxil .gt_super {
   font-size: 65%;
 }
 
-#ioeskldjas .gt_footnote_marks {
+#wobapomxil .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ioeskldjas .gt_asterisk {
+#wobapomxil .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ioeskldjas .gt_indent_1 {
+#wobapomxil .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ioeskldjas .gt_indent_2 {
+#wobapomxil .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ioeskldjas .gt_indent_3 {
+#wobapomxil .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ioeskldjas .gt_indent_4 {
+#wobapomxil .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ioeskldjas .gt_indent_5 {
+#wobapomxil .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ioeskldjas .katex-display {
+#wobapomxil .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ioeskldjas div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wobapomxil div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2905,9 +2897,6 @@ div.csl-indent {
 </div>
 <p>Finalizado el proceso, los registros que se lograron emparejar deben ser retirados del conjunto de datos <code>df_encuesta</code> y el conjunto <code>df_censo</code> debe ampliarse con otros segmentos aledaños a la muestra E, para repetir el proceso.</p>
 
-<p>knitr::opts_chunk$set(warning = FALSE,
-message = FALSE,
-cache = TRUE)</p>
 </div>
 <!-- </div> -->
             </section>

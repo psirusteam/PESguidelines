@@ -54,14 +54,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/d3-3.3.8/d3.min.js"></script>
-<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
-<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
-<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -340,25 +332,24 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="deduplicación-de-registros.html#cb26-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(<span class="fu">table</span>(inic_apell)))</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    2.00    5.75    8.00   25.00   40.00  115.00</code></pre>
-<pre><code>## Warning in options(scipen = 99999): invalid &#39;scipen&#39; 99999, used 9999</code></pre>
-<p>A pesar de lo anterior, el número de pares posibles tras aplicar el bloqueo baja de 124750 a 14805 pares. Esta reducción es crucial para el rendimiento computacional del algoritmo. A continuación se observa el número de comparaciones por bloque.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="deduplicación-de-registros.html#cb29-1" tabindex="-1"></a><span class="fu">sapply</span>(tbl, choose, <span class="at">k=</span><span class="dv">2</span>)</span></code></pre></div>
+<p>A pesar de lo anterior, el número de pares posibles tras aplicar el bloqueo baja de 1.2475^{5} a 1.4805^{4} pares. Esta reducción es crucial para el rendimiento computacional del algoritmo. A continuación se observa el número de comparaciones por bloque.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="deduplicación-de-registros.html#cb28-1" tabindex="-1"></a><span class="fu">sapply</span>(tbl, choose, <span class="at">k=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    A    B    D    E    F    G    H    J    K    L    M    N    O    P    R    S 
 ##   10 1540    1   15  703   66  496   28 1035   78 2850   28    6   15   21 6555 
 ##    T    V    W    Z 
 ##    1   21 1326   10</code></pre>
 <p>Para entrenar el modelo, se agrega a la tabla de datos el id de cada persona y se quita la información redundante:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="deduplicación-de-registros.html#cb31-1" tabindex="-1"></a>RLdata500c <span class="ot">&lt;-</span> RLdata500 <span class="sc">|&gt;</span>  </span>
-<span id="cb31-2"><a href="deduplicación-de-registros.html#cb31-2" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">id =</span> identity.RLdata500) <span class="sc">|&gt;</span> </span>
-<span id="cb31-3"><a href="deduplicación-de-registros.html#cb31-3" tabindex="-1"></a>              <span class="fu">select</span>(<span class="sc">-</span>fname_c2, <span class="sc">-</span>lname_c2)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="deduplicación-de-registros.html#cb30-1" tabindex="-1"></a>RLdata500c <span class="ot">&lt;-</span> RLdata500 <span class="sc">|&gt;</span>  </span>
+<span id="cb30-2"><a href="deduplicación-de-registros.html#cb30-2" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">id =</span> identity.RLdata500) <span class="sc">|&gt;</span> </span>
+<span id="cb30-3"><a href="deduplicación-de-registros.html#cb30-3" tabindex="-1"></a>              <span class="fu">select</span>(<span class="sc">-</span>fname_c2, <span class="sc">-</span>lname_c2)</span></code></pre></div>
 <p>Ahora es sencillo filtrar los duplicados reales, esto permite examinar cómo se presentan las inconsistencias reales en los datos y elegir los métodos más apropiados en el entrenamiento del modelo.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="deduplicación-de-registros.html#cb32-1" tabindex="-1"></a>dup_set <span class="ot">&lt;-</span> RLdata500c <span class="sc">|&gt;</span> </span>
-<span id="cb32-2"><a href="deduplicación-de-registros.html#cb32-2" tabindex="-1"></a>           <span class="fu">group_by</span>(id) <span class="sc">|&gt;</span> </span>
-<span id="cb32-3"><a href="deduplicación-de-registros.html#cb32-3" tabindex="-1"></a>           <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb32-4"><a href="deduplicación-de-registros.html#cb32-4" tabindex="-1"></a>           <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb32-5"><a href="deduplicación-de-registros.html#cb32-5" tabindex="-1"></a>           <span class="fu">arrange</span>(id)</span>
-<span id="cb32-6"><a href="deduplicación-de-registros.html#cb32-6" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="deduplicación-de-registros.html#cb32-7" tabindex="-1"></a><span class="fu">tail</span>(dup_set)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="deduplicación-de-registros.html#cb31-1" tabindex="-1"></a>dup_set <span class="ot">&lt;-</span> RLdata500c <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="deduplicación-de-registros.html#cb31-2" tabindex="-1"></a>           <span class="fu">group_by</span>(id) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="deduplicación-de-registros.html#cb31-3" tabindex="-1"></a>           <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a href="deduplicación-de-registros.html#cb31-4" tabindex="-1"></a>           <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb31-5"><a href="deduplicación-de-registros.html#cb31-5" tabindex="-1"></a>           <span class="fu">arrange</span>(id)</span>
+<span id="cb31-6"><a href="deduplicación-de-registros.html#cb31-6" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="deduplicación-de-registros.html#cb31-7" tabindex="-1"></a><span class="fu">tail</span>(dup_set)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 6
 ##   fname_c1  lname_c1    by    bm    bd    id
 ##   &lt;chr&gt;     &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
@@ -369,19 +360,19 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 ## 5 CHRISTA   SCHWARZ   1965     7    13   444
 ## 6 CHRISTAH  SCHWARZ   1965     7    13   444</code></pre>
 <p>Al calcular la distancia de Levenshtein observamos que la similaridad aún está lejana de 1, mientras que la métrica de Jaro y Winkler produce un mejor resultado de la similaridad.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="deduplicación-de-registros.html#cb34-1" tabindex="-1"></a><span class="fu">levenshteinSim</span>(<span class="fu">c</span>(<span class="st">&quot;SCHUTE&quot;</span>, <span class="st">&quot;SCHULTE&quot;</span>),</span>
-<span id="cb34-2"><a href="deduplicación-de-registros.html#cb34-2" tabindex="-1"></a>               <span class="fu">c</span>(<span class="st">&quot;CHRISTA&quot;</span>, <span class="st">&quot;CHRISTAH&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="deduplicación-de-registros.html#cb33-1" tabindex="-1"></a><span class="fu">levenshteinSim</span>(<span class="fu">c</span>(<span class="st">&quot;SCHUTE&quot;</span>, <span class="st">&quot;SCHULTE&quot;</span>),</span>
+<span id="cb33-2"><a href="deduplicación-de-registros.html#cb33-2" tabindex="-1"></a>               <span class="fu">c</span>(<span class="st">&quot;CHRISTA&quot;</span>, <span class="st">&quot;CHRISTAH&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 0.2857143 0.2500000</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="deduplicación-de-registros.html#cb36-1" tabindex="-1"></a><span class="fu">jarowinkler</span>(<span class="fu">c</span>(<span class="st">&quot;SCHUTE&quot;</span>, <span class="st">&quot;SCHULTE&quot;</span>),</span>
-<span id="cb36-2"><a href="deduplicación-de-registros.html#cb36-2" tabindex="-1"></a>            <span class="fu">c</span>(<span class="st">&quot;CHRISTA&quot;</span>, <span class="st">&quot;CHRISTAH&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="deduplicación-de-registros.html#cb35-1" tabindex="-1"></a><span class="fu">jarowinkler</span>(<span class="fu">c</span>(<span class="st">&quot;SCHUTE&quot;</span>, <span class="st">&quot;SCHULTE&quot;</span>),</span>
+<span id="cb35-2"><a href="deduplicación-de-registros.html#cb35-2" tabindex="-1"></a>            <span class="fu">c</span>(<span class="st">&quot;CHRISTA&quot;</span>, <span class="st">&quot;CHRISTAH&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 0.6428571 0.6011905</code></pre>
 <p>El algoritmo de Jaro-Winkler tiende a funcionar mejor cuando los errores son de tipeo o diferencias leves. También se puede aplicar codificación fonética como <code>soundex()</code> o cualquiera de las presentadas en este capítulo.</p>
 <p>En el siguiente paso se realiza la comparación de pares con bloqueo supervisado, toda vez que el resultado que identifica si es un duplicado o no es observado. La función <code>compare.dedup()</code> crea un objeto con la comparación entre pares de registros dentro de cada bloque. En este ejemplo se generan pares comparables según los bloques definidos por la primera letra del nombre y año de nacimiento (posiciones 1 y 3). Cada par se compara por igualdad de campos y similitud textual cuando se especifica.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="deduplicación-de-registros.html#cb38-1" tabindex="-1"></a>entrenamiento <span class="ot">&lt;-</span> <span class="fu">compare.dedup</span>(RLdata500c[,<span class="sc">-</span><span class="dv">6</span>], </span>
-<span id="cb38-2"><a href="deduplicación-de-registros.html#cb38-2" tabindex="-1"></a>                               <span class="at">blockfld =</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">3</span>),  </span>
-<span id="cb38-3"><a href="deduplicación-de-registros.html#cb38-3" tabindex="-1"></a>                               <span class="at">identity =</span> identity.RLdata500)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="deduplicación-de-registros.html#cb37-1" tabindex="-1"></a>entrenamiento <span class="ot">&lt;-</span> <span class="fu">compare.dedup</span>(RLdata500c[,<span class="sc">-</span><span class="dv">6</span>], </span>
+<span id="cb37-2"><a href="deduplicación-de-registros.html#cb37-2" tabindex="-1"></a>                               <span class="at">blockfld =</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">3</span>),  </span>
+<span id="cb37-3"><a href="deduplicación-de-registros.html#cb37-3" tabindex="-1"></a>                               <span class="at">identity =</span> identity.RLdata500)</span></code></pre></div>
 <p>Ahora se calculan pesos probabilísticos para cada par comparado. Este paso estima la probabilidad de que cada par sea un match verdadero, usando un modelo probabilístico basado en la teoría de Fellegi-Sunter.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="deduplicación-de-registros.html#cb39-1" tabindex="-1"></a>prob <span class="ot">&lt;-</span> <span class="fu">epiWeights</span>(entrenamiento)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="deduplicación-de-registros.html#cb38-1" tabindex="-1"></a>prob <span class="ot">&lt;-</span> <span class="fu">epiWeights</span>(entrenamiento)</span></code></pre></div>
 <p>A partir de las probabilidades se clasifica automáticamente los pares en tres categorías:</p>
 <ul>
 <li><strong>P</strong>: Positivo (match verdadero).</li>
@@ -389,8 +380,8 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <li><strong>L</strong>: Incertidumbre (requiere revisión clerical).</li>
 </ul>
 <p>En este caso se especifica un umbral de 0.7, es decir, los pares con probabilidad superior a ese valor se clasifican como positivos.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="deduplicación-de-registros.html#cb40-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">epiClassify</span>(prob, <span class="fl">0.7</span>)</span>
-<span id="cb40-2"><a href="deduplicación-de-registros.html#cb40-2" tabindex="-1"></a><span class="fu">summary</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="deduplicación-de-registros.html#cb39-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">epiClassify</span>(prob, <span class="fl">0.7</span>)</span>
+<span id="cb39-2"><a href="deduplicación-de-registros.html#cb39-2" tabindex="-1"></a><span class="fu">summary</span>(res)</span></code></pre></div>
 <pre><code>## 
 ## Deduplication Data Set
 ## 
@@ -428,21 +419,21 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <p>Según la matriz de clasificación, de los 50 pares realmente duplicados, el modelo identificó correctamente a 46, mientras que 4 no fueron detectados, lo que corresponde a una tasa de falsos negativos de <span class="math inline">\(\alpha = 8\)</span>%. Por otro lado, la tasa de falsos positivos es cero, ya que ningún par no duplicado fue clasificado erróneamente como duplicado.</p>
 <p>En conjunto, el modelo alcanzó una exactitud del 99.85%, lo que indica un alto rendimiento en la tarea de deduplicación.</p>
 <p>Una vez se ha entrenado el modelo, se puede aplicar una comparación difusa (fuzzy) a todos los datos, para ampliar las posibilidades del ejemplo se usará con la métrica de Jaro-Winkler para todas las variables de cadena (<code>strcmp = TRUE</code>). Se omite el uso de funciones fonéticas (<code>phonetic = FALSE</code>), lo cual es útil cuando queremos detectar errores ortográficos leves y los bloques se arman solo por año de nacimiento. Aunque en la práctica se debe especificar el modelo entrenado.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="deduplicación-de-registros.html#cb42-1" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">compare.dedup</span>(RLdata500c[,<span class="sc">-</span><span class="dv">6</span>],</span>
-<span id="cb42-2"><a href="deduplicación-de-registros.html#cb42-2" tabindex="-1"></a>                        <span class="at">phonetic =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb42-3"><a href="deduplicación-de-registros.html#cb42-3" tabindex="-1"></a>                        <span class="at">blockfld =</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">3</span>),</span>
-<span id="cb42-4"><a href="deduplicación-de-registros.html#cb42-4" tabindex="-1"></a>                        <span class="at">strcmp =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb42-5"><a href="deduplicación-de-registros.html#cb42-5" tabindex="-1"></a>                        <span class="at">strcmpfun =</span> jarowinkler)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="deduplicación-de-registros.html#cb41-1" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">compare.dedup</span>(RLdata500c[,<span class="sc">-</span><span class="dv">6</span>],</span>
+<span id="cb41-2"><a href="deduplicación-de-registros.html#cb41-2" tabindex="-1"></a>                        <span class="at">phonetic =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb41-3"><a href="deduplicación-de-registros.html#cb41-3" tabindex="-1"></a>                        <span class="at">blockfld =</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="cb41-4"><a href="deduplicación-de-registros.html#cb41-4" tabindex="-1"></a>                        <span class="at">strcmp =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb41-5"><a href="deduplicación-de-registros.html#cb41-5" tabindex="-1"></a>                        <span class="at">strcmpfun =</span> jarowinkler)</span></code></pre></div>
 <p>En conclusión, el uso de bloqueo combinado con comparaciones textuales permite reducir significativamente el esfuerzo computacional, en este caso, más del 90%, al evitar comparaciones innecesarias entre todos los registros. Además, este enfoque es efectivo para detectar duplicados incluso cuando existen errores de tipeo o inconsistencias en los datos, logrando una clasificación precisa de los pares potencialmente duplicados.</p>
 <p>Se recomienda ajustar adecuadamente el argumento blockfld para optimizar la eficiencia del proceso, y seleccionar el método de comparación textual (por ejemplo, Jaro-Winkler o Levenshtein) de acuerdo con la calidad y naturaleza de los nombres en los datos.</p>
 <p>Finalmente, es importante validar los resultados obtenidos, ya sea mediante revisión clerical o a través de otras reglas, para asegurar la confiabilidad del proceso de deduplicación.</p>
 <p><strong>Ejemplo usando el paquete fastLink</strong></p>
 <p>Para explorar otras opciones, en este ejemplo se usará el conjunto de datos <code>RLdata10000</code> del paquete <code>RecordLinkage</code>, el cual contiene 10.000 registros con 1.000 duplicados y 8.000 no duplicados.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="deduplicación-de-registros.html#cb43-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb43-2"><a href="deduplicación-de-registros.html#cb43-2" tabindex="-1"></a><span class="fu">p_load</span>(tidyverse, janitor, fastLink, RecordLinkage, parallel)</span>
-<span id="cb43-3"><a href="deduplicación-de-registros.html#cb43-3" tabindex="-1"></a></span>
-<span id="cb43-4"><a href="deduplicación-de-registros.html#cb43-4" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;RLdata10000&quot;</span>)</span>
-<span id="cb43-5"><a href="deduplicación-de-registros.html#cb43-5" tabindex="-1"></a><span class="fu">head</span>(RLdata10000)</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="deduplicación-de-registros.html#cb42-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb42-2"><a href="deduplicación-de-registros.html#cb42-2" tabindex="-1"></a><span class="fu">p_load</span>(tidyverse, janitor, fastLink, RecordLinkage, parallel)</span>
+<span id="cb42-3"><a href="deduplicación-de-registros.html#cb42-3" tabindex="-1"></a></span>
+<span id="cb42-4"><a href="deduplicación-de-registros.html#cb42-4" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;RLdata10000&quot;</span>)</span>
+<span id="cb42-5"><a href="deduplicación-de-registros.html#cb42-5" tabindex="-1"></a><span class="fu">head</span>(RLdata10000)</span></code></pre></div>
 <pre><code>##   fname_c1 fname_c2   lname_c1 lname_c2   by bm bd
 ## 1    FRANK     &lt;NA&gt;    MUELLER     &lt;NA&gt; 1967  9 27
 ## 2   MARTIN     &lt;NA&gt;    SCHWARZ     &lt;NA&gt; 1967  2 17
@@ -452,23 +443,23 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 ## 6   DANIEL     &lt;NA&gt;   HEINRICH     &lt;NA&gt; 1967  5  6</code></pre>
 <p>Al igual que en el ejemplo anterior, suponga que un subconjunto de los datos de la muestra E fue revisado de forma manual para establecer la coincidencia con la muestra P, y que ha conservado un id único que permite realizar el emparejamiento exacto.</p>
 <p>En el caso de <code>RLdata10000</code> se cuenta con el vector <code>identity.RLdata10000</code> que conserva el id único de cada registro, esto con fines de entrenamiento de un modelo o como en este caso, para mostrar el uso de los procedimientos. Note que solo hay 9.000 identificadores únicos, por lo que 1.000 son duplicados, el desafío es que los métodos de emparejamiento los identifique con el menor error.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="deduplicación-de-registros.html#cb45-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(identity.RLdata10000))</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="deduplicación-de-registros.html#cb44-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(identity.RLdata10000))</span></code></pre></div>
 <pre><code>## [1] 9000</code></pre>
 <p>Se define el vector <code>var</code> con todas las variables que se hará el emparejamiento, en el vector <code>char_vars</code> se conservan las variables de cadena donde es posible hacer cálculos con métricas de similaridad, <code>cal_simil</code> especifica para cuales de las variables de <code>char_vars</code> no se exige coincidencias exactas. La métrica que se usa por defecto es Jaro-Winkler, pero hay otras opciones que se pueden implementar.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="deduplicación-de-registros.html#cb47-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>, <span class="st">&quot;by&quot;</span>, <span class="st">&quot;bm&quot;</span>, <span class="st">&quot;bd&quot;</span>)</span>
-<span id="cb47-2"><a href="deduplicación-de-registros.html#cb47-2" tabindex="-1"></a>char_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>)</span>
-<span id="cb47-3"><a href="deduplicación-de-registros.html#cb47-3" tabindex="-1"></a>cal_simil <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="deduplicación-de-registros.html#cb46-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>, <span class="st">&quot;by&quot;</span>, <span class="st">&quot;bm&quot;</span>, <span class="st">&quot;bd&quot;</span>)</span>
+<span id="cb46-2"><a href="deduplicación-de-registros.html#cb46-2" tabindex="-1"></a>char_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>)</span>
+<span id="cb46-3"><a href="deduplicación-de-registros.html#cb46-3" tabindex="-1"></a>cal_simil <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>)</span></code></pre></div>
 <p>La función <code>fastLink</code> permite identificar los duplicados usando los mismos datos en los argumentos de los <code>dfA</code> y <code>dfB</code>, y cuenta con un argumento para distribuir en varios cores el procesamiento. <code>cut.a</code> es el umbral mínimo de probabilidad posterior para aceptar un <em>emparejamiento</em> y <code>cut.p</code> es el umbral inferior para considerar un registro como <em>emparejamiento potencial</em> (que pase a revisión clerical), es decir, si la probabilidad está entre <code>cut.p</code> y <code>cut.a</code>, el par se considera un <em>emparejamiento potencial</em> que requiere revisión manual. Si la probabilidad es menor que <code>cut.p</code>, el registro se considera como <em>no emparejado</em>. Se debe tener en cuenta que un valor muy alto de <code>cut.a</code> puede originar más precisión pero menos emparejamientos, pero si <code>cut.a</code> es bajo entonces se espera un mayor <em>recall</em> y un mayor riesgo de falsos positivos.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="deduplicación-de-registros.html#cb48-1" tabindex="-1"></a>nCores <span class="ot">&lt;-</span> <span class="fu">detectCores</span>()</span>
-<span id="cb48-2"><a href="deduplicación-de-registros.html#cb48-2" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">fastLink</span>(<span class="at">dfA =</span> RLdata10000, <span class="at">dfB =</span> RLdata10000,</span>
-<span id="cb48-3"><a href="deduplicación-de-registros.html#cb48-3" tabindex="-1"></a>                <span class="at">varnames =</span> vars,</span>
-<span id="cb48-4"><a href="deduplicación-de-registros.html#cb48-4" tabindex="-1"></a>                <span class="at">stringdist.match =</span> char_vars,</span>
-<span id="cb48-5"><a href="deduplicación-de-registros.html#cb48-5" tabindex="-1"></a>                <span class="at">stringdist.method =</span> <span class="st">&quot;jw&quot;</span>,</span>
-<span id="cb48-6"><a href="deduplicación-de-registros.html#cb48-6" tabindex="-1"></a>                <span class="at">partial.match =</span> cal_simil,</span>
-<span id="cb48-7"><a href="deduplicación-de-registros.html#cb48-7" tabindex="-1"></a>                <span class="at">cut.a =</span> <span class="fl">0.94</span>,</span>
-<span id="cb48-8"><a href="deduplicación-de-registros.html#cb48-8" tabindex="-1"></a>                <span class="at">cut.p =</span> <span class="fl">0.84</span>,</span>
-<span id="cb48-9"><a href="deduplicación-de-registros.html#cb48-9" tabindex="-1"></a>                <span class="at">dedupe =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb48-10"><a href="deduplicación-de-registros.html#cb48-10" tabindex="-1"></a>                <span class="at">n.cores =</span> nCores <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="deduplicación-de-registros.html#cb47-1" tabindex="-1"></a>nCores <span class="ot">&lt;-</span> <span class="fu">detectCores</span>()</span>
+<span id="cb47-2"><a href="deduplicación-de-registros.html#cb47-2" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">fastLink</span>(<span class="at">dfA =</span> RLdata10000, <span class="at">dfB =</span> RLdata10000,</span>
+<span id="cb47-3"><a href="deduplicación-de-registros.html#cb47-3" tabindex="-1"></a>                <span class="at">varnames =</span> vars,</span>
+<span id="cb47-4"><a href="deduplicación-de-registros.html#cb47-4" tabindex="-1"></a>                <span class="at">stringdist.match =</span> char_vars,</span>
+<span id="cb47-5"><a href="deduplicación-de-registros.html#cb47-5" tabindex="-1"></a>                <span class="at">stringdist.method =</span> <span class="st">&quot;jw&quot;</span>,</span>
+<span id="cb47-6"><a href="deduplicación-de-registros.html#cb47-6" tabindex="-1"></a>                <span class="at">partial.match =</span> cal_simil,</span>
+<span id="cb47-7"><a href="deduplicación-de-registros.html#cb47-7" tabindex="-1"></a>                <span class="at">cut.a =</span> <span class="fl">0.94</span>,</span>
+<span id="cb47-8"><a href="deduplicación-de-registros.html#cb47-8" tabindex="-1"></a>                <span class="at">cut.p =</span> <span class="fl">0.84</span>,</span>
+<span id="cb47-9"><a href="deduplicación-de-registros.html#cb47-9" tabindex="-1"></a>                <span class="at">dedupe =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb47-10"><a href="deduplicación-de-registros.html#cb47-10" tabindex="-1"></a>                <span class="at">n.cores =</span> nCores <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## 
 ## ==================== 
 ## fastLink(): Fast Probabilistic Record Linkage
@@ -487,11 +478,11 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 ## Calculating the posterior for each pair of matched observations.
 ## Getting the match patterns for each estimated match.</code></pre>
 <p>El procedimiento genera la variable <code>dedupe.ids</code> para todo el conjunto de datos. La función <code>getMatches</code> permite extraer el conjunto de datos con la variable de identificación.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="deduplicación-de-registros.html#cb51-1" tabindex="-1"></a>index_dup <span class="ot">&lt;-</span> <span class="fu">getMatches</span>(<span class="at">dfA =</span> RLdata10000, <span class="at">dfB =</span> RLdata10000, <span class="at">fl.out =</span> res) </span>
-<span id="cb51-2"><a href="deduplicación-de-registros.html#cb51-2" tabindex="-1"></a>index_dup <span class="ot">&lt;-</span> index_dup <span class="sc">|&gt;</span> <span class="fu">bind_cols</span>(<span class="fu">data.frame</span>(<span class="at">id =</span> identity.RLdata10000))</span>
-<span id="cb51-3"><a href="deduplicación-de-registros.html#cb51-3" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="deduplicación-de-registros.html#cb51-4" tabindex="-1"></a>duplicados <span class="ot">&lt;-</span> <span class="fu">get_dupes</span>(index_dup, dedupe.ids)</span>
-<span id="cb51-5"><a href="deduplicación-de-registros.html#cb51-5" tabindex="-1"></a><span class="fu">head</span>(duplicados)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="deduplicación-de-registros.html#cb50-1" tabindex="-1"></a>index_dup <span class="ot">&lt;-</span> <span class="fu">getMatches</span>(<span class="at">dfA =</span> RLdata10000, <span class="at">dfB =</span> RLdata10000, <span class="at">fl.out =</span> res) </span>
+<span id="cb50-2"><a href="deduplicación-de-registros.html#cb50-2" tabindex="-1"></a>index_dup <span class="ot">&lt;-</span> index_dup <span class="sc">|&gt;</span> <span class="fu">bind_cols</span>(<span class="fu">data.frame</span>(<span class="at">id =</span> identity.RLdata10000))</span>
+<span id="cb50-3"><a href="deduplicación-de-registros.html#cb50-3" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="deduplicación-de-registros.html#cb50-4" tabindex="-1"></a>duplicados <span class="ot">&lt;-</span> <span class="fu">get_dupes</span>(index_dup, dedupe.ids)</span>
+<span id="cb50-5"><a href="deduplicación-de-registros.html#cb50-5" tabindex="-1"></a><span class="fu">head</span>(duplicados)</span></code></pre></div>
 <pre><code>##   dedupe.ids dupe_count fname_c1 fname_c2    lname_c1 lname_c2   by bm bd   id
 ## 1        420          3 GUENTHER     &lt;NA&gt; ZIMMERMWANN     &lt;NA&gt; 1971  6 23 1794
 ## 2        420          3 GUENTHER     &lt;NA&gt;  ZIMMERMANN     &lt;NA&gt; 1992  6 23 1864
@@ -500,14 +491,14 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 ## 5       3969          3  GERTRUD     &lt;NA&gt;     MUELOER     &lt;NA&gt; 1964  7 11 7616
 ## 6       3969          3  GERTRUD     &lt;NA&gt;     MUELLER     &lt;NA&gt; 1964  7 11 7616</code></pre>
 <p>El desempeño del modelo se puede evaluar mediante una matriz de confusión que compara las predicciones del modelo con los valores reales. En este caso, el modelo identificó correctamente 982 verdaderos positivos, es decir, observaciones que efectivamente eran duplicados. Sin embargo, también generó 18 falsos negativos, que son casos verdaderos que el modelo no logró identificar correctamente. Además, el modelo produjo 63 falsos positivos, es decir, casos que fueron clasificados como verdaderos por el modelo, pero en realidad no eran duplicados.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="deduplicación-de-registros.html#cb53-1" tabindex="-1"></a>ids_duplicados <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(identity.RLdata10000))[<span class="fu">table</span>(identity.RLdata10000) <span class="sc">&gt;</span> <span class="dv">1</span>]</span>
-<span id="cb53-2"><a href="deduplicación-de-registros.html#cb53-2" tabindex="-1"></a>todos_ids <span class="ot">&lt;-</span> <span class="fu">union</span>(<span class="fu">unique</span>(duplicados<span class="sc">$</span>id), <span class="fu">unique</span>(ids_duplicados))</span>
-<span id="cb53-3"><a href="deduplicación-de-registros.html#cb53-3" tabindex="-1"></a></span>
-<span id="cb53-4"><a href="deduplicación-de-registros.html#cb53-4" tabindex="-1"></a>dupes_model <span class="ot">&lt;-</span> todos_ids <span class="sc">%in%</span> <span class="fu">unique</span>(duplicados<span class="sc">$</span>id)</span>
-<span id="cb53-5"><a href="deduplicación-de-registros.html#cb53-5" tabindex="-1"></a>dupes_real <span class="ot">&lt;-</span> todos_ids <span class="sc">%in%</span> ids_duplicados</span>
-<span id="cb53-6"><a href="deduplicación-de-registros.html#cb53-6" tabindex="-1"></a></span>
-<span id="cb53-7"><a href="deduplicación-de-registros.html#cb53-7" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">Real =</span> dupes_real, <span class="at">Modelo =</span> dupes_model)</span>
-<span id="cb53-8"><a href="deduplicación-de-registros.html#cb53-8" tabindex="-1"></a><span class="fu">print</span>(matriz)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="deduplicación-de-registros.html#cb52-1" tabindex="-1"></a>ids_duplicados <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(identity.RLdata10000))[<span class="fu">table</span>(identity.RLdata10000) <span class="sc">&gt;</span> <span class="dv">1</span>]</span>
+<span id="cb52-2"><a href="deduplicación-de-registros.html#cb52-2" tabindex="-1"></a>todos_ids <span class="ot">&lt;-</span> <span class="fu">union</span>(<span class="fu">unique</span>(duplicados<span class="sc">$</span>id), <span class="fu">unique</span>(ids_duplicados))</span>
+<span id="cb52-3"><a href="deduplicación-de-registros.html#cb52-3" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="deduplicación-de-registros.html#cb52-4" tabindex="-1"></a>dupes_model <span class="ot">&lt;-</span> todos_ids <span class="sc">%in%</span> <span class="fu">unique</span>(duplicados<span class="sc">$</span>id)</span>
+<span id="cb52-5"><a href="deduplicación-de-registros.html#cb52-5" tabindex="-1"></a>dupes_real <span class="ot">&lt;-</span> todos_ids <span class="sc">%in%</span> ids_duplicados</span>
+<span id="cb52-6"><a href="deduplicación-de-registros.html#cb52-6" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="deduplicación-de-registros.html#cb52-7" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">Real =</span> dupes_real, <span class="at">Modelo =</span> dupes_model)</span>
+<span id="cb52-8"><a href="deduplicación-de-registros.html#cb52-8" tabindex="-1"></a><span class="fu">print</span>(matriz)</span></code></pre></div>
 <pre><code>##        Modelo
 ## Real    FALSE TRUE
 ##   FALSE     0   63

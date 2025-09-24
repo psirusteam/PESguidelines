@@ -1,6 +1,5 @@
-knitr::opts_chunk$set(warning = FALSE, 
-                      message = FALSE,
-                      cache = TRUE)
+
+
                       
 # Estimadores del sistema dual {#cap-estim}
 

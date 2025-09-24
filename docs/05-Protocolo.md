@@ -1,6 +1,4 @@
-knitr::opts_chunk$set(warning = FALSE, 
-                      message = FALSE,
-                      cache = TRUE)
+
                       
 # Evaluación de la cobertura censal
 
@@ -149,9 +147,9 @@ Si no hay coincidencia tras ampliar el área de búsqueda, el caso se clasifica 
 
 ## Flujo general del procedimiento
  
+La Figura \@ref(fig:match1q) muestra el flujograma que se debría seguir para realizar este proceso. 
 
-
-```{=html}
-<div id="htmlwidget-eb479ec333bd63996a67" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eb479ec333bd63996a67">{"x":{"diagram":"\ngraph TD;\n    A[Inicio del Proceso] --> B[Establecer la muestra E y P];\n    B --> C[Preprocesamiento de Datos];\n    C --> D[Emparejamiento Deterministico];\n    D -- Match --> J[Estimación de Omisiones];\n    D -- No Match --> E[Emparejamiento Probabilístico];\n    E --> F[Evaluación del Umbral];\n    F --> H{Tipo de coincidencia?};\n    H -- Emperejados --> J;\n    H -- Potenciales --> I[Revisión clerical];\n    H -- No emparejados --> K[Aumentar el área de búsqueda];\n    K --> X[Ampliar muestra E];\n    X --> E;\n    I --> L{Emparejado?};\n    L -- Sí --> M[Clasificacion Final];\n    L -- No --> K;\n    M --> J;\n    J --> N[Ajustes y Calibraciones];\n    N --> O[Validacion de Resultados];\n    O --> P[Documentacion y Reporte];\n    P --> Q[Fin del Proceso];\n"},"evals":[],"jsHooks":[]}</script>
-```
+<div class="figure" style="text-align: center">
+<img src="images/grafo.png" alt="Flujo general del proceso de emparejamiento en la PES" width="100%" />
+<p class="caption">(\#fig:match1q)Flujo general del proceso de emparejamiento en la PES</p>
+</div>

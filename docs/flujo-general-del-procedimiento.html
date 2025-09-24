@@ -54,14 +54,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/d3-3.3.8/d3.min.js"></script>
-<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
-<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
-<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
-<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -314,12 +306,14 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="flujo-general-del-procedimiento" class="section level2 hasAnchor" number="5.4">
 <h2><span class="header-section-number">5.4</span> Flujo general del procedimiento<a href="flujo-general-del-procedimiento.html#flujo-general-del-procedimiento" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="htmlwidget-eb479ec333bd63996a67" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-eb479ec333bd63996a67">{"x":{"diagram":"\ngraph TD;\n    A[Inicio del Proceso] --> B[Establecer la muestra E y P];\n    B --> C[Preprocesamiento de Datos];\n    C --> D[Emparejamiento Deterministico];\n    D -- Match --> J[Estimación de Omisiones];\n    D -- No Match --> E[Emparejamiento Probabilístico];\n    E --> F[Evaluación del Umbral];\n    F --> H{Tipo de coincidencia?};\n    H -- Emperejados --> J;\n    H -- Potenciales --> I[Revisión clerical];\n    H -- No emparejados --> K[Aumentar el área de búsqueda];\n    K --> X[Ampliar muestra E];\n    X --> E;\n    I --> L{Emparejado?};\n    L -- Sí --> M[Clasificacion Final];\n    L -- No --> K;\n    M --> J;\n    J --> N[Ajustes y Calibraciones];\n    N --> O[Validacion de Resultados];\n    O --> P[Documentacion y Reporte];\n    P --> Q[Fin del Proceso];\n"},"evals":[],"jsHooks":[]}</script>
+<p>La Figura <a href="flujo-general-del-procedimiento.html#fig:match1q">5.2</a> muestra el flujograma que se debría seguir para realizar este proceso.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:match1q"></span>
+<img src="images/grafo.png" alt="Flujo general del proceso de emparejamiento en la PES" width="100%" />
+<p class="caption">
+Figure 5.2: Flujo general del proceso de emparejamiento en la PES
+</p>
+</div>
 
-<p>knitr::opts_chunk$set(warning = FALSE,
-message = FALSE,
-cache = TRUE)</p>
 </div>
 <!-- </div> -->
             </section>

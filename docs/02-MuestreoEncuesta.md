@@ -1,6 +1,5 @@
-knitr::opts_chunk$set(warning = FALSE, 
-                      message = FALSE,
-                      cache = TRUE)
+
+
                       
 # Estimación dual con la muestra de la encuesta
 
