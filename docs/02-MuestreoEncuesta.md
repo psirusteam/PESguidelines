@@ -1,3 +1,7 @@
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE,
+                      cache = TRUE)
+                      
 # Estimación dual con la muestra de la encuesta
 
 En el capítulo anterior, se partió de un supuesto simplificador: que todos los $N$ miembros de la población tenían la posibilidad de ser incluidos tanto en el censo como en la encuesta. Esta suposición, aunque útil para establecer un marco teórico inicial, no refleja la realidad en la mayoría de los estudios de error de cobertura. En la práctica, es poco común que todos los individuos de una población estén expuestos a ser captados por ambas fuentes de información. Por ello, es necesario ajustar este enfoque para abordar situaciones más realistas.

@@ -1,3 +1,7 @@
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE,
+                      cache = TRUE)
+                      
 # Evaluación de la cobertura censal
 
 Como se ha mencionado en los capítulos anteriores, la encuesta postcensal (PES) es un estudio complementario al censo cuyo propósito principal es evaluar la cobertura y calidad de la información recolectada sobre unidades de vivienda y personas. Su implementación permite identificar posibles errores en la enumeración —como omisiones, duplicados o clasificaciones incorrectas— lo que contribuye a mejorar la precisión de los datos censales y proporciona insumos fundamentales para el diseño de futuras operaciones estadísticas.

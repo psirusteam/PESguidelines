@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.3 Preprocesamiento | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.3 Preprocesamiento | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
 
 
-<meta name="date" content="2025-09-08" />
+<meta name="date" content="2025-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -65,8 +65,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -76,7 +77,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -181,11 +182,11 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#estabilidad-poblacional"><i class="fa fa-check"></i><b>1.2.1</b> Estabilidad poblacional</a></li>
 <li class="chapter" data-level="1.2.2" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#sec:multinomial"><i class="fa fa-check"></i><b>1.2.2</b> Estructura multinomial</a></li>
-<li class="chapter" data-level="1.2.3" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#independencia-autónoma"><i class="fa fa-check"></i><b>1.2.3</b> Independencia autónoma</a></li>
+<li class="chapter" data-level="1.2.3" data-path="06-Emparejamiento.html"><a href="#independencia-aut%C3%B3noma"><i class="fa fa-check"></i><b>1.2.3</b> Independencia autónoma</a></li>
 <li class="chapter" data-level="1.2.4" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#independencia-causal"><i class="fa fa-check"></i><b>1.2.4</b> Independencia causal</a></li>
 <li class="chapter" data-level="1.2.5" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#emparejamiento"><i class="fa fa-check"></i><b>1.2.5</b> Emparejamiento</a></li>
 <li class="chapter" data-level="1.2.6" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#eventos-espurios"><i class="fa fa-check"></i><b>1.2.6</b> Eventos espurios</a></li>
-<li class="chapter" data-level="1.2.7" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#postestratificación"><i class="fa fa-check"></i><b>1.2.7</b> Postestratificación</a></li>
+<li class="chapter" data-level="1.2.7" data-path="06-Emparejamiento.html"><a href="#postestratificaci%C3%B3n"><i class="fa fa-check"></i><b>1.2.7</b> Postestratificación</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="inferencia.html"><a href="inferencia.html"><i class="fa fa-check"></i><b>1.3</b> Inferencia</a>
 <ul>
@@ -193,9 +194,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.3.2" data-path="inferencia.html"><a href="inferencia.html#propiedades-del-estimador"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades del estimador</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="estimación-dual-con-la-muestra-de-la-encuesta.html"><a href="estimación-dual-con-la-muestra-de-la-encuesta.html"><i class="fa fa-check"></i><b>2</b> Estimación dual con la muestra de la encuesta</a>
+<li class="chapter" data-level="2" data-path="06-Emparejamiento.html"><a href="#estimaci%C3%B3n-dual-con-la-muestra-de-la-encuesta"><i class="fa fa-check"></i><b>2</b> Estimación dual con la muestra de la encuesta</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="el-diseño-de-muestreo.html"><a href="el-diseño-de-muestreo.html"><i class="fa fa-check"></i><b>2.1</b> El diseño de muestreo</a></li>
+<li class="chapter" data-level="2.1" data-path="06-Emparejamiento.html"><a href="#el-dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>2.1</b> El diseño de muestreo</a></li>
 <li class="chapter" data-level="2.2" data-path="la-muestra-e-y-la-muestra-p.html"><a href="la-muestra-e-y-la-muestra-p.html"><i class="fa fa-check"></i><b>2.2</b> La muestra E y la muestra P</a></li>
 <li class="chapter" data-level="2.3" data-path="los-estimadores-de-muestreo.html"><a href="los-estimadores-de-muestreo.html"><i class="fa fa-check"></i><b>2.3</b> Los estimadores de muestreo</a></li>
 </ul></li>
@@ -222,74 +223,74 @@ div.csl-indent {
 <li class="chapter" data-level="4.9" data-path="notas-adicionales.html"><a href="notas-adicionales.html"><i class="fa fa-check"></i><b>4.9</b> Notas adicionales</a></li>
 <li class="chapter" data-level="4.10" data-path="cuadro-comparativo-de-los-estimadores.html"><a href="cuadro-comparativo-de-los-estimadores.html"><i class="fa fa-check"></i><b>4.10</b> Cuadro comparativo de los estimadores</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="evaluación-de-la-cobertura-censal.html"><a href="evaluación-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
+<li class="chapter" data-level="5" data-path="06-Emparejamiento.html"><a href="#evaluaci%C3%B3n-de-la-cobertura-censal"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-postcensal.html"><a href="objetivos-de-la-encuesta-postcensal.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta postcensal</a></li>
 <li class="chapter" data-level="5.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5.2</b> Componentes de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-correctas"><i class="fa fa-check"></i><b>5.2.1</b> Enumeraciones correctas</a></li>
-<li class="chapter" data-level="5.2.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-erróneas"><i class="fa fa-check"></i><b>5.2.2</b> Enumeraciones erróneas</a></li>
+<li class="chapter" data-level="5.2.2" data-path="06-Emparejamiento.html"><a href="#enumeraciones-err%C3%B3neas"><i class="fa fa-check"></i><b>5.2.2</b> Enumeraciones erróneas</a></li>
 <li class="chapter" data-level="5.2.3" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#omisiones"><i class="fa fa-check"></i><b>5.2.3</b> Omisiones</a></li>
-<li class="chapter" data-level="5.2.4" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#imputación"><i class="fa fa-check"></i><b>5.2.4</b> Imputación</a></li>
+<li class="chapter" data-level="5.2.4" data-path="06-Emparejamiento.html"><a href="#imputaci%C3%B3n"><i class="fa fa-check"></i><b>5.2.4</b> Imputación</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html"><i class="fa fa-check"></i><b>5.3</b> Protocolo de clasificación</a>
+<li class="chapter" data-level="5.3" data-path="06-Emparejamiento.html"><a href="#protocolo-de-clasificaci%C3%B3n"><i class="fa fa-check"></i><b>5.3</b> Protocolo de clasificación</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html#preprocesamiento-de-datos"><i class="fa fa-check"></i><b>5.3.1</b> Preprocesamiento de datos</a></li>
+<li class="chapter" data-level="5.3.1" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html"><i class="fa fa-check"></i><b>5.3.1</b> Preprocesamiento de datos</a></li>
 <li class="chapter" data-level="5.3.2" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html#emparejamiento-de-registros"><i class="fa fa-check"></i><b>5.3.2</b> Emparejamiento de registros</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="flujo-general-del-procedimiento.html"><a href="flujo-general-del-procedimiento.html"><i class="fa fa-check"></i><b>5.4</b> Flujo general del procedimiento</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="emparejamiento-probabilístico.html"><a href="emparejamiento-probabilístico.html"><i class="fa fa-check"></i><b>6</b> Emparejamiento probabilístico</a>
+<li class="chapter" data-level="6" data-path="06-Emparejamiento.html"><a href="#emparejamiento-probabil%C3%ADstico"><i class="fa fa-check"></i><b>6</b> Emparejamiento probabilístico</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="geolocalización.html"><a href="geolocalización.html"><i class="fa fa-check"></i><b>6.1</b> Geolocalización</a></li>
+<li class="chapter" data-level="6.1" data-path="06-Emparejamiento.html"><a href="#geolocalizaci%C3%B3n"><i class="fa fa-check"></i><b>6.1</b> Geolocalización</a></li>
 <li class="chapter" data-level="6.2" data-path="flujo-general.html"><a href="flujo-general.html"><i class="fa fa-check"></i><b>6.2</b> Flujo general</a></li>
 <li class="chapter" data-level="6.3" data-path="preprocesamiento.html"><a href="preprocesamiento.html"><i class="fa fa-check"></i><b>6.3</b> Preprocesamiento</a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="preprocesamiento.html"><a href="preprocesamiento.html#limpieza-de-los-datos"><i class="fa fa-check"></i><b>6.3.1</b> Limpieza de los datos</a></li>
-<li class="chapter" data-level="6.3.2" data-path="preprocesamiento.html"><a href="preprocesamiento.html#codificación-fonética"><i class="fa fa-check"></i><b>6.3.2</b> Codificación fonética</a></li>
+<li class="chapter" data-level="6.3.2" data-path="06-Emparejamiento.html"><a href="#codificaci%C3%B3n-fon%C3%A9tica"><i class="fa fa-check"></i><b>6.3.2</b> Codificación fonética</a></li>
 <li class="chapter" data-level="6.3.3" data-path="preprocesamiento.html"><a href="preprocesamiento.html#metaphone"><i class="fa fa-check"></i><b>6.3.3</b> Metaphone</a></li>
 <li class="chapter" data-level="6.3.4" data-path="preprocesamiento.html"><a href="preprocesamiento.html#algoritmo-statistics-canada"><i class="fa fa-check"></i><b>6.3.4</b> Algoritmo Statistics Canada</a></li>
-<li class="chapter" data-level="6.3.5" data-path="preprocesamiento.html"><a href="preprocesamiento.html#adaptación-para-encuestas-de-américa-latina"><i class="fa fa-check"></i><b>6.3.5</b> Adaptación para Encuestas de América Latina</a></li>
+<li class="chapter" data-level="6.3.5" data-path="06-Emparejamiento.html"><a href="#adaptaci%C3%B3n-para-encuestas-de-am%C3%A9rica-latina"><i class="fa fa-check"></i><b>6.3.5</b> Adaptación para Encuestas de América Latina</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="indexación.html"><a href="indexación.html"><i class="fa fa-check"></i><b>6.4</b> Indexación</a></li>
-<li class="chapter" data-level="6.5" data-path="comparación.html"><a href="comparación.html"><i class="fa fa-check"></i><b>6.5</b> Comparación</a>
+<li class="chapter" data-level="6.4" data-path="06-Emparejamiento.html"><a href="#indexaci%C3%B3n"><i class="fa fa-check"></i><b>6.4</b> Indexación</a></li>
+<li class="chapter" data-level="6.5" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n"><i class="fa fa-check"></i><b>6.5</b> Comparación</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="comparación.html"><a href="comparación.html#distancia-de-levenshtein"><i class="fa fa-check"></i><b>6.5.1</b> Distancia de Levenshtein</a></li>
-<li class="chapter" data-level="6.5.2" data-path="comparación.html"><a href="comparación.html#comparación-de-jaro-y-winkler"><i class="fa fa-check"></i><b>6.5.2</b> Comparación de Jaro y Winkler</a></li>
-<li class="chapter" data-level="6.5.3" data-path="comparación.html"><a href="comparación.html#comparación-de-fechas-y-edades"><i class="fa fa-check"></i><b>6.5.3</b> Comparación de fechas y edades</a></li>
-<li class="chapter" data-level="6.5.4" data-path="comparación.html"><a href="comparación.html#comparación-geográfica"><i class="fa fa-check"></i><b>6.5.4</b> Comparación geográfica</a></li>
+<li class="chapter" data-level="6.5.1" data-path="comparación.html"><a href="comparación.html"><i class="fa fa-check"></i><b>6.5.1</b> Distancia de Levenshtein</a></li>
+<li class="chapter" data-level="6.5.2" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n-de-jaro-y-winkler"><i class="fa fa-check"></i><b>6.5.2</b> Comparación de Jaro y Winkler</a></li>
+<li class="chapter" data-level="6.5.3" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n-de-fechas-y-edades"><i class="fa fa-check"></i><b>6.5.3</b> Comparación de fechas y edades</a></li>
+<li class="chapter" data-level="6.5.4" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n-geogr%C3%A1fica"><i class="fa fa-check"></i><b>6.5.4</b> Comparación geográfica</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="clasificación.html"><a href="clasificación.html"><i class="fa fa-check"></i><b>6.6</b> Clasificación</a></li>
-<li class="chapter" data-level="6.7" data-path="evaluación.html"><a href="evaluación.html"><i class="fa fa-check"></i><b>6.7</b> Evaluación</a>
+<li class="chapter" data-level="6.6" data-path="06-Emparejamiento.html"><a href="#clasificaci%C3%B3n"><i class="fa fa-check"></i><b>6.6</b> Clasificación</a></li>
+<li class="chapter" data-level="6.7" data-path="06-Emparejamiento.html"><a href="#evaluaci%C3%B3n"><i class="fa fa-check"></i><b>6.7</b> Evaluación</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="evaluación.html"><a href="evaluación.html#métricas-de-desempeño"><i class="fa fa-check"></i><b>6.7.1</b> Métricas de desempeño</a></li>
-<li class="chapter" data-level="6.7.2" data-path="evaluación.html"><a href="evaluación.html#métricas-de-eficiencia"><i class="fa fa-check"></i><b>6.7.2</b> Métricas de eficiencia</a></li>
-<li class="chapter" data-level="6.7.3" data-path="evaluación.html"><a href="evaluación.html#revisión-clerical"><i class="fa fa-check"></i><b>6.7.3</b> Revisión clerical</a></li>
+<li class="chapter" data-level="6.7.1" data-path="06-Emparejamiento.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o"><i class="fa fa-check"></i><b>6.7.1</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="6.7.2" data-path="06-Emparejamiento.html"><a href="#m%C3%A9tricas-de-eficiencia"><i class="fa fa-check"></i><b>6.7.2</b> Métricas de eficiencia</a></li>
+<li class="chapter" data-level="6.7.3" data-path="06-Emparejamiento.html"><a href="#revisi%C3%B3n-clerical"><i class="fa fa-check"></i><b>6.7.3</b> Revisión clerical</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="implementación.html"><a href="implementación.html"><i class="fa fa-check"></i><b>6.8</b> Implementación</a></li>
-<li class="chapter" data-level="6.9" data-path="deduplicación-de-registros.html"><a href="deduplicación-de-registros.html"><i class="fa fa-check"></i><b>6.9</b> Deduplicación de registros</a></li>
-<li class="chapter" data-level="6.10" data-path="vinculación-de-registros.html"><a href="vinculación-de-registros.html"><i class="fa fa-check"></i><b>6.10</b> Vinculación de registros</a></li>
+<li class="chapter" data-level="6.8" data-path="06-Emparejamiento.html"><a href="#implementaci%C3%B3n"><i class="fa fa-check"></i><b>6.8</b> Implementación</a></li>
+<li class="chapter" data-level="6.9" data-path="06-Emparejamiento.html"><a href="#deduplicaci%C3%B3n-de-registros"><i class="fa fa-check"></i><b>6.9</b> Deduplicación de registros</a></li>
+<li class="chapter" data-level="6.10" data-path="06-Emparejamiento.html"><a href="#vinculaci%C3%B3n-de-registros"><i class="fa fa-check"></i><b>6.10</b> Vinculación de registros</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="planeación-de-la-operación-estadística.html"><a href="planeación-de-la-operación-estadística.html"><i class="fa fa-check"></i><b>7</b> Planeación de la operación estadística</a>
+<li class="chapter" data-level="7" data-path="06-Emparejamiento.html"><a href="#planeaci%C3%B3n-de-la-operaci%C3%B3n-estad%C3%ADstica"><i class="fa fa-check"></i><b>7</b> Planeación de la operación estadística</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="diseño-del-cuestionario.html"><a href="diseño-del-cuestionario.html"><i class="fa fa-check"></i><b>7.1</b> Diseño del cuestionario</a></li>
-<li class="chapter" data-level="7.2" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html"><i class="fa fa-check"></i><b>7.2</b> Diseño de la muestra</a>
+<li class="chapter" data-level="7.1" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-del-cuestionario"><i class="fa fa-check"></i><b>7.1</b> Diseño del cuestionario</a></li>
+<li class="chapter" data-level="7.2" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-de-la-muestra"><i class="fa fa-check"></i><b>7.2</b> Diseño de la muestra</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#marco-de-muestreo"><i class="fa fa-check"></i><b>7.2.1</b> Marco de muestreo</a></li>
-<li class="chapter" data-level="7.2.2" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#construcción-de-las-upm"><i class="fa fa-check"></i><b>7.2.2</b> Construcción de las UPM</a></li>
+<li class="chapter" data-level="7.2.1" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html"><i class="fa fa-check"></i><b>7.2.1</b> Marco de muestreo</a></li>
+<li class="chapter" data-level="7.2.2" data-path="06-Emparejamiento.html"><a href="#construcci%C3%B3n-de-las-upm"><i class="fa fa-check"></i><b>7.2.2</b> Construcción de las UPM</a></li>
 <li class="chapter" data-level="7.2.3" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#estratos"><i class="fa fa-check"></i><b>7.2.3</b> Estratos</a></li>
-<li class="chapter" data-level="7.2.4" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#diseño-de-muestreo"><i class="fa fa-check"></i><b>7.2.4</b> Diseño de muestreo</a></li>
-<li class="chapter" data-level="7.2.5" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#diseño-de-muestreo-estándar"><i class="fa fa-check"></i><b>7.2.5</b> Diseño de muestreo estándar</a></li>
-<li class="chapter" data-level="7.2.6" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#cálculo-del-tamaño-de-muestra"><i class="fa fa-check"></i><b>7.2.6</b> Cálculo del tamaño de muestra</a></li>
+<li class="chapter" data-level="7.2.4" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>7.2.4</b> Diseño de muestreo</a></li>
+<li class="chapter" data-level="7.2.5" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-de-muestreo-est%C3%A1ndar"><i class="fa fa-check"></i><b>7.2.5</b> Diseño de muestreo estándar</a></li>
+<li class="chapter" data-level="7.2.6" data-path="06-Emparejamiento.html"><a href="#c%C3%A1lculo-del-tama%C3%B1o-de-muestra"><i class="fa fa-check"></i><b>7.2.6</b> Cálculo del tamaño de muestra</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="operativo-de-recolección.html"><a href="operativo-de-recolección.html"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
+<li class="chapter" data-level="7.3" data-path="06-Emparejamiento.html"><a href="#operativo-de-recolecci%C3%B3n"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
 <li class="chapter" data-level="7.4" data-path="indicadores-principales.html"><a href="indicadores-principales.html"><i class="fa fa-check"></i><b>7.4</b> Indicadores principales</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="cap-reg.html"><a href="cap-reg.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="post-estratificación.html"><a href="post-estratificación.html"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
-<li class="chapter" data-level="8.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
-<li class="chapter" data-level="8.3" data-path="ajuste-por-información-demográfica.html"><a href="ajuste-por-información-demográfica.html"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
+<li class="chapter" data-level="8.1" data-path="06-Emparejamiento.html"><a href="#post-estratificaci%C3%B3n"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
+<li class="chapter" data-level="8.2" data-path="06-Emparejamiento.html"><a href="#regresi%C3%B3n-log%C3%ADstica"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
+<li class="chapter" data-level="8.3" data-path="06-Emparejamiento.html"><a href="#ajuste-por-informaci%C3%B3n-demogr%C3%A1fica"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
@@ -326,48 +327,48 @@ div.csl-indent {
 <div id="limpieza-de-los-datos" class="section level3 hasAnchor" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Limpieza de los datos<a href="preprocesamiento.html#limpieza-de-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>En este paso implementamos una función que nos permita remover los caracteres raros y así limpiar el texto, esta función se ha denominado <code>limpiar_texto()</code> y en cada línea hemos documentado el objetivo, es importante señalar que pueden existir otras estructuras que pueden ser removidas.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="preprocesamiento.html#cb7-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb7-2"><a href="preprocesamiento.html#cb7-2" tabindex="-1"></a><span class="fu">p_load</span>(dplyr, tidyr, stringr, stringi, assertr)</span>
-<span id="cb7-3"><a href="preprocesamiento.html#cb7-3" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="preprocesamiento.html#cb7-4" tabindex="-1"></a>limpiar_texto <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb7-5"><a href="preprocesamiento.html#cb7-5" tabindex="-1"></a>  x <span class="sc">|&gt;</span> </span>
-<span id="cb7-6"><a href="preprocesamiento.html#cb7-6" tabindex="-1"></a>    <span class="fu">iconv</span>(<span class="at">from =</span> <span class="st">&quot;&quot;</span>, <span class="at">to =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-7"><a href="preprocesamiento.html#cb7-7" tabindex="-1"></a>    <span class="fu">str_to_lower</span>() <span class="sc">|&gt;</span>                            <span class="co"># Convertir a minúsculas</span></span>
-<span id="cb7-8"><a href="preprocesamiento.html#cb7-8" tabindex="-1"></a>    <span class="fu">stri_trans_general</span>(<span class="st">&quot;Latin-ASCII&quot;</span>) <span class="sc">|&gt;</span>         <span class="co"># Quitar acentos</span></span>
-<span id="cb7-9"><a href="preprocesamiento.html#cb7-9" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">&quot;[[:punct:]]&quot;</span>, <span class="st">&quot; &quot;</span>) <span class="sc">|&gt;</span>       <span class="co"># Quitar puntuación</span></span>
-<span id="cb7-10"><a href="preprocesamiento.html#cb7-10" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot; &quot;</span>) <span class="sc">|&gt;</span>              <span class="co"># Espacios múltiples</span></span>
-<span id="cb7-11"><a href="preprocesamiento.html#cb7-11" tabindex="-1"></a>    <span class="fu">str_trim</span>()                                   <span class="co"># Quitar espacios extremos</span></span>
-<span id="cb7-12"><a href="preprocesamiento.html#cb7-12" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="preprocesamiento.html#cb6-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb6-2"><a href="preprocesamiento.html#cb6-2" tabindex="-1"></a><span class="fu">p_load</span>(dplyr, tidyr, stringr, stringi, assertr)</span>
+<span id="cb6-3"><a href="preprocesamiento.html#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="preprocesamiento.html#cb6-4" tabindex="-1"></a>limpiar_texto <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb6-5"><a href="preprocesamiento.html#cb6-5" tabindex="-1"></a>  x <span class="sc">|&gt;</span> </span>
+<span id="cb6-6"><a href="preprocesamiento.html#cb6-6" tabindex="-1"></a>    <span class="fu">iconv</span>(<span class="at">from =</span> <span class="st">&quot;&quot;</span>, <span class="at">to =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-7"><a href="preprocesamiento.html#cb6-7" tabindex="-1"></a>    <span class="fu">str_to_lower</span>() <span class="sc">|&gt;</span>                            <span class="co"># Convertir a minúsculas</span></span>
+<span id="cb6-8"><a href="preprocesamiento.html#cb6-8" tabindex="-1"></a>    <span class="fu">stri_trans_general</span>(<span class="st">&quot;Latin-ASCII&quot;</span>) <span class="sc">|&gt;</span>         <span class="co"># Quitar acentos</span></span>
+<span id="cb6-9"><a href="preprocesamiento.html#cb6-9" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">&quot;[[:punct:]]&quot;</span>, <span class="st">&quot; &quot;</span>) <span class="sc">|&gt;</span>       <span class="co"># Quitar puntuación</span></span>
+<span id="cb6-10"><a href="preprocesamiento.html#cb6-10" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot; &quot;</span>) <span class="sc">|&gt;</span>              <span class="co"># Espacios múltiples</span></span>
+<span id="cb6-11"><a href="preprocesamiento.html#cb6-11" tabindex="-1"></a>    <span class="fu">str_trim</span>()                                   <span class="co"># Quitar espacios extremos</span></span>
+<span id="cb6-12"><a href="preprocesamiento.html#cb6-12" tabindex="-1"></a>}</span></code></pre></div>
 <p>De igual manera el investigador puede establecer un vector de palabras vacías o irrelevantes, que prefiere eliminar de las cadena de texto. Por ejemplo, a continuación se crea el vector <code>stop_words</code> con varias palabras y se aplica la función <code>eliminar_stopwords()</code> para eliminarlas.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="preprocesamiento.html#cb8-1" tabindex="-1"></a>stop_words <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;de&quot;</span>, <span class="st">&quot;del&quot;</span>, <span class="st">&quot;la&quot;</span>, <span class="st">&quot;los&quot;</span>, <span class="st">&quot;las&quot;</span>, <span class="st">&quot;el&quot;</span>, <span class="st">&quot;y&quot;</span>)</span>
-<span id="cb8-2"><a href="preprocesamiento.html#cb8-2" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="preprocesamiento.html#cb8-3" tabindex="-1"></a>eliminar_stopwords <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">palabras =</span> stop_words) {</span>
-<span id="cb8-4"><a href="preprocesamiento.html#cb8-4" tabindex="-1"></a>  palabras_pattern <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">b(&quot;</span>, <span class="fu">paste</span>(palabras, <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>), <span class="st">&quot;)</span><span class="sc">\\</span><span class="st">b&quot;</span>)</span>
-<span id="cb8-5"><a href="preprocesamiento.html#cb8-5" tabindex="-1"></a>  <span class="fu">str_remove_all</span>(x, palabras_pattern) <span class="sc">%&gt;%</span></span>
-<span id="cb8-6"><a href="preprocesamiento.html#cb8-6" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot; &quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-7"><a href="preprocesamiento.html#cb8-7" tabindex="-1"></a>    <span class="fu">str_trim</span>()</span>
-<span id="cb8-8"><a href="preprocesamiento.html#cb8-8" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="preprocesamiento.html#cb7-1" tabindex="-1"></a>stop_words <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;de&quot;</span>, <span class="st">&quot;del&quot;</span>, <span class="st">&quot;la&quot;</span>, <span class="st">&quot;los&quot;</span>, <span class="st">&quot;las&quot;</span>, <span class="st">&quot;el&quot;</span>, <span class="st">&quot;y&quot;</span>)</span>
+<span id="cb7-2"><a href="preprocesamiento.html#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="preprocesamiento.html#cb7-3" tabindex="-1"></a>eliminar_stopwords <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">palabras =</span> stop_words) {</span>
+<span id="cb7-4"><a href="preprocesamiento.html#cb7-4" tabindex="-1"></a>  palabras_pattern <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">b(&quot;</span>, <span class="fu">paste</span>(palabras, <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>), <span class="st">&quot;)</span><span class="sc">\\</span><span class="st">b&quot;</span>)</span>
+<span id="cb7-5"><a href="preprocesamiento.html#cb7-5" tabindex="-1"></a>  <span class="fu">str_remove_all</span>(x, palabras_pattern) <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="preprocesamiento.html#cb7-6" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot; &quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="preprocesamiento.html#cb7-7" tabindex="-1"></a>    <span class="fu">str_trim</span>()</span>
+<span id="cb7-8"><a href="preprocesamiento.html#cb7-8" tabindex="-1"></a>}</span></code></pre></div>
 <p>Ahora podemos aplicar nuestras funciones sobre las variables de interés en los conjuntos de datos. Es importante destacar que el proceso de preprocesamiento de datos no debe sobrescribir los datos originales y en su lugar, se deben crear nuevos atributos que contengan los datos limpios y estandarizados, o generar nuevas tablas de datos que contengan los datos limpios y estandarizados.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="preprocesamiento.html#cb9-1" tabindex="-1"></a>censo_limpio <span class="ot">&lt;-</span> censo <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href="preprocesamiento.html#cb9-2" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido, parentesco, sexo),</span>
-<span id="cb9-3"><a href="preprocesamiento.html#cb9-3" tabindex="-1"></a>                              <span class="sc">~</span><span class="fu">eliminar_stopwords</span>(<span class="fu">limpiar_texto</span>(.))))</span></code></pre></div>
-<div id="bbywhlnpxd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bbywhlnpxd table {
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="preprocesamiento.html#cb8-1" tabindex="-1"></a>censo_limpio <span class="ot">&lt;-</span> censo <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="preprocesamiento.html#cb8-2" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido, parentesco, sexo),</span>
+<span id="cb8-3"><a href="preprocesamiento.html#cb8-3" tabindex="-1"></a>                              <span class="sc">~</span><span class="fu">eliminar_stopwords</span>(<span class="fu">limpiar_texto</span>(.))))</span></code></pre></div>
+<div id="zkvatorfzh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zkvatorfzh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bbywhlnpxd thead, #bbywhlnpxd tbody, #bbywhlnpxd tfoot, #bbywhlnpxd tr, #bbywhlnpxd td, #bbywhlnpxd th {
+#zkvatorfzh thead, #zkvatorfzh tbody, #zkvatorfzh tfoot, #zkvatorfzh tr, #zkvatorfzh td, #zkvatorfzh th {
   border-style: none;
 }
 
-#bbywhlnpxd p {
+#zkvatorfzh p {
   margin: 0;
   padding: 0;
 }
 
-#bbywhlnpxd .gt_table {
+#zkvatorfzh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -393,12 +394,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_caption {
+#zkvatorfzh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bbywhlnpxd .gt_title {
+#zkvatorfzh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -410,7 +411,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#bbywhlnpxd .gt_subtitle {
+#zkvatorfzh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -422,7 +423,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#bbywhlnpxd .gt_heading {
+#zkvatorfzh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -434,13 +435,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_bottom_border {
+#zkvatorfzh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_col_headings {
+#zkvatorfzh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -455,7 +456,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_col_heading {
+#zkvatorfzh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -475,7 +476,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#bbywhlnpxd .gt_column_spanner_outer {
+#zkvatorfzh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -487,15 +488,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#bbywhlnpxd .gt_column_spanner_outer:first-child {
+#zkvatorfzh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bbywhlnpxd .gt_column_spanner_outer:last-child {
+#zkvatorfzh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bbywhlnpxd .gt_column_spanner {
+#zkvatorfzh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -507,11 +508,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#bbywhlnpxd .gt_spanner_row {
+#zkvatorfzh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bbywhlnpxd .gt_group_heading {
+#zkvatorfzh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -537,7 +538,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#bbywhlnpxd .gt_empty_group_heading {
+#zkvatorfzh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -552,15 +553,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#bbywhlnpxd .gt_from_md > :first-child {
+#zkvatorfzh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bbywhlnpxd .gt_from_md > :last-child {
+#zkvatorfzh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bbywhlnpxd .gt_row {
+#zkvatorfzh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -579,7 +580,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#bbywhlnpxd .gt_stub {
+#zkvatorfzh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -592,7 +593,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#bbywhlnpxd .gt_stub_row_group {
+#zkvatorfzh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -606,15 +607,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#bbywhlnpxd .gt_row_group_first td {
+#zkvatorfzh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bbywhlnpxd .gt_row_group_first th {
+#zkvatorfzh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bbywhlnpxd .gt_summary_row {
+#zkvatorfzh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -624,16 +625,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#bbywhlnpxd .gt_first_summary_row {
+#zkvatorfzh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_first_summary_row.thick {
+#zkvatorfzh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bbywhlnpxd .gt_last_summary_row {
+#zkvatorfzh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -643,7 +644,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_grand_summary_row {
+#zkvatorfzh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -653,7 +654,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#bbywhlnpxd .gt_first_grand_summary_row {
+#zkvatorfzh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -663,7 +664,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_last_grand_summary_row_top {
+#zkvatorfzh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -673,11 +674,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_striped {
+#zkvatorfzh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bbywhlnpxd .gt_table_body {
+#zkvatorfzh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -686,7 +687,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_footnotes {
+#zkvatorfzh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -700,7 +701,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_footnote {
+#zkvatorfzh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -709,7 +710,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#bbywhlnpxd .gt_sourcenotes {
+#zkvatorfzh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -723,7 +724,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#bbywhlnpxd .gt_sourcenote {
+#zkvatorfzh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -731,72 +732,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#bbywhlnpxd .gt_left {
+#zkvatorfzh .gt_left {
   text-align: left;
 }
 
-#bbywhlnpxd .gt_center {
+#zkvatorfzh .gt_center {
   text-align: center;
 }
 
-#bbywhlnpxd .gt_right {
+#zkvatorfzh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bbywhlnpxd .gt_font_normal {
+#zkvatorfzh .gt_font_normal {
   font-weight: normal;
 }
 
-#bbywhlnpxd .gt_font_bold {
+#zkvatorfzh .gt_font_bold {
   font-weight: bold;
 }
 
-#bbywhlnpxd .gt_font_italic {
+#zkvatorfzh .gt_font_italic {
   font-style: italic;
 }
 
-#bbywhlnpxd .gt_super {
+#zkvatorfzh .gt_super {
   font-size: 65%;
 }
 
-#bbywhlnpxd .gt_footnote_marks {
+#zkvatorfzh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bbywhlnpxd .gt_asterisk {
+#zkvatorfzh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bbywhlnpxd .gt_indent_1 {
+#zkvatorfzh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bbywhlnpxd .gt_indent_2 {
+#zkvatorfzh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bbywhlnpxd .gt_indent_3 {
+#zkvatorfzh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bbywhlnpxd .gt_indent_4 {
+#zkvatorfzh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bbywhlnpxd .gt_indent_5 {
+#zkvatorfzh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bbywhlnpxd .katex-display {
+#zkvatorfzh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bbywhlnpxd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#zkvatorfzh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -882,33 +883,32 @@ div.csl-indent {
 <td headers="parentesco" class="gt_row gt_left">hijo a</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>En el caso de la tabla de la encuesta, primero se separa el nombre_completo en varias variables para generar la misma estructura que la tabla del censo, o podría unirse las variables del censo para generar un nombre_unico, lo importante es dejar las tablas en la misma estructura. De igual forma para la fecha de nacimiento. Paso seguido se aplican las funciones sobre las variables de interés.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="preprocesamiento.html#cb10-1" tabindex="-1"></a>encuesta_limpia <span class="ot">&lt;-</span> encuesta <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="preprocesamiento.html#cb10-2" tabindex="-1"></a>                   <span class="fu">separate</span>(nombre_completo, <span class="fu">c</span>(<span class="st">&quot;nombre&quot;</span>, <span class="st">&quot;apellido&quot;</span>), <span class="at">sep=</span><span class="st">&quot; &quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb10-3"><a href="preprocesamiento.html#cb10-3" tabindex="-1"></a>                   <span class="fu">separate</span>(fecha_nacimiento, <span class="fu">c</span>(<span class="st">&quot;anio_nac&quot;</span>, <span class="st">&quot;mes_nac&quot;</span>, <span class="st">&quot;dia_nac&quot;</span>), <span class="at">sep=</span><span class="st">&quot;-&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a href="preprocesamiento.html#cb10-4" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">&quot;anio_nac&quot;</span>, <span class="st">&quot;mes_nac&quot;</span>, <span class="st">&quot;dia_nac&quot;</span>), <span class="sc">~</span><span class="fu">as.numeric</span>(.))) <span class="sc">|&gt;</span>   </span>
-<span id="cb10-5"><a href="preprocesamiento.html#cb10-5" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido, parentesco, sexo),</span>
-<span id="cb10-6"><a href="preprocesamiento.html#cb10-6" tabindex="-1"></a>                                 <span class="sc">~</span><span class="fu">eliminar_stopwords</span>(<span class="fu">limpiar_texto</span>(.))))</span></code></pre></div>
-<div id="dzhykrsgvr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dzhykrsgvr table {
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="preprocesamiento.html#cb9-1" tabindex="-1"></a>encuesta_limpia <span class="ot">&lt;-</span> encuesta <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="preprocesamiento.html#cb9-2" tabindex="-1"></a>                   <span class="fu">separate</span>(nombre_completo, <span class="fu">c</span>(<span class="st">&quot;nombre&quot;</span>, <span class="st">&quot;apellido&quot;</span>), <span class="at">sep=</span><span class="st">&quot; &quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="preprocesamiento.html#cb9-3" tabindex="-1"></a>                   <span class="fu">separate</span>(fecha_nacimiento, <span class="fu">c</span>(<span class="st">&quot;anio_nac&quot;</span>, <span class="st">&quot;mes_nac&quot;</span>, <span class="st">&quot;dia_nac&quot;</span>), <span class="at">sep=</span><span class="st">&quot;-&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="preprocesamiento.html#cb9-4" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">&quot;anio_nac&quot;</span>, <span class="st">&quot;mes_nac&quot;</span>, <span class="st">&quot;dia_nac&quot;</span>), <span class="sc">~</span><span class="fu">as.numeric</span>(.))) <span class="sc">|&gt;</span>   </span>
+<span id="cb9-5"><a href="preprocesamiento.html#cb9-5" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido, parentesco, sexo),</span>
+<span id="cb9-6"><a href="preprocesamiento.html#cb9-6" tabindex="-1"></a>                                 <span class="sc">~</span><span class="fu">eliminar_stopwords</span>(<span class="fu">limpiar_texto</span>(.))))</span></code></pre></div>
+<div id="bzupizphiz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bzupizphiz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dzhykrsgvr thead, #dzhykrsgvr tbody, #dzhykrsgvr tfoot, #dzhykrsgvr tr, #dzhykrsgvr td, #dzhykrsgvr th {
+#bzupizphiz thead, #bzupizphiz tbody, #bzupizphiz tfoot, #bzupizphiz tr, #bzupizphiz td, #bzupizphiz th {
   border-style: none;
 }
 
-#dzhykrsgvr p {
+#bzupizphiz p {
   margin: 0;
   padding: 0;
 }
 
-#dzhykrsgvr .gt_table {
+#bzupizphiz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -934,12 +934,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_caption {
+#bzupizphiz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dzhykrsgvr .gt_title {
+#bzupizphiz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -951,7 +951,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#dzhykrsgvr .gt_subtitle {
+#bzupizphiz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -963,7 +963,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#dzhykrsgvr .gt_heading {
+#bzupizphiz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -975,13 +975,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_bottom_border {
+#bzupizphiz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_col_headings {
+#bzupizphiz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -996,7 +996,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_col_heading {
+#bzupizphiz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1016,7 +1016,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#dzhykrsgvr .gt_column_spanner_outer {
+#bzupizphiz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1028,15 +1028,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#dzhykrsgvr .gt_column_spanner_outer:first-child {
+#bzupizphiz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dzhykrsgvr .gt_column_spanner_outer:last-child {
+#bzupizphiz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dzhykrsgvr .gt_column_spanner {
+#bzupizphiz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1048,11 +1048,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#dzhykrsgvr .gt_spanner_row {
+#bzupizphiz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dzhykrsgvr .gt_group_heading {
+#bzupizphiz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1078,7 +1078,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#dzhykrsgvr .gt_empty_group_heading {
+#bzupizphiz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1093,15 +1093,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#dzhykrsgvr .gt_from_md > :first-child {
+#bzupizphiz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dzhykrsgvr .gt_from_md > :last-child {
+#bzupizphiz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dzhykrsgvr .gt_row {
+#bzupizphiz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1120,7 +1120,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#dzhykrsgvr .gt_stub {
+#bzupizphiz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1133,7 +1133,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#dzhykrsgvr .gt_stub_row_group {
+#bzupizphiz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1147,15 +1147,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#dzhykrsgvr .gt_row_group_first td {
+#bzupizphiz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dzhykrsgvr .gt_row_group_first th {
+#bzupizphiz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dzhykrsgvr .gt_summary_row {
+#bzupizphiz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1165,16 +1165,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#dzhykrsgvr .gt_first_summary_row {
+#bzupizphiz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_first_summary_row.thick {
+#bzupizphiz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dzhykrsgvr .gt_last_summary_row {
+#bzupizphiz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1184,7 +1184,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_grand_summary_row {
+#bzupizphiz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1194,7 +1194,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#dzhykrsgvr .gt_first_grand_summary_row {
+#bzupizphiz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1204,7 +1204,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_last_grand_summary_row_top {
+#bzupizphiz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1214,11 +1214,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_striped {
+#bzupizphiz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dzhykrsgvr .gt_table_body {
+#bzupizphiz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1227,7 +1227,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_footnotes {
+#bzupizphiz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1241,7 +1241,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_footnote {
+#bzupizphiz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1250,7 +1250,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#dzhykrsgvr .gt_sourcenotes {
+#bzupizphiz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1264,7 +1264,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#dzhykrsgvr .gt_sourcenote {
+#bzupizphiz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1272,72 +1272,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#dzhykrsgvr .gt_left {
+#bzupizphiz .gt_left {
   text-align: left;
 }
 
-#dzhykrsgvr .gt_center {
+#bzupizphiz .gt_center {
   text-align: center;
 }
 
-#dzhykrsgvr .gt_right {
+#bzupizphiz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dzhykrsgvr .gt_font_normal {
+#bzupizphiz .gt_font_normal {
   font-weight: normal;
 }
 
-#dzhykrsgvr .gt_font_bold {
+#bzupizphiz .gt_font_bold {
   font-weight: bold;
 }
 
-#dzhykrsgvr .gt_font_italic {
+#bzupizphiz .gt_font_italic {
   font-style: italic;
 }
 
-#dzhykrsgvr .gt_super {
+#bzupizphiz .gt_super {
   font-size: 65%;
 }
 
-#dzhykrsgvr .gt_footnote_marks {
+#bzupizphiz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dzhykrsgvr .gt_asterisk {
+#bzupizphiz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dzhykrsgvr .gt_indent_1 {
+#bzupizphiz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dzhykrsgvr .gt_indent_2 {
+#bzupizphiz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dzhykrsgvr .gt_indent_3 {
+#bzupizphiz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dzhykrsgvr .gt_indent_4 {
+#bzupizphiz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dzhykrsgvr .gt_indent_5 {
+#bzupizphiz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dzhykrsgvr .katex-display {
+#bzupizphiz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dzhykrsgvr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bzupizphiz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1423,13 +1423,12 @@ div.csl-indent {
 <td headers="parentesco" class="gt_row gt_left">conyuge</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>Las versiones preprocesadas (limpiadas y estandarizadas) de las dos tablas de datos ahora tienen los mismos atributos. El formato y contenido de estos atributos han sido estandarizados.</p>
 </div>
 <div id="codificación-fonética" class="section level3 hasAnchor" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Codificación fonética<a href="preprocesamiento.html#codificación-fonética" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">6.3.2</span> Codificación fonética<a href="#codificaci%C3%B3n-fon%C3%A9tica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Existen diversas funciones diseñadas para codificar fonéticamente los valores de ciertos atributos antes de utilizarlos en procesos de emparejamiento o deduplicación de registros. Su propósito es mitigar los errores derivados de variaciones en la escritura o errores ortográficos, especialmente en variables como nombres, apellidos u otras susceptibles a inconsistencias tipográficas. Estas funciones buscan agrupar cadenas de texto que suenan de forma similar al ser pronunciadas, aunque estén escritas de manera distinta.</p>
 <p>La codificación fonética también puede combinarse con medidas de similitud como la distancia de Levenshtein, Smith-Waterman o el coeficiente de Jaccard, para comparar cadenas de texto que suenan de forma similar <span class="citation">(<a href="#ref-navarro2001guided">Navarro 2001</a>; <a href="#ref-nauman2022introduction">Nauman and Herschel 2022</a>)</span>.</p>
 <p>El principio fundamental consiste en transformar un texto en un código fonético basado en su pronunciación. ESin embargo, muchas de las técnicas clásicas fueron desarrolladas para el idioma inglés, lo que limita su aplicabilidad directa en contextos de América Latina y el Caribe, donde se emplean otros idiomas como el español, portugués, francés o lenguas indígenas.</p>
@@ -1544,15 +1543,15 @@ div.csl-indent {
 </tbody>
 </table>
 <p>El algoritmo se puede implementar en R con el paquete <code>phonics</code> <span class="citation">(<a href="#ref-howard2020phonetic">Howard et al. 2020</a>)</span> de la siguiente manera</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="preprocesamiento.html#cb11-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb11-2"><a href="preprocesamiento.html#cb11-2" tabindex="-1"></a><span class="fu">p_load</span>(phonics)</span>
-<span id="cb11-3"><a href="preprocesamiento.html#cb11-3" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="preprocesamiento.html#cb11-4" tabindex="-1"></a>nombres <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Catalina&quot;</span>, <span class="st">&quot;Katalina&quot;</span>, <span class="st">&quot;Yovana&quot;</span>, <span class="st">&quot;Jovanna&quot;</span>, <span class="st">&quot;Giovanna&quot;</span>, <span class="st">&quot;Yenny&quot;</span>, <span class="st">&quot;Yeni&quot;</span>, <span class="st">&quot;Gonzalez&quot;</span>, <span class="st">&quot;Gonzales&quot;</span>)</span>
-<span id="cb11-5"><a href="preprocesamiento.html#cb11-5" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="preprocesamiento.html#cb11-6" tabindex="-1"></a>codigos_soundex <span class="ot">&lt;-</span> <span class="fu">soundex</span>(<span class="fu">limpiar_texto</span>(nombres))  </span>
-<span id="cb11-7"><a href="preprocesamiento.html#cb11-7" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="preprocesamiento.html#cb11-8" tabindex="-1"></a><span class="fu">names</span>(codigos_soundex) <span class="ot">&lt;-</span> nombres</span>
-<span id="cb11-9"><a href="preprocesamiento.html#cb11-9" tabindex="-1"></a>codigos_soundex</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="preprocesamiento.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb10-2"><a href="preprocesamiento.html#cb10-2" tabindex="-1"></a><span class="fu">p_load</span>(phonics)</span>
+<span id="cb10-3"><a href="preprocesamiento.html#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="preprocesamiento.html#cb10-4" tabindex="-1"></a>nombres <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Catalina&quot;</span>, <span class="st">&quot;Katalina&quot;</span>, <span class="st">&quot;Yovana&quot;</span>, <span class="st">&quot;Jovanna&quot;</span>, <span class="st">&quot;Giovanna&quot;</span>, <span class="st">&quot;Yenny&quot;</span>, <span class="st">&quot;Yeni&quot;</span>, <span class="st">&quot;Gonzalez&quot;</span>, <span class="st">&quot;Gonzales&quot;</span>)</span>
+<span id="cb10-5"><a href="preprocesamiento.html#cb10-5" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="preprocesamiento.html#cb10-6" tabindex="-1"></a>codigos_soundex <span class="ot">&lt;-</span> <span class="fu">soundex</span>(<span class="fu">limpiar_texto</span>(nombres))  </span>
+<span id="cb10-7"><a href="preprocesamiento.html#cb10-7" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="preprocesamiento.html#cb10-8" tabindex="-1"></a><span class="fu">names</span>(codigos_soundex) <span class="ot">&lt;-</span> nombres</span>
+<span id="cb10-9"><a href="preprocesamiento.html#cb10-9" tabindex="-1"></a>codigos_soundex</span></code></pre></div>
 <pre><code>## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez 
 ##   &quot;C345&quot;   &quot;K345&quot;   &quot;Y150&quot;   &quot;J150&quot;   &quot;G150&quot;   &quot;Y500&quot;   &quot;Y500&quot;   &quot;G524&quot; 
 ## Gonzales 
@@ -1565,10 +1564,10 @@ div.csl-indent {
 <p>Una ventaja clave de Metaphone es que no asigna códigos numéricos sino representaciones fonéticas alfabéticas, lo que permite una mayor precisión fonética, especialmente para consonantes. El algoritmo captura 16 sonidos consonánticos comunes en múltiples idiomas y los representa en la transcripción resultante.</p>
 <p>No obstante, como fue diseñado originalmente para el inglés, su aplicación en nombres de origen hispano o indígena puede ser limitada. Para superar estas limitaciones, se desarrollaron algoritmos posteriores como Double Metaphone, que permite hasta dos codificaciones por palabra para capturar variaciones fonéticas adicionales, especialmente útiles en bases de datos que tienen varios idiomas <span class="citation">(<a href="#ref-christen2012data">P. Christen 2012</a>)</span>.</p>
 <p>El algoritmo se puede implementar en R con el paquete <code>phonics</code> de la siguiente manera:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="preprocesamiento.html#cb13-1" tabindex="-1"></a>codigos_metaphone <span class="ot">&lt;-</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(nombres))</span>
-<span id="cb13-2"><a href="preprocesamiento.html#cb13-2" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="preprocesamiento.html#cb13-3" tabindex="-1"></a><span class="fu">names</span>(codigos_metaphone) <span class="ot">&lt;-</span> nombres</span>
-<span id="cb13-4"><a href="preprocesamiento.html#cb13-4" tabindex="-1"></a>codigos_metaphone</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="preprocesamiento.html#cb12-1" tabindex="-1"></a>codigos_metaphone <span class="ot">&lt;-</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(nombres))</span>
+<span id="cb12-2"><a href="preprocesamiento.html#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="preprocesamiento.html#cb12-3" tabindex="-1"></a><span class="fu">names</span>(codigos_metaphone) <span class="ot">&lt;-</span> nombres</span>
+<span id="cb12-4"><a href="preprocesamiento.html#cb12-4" tabindex="-1"></a>codigos_metaphone</span></code></pre></div>
 <pre><code>## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez 
 ##   &quot;KTLN&quot;   &quot;KTLN&quot;    &quot;YFN&quot;    &quot;JFN&quot;    &quot;JFN&quot;     &quot;YN&quot;     &quot;YN&quot;  &quot;KNSLS&quot; 
 ## Gonzales 
@@ -1586,10 +1585,10 @@ div.csl-indent {
 <li>No recodifica letras individuales, lo que disminuye la carga computacional.</li>
 <li>Proporciona una forma simplificada de agrupación fonética que no depende del idioma, a diferencia de algoritmos como Soundex o Metaphone.</li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="preprocesamiento.html#cb15-1" tabindex="-1"></a>codigos_statcan <span class="ot">&lt;-</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(nombres))</span>
-<span id="cb15-2"><a href="preprocesamiento.html#cb15-2" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="preprocesamiento.html#cb15-3" tabindex="-1"></a><span class="fu">names</span>(codigos_statcan) <span class="ot">&lt;-</span> nombres</span>
-<span id="cb15-4"><a href="preprocesamiento.html#cb15-4" tabindex="-1"></a>codigos_statcan</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="preprocesamiento.html#cb14-1" tabindex="-1"></a>codigos_statcan <span class="ot">&lt;-</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(nombres))</span>
+<span id="cb14-2"><a href="preprocesamiento.html#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="preprocesamiento.html#cb14-3" tabindex="-1"></a><span class="fu">names</span>(codigos_statcan) <span class="ot">&lt;-</span> nombres</span>
+<span id="cb14-4"><a href="preprocesamiento.html#cb14-4" tabindex="-1"></a>codigos_statcan</span></code></pre></div>
 <pre><code>## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez 
 ##   &quot;CTLN&quot;   &quot;KTLN&quot;    &quot;YVN&quot;    &quot;JVN&quot;    &quot;GVN&quot;     &quot;YN&quot;     &quot;YN&quot;   &quot;GNZL&quot; 
 ## Gonzales 
@@ -1597,7 +1596,7 @@ div.csl-indent {
 <p>Hay otras alternativas que pueden ser utilizadas, en <span class="citation">Howard et al. (<a href="#ref-howard2020phonetic">2020</a>)</span> se pueden encontrar otros algoritmos como NYSIIS, Caverphone, Cologne, RogerRoot, Phonex o MRA.</p>
 </div>
 <div id="adaptación-para-encuestas-de-américa-latina" class="section level3 hasAnchor" number="6.3.5">
-<h3><span class="header-section-number">6.3.5</span> Adaptación para Encuestas de América Latina<a href="preprocesamiento.html#adaptación-para-encuestas-de-américa-latina" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">6.3.5</span> Adaptación para Encuestas de América Latina<a href="#adaptaci%C3%B3n-para-encuestas-de-am%C3%A9rica-latina" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A diferencia de los algoritmos fonéticos clásicos como Soundex, Metaphone y StatCan, que fueron desarrollados principalmente para nombres de origen anglosajón, en América Latina los nombres presentan una gran diversidad fonética y ortográfica influenciada por lenguas indígenas, castellano, portugués y otras tradiciones europeas. Por ello, se ha desarrollado un algoritmo personalizado que tiene en cuenta las transformaciones fonéticas y ortográficas más comunes en la región.</p>
 <p>La función <code>codif_fonetico()</code> fue diseñada por los autores de este material para capturar las variantes más frecuentes en los nombres latinoamericanos, mediante las siguientes transformaciones:</p>
 <ol style="list-style-type: decimal">
@@ -1609,58 +1608,58 @@ div.csl-indent {
 <li>Conversión de v a b, y de z a s, fonéticamente indistinguibles en la mayoría de los dialectos del español latino.</li>
 </ol>
 <p>El orden en que se aplican las transformaciones también juega un rol especial, el usuario puede ampliar las reglas si así lo desea, incorporando nuevas líneas.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="preprocesamiento.html#cb17-1" tabindex="-1"></a><span class="fu">require</span>(stringi)</span>
-<span id="cb17-2"><a href="preprocesamiento.html#cb17-2" tabindex="-1"></a><span class="fu">require</span>(stringr)</span>
-<span id="cb17-3"><a href="preprocesamiento.html#cb17-3" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="preprocesamiento.html#cb17-4" tabindex="-1"></a>codif_fonetico <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre) {</span>
-<span id="cb17-5"><a href="preprocesamiento.html#cb17-5" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">tolower</span>(nombre)</span>
-<span id="cb17-6"><a href="preprocesamiento.html#cb17-6" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;lly&quot;</span>, <span class="st">&quot;li&quot;</span>, nombre)</span>
-<span id="cb17-7"><a href="preprocesamiento.html#cb17-7" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;ll&quot;</span>, <span class="st">&quot;y&quot;</span>, nombre)</span>
-<span id="cb17-8"><a href="preprocesamiento.html#cb17-8" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;yn$&quot;</span>, <span class="st">&quot;in&quot;</span>, nombre)</span>
-<span id="cb17-9"><a href="preprocesamiento.html#cb17-9" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^hu&quot;</span>, <span class="st">&quot;w&quot;</span>, nombre) </span>
-<span id="cb17-10"><a href="preprocesamiento.html#cb17-10" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^hua&quot;</span>, <span class="st">&quot;wa&quot;</span>, nombre)</span>
-<span id="cb17-11"><a href="preprocesamiento.html#cb17-11" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^qui|^qhi&quot;</span>, <span class="st">&quot;ki&quot;</span>, nombre)</span>
-<span id="cb17-12"><a href="preprocesamiento.html#cb17-12" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^xi&quot;</span>, <span class="st">&quot;ji&quot;</span>, nombre)</span>
-<span id="cb17-13"><a href="preprocesamiento.html#cb17-13" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^j&quot;</span>, <span class="st">&quot;y&quot;</span>, nombre) </span>
-<span id="cb17-14"><a href="preprocesamiento.html#cb17-14" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^gio&quot;</span>, <span class="st">&quot;yo&quot;</span>, nombre)</span>
-<span id="cb17-15"><a href="preprocesamiento.html#cb17-15" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;y$&quot;</span>, <span class="st">&quot;i&quot;</span>, nombre) </span>
-<span id="cb17-16"><a href="preprocesamiento.html#cb17-16" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">b(</span><span class="sc">\\</span><span class="st">w*)hui(</span><span class="sc">\\</span><span class="st">w*)</span><span class="sc">\\</span><span class="st">b&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1wi</span><span class="sc">\\</span><span class="st">2&quot;</span>, nombre)</span>
-<span id="cb17-17"><a href="preprocesamiento.html#cb17-17" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;ch&quot;</span>, <span class="st">&quot;x&quot;</span>, nombre)</span>
-<span id="cb17-18"><a href="preprocesamiento.html#cb17-18" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;[aeiouh]&quot;</span>, <span class="st">&quot;&quot;</span>, nombre)</span>
-<span id="cb17-19"><a href="preprocesamiento.html#cb17-19" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;v&quot;</span>, <span class="st">&quot;b&quot;</span>, nombre)</span>
-<span id="cb17-20"><a href="preprocesamiento.html#cb17-20" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;z&quot;</span>, <span class="st">&quot;s&quot;</span>, nombre)</span>
-<span id="cb17-21"><a href="preprocesamiento.html#cb17-21" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(nombre, <span class="st">&quot;c(?=[ei])&quot;</span>, <span class="st">&quot;s&quot;</span>)  </span>
-<span id="cb17-22"><a href="preprocesamiento.html#cb17-22" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;k&quot;</span>, nombre)          </span>
-<span id="cb17-23"><a href="preprocesamiento.html#cb17-23" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;qu&quot;</span>, <span class="st">&quot;k&quot;</span>, nombre)</span>
-<span id="cb17-24"><a href="preprocesamiento.html#cb17-24" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(nombre, <span class="st">&quot;g(?=[ei])&quot;</span>, <span class="st">&quot;j&quot;</span>)</span>
-<span id="cb17-25"><a href="preprocesamiento.html#cb17-25" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;gue|gui&quot;</span>, <span class="st">&quot;gi&quot;</span>, nombre)</span>
-<span id="cb17-26"><a href="preprocesamiento.html#cb17-26" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">stri_trans_general</span>(nombre, <span class="st">&quot;Latin-ASCII&quot;</span>)  </span>
-<span id="cb17-27"><a href="preprocesamiento.html#cb17-27" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;(.)</span><span class="sc">\\</span><span class="st">1+&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>, nombre)  </span>
-<span id="cb17-28"><a href="preprocesamiento.html#cb17-28" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;&quot;</span>, nombre)</span>
-<span id="cb17-29"><a href="preprocesamiento.html#cb17-29" tabindex="-1"></a>  </span>
-<span id="cb17-30"><a href="preprocesamiento.html#cb17-30" tabindex="-1"></a>  <span class="fu">toupper</span>(nombre)</span>
-<span id="cb17-31"><a href="preprocesamiento.html#cb17-31" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="preprocesamiento.html#cb16-1" tabindex="-1"></a><span class="fu">require</span>(stringi)</span>
+<span id="cb16-2"><a href="preprocesamiento.html#cb16-2" tabindex="-1"></a><span class="fu">require</span>(stringr)</span>
+<span id="cb16-3"><a href="preprocesamiento.html#cb16-3" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="preprocesamiento.html#cb16-4" tabindex="-1"></a>codif_fonetico <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre) {</span>
+<span id="cb16-5"><a href="preprocesamiento.html#cb16-5" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">tolower</span>(nombre)</span>
+<span id="cb16-6"><a href="preprocesamiento.html#cb16-6" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;lly&quot;</span>, <span class="st">&quot;li&quot;</span>, nombre)</span>
+<span id="cb16-7"><a href="preprocesamiento.html#cb16-7" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;ll&quot;</span>, <span class="st">&quot;y&quot;</span>, nombre)</span>
+<span id="cb16-8"><a href="preprocesamiento.html#cb16-8" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;yn$&quot;</span>, <span class="st">&quot;in&quot;</span>, nombre)</span>
+<span id="cb16-9"><a href="preprocesamiento.html#cb16-9" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^hu&quot;</span>, <span class="st">&quot;w&quot;</span>, nombre) </span>
+<span id="cb16-10"><a href="preprocesamiento.html#cb16-10" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^hua&quot;</span>, <span class="st">&quot;wa&quot;</span>, nombre)</span>
+<span id="cb16-11"><a href="preprocesamiento.html#cb16-11" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^qui|^qhi&quot;</span>, <span class="st">&quot;ki&quot;</span>, nombre)</span>
+<span id="cb16-12"><a href="preprocesamiento.html#cb16-12" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^xi&quot;</span>, <span class="st">&quot;ji&quot;</span>, nombre)</span>
+<span id="cb16-13"><a href="preprocesamiento.html#cb16-13" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^j&quot;</span>, <span class="st">&quot;y&quot;</span>, nombre) </span>
+<span id="cb16-14"><a href="preprocesamiento.html#cb16-14" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^gio&quot;</span>, <span class="st">&quot;yo&quot;</span>, nombre)</span>
+<span id="cb16-15"><a href="preprocesamiento.html#cb16-15" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;y$&quot;</span>, <span class="st">&quot;i&quot;</span>, nombre) </span>
+<span id="cb16-16"><a href="preprocesamiento.html#cb16-16" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">b(</span><span class="sc">\\</span><span class="st">w*)hui(</span><span class="sc">\\</span><span class="st">w*)</span><span class="sc">\\</span><span class="st">b&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1wi</span><span class="sc">\\</span><span class="st">2&quot;</span>, nombre)</span>
+<span id="cb16-17"><a href="preprocesamiento.html#cb16-17" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;ch&quot;</span>, <span class="st">&quot;x&quot;</span>, nombre)</span>
+<span id="cb16-18"><a href="preprocesamiento.html#cb16-18" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;[aeiouh]&quot;</span>, <span class="st">&quot;&quot;</span>, nombre)</span>
+<span id="cb16-19"><a href="preprocesamiento.html#cb16-19" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;v&quot;</span>, <span class="st">&quot;b&quot;</span>, nombre)</span>
+<span id="cb16-20"><a href="preprocesamiento.html#cb16-20" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;z&quot;</span>, <span class="st">&quot;s&quot;</span>, nombre)</span>
+<span id="cb16-21"><a href="preprocesamiento.html#cb16-21" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(nombre, <span class="st">&quot;c(?=[ei])&quot;</span>, <span class="st">&quot;s&quot;</span>)  </span>
+<span id="cb16-22"><a href="preprocesamiento.html#cb16-22" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;k&quot;</span>, nombre)          </span>
+<span id="cb16-23"><a href="preprocesamiento.html#cb16-23" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;qu&quot;</span>, <span class="st">&quot;k&quot;</span>, nombre)</span>
+<span id="cb16-24"><a href="preprocesamiento.html#cb16-24" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(nombre, <span class="st">&quot;g(?=[ei])&quot;</span>, <span class="st">&quot;j&quot;</span>)</span>
+<span id="cb16-25"><a href="preprocesamiento.html#cb16-25" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;gue|gui&quot;</span>, <span class="st">&quot;gi&quot;</span>, nombre)</span>
+<span id="cb16-26"><a href="preprocesamiento.html#cb16-26" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">stri_trans_general</span>(nombre, <span class="st">&quot;Latin-ASCII&quot;</span>)  </span>
+<span id="cb16-27"><a href="preprocesamiento.html#cb16-27" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;(.)</span><span class="sc">\\</span><span class="st">1+&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>, nombre)  </span>
+<span id="cb16-28"><a href="preprocesamiento.html#cb16-28" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;&quot;</span>, nombre)</span>
+<span id="cb16-29"><a href="preprocesamiento.html#cb16-29" tabindex="-1"></a>  </span>
+<span id="cb16-30"><a href="preprocesamiento.html#cb16-30" tabindex="-1"></a>  <span class="fu">toupper</span>(nombre)</span>
+<span id="cb16-31"><a href="preprocesamiento.html#cb16-31" tabindex="-1"></a>}</span></code></pre></div>
 <p>A continuación se presenta la aplicación para nuestro ejemplo</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="preprocesamiento.html#cb18-1" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nombre =</span> nombres) <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="preprocesamiento.html#cb18-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">nombre =</span> <span class="fu">limpiar_texto</span>(nombre)) <span class="sc">|&gt;</span> </span>
-<span id="cb18-3"><a href="preprocesamiento.html#cb18-3" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">codif =</span> <span class="fu">codif_fonetico</span>(nombre))</span></code></pre></div>
-<div id="pifbflhcvo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pifbflhcvo table {
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="preprocesamiento.html#cb17-1" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nombre =</span> nombres) <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a href="preprocesamiento.html#cb17-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">nombre =</span> <span class="fu">limpiar_texto</span>(nombre)) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a href="preprocesamiento.html#cb17-3" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">codif =</span> <span class="fu">codif_fonetico</span>(nombre))</span></code></pre></div>
+<div id="hhmiftmxox" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hhmiftmxox table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pifbflhcvo thead, #pifbflhcvo tbody, #pifbflhcvo tfoot, #pifbflhcvo tr, #pifbflhcvo td, #pifbflhcvo th {
+#hhmiftmxox thead, #hhmiftmxox tbody, #hhmiftmxox tfoot, #hhmiftmxox tr, #hhmiftmxox td, #hhmiftmxox th {
   border-style: none;
 }
 
-#pifbflhcvo p {
+#hhmiftmxox p {
   margin: 0;
   padding: 0;
 }
 
-#pifbflhcvo .gt_table {
+#hhmiftmxox .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1686,12 +1685,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_caption {
+#hhmiftmxox .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pifbflhcvo .gt_title {
+#hhmiftmxox .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1703,7 +1702,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#pifbflhcvo .gt_subtitle {
+#hhmiftmxox .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1715,7 +1714,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#pifbflhcvo .gt_heading {
+#hhmiftmxox .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1727,13 +1726,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_bottom_border {
+#hhmiftmxox .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_col_headings {
+#hhmiftmxox .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1748,7 +1747,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_col_heading {
+#hhmiftmxox .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1768,7 +1767,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#pifbflhcvo .gt_column_spanner_outer {
+#hhmiftmxox .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1780,15 +1779,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#pifbflhcvo .gt_column_spanner_outer:first-child {
+#hhmiftmxox .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pifbflhcvo .gt_column_spanner_outer:last-child {
+#hhmiftmxox .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pifbflhcvo .gt_column_spanner {
+#hhmiftmxox .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1800,11 +1799,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#pifbflhcvo .gt_spanner_row {
+#hhmiftmxox .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pifbflhcvo .gt_group_heading {
+#hhmiftmxox .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1830,7 +1829,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#pifbflhcvo .gt_empty_group_heading {
+#hhmiftmxox .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1845,15 +1844,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#pifbflhcvo .gt_from_md > :first-child {
+#hhmiftmxox .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pifbflhcvo .gt_from_md > :last-child {
+#hhmiftmxox .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pifbflhcvo .gt_row {
+#hhmiftmxox .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1872,7 +1871,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#pifbflhcvo .gt_stub {
+#hhmiftmxox .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1885,7 +1884,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#pifbflhcvo .gt_stub_row_group {
+#hhmiftmxox .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1899,15 +1898,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#pifbflhcvo .gt_row_group_first td {
+#hhmiftmxox .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pifbflhcvo .gt_row_group_first th {
+#hhmiftmxox .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pifbflhcvo .gt_summary_row {
+#hhmiftmxox .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1917,16 +1916,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#pifbflhcvo .gt_first_summary_row {
+#hhmiftmxox .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_first_summary_row.thick {
+#hhmiftmxox .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pifbflhcvo .gt_last_summary_row {
+#hhmiftmxox .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1936,7 +1935,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_grand_summary_row {
+#hhmiftmxox .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1946,7 +1945,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#pifbflhcvo .gt_first_grand_summary_row {
+#hhmiftmxox .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1956,7 +1955,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_last_grand_summary_row_top {
+#hhmiftmxox .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1966,11 +1965,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_striped {
+#hhmiftmxox .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pifbflhcvo .gt_table_body {
+#hhmiftmxox .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1979,7 +1978,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_footnotes {
+#hhmiftmxox .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1993,7 +1992,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_footnote {
+#hhmiftmxox .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2002,7 +2001,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#pifbflhcvo .gt_sourcenotes {
+#hhmiftmxox .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2016,7 +2015,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#pifbflhcvo .gt_sourcenote {
+#hhmiftmxox .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2024,72 +2023,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#pifbflhcvo .gt_left {
+#hhmiftmxox .gt_left {
   text-align: left;
 }
 
-#pifbflhcvo .gt_center {
+#hhmiftmxox .gt_center {
   text-align: center;
 }
 
-#pifbflhcvo .gt_right {
+#hhmiftmxox .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pifbflhcvo .gt_font_normal {
+#hhmiftmxox .gt_font_normal {
   font-weight: normal;
 }
 
-#pifbflhcvo .gt_font_bold {
+#hhmiftmxox .gt_font_bold {
   font-weight: bold;
 }
 
-#pifbflhcvo .gt_font_italic {
+#hhmiftmxox .gt_font_italic {
   font-style: italic;
 }
 
-#pifbflhcvo .gt_super {
+#hhmiftmxox .gt_super {
   font-size: 65%;
 }
 
-#pifbflhcvo .gt_footnote_marks {
+#hhmiftmxox .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pifbflhcvo .gt_asterisk {
+#hhmiftmxox .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pifbflhcvo .gt_indent_1 {
+#hhmiftmxox .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pifbflhcvo .gt_indent_2 {
+#hhmiftmxox .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pifbflhcvo .gt_indent_3 {
+#hhmiftmxox .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pifbflhcvo .gt_indent_4 {
+#hhmiftmxox .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pifbflhcvo .gt_indent_5 {
+#hhmiftmxox .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pifbflhcvo .katex-display {
+#hhmiftmxox .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pifbflhcvo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hhmiftmxox div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2121,32 +2120,31 @@ div.csl-indent {
 <td headers="codif" class="gt_row gt_left">GNSLS</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>Considere otro ejemplo. La siguiente tabla presenta el resultado de aplicar los algoritmos fonéticos al campo del nombre. En este caso, se puede observar que el método propuesto, columna <em>nom_latino</em>, origina un mejor resultado que los otros algoritmos.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="preprocesamiento.html#cb19-1" tabindex="-1"></a>nom <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="preprocesamiento.html#cb19-2" tabindex="-1"></a>       <span class="fu">mutate</span>(<span class="at">soundex =</span><span class="fu">soundex</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
-<span id="cb19-3"><a href="preprocesamiento.html#cb19-3" tabindex="-1"></a>              <span class="at">metaphone =</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
-<span id="cb19-4"><a href="preprocesamiento.html#cb19-4" tabindex="-1"></a>              <span class="at">statcan =</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
-<span id="cb19-5"><a href="preprocesamiento.html#cb19-5" tabindex="-1"></a>              <span class="at">latino =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(nombre)))</span></code></pre></div>
-<div id="wznpejdekv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wznpejdekv table {
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="preprocesamiento.html#cb18-1" tabindex="-1"></a>nom <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a href="preprocesamiento.html#cb18-2" tabindex="-1"></a>       <span class="fu">mutate</span>(<span class="at">soundex =</span><span class="fu">soundex</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
+<span id="cb18-3"><a href="preprocesamiento.html#cb18-3" tabindex="-1"></a>              <span class="at">metaphone =</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
+<span id="cb18-4"><a href="preprocesamiento.html#cb18-4" tabindex="-1"></a>              <span class="at">statcan =</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
+<span id="cb18-5"><a href="preprocesamiento.html#cb18-5" tabindex="-1"></a>              <span class="at">latino =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(nombre)))</span></code></pre></div>
+<div id="jjvkxbqrwl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jjvkxbqrwl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wznpejdekv thead, #wznpejdekv tbody, #wznpejdekv tfoot, #wznpejdekv tr, #wznpejdekv td, #wznpejdekv th {
+#jjvkxbqrwl thead, #jjvkxbqrwl tbody, #jjvkxbqrwl tfoot, #jjvkxbqrwl tr, #jjvkxbqrwl td, #jjvkxbqrwl th {
   border-style: none;
 }
 
-#wznpejdekv p {
+#jjvkxbqrwl p {
   margin: 0;
   padding: 0;
 }
 
-#wznpejdekv .gt_table {
+#jjvkxbqrwl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2172,12 +2170,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_caption {
+#jjvkxbqrwl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wznpejdekv .gt_title {
+#jjvkxbqrwl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2189,7 +2187,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#wznpejdekv .gt_subtitle {
+#jjvkxbqrwl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2201,7 +2199,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#wznpejdekv .gt_heading {
+#jjvkxbqrwl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2213,13 +2211,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_bottom_border {
+#jjvkxbqrwl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_col_headings {
+#jjvkxbqrwl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2234,7 +2232,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_col_heading {
+#jjvkxbqrwl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2254,7 +2252,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#wznpejdekv .gt_column_spanner_outer {
+#jjvkxbqrwl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2266,15 +2264,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#wznpejdekv .gt_column_spanner_outer:first-child {
+#jjvkxbqrwl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wznpejdekv .gt_column_spanner_outer:last-child {
+#jjvkxbqrwl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wznpejdekv .gt_column_spanner {
+#jjvkxbqrwl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2286,11 +2284,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#wznpejdekv .gt_spanner_row {
+#jjvkxbqrwl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wznpejdekv .gt_group_heading {
+#jjvkxbqrwl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2316,7 +2314,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#wznpejdekv .gt_empty_group_heading {
+#jjvkxbqrwl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2331,15 +2329,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#wznpejdekv .gt_from_md > :first-child {
+#jjvkxbqrwl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wznpejdekv .gt_from_md > :last-child {
+#jjvkxbqrwl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wznpejdekv .gt_row {
+#jjvkxbqrwl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2358,7 +2356,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#wznpejdekv .gt_stub {
+#jjvkxbqrwl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2371,7 +2369,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wznpejdekv .gt_stub_row_group {
+#jjvkxbqrwl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2385,15 +2383,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#wznpejdekv .gt_row_group_first td {
+#jjvkxbqrwl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wznpejdekv .gt_row_group_first th {
+#jjvkxbqrwl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wznpejdekv .gt_summary_row {
+#jjvkxbqrwl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2403,16 +2401,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wznpejdekv .gt_first_summary_row {
+#jjvkxbqrwl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_first_summary_row.thick {
+#jjvkxbqrwl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wznpejdekv .gt_last_summary_row {
+#jjvkxbqrwl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2422,7 +2420,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_grand_summary_row {
+#jjvkxbqrwl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2432,7 +2430,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wznpejdekv .gt_first_grand_summary_row {
+#jjvkxbqrwl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2442,7 +2440,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_last_grand_summary_row_top {
+#jjvkxbqrwl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2452,11 +2450,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_striped {
+#jjvkxbqrwl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wznpejdekv .gt_table_body {
+#jjvkxbqrwl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2465,7 +2463,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_footnotes {
+#jjvkxbqrwl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2479,7 +2477,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_footnote {
+#jjvkxbqrwl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2488,7 +2486,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wznpejdekv .gt_sourcenotes {
+#jjvkxbqrwl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2502,7 +2500,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#wznpejdekv .gt_sourcenote {
+#jjvkxbqrwl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2510,72 +2508,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#wznpejdekv .gt_left {
+#jjvkxbqrwl .gt_left {
   text-align: left;
 }
 
-#wznpejdekv .gt_center {
+#jjvkxbqrwl .gt_center {
   text-align: center;
 }
 
-#wznpejdekv .gt_right {
+#jjvkxbqrwl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wznpejdekv .gt_font_normal {
+#jjvkxbqrwl .gt_font_normal {
   font-weight: normal;
 }
 
-#wznpejdekv .gt_font_bold {
+#jjvkxbqrwl .gt_font_bold {
   font-weight: bold;
 }
 
-#wznpejdekv .gt_font_italic {
+#jjvkxbqrwl .gt_font_italic {
   font-style: italic;
 }
 
-#wznpejdekv .gt_super {
+#jjvkxbqrwl .gt_super {
   font-size: 65%;
 }
 
-#wznpejdekv .gt_footnote_marks {
+#jjvkxbqrwl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wznpejdekv .gt_asterisk {
+#jjvkxbqrwl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wznpejdekv .gt_indent_1 {
+#jjvkxbqrwl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wznpejdekv .gt_indent_2 {
+#jjvkxbqrwl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wznpejdekv .gt_indent_3 {
+#jjvkxbqrwl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wznpejdekv .gt_indent_4 {
+#jjvkxbqrwl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wznpejdekv .gt_indent_5 {
+#jjvkxbqrwl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wznpejdekv .katex-display {
+#jjvkxbqrwl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wznpejdekv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jjvkxbqrwl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2683,32 +2681,31 @@ div.csl-indent {
 <td headers="latino" class="gt_row gt_left">YMN</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>En el caso del apellido, es fundamental tener en cuenta las particularidades culturales de cada región, ya que pueden influir significativamente en la forma en que son escritos o pronunciados. Estas variaciones hacen que ningún algoritmo de codificación fonética sea completamente robusto por sí solo, por lo que es recomendable adaptar o complementar los métodos según el contexto local.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="preprocesamiento.html#cb20-1" tabindex="-1"></a>apell <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb20-2"><a href="preprocesamiento.html#cb20-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">soundex =</span><span class="fu">soundex</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
-<span id="cb20-3"><a href="preprocesamiento.html#cb20-3" tabindex="-1"></a>                <span class="at">metaphone =</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
-<span id="cb20-4"><a href="preprocesamiento.html#cb20-4" tabindex="-1"></a>                <span class="at">statcan =</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
-<span id="cb20-5"><a href="preprocesamiento.html#cb20-5" tabindex="-1"></a>                <span class="at">latino =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(apellido)))</span></code></pre></div>
-<div id="ahgjxpvuon" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ahgjxpvuon table {
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="preprocesamiento.html#cb19-1" tabindex="-1"></a>apell <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb19-2"><a href="preprocesamiento.html#cb19-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">soundex =</span><span class="fu">soundex</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
+<span id="cb19-3"><a href="preprocesamiento.html#cb19-3" tabindex="-1"></a>                <span class="at">metaphone =</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
+<span id="cb19-4"><a href="preprocesamiento.html#cb19-4" tabindex="-1"></a>                <span class="at">statcan =</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
+<span id="cb19-5"><a href="preprocesamiento.html#cb19-5" tabindex="-1"></a>                <span class="at">latino =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(apellido)))</span></code></pre></div>
+<div id="clnmhlhtir" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#clnmhlhtir table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ahgjxpvuon thead, #ahgjxpvuon tbody, #ahgjxpvuon tfoot, #ahgjxpvuon tr, #ahgjxpvuon td, #ahgjxpvuon th {
+#clnmhlhtir thead, #clnmhlhtir tbody, #clnmhlhtir tfoot, #clnmhlhtir tr, #clnmhlhtir td, #clnmhlhtir th {
   border-style: none;
 }
 
-#ahgjxpvuon p {
+#clnmhlhtir p {
   margin: 0;
   padding: 0;
 }
 
-#ahgjxpvuon .gt_table {
+#clnmhlhtir .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2734,12 +2731,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_caption {
+#clnmhlhtir .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ahgjxpvuon .gt_title {
+#clnmhlhtir .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2751,7 +2748,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#ahgjxpvuon .gt_subtitle {
+#clnmhlhtir .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2763,7 +2760,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#ahgjxpvuon .gt_heading {
+#clnmhlhtir .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2775,13 +2772,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_bottom_border {
+#clnmhlhtir .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_col_headings {
+#clnmhlhtir .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2796,7 +2793,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_col_heading {
+#clnmhlhtir .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2816,7 +2813,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#ahgjxpvuon .gt_column_spanner_outer {
+#clnmhlhtir .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2828,15 +2825,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#ahgjxpvuon .gt_column_spanner_outer:first-child {
+#clnmhlhtir .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ahgjxpvuon .gt_column_spanner_outer:last-child {
+#clnmhlhtir .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ahgjxpvuon .gt_column_spanner {
+#clnmhlhtir .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2848,11 +2845,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#ahgjxpvuon .gt_spanner_row {
+#clnmhlhtir .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ahgjxpvuon .gt_group_heading {
+#clnmhlhtir .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2878,7 +2875,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#ahgjxpvuon .gt_empty_group_heading {
+#clnmhlhtir .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2893,15 +2890,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#ahgjxpvuon .gt_from_md > :first-child {
+#clnmhlhtir .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ahgjxpvuon .gt_from_md > :last-child {
+#clnmhlhtir .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ahgjxpvuon .gt_row {
+#clnmhlhtir .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2920,7 +2917,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#ahgjxpvuon .gt_stub {
+#clnmhlhtir .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2933,7 +2930,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ahgjxpvuon .gt_stub_row_group {
+#clnmhlhtir .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2947,15 +2944,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#ahgjxpvuon .gt_row_group_first td {
+#clnmhlhtir .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ahgjxpvuon .gt_row_group_first th {
+#clnmhlhtir .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ahgjxpvuon .gt_summary_row {
+#clnmhlhtir .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2965,16 +2962,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ahgjxpvuon .gt_first_summary_row {
+#clnmhlhtir .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_first_summary_row.thick {
+#clnmhlhtir .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ahgjxpvuon .gt_last_summary_row {
+#clnmhlhtir .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2984,7 +2981,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_grand_summary_row {
+#clnmhlhtir .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2994,7 +2991,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ahgjxpvuon .gt_first_grand_summary_row {
+#clnmhlhtir .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3004,7 +3001,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_last_grand_summary_row_top {
+#clnmhlhtir .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3014,11 +3011,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_striped {
+#clnmhlhtir .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ahgjxpvuon .gt_table_body {
+#clnmhlhtir .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3027,7 +3024,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_footnotes {
+#clnmhlhtir .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3041,7 +3038,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_footnote {
+#clnmhlhtir .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3050,7 +3047,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ahgjxpvuon .gt_sourcenotes {
+#clnmhlhtir .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3064,7 +3061,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#ahgjxpvuon .gt_sourcenote {
+#clnmhlhtir .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3072,72 +3069,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#ahgjxpvuon .gt_left {
+#clnmhlhtir .gt_left {
   text-align: left;
 }
 
-#ahgjxpvuon .gt_center {
+#clnmhlhtir .gt_center {
   text-align: center;
 }
 
-#ahgjxpvuon .gt_right {
+#clnmhlhtir .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ahgjxpvuon .gt_font_normal {
+#clnmhlhtir .gt_font_normal {
   font-weight: normal;
 }
 
-#ahgjxpvuon .gt_font_bold {
+#clnmhlhtir .gt_font_bold {
   font-weight: bold;
 }
 
-#ahgjxpvuon .gt_font_italic {
+#clnmhlhtir .gt_font_italic {
   font-style: italic;
 }
 
-#ahgjxpvuon .gt_super {
+#clnmhlhtir .gt_super {
   font-size: 65%;
 }
 
-#ahgjxpvuon .gt_footnote_marks {
+#clnmhlhtir .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ahgjxpvuon .gt_asterisk {
+#clnmhlhtir .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ahgjxpvuon .gt_indent_1 {
+#clnmhlhtir .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ahgjxpvuon .gt_indent_2 {
+#clnmhlhtir .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ahgjxpvuon .gt_indent_3 {
+#clnmhlhtir .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ahgjxpvuon .gt_indent_4 {
+#clnmhlhtir .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ahgjxpvuon .gt_indent_5 {
+#clnmhlhtir .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ahgjxpvuon .katex-display {
+#clnmhlhtir .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ahgjxpvuon div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#clnmhlhtir div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3245,30 +3242,29 @@ div.csl-indent {
 <td headers="latino" class="gt_row gt_left">NW</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>La siguiente tabla muestra el resultado de aplicar la función <code>codif_fonetico</code> tanto al nombre como al apellido. No obstante, se recomienda utilizar en cada campo el algoritmo fonético que mejor se adapte a las características lingüísticas y culturales del caso específico.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="preprocesamiento.html#cb21-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a href="preprocesamiento.html#cb21-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">nom_cod =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
-<span id="cb21-3"><a href="preprocesamiento.html#cb21-3" tabindex="-1"></a>                <span class="at">ape_cod =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(apellido)))</span></code></pre></div>
-<div id="uxcchdheci" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uxcchdheci table {
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="preprocesamiento.html#cb20-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="preprocesamiento.html#cb20-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">nom_cod =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
+<span id="cb20-3"><a href="preprocesamiento.html#cb20-3" tabindex="-1"></a>                <span class="at">ape_cod =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(apellido)))</span></code></pre></div>
+<div id="oussfmspbw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oussfmspbw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uxcchdheci thead, #uxcchdheci tbody, #uxcchdheci tfoot, #uxcchdheci tr, #uxcchdheci td, #uxcchdheci th {
+#oussfmspbw thead, #oussfmspbw tbody, #oussfmspbw tfoot, #oussfmspbw tr, #oussfmspbw td, #oussfmspbw th {
   border-style: none;
 }
 
-#uxcchdheci p {
+#oussfmspbw p {
   margin: 0;
   padding: 0;
 }
 
-#uxcchdheci .gt_table {
+#oussfmspbw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3294,12 +3290,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_caption {
+#oussfmspbw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uxcchdheci .gt_title {
+#oussfmspbw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3311,7 +3307,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#uxcchdheci .gt_subtitle {
+#oussfmspbw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3323,7 +3319,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#uxcchdheci .gt_heading {
+#oussfmspbw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3335,13 +3331,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_bottom_border {
+#oussfmspbw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_col_headings {
+#oussfmspbw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3356,7 +3352,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_col_heading {
+#oussfmspbw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3376,7 +3372,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#uxcchdheci .gt_column_spanner_outer {
+#oussfmspbw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3388,15 +3384,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#uxcchdheci .gt_column_spanner_outer:first-child {
+#oussfmspbw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uxcchdheci .gt_column_spanner_outer:last-child {
+#oussfmspbw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uxcchdheci .gt_column_spanner {
+#oussfmspbw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3408,11 +3404,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#uxcchdheci .gt_spanner_row {
+#oussfmspbw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uxcchdheci .gt_group_heading {
+#oussfmspbw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3438,7 +3434,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#uxcchdheci .gt_empty_group_heading {
+#oussfmspbw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3453,15 +3449,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#uxcchdheci .gt_from_md > :first-child {
+#oussfmspbw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uxcchdheci .gt_from_md > :last-child {
+#oussfmspbw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uxcchdheci .gt_row {
+#oussfmspbw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3480,7 +3476,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#uxcchdheci .gt_stub {
+#oussfmspbw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3493,7 +3489,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#uxcchdheci .gt_stub_row_group {
+#oussfmspbw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3507,15 +3503,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#uxcchdheci .gt_row_group_first td {
+#oussfmspbw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uxcchdheci .gt_row_group_first th {
+#oussfmspbw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uxcchdheci .gt_summary_row {
+#oussfmspbw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3525,16 +3521,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#uxcchdheci .gt_first_summary_row {
+#oussfmspbw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_first_summary_row.thick {
+#oussfmspbw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uxcchdheci .gt_last_summary_row {
+#oussfmspbw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3544,7 +3540,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_grand_summary_row {
+#oussfmspbw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3554,7 +3550,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#uxcchdheci .gt_first_grand_summary_row {
+#oussfmspbw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3564,7 +3560,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_last_grand_summary_row_top {
+#oussfmspbw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3574,11 +3570,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_striped {
+#oussfmspbw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uxcchdheci .gt_table_body {
+#oussfmspbw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3587,7 +3583,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_footnotes {
+#oussfmspbw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3601,7 +3597,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_footnote {
+#oussfmspbw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3610,7 +3606,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#uxcchdheci .gt_sourcenotes {
+#oussfmspbw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3624,7 +3620,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#uxcchdheci .gt_sourcenote {
+#oussfmspbw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3632,72 +3628,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#uxcchdheci .gt_left {
+#oussfmspbw .gt_left {
   text-align: left;
 }
 
-#uxcchdheci .gt_center {
+#oussfmspbw .gt_center {
   text-align: center;
 }
 
-#uxcchdheci .gt_right {
+#oussfmspbw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uxcchdheci .gt_font_normal {
+#oussfmspbw .gt_font_normal {
   font-weight: normal;
 }
 
-#uxcchdheci .gt_font_bold {
+#oussfmspbw .gt_font_bold {
   font-weight: bold;
 }
 
-#uxcchdheci .gt_font_italic {
+#oussfmspbw .gt_font_italic {
   font-style: italic;
 }
 
-#uxcchdheci .gt_super {
+#oussfmspbw .gt_super {
   font-size: 65%;
 }
 
-#uxcchdheci .gt_footnote_marks {
+#oussfmspbw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uxcchdheci .gt_asterisk {
+#oussfmspbw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uxcchdheci .gt_indent_1 {
+#oussfmspbw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uxcchdheci .gt_indent_2 {
+#oussfmspbw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uxcchdheci .gt_indent_3 {
+#oussfmspbw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uxcchdheci .gt_indent_4 {
+#oussfmspbw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uxcchdheci .gt_indent_5 {
+#oussfmspbw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uxcchdheci .katex-display {
+#oussfmspbw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uxcchdheci div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#oussfmspbw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3773,15 +3769,14 @@ div.csl-indent {
 <td headers="ape_cod" class="gt_row gt_left">NW</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>Ahora aplicaremos la función <code>codif_fonetico</code> a nuestros conjuntos de datos del censo y de la encuesta</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="preprocesamiento.html#cb22-1" tabindex="-1"></a>censo_limpio <span class="ot">&lt;-</span> censo_limpio <span class="sc">|&gt;</span> </span>
-<span id="cb22-2"><a href="preprocesamiento.html#cb22-2" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido), <span class="sc">~</span><span class="fu">codif_fonetico</span>(.), <span class="at">.names =</span> <span class="st">&quot;{.col}_cod&quot;</span>))</span>
-<span id="cb22-3"><a href="preprocesamiento.html#cb22-3" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="preprocesamiento.html#cb22-4" tabindex="-1"></a>encuesta_limpia <span class="ot">&lt;-</span> encuesta_limpia <span class="sc">|&gt;</span> </span>
-<span id="cb22-5"><a href="preprocesamiento.html#cb22-5" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido), <span class="sc">~</span><span class="fu">codif_fonetico</span>(.), <span class="at">.names =</span> <span class="st">&quot;{.col}_cod&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="preprocesamiento.html#cb21-1" tabindex="-1"></a>censo_limpio <span class="ot">&lt;-</span> censo_limpio <span class="sc">|&gt;</span> </span>
+<span id="cb21-2"><a href="preprocesamiento.html#cb21-2" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido), <span class="sc">~</span><span class="fu">codif_fonetico</span>(.), <span class="at">.names =</span> <span class="st">&quot;{.col}_cod&quot;</span>))</span>
+<span id="cb21-3"><a href="preprocesamiento.html#cb21-3" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="preprocesamiento.html#cb21-4" tabindex="-1"></a>encuesta_limpia <span class="ot">&lt;-</span> encuesta_limpia <span class="sc">|&gt;</span> </span>
+<span id="cb21-5"><a href="preprocesamiento.html#cb21-5" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido), <span class="sc">~</span><span class="fu">codif_fonetico</span>(.), <span class="at">.names =</span> <span class="st">&quot;{.col}_cod&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 <h3>References</h3>
@@ -3834,43 +3829,43 @@ Philips, Lawrence. 1990. <span>“Hanging on the Metaphone.”</span> <em>Comput
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": true,
-"facebook": false,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/psirusteam/PESguidelines/06-Emparejamiento.rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Encuesta PostCensal.pdf", "Encuesta PostCensal.epub", "Encuesta PostCensal.mobi"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-},
-"tconfig": null
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/psirusteam/PESguidelines/06-Emparejamiento.rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Encuesta PostCensal.pdf", "Encuesta PostCensal.epub", "Encuesta PostCensal.mobi"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "tconfig": null
 });
 });
 </script>

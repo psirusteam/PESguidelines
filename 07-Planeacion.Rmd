@@ -1,3 +1,7 @@
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE,
+                      cache = TRUE)
+                      
 # Planeación de la operación estadística
 
 La planificación de la operación logística de una Encuesta Postcensal (PES) es una fase crítica que determina en gran medida la calidad final de la medición de la cobertura censal. Este proceso requiere, por un lado, un diseño robusto que considere la asignación adecuada de recursos, un muestreo cuidadoso y una ejecución operativa eficiente. Por otro lado, debe estar precedido por una definición clara y sin ambigüedades de los objetivos que persigue, lo cual facilita una organización coherente del proceso. En la medida de lo posible, la planificación de la PES debe estar sincronizada con la planificación del censo, iniciarse de manera temprana y contar con recursos suficientes asignados como parte integral de la operación censal [@UnitedNations_2010; @hogan2003].

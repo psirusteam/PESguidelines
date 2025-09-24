@@ -1,3 +1,7 @@
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE,
+                      cache = TRUE)
+                      
 # Emparejamiento probabilístico
 
 Las bases de datos censales, rara vez se cuentan con identificadores únicos fiables y completos. Esto hace que el emparejamiento exacto basado en igualdad absoluta de valores en atributos clave, como el número de identificación, sea insuficiente. Además, las variaciones en nombres, errores tipográficos, diferencias de formato y registros incompletos son frecuentes.

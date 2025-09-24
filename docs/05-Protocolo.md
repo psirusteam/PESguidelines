@@ -1,3 +1,7 @@
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE,
+                      cache = TRUE)
+                      
 # Evaluación de la cobertura censal
 
 Como se ha mencionado en los capítulos anteriores, la encuesta postcensal (PES) es un estudio complementario al censo cuyo propósito principal es evaluar la cobertura y calidad de la información recolectada sobre unidades de vivienda y personas. Su implementación permite identificar posibles errores en la enumeración —como omisiones, duplicados o clasificaciones incorrectas— lo que contribuye a mejorar la precisión de los datos censales y proporciona insumos fundamentales para el diseño de futuras operaciones estadísticas.
@@ -36,7 +40,7 @@ $$I_k^{d} = \begin{cases}
 Desde la PES también se debe estimar el número de enumeraciones erróneas, existen varias razones por las cuales una enumeración se considera de este tipo. En general se clasifican en dos categorías: erróneas debido a duplicación y erróneas por otras razones. La Tabla \@ref(tab:t1) describe los principales motivos de clasificación como errónea. 
    
 
-<table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>(\#tab:t1)(\#tab:t1)Tipos de enumeraciones erróneas</caption>
  <thead>
   <tr>
@@ -148,6 +152,6 @@ Si no hay coincidencia tras ampliar el área de búsqueda, el caso se clasifica 
 
 
 ```{=html}
-<div id="htmlwidget-fb41362a7034aed9a609" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fb41362a7034aed9a609">{"x":{"diagram":"\ngraph TD;\n    A[Inicio del Proceso] --> B[Establecer la muestra E y P];\n    B --> C[Preprocesamiento de Datos];\n    C --> D[Emparejamiento Deterministico];\n    D -- Match --> J[Estimación de Omisiones];\n    D -- No Match --> E[Emparejamiento Probabilístico];\n    E --> F[Evaluación del Umbral];\n    F --> H{Tipo de coincidencia?};\n    H -- Emperejados --> J;\n    H -- Potenciales --> I[Revisión clerical];\n    H -- No emparejados --> K[Aumentar el área de búsqueda];\n    K --> X[Ampliar muestra E];\n    X --> E;\n    I --> L{Emparejado?};\n    L -- Sí --> M[Clasificacion Final];\n    L -- No --> K;\n    M --> J;\n    J --> N[Ajustes y Calibraciones];\n    N --> O[Validacion de Resultados];\n    O --> P[Documentacion y Reporte];\n    P --> Q[Fin del Proceso];\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-eb479ec333bd63996a67" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eb479ec333bd63996a67">{"x":{"diagram":"\ngraph TD;\n    A[Inicio del Proceso] --> B[Establecer la muestra E y P];\n    B --> C[Preprocesamiento de Datos];\n    C --> D[Emparejamiento Deterministico];\n    D -- Match --> J[Estimación de Omisiones];\n    D -- No Match --> E[Emparejamiento Probabilístico];\n    E --> F[Evaluación del Umbral];\n    F --> H{Tipo de coincidencia?};\n    H -- Emperejados --> J;\n    H -- Potenciales --> I[Revisión clerical];\n    H -- No emparejados --> K[Aumentar el área de búsqueda];\n    K --> X[Ampliar muestra E];\n    X --> E;\n    I --> L{Emparejado?};\n    L -- Sí --> M[Clasificacion Final];\n    L -- No --> K;\n    M --> J;\n    J --> N[Ajustes y Calibraciones];\n    N --> O[Validacion de Resultados];\n    O --> P[Documentacion y Reporte];\n    P --> Q[Fin del Proceso];\n"},"evals":[],"jsHooks":[]}</script>
 ```

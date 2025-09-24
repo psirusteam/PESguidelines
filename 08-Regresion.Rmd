@@ -1,3 +1,7 @@
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE,
+                      cache = TRUE)
+                      
 # Modelos de regresión en el sistema dual {#cap-reg}
 
 El sistema de estimación dual (DSE) fue descrito en el capítulo \@ref(cap-dual), mientras que los diferentes enfoques para la estimación fueron presentados en el capítulo \@ref(cap-estim). El estimador más clásico del DSE es el de Lincoln-Petersen [@petersen1896], que se escribe como:
