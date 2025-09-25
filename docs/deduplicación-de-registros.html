@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
 
 
-<meta name="date" content="2025-09-24" />
+<meta name="date" content="2025-09-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -331,7 +331,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="deduplicación-de-registros.html#cb26-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(<span class="fu">table</span>(inic_apell)))</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    2.00    5.75    8.00   25.00   40.00  115.00</code></pre>
-<p>A pesar de lo anterior, el número de pares posibles tras aplicar el bloqueo baja de 124750 a 14805 pares. Esta reducción es crucial para el rendimiento computacional del algoritmo. A continuación se observa el número de comparaciones por bloque.</p>
+<p>A pesar de lo anterior, el número de pares posibles tras aplicar el bloqueo baja de 1.2475^{5} a 1.4805^{4} pares. Esta reducción es crucial para el rendimiento computacional del algoritmo. A continuación se observa el número de comparaciones por bloque.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="deduplicación-de-registros.html#cb28-1" tabindex="-1"></a><span class="fu">sapply</span>(tbl, choose, <span class="at">k=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    A    B    D    E    F    G    H    J    K    L    M    N    O    P    R    S 
 ##   10 1540    1   15  703   66  496   28 1035   78 2850   28    6   15   21 6555 

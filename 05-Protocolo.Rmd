@@ -63,7 +63,7 @@ tabla <- data.frame(
                   "La persona es un visitante con residencia habitual en el extranjero que estaba temporalmente en el país el día del censo.")
 )
 
-kable(tabla, format = "markdown", col.names = c("**Tipo**", "**Descripción**")) %>%
+kable(tabla, format = "pandoc", col.names = c("**Tipo**", "**Descripción**")) %>%
   kable_styling(full_width = FALSE) %>%
   column_spec(1, width = "30%") %>%
   column_spec(2, width = "70%")
