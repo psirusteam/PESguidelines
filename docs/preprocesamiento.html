@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.3 Preprocesamiento | Fundamentos estadísticos para el análisis de las encuestas postcensales</title>
   <meta name="description" content="Encuestas Postcensales" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.3 Preprocesamiento | Fundamentos estadísticos para el análisis de las encuestas postcensales" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
 
 
-<meta name="date" content="2025-09-25" />
+<meta name="date" content="2025-09-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,13 +52,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -68,7 +67,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -173,11 +172,11 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#estabilidad-poblacional"><i class="fa fa-check"></i><b>1.2.1</b> Estabilidad poblacional</a></li>
 <li class="chapter" data-level="1.2.2" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#sec:multinomial"><i class="fa fa-check"></i><b>1.2.2</b> Estructura multinomial</a></li>
-<li class="chapter" data-level="1.2.3" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#independencia-autónoma"><i class="fa fa-check"></i><b>1.2.3</b> Independencia autónoma</a></li>
+<li class="chapter" data-level="1.2.3" data-path="06-Emparejamiento.html"><a href="#independencia-aut%C3%B3noma"><i class="fa fa-check"></i><b>1.2.3</b> Independencia autónoma</a></li>
 <li class="chapter" data-level="1.2.4" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#independencia-causal"><i class="fa fa-check"></i><b>1.2.4</b> Independencia causal</a></li>
 <li class="chapter" data-level="1.2.5" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#emparejamiento"><i class="fa fa-check"></i><b>1.2.5</b> Emparejamiento</a></li>
 <li class="chapter" data-level="1.2.6" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#eventos-espurios"><i class="fa fa-check"></i><b>1.2.6</b> Eventos espurios</a></li>
-<li class="chapter" data-level="1.2.7" data-path="condiciones-y-supuestos.html"><a href="condiciones-y-supuestos.html#postestratificación"><i class="fa fa-check"></i><b>1.2.7</b> Postestratificación</a></li>
+<li class="chapter" data-level="1.2.7" data-path="06-Emparejamiento.html"><a href="#postestratificaci%C3%B3n"><i class="fa fa-check"></i><b>1.2.7</b> Postestratificación</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="inferencia.html"><a href="inferencia.html"><i class="fa fa-check"></i><b>1.3</b> Inferencia</a>
 <ul>
@@ -185,9 +184,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.3.2" data-path="inferencia.html"><a href="inferencia.html#propiedades-del-estimador"><i class="fa fa-check"></i><b>1.3.2</b> Propiedades del estimador</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="estimación-dual-con-la-muestra-de-la-encuesta.html"><a href="estimación-dual-con-la-muestra-de-la-encuesta.html"><i class="fa fa-check"></i><b>2</b> Estimación dual con la muestra de la encuesta</a>
+<li class="chapter" data-level="2" data-path="06-Emparejamiento.html"><a href="#estimaci%C3%B3n-dual-con-la-muestra-de-la-encuesta"><i class="fa fa-check"></i><b>2</b> Estimación dual con la muestra de la encuesta</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="el-diseño-de-muestreo.html"><a href="el-diseño-de-muestreo.html"><i class="fa fa-check"></i><b>2.1</b> El diseño de muestreo</a></li>
+<li class="chapter" data-level="2.1" data-path="06-Emparejamiento.html"><a href="#el-dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>2.1</b> El diseño de muestreo</a></li>
 <li class="chapter" data-level="2.2" data-path="la-muestra-e-y-la-muestra-p.html"><a href="la-muestra-e-y-la-muestra-p.html"><i class="fa fa-check"></i><b>2.2</b> La muestra E y la muestra P</a></li>
 <li class="chapter" data-level="2.3" data-path="los-estimadores-de-muestreo.html"><a href="los-estimadores-de-muestreo.html"><i class="fa fa-check"></i><b>2.3</b> Los estimadores de muestreo</a></li>
 </ul></li>
@@ -214,74 +213,74 @@ div.csl-indent {
 <li class="chapter" data-level="4.9" data-path="notas-adicionales.html"><a href="notas-adicionales.html"><i class="fa fa-check"></i><b>4.9</b> Notas adicionales</a></li>
 <li class="chapter" data-level="4.10" data-path="cuadro-comparativo-de-los-estimadores.html"><a href="cuadro-comparativo-de-los-estimadores.html"><i class="fa fa-check"></i><b>4.10</b> Cuadro comparativo de los estimadores</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="evaluación-de-la-cobertura-censal.html"><a href="evaluación-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
+<li class="chapter" data-level="5" data-path="06-Emparejamiento.html"><a href="#evaluaci%C3%B3n-de-la-cobertura-censal"><i class="fa fa-check"></i><b>5</b> Evaluación de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="objetivos-de-la-encuesta-postcensal.html"><a href="objetivos-de-la-encuesta-postcensal.html"><i class="fa fa-check"></i><b>5.1</b> Objetivos de la encuesta postcensal</a></li>
 <li class="chapter" data-level="5.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html"><i class="fa fa-check"></i><b>5.2</b> Componentes de la cobertura censal</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-correctas"><i class="fa fa-check"></i><b>5.2.1</b> Enumeraciones correctas</a></li>
-<li class="chapter" data-level="5.2.2" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#enumeraciones-erróneas"><i class="fa fa-check"></i><b>5.2.2</b> Enumeraciones erróneas</a></li>
+<li class="chapter" data-level="5.2.2" data-path="06-Emparejamiento.html"><a href="#enumeraciones-err%C3%B3neas"><i class="fa fa-check"></i><b>5.2.2</b> Enumeraciones erróneas</a></li>
 <li class="chapter" data-level="5.2.3" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#omisiones"><i class="fa fa-check"></i><b>5.2.3</b> Omisiones</a></li>
-<li class="chapter" data-level="5.2.4" data-path="componentes-de-la-cobertura-censal.html"><a href="componentes-de-la-cobertura-censal.html#imputación"><i class="fa fa-check"></i><b>5.2.4</b> Imputación</a></li>
+<li class="chapter" data-level="5.2.4" data-path="06-Emparejamiento.html"><a href="#imputaci%C3%B3n"><i class="fa fa-check"></i><b>5.2.4</b> Imputación</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html"><i class="fa fa-check"></i><b>5.3</b> Protocolo de clasificación</a>
+<li class="chapter" data-level="5.3" data-path="06-Emparejamiento.html"><a href="#protocolo-de-clasificaci%C3%B3n"><i class="fa fa-check"></i><b>5.3</b> Protocolo de clasificación</a>
 <ul>
-<li class="chapter" data-level="5.3.1" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html#preprocesamiento-de-datos"><i class="fa fa-check"></i><b>5.3.1</b> Preprocesamiento de datos</a></li>
+<li class="chapter" data-level="5.3.1" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html"><i class="fa fa-check"></i><b>5.3.1</b> Preprocesamiento de datos</a></li>
 <li class="chapter" data-level="5.3.2" data-path="protocolo-de-clasificación.html"><a href="protocolo-de-clasificación.html#emparejamiento-de-registros"><i class="fa fa-check"></i><b>5.3.2</b> Emparejamiento de registros</a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="flujo-general-del-procedimiento.html"><a href="flujo-general-del-procedimiento.html"><i class="fa fa-check"></i><b>5.4</b> Flujo general del procedimiento</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="emparejamiento-probabilístico.html"><a href="emparejamiento-probabilístico.html"><i class="fa fa-check"></i><b>6</b> Emparejamiento probabilístico</a>
+<li class="chapter" data-level="6" data-path="06-Emparejamiento.html"><a href="#emparejamiento-probabil%C3%ADstico"><i class="fa fa-check"></i><b>6</b> Emparejamiento probabilístico</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="geolocalización.html"><a href="geolocalización.html"><i class="fa fa-check"></i><b>6.1</b> Geolocalización</a></li>
+<li class="chapter" data-level="6.1" data-path="06-Emparejamiento.html"><a href="#geolocalizaci%C3%B3n"><i class="fa fa-check"></i><b>6.1</b> Geolocalización</a></li>
 <li class="chapter" data-level="6.2" data-path="flujo-general.html"><a href="flujo-general.html"><i class="fa fa-check"></i><b>6.2</b> Flujo general</a></li>
 <li class="chapter" data-level="6.3" data-path="preprocesamiento.html"><a href="preprocesamiento.html"><i class="fa fa-check"></i><b>6.3</b> Preprocesamiento</a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="preprocesamiento.html"><a href="preprocesamiento.html#limpieza-de-los-datos"><i class="fa fa-check"></i><b>6.3.1</b> Limpieza de los datos</a></li>
-<li class="chapter" data-level="6.3.2" data-path="preprocesamiento.html"><a href="preprocesamiento.html#codificación-fonética"><i class="fa fa-check"></i><b>6.3.2</b> Codificación fonética</a></li>
+<li class="chapter" data-level="6.3.2" data-path="06-Emparejamiento.html"><a href="#codificaci%C3%B3n-fon%C3%A9tica"><i class="fa fa-check"></i><b>6.3.2</b> Codificación fonética</a></li>
 <li class="chapter" data-level="6.3.3" data-path="preprocesamiento.html"><a href="preprocesamiento.html#metaphone"><i class="fa fa-check"></i><b>6.3.3</b> Metaphone</a></li>
 <li class="chapter" data-level="6.3.4" data-path="preprocesamiento.html"><a href="preprocesamiento.html#algoritmo-statistics-canada"><i class="fa fa-check"></i><b>6.3.4</b> Algoritmo Statistics Canada</a></li>
-<li class="chapter" data-level="6.3.5" data-path="preprocesamiento.html"><a href="preprocesamiento.html#adaptación-para-encuestas-de-américa-latina"><i class="fa fa-check"></i><b>6.3.5</b> Adaptación para Encuestas de América Latina</a></li>
+<li class="chapter" data-level="6.3.5" data-path="06-Emparejamiento.html"><a href="#adaptaci%C3%B3n-para-encuestas-de-am%C3%A9rica-latina"><i class="fa fa-check"></i><b>6.3.5</b> Adaptación para Encuestas de América Latina</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="indexación.html"><a href="indexación.html"><i class="fa fa-check"></i><b>6.4</b> Indexación</a></li>
-<li class="chapter" data-level="6.5" data-path="comparación.html"><a href="comparación.html"><i class="fa fa-check"></i><b>6.5</b> Comparación</a>
+<li class="chapter" data-level="6.4" data-path="06-Emparejamiento.html"><a href="#indexaci%C3%B3n"><i class="fa fa-check"></i><b>6.4</b> Indexación</a></li>
+<li class="chapter" data-level="6.5" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n"><i class="fa fa-check"></i><b>6.5</b> Comparación</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="comparación.html"><a href="comparación.html#distancia-de-levenshtein"><i class="fa fa-check"></i><b>6.5.1</b> Distancia de Levenshtein</a></li>
-<li class="chapter" data-level="6.5.2" data-path="comparación.html"><a href="comparación.html#comparación-de-jaro-y-winkler"><i class="fa fa-check"></i><b>6.5.2</b> Comparación de Jaro y Winkler</a></li>
-<li class="chapter" data-level="6.5.3" data-path="comparación.html"><a href="comparación.html#comparación-de-fechas-y-edades"><i class="fa fa-check"></i><b>6.5.3</b> Comparación de fechas y edades</a></li>
-<li class="chapter" data-level="6.5.4" data-path="comparación.html"><a href="comparación.html#comparación-geográfica"><i class="fa fa-check"></i><b>6.5.4</b> Comparación geográfica</a></li>
+<li class="chapter" data-level="6.5.1" data-path="comparación.html"><a href="comparación.html"><i class="fa fa-check"></i><b>6.5.1</b> Distancia de Levenshtein</a></li>
+<li class="chapter" data-level="6.5.2" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n-de-jaro-y-winkler"><i class="fa fa-check"></i><b>6.5.2</b> Comparación de Jaro y Winkler</a></li>
+<li class="chapter" data-level="6.5.3" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n-de-fechas-y-edades"><i class="fa fa-check"></i><b>6.5.3</b> Comparación de fechas y edades</a></li>
+<li class="chapter" data-level="6.5.4" data-path="06-Emparejamiento.html"><a href="#comparaci%C3%B3n-geogr%C3%A1fica"><i class="fa fa-check"></i><b>6.5.4</b> Comparación geográfica</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="clasificación.html"><a href="clasificación.html"><i class="fa fa-check"></i><b>6.6</b> Clasificación</a></li>
-<li class="chapter" data-level="6.7" data-path="evaluación.html"><a href="evaluación.html"><i class="fa fa-check"></i><b>6.7</b> Evaluación</a>
+<li class="chapter" data-level="6.6" data-path="06-Emparejamiento.html"><a href="#clasificaci%C3%B3n"><i class="fa fa-check"></i><b>6.6</b> Clasificación</a></li>
+<li class="chapter" data-level="6.7" data-path="06-Emparejamiento.html"><a href="#evaluaci%C3%B3n"><i class="fa fa-check"></i><b>6.7</b> Evaluación</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="evaluación.html"><a href="evaluación.html#métricas-de-desempeño"><i class="fa fa-check"></i><b>6.7.1</b> Métricas de desempeño</a></li>
-<li class="chapter" data-level="6.7.2" data-path="evaluación.html"><a href="evaluación.html#métricas-de-eficiencia"><i class="fa fa-check"></i><b>6.7.2</b> Métricas de eficiencia</a></li>
-<li class="chapter" data-level="6.7.3" data-path="evaluación.html"><a href="evaluación.html#revisión-clerical"><i class="fa fa-check"></i><b>6.7.3</b> Revisión clerical</a></li>
+<li class="chapter" data-level="6.7.1" data-path="06-Emparejamiento.html"><a href="#m%C3%A9tricas-de-desempe%C3%B1o"><i class="fa fa-check"></i><b>6.7.1</b> Métricas de desempeño</a></li>
+<li class="chapter" data-level="6.7.2" data-path="06-Emparejamiento.html"><a href="#m%C3%A9tricas-de-eficiencia"><i class="fa fa-check"></i><b>6.7.2</b> Métricas de eficiencia</a></li>
+<li class="chapter" data-level="6.7.3" data-path="06-Emparejamiento.html"><a href="#revisi%C3%B3n-clerical"><i class="fa fa-check"></i><b>6.7.3</b> Revisión clerical</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="implementación.html"><a href="implementación.html"><i class="fa fa-check"></i><b>6.8</b> Implementación</a></li>
-<li class="chapter" data-level="6.9" data-path="deduplicación-de-registros.html"><a href="deduplicación-de-registros.html"><i class="fa fa-check"></i><b>6.9</b> Deduplicación de registros</a></li>
-<li class="chapter" data-level="6.10" data-path="vinculación-de-registros.html"><a href="vinculación-de-registros.html"><i class="fa fa-check"></i><b>6.10</b> Vinculación de registros</a></li>
+<li class="chapter" data-level="6.8" data-path="06-Emparejamiento.html"><a href="#implementaci%C3%B3n"><i class="fa fa-check"></i><b>6.8</b> Implementación</a></li>
+<li class="chapter" data-level="6.9" data-path="06-Emparejamiento.html"><a href="#deduplicaci%C3%B3n-de-registros"><i class="fa fa-check"></i><b>6.9</b> Deduplicación de registros</a></li>
+<li class="chapter" data-level="6.10" data-path="06-Emparejamiento.html"><a href="#vinculaci%C3%B3n-de-registros"><i class="fa fa-check"></i><b>6.10</b> Vinculación de registros</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="planeación-de-la-operación-estadística.html"><a href="planeación-de-la-operación-estadística.html"><i class="fa fa-check"></i><b>7</b> Planeación de la operación estadística</a>
+<li class="chapter" data-level="7" data-path="06-Emparejamiento.html"><a href="#planeaci%C3%B3n-de-la-operaci%C3%B3n-estad%C3%ADstica"><i class="fa fa-check"></i><b>7</b> Planeación de la operación estadística</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="diseño-del-cuestionario.html"><a href="diseño-del-cuestionario.html"><i class="fa fa-check"></i><b>7.1</b> Diseño del cuestionario</a></li>
-<li class="chapter" data-level="7.2" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html"><i class="fa fa-check"></i><b>7.2</b> Diseño de la muestra</a>
+<li class="chapter" data-level="7.1" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-del-cuestionario"><i class="fa fa-check"></i><b>7.1</b> Diseño del cuestionario</a></li>
+<li class="chapter" data-level="7.2" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-de-la-muestra"><i class="fa fa-check"></i><b>7.2</b> Diseño de la muestra</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#marco-de-muestreo"><i class="fa fa-check"></i><b>7.2.1</b> Marco de muestreo</a></li>
-<li class="chapter" data-level="7.2.2" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#construcción-de-las-upm"><i class="fa fa-check"></i><b>7.2.2</b> Construcción de las UPM</a></li>
+<li class="chapter" data-level="7.2.1" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html"><i class="fa fa-check"></i><b>7.2.1</b> Marco de muestreo</a></li>
+<li class="chapter" data-level="7.2.2" data-path="06-Emparejamiento.html"><a href="#construcci%C3%B3n-de-las-upm"><i class="fa fa-check"></i><b>7.2.2</b> Construcción de las UPM</a></li>
 <li class="chapter" data-level="7.2.3" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#estratos"><i class="fa fa-check"></i><b>7.2.3</b> Estratos</a></li>
-<li class="chapter" data-level="7.2.4" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#diseño-de-muestreo"><i class="fa fa-check"></i><b>7.2.4</b> Diseño de muestreo</a></li>
-<li class="chapter" data-level="7.2.5" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#diseño-de-muestreo-estándar"><i class="fa fa-check"></i><b>7.2.5</b> Diseño de muestreo estándar</a></li>
-<li class="chapter" data-level="7.2.6" data-path="diseño-de-la-muestra.html"><a href="diseño-de-la-muestra.html#cálculo-del-tamaño-de-muestra"><i class="fa fa-check"></i><b>7.2.6</b> Cálculo del tamaño de muestra</a></li>
+<li class="chapter" data-level="7.2.4" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>7.2.4</b> Diseño de muestreo</a></li>
+<li class="chapter" data-level="7.2.5" data-path="06-Emparejamiento.html"><a href="#dise%C3%B1o-de-muestreo-est%C3%A1ndar"><i class="fa fa-check"></i><b>7.2.5</b> Diseño de muestreo estándar</a></li>
+<li class="chapter" data-level="7.2.6" data-path="06-Emparejamiento.html"><a href="#c%C3%A1lculo-del-tama%C3%B1o-de-muestra"><i class="fa fa-check"></i><b>7.2.6</b> Cálculo del tamaño de muestra</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="operativo-de-recolección.html"><a href="operativo-de-recolección.html"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
+<li class="chapter" data-level="7.3" data-path="06-Emparejamiento.html"><a href="#operativo-de-recolecci%C3%B3n"><i class="fa fa-check"></i><b>7.3</b> Operativo de recolección</a></li>
 <li class="chapter" data-level="7.4" data-path="indicadores-principales.html"><a href="indicadores-principales.html"><i class="fa fa-check"></i><b>7.4</b> Indicadores principales</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="cap-reg.html"><a href="cap-reg.html"><i class="fa fa-check"></i><b>8</b> Modelos de regresión en el sistema dual</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="post-estratificación.html"><a href="post-estratificación.html"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
-<li class="chapter" data-level="8.2" data-path="regresión-logística.html"><a href="regresión-logística.html"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
-<li class="chapter" data-level="8.3" data-path="ajuste-por-información-demográfica.html"><a href="ajuste-por-información-demográfica.html"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
+<li class="chapter" data-level="8.1" data-path="06-Emparejamiento.html"><a href="#post-estratificaci%C3%B3n"><i class="fa fa-check"></i><b>8.1</b> Post-estratificación</a></li>
+<li class="chapter" data-level="8.2" data-path="06-Emparejamiento.html"><a href="#regresi%C3%B3n-log%C3%ADstica"><i class="fa fa-check"></i><b>8.2</b> Regresión logística</a></li>
+<li class="chapter" data-level="8.3" data-path="06-Emparejamiento.html"><a href="#ajuste-por-informaci%C3%B3n-demogr%C3%A1fica"><i class="fa fa-check"></i><b>8.3</b> Ajuste por información demográfica</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a Encuestas postcensales </a></li>
@@ -343,23 +342,23 @@ div.csl-indent {
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="preprocesamiento.html#cb8-1" tabindex="-1"></a>censo_limpio <span class="ot">&lt;-</span> censo <span class="sc">|&gt;</span> </span>
 <span id="cb8-2"><a href="preprocesamiento.html#cb8-2" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido, parentesco, sexo),</span>
 <span id="cb8-3"><a href="preprocesamiento.html#cb8-3" tabindex="-1"></a>                              <span class="sc">~</span><span class="fu">eliminar_stopwords</span>(<span class="fu">limpiar_texto</span>(.))))</span></code></pre></div>
-<div id="fjkqcgoxkb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fjkqcgoxkb table {
+<div id="beycmcaagw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#beycmcaagw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fjkqcgoxkb thead, #fjkqcgoxkb tbody, #fjkqcgoxkb tfoot, #fjkqcgoxkb tr, #fjkqcgoxkb td, #fjkqcgoxkb th {
+#beycmcaagw thead, #beycmcaagw tbody, #beycmcaagw tfoot, #beycmcaagw tr, #beycmcaagw td, #beycmcaagw th {
   border-style: none;
 }
 
-#fjkqcgoxkb p {
+#beycmcaagw p {
   margin: 0;
   padding: 0;
 }
 
-#fjkqcgoxkb .gt_table {
+#beycmcaagw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -385,12 +384,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_caption {
+#beycmcaagw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fjkqcgoxkb .gt_title {
+#beycmcaagw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -402,7 +401,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#fjkqcgoxkb .gt_subtitle {
+#beycmcaagw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -414,7 +413,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#fjkqcgoxkb .gt_heading {
+#beycmcaagw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -426,13 +425,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_bottom_border {
+#beycmcaagw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_col_headings {
+#beycmcaagw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -447,7 +446,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_col_heading {
+#beycmcaagw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -467,7 +466,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#fjkqcgoxkb .gt_column_spanner_outer {
+#beycmcaagw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -479,15 +478,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#fjkqcgoxkb .gt_column_spanner_outer:first-child {
+#beycmcaagw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fjkqcgoxkb .gt_column_spanner_outer:last-child {
+#beycmcaagw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fjkqcgoxkb .gt_column_spanner {
+#beycmcaagw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -499,11 +498,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#fjkqcgoxkb .gt_spanner_row {
+#beycmcaagw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fjkqcgoxkb .gt_group_heading {
+#beycmcaagw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -529,7 +528,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#fjkqcgoxkb .gt_empty_group_heading {
+#beycmcaagw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -544,15 +543,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#fjkqcgoxkb .gt_from_md > :first-child {
+#beycmcaagw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fjkqcgoxkb .gt_from_md > :last-child {
+#beycmcaagw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fjkqcgoxkb .gt_row {
+#beycmcaagw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -571,7 +570,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#fjkqcgoxkb .gt_stub {
+#beycmcaagw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -584,7 +583,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#fjkqcgoxkb .gt_stub_row_group {
+#beycmcaagw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -598,15 +597,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#fjkqcgoxkb .gt_row_group_first td {
+#beycmcaagw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fjkqcgoxkb .gt_row_group_first th {
+#beycmcaagw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fjkqcgoxkb .gt_summary_row {
+#beycmcaagw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -616,16 +615,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#fjkqcgoxkb .gt_first_summary_row {
+#beycmcaagw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_first_summary_row.thick {
+#beycmcaagw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fjkqcgoxkb .gt_last_summary_row {
+#beycmcaagw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -635,7 +634,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_grand_summary_row {
+#beycmcaagw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -645,7 +644,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#fjkqcgoxkb .gt_first_grand_summary_row {
+#beycmcaagw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -655,7 +654,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_last_grand_summary_row_top {
+#beycmcaagw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -665,11 +664,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_striped {
+#beycmcaagw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fjkqcgoxkb .gt_table_body {
+#beycmcaagw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -678,7 +677,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_footnotes {
+#beycmcaagw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -692,7 +691,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_footnote {
+#beycmcaagw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -701,7 +700,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#fjkqcgoxkb .gt_sourcenotes {
+#beycmcaagw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -715,7 +714,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#fjkqcgoxkb .gt_sourcenote {
+#beycmcaagw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -723,72 +722,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#fjkqcgoxkb .gt_left {
+#beycmcaagw .gt_left {
   text-align: left;
 }
 
-#fjkqcgoxkb .gt_center {
+#beycmcaagw .gt_center {
   text-align: center;
 }
 
-#fjkqcgoxkb .gt_right {
+#beycmcaagw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fjkqcgoxkb .gt_font_normal {
+#beycmcaagw .gt_font_normal {
   font-weight: normal;
 }
 
-#fjkqcgoxkb .gt_font_bold {
+#beycmcaagw .gt_font_bold {
   font-weight: bold;
 }
 
-#fjkqcgoxkb .gt_font_italic {
+#beycmcaagw .gt_font_italic {
   font-style: italic;
 }
 
-#fjkqcgoxkb .gt_super {
+#beycmcaagw .gt_super {
   font-size: 65%;
 }
 
-#fjkqcgoxkb .gt_footnote_marks {
+#beycmcaagw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fjkqcgoxkb .gt_asterisk {
+#beycmcaagw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fjkqcgoxkb .gt_indent_1 {
+#beycmcaagw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fjkqcgoxkb .gt_indent_2 {
+#beycmcaagw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fjkqcgoxkb .gt_indent_3 {
+#beycmcaagw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fjkqcgoxkb .gt_indent_4 {
+#beycmcaagw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fjkqcgoxkb .gt_indent_5 {
+#beycmcaagw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fjkqcgoxkb .katex-display {
+#beycmcaagw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fjkqcgoxkb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#beycmcaagw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -874,7 +873,6 @@ div.csl-indent {
 <td headers="parentesco" class="gt_row gt_left">hijo a</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>En el caso de la tabla de la encuesta, primero se separa el nombre_completo en varias variables para generar la misma estructura que la tabla del censo, o podría unirse las variables del censo para generar un nombre_unico, lo importante es dejar las tablas en la misma estructura. De igual forma para la fecha de nacimiento. Paso seguido se aplican las funciones sobre las variables de interés.</p>
@@ -884,23 +882,23 @@ div.csl-indent {
 <span id="cb9-4"><a href="preprocesamiento.html#cb9-4" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">&quot;anio_nac&quot;</span>, <span class="st">&quot;mes_nac&quot;</span>, <span class="st">&quot;dia_nac&quot;</span>), <span class="sc">~</span><span class="fu">as.numeric</span>(.))) <span class="sc">|&gt;</span>   </span>
 <span id="cb9-5"><a href="preprocesamiento.html#cb9-5" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido, parentesco, sexo),</span>
 <span id="cb9-6"><a href="preprocesamiento.html#cb9-6" tabindex="-1"></a>                                 <span class="sc">~</span><span class="fu">eliminar_stopwords</span>(<span class="fu">limpiar_texto</span>(.))))</span></code></pre></div>
-<div id="jxkjhbefqe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jxkjhbefqe table {
+<div id="snhwbvsnyt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#snhwbvsnyt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jxkjhbefqe thead, #jxkjhbefqe tbody, #jxkjhbefqe tfoot, #jxkjhbefqe tr, #jxkjhbefqe td, #jxkjhbefqe th {
+#snhwbvsnyt thead, #snhwbvsnyt tbody, #snhwbvsnyt tfoot, #snhwbvsnyt tr, #snhwbvsnyt td, #snhwbvsnyt th {
   border-style: none;
 }
 
-#jxkjhbefqe p {
+#snhwbvsnyt p {
   margin: 0;
   padding: 0;
 }
 
-#jxkjhbefqe .gt_table {
+#snhwbvsnyt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -926,12 +924,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_caption {
+#snhwbvsnyt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jxkjhbefqe .gt_title {
+#snhwbvsnyt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -943,7 +941,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#jxkjhbefqe .gt_subtitle {
+#snhwbvsnyt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -955,7 +953,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#jxkjhbefqe .gt_heading {
+#snhwbvsnyt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -967,13 +965,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_bottom_border {
+#snhwbvsnyt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_col_headings {
+#snhwbvsnyt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -988,7 +986,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_col_heading {
+#snhwbvsnyt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1008,7 +1006,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#jxkjhbefqe .gt_column_spanner_outer {
+#snhwbvsnyt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1020,15 +1018,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#jxkjhbefqe .gt_column_spanner_outer:first-child {
+#snhwbvsnyt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jxkjhbefqe .gt_column_spanner_outer:last-child {
+#snhwbvsnyt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jxkjhbefqe .gt_column_spanner {
+#snhwbvsnyt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1040,11 +1038,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#jxkjhbefqe .gt_spanner_row {
+#snhwbvsnyt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jxkjhbefqe .gt_group_heading {
+#snhwbvsnyt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1070,7 +1068,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#jxkjhbefqe .gt_empty_group_heading {
+#snhwbvsnyt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1085,15 +1083,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#jxkjhbefqe .gt_from_md > :first-child {
+#snhwbvsnyt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jxkjhbefqe .gt_from_md > :last-child {
+#snhwbvsnyt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jxkjhbefqe .gt_row {
+#snhwbvsnyt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1112,7 +1110,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#jxkjhbefqe .gt_stub {
+#snhwbvsnyt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1125,7 +1123,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#jxkjhbefqe .gt_stub_row_group {
+#snhwbvsnyt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1139,15 +1137,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#jxkjhbefqe .gt_row_group_first td {
+#snhwbvsnyt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jxkjhbefqe .gt_row_group_first th {
+#snhwbvsnyt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jxkjhbefqe .gt_summary_row {
+#snhwbvsnyt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1157,16 +1155,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#jxkjhbefqe .gt_first_summary_row {
+#snhwbvsnyt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_first_summary_row.thick {
+#snhwbvsnyt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jxkjhbefqe .gt_last_summary_row {
+#snhwbvsnyt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1176,7 +1174,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_grand_summary_row {
+#snhwbvsnyt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1186,7 +1184,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#jxkjhbefqe .gt_first_grand_summary_row {
+#snhwbvsnyt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1196,7 +1194,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_last_grand_summary_row_top {
+#snhwbvsnyt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1206,11 +1204,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_striped {
+#snhwbvsnyt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jxkjhbefqe .gt_table_body {
+#snhwbvsnyt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1219,7 +1217,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_footnotes {
+#snhwbvsnyt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1233,7 +1231,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_footnote {
+#snhwbvsnyt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1242,7 +1240,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#jxkjhbefqe .gt_sourcenotes {
+#snhwbvsnyt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1256,7 +1254,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#jxkjhbefqe .gt_sourcenote {
+#snhwbvsnyt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1264,72 +1262,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#jxkjhbefqe .gt_left {
+#snhwbvsnyt .gt_left {
   text-align: left;
 }
 
-#jxkjhbefqe .gt_center {
+#snhwbvsnyt .gt_center {
   text-align: center;
 }
 
-#jxkjhbefqe .gt_right {
+#snhwbvsnyt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jxkjhbefqe .gt_font_normal {
+#snhwbvsnyt .gt_font_normal {
   font-weight: normal;
 }
 
-#jxkjhbefqe .gt_font_bold {
+#snhwbvsnyt .gt_font_bold {
   font-weight: bold;
 }
 
-#jxkjhbefqe .gt_font_italic {
+#snhwbvsnyt .gt_font_italic {
   font-style: italic;
 }
 
-#jxkjhbefqe .gt_super {
+#snhwbvsnyt .gt_super {
   font-size: 65%;
 }
 
-#jxkjhbefqe .gt_footnote_marks {
+#snhwbvsnyt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jxkjhbefqe .gt_asterisk {
+#snhwbvsnyt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jxkjhbefqe .gt_indent_1 {
+#snhwbvsnyt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jxkjhbefqe .gt_indent_2 {
+#snhwbvsnyt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jxkjhbefqe .gt_indent_3 {
+#snhwbvsnyt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jxkjhbefqe .gt_indent_4 {
+#snhwbvsnyt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jxkjhbefqe .gt_indent_5 {
+#snhwbvsnyt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jxkjhbefqe .katex-display {
+#snhwbvsnyt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jxkjhbefqe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#snhwbvsnyt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1415,13 +1413,12 @@ div.csl-indent {
 <td headers="parentesco" class="gt_row gt_left">conyuge</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>Las versiones preprocesadas (limpiadas y estandarizadas) de las dos tablas de datos ahora tienen los mismos atributos. El formato y contenido de estos atributos han sido estandarizados.</p>
 </div>
 <div id="codificación-fonética" class="section level3 hasAnchor" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Codificación fonética<a href="preprocesamiento.html#codificación-fonética" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">6.3.2</span> Codificación fonética<a href="#codificaci%C3%B3n-fon%C3%A9tica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Existen diversas funciones diseñadas para codificar fonéticamente los valores de ciertos atributos antes de utilizarlos en procesos de emparejamiento o deduplicación de registros. Su propósito es mitigar los errores derivados de variaciones en la escritura o errores ortográficos, especialmente en variables como nombres, apellidos u otras susceptibles a inconsistencias tipográficas. Estas funciones buscan agrupar cadenas de texto que suenan de forma similar al ser pronunciadas, aunque estén escritas de manera distinta.</p>
 <p>La codificación fonética también puede combinarse con medidas de similitud como la distancia de Levenshtein, Smith-Waterman o el coeficiente de Jaccard, para comparar cadenas de texto que suenan de forma similar <span class="citation">(<a href="#ref-navarro2001guided">Navarro 2001</a>; <a href="#ref-nauman2022introduction">Nauman and Herschel 2022</a>)</span>.</p>
 <p>El principio fundamental consiste en transformar un texto en un código fonético basado en su pronunciación. ESin embargo, muchas de las técnicas clásicas fueron desarrolladas para el idioma inglés, lo que limita su aplicabilidad directa en contextos de América Latina y el Caribe, donde se emplean otros idiomas como el español, portugués, francés o lenguas indígenas.</p>
@@ -1589,7 +1586,7 @@ div.csl-indent {
 <p>Hay otras alternativas que pueden ser utilizadas, en <span class="citation">Howard et al. (<a href="#ref-howard2020phonetic">2020</a>)</span> se pueden encontrar otros algoritmos como NYSIIS, Caverphone, Cologne, RogerRoot, Phonex o MRA.</p>
 </div>
 <div id="adaptación-para-encuestas-de-américa-latina" class="section level3 hasAnchor" number="6.3.5">
-<h3><span class="header-section-number">6.3.5</span> Adaptación para Encuestas de América Latina<a href="preprocesamiento.html#adaptación-para-encuestas-de-américa-latina" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3><span class="header-section-number">6.3.5</span> Adaptación para Encuestas de América Latina<a href="#adaptaci%C3%B3n-para-encuestas-de-am%C3%A9rica-latina" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A diferencia de los algoritmos fonéticos clásicos como Soundex, Metaphone y StatCan, que fueron desarrollados principalmente para nombres de origen anglosajón, en América Latina los nombres presentan una gran diversidad fonética y ortográfica influenciada por lenguas indígenas, castellano, portugués y otras tradiciones europeas. Por ello, se ha desarrollado un algoritmo personalizado que tiene en cuenta las transformaciones fonéticas y ortográficas más comunes en la región.</p>
 <p>La función <code>codif_fonetico()</code> fue diseñada por los autores de este material para capturar las variantes más frecuentes en los nombres latinoamericanos, mediante las siguientes transformaciones:</p>
 <ol style="list-style-type: decimal">
@@ -1636,23 +1633,23 @@ div.csl-indent {
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="preprocesamiento.html#cb17-1" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nombre =</span> nombres) <span class="sc">|&gt;</span> </span>
 <span id="cb17-2"><a href="preprocesamiento.html#cb17-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">nombre =</span> <span class="fu">limpiar_texto</span>(nombre)) <span class="sc">|&gt;</span> </span>
 <span id="cb17-3"><a href="preprocesamiento.html#cb17-3" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">codif =</span> <span class="fu">codif_fonetico</span>(nombre))</span></code></pre></div>
-<div id="nexajcandj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nexajcandj table {
+<div id="dhclnljlrc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dhclnljlrc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nexajcandj thead, #nexajcandj tbody, #nexajcandj tfoot, #nexajcandj tr, #nexajcandj td, #nexajcandj th {
+#dhclnljlrc thead, #dhclnljlrc tbody, #dhclnljlrc tfoot, #dhclnljlrc tr, #dhclnljlrc td, #dhclnljlrc th {
   border-style: none;
 }
 
-#nexajcandj p {
+#dhclnljlrc p {
   margin: 0;
   padding: 0;
 }
 
-#nexajcandj .gt_table {
+#dhclnljlrc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1678,12 +1675,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#nexajcandj .gt_caption {
+#dhclnljlrc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nexajcandj .gt_title {
+#dhclnljlrc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1695,7 +1692,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#nexajcandj .gt_subtitle {
+#dhclnljlrc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1707,7 +1704,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#nexajcandj .gt_heading {
+#dhclnljlrc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1719,13 +1716,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#nexajcandj .gt_bottom_border {
+#dhclnljlrc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nexajcandj .gt_col_headings {
+#dhclnljlrc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1740,7 +1737,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#nexajcandj .gt_col_heading {
+#dhclnljlrc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1760,7 +1757,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#nexajcandj .gt_column_spanner_outer {
+#dhclnljlrc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1772,15 +1769,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#nexajcandj .gt_column_spanner_outer:first-child {
+#dhclnljlrc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nexajcandj .gt_column_spanner_outer:last-child {
+#dhclnljlrc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nexajcandj .gt_column_spanner {
+#dhclnljlrc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1792,11 +1789,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#nexajcandj .gt_spanner_row {
+#dhclnljlrc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nexajcandj .gt_group_heading {
+#dhclnljlrc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1822,7 +1819,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#nexajcandj .gt_empty_group_heading {
+#dhclnljlrc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1837,15 +1834,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#nexajcandj .gt_from_md > :first-child {
+#dhclnljlrc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nexajcandj .gt_from_md > :last-child {
+#dhclnljlrc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nexajcandj .gt_row {
+#dhclnljlrc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1864,7 +1861,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#nexajcandj .gt_stub {
+#dhclnljlrc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1877,7 +1874,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#nexajcandj .gt_stub_row_group {
+#dhclnljlrc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1891,15 +1888,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#nexajcandj .gt_row_group_first td {
+#dhclnljlrc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nexajcandj .gt_row_group_first th {
+#dhclnljlrc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nexajcandj .gt_summary_row {
+#dhclnljlrc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1909,16 +1906,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#nexajcandj .gt_first_summary_row {
+#dhclnljlrc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nexajcandj .gt_first_summary_row.thick {
+#dhclnljlrc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nexajcandj .gt_last_summary_row {
+#dhclnljlrc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1928,7 +1925,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#nexajcandj .gt_grand_summary_row {
+#dhclnljlrc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1938,7 +1935,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#nexajcandj .gt_first_grand_summary_row {
+#dhclnljlrc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1948,7 +1945,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#nexajcandj .gt_last_grand_summary_row_top {
+#dhclnljlrc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1958,11 +1955,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#nexajcandj .gt_striped {
+#dhclnljlrc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nexajcandj .gt_table_body {
+#dhclnljlrc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1971,7 +1968,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#nexajcandj .gt_footnotes {
+#dhclnljlrc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1985,7 +1982,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#nexajcandj .gt_footnote {
+#dhclnljlrc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1994,7 +1991,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#nexajcandj .gt_sourcenotes {
+#dhclnljlrc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2008,7 +2005,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#nexajcandj .gt_sourcenote {
+#dhclnljlrc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2016,72 +2013,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#nexajcandj .gt_left {
+#dhclnljlrc .gt_left {
   text-align: left;
 }
 
-#nexajcandj .gt_center {
+#dhclnljlrc .gt_center {
   text-align: center;
 }
 
-#nexajcandj .gt_right {
+#dhclnljlrc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nexajcandj .gt_font_normal {
+#dhclnljlrc .gt_font_normal {
   font-weight: normal;
 }
 
-#nexajcandj .gt_font_bold {
+#dhclnljlrc .gt_font_bold {
   font-weight: bold;
 }
 
-#nexajcandj .gt_font_italic {
+#dhclnljlrc .gt_font_italic {
   font-style: italic;
 }
 
-#nexajcandj .gt_super {
+#dhclnljlrc .gt_super {
   font-size: 65%;
 }
 
-#nexajcandj .gt_footnote_marks {
+#dhclnljlrc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nexajcandj .gt_asterisk {
+#dhclnljlrc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nexajcandj .gt_indent_1 {
+#dhclnljlrc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nexajcandj .gt_indent_2 {
+#dhclnljlrc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nexajcandj .gt_indent_3 {
+#dhclnljlrc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nexajcandj .gt_indent_4 {
+#dhclnljlrc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nexajcandj .gt_indent_5 {
+#dhclnljlrc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nexajcandj .katex-display {
+#dhclnljlrc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nexajcandj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dhclnljlrc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2113,7 +2110,6 @@ div.csl-indent {
 <td headers="codif" class="gt_row gt_left">GNSLS</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>Considere otro ejemplo. La siguiente tabla presenta el resultado de aplicar los algoritmos fonéticos al campo del nombre. En este caso, se puede observar que el método propuesto, columna <em>nom_latino</em>, origina un mejor resultado que los otros algoritmos.</p>
@@ -2122,23 +2118,23 @@ div.csl-indent {
 <span id="cb18-3"><a href="preprocesamiento.html#cb18-3" tabindex="-1"></a>              <span class="at">metaphone =</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
 <span id="cb18-4"><a href="preprocesamiento.html#cb18-4" tabindex="-1"></a>              <span class="at">statcan =</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
 <span id="cb18-5"><a href="preprocesamiento.html#cb18-5" tabindex="-1"></a>              <span class="at">latino =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(nombre)))</span></code></pre></div>
-<div id="rpmlabikpb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rpmlabikpb table {
+<div id="emgavxhonr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#emgavxhonr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rpmlabikpb thead, #rpmlabikpb tbody, #rpmlabikpb tfoot, #rpmlabikpb tr, #rpmlabikpb td, #rpmlabikpb th {
+#emgavxhonr thead, #emgavxhonr tbody, #emgavxhonr tfoot, #emgavxhonr tr, #emgavxhonr td, #emgavxhonr th {
   border-style: none;
 }
 
-#rpmlabikpb p {
+#emgavxhonr p {
   margin: 0;
   padding: 0;
 }
 
-#rpmlabikpb .gt_table {
+#emgavxhonr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2164,12 +2160,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_caption {
+#emgavxhonr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rpmlabikpb .gt_title {
+#emgavxhonr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2181,7 +2177,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#rpmlabikpb .gt_subtitle {
+#emgavxhonr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2193,7 +2189,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#rpmlabikpb .gt_heading {
+#emgavxhonr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2205,13 +2201,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_bottom_border {
+#emgavxhonr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_col_headings {
+#emgavxhonr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2226,7 +2222,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_col_heading {
+#emgavxhonr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2246,7 +2242,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#rpmlabikpb .gt_column_spanner_outer {
+#emgavxhonr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2258,15 +2254,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#rpmlabikpb .gt_column_spanner_outer:first-child {
+#emgavxhonr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rpmlabikpb .gt_column_spanner_outer:last-child {
+#emgavxhonr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rpmlabikpb .gt_column_spanner {
+#emgavxhonr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2278,11 +2274,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#rpmlabikpb .gt_spanner_row {
+#emgavxhonr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rpmlabikpb .gt_group_heading {
+#emgavxhonr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2308,7 +2304,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#rpmlabikpb .gt_empty_group_heading {
+#emgavxhonr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2323,15 +2319,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#rpmlabikpb .gt_from_md > :first-child {
+#emgavxhonr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rpmlabikpb .gt_from_md > :last-child {
+#emgavxhonr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rpmlabikpb .gt_row {
+#emgavxhonr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2350,7 +2346,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#rpmlabikpb .gt_stub {
+#emgavxhonr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2363,7 +2359,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#rpmlabikpb .gt_stub_row_group {
+#emgavxhonr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2377,15 +2373,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#rpmlabikpb .gt_row_group_first td {
+#emgavxhonr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rpmlabikpb .gt_row_group_first th {
+#emgavxhonr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rpmlabikpb .gt_summary_row {
+#emgavxhonr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2395,16 +2391,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#rpmlabikpb .gt_first_summary_row {
+#emgavxhonr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_first_summary_row.thick {
+#emgavxhonr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rpmlabikpb .gt_last_summary_row {
+#emgavxhonr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2414,7 +2410,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_grand_summary_row {
+#emgavxhonr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2424,7 +2420,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#rpmlabikpb .gt_first_grand_summary_row {
+#emgavxhonr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2434,7 +2430,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_last_grand_summary_row_top {
+#emgavxhonr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2444,11 +2440,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_striped {
+#emgavxhonr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rpmlabikpb .gt_table_body {
+#emgavxhonr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2457,7 +2453,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_footnotes {
+#emgavxhonr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2471,7 +2467,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_footnote {
+#emgavxhonr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2480,7 +2476,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#rpmlabikpb .gt_sourcenotes {
+#emgavxhonr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2494,7 +2490,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#rpmlabikpb .gt_sourcenote {
+#emgavxhonr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2502,72 +2498,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#rpmlabikpb .gt_left {
+#emgavxhonr .gt_left {
   text-align: left;
 }
 
-#rpmlabikpb .gt_center {
+#emgavxhonr .gt_center {
   text-align: center;
 }
 
-#rpmlabikpb .gt_right {
+#emgavxhonr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rpmlabikpb .gt_font_normal {
+#emgavxhonr .gt_font_normal {
   font-weight: normal;
 }
 
-#rpmlabikpb .gt_font_bold {
+#emgavxhonr .gt_font_bold {
   font-weight: bold;
 }
 
-#rpmlabikpb .gt_font_italic {
+#emgavxhonr .gt_font_italic {
   font-style: italic;
 }
 
-#rpmlabikpb .gt_super {
+#emgavxhonr .gt_super {
   font-size: 65%;
 }
 
-#rpmlabikpb .gt_footnote_marks {
+#emgavxhonr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rpmlabikpb .gt_asterisk {
+#emgavxhonr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rpmlabikpb .gt_indent_1 {
+#emgavxhonr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rpmlabikpb .gt_indent_2 {
+#emgavxhonr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rpmlabikpb .gt_indent_3 {
+#emgavxhonr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rpmlabikpb .gt_indent_4 {
+#emgavxhonr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rpmlabikpb .gt_indent_5 {
+#emgavxhonr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rpmlabikpb .katex-display {
+#emgavxhonr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rpmlabikpb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#emgavxhonr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2675,7 +2671,6 @@ div.csl-indent {
 <td headers="latino" class="gt_row gt_left">YMN</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>En el caso del apellido, es fundamental tener en cuenta las particularidades culturales de cada región, ya que pueden influir significativamente en la forma en que son escritos o pronunciados. Estas variaciones hacen que ningún algoritmo de codificación fonética sea completamente robusto por sí solo, por lo que es recomendable adaptar o complementar los métodos según el contexto local.</p>
@@ -2684,23 +2679,23 @@ div.csl-indent {
 <span id="cb19-3"><a href="preprocesamiento.html#cb19-3" tabindex="-1"></a>                <span class="at">metaphone =</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
 <span id="cb19-4"><a href="preprocesamiento.html#cb19-4" tabindex="-1"></a>                <span class="at">statcan =</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
 <span id="cb19-5"><a href="preprocesamiento.html#cb19-5" tabindex="-1"></a>                <span class="at">latino =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(apellido)))</span></code></pre></div>
-<div id="lgkgqycmha" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lgkgqycmha table {
+<div id="hvihpoaeic" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hvihpoaeic table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lgkgqycmha thead, #lgkgqycmha tbody, #lgkgqycmha tfoot, #lgkgqycmha tr, #lgkgqycmha td, #lgkgqycmha th {
+#hvihpoaeic thead, #hvihpoaeic tbody, #hvihpoaeic tfoot, #hvihpoaeic tr, #hvihpoaeic td, #hvihpoaeic th {
   border-style: none;
 }
 
-#lgkgqycmha p {
+#hvihpoaeic p {
   margin: 0;
   padding: 0;
 }
 
-#lgkgqycmha .gt_table {
+#hvihpoaeic .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2726,12 +2721,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_caption {
+#hvihpoaeic .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lgkgqycmha .gt_title {
+#hvihpoaeic .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2743,7 +2738,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#lgkgqycmha .gt_subtitle {
+#hvihpoaeic .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2755,7 +2750,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#lgkgqycmha .gt_heading {
+#hvihpoaeic .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2767,13 +2762,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_bottom_border {
+#hvihpoaeic .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_col_headings {
+#hvihpoaeic .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2788,7 +2783,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_col_heading {
+#hvihpoaeic .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2808,7 +2803,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#lgkgqycmha .gt_column_spanner_outer {
+#hvihpoaeic .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2820,15 +2815,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#lgkgqycmha .gt_column_spanner_outer:first-child {
+#hvihpoaeic .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lgkgqycmha .gt_column_spanner_outer:last-child {
+#hvihpoaeic .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lgkgqycmha .gt_column_spanner {
+#hvihpoaeic .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2840,11 +2835,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#lgkgqycmha .gt_spanner_row {
+#hvihpoaeic .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lgkgqycmha .gt_group_heading {
+#hvihpoaeic .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2870,7 +2865,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#lgkgqycmha .gt_empty_group_heading {
+#hvihpoaeic .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2885,15 +2880,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#lgkgqycmha .gt_from_md > :first-child {
+#hvihpoaeic .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lgkgqycmha .gt_from_md > :last-child {
+#hvihpoaeic .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lgkgqycmha .gt_row {
+#hvihpoaeic .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2912,7 +2907,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#lgkgqycmha .gt_stub {
+#hvihpoaeic .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2925,7 +2920,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#lgkgqycmha .gt_stub_row_group {
+#hvihpoaeic .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2939,15 +2934,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#lgkgqycmha .gt_row_group_first td {
+#hvihpoaeic .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lgkgqycmha .gt_row_group_first th {
+#hvihpoaeic .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lgkgqycmha .gt_summary_row {
+#hvihpoaeic .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2957,16 +2952,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#lgkgqycmha .gt_first_summary_row {
+#hvihpoaeic .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_first_summary_row.thick {
+#hvihpoaeic .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lgkgqycmha .gt_last_summary_row {
+#hvihpoaeic .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2976,7 +2971,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_grand_summary_row {
+#hvihpoaeic .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2986,7 +2981,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#lgkgqycmha .gt_first_grand_summary_row {
+#hvihpoaeic .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2996,7 +2991,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_last_grand_summary_row_top {
+#hvihpoaeic .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3006,11 +3001,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_striped {
+#hvihpoaeic .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lgkgqycmha .gt_table_body {
+#hvihpoaeic .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3019,7 +3014,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_footnotes {
+#hvihpoaeic .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3033,7 +3028,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_footnote {
+#hvihpoaeic .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3042,7 +3037,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#lgkgqycmha .gt_sourcenotes {
+#hvihpoaeic .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3056,7 +3051,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#lgkgqycmha .gt_sourcenote {
+#hvihpoaeic .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3064,72 +3059,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#lgkgqycmha .gt_left {
+#hvihpoaeic .gt_left {
   text-align: left;
 }
 
-#lgkgqycmha .gt_center {
+#hvihpoaeic .gt_center {
   text-align: center;
 }
 
-#lgkgqycmha .gt_right {
+#hvihpoaeic .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lgkgqycmha .gt_font_normal {
+#hvihpoaeic .gt_font_normal {
   font-weight: normal;
 }
 
-#lgkgqycmha .gt_font_bold {
+#hvihpoaeic .gt_font_bold {
   font-weight: bold;
 }
 
-#lgkgqycmha .gt_font_italic {
+#hvihpoaeic .gt_font_italic {
   font-style: italic;
 }
 
-#lgkgqycmha .gt_super {
+#hvihpoaeic .gt_super {
   font-size: 65%;
 }
 
-#lgkgqycmha .gt_footnote_marks {
+#hvihpoaeic .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lgkgqycmha .gt_asterisk {
+#hvihpoaeic .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lgkgqycmha .gt_indent_1 {
+#hvihpoaeic .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lgkgqycmha .gt_indent_2 {
+#hvihpoaeic .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lgkgqycmha .gt_indent_3 {
+#hvihpoaeic .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lgkgqycmha .gt_indent_4 {
+#hvihpoaeic .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lgkgqycmha .gt_indent_5 {
+#hvihpoaeic .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lgkgqycmha .katex-display {
+#hvihpoaeic .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lgkgqycmha div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hvihpoaeic div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3237,30 +3232,29 @@ div.csl-indent {
 <td headers="latino" class="gt_row gt_left">NW</td></tr>
   </tbody>
   
-  
 </table>
 </div>
 <p>La siguiente tabla muestra el resultado de aplicar la función <code>codif_fonetico</code> tanto al nombre como al apellido. No obstante, se recomienda utilizar en cada campo el algoritmo fonético que mejor se adapte a las características lingüísticas y culturales del caso específico.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="preprocesamiento.html#cb20-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
 <span id="cb20-2"><a href="preprocesamiento.html#cb20-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">nom_cod =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
 <span id="cb20-3"><a href="preprocesamiento.html#cb20-3" tabindex="-1"></a>                <span class="at">ape_cod =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(apellido)))</span></code></pre></div>
-<div id="uvzsmxrswt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uvzsmxrswt table {
+<div id="vjyxmvabfc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vjyxmvabfc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uvzsmxrswt thead, #uvzsmxrswt tbody, #uvzsmxrswt tfoot, #uvzsmxrswt tr, #uvzsmxrswt td, #uvzsmxrswt th {
+#vjyxmvabfc thead, #vjyxmvabfc tbody, #vjyxmvabfc tfoot, #vjyxmvabfc tr, #vjyxmvabfc td, #vjyxmvabfc th {
   border-style: none;
 }
 
-#uvzsmxrswt p {
+#vjyxmvabfc p {
   margin: 0;
   padding: 0;
 }
 
-#uvzsmxrswt .gt_table {
+#vjyxmvabfc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3286,12 +3280,12 @@ div.csl-indent {
   border-left-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_caption {
+#vjyxmvabfc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uvzsmxrswt .gt_title {
+#vjyxmvabfc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3303,7 +3297,7 @@ div.csl-indent {
   border-bottom-width: 0;
 }
 
-#uvzsmxrswt .gt_subtitle {
+#vjyxmvabfc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3315,7 +3309,7 @@ div.csl-indent {
   border-top-width: 0;
 }
 
-#uvzsmxrswt .gt_heading {
+#vjyxmvabfc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3327,13 +3321,13 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_bottom_border {
+#vjyxmvabfc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_col_headings {
+#vjyxmvabfc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3348,7 +3342,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_col_heading {
+#vjyxmvabfc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3368,7 +3362,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#uvzsmxrswt .gt_column_spanner_outer {
+#vjyxmvabfc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3380,15 +3374,15 @@ div.csl-indent {
   padding-right: 4px;
 }
 
-#uvzsmxrswt .gt_column_spanner_outer:first-child {
+#vjyxmvabfc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uvzsmxrswt .gt_column_spanner_outer:last-child {
+#vjyxmvabfc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uvzsmxrswt .gt_column_spanner {
+#vjyxmvabfc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3400,11 +3394,11 @@ div.csl-indent {
   width: 100%;
 }
 
-#uvzsmxrswt .gt_spanner_row {
+#vjyxmvabfc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uvzsmxrswt .gt_group_heading {
+#vjyxmvabfc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3430,7 +3424,7 @@ div.csl-indent {
   text-align: left;
 }
 
-#uvzsmxrswt .gt_empty_group_heading {
+#vjyxmvabfc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3445,15 +3439,15 @@ div.csl-indent {
   vertical-align: middle;
 }
 
-#uvzsmxrswt .gt_from_md > :first-child {
+#vjyxmvabfc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uvzsmxrswt .gt_from_md > :last-child {
+#vjyxmvabfc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uvzsmxrswt .gt_row {
+#vjyxmvabfc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3472,7 +3466,7 @@ div.csl-indent {
   overflow-x: hidden;
 }
 
-#uvzsmxrswt .gt_stub {
+#vjyxmvabfc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3485,7 +3479,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#uvzsmxrswt .gt_stub_row_group {
+#vjyxmvabfc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3499,15 +3493,15 @@ div.csl-indent {
   vertical-align: top;
 }
 
-#uvzsmxrswt .gt_row_group_first td {
+#vjyxmvabfc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uvzsmxrswt .gt_row_group_first th {
+#vjyxmvabfc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uvzsmxrswt .gt_summary_row {
+#vjyxmvabfc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3517,16 +3511,16 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#uvzsmxrswt .gt_first_summary_row {
+#vjyxmvabfc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_first_summary_row.thick {
+#vjyxmvabfc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uvzsmxrswt .gt_last_summary_row {
+#vjyxmvabfc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3536,7 +3530,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_grand_summary_row {
+#vjyxmvabfc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3546,7 +3540,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#uvzsmxrswt .gt_first_grand_summary_row {
+#vjyxmvabfc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3556,7 +3550,7 @@ div.csl-indent {
   border-top-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_last_grand_summary_row_top {
+#vjyxmvabfc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3566,11 +3560,11 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_striped {
+#vjyxmvabfc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uvzsmxrswt .gt_table_body {
+#vjyxmvabfc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3579,7 +3573,7 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_footnotes {
+#vjyxmvabfc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3593,7 +3587,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_footnote {
+#vjyxmvabfc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3602,7 +3596,7 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#uvzsmxrswt .gt_sourcenotes {
+#vjyxmvabfc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3616,7 +3610,7 @@ div.csl-indent {
   border-right-color: #D3D3D3;
 }
 
-#uvzsmxrswt .gt_sourcenote {
+#vjyxmvabfc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3624,72 +3618,72 @@ div.csl-indent {
   padding-right: 5px;
 }
 
-#uvzsmxrswt .gt_left {
+#vjyxmvabfc .gt_left {
   text-align: left;
 }
 
-#uvzsmxrswt .gt_center {
+#vjyxmvabfc .gt_center {
   text-align: center;
 }
 
-#uvzsmxrswt .gt_right {
+#vjyxmvabfc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uvzsmxrswt .gt_font_normal {
+#vjyxmvabfc .gt_font_normal {
   font-weight: normal;
 }
 
-#uvzsmxrswt .gt_font_bold {
+#vjyxmvabfc .gt_font_bold {
   font-weight: bold;
 }
 
-#uvzsmxrswt .gt_font_italic {
+#vjyxmvabfc .gt_font_italic {
   font-style: italic;
 }
 
-#uvzsmxrswt .gt_super {
+#vjyxmvabfc .gt_super {
   font-size: 65%;
 }
 
-#uvzsmxrswt .gt_footnote_marks {
+#vjyxmvabfc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uvzsmxrswt .gt_asterisk {
+#vjyxmvabfc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uvzsmxrswt .gt_indent_1 {
+#vjyxmvabfc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uvzsmxrswt .gt_indent_2 {
+#vjyxmvabfc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uvzsmxrswt .gt_indent_3 {
+#vjyxmvabfc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uvzsmxrswt .gt_indent_4 {
+#vjyxmvabfc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uvzsmxrswt .gt_indent_5 {
+#vjyxmvabfc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uvzsmxrswt .katex-display {
+#vjyxmvabfc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uvzsmxrswt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vjyxmvabfc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3764,7 +3758,6 @@ div.csl-indent {
 <td headers="nom_cod" class="gt_row gt_left">YMN</td>
 <td headers="ape_cod" class="gt_row gt_left">NW</td></tr>
   </tbody>
-  
   
 </table>
 </div>

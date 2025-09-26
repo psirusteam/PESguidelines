@@ -617,7 +617,7 @@ $$\text{dpe} = \frac{|d_1 - d_2|}{\max(d_1, d_2)} \cdot 100.$$
 Con base en este valor, se puede calcular la similitud porcentual de edad como:
 
 $$
-\text{sim}_{\text{edad_porc}} =
+\text{sim}_{\text{edadporc}} =
 \begin{cases}
 1.0 - \frac{\text{dpe}}{\text{dpe}_{\max}}, & \text{si } \text{dpe} < \text{dpe}_{\max} \\
 0.0, & \text{en otro caso}
@@ -796,7 +796,7 @@ summary(as.numeric(table(inic_apell)))
 ```
 
 ```{r, echo=FALSE}
-options(scipen = 99999)
+options(scipen = 9999)
 ```
 
 A pesar de lo anterior, el número de pares posibles tras aplicar el bloqueo baja de `r choose(500,2)` a `r sum(sapply(tbl, choose, k=2))` pares. Esta reducción es crucial para el rendimiento computacional del algoritmo. A continuación se observa el número de comparaciones por bloque.

@@ -107,7 +107,10 @@ Esta etapa inicia con la muestra E y muestra P. Si al final del proceso existen 
 
 La Figura \@ref(fig:match) presenta una ilustración general de las fases del proceso de emparejamiento y revisión clerical.
 
-![(\#fig:match)Flujo general del proceso de emparejamiento en la PES](images/FlujoMatch.png){width=100%}
+<div class="figure" style="text-align: center">
+<img src="images/FlujoMatch.png" alt="Flujo general del proceso de emparejamiento en la PES" width="100%" />
+<p class="caption">(\#fig:match)Flujo general del proceso de emparejamiento en la PES</p>
+</div>
 
 
 Para los registros que tienen estado "no emparejado" se amplia el área de búsqueda hasta llegar al nivel nacional. Como las probabilidades de error de emparejamiento se incrementan cuando se aumenta el área de búsqueda, es recomendable que se haga una revisión clerical de estos registros luego de ser emparejados, incluso si su probabilidad es alta.
@@ -119,4 +122,7 @@ Si no hay coincidencia tras ampliar el área de búsqueda, el caso se clasifica 
  
 La Figura \@ref(fig:match1q) muestra el flujograma que se debría seguir para realizar este proceso. 
 
-![(\#fig:match1q)Flujo general del proceso de emparejamiento en la PES](images/grafo.png){width=100%}
+<div class="figure" style="text-align: center">
+<img src="images/grafo.png" alt="Flujo general del proceso de emparejamiento en la PES" width="100%" />
+<p class="caption">(\#fig:match1q)Flujo general del proceso de emparejamiento en la PES</p>
+</div>
