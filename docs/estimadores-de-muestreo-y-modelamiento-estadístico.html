@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Estimadores de muestreo y modelamiento estadístico | Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal</title>
+  <meta name="description" content="Encuestas Postcensales" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Estimadores de muestreo y modelamiento estadístico | Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Encuestas Postcensales" />
+  <meta name="github-repo" content="psirusteam/PESguidelines" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Estimadores de muestreo y modelamiento estadístico | Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal" />
+  
+  <meta name="twitter:description" content="Encuestas Postcensales" />
+  
+
+<meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
+
+
+<meta name="date" content="2025-09-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="emparejamiento-estadístico.html"/>
+<link rel="next" href="referencias.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Encuestas postcensales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="06pse.html"><a href="#introducci%C3%B3n"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="06pse.html"><a href="#marco-conceptual-el-sistema-de-estimaci%C3%B3n-dual"><i class="fa fa-check"></i><b>2</b> Marco conceptual: el sistema de estimación dual</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="marco-conceptual-el-sistema-de-estimación-dual.html"><a href="marco-conceptual-el-sistema-de-estimación-dual.html"><i class="fa fa-check"></i><b>2.1</b> Planteamiento del problema</a></li>
+<li class="chapter" data-level="2.2" data-path="marco-conceptual-el-sistema-de-estimación-dual.html"><a href="marco-conceptual-el-sistema-de-estimación-dual.html#condiciones-y-supuestos"><i class="fa fa-check"></i><b>2.2</b> Condiciones y supuestos</a></li>
+<li class="chapter" data-level="2.3" data-path="marco-conceptual-el-sistema-de-estimación-dual.html"><a href="marco-conceptual-el-sistema-de-estimación-dual.html#inferencia"><i class="fa fa-check"></i><b>2.3</b> Inferencia</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="06pse.html"><a href="#planeaci%C3%B3n-y-dise%C3%B1o"><i class="fa fa-check"></i><b>3</b> Planeación y diseño</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="06pse.html"><a href="#el-dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>3.1</b> El diseño de muestreo</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="enumeraciones-y-procedimientos.html"><a href="enumeraciones-y-procedimientos.html"><i class="fa fa-check"></i><b>4</b> Enumeraciones y procedimientos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="enumeraciones-y-procedimientos.html"><a href="enumeraciones-y-procedimientos.html#la-muestra-e-y-la-muestra-p"><i class="fa fa-check"></i><b>4.1</b> La muestra E y la muestra P</a></li>
+<li class="chapter" data-level="4.2" data-path="enumeraciones-y-procedimientos.html"><a href="enumeraciones-y-procedimientos.html#enumeraciones-correctas-con-la-muestra-e"><i class="fa fa-check"></i><b>4.2</b> Enumeraciones correctas con la muestra E</a></li>
+<li class="chapter" data-level="4.3" data-path="enumeraciones-y-procedimientos.html"><a href="enumeraciones-y-procedimientos.html#sec-procedimientos"><i class="fa fa-check"></i><b>4.3</b> Reconstrucción de los hogares con la muestra P</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="06pse.html"><a href="#emparejamiento-estad%C3%ADstico"><i class="fa fa-check"></i><b>5</b> Emparejamiento estadístico</a></li>
+<li class="chapter" data-level="6" data-path="06pse.html"><a href="#estimadores-de-muestreo-y-modelamiento-estad%C3%ADstico"><i class="fa fa-check"></i><b>6</b> Estimadores de muestreo y modelamiento estadístico</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="estimadores-de-muestreo-y-modelamiento-estadístico.html"><a href="estimadores-de-muestreo-y-modelamiento-estadístico.html"><i class="fa fa-check"></i><b>6.1</b> Los estimadores de muestreo</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>7</b> Referencias</a></li>
+<li class="divider"></li>
+<li>Encuestas postcensales</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="estimadores-de-muestreo-y-modelamiento-estadístico" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Estimadores de muestreo y modelamiento estadístico<a href="#estimadores-de-muestreo-y-modelamiento-estad%C3%ADstico" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Acá va la introducción</p>
+<div id="los-estimadores-de-muestreo" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Los estimadores de muestreo<a href="estimadores-de-muestreo-y-modelamiento-estadístico.html#los-estimadores-de-muestreo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En el capítulo anterior, se partió de un supuesto simplificador: que todos los <span class="math inline">\(N\)</span> miembros de la población tenían la posibilidad de ser incluidos tanto en el censo como en la encuesta. Esta suposición, aunque útil para establecer un marco teórico inicial, no refleja la realidad en la mayoría de los estudios de error de cobertura. En la práctica, es poco común que todos los individuos de una población estén expuestos a ser captados por ambas fuentes de información. Por ello, es necesario ajustar este enfoque para abordar situaciones más realistas.</p>
+<p>En este contexto, ahora consideraremos un escenario más plausible: mientras que todos los miembros de la población están expuestos a ser incluidos en el censo (es decir, el censo intenta cubrir a toda la población), solo una muestra de la población tendrá la posibilidad de ser incluida en la encuesta. Esta distinción es fundamental, ya que introduce una asimetría en la forma en que ambas fuentes de datos interactúan con la población. El censo, al ser un esfuerzo exhaustivo, busca contar a todos los individuos dentro de un territorio o grupo definido. Sin embargo, la encuesta, por su naturaleza muestral, solo abarca una fracción de la población.</p>
+<p>Este cambio en los supuestos implica una modificación significativa en los métodos de análisis, ya que se altera la estructura de la información disponible y las cantidades que se consideran conocidas o desconocidas. Anteriormente, se podía asumir que ciertos totales poblacionales eran observables o directamente medibles, pero bajo este nuevo enfoque, solo el total del censo, denotado como <span class="math inline">\(N_{1+}\)</span>, se considera observable; sin emabrgo, no es directamente conocido, puesto que el censo está expuesto a errores de enumeración y duplicaciones. Esto significa que el número de individuos capturados correctamente por el censo no es una cantidad que se toma como dada y debe ser corregida con la muestra.</p>
+<p>Por otro lado, el total de la población capturado por la encuesta, representado como <span class="math inline">\(N_{+1}\)</span>, ahora se considera no observable.Además, otras cantidades clave, como <span class="math inline">\(N_{11}\)</span> (el número de individuos capturados por ambas fuentes), <span class="math inline">\(N_{12}\)</span> (individuos capturados por el censo pero no por la encuesta), y <span class="math inline">\(N_{21}\)</span> (individuos capturados por la encuesta pero no por el censo), también se consideran desconocidas. Sin embargo, todas estas cantidades pueden estimarse indirectamente a partir de los datos de la encuesta, utilizando los métodos estadísticos adecuados. En este documento se utilizará el superescrito <span class="math inline">\(\hat \cdot\)</span> para denotar una cantidad estimada directa o indirectamente haciendo uso de la muestra. De esta forma, la estructura de los datos y estimaciones necesarias para realizar la medición del error de cobertura usando ambas operaciones estadísticas puede ser descrita de la siguiente manera:</p>
+<p><span class="math display">\[
+    \begin{array}{c|cc|c}
+    &amp; \text{En la encuesta} &amp; \text{Fuera de la encuesta} &amp; \text{Total} \\
+    \hline
+    \text{En el censo} &amp; \hat{N}_{11} &amp; \hat{N}_{12} = \hat{N}_{1+} - \hat{N}_{11} &amp; \hat{N}_{1+} \\
+    \text{Fuera del censo} &amp; \hat{N}_{21} = \hat{N}_{+1} - \hat{N}_{11} &amp;  &amp;  \\
+    \hline
+    \text{Total} &amp; \hat{N}_{+1} &amp;  &amp; \hat{N}_{++} = \hat{N}
+    \end{array}
+    \]</span></p>
+<p>Como la encuesta representa una muestra de la población que viene de una medida de probabilidad, y a su vez, existe un modelo multinomial, entonces se introduce una complejidad metodológica clave: la necesidad de establecer las bases inferenciales para incluir dos fuentes de incertidumbre: el modelo y el muestreo <span class="citation">(<a href="#ref-Binder_2011">Binder 2011</a>)</span>. <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> afirma que este cambio de enfoque implica que la estimación del error de cobertura debe considerar dos fuentes principales de incertidumbre: (1) la variabilidad debida a la selección muestral de la encuesta, y (2) la variabilidad del modelo asociada con el modelo de error de cobertura.</p>
+<p>La variabilidad inducida por la selección de la muestra de la encuesta implica que las estimaciones derivadas de ella (como <span class="math inline">\(N_{+1}\)</span> o <span class="math inline">\(N_{11}\)</span>) están afectadas por la aleatoriedad inherente a la selección de unidades en la muestra. Si la encuesta utiliza un diseño complejo (como estratificación o conglomerados), la variabilidad aumenta debido a los efectos de diseño. Este tipo de variabilidad se mide con los métodos clásicos de inferencia estadística en encuestas de hogares. En segundo lugar, está la variabilidad derivada del modelo multinomial. En esta instancia, la novedad radica en integrar estas incertidumbres por medio de una inferencia doble, usando los resultados bien conocidos de las esperanzas y varianzas condicionales.</p>
+<p>Si denotamos por <span class="math inline">\(\pi_k\)</span> la probabilidad de inclusión del elemento <span class="math inline">\(k\)</span> en la muestra <span class="math inline">\(s_P\)</span>, la cual está determinada por su selección probabilística, entonces el peso de muestreo del elemento <span class="math inline">\(k\)</span>-ésimo en la muestra P se define como <span class="math inline">\(w_k = \pi_k^{-1}\)</span>. Este peso refleja la inversa de la probabilidad de inclusión y se utiliza para ajustar las estimaciones en función del diseño de muestreo. De manera similar, los pesos de muestreo se definirán para la muestra <span class="math inline">\(s_E\)</span>. Para simplificar la notación, vincularemos la muestra correspondiente a través de los subíndices en las sumas. Por ejemplo, al referirnos a la muestra <span class="math inline">\(s_P\)</span>, utilizaremos el subíndice <span class="math inline">\(P\)</span> en las sumas, y para la muestra <span class="math inline">\(s_E\)</span>, emplearemos el subíndice <span class="math inline">\(E\)</span>.</p>
+<p>Asumiendo que <span class="math inline">\(x_{k, 11}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue encontrado tanto en la muestra como en el censo y, cero, en otro caso, entonces los estimadores de muestreo de <span class="math inline">\({N}_{+1}\)</span> y <span class="math inline">\({N}_{11}\)</span>, serán respectivamente:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{N}_{+1} &amp;= \sum_{k \in s_P} w_k \\
+\hat{N}_{11} &amp;= \sum_{k \in s_P} w_k \ x_{k, 11}
+\end{aligned}
+\]</span></p>
+<p>Asimismo, si <span class="math inline">\(z_{k}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue correctamente enumerado en el censo y, cero, en otro caso, entonces el estimador de muestreo de <span class="math inline">\(N_{1+}\)</span> será:</p>
+<p><span class="math display">\[
+\hat{N}_{1+} = {N}_{1+}^0 - \sum_{k \in s_E} w_k (1 - \ z_{k})
+\]</span></p>
+<p>En donde <span class="math inline">\({N}_{1+}^0\)</span> denota el número de registros censales, el cual difiere del conteo de personas en el censo, y puede representar el conteo no corregido de personas en el censo. Esta cifra debe basarse exclusivamente en los datos recopilados durante el operativo censal, sin incluir imputaciones, proyecciones ni ningún otro tipo de ajustes estadísticos. Esto garantiza que los resultados reflejen fielmente la información obtenida en el campo. Para los anteriores estimadores, es claro que <span class="math inline">\(x_{k, 11}\)</span> es una variable aletaoria que se define en la muestra <span class="math inline">\(s_P\)</span>, mientras que <span class="math inline">\(z_{k}\)</span> es una variable aleatoria que se define en la muestra <span class="math inline">\(s_E\)</span>. Por otro lado, <span class="citation">Bureau (<a href="#ref-USCensusBureau_2022">2022</a>)</span> propone un estimador directo alternativo para <span class="math inline">\({N}_{1+}\)</span>, que se define a partir de la muestra E, y que corresponde a un conteo ponderado de enumeraciones correctas. Este estimador toma la siguiente forma:</p>
+<p><span class="math display">\[
+\hat{N}_{1+} = \sum_{k \in s_E} w_k \ z_{k}
+\]</span></p>
+<p>Recordando que el estimador del modelo para <span class="math inline">\(N\)</span> es <span class="math inline">\(\tilde{N} = \frac{ N_{1+} \cdot N_{+1}}{N_{11}}\)</span>; entonces, su estimador insesgado bajo el diseño de muestreo se encuentra reemplazando <span class="math inline">\(N_{1+}\)</span>, <span class="math inline">\(N_{+1}\)</span> y <span class="math inline">\(N_{11}\)</span> por sus respectivos estimadores insesgados en la muestra. Por consiguiente, se tiene que el estimador de muestreo del tamaño poblacional <span class="math inline">\(N\)</span> tomará la siguiente forma:</p>
+<p><span class="math display">\[
+\hat{N}_{++} = \hat{N} = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
+\]</span></p>
+<p>Nótese que los estimadores de muestreo para <span class="math inline">\({N}_{12}\)</span> y <span class="math inline">\({N}_{21}\)</span> toman la siguiente forma:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{N}_{12} &amp;= \hat{N}_{1+} - \hat{N}_{11} \\
+\hat{N}_{21} &amp;= \hat{N}_{+1} - \hat{N}_{11}
+\end{aligned}
+\]</span></p>
+<p>La existencia de individuos que no fueron capturados en ninguno de los dos listados representa un desafío significativo, ya que su número solo puede ser estimado indirectamente a partir de la superposición observada entre la encuesta y el censo. Por otro lado, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> establece las condiciones sobre las cuales estos estimadores son insesgados y además propone el siguiente estimador aproximadamente insesgado de su varianza:</p>
+<p><span class="math display">\[
+\tilde{V}(\hat{N}) =  \tilde{V}_m(\tilde{N}) + \tilde{V}_p(\hat{N})
+\]</span></p>
+<p>En donde <span class="math inline">\(\tilde{V}_m(\tilde{N})\)</span> es el estimador de la varianza de <span class="math inline">\(\tilde{N}\)</span> bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, de la siguiente forma:</p>
+<p><span class="math display">\[
+\tilde{V}_m(\tilde{N}) = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1} \cdot (\hat{N}_{1+} - \hat{N}_{11}) \cdot (\hat{N}_{+1} - \hat{N}_{11})}{\hat{N}_{11}^3}
+\]</span></p>
+<p>Asimismo, <span class="math inline">\(\tilde V_p (\hat{N})\)</span> corresponde con un estimador tradicional de varianzas para estimadores de muestreo <span class="citation">(<a href="#ref-CEPAL_2023">CEPAL 2023</a>)</span>. De esta forma, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>, sección 3.1.)</span> afirma que</p>
+<p><span class="math display">\[
+\tilde V_p (\hat{N}) \approx \frac{M^2}{m}(1-f)S^2_{d}
+\]</span></p>
+<p>Definiendo a <span class="math inline">\(\tilde{N}_{i, +1}\)</span> como la estimación del tamaño del <span class="math inline">\(i\)</span>-ésimo conglomerado a partir de la muestra <span class="math inline">\(s_P\)</span>, se tiene que <span class="math inline">\(S^2_{d} = \frac{1}{m-1}\sum_{i=1}^m d_i^2\)</span> y además:</p>
+<p><span class="math display">\[
+d_i = \frac{\hat{N}_{1+}}{\hat{N}_{11}}
+\left(\tilde{N}_{k, +1} - \frac{\hat{N}_{+1}}{\hat{N}_{11}}x_{k, 11}\right)  
+\]</span></p>
+<p>Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información de los registros censales para crear otro tipo de estimadores. Siendo <span class="math inline">\(\hat{N}_{1+}^0 = \sum_{k \in s_E}w_k\)</span> un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:</p>
+<p><span class="math display">\[
+\hat{N}_{++}^{ratio} = \frac{N_{1+}^0}{\hat{N}_{1+}^0} \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
+\]</span></p>
+<p>De la misma manera, es posible refinar el estimador usando la postestratificación <span class="citation">(<a href="#ref-Gutierrez_2016">Gutiérrez 2016</a>)</span>. Esta es una técnica que particiona la población en subgrupos homogéneos y que permite minimizar el impacto del sesgo de correlación (que los individuos que no fueron enumerados en el censo serán más propensos a no ser incluidos en la encuesta). Como se mencionó anteriormente, es usual utilizar al menos las divisiones administrativas mayores, los grupos de edad y el sexo. Cada una de las particiones inducidas por el cruce de estas variables se conoce como post-estratos. Suponiendo que existen <span class="math inline">\(G\)</span> postestratos, entonces el estimador de razón post-estratificada toma la siguiente forma:</p>
+<p><span class="math display">\[
+\hat{N}_{++}^{post} = \sum_{g=1}^G \left[ \frac{N_{g1+}^0}{\hat{N}_{g1+}^0} \frac{\hat{N}_{g1+} \cdot \hat{N}_{g+1}}{\hat{N}_{g11}} \right] =
+\sum_{g=1}^G \left[N_{g1+}^0 \frac{\hat{p}_{g1+}}{\hat{p}_{g11}}  \right]
+\]</span></p>
+<p>En donde <span class="math inline">\(\hat{p}_{g1+} = \frac{\hat{N}_{g+1}}{\hat{N}_{g1+}^0}\)</span> y <span class="math inline">\(\hat{p}_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}\)</span> son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato <span class="math inline">\(g\)</span>. Esta última expresión resultará muy valiosa para desarrollar modelos de estimación en áreas pequeñas, permitiendo calcular con mayor precisión la omisión censal.</p>
+
+</div>
+</div>
+<h3> Referencias<a href="referencias.html#referencias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-Binder_2011" class="csl-entry">
+Binder, David A. 2011. <span>“Estimating Model Parameters from a Complex Survey Under a Model-Design Randomization Framework.”</span> <em>Pakistan Journal of Statistics</em> 27 (4): 371–90.
+</div>
+<div id="ref-USCensusBureau_2022" class="csl-entry">
+Bureau, US Census. 2022. <span>“2020 Post-Enumeration Survey Estimation Design.”</span>
+</div>
+<div id="ref-CEPAL_2023" class="csl-entry">
+CEPAL. 2023. <em>Diseño y Análisis Estadístico de Las Encuestas de Hogares de América Latina</em>. Metodologías de La CEPAL.
+</div>
+<div id="ref-Gutierrez_2016" class="csl-entry">
+Gutiérrez, Hugo Andrés. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Estimación de Parámetros</em>. Segunda edición. Ediciones de la U.
+</div>
+<div id="ref-wolter1986coverage" class="csl-entry">
+Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="emparejamiento-estadístico.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/psirusteam/PESguidelines/06pse.rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Encuesta PostCensal.pdf", "Encuesta PostCensal.epub", "Encuesta PostCensal.mobi"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

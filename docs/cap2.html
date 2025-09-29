@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Marco conceptual: el sistema de estimación dual | Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal</title>
+  <meta name="description" content="Encuestas Postcensales" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Marco conceptual: el sistema de estimación dual | Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Encuestas Postcensales" />
+  <meta name="github-repo" content="psirusteam/PESguidelines" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Marco conceptual: el sistema de estimación dual | Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal" />
+  
+  <meta name="twitter:description" content="Encuestas Postcensales" />
+  
+
+<meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
+
+
+<meta name="date" content="2025-09-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cap1.html"/>
+<link rel="next" href="cap3.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Encuestas postcensales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="cap1.html"><a href="cap1.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="cap1.html"><a href="cap1.html#objetivos-de-la-encuesta-postcensal"><i class="fa fa-check"></i><b>1.1</b> Objetivos de la encuesta postcensal</a></li>
+<li class="chapter" data-level="1.2" data-path="cap1.html"><a href="cap1.html#indicadores-principales"><i class="fa fa-check"></i><b>1.2</b> Indicadores principales</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cap2.html"><a href="cap2.html"><i class="fa fa-check"></i><b>2</b> Marco conceptual: el sistema de estimación dual</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="cap2.html"><a href="cap2.html#planteamiento-del-problema"><i class="fa fa-check"></i><b>2.1</b> Planteamiento del problema</a></li>
+<li class="chapter" data-level="2.2" data-path="cap2.html"><a href="cap2.html#condiciones-y-supuestos"><i class="fa fa-check"></i><b>2.2</b> Condiciones y supuestos</a></li>
+<li class="chapter" data-level="2.3" data-path="cap2.html"><a href="cap2.html#inferencia"><i class="fa fa-check"></i><b>2.3</b> Inferencia</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cap3.html"><a href="cap3.html"><i class="fa fa-check"></i><b>3</b> Planeación y diseño</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="02pse.html"><a href="#planeaci%C3%B3n-de-la-operaci%C3%B3n-estad%C3%ADstica"><i class="fa fa-check"></i><b>3.1</b> Planeación de la operación estadística</a></li>
+<li class="chapter" data-level="3.2" data-path="02pse.html"><a href="#dise%C3%B1o-del-cuestionario"><i class="fa fa-check"></i><b>3.2</b> Diseño del cuestionario</a></li>
+<li class="chapter" data-level="3.3" data-path="02pse.html"><a href="#el-dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>3.3</b> El diseño de muestreo</a></li>
+<li class="chapter" data-level="3.4" data-path="02pse.html"><a href="#operativo-de-recolecci%C3%B3n"><i class="fa fa-check"></i><b>3.4</b> Operativo de recolección</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cap4.html"><a href="cap4.html"><i class="fa fa-check"></i><b>4</b> Enumeraciones y procedimientos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="cap4.html"><a href="cap4.html#la-muestra-e-y-la-muestra-p"><i class="fa fa-check"></i><b>4.1</b> La muestra E y la muestra P</a></li>
+<li class="chapter" data-level="4.2" data-path="cap4.html"><a href="cap4.html#enumeraciones-correctas-con-la-muestra-e"><i class="fa fa-check"></i><b>4.2</b> Enumeraciones correctas con la muestra E</a></li>
+<li class="chapter" data-level="4.3" data-path="cap4.html"><a href="cap4.html#sec-procedimientos"><i class="fa fa-check"></i><b>4.3</b> Reconstrucción de los hogares con la muestra P</a></li>
+<li class="chapter" data-level="4.4" data-path="cap4.html"><a href="cap4.html#componentes-de-la-cobertura-censal"><i class="fa fa-check"></i><b>4.4</b> Componentes de la cobertura censal</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cap5.html"><a href="cap5.html"><i class="fa fa-check"></i><b>5</b> Emparejamiento estadístico</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="02pse.html"><a href="#protocolo-de-clasificaci%C3%B3n"><i class="fa fa-check"></i><b>5.1</b> Protocolo de clasificación</a></li>
+<li class="chapter" data-level="5.2" data-path="02pse.html"><a href="#emparejamiento-probabil%C3%ADstico"><i class="fa fa-check"></i><b>5.2</b> Emparejamiento probabilístico</a></li>
+<li class="chapter" data-level="5.3" data-path="02pse.html"><a href="#implementaci%C3%B3n"><i class="fa fa-check"></i><b>5.3</b> Implementación</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cap6.html"><a href="cap6.html"><i class="fa fa-check"></i><b>6</b> Estimadores de muestreo y modelamiento estadístico</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="cap6.html"><a href="cap6.html#los-estimadores-de-muestreo"><i class="fa fa-check"></i><b>6.1</b> Los estimadores de muestreo</a></li>
+<li class="chapter" data-level="6.2" data-path="cap6.html"><a href="cap6.html#otros-estimadores-del-sistema-dual"><i class="fa fa-check"></i><b>6.2</b> Otros estimadores del sistema dual</a></li>
+<li class="chapter" data-level="6.3" data-path="cap6.html"><a href="cap6.html#modelos-log-lineales"><i class="fa fa-check"></i><b>6.3</b> Modelos log-lineales</a></li>
+<li class="chapter" data-level="6.4" data-path="cap6.html"><a href="cap6.html#cuadro-comparativo-de-los-estimadores"><i class="fa fa-check"></i><b>6.4</b> Cuadro comparativo de los estimadores</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>7</b> Referencias</a></li>
+<li class="divider"></li>
+<li>Encuestas postcensales</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cap2" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Marco conceptual: el sistema de estimación dual<a href="cap2.html#cap2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Para poder hacer un análisis estadístico apropiado de las encuestas de cobertura como instrumentos que pretenden medir la omisión de un censo, es necesario remitirse a los rudimentos originales de su proceso inferencial, el cual está basado en el sistema de estimación dual. Este enfoque fue primeramente utilizado en modelos de captura y recaptura que se originaron en el siglo XVII, con desarrollos modernos a partir de <span class="citation">Petersen (<a href="#ref-petersen1896">1896</a>)</span>, <span class="citation">Lincoln (<a href="#ref-lincoln1930">1930</a>)</span> y <span class="citation">Schnabel (<a href="#ref-schnabel1938">1938</a>)</span>. La aplicación a eventos vitales humanos fue iniciada por el trabajo de <span class="citation">Sekar and Deming (<a href="#ref-sekar1949">1949</a>)</span>.</p>
+<p>Este capítulo pretende establecer las condiciones iniciales bajo las cuales es apropiado utilizar este enfoque, así como los supuestos que se deben cumplir para que esta metodología produzca estimadores insesgados y precisos.</p>
+<div id="planteamiento-del-problema" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Planteamiento del problema<a href="cap2.html#planteamiento-del-problema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> considera una población humana <span class="math inline">\(U\)</span>, de tamaño <span class="math inline">\(N\)</span>, el cual es fijo pero desconocido y es precisamente el parámetro de interés sobre el cual se requiere una inferencia precisa. En una primera instancia, se supone que se realiza un censo de la población en un momento específico en el tiempo, y que el censo intenta enumerar a cada individuo. Sin embargo, por diversas razones, algunos individuos no son contados en el censo. La diferencia entre el conteo censal y <span class="math inline">\(N\)</span> se denotará como el <em>error de cobertura</em>.</p>
+<p>Una de las principales complicaciones del error de cobertura es que su magnitud no puede determinarse únicamente a partir de los datos del censo. Para cuantificar este error, es imprescindible disponer de información adicional, la cual se obtiene generalmente mediante una encuesta por muestreo aplicada a la misma población objetivo. Esta encuesta (conocida como encuesta de postenumeración o encuesta de cobertura) se realiza habitualmente después del censo, utilizando el mismo período de referencia temporal. La encuesta permite estimar la magnitud del error de cobertura al comparar los resultados obtenidos con los datos del censo, proporcionando así una medida más precisa y ajustada de la población real.</p>
+<p>Inicialmente, considérese que la encuesta representa una enumeración completa de toda la población, lo cual no es cierto en la práctica, pero este paso es necesario para esclarecer las propiedades estadísticas del sistema de estimación dual. Por supuesto, en los próximos capítulos de este documento se abordarán los acercamientos necesarios para ajustar la inferencia al caso real en el que la encuesta únicamente llega a una fracción de la población.</p>
+</div>
+<div id="condiciones-y-supuestos" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Condiciones y supuestos<a href="cap2.html#condiciones-y-supuestos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El modelo del error de cobertura descansa bajo un número de supuestos que son imprescindibles a la hora de utilizar una encuesta de postenumeración como instrumento fiable para la medición del error de cobertura en un censo. A continuación se realiza un listado exhaustivo de ellos.</p>
+<div id="estabilidad-poblacional" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Estabilidad poblacional<a href="cap2.html#estabilidad-poblacional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se supone que la población <span class="math inline">\(U\)</span> es cerrada y de tamaño fijo <span class="math inline">\(N\)</span>. En la práctica, esto implica que:</p>
+<ol style="list-style-type: decimal">
+<li><p>El período de referencia del censo está bien definido; es decir que el censo se lleva a cabo en un intervalo de tiempo específico y claramente establecido. Este período es crucial para garantizar que todos los datos recolectados se refieran a la misma fecha o intervalo de tiempo, evitando así inconsistencias y errores en la estimación de la población.</p></li>
+<li><p>No existen incorporaciones durante el período de referencia; es decir que se asume que no ocurren <strong>nacimientos</strong> ni <strong>inmigraciones</strong>. Esto significa que no se agregan nuevos individuos a la población censada.</p></li>
+<li><p>No existen pérdidas; es decir que se asume que no ocurren <strong>defunciones</strong> ni <strong>emigraciones</strong> durante el período de referencia. Esto asegura que no se restan individuos de la población censada.</p></li>
+</ol>
+</div>
+<div id="sec:multinomial" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Estructura multinomial<a href="cap2.html#sec:multinomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El evento conjunto de que un individuo esté o no esté en el censo y esté o no en la encuesta se puede modelar correctamente usando una distribución multinomial con los siguientes parámetros:</p>
+<p><span class="math display">\[
+    \begin{array}{c|cc|c}
+    &amp; \text{En la encuesta} &amp; \text{Fuera de la encuesta} &amp; \text{Total} \\
+    \hline
+    \text{En el censo} &amp; p_{11} &amp; p_{12} &amp; p_{1+} \\
+    \text{Fuera del censo} &amp; p_{21} &amp; p_{22} &amp; p_{2+} \\
+    \hline
+    \text{Total} &amp; p_{+1} &amp; p_{+2} &amp; 1
+    \end{array}
+    \]</span></p>
+<p>En donde:</p>
+<ul>
+<li><span class="math inline">\(p_{11}\)</span> denota la probabilidad de que un individuo sea encontrado en el censo y en la encuesta.</li>
+<li><span class="math inline">\(p_{12}\)</span> denota la probabilidad de que un individuo sea encontrado en el censo, pero no en la encuesta.</li>
+<li><span class="math inline">\(p_{21}\)</span> denota la probabilidad de que un individuo no sea encontrado en el censo, pero sí en la encuesta.</li>
+<li><span class="math inline">\(p_{22}\)</span> denota la probabilidad de que un individuo no sea encontrado ni en el censo, ni en la encuesta.</li>
+</ul>
+<p>Asimismo, en términos de las probabilidades marginales, se definen las siguientes cantidades:</p>
+<ul>
+<li><span class="math inline">\(p_{1+}\)</span> es la probabilidad de que un individuo sea correctamente encontrado en el censo.</li>
+<li><span class="math inline">\(p_{+1}\)</span> es la probabilidad de que un individuo sea correctamente encontrado en la encuesta.</li>
+</ul>
+<p>Esto quiere decir que el individuo tiene chance de ser clasificado en cualquiera de los cuatro estados definidos por las entradas de la tabla anterior; pero que al momento de la recolección de los datos, el individuo sólo puede pertenecer a uno y solo uno de estos estados.</p>
+</div>
+<div id="independencia-autónoma" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Independencia autónoma<a href="#independencia-aut%C3%B3noma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El censo y la encuesta se generan como resultado de <span class="math inline">\(N\)</span> ensayos mutuamente independientes. Cada ensayo representa a un individuo de la población real <span class="math inline">\(U\)</span>. A partir de la recolección de los datos, se obtiene la siguiente clasificación:</p>
+<p><span class="math display">\[
+    \begin{array}{c|cc|c}
+    &amp; \text{En la encuesta} &amp; \text{Fuera de la encuesta} &amp; \text{Total} \\
+    \hline
+    \text{En el censo} &amp; N_{11} &amp; N_{12} &amp; N_{1+} \\
+    \text{Fuera del censo} &amp; N_{21} &amp; N_{22} &amp; N_{2+} \\
+    \hline
+    \text{Total} &amp; N_{+1} &amp; N_{+2} &amp; N_{++} = N
+    \end{array}
+    \]</span></p>
+<p>Note que <span class="math inline">\(N_{ab} = \sum_{k \in U} x_{kab}\)</span> y <span class="math inline">\(x_{kab}\)</span> es una variable indicadora que señala si el individuo <span class="math inline">\(k\)</span> pertenece a la celda <span class="math inline">\((a, b)\)</span> de la tabla <span class="math inline">\((a, b = 1,2,+)\)</span>. Bajo este esquema inicial, se tiene que:</p>
+<ol style="list-style-type: decimal">
+<li>El conteo del censo <span class="math inline">\(N_{1+}\)</span> se considera observable.</li>
+<li>Los valores <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{12}\)</span> y <span class="math inline">\(N_{21}\)</span> se consideran observables con base en los datos de la encuesta y el emparejamiento con el censo.</li>
+<li>Los valores <span class="math inline">\(N_{22}\)</span>, y el tamaño de la población de interés <span class="math inline">\(N = N_{++}\)</span>, se consideran desconocidos y deben estimarse con base en el modelo.</li>
+<li>Bajo este modelo, el conteo del censo <span class="math inline">\(N_{1+}\)</span> define una variable aleatoria con media <span class="math inline">\(E(N_{1+}) = Np_{1+}\)</span> y varianza <span class="math inline">\(V(N_{1+}) = Np_{1+}(1 - p_{1+})\)</span>.</li>
+</ol>
+</div>
+<div id="independencia-causal" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Independencia causal<a href="cap2.html#independencia-causal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se supone que el evento de ser incluido en el censo es independiente del evento de ser incluido en la encuesta. Como resultado de este supuesto, la razón de productos cruzados de probabilidades, conocida comúnmente como la Razón de Odds, satisface la siguiente relación:</p>
+<p><span class="math display">\[
+\frac{p_{11} \cdot p_{22}}{p_{12} \cdot p_{21}} = 1
+\]</span></p>
+<p>El resultado anterior se tiene, puesto que la probabilidad conjunta de un individuo en una celda específica de la tabla de contingencia se factoriza como:</p>
+<p><span class="math display">\[
+p_{11} = P(\text{individuo está en el censo y en la encuesta}) = p_{1+} \cdot p_{+1}
+\]</span></p>
+<p>Similarmente, se tiene que</p>
+<p><span class="math display">\[
+p_{12} = p_{1+} \cdot (1 - p_{+1})
+\]</span>
+<span class="math display">\[
+p_{21} = (1 - p_{i1+})\cdot p_{i+1}  p
+\]</span></p>
+<p><span class="math display">\[
+p_{22} = (1 - p_{i1+}) \cdot (1 - p_{i+1})
+\]</span>
+Sustituyendo adecuadamente en la razón de productos cruzados, entonces se tiene que</p>
+<p><span class="math display">\[
+\frac{p_{11} p_{22}}{p_{12} p_{21}} =
+\frac{p_{1+} p_{+1} (1 - p_{1+}) (1 - p_{+1})}
+{p_{1+} (1 - p_{+1}) (1 - p_{1+}) p_{+1}} = 1
+\]</span></p>
+<p>La dependencia causal, como señala el <span class="citation">Bureau (<a href="#ref-USCensusBureau_2022">2022</a>)</span>, es un fenómeno que ocurre cuando la inclusión o exclusión de un individuo en el censo influye en su probabilidad de ser incluido en la encuesta. Este tipo de dependencia puede generar sesgos en los datos y afectar la calidad de las estimaciones estadísticas, lo que a su vez puede comprometer la validez de las conclusiones derivadas de estos estudios. Por ello, es fundamental implementar estrategias que mitiguen este riesgo y aseguren la independencia operativa entre ambos sistemas.</p>
+<p>Una de las medidas clave para lograr esta independencia operativa es garantizar que el personal involucrado en la recolección de datos de la encuesta no participe en las mismas áreas geográficas o comunidades donde trabajaron durante el censo. Esto reduce la posibilidad de que los encuestadores influyan en las respuestas de los individuos basándose en interacciones previas o en información recopilada durante el censo. Además, al evitar la superposición de personal, se minimiza el riesgo de que los encuestados asocien ambas actividades, lo que podría alterar su disposición a participar o la veracidad de sus respuestas.</p>
+<p>Otra estrategia importante es asegurar que las entrevistas de la encuesta se realicen después de que las operaciones del censo hayan concluido en un área específica. Esto permite que los procesos de recolección de datos no se solapen temporalmente, lo que reduce la posibilidad de que los resultados de una actividad afecten directa o indirectamente a la otra. Por ejemplo, si un individuo ha sido contactado recientemente para el censo, podría sentirse menos motivado a participar en la encuesta, o viceversa. Separar prudencialmente ambas operaciones ayuda a mantener la independencia de las respuestas.</p>
+<p>Además, es crucial restringir el acceso del personal del censo a la información sobre la muestra de la encuesta. De manera similar, el personal de la encuesta no debería tener acceso a los resultados del censo durante la fase de recolección de datos, ya que esta información podría sesgar su enfoque o interpretación de las respuestas.</p>
+</div>
+<div id="emparejamiento" class="section level3 hasAnchor" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Emparejamiento<a href="cap2.html#emparejamiento" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se asume que es posible realizar un emparejamiento preciso entre los resultados de la encuesta y los del censo. Esto significa que se puede identificar de manera exacta y sin errores:</p>
+<ol style="list-style-type: decimal">
+<li>Cuáles individuos registrados en la encuesta también aparecen en los registros del censo.</li>
+<li>Cuáles individuos de la encuesta no están presentes en los datos del censo.</li>
+</ol>
+<p>Este emparejamiento correcto es crucial para evaluar la cobertura del censo y para ajustar las estimaciones de la población total, asegurando que los datos sean lo más precisos y completos posible.</p>
+<p>Por otro lado, se asume que inevitablemente habrá algún grado de no respuesta en el censo y en la encuesta. Esto significa que algunos individuos no serán contactados o no proporcionarán la información solicitada. Para abordar este problema, es fundamental recopilar suficiente información auxiliar sobre los no respondientes. Esta información puede incluir datos como nombres, direcciones, fechas de nacimiento y otros identificadores únicos que permitan una correcta identificación de los individuos.</p>
+<p>En la práctica, se implementan procedimientos específicos para asegurar que la información recopilada sea lo suficientemente detallada y precisa para permitir un emparejamiento exacto entre los datos del censo y los de la encuesta. Este emparejamiento es crucial para evaluar la cobertura del censo y ajustar las estimaciones de la población total.</p>
+</div>
+<div id="eventos-espurios" class="section level3 hasAnchor" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Eventos espurios<a href="cap2.html#eventos-espurios" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se asume que tanto el censo como la encuesta están libres de incidencias espurias o falsas, o que estas han sido eliminadas antes de realizar las estimaciones. Esto implica que se han tomado medidas para evitar cualquier tipo de error en el registro de los resultados tanto del censo como de la encuesta. En la práctica, esto significa que se han implementado procedimientos rigurosos para identificar y corregir cualquier anomalía en los datos. Algunos de los eventos espurios más importantes que pueden ocurrir incluyen:</p>
+<ol style="list-style-type: decimal">
+<li>Duplicaciones en la lista del censo. Esto ocurre cuando un individuo es contado más de una vez en el censo, lo que puede inflar artificialmente el tamaño de la población.</li>
+<li>Registros de casos inexistentes. Estos son registros de individuos que no existen en realidad, pero que han sido incluidos erróneamente en el censo o en la encuesta. Esto puede suceder debido a errores de entrada de datos o malentendidos durante la recolección de información.</li>
+<li>Casos no pertinentes. Estos son individuos que no deberían haber sido incluidos en el censo debido a que no cumplen con los criterios del período de referencia. Un ejemplo común es el registro de un individuo que nació después del período de referencia del censo, lo que resulta en una inclusión incorrecta en los datos.</li>
+</ol>
+<p>Para asegurar la precisión de las estimaciones, es crucial que estos eventos espurios sean identificados y eliminados antes de proceder con el análisis de los datos.</p>
+</div>
+<div id="postestratificación" class="section level3 hasAnchor" number="2.2.7">
+<h3><span class="header-section-number">2.2.7</span> Postestratificación<a href="#postestratificaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Es frecuente y beneficioso aplicar algún tipo de postestratificación en la estimación del tamaño real de la población. La postestratificación es una técnica estadística que permite ajustar las estimaciones de la población dividiéndola en subgrupos homogéneos, basados en variables categóricas. Esta técnica mejora la precisión y la validez de las estimaciones al considerar las diferencias dentro de la población.</p>
+<p>Por ejemplo, una forma común de postestratificación es por edad. En este caso, la población se divide en diferentes grupos de edad, como niños, adolescentes, adultos jóvenes, adultos de mediana edad y personas mayores. Para cada uno de estos grupos de edad, se realizan estimaciones específicas de la población. Estas estimaciones se basan en los datos recolectados tanto en el censo como en la encuesta. Una vez obtenidas las estimaciones específicas por edad, se agregan para calcular una estimación total de la población, denotada como <span class="math inline">\(N\)</span>.</p>
+<p>La postestratificación no se limita solo a la edad; también se puede aplicar a otras variables demográficas y socioeconómicas, como sexo, etnia, nivel educativo, región geográfica, entre otras. Es fundamental que cualquier variable utilizada para la postestratificación esté correctamente registrada para todos los individuos tanto en el censo como en la encuesta.</p>
+</div>
+</div>
+<div id="inferencia" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Inferencia<a href="cap2.html#inferencia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nuestro objetivo es estimar el tamaño total de una población, denotado como <span class="math inline">\(N_{++}\)</span>, utilizando dos fuentes de información complementarias. La primera fuente es el censo, el cual logra capturar correctamente a <span class="math inline">\(N_{+1}\)</span> individuos de la población. La segunda fuente es la encuesta, que captura de manera precisa a <span class="math inline">\(N_{1+}\)</span> individuos.</p>
+<p>Uno de los supuestos del sistema de estimación dual es que el evento de que una persona sea encontrada se puede modelar como un proceso estocástico de tipo Bernoulli. Esto quiere decir que <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> se asumen como variables aleatorias binomiales al ser sumas de eventos Bernoulli.</p>
+<div id="los-estimadores-del-sistema-dual" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Los estimadores del sistema dual<a href="cap2.html#los-estimadores-del-sistema-dual" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bajo este modelo, las variables aleatorias siguen distribuciones binomiales condicionales:</p>
+<p><span class="math display">\[
+N_{1+} \sim \text{Bin}(N_{++}, p_{1+}), \quad N_{+1} \sim \text{Bin}(N_{++}, p_{+1}), \quad N_{11} \sim \text{Bin}(N_{++}, p_{11})
+\]</span></p>
+<p>Una vez que los datos hayan sido recolectados y clasificados bajo este esquema, es bien sabido en la literatura estadística, que los estimadores para las probabilidades de interés toman la siguiente forma:</p>
+<p><span class="math display">\[
+\tilde{p}_{11} = \frac{N_{11}}{N_{++}},  \quad
+\tilde{p}_{1+} = \frac{N_{1+}}{N_{++}},  \quad
+\tilde{p}_{+1} = \frac{N_{+1}}{N_{++}}
+\]</span></p>
+<p>Al asumir independencia entre la captura en el censo y la captura en la encuesta, entonces <span class="math inline">\(\tilde{p}_{11} = \tilde{p}_{1+} \cdot \tilde{p}_{+1}\)</span>, y por ende:</p>
+<p><span class="math display">\[
+\frac{N_{11}}{N_{++}} = \frac{N_{1+}}{N_{++}} \cdot \frac{N_{+1}}{N_{++}}
+\]</span></p>
+<p>Luego, al despejar convenientemente, se encuentra que el estimador del sistema dual para el total poblacional <span class="math inline">\(N_{++}\)</span> está dado por</p>
+<p><span class="math display">\[
+\tilde{N}_{++} = \frac{N_{1+} \cdot N_{+1}}{N_{11}}
+\]</span></p>
+<p>A partir de este resultado, podemos reemplazar en las expresiones <span class="math inline">\(\tilde{p}_{11}\)</span>, <span class="math inline">\(\tilde{p}_{1+}\)</span> y <span class="math inline">\(\tilde{p}_{+1}\)</span> para obtener estimadores de máxima verosimilitud para las probabilidades de interés son los siguientes:</p>
+<p><span class="math display">\[
+\tilde{p}_{11} = \frac{N_{11}}{\tilde{N}_{++}} = \frac{N_{11}^2}{N_{1+} \cdot N_{+1}}
+\]</span></p>
+<p><span class="math display">\[
+\tilde{p}_{1+} = \frac{N_{1+}}{\tilde{N}_{++}} = \frac{N_{11}}{N_{+1}}
+\]</span></p>
+<p><span class="math display">\[
+\tilde{p}_{+1} = \frac{N_{+1}}{\tilde{N}_{++}} = \frac{N_{11}}{N_{1+}}
+\]</span></p>
+<p><span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>, sección 2.4)</span> plantea un esquema conjunto que induce estos mismos estimadores a partir de la función de verosimilitud asociada al modelo, la cual está dada por la siguiente expresión:</p>
+<p><span class="math display">\[
+L(N, p_{i+}, p_{+i}) = \binom{N}{x_{11}, x_{12}, x_{21}} p_{1+}^{x_{1+}} (1 - p_{1+})^{N - x_{1+}} p_{+1}^{x_{+1}} (1 - p_{+1})^{N - x_{+1}}.
+\]</span></p>
+<p>Los estimadores de máxima verosimilitud de los parámetros de interés se encuentran maximizando la anterior expresión sujeta a las restricciones pertinentes sobre las sumas de las probabilidades.</p>
+</div>
+<div id="propiedades-del-estimador" class="section level3 hasAnchor" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> Propiedades del estimador<a href="cap2.html#propiedades-del-estimador" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El estimador <span class="math inline">\(\tilde{N}_{++}\)</span>, es conocido como el método de Petersen, y es utilizado en estudios de captura y recaptura para estimar el tamaño de una población. Este método fue desarrollado por el biólogo danés Carl Georg Johannes Petersen <span class="citation">(<a href="#ref-petersen1896">Petersen 1896</a>)</span> y más tarde popularizado por C. Chandra Sekar y W. Edwards Deming en 1949 para estimar tasas de nacimientos y defunciones, así como la cobertura de los registros vitales <span class="citation">(<a href="#ref-sekar1949">Sekar and Deming 1949</a>)</span>.</p>
+<p>Para demostrar que este estimador es insesgado, se debe verificar que <span class="math inline">\(E[\tilde{N}_{++}] = N_{++}\)</span>. En primer lugar, por la propiedad de la esperanza en distribuciones binomiales, se tiene que:</p>
+<p><span class="math display">\[
+E[N_{1+}] = N_{++} p_{1+}, \quad E[N_{+1}] = N_{++} p_{+1}, \quad E[N_{11}] = N_{++} p_{11}
+\]</span></p>
+<p>Ahora, la esperanza del estimador toma la siguiente forma:</p>
+<p><span class="math display">\[
+E[\tilde{N}_{++}] = E\left[ \frac{N_{1+} \cdot N_{+1}}{N_{11}} \right]
+\]</span></p>
+<p>En primera instancia como <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> son variables aleatorias, es necesario apelar a las propiedades de la esperanza condicional, de la siguiente manera:</p>
+<p><span class="math display">\[
+E[\tilde{N}_{++}] = E \left[ E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) \right]
+\]</span></p>
+<p>Además, como <span class="math inline">\(N_{11}\)</span> también es una variable aleatoria, entonces bajo condiciones de regularidad que permitan utilizar la expansión de Taylor, es posible aproximar la esperanza de este cociente al cociente de las esperanzas <span class="citation">(<a href="#ref-casella2002statistical">Casella and Berger 2002</a>)</span>. De esta forma, se tiene que:</p>
+<p><span class="math display">\[
+E \left( \frac{N_{1+} \cdot N_{+1}}{N_{11}} \Bigg| N_{1+}, N_{+1} \right) =  \frac{E (N_{1+} \cdot N_{+1}| N_{1+}, N_{+1} )}{E (N_{11}| N_{1+}, N_{+1} )}
+\]</span></p>
+<p>Dado que <span class="math inline">\(N_{1+}\)</span> y <span class="math inline">\(N_{+1}\)</span> son independientes, entonces <span class="math inline">\(E[N_{1+} \cdot N_{+1}] = E[N_{1+}] E[N_{+1}]\)</span>. Reemplazando convenientemente, se tiene que</p>
+<p><span class="math display">\[
+E[\tilde{N}_{++}] = \frac{N_{++}^2 p_{1+} p_{+1}}{N_{++} p_{1+} p_{+1}}
+= N_{++} = N
+\]</span></p>
+<p>Por otro lado, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> afirma que la varianza del estimador puede ser estimada mediante la siguiente expresión:</p>
+<p><span class="math display">\[
+\tilde V[\tilde{N}_{++}] = \frac{N_{1+} \cdot N_{+1} \cdot N_{12} \cdot N_{21}  }{N_{11}^3}
+\]</span></p>
+
+</div>
+</div>
+</div>
+<h3> Referencias<a href="referencias.html#referencias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-USCensusBureau_2022" class="csl-entry">
+Bureau, US Census. 2022. <span>“2020 Post-Enumeration Survey Estimation Design.”</span>
+</div>
+<div id="ref-casella2002statistical" class="csl-entry">
+Casella, George, and Roger L. Berger. 2002. <em>Statistical Inference</em>. 2nd ed. Duxbury Press.
+</div>
+<div id="ref-lincoln1930" class="csl-entry">
+Lincoln, F. C. 1930. <span>“Calculating Waterfowl Abundance on the Basis of Banding Returns.”</span> <em>Circular</em> 118: 1–4.
+</div>
+<div id="ref-petersen1896" class="csl-entry">
+Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
+</div>
+<div id="ref-schnabel1938" class="csl-entry">
+Schnabel, Z. E. 1938. <span>“The Estimation of the Total Fish Population of a Lake.”</span> <em>American Mathematical Monthly</em> 45: 348–52.
+</div>
+<div id="ref-sekar1949" class="csl-entry">
+Sekar, C. Chandra, and W. Edwards Deming. 1949. <span>“On a Method of Estimating Birth and Death Rates and the Extent of Registration.”</span> <em>Journal of the American Statistical Association</em> 44 (245): 101–15.
+</div>
+<div id="ref-wolter1986coverage" class="csl-entry">
+Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cap1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cap3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/psirusteam/PESguidelines/02pse.rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Encuesta PostCensal.pdf", "Encuesta PostCensal.epub", "Encuesta PostCensal.mobi"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

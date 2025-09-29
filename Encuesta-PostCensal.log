@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.8.29)  26 SEP 2025 13:41
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.9.26)  29 SEP 2025 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -882,6 +882,11 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.99936pt on input line 148.
 
+Underfull \hbox (badness 1515) in paragraph at lines 148--148
+[][]\TU/lmr/m/n/10.95 Consultor - Comisión Económica para América Latina y el Caribe (CEPAL) -
+ []
+
+
 
 [1
 
@@ -928,25 +933,33 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 ]
 Chapter 1.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.4pt on input line 169.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 169.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.40076pt on input line 169.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 169.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.3991pt on input line 169.
+
+LaTeX Warning: Reference `cap-estim' on page 11 undefined on input line 185.
+
 
 
 [11]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.4pt on input line 191.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 12.0011pt on input line 191.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.40076pt on input line 191.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 11.99872pt on input line 191.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 8.3991pt on input line 191.
+
 
 [12]
 
 [13]
 
-[14]
+[14
+
+]
+Chapter 2.
+
 
 [15]
 
@@ -958,11 +971,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 [19]
 
-[20
-
-]
-Chapter 2.
-
+[20]
 
 [21]
 
@@ -970,18 +979,31 @@ Chapter 2.
 
 [23]
 
-[24]
+[24
+
+]
+Chapter 3.
+
 
 [25]
 
 [26]
 
-[27]
+[27] [28]
+Underfull \hbox (badness 10000) in paragraph at lines 655--657
 
-[28
+ []
 
-]
-Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 657--659
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 659--661
+
+ []
+
 
 
 [29]
@@ -990,14 +1012,7 @@ Chapter 3.
 
 [31]
 
-[32
-
-]
-Chapter 4.
-
-LaTeX Warning: Reference `multinomial' on page 33 undefined on input line 650.
-
-
+[32]
 
 [33]
 
@@ -1014,14 +1029,523 @@ LaTeX Warning: Reference `multinomial' on page 33 undefined on input line 650.
 [39]
 
 [40]
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 917.
+Chapter 4.
 
 
-[41]
+[41
+
+]
 
 [42]
-Overfull \hbox (6.45284pt too wide) in paragraph at lines 1015--1016
+
+[43]
+
+[44]
+Overfull \hbox (661.26163pt too wide) in alignment at lines 1066--1071
+ [] [] 
+ []
+
+
+Overfull \hbox (661.26163pt too wide) in alignment at lines 1071--1075
+ [] [] 
+ []
+
+
+Overfull \hbox (661.26163pt too wide) in alignment at lines 1075--1077
+ [] [] 
+ []
+
+
+Overfull \hbox (661.26163pt too wide) in alignment at lines 1077--1085
+ [] [] 
+ []
+
+
+
+[45]
+
+[46]
+Chapter 5.
+
+
+[47
+
+]
+
+[48]
+File: images/FlujoMatch.png Graphic file (type bmp)
+<images/FlujoMatch.png>
+File: images/grafo.png Graphic file (type bmp)
+<images/grafo.png>
+
+LaTeX Warning: Float too large for page by 330.91266pt on input line 1195.
+
+
+
+[49]
+
+[50]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 1213.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 1213.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 1213.
+
+
+[51]
+
+[52]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 1264.
+
+Overfull \hbox (69.36115pt too wide) in paragraph at lines 1292--1292
+[]\TU/lmtt/m/n/12 ##   DIRECCION             MUNICIPIO     addrs                            lat  long[] 
+ []
+
+
+Overfull \hbox (69.36108pt too wide) in paragraph at lines 1292--1292
+[]\TU/lmtt/m/n/12 ##   <chr>                 <chr>         <chr>                          <dbl> <dbl>[] 
+ []
+
+
+Overfull \hbox (69.33736pt too wide) in paragraph at lines 1292--1292
+[]\TU/lmtt/m/n/12 ## 1 Av. Jaime Mendoza 123 Sucre         Av. Jaime Mendoza 123, Sucre,~ -19.0 -65.3[] 
+ []
+
+
+Overfull \hbox (69.31337pt too wide) in paragraph at lines 1292--1292
+[]\TU/lmtt/m/n/12 ## 2 Calle Bolívar 456     Monteagudo    Calle Bolívar 456, Monteagudo~ -19.8 -64.0[] 
+ []
+
+
+Overfull \hbox (69.32533pt too wide) in paragraph at lines 1292--1292
+[]\TU/lmtt/m/n/12 ## 3 Plaza 25 de Mayo 789  Camargo       Plaza 25 de Mayo 789, Camargo~ -18.0 -62.7[] 
+ []
+
+
+Overfull \hbox (69.33742pt too wide) in paragraph at lines 1292--1292
+[]\TU/lmtt/m/n/12 ## 4 Av. del Maestro 321   Villa Serrano Av. del Maestro 321, Villa Se~ -19.1 -64.3[] 
+ []
+
+
+Overfull \hbox (69.31332pt too wide) in paragraph at lines 1292--1292
+[]\TU/lmtt/m/n/12 ## 5 Calle Potosí 654      Zudáñez       Calle Potosí 654, Zudáñez, Bo~ -19.0 -64.8[] 
+ []
+
+
+
+[53]
+
+[54]
+File: images/FlujoMatch2.png Graphic file (type bmp)
+<images/FlujoMatch2.png>
+
+Overfull \hbox (152.11354pt too wide) in alignment at lines 1349--1360
+[] [] [] [] [] [] [] [] [] [] 
+ []
+
+
+Overfull \hbox (81.99753pt too wide) in alignment at lines 1370--1381
+[] [] [] [] [] [] [] 
+ []
+
+
+
+[55]
+
+[56]
+
+[57]
+Overfull \hbox (144.18153pt too wide) in alignment at lines 1459--1470
+[] [] [] [] [] [] [] [] [] [] 
+ []
+
+
+
+[58]
+Overfull \hbox (160.50154pt too wide) in alignment at lines 1491--1502
+[] [] [] [] [] [] [] [] [] [] 
+ []
+
+
+
+[59] [60]
+
+[61]
+Overfull \hbox (13.7414pt too wide) in paragraph at lines 1600--1600
+[]\TU/lmtt/m/n/12 ## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez[] 
+ []
+
+
+Overfull \hbox (13.74136pt too wide) in paragraph at lines 1600--1600
+[]\TU/lmtt/m/n/12 ##   "C345"   "K345"   "Y150"   "J150"   "G150"   "Y500"   "Y500"   "G524"[] 
+ []
+
+
+Overfull \hbox (13.7414pt too wide) in paragraph at lines 1626--1626
+[]\TU/lmtt/m/n/12 ## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez[] 
+ []
+
+
+Overfull \hbox (13.74129pt too wide) in paragraph at lines 1626--1626
+[]\TU/lmtt/m/n/12 ##   "KTLN"   "KTLN"    "YFN"    "JFN"    "JFN"     "YN"     "YN"  "KNSLS"[] 
+ []
+
+
+
+[62]
+Overfull \hbox (13.7414pt too wide) in paragraph at lines 1665--1665
+[]\TU/lmtt/m/n/12 ## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez[] 
+ []
+
+
+Overfull \hbox (13.74129pt too wide) in paragraph at lines 1665--1665
+[]\TU/lmtt/m/n/12 ##   "CTLN"   "KTLN"    "YVN"    "JVN"    "GVN"     "YN"     "YN"   "GNZL"[] 
+ []
+
+
+
+[63]
+Overfull \hbox (8.63837pt too wide) in paragraph at lines 1685--1687
+[]\TU/lmr/m/n/12 Normalización de acentos, letra ñ y otros caracteres mediante stri_trans_general(…,
+ []
+
+
+
+[64]
+
+[65]
+
+[66]
+
+[67]
+
+[68]
+
+[69]
+
+[70]
+
+[71]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
+(Font)              scaled to size 12.0pt on input line 2032.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
+(Font)              scaled to size 8.4pt on input line 2032.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
+(Font)              scaled to size 6.0pt on input line 2032.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 12.0011pt on input line 2032.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 8.40076pt on input line 2032.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
+(Font)              scaled to size 6.00055pt on input line 2032.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 11.99872pt on input line 2032.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 8.3991pt on input line 2032.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
+(Font)              scaled to size 5.99936pt on input line 2032.
+
+
+[72]
+
+[73]
+Underfull \hbox (badness 10000) in paragraph at lines 2083--2085
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2085--2087
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2087--2089
+
+ []
+
+
+
+[74]
+
+[75]
+Overfull \hbox (16.76071pt too wide) in paragraph at lines 2156--2157
+[]\TU/lmr/m/n/12 Lenguaje  
+ []
+
+
+Overfull \hbox (26.75949pt too wide) in paragraph at lines 2166--2166
+[]|\TU/lmtt/m/n/12 RecordLinkage|  
+ []
+
+
+Overfull \hbox (2.03949pt too wide) in paragraph at lines 2168--2168
+[]|\TU/lmtt/m/n/12 fuzzyjoin|  
+ []
+
+
+Overfull \hbox (8.2195pt too wide) in paragraph at lines 2169--2169
+[]|\TU/lmtt/m/n/12 stringdist|  
+ []
+
+
+Overfull \hbox (7.9527pt too wide) in paragraph at lines 2170--2170
+[]|\TU/lmr/m/n/12 Python|  
+ []
+
+
+Overfull \hbox (26.75949pt too wide) in paragraph at lines 2170--2170
+[]|\TU/lmtt/m/n/12 recordlinkage|  
+ []
+
+
+Overfull \hbox (7.9527pt too wide) in paragraph at lines 2171--2171
+[]|\TU/lmr/m/n/12 Python|  
+ []
+
+
+Overfull \hbox (7.9527pt too wide) in paragraph at lines 2172--2172
+[]|\TU/lmr/m/n/12 Python|  
+ []
+
+
+
+[76]
+Overfull \hbox (63.18094pt too wide) in paragraph at lines 2219--2219
+[]\TU/lmtt/m/n/12 ##   A   B   D   E   F   G   H   J   K   L   M   N   O   P   R   S   T   V   W   Z[] 
+ []
+
+
+Overfull \hbox (63.12112pt too wide) in paragraph at lines 2219--2219
+[]\TU/lmtt/m/n/12 ##   5  56   2   6  38  12  32   8  46  13  76   8   4   6   7 115   2   7  52   5[] 
+ []
+
+
+
+[77]
+Overfull \hbox (63.18094pt too wide) in paragraph at lines 2247--2247
+[]\TU/lmtt/m/n/12 ##    A    B    D    E    F    G    H    J    K    L    M    N    O    P    R    S[] 
+ []
+
+
+Overfull \hbox (63.10925pt too wide) in paragraph at lines 2247--2247
+[]\TU/lmtt/m/n/12 ##   10 1540    1   15  703   66  496   28 1035   78 2850   28    6   15   21 6555[] 
+ []
+
+
+
+[78]
+
+[79]
+Overfull \hbox (44.64145pt too wide) in paragraph at lines 2384--2384
+[]\TU/lmtt/m/n/12 ## [0.2,0.25] (0.25,0.3] (0.3,0.35] (0.35,0.4] (0.4,0.45] (0.45,0.5] (0.5,0.55][] 
+ []
+
+
+Overfull \hbox (44.64108pt too wide) in paragraph at lines 2384--2384
+[]\TU/lmtt/m/n/12 ##       2318          0        114        131         30         50          8[] 
+ []
+
+
+Overfull \hbox (44.58147pt too wide) in paragraph at lines 2384--2384
+[]\TU/lmtt/m/n/12 ## (0.55,0.6] (0.6,0.65] (0.65,0.7] (0.7,0.75] (0.75,0.8] (0.8,0.85] (0.85,0.9][] 
+ []
+
+
+Overfull \hbox (44.64099pt too wide) in paragraph at lines 2384--2384
+[]\TU/lmtt/m/n/12 ##          2         10          0          0         35          8          3[] 
+ []
+
+
+
+[80]
+
+[81]
+
+[82]
+Overfull \hbox (236.22137pt too wide) in paragraph at lines 2486--2486
+[]\TU/lmtt/m/n/12 ## If you set return.all to FALSE, you will not be able to calculate a confusion table as a summary statistic.[] 
+ []
+
+
+Overfull \hbox (13.74146pt too wide) in paragraph at lines 2486--2486
+[]\TU/lmtt/m/n/12 ## dfA and dfB are identical, assuming deduplication of a single data set.[] 
+ []
+
+
+
+[83]
+Overfull \hbox (57.0014pt too wide) in paragraph at lines 2516--2516
+[]\TU/lmtt/m/n/12 ##   dedupe.ids dupe_count fname_c1 fname_c2    lname_c1 lname_c2   by bm bd   id[] 
+ []
+
+
+Overfull \hbox (56.96529pt too wide) in paragraph at lines 2516--2516
+[]\TU/lmtt/m/n/12 ## 1        420          3 GUENTHER     <NA> ZIMMERMWANN     <NA> 1971  6 23 1794[] 
+ []
+
+
+Overfull \hbox (56.95326pt too wide) in paragraph at lines 2516--2516
+[]\TU/lmtt/m/n/12 ## 2        420          3 GUENTHER     <NA>  ZIMMERMANN     <NA> 1992  6 23 1864[] 
+ []
+
+
+Overfull \hbox (56.96527pt too wide) in paragraph at lines 2516--2516
+[]\TU/lmtt/m/n/12 ## 3        420          3 GUENTHER     <NA>  ZIMMERMANN     <NA> 1971  6 23 1794[] 
+ []
+
+
+Overfull \hbox (56.92921pt too wide) in paragraph at lines 2516--2516
+[]\TU/lmtt/m/n/12 ## 4       3969          3  GERTRUD     <NA>     MUELLER     <NA> 1964  7 27 8970[] 
+ []
+
+
+Overfull \hbox (56.9172pt too wide) in paragraph at lines 2516--2516
+[]\TU/lmtt/m/n/12 ## 5       3969          3  GERTRUD     <NA>     MUELOER     <NA> 1964  7 11 7616[] 
+ []
+
+
+Overfull \hbox (56.90521pt too wide) in paragraph at lines 2516--2516
+[]\TU/lmtt/m/n/12 ## 6       3969          3  GERTRUD     <NA>     MUELLER     <NA> 1964  7 11 7616[] 
+ []
+
+
+
+[84]
+
+[85]
+
+[86]
+Overfull \hbox (63.14536pt too wide) in paragraph at lines 2650--2650
+[]\TU/lmtt/m/n/12 ## [-16,-14] (-14,-12] (-12,-10]  (-10,-8]   (-8,-6]   (-6,-4]   (-4,-2]    (-2,0][] 
+ []
+
+
+Overfull \hbox (63.16905pt too wide) in paragraph at lines 2650--2650
+[]\TU/lmtt/m/n/12 ##       743         0       601       114         0       217         0         1[] 
+ []
+
+
+Overfull \hbox (1.35736pt too wide) in paragraph at lines 2650--2650
+[]\TU/lmtt/m/n/12 ##     (0,2]     (2,4]     (4,6]     (6,8]    (8,10]   (10,12]   (12,14][] 
+ []
+
+
+Overfull \hbox (1.38104pt too wide) in paragraph at lines 2650--2650
+[]\TU/lmtt/m/n/12 ##         0        18         2         0         1         0        53[] 
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 2656--2657
+[]\TU/lmr/m/n/12 Los algoritmos calculan la probabilidad de coincidencia para cada registro en
+ []
+
+
+
+[87]
+Overfull \hbox (63.38553pt too wide) in alignment at lines 2683--2856
+[] [] [] [] [] [] [] 
+ []
+
+
+LaTeX Warning: Float too large for page by 1782.49593pt on input line 2857.
+
+
+Overfull \hbox (57.50554pt too wide) in alignment at lines 2893--2952
+[] [] [] [] [] [] [] 
+ []
+
+
+LaTeX Warning: Float too large for page by 186.49593pt on input line 2953.
+
+
+
+[88]
+
+[89]
+
+[90]
+
+[91]
+
+[92
+
+]
+Chapter 6.
+
+
+[93]
+
+
+Overfull \hbox (25.1924pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 94 \TU/lmr/m/sl/12 CHAPTER 6.  ESTIMADORES DE MUESTREO Y MODELAMIENTO ESTADÍSTICO
+ []
+
+[94]
+
+[95]
+
+
+Overfull \hbox (25.1924pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 96 \TU/lmr/m/sl/12 CHAPTER 6.  ESTIMADORES DE MUESTREO Y MODELAMIENTO ESTADÍSTICO
+ []
+
+[96]
+
+LaTeX Warning: Reference `multinomial' on page 97 undefined on input line 3074.
+
+
+
+[97]
+
+
+Overfull \hbox (25.1924pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 98 \TU/lmr/m/sl/12 CHAPTER 6.  ESTIMADORES DE MUESTREO Y MODELAMIENTO ESTADÍSTICO
+ []
+
+[98]
+
+[99]
+
+
+Overfull \hbox (31.0724pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 100 \TU/lmr/m/sl/12 CHAPTER 6.  ESTIMADORES DE MUESTREO Y MODELAMIENTO ESTADÍSTICO
+ []
+
+[100]
+
+[101]
+
+
+Overfull \hbox (31.0724pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 102 \TU/lmr/m/sl/12 CHAPTER 6.  ESTIMADORES DE MUESTREO Y MODELAMIENTO ESTADÍSTICO
+ []
+
+[102]
+
+[103]
+
+
+Overfull \hbox (31.0724pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 104 \TU/lmr/m/sl/12 CHAPTER 6.  ESTIMADORES DE MUESTREO Y MODELAMIENTO ESTADÍSTICO
+ []
+
+[104]
+
+[105]
+
+
+Overfull \hbox (31.0724pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 106 \TU/lmr/m/sl/12 CHAPTER 6.  ESTIMADORES DE MUESTREO Y MODELAMIENTO ESTADÍSTICO
+ []
+
+[106]
+
+LaTeX Warning: Reference `cap-reg' on page 107 undefined on input line 3410.
+
+
+Overfull \hbox (6.45284pt too wide) in paragraph at lines 3440--3441
 []\TU/lmr/m/n/12 Heterogeneidad 
  []
 
@@ -1057,552 +1581,40 @@ Missing character: There is no ❌ (U+274C) in font [lmroman12-regular]:mapping=
 Missing character: There is no ✔ (U+2714) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no ✔ (U+2714) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no ⚠ (U+26A0) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no ✔ (U+2714) in font [lmroman12-regular]:mapping=tex-text;!
 
 
-[43]
+[107]
+Missing character: There is no ✔ (U+2714) in font [lmroman12-regular]:mapping=tex-text;!
+Missing character: There is no ✔ (U+2714) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no ✔ (U+2714) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no ❌ (U+274C) in font [lmroman12-regular]:mapping=tex-text;!
 Missing character: There is no ⚠ (U+26A0) in font [lmroman12-regular]:mapping=tex-text;!
 
 
-[44]
-Chapter 5.
 
-
-[45
-
-]
-Overfull \hbox (661.26163pt too wide) in alignment at lines 1087--1092
- [] [] 
+Overfull \hbox (31.0724pt too wide) has occurred while \output is active
+\TU/lmr/m/n/12 108 \TU/lmr/m/sl/12 CHAPTER 6.  ESTIMADORES DE MUESTREO Y MODELAMIENTO ESTADÍSTICO
  []
-
-
-Overfull \hbox (661.26163pt too wide) in alignment at lines 1092--1096
- [] [] 
- []
-
-
-Overfull \hbox (661.26163pt too wide) in alignment at lines 1096--1098
- [] [] 
- []
-
-
-Overfull \hbox (661.26163pt too wide) in alignment at lines 1098--1106
- [] [] 
- []
-
-
-
-[46]
-
-[47]
-
-[48]
-File: images/FlujoMatch.png Graphic file (type bmp)
-<images/FlujoMatch.png>
-
-
-[49]
-File: images/grafo.png Graphic file (type bmp)
-<images/grafo.png>
-
-LaTeX Warning: Float too large for page by 330.91266pt on input line 1216.
-
-
-
-[50]
-
-[51]
-
-[52
-
-]
-Chapter 6.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 1234.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 1234.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 1234.
-
-
-[53]
-
-[54]
-
-[55]
-Overfull \hbox (69.36115pt too wide) in paragraph at lines 1313--1313
-[]\TU/lmtt/m/n/12 ##   DIRECCION             MUNICIPIO     addrs                            lat  long[] 
- []
-
-
-Overfull \hbox (69.36108pt too wide) in paragraph at lines 1313--1313
-[]\TU/lmtt/m/n/12 ##   <chr>                 <chr>         <chr>                          <dbl> <dbl>[] 
- []
-
-
-Overfull \hbox (69.33736pt too wide) in paragraph at lines 1313--1313
-[]\TU/lmtt/m/n/12 ## 1 Av. Jaime Mendoza 123 Sucre         Av. Jaime Mendoza 123, Sucre,~ -19.0 -65.3[] 
- []
-
-
-Overfull \hbox (69.31337pt too wide) in paragraph at lines 1313--1313
-[]\TU/lmtt/m/n/12 ## 2 Calle Bolívar 456     Monteagudo    Calle Bolívar 456, Monteagudo~ -19.8 -64.0[] 
- []
-
-
-Overfull \hbox (69.32533pt too wide) in paragraph at lines 1313--1313
-[]\TU/lmtt/m/n/12 ## 3 Plaza 25 de Mayo 789  Camargo       Plaza 25 de Mayo 789, Camargo~ -18.0 -62.7[] 
- []
-
-
-Overfull \hbox (69.33742pt too wide) in paragraph at lines 1313--1313
-[]\TU/lmtt/m/n/12 ## 4 Av. del Maestro 321   Villa Serrano Av. del Maestro 321, Villa Se~ -19.1 -64.3[] 
- []
-
-
-Overfull \hbox (69.31332pt too wide) in paragraph at lines 1313--1313
-[]\TU/lmtt/m/n/12 ## 5 Calle Potosí 654      Zudáñez       Calle Potosí 654, Zudáñez, Bo~ -19.0 -64.8[] 
- []
-
-
-
-[56]
-File: images/FlujoMatch2.png Graphic file (type bmp)
-<images/FlujoMatch2.png>
-
-Overfull \hbox (152.11354pt too wide) in alignment at lines 1362--1373
-[] [] [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (81.99753pt too wide) in alignment at lines 1383--1394
-[] [] [] [] [] [] [] 
- []
-
-
-
-[57]
-
-[58]
-
-[59]
-
-[60]
-Overfull \hbox (144.18153pt too wide) in alignment at lines 1472--1483
-[] [] [] [] [] [] [] [] [] [] 
- []
-
-
-Overfull \hbox (160.50154pt too wide) in alignment at lines 1504--1515
-[] [] [] [] [] [] [] [] [] [] 
- []
-
-
-
-[61]
-
-[62]
-
-[63]
-Overfull \hbox (13.7414pt too wide) in paragraph at lines 1613--1613
-[]\TU/lmtt/m/n/12 ## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez[] 
- []
-
-
-Overfull \hbox (13.74136pt too wide) in paragraph at lines 1613--1613
-[]\TU/lmtt/m/n/12 ##   "C345"   "K345"   "Y150"   "J150"   "G150"   "Y500"   "Y500"   "G524"[] 
- []
-
-
-
-[64]
-Overfull \hbox (13.7414pt too wide) in paragraph at lines 1639--1639
-[]\TU/lmtt/m/n/12 ## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez[] 
- []
-
-
-Overfull \hbox (13.74129pt too wide) in paragraph at lines 1639--1639
-[]\TU/lmtt/m/n/12 ##   "KTLN"   "KTLN"    "YFN"    "JFN"    "JFN"     "YN"     "YN"  "KNSLS"[] 
- []
-
-
-
-[65]
-Overfull \hbox (13.7414pt too wide) in paragraph at lines 1678--1678
-[]\TU/lmtt/m/n/12 ## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez[] 
- []
-
-
-Overfull \hbox (13.74129pt too wide) in paragraph at lines 1678--1678
-[]\TU/lmtt/m/n/12 ##   "CTLN"   "KTLN"    "YVN"    "JVN"    "GVN"     "YN"     "YN"   "GNZL"[] 
- []
-
-
-Overfull \hbox (8.63837pt too wide) in paragraph at lines 1698--1700
-[]\TU/lmr/m/n/12 Normalización de acentos, letra ñ y otros caracteres mediante stri_trans_general(…,
- []
-
-
-
-[66]
-
-[67]
-
-[68]
-
-[69]
-
-[70]
-
-[71]
-
-[72]
-
-[73]
-
-[74]
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 12.0pt on input line 2045.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 8.4pt on input line 2045.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 6.0pt on input line 2045.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 12.0011pt on input line 2045.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 8.40076pt on input line 2045.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 6.00055pt on input line 2045.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 11.99872pt on input line 2045.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 8.3991pt on input line 2045.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 5.99936pt on input line 2045.
-
-
-[75]
-Underfull \hbox (badness 10000) in paragraph at lines 2096--2098
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2098--2100
-
- []
-
-
-
-[76]
-Underfull \hbox (badness 10000) in paragraph at lines 2100--2102
-
- []
-
-
-
-[77]
-Overfull \hbox (16.76071pt too wide) in paragraph at lines 2169--2170
-[]\TU/lmr/m/n/12 Lenguaje  
- []
-
-
-Overfull \hbox (26.75949pt too wide) in paragraph at lines 2179--2179
-[]|\TU/lmtt/m/n/12 RecordLinkage|  
- []
-
-
-Overfull \hbox (2.03949pt too wide) in paragraph at lines 2181--2181
-[]|\TU/lmtt/m/n/12 fuzzyjoin|  
- []
-
-
-Overfull \hbox (8.2195pt too wide) in paragraph at lines 2182--2182
-[]|\TU/lmtt/m/n/12 stringdist|  
- []
-
-
-Overfull \hbox (7.9527pt too wide) in paragraph at lines 2183--2183
-[]|\TU/lmr/m/n/12 Python|  
- []
-
-
-Overfull \hbox (26.75949pt too wide) in paragraph at lines 2183--2183
-[]|\TU/lmtt/m/n/12 recordlinkage|  
- []
-
-
-Overfull \hbox (7.9527pt too wide) in paragraph at lines 2184--2184
-[]|\TU/lmr/m/n/12 Python|  
- []
-
-
-Overfull \hbox (7.9527pt too wide) in paragraph at lines 2185--2185
-[]|\TU/lmr/m/n/12 Python|  
- []
-
-[78]
-
-[79]
-Overfull \hbox (63.18094pt too wide) in paragraph at lines 2232--2232
-[]\TU/lmtt/m/n/12 ##   A   B   D   E   F   G   H   J   K   L   M   N   O   P   R   S   T   V   W   Z[] 
- []
-
-
-Overfull \hbox (63.12112pt too wide) in paragraph at lines 2232--2232
-[]\TU/lmtt/m/n/12 ##   5  56   2   6  38  12  32   8  46  13  76   8   4   6   7 115   2   7  52   5[] 
- []
-
-
-Overfull \hbox (63.18094pt too wide) in paragraph at lines 2260--2260
-[]\TU/lmtt/m/n/12 ##    A    B    D    E    F    G    H    J    K    L    M    N    O    P    R    S[] 
- []
-
-
-Overfull \hbox (63.10925pt too wide) in paragraph at lines 2260--2260
-[]\TU/lmtt/m/n/12 ##   10 1540    1   15  703   66  496   28 1035   78 2850   28    6   15   21 6555[] 
- []
-
-
-
-[80]
-
-[81]
-
-[82]
-Overfull \hbox (44.64145pt too wide) in paragraph at lines 2397--2397
-[]\TU/lmtt/m/n/12 ## [0.2,0.25] (0.25,0.3] (0.3,0.35] (0.35,0.4] (0.4,0.45] (0.45,0.5] (0.5,0.55][] 
- []
-
-
-Overfull \hbox (44.64108pt too wide) in paragraph at lines 2397--2397
-[]\TU/lmtt/m/n/12 ##       2318          0        114        131         30         50          8[] 
- []
-
-
-Overfull \hbox (44.58147pt too wide) in paragraph at lines 2397--2397
-[]\TU/lmtt/m/n/12 ## (0.55,0.6] (0.6,0.65] (0.65,0.7] (0.7,0.75] (0.75,0.8] (0.8,0.85] (0.85,0.9][] 
- []
-
-
-Overfull \hbox (44.64099pt too wide) in paragraph at lines 2397--2397
-[]\TU/lmtt/m/n/12 ##          2         10          0          0         35          8          3[] 
- []
-
-
-
-[83]
-
-[84]
-
-[85]
-Overfull \hbox (236.22137pt too wide) in paragraph at lines 2499--2499
-[]\TU/lmtt/m/n/12 ## If you set return.all to FALSE, you will not be able to calculate a confusion table as a summary statistic.[] 
- []
-
-
-Overfull \hbox (13.74146pt too wide) in paragraph at lines 2499--2499
-[]\TU/lmtt/m/n/12 ## dfA and dfB are identical, assuming deduplication of a single data set.[] 
- []
-
-
-Overfull \hbox (57.0014pt too wide) in paragraph at lines 2529--2529
-[]\TU/lmtt/m/n/12 ##   dedupe.ids dupe_count fname_c1 fname_c2    lname_c1 lname_c2   by bm bd   id[] 
- []
-
-
-Overfull \hbox (56.96529pt too wide) in paragraph at lines 2529--2529
-[]\TU/lmtt/m/n/12 ## 1        420          3 GUENTHER     <NA> ZIMMERMWANN     <NA> 1971  6 23 1794[] 
- []
-
-
-Overfull \hbox (56.95326pt too wide) in paragraph at lines 2529--2529
-[]\TU/lmtt/m/n/12 ## 2        420          3 GUENTHER     <NA>  ZIMMERMANN     <NA> 1992  6 23 1864[] 
- []
-
-
-Overfull \hbox (56.96527pt too wide) in paragraph at lines 2529--2529
-[]\TU/lmtt/m/n/12 ## 3        420          3 GUENTHER     <NA>  ZIMMERMANN     <NA> 1971  6 23 1794[] 
- []
-
-
-Overfull \hbox (56.92921pt too wide) in paragraph at lines 2529--2529
-[]\TU/lmtt/m/n/12 ## 4       3969          3  GERTRUD     <NA>     MUELLER     <NA> 1964  7 27 8970[] 
- []
-
-
-Overfull \hbox (56.9172pt too wide) in paragraph at lines 2529--2529
-[]\TU/lmtt/m/n/12 ## 5       3969          3  GERTRUD     <NA>     MUELOER     <NA> 1964  7 11 7616[] 
- []
-
-
-Overfull \hbox (56.90521pt too wide) in paragraph at lines 2529--2529
-[]\TU/lmtt/m/n/12 ## 6       3969          3  GERTRUD     <NA>     MUELLER     <NA> 1964  7 11 7616[] 
- []
-
-
-
-[86]
-
-[87]
-
-[88]
-Overfull \hbox (63.14536pt too wide) in paragraph at lines 2663--2663
-[]\TU/lmtt/m/n/12 ## [-16,-14] (-14,-12] (-12,-10]  (-10,-8]   (-8,-6]   (-6,-4]   (-4,-2]    (-2,0][] 
- []
-
-
-Overfull \hbox (63.16905pt too wide) in paragraph at lines 2663--2663
-[]\TU/lmtt/m/n/12 ##       743         0       601       114         0       217         0         1[] 
- []
-
-
-Overfull \hbox (1.35736pt too wide) in paragraph at lines 2663--2663
-[]\TU/lmtt/m/n/12 ##     (0,2]     (2,4]     (4,6]     (6,8]    (8,10]   (10,12]   (12,14][] 
- []
-
-
-Overfull \hbox (1.38104pt too wide) in paragraph at lines 2663--2663
-[]\TU/lmtt/m/n/12 ##         0        18         2         0         1         0        53[] 
- []
-
-
-
-[89]
-Underfull \hbox (badness 1377) in paragraph at lines 2669--2670
-[]\TU/lmr/m/n/12 Los algoritmos calculan la probabilidad de coincidencia para cada registro en
- []
-
-
-Overfull \hbox (63.38553pt too wide) in alignment at lines 2696--2869
-[] [] [] [] [] [] [] 
- []
-
-
-LaTeX Warning: Float too large for page by 1782.49593pt on input line 2870.
-
-
-
-[90]
-Overfull \hbox (57.50554pt too wide) in alignment at lines 2906--2965
-[] [] [] [] [] [] [] 
- []
-
-
-LaTeX Warning: Float too large for page by 186.49593pt on input line 2966.
-
-
-
-[91]
-
-[92]
-
-[93]
-
-[94
-
-]
-Chapter 7.
-
-
-[95]
-
-[96]
-
-[97]
-Underfull \hbox (badness 10000) in paragraph at lines 3098--3100
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3100--3102
-
- []
-
-
-
-[98]
-Underfull \hbox (badness 10000) in paragraph at lines 3102--3104
-
- []
-
-
-
-[99]
-
-[100]
-Underfull \vbox (badness 1460) has occurred while \output is active []
-
-
-
-[101]
-
-[102]
-
-[103]
-
-[104]
-
-[105]
-
-[106]
-
-[107]
 
 [108]
+Chapter 7.
+(./Encuesta-PostCensal.bbl
 
-[109]
-
-[110]
-Chapter 8.
-
-
-[111
+[109
 
 ]
+
+[110
+
+]
+
+[111]
 
 [112]
 
-[113]
+[113])
 
-[114]
-
-[115]
-Underfull \hbox (badness 10000) in paragraph at lines 3622--3624
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3624--3626
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3626--3628
-
- []
-
-
-
-[116]
-
-[117] (./Encuesta-PostCensal.bbl
-
-[118]
-
-[119
-
-]
-
-[120]
-
-[121]
-
-[122])
-
-[123] (./Encuesta-PostCensal.aux)
+[114] (./Encuesta-PostCensal.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
@@ -1612,12 +1624,12 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 21774 strings out of 476234
- 398104 string characters out of 5785958
- 2040609 words of memory out of 5000000
- 43967 multiletter control sequences out of 15000+600000
- 571032 words of font info for 145 fonts, out of 8000000 for 9000
+ 21708 strings out of 476234
+ 396255 string characters out of 5785958
+ 2035609 words of memory out of 5000000
+ 43913 multiletter control sequences out of 15000+600000
+ 569065 words of font info for 129 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 90i,14n,123p,1082b,546s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,14n,123p,1075b,522s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Encuesta-PostCensal.pdf (123 pages).
+Output written on Encuesta-PostCensal.pdf (114 pages).

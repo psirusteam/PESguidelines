@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Estimadores de muestreo y modelamiento estadístico | Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal</title>
+  <meta name="description" content="Encuestas Postcensales" />
+  <meta name="generator" content="bookdown 0.44 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Estimadores de muestreo y modelamiento estadístico | Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Encuestas Postcensales" />
+  <meta name="github-repo" content="psirusteam/PESguidelines" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Estimadores de muestreo y modelamiento estadístico | Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal" />
+  
+  <meta name="twitter:description" content="Encuestas Postcensales" />
+  
+
+<meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
+
+
+<meta name="date" content="2025-09-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="cap5.html"/>
+<link rel="next" href="referencias.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Encuestas postcensales</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="cap1.html"><a href="cap1.html"><i class="fa fa-check"></i><b>1</b> Introducción</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="cap1.html"><a href="cap1.html#objetivos-de-la-encuesta-postcensal"><i class="fa fa-check"></i><b>1.1</b> Objetivos de la encuesta postcensal</a></li>
+<li class="chapter" data-level="1.2" data-path="cap1.html"><a href="cap1.html#indicadores-principales"><i class="fa fa-check"></i><b>1.2</b> Indicadores principales</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cap2.html"><a href="cap2.html"><i class="fa fa-check"></i><b>2</b> Marco conceptual: el sistema de estimación dual</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="cap2.html"><a href="cap2.html#planteamiento-del-problema"><i class="fa fa-check"></i><b>2.1</b> Planteamiento del problema</a></li>
+<li class="chapter" data-level="2.2" data-path="cap2.html"><a href="cap2.html#condiciones-y-supuestos"><i class="fa fa-check"></i><b>2.2</b> Condiciones y supuestos</a></li>
+<li class="chapter" data-level="2.3" data-path="cap2.html"><a href="cap2.html#inferencia"><i class="fa fa-check"></i><b>2.3</b> Inferencia</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cap3.html"><a href="cap3.html"><i class="fa fa-check"></i><b>3</b> Planeación y diseño</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="06pse.html"><a href="#planeaci%C3%B3n-de-la-operaci%C3%B3n-estad%C3%ADstica"><i class="fa fa-check"></i><b>3.1</b> Planeación de la operación estadística</a></li>
+<li class="chapter" data-level="3.2" data-path="06pse.html"><a href="#dise%C3%B1o-del-cuestionario"><i class="fa fa-check"></i><b>3.2</b> Diseño del cuestionario</a></li>
+<li class="chapter" data-level="3.3" data-path="06pse.html"><a href="#el-dise%C3%B1o-de-muestreo"><i class="fa fa-check"></i><b>3.3</b> El diseño de muestreo</a></li>
+<li class="chapter" data-level="3.4" data-path="06pse.html"><a href="#operativo-de-recolecci%C3%B3n"><i class="fa fa-check"></i><b>3.4</b> Operativo de recolección</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="cap4.html"><a href="cap4.html"><i class="fa fa-check"></i><b>4</b> Enumeraciones y procedimientos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="cap4.html"><a href="cap4.html#la-muestra-e-y-la-muestra-p"><i class="fa fa-check"></i><b>4.1</b> La muestra E y la muestra P</a></li>
+<li class="chapter" data-level="4.2" data-path="cap4.html"><a href="cap4.html#enumeraciones-correctas-con-la-muestra-e"><i class="fa fa-check"></i><b>4.2</b> Enumeraciones correctas con la muestra E</a></li>
+<li class="chapter" data-level="4.3" data-path="cap4.html"><a href="cap4.html#sec-procedimientos"><i class="fa fa-check"></i><b>4.3</b> Reconstrucción de los hogares con la muestra P</a></li>
+<li class="chapter" data-level="4.4" data-path="cap4.html"><a href="cap4.html#componentes-de-la-cobertura-censal"><i class="fa fa-check"></i><b>4.4</b> Componentes de la cobertura censal</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="cap5.html"><a href="cap5.html"><i class="fa fa-check"></i><b>5</b> Emparejamiento estadístico</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="06pse.html"><a href="#protocolo-de-clasificaci%C3%B3n"><i class="fa fa-check"></i><b>5.1</b> Protocolo de clasificación</a></li>
+<li class="chapter" data-level="5.2" data-path="06pse.html"><a href="#emparejamiento-probabil%C3%ADstico"><i class="fa fa-check"></i><b>5.2</b> Emparejamiento probabilístico</a></li>
+<li class="chapter" data-level="5.3" data-path="06pse.html"><a href="#implementaci%C3%B3n"><i class="fa fa-check"></i><b>5.3</b> Implementación</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="cap6.html"><a href="cap6.html"><i class="fa fa-check"></i><b>6</b> Estimadores de muestreo y modelamiento estadístico</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="cap6.html"><a href="cap6.html#los-estimadores-de-muestreo"><i class="fa fa-check"></i><b>6.1</b> Los estimadores de muestreo</a></li>
+<li class="chapter" data-level="6.2" data-path="cap6.html"><a href="cap6.html#otros-estimadores-del-sistema-dual"><i class="fa fa-check"></i><b>6.2</b> Otros estimadores del sistema dual</a></li>
+<li class="chapter" data-level="6.3" data-path="cap6.html"><a href="cap6.html#modelos-log-lineales"><i class="fa fa-check"></i><b>6.3</b> Modelos log-lineales</a></li>
+<li class="chapter" data-level="6.4" data-path="cap6.html"><a href="cap6.html#cuadro-comparativo-de-los-estimadores"><i class="fa fa-check"></i><b>6.4</b> Cuadro comparativo de los estimadores</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>7</b> Referencias</a></li>
+<li class="divider"></li>
+<li>Encuestas postcensales</li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cap6" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Estimadores de muestreo y modelamiento estadístico<a href="cap6.html#cap6" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Acá va la introducción</p>
+<div id="los-estimadores-de-muestreo" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Los estimadores de muestreo<a href="cap6.html#los-estimadores-de-muestreo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En el capítulo anterior, se partió de un supuesto simplificador: que todos los <span class="math inline">\(N\)</span> miembros de la población tenían la posibilidad de ser incluidos tanto en el censo como en la encuesta. Esta suposición, aunque útil para establecer un marco teórico inicial, no refleja la realidad en la mayoría de los estudios de error de cobertura. En la práctica, es poco común que todos los individuos de una población estén expuestos a ser captados por ambas fuentes de información. Por ello, es necesario ajustar este enfoque para abordar situaciones más realistas.</p>
+<p>En este contexto, ahora consideraremos un escenario más plausible: mientras que todos los miembros de la población están expuestos a ser incluidos en el censo (es decir, el censo intenta cubrir a toda la población), solo una muestra de la población tendrá la posibilidad de ser incluida en la encuesta. Esta distinción es fundamental, ya que introduce una asimetría en la forma en que ambas fuentes de datos interactúan con la población. El censo, al ser un esfuerzo exhaustivo, busca contar a todos los individuos dentro de un territorio o grupo definido. Sin embargo, la encuesta, por su naturaleza muestral, solo abarca una fracción de la población.</p>
+<p>Este cambio en los supuestos implica una modificación significativa en los métodos de análisis, ya que se altera la estructura de la información disponible y las cantidades que se consideran conocidas o desconocidas. Anteriormente, se podía asumir que ciertos totales poblacionales eran observables o directamente medibles, pero bajo este nuevo enfoque, solo el total del censo, denotado como <span class="math inline">\(N_{1+}\)</span>, se considera observable; sin emabrgo, no es directamente conocido, puesto que el censo está expuesto a errores de enumeración y duplicaciones. Esto significa que el número de individuos capturados correctamente por el censo no es una cantidad que se toma como dada y debe ser corregida con la muestra.</p>
+<p>Por otro lado, el total de la población capturado por la encuesta, representado como <span class="math inline">\(N_{+1}\)</span>, ahora se considera no observable.Además, otras cantidades clave, como <span class="math inline">\(N_{11}\)</span> (el número de individuos capturados por ambas fuentes), <span class="math inline">\(N_{12}\)</span> (individuos capturados por el censo pero no por la encuesta), y <span class="math inline">\(N_{21}\)</span> (individuos capturados por la encuesta pero no por el censo), también se consideran desconocidas. Sin embargo, todas estas cantidades pueden estimarse indirectamente a partir de los datos de la encuesta, utilizando los métodos estadísticos adecuados. En este documento se utilizará el superescrito <span class="math inline">\(\hat \cdot\)</span> para denotar una cantidad estimada directa o indirectamente haciendo uso de la muestra. De esta forma, la estructura de los datos y estimaciones necesarias para realizar la medición del error de cobertura usando ambas operaciones estadísticas puede ser descrita de la siguiente manera:</p>
+<p><span class="math display">\[
+    \begin{array}{c|cc|c}
+    &amp; \text{En la encuesta} &amp; \text{Fuera de la encuesta} &amp; \text{Total} \\
+    \hline
+    \text{En el censo} &amp; \hat{N}_{11} &amp; \hat{N}_{12} = \hat{N}_{1+} - \hat{N}_{11} &amp; \hat{N}_{1+} \\
+    \text{Fuera del censo} &amp; \hat{N}_{21} = \hat{N}_{+1} - \hat{N}_{11} &amp;  &amp;  \\
+    \hline
+    \text{Total} &amp; \hat{N}_{+1} &amp;  &amp; \hat{N}_{++} = \hat{N}
+    \end{array}
+    \]</span></p>
+<p>Como la encuesta representa una muestra de la población que viene de una medida de probabilidad, y a su vez, existe un modelo multinomial, entonces se introduce una complejidad metodológica clave: la necesidad de establecer las bases inferenciales para incluir dos fuentes de incertidumbre: el modelo y el muestreo <span class="citation">(<a href="#ref-Binder_2011">Binder 2011</a>)</span>. <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> afirma que este cambio de enfoque implica que la estimación del error de cobertura debe considerar dos fuentes principales de incertidumbre: (1) la variabilidad debida a la selección muestral de la encuesta, y (2) la variabilidad del modelo asociada con el modelo de error de cobertura.</p>
+<p>La variabilidad inducida por la selección de la muestra de la encuesta implica que las estimaciones derivadas de ella (como <span class="math inline">\(N_{+1}\)</span> o <span class="math inline">\(N_{11}\)</span>) están afectadas por la aleatoriedad inherente a la selección de unidades en la muestra. Si la encuesta utiliza un diseño complejo (como estratificación o conglomerados), la variabilidad aumenta debido a los efectos de diseño. Este tipo de variabilidad se mide con los métodos clásicos de inferencia estadística en encuestas de hogares. En segundo lugar, está la variabilidad derivada del modelo multinomial. En esta instancia, la novedad radica en integrar estas incertidumbres por medio de una inferencia doble, usando los resultados bien conocidos de las esperanzas y varianzas condicionales.</p>
+<p>Si denotamos por <span class="math inline">\(\pi_k\)</span> la probabilidad de inclusión del elemento <span class="math inline">\(k\)</span> en la muestra <span class="math inline">\(s_P\)</span>, la cual está determinada por su selección probabilística, entonces el peso de muestreo del elemento <span class="math inline">\(k\)</span>-ésimo en la muestra P se define como <span class="math inline">\(w_k = \pi_k^{-1}\)</span>. Este peso refleja la inversa de la probabilidad de inclusión y se utiliza para ajustar las estimaciones en función del diseño de muestreo. De manera similar, los pesos de muestreo se definirán para la muestra <span class="math inline">\(s_E\)</span>. Para simplificar la notación, vincularemos la muestra correspondiente a través de los subíndices en las sumas. Por ejemplo, al referirnos a la muestra <span class="math inline">\(s_P\)</span>, utilizaremos el subíndice <span class="math inline">\(P\)</span> en las sumas, y para la muestra <span class="math inline">\(s_E\)</span>, emplearemos el subíndice <span class="math inline">\(E\)</span>.</p>
+<p>Asumiendo que <span class="math inline">\(x_{k, 11}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue encontrado tanto en la muestra como en el censo y, cero, en otro caso, entonces los estimadores de muestreo de <span class="math inline">\({N}_{+1}\)</span> y <span class="math inline">\({N}_{11}\)</span>, serán respectivamente:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{N}_{+1} &amp;= \sum_{k \in s_P} w_k \\
+\hat{N}_{11} &amp;= \sum_{k \in s_P} w_k \ x_{k, 11}
+\end{aligned}
+\]</span></p>
+<p>Asimismo, si <span class="math inline">\(z_{k}\)</span> representa una variable aleatoria dicotómica que toma el valor de uno si el individuo <span class="math inline">\(k\)</span> fue correctamente enumerado en el censo y, cero, en otro caso, entonces el estimador de muestreo de <span class="math inline">\(N_{1+}\)</span> será:</p>
+<p><span class="math display">\[
+\hat{N}_{1+} = {N}_{1+}^0 - \sum_{k \in s_E} w_k (1 - \ z_{k})
+\]</span></p>
+<p>En donde <span class="math inline">\({N}_{1+}^0\)</span> denota el número de registros censales, el cual difiere del conteo de personas en el censo, y puede representar el conteo no corregido de personas en el censo. Esta cifra debe basarse exclusivamente en los datos recopilados durante el operativo censal, sin incluir imputaciones, proyecciones ni ningún otro tipo de ajustes estadísticos. Esto garantiza que los resultados reflejen fielmente la información obtenida en el campo. Para los anteriores estimadores, es claro que <span class="math inline">\(x_{k, 11}\)</span> es una variable aletaoria que se define en la muestra <span class="math inline">\(s_P\)</span>, mientras que <span class="math inline">\(z_{k}\)</span> es una variable aleatoria que se define en la muestra <span class="math inline">\(s_E\)</span>. Por otro lado, <span class="citation">Bureau (<a href="#ref-USCensusBureau_2022">2022</a>)</span> propone un estimador directo alternativo para <span class="math inline">\({N}_{1+}\)</span>, que se define a partir de la muestra E, y que corresponde a un conteo ponderado de enumeraciones correctas. Este estimador toma la siguiente forma:</p>
+<p><span class="math display">\[
+\hat{N}_{1+} = \sum_{k \in s_E} w_k \ z_{k}
+\]</span></p>
+<p>Recordando que el estimador del modelo para <span class="math inline">\(N\)</span> es <span class="math inline">\(\tilde{N} = \frac{ N_{1+} \cdot N_{+1}}{N_{11}}\)</span>; entonces, su estimador insesgado bajo el diseño de muestreo se encuentra reemplazando <span class="math inline">\(N_{1+}\)</span>, <span class="math inline">\(N_{+1}\)</span> y <span class="math inline">\(N_{11}\)</span> por sus respectivos estimadores insesgados en la muestra. Por consiguiente, se tiene que el estimador de muestreo del tamaño poblacional <span class="math inline">\(N\)</span> tomará la siguiente forma:</p>
+<p><span class="math display">\[
+\hat{N}_{++} = \hat{N} = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
+\]</span></p>
+<p>Nótese que los estimadores de muestreo para <span class="math inline">\({N}_{12}\)</span> y <span class="math inline">\({N}_{21}\)</span> toman la siguiente forma:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\hat{N}_{12} &amp;= \hat{N}_{1+} - \hat{N}_{11} \\
+\hat{N}_{21} &amp;= \hat{N}_{+1} - \hat{N}_{11}
+\end{aligned}
+\]</span></p>
+<p>La existencia de individuos que no fueron capturados en ninguno de los dos listados representa un desafío significativo, ya que su número solo puede ser estimado indirectamente a partir de la superposición observada entre la encuesta y el censo. Por otro lado, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>)</span> establece las condiciones sobre las cuales estos estimadores son insesgados y además propone el siguiente estimador aproximadamente insesgado de su varianza:</p>
+<p><span class="math display">\[
+\tilde{V}(\hat{N}) =  \tilde{V}_m(\tilde{N}) + \tilde{V}_p(\hat{N})
+\]</span></p>
+<p>En donde <span class="math inline">\(\tilde{V}_m(\tilde{N})\)</span> es el estimador de la varianza de <span class="math inline">\(\tilde{N}\)</span> bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, de la siguiente forma:</p>
+<p><span class="math display">\[
+\tilde{V}_m(\tilde{N}) = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1} \cdot (\hat{N}_{1+} - \hat{N}_{11}) \cdot (\hat{N}_{+1} - \hat{N}_{11})}{\hat{N}_{11}^3}
+\]</span></p>
+<p>Asimismo, <span class="math inline">\(\tilde V_p (\hat{N})\)</span> corresponde con un estimador tradicional de varianzas para estimadores de muestreo <span class="citation">(<a href="#ref-CEPAL_2023">CEPAL 2023</a>)</span>. De esta forma, <span class="citation">Wolter (<a href="#ref-wolter1986coverage">1986</a>, sección 3.1.)</span> afirma que</p>
+<p><span class="math display">\[
+\tilde V_p (\hat{N}) \approx \frac{M^2}{m}(1-f)S^2_{d}
+\]</span></p>
+<p>Definiendo a <span class="math inline">\(\tilde{N}_{i, +1}\)</span> como la estimación del tamaño del <span class="math inline">\(i\)</span>-ésimo conglomerado a partir de la muestra <span class="math inline">\(s_P\)</span>, se tiene que <span class="math inline">\(S^2_{d} = \frac{1}{m-1}\sum_{i=1}^m d_i^2\)</span> y además:</p>
+<p><span class="math display">\[
+d_i = \frac{\hat{N}_{1+}}{\hat{N}_{11}}
+\left(\tilde{N}_{k, +1} - \frac{\hat{N}_{+1}}{\hat{N}_{11}}x_{k, 11}\right)  
+\]</span></p>
+<p>Finalmente, es posible combinar los diferentes estimadores en las muestras E y P, junto con la información de los registros censales para crear otro tipo de estimadores. Siendo <span class="math inline">\(\hat{N}_{1+}^0 = \sum_{k \in s_E}w_k\)</span> un estimador de muestreo del número de enumeraciones en el censo (correctas o erroneas), es posible ajustar el número de enumeraciones en el censo con su contraparte muestral, y definir el siguiente estimador de razón:</p>
+<p><span class="math display">\[
+\hat{N}_{++}^{ratio} = \frac{N_{1+}^0}{\hat{N}_{1+}^0} \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
+\]</span></p>
+<p>De la misma manera, es posible refinar el estimador usando la postestratificación <span class="citation">(<a href="#ref-Gutierrez_2016">Gutiérrez 2016</a>)</span>. Esta es una técnica que particiona la población en subgrupos homogéneos y que permite minimizar el impacto del sesgo de correlación (que los individuos que no fueron enumerados en el censo serán más propensos a no ser incluidos en la encuesta). Como se mencionó anteriormente, es usual utilizar al menos las divisiones administrativas mayores, los grupos de edad y el sexo. Cada una de las particiones inducidas por el cruce de estas variables se conoce como post-estratos. Suponiendo que existen <span class="math inline">\(G\)</span> postestratos, entonces el estimador de razón post-estratificada toma la siguiente forma:</p>
+<p><span class="math display">\[
+\hat{N}_{++}^{post} = \sum_{g=1}^G \left[ \frac{N_{g1+}^0}{\hat{N}_{g1+}^0} \frac{\hat{N}_{g1+} \cdot \hat{N}_{g+1}}{\hat{N}_{g11}} \right] =
+\sum_{g=1}^G \left[N_{g1+}^0 \frac{\hat{p}_{g1+}}{\hat{p}_{g11}}  \right]
+\]</span></p>
+<p>En donde <span class="math inline">\(\hat{p}_{g1+} = \frac{\hat{N}_{g+1}}{\hat{N}_{g1+}^0}\)</span> y <span class="math inline">\(\hat{p}_{g11} = \frac{\hat{N}_{g11}}{\hat{N}_{g+1}}\)</span> son respectivamente estimadores directos de la proporción de individuos correctamente enumerados y de la proporción de emparejamiento en el post-estrato <span class="math inline">\(g\)</span>. Esta última expresión resultará muy valiosa para desarrollar modelos de estimación en áreas pequeñas, permitiendo calcular con mayor precisión la omisión censal.</p>
+</div>
+<div id="otros-estimadores-del-sistema-dual" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Otros estimadores del sistema dual<a href="cap6.html#otros-estimadores-del-sistema-dual" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los métodos de captura y recaptura en poblaciones humanas han continuado sus investigaciones y aunque se utilizan de manera más frecuente para estimar el tamaño de poblaciones de fauna silvestre, en epidemiología y ciencias sociales los han usado para estimar la prevalencia de una enfermedad específica o el tamaño de la población sin hogar en una determinada área <span class="citation">(<a href="#ref-brittain2009estimators">Brittain and Böhning 2009</a>)</span>.</p>
+<div id="estimador-de-petersen" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Estimador de Petersen<a href="cap6.html#estimador-de-petersen" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El estimador de <span class="citation">Petersen (<a href="#ref-petersen1896">1896</a>)</span>, también conocido como el estimador de Lincoln-Petersen, fue originalmente desarrollado para estudios de fauna, pero su uso se ha extendido a otros campos.</p>
+<p>El supuesto fundamental es que la población es cerrada entre los dos eventos (sin nacimientos, muertes, inmigración o emigración), que todos los individuos tienen la misma probabilidad de captura, y que la marcación no afecta la probabilidad de recaptura, es decir, asume que las fuentes de identificación son independientes.</p>
+<p>Teniendo en cuenta lo establecido en <a href="#multinomial"><strong>??</strong></a>, el evento conjunto de que un individuo esté o no esté en el censo y esté o no en la encuesta se puede modelar correctamente usando una distribución multinomial con los siguientes parámetros:</p>
+<p><span class="math display">\[
+    \begin{array}{c|cc|c}
+    &amp; \text{En la encuesta} &amp; \text{Fuera de la encuesta} &amp; \text{Total} \\
+    \hline
+    \text{En el censo} &amp; p_{11} &amp; p_{12} &amp; p_{1+} \\
+    \text{Fuera del censo} &amp; p_{21} &amp; p_{22} &amp; p_{2+} \\
+    \hline
+    \text{Total} &amp; p_{+1} &amp; p_{+2} &amp; 1
+    \end{array}
+    \]</span></p>
+<p>Bajo el supuesto de independencia causal, tenemos:</p>
+<p><span class="math display">\[\frac{p_{11} \cdot p_{22}}{p_{21} \cdot  p_{12}} = 1\]</span></p>
+<p>Bajo este supuesto se puede estimar:</p>
+<p><span class="math display">\[ \hat{p}_{22} = \frac{p_{21}\cdot p_{12}}{p_{11}} \]</span></p>
+<p>Al tener en cuenta que <span class="math inline">\(\hat{N}_{11}\)</span> es la cantidad de personas en ambas fuentes y que <span class="math inline">\(\hat{N}_{+1}\)</span> y <span class="math inline">\(\hat{N}_{1+}\)</span> es la cantidad observada en cada fuente, el estimador de Lincoln–Petersen es:</p>
+<p><span class="math display">\[\begin{align}
+\hat{N}_{LP} &amp;= \hat{p}_{11} + \hat{p}_{12} + \hat{p}_{22} + \hat{p}_{21} \\
+             &amp;= \hat{N}_{11} + (\hat{N}_{+1} - \hat{N}_{11}) + (\hat{N}_{1+} - \hat{N}_{11}) + \frac{(\hat{N}_{+1} - \hat{N}_{11}) \cdot (\hat{N}_{1+} - \hat{N}_{11})}{\hat{N}_{11}} \\
+             &amp;= \frac{\hat{N}_{+1} \cdot \hat{N}_{1+}}{\hat{N}_{11}}
+\end{align}\]</span></p>
+<p>El estimador de Petersen es el más conocido de los estimadores de tamaño poblacional en el sistema dual y puede demostrarse que es un estimador de máxima verosimilitud condicional para el modelo log-lineal de independencia con dos variables <span class="citation">(<a href="#ref-fienberg1972multiple">Fienberg 1972</a>; <a href="#ref-bishop2007discrete">Bishop, Fienberg, and Holland 2007</a>)</span>.</p>
+<p>El estimador de la varianza de <span class="math inline">\(\hat{N}\)</span> bajo el modelo multinomial, que usa las contrapartes muestrales en lugar de las poblacionales, es:</p>
+<p><span class="math display">\[
+\hat{V}_{LP}(\hat{N}) = \frac{\hat{N}_{1+} \cdot \hat{N}_{+1} \cdot (\hat{N}_{1+} - \hat{N}_{11}) \cdot (\hat{N}_{+1} - \hat{N}_{11})}{\hat{N}_{11}^3}
+\]</span></p>
+</div>
+<div id="estimador-de-chapman" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Estimador de Chapman<a href="cap6.html#estimador-de-chapman" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El Estimador de Chapman surge como una corrección al estimador de Petersen y especialmente útil cuando el número de recapturas <span class="math inline">\(N_{11}\)</span> es pequeño, ya que el estimador de Petersen tiende a ser sesgado en esos casos, lo cual es frecuente en estudios con poblaciones grandes o tasas de captura bajas.</p>
+<p><span class="citation">Chapman (<a href="#ref-chapman1951some">1951</a>)</span> propuso una alternativa manteniendo el mismo marco de suposiciones que el estimador de Petersen: población cerrada, independencia y probabilidades homogéneas de captura. En este caso se sugiere estimar</p>
+<p><span class="math display">\[ \hat{p}_{22} = \frac{p_{21}\cdot p_{12}}{p_{11} + 1},\]</span></p>
+<p>con lo cual el estimador está dado por:</p>
+<p><span class="math display">\[\hat{N}_{CHP} = \frac{(\hat{N}_{1+}  + 1) \cdot (\hat{N}_{+1} + 1)}{\hat{N}_{11} + 1} - 1 \]</span></p>
+<p>Este estimador, basado en la distribución hipergeométrica, garantiza momentos finitos debido a que el denominador no puede ser cero.</p>
+<p>La expresión para la estimación de la varianza se puede obtener usando expansión de Taylor bajo un modelo hipergeométrico o de una aproximación bayesiana <span class="citation">(<a href="#ref-seber1982estimation">Seber 1982</a>)</span>, donde se obtiene:</p>
+<p><span class="math display">\[\hat{V}(\hat{N}_{CHP}) = \frac{(N_{1+} + 1)(N_{+1} + 1)(N_{1+} - N_{11})(N_{+1} - N_{11})}{(N_{11} + 1)^2 (N_{11} + 2)}\]</span></p>
+<p>Posteriormente, <span class="citation">Sadinle (<a href="#ref-sadinle2009transformed">2009</a>)</span> propone un método para calcular intervalos de confianza robustos para las estimaciones que provienen del estimador de Chapman.</p>
+</div>
+<div id="estimador-de-nour" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Estimador de Nour<a href="cap6.html#estimador-de-nour" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En algunos casos, el fracaso de capturar a un individuo en ambas listas puede deberse a causas comunes, lo que conduce a una asociación positiva entre las dos fuentes. Esto es habitual en las encuestas de cobertura, donde los individuos pueden estar menos dispuestos a ser registrados generando altas tasas de rechazo, lo que resulta en una asociación negativa entre las listas. Estos fenómenos se conocen como variación de respuesta conductual <span class="citation">(<a href="#ref-wolter1986coverage">Wolter 1986</a>)</span> .</p>
+<p>El estimador de la <strong>cota inferior del tamaño poblacional</strong> propuesto por <span class="citation">Nour (<a href="#ref-nour1982estimation">1982</a>)</span>, se basa en una estimación para la cantidad no observada <span class="math inline">\(N_{12}\)</span> (correspondiente a individuos no capturados por ninguna de las dos listas), bajo los siguientes supuestos:</p>
+<p><strong>Supuesto 1 (S1):</strong> Existe <strong>correlación positiva</strong> entre las listas, es decir que <span class="math display">\[N_{11} \cdot N_{22} &gt; N_{12} \cdot N_{21},\]</span></p>
+<p>y el sistema de registro dual no es degenerado, <span class="math inline">\(\forall i, j \in \{1, 2\}, \; N_{ij} &gt; 0\)</span></p>
+<p><strong>Supuesto 2 (S2):</strong> La probabilidad de que una unidad sea registrada en alguna de las dos fuentes es mayor que 0.5, es decir:</p>
+<p><span class="math display">\[\frac{N_{1+}}{N}, \frac{N_{+1}}{N} &gt; \frac{1}{2}.\]</span></p>
+<p>Este supuesto asegura que:</p>
+<p><span class="math display">\[N_{11} &gt; N_{22}\]</span></p>
+<p>Conjuntamente, los supuestos S1 y S2 garantizan que:</p>
+<p><span class="math display">\[N_{11}^2 &gt; N_{11} \cdot N_{22} &gt; N_{12} \cdot N_{21}\]</span></p>
+<p><strong>Supuesto 3 (S3):</strong> Se cumple que:</p>
+<p><span class="math display">\[N_{12} \cdot N_{21} - N_{22}^2 &gt; 0\]</span></p>
+<p>y por tanto:</p>
+<p><span class="math display">\[N_{12} \cdot N_{21} &lt; \left( \frac{N_{12} \cdot N_{21}}{N_{22}} \right)^2\]</span></p>
+<p>Bajo los supuestos S1, S2 y S3, <span class="citation">Nour (<a href="#ref-nour1982estimation">1982</a>)</span> mostró que la parte no observada de la población <span class="math inline">\(N_{22}\)</span> se encuentra en el intervalo:</p>
+<p><span class="math display">\[\left[ \frac{2 N_{12} N_{21} N_{11}}{N_{12} N_{21} + N_{11}^2}, \; \sqrt{N_{12} N_{21}} \right]\]</span></p>
+<p>y propuso el siguiente estimador puntual:</p>
+<p><span class="math display">\[\hat{N}_{22} = \frac{2 \hat{N}_{12} \hat{N}_{21} \hat{N}_{11}}{\hat{N}_{12} \hat{N}_{21} + \hat{N}_{11}^2}\]</span></p>
+<p>con la justificación de que es más robusto frente a la posible violación del supuesto S3 (el cual en la práctica es difícil de verificar).</p>
+<p>En caso de que el supuesto S3 <strong>no</strong> se vea violado, también se pueden considerar otros estimadores para <span class="math inline">\(N_{22}\)</span>, tales como:</p>
+<p><span class="math display">\[\hat{N}_{22} = \sqrt{\hat{N}_{12} \hat{N}_{21}}\]</span></p>
+<p>o incluso cualquier punto dentro del intervalo:</p>
+<p><span class="math display">\[\left[ \frac{2 \hat{N}_{12} \hat{N}_{21} \hat{N}_{11}}{\hat{N}_{12} \hat{N}_{21} + \hat{N}_{11}^2}, \; \sqrt{\hat{N}_{12} \hat{N}_{21}} \right]\]</span></p>
+<p>Dependiendo de la selección del estimador para <span class="math inline">\(N_{22}\)</span>, se obtienen dos estimadores del tamaño total de la población bajo dependencia positiva, denotados como:</p>
+<ul>
+<li><strong>Cota inferior</strong> <span class="math inline">\(\hat{N}_L\)</span>:</li>
+</ul>
+<p><span class="math display">\[\hat{N}_L = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \frac{2 \hat{N}_{12} \hat{N}_{21} \hat{N}_{11}}{\hat{N}_{12} \hat{N}_{21} + \hat{N}_{11}^2}\]</span></p>
+<ul>
+<li><strong>Cota superior</strong> <span class="math inline">\(\hat{N}_U\)</span>:</li>
+</ul>
+<p><span class="math display">\[\hat{N}_U = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \sqrt{\hat{N}_{12} \hat{N}_{21}}\]</span></p>
+<p>Los estimadores no no cuentan con una expresión analítica que permita estimar la varianza, por lo que es necesario usar métodos basados en réplicas.</p>
+</div>
+<div id="estimador-de-chao" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Estimador de Chao<a href="cap6.html#estimador-de-chao" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Chao <span class="citation">(<a href="#ref-chao1987">Chao 1987</a>, <a href="#ref-chao1989">1989</a>)</span> propuso un estimador para el tamaño poblacional que relaja el supuesto de independencia entre las fuentes del censo y la PES, y permite heterogeneidad no observada en las probabilidades de captura. Este estimador se enfoca en el número mínimo de individuos no observados <span class="math inline">\(N_{22}\)</span> que puede explicarse a partir de los datos observados.</p>
+<p>El modelo binomial mixto con parámetro 2 equivalente al número de fuentes usadas, se puede formular como:</p>
+<p><span class="math display">\[E(N_j) = N \int_0^1 \binom{2}{j} p^j (1-p)^{2-j} f(p) dp, \quad j = 0, 1, 2,\]</span></p>
+<p>donde <span class="math inline">\(N_j\)</span> es el número de individuos presentes en <span class="math inline">\(j\)</span> fuentes, de esta forma <span class="math inline">\(N_1 = N_{21} + N_{12}\)</span> y <span class="math inline">\(N_2 = N_{11}\)</span>.</p>
+<p>Al aplicar la desigualdad de Cauchy-Schwarz a dos variables aleatorias <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, donde se cumple que:</p>
+<p><span class="math display">\[[E(XY)]^2 \leq E(X^2)E(Y^2),\]</span></p>
+<p>Si elegimos <span class="math inline">\(X = p\)</span> y <span class="math inline">\(Y = (1-p)\)</span>, obtenemos:</p>
+<p><span class="math display">\[\left(\int_0^1 p(1-p)f(p) dp\right)^2 \leq \int_0^1 (1-p)^2 f(p)dp \int_0^1 p^2 f(p)dp,\]</span></p>
+<p>que puede reescribirse como:</p>
+<p><span class="math display">\[\left(\frac{1}{2}E(N_1)\right)^2 \leq E(N_0)E(N_2),\]</span></p>
+<p>de donde se deduce que:</p>
+<p><span class="math display">\[E(N_0) \geq \frac{\left[E(N_1)\right]^2}{4E(N_2)}.\]</span>
+Sustituyendo las frecuencias esperadas por las observadas, obtenemos el límite inferior de Chao para estimar <span class="math inline">\(N_0\)</span>:</p>
+<p><span class="math display">\[\hat{N}_0 =  \frac{N_{1}^2}{4N_{2}} = \frac{(N_{21}+N_{12})^2}{4N_{11}}.\]</span>
+Así el estimador de Chao para el tamaño poblacional total se obtiene como:</p>
+<p><span class="math display">\[\begin{align}
+\hat{N}_{CH} &amp;= \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \frac{\hat{N}_{1}^2}{4\hat{N}_{2}}\\
+             &amp;= \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \frac{(\hat{N}_{21}+\hat{N}_{12})^2}{4\hat{N}_{11}}
+\end{align}\]</span></p>
+<p>La aproximación de la varianza de estimador es:</p>
+<p><span class="math display">\[
+\hat{V}(\hat{N}_{CH}) \approx \frac{(\hat{N}_{21}+\hat{N}_{12
+})^2}{4\hat{N}_{11}^3} \left( \frac{(\hat{N}_{21}+\hat{N}_{12})^2}{4\hat{N}_{11}} + \hat{N}_{21}+\hat{N}_{12} + \hat{N}_{11} \right)
+\]</span></p>
+</div>
+<div id="estimador-de-webster-kemp" class="section level3 hasAnchor" number="6.2.5">
+<h3><span class="header-section-number">6.2.5</span> Estimador de Webster-Kemp<a href="cap6.html#estimador-de-webster-kemp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="citation">Webster and Kemp (<a href="#ref-webster2013estimating">2013</a>)</span> usan una perspectiva bayesiana no informativa para estimar el tamaño total de la población bajo un modelo de captura y recaptura con dos fuentes. El modelo se basa en que la probabilidad de encontrar un número específico de coincidencias depende de <span class="math inline">\(N\)</span> y usan el teorema de Bayes. Lo que permite escribir:</p>
+<p><span class="math display">\[P(N|N_{+1}, N_{1+}, N_{11}) = \frac{P(N_{1+}, N_{+1}, N_{11}|N)P(N)}{P(N_{1+}, N_{+1}, N_{11})}\]</span></p>
+<p>Bajo el enfoque bayesiano propuesto, el estimador del número de elementos no observados es:</p>
+<p><span class="math display">\[\hat{N}_{22} = \frac{(\hat{N}_{12}+1)(\hat{N}_{21}+1)}{\hat{N}_{11} + 2}, \text{  si } \hat{N}_{11} &gt; 2\]</span></p>
+<p>Dado que <span class="math inline">\(\hat{N}_{11} &gt; 2\)</span>, el estimador bayesiano del total poblacional es:</p>
+<p><span class="math display">\[
+\hat{N}_{\text{WK}} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \frac{(\hat{N}_{12} + 1)(\hat{N}_{21} + 1)}{\hat{N}_{11} - 2}\]</span></p>
+<p>y si <span class="math inline">\(\hat{N}_{11} &gt; 3\)</span>, el estimador de la varianza para <span class="math inline">\(\hat{N}_{\text{22}}\)</span> es:</p>
+<p><span class="math display">\[\hat{V}(\hat{N}_{\text{22}}) = \frac{(\hat{N}_{12} + 1)(\hat{N}_{21} + 1)(\hat{N}_{+1} - 1)(\hat{N}_{1+} - 1)}{(\hat{N}_{11} - 2)^2(\hat{N}_{11} - 3)}\]</span>
+Por lo tanto</p>
+<p><span class="math display">\[\hat{V}(\hat{N}_{\text{NW}}) = \hat{V}(\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \hat{N}_{22})\]</span></p>
+<p>En algunos casos se asume que los valores de <span class="math inline">\(N_{11}, N_{12}\)</span> y <span class="math inline">\(N_{21}\)</span> son observados de manera exacta, por lo que <span class="math inline">\(\hat{V}(\hat{N}_{\text{NW}}) = \hat{V}(\hat{N}_{22})\)</span>. Sin embargo, en un muestreo complejo como el de las encuestas de cobertura, los <span class="math inline">\(\hat{N}_{ij}\)</span> son estimaciones obtenidas con el estimador Horvitz-Thompson o estimadores de calibración, y por tanto se debe incorporar la incertidumbre proveniente del diseño, así que sugerimos usar un método basado en réplicas para estimar la varianza.</p>
+</div>
+<div id="estimador-de-zelterman" class="section level3 hasAnchor" number="6.2.6">
+<h3><span class="header-section-number">6.2.6</span> Estimador de Zelterman<a href="cap6.html#estimador-de-zelterman" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="citation">Zelterman (<a href="#ref-zelterman1988robust">1988</a>)</span> propuso estimar el tamaño poblacional en estudios de captura y recaptura usando un enfoque basado en el estimador de Horvitz–Thompson. El estimador se basa en que los datos siguen una distribución de Poisson truncada (es decir, cuando no se observan los ceros), y hay heterogeneidad en las probabilidades de ser capturado.</p>
+<p>El objetivo es estimar <span class="math inline">\(p_0\)</span> utilizando solamente los conteos de los individuos observados una vez, <span class="math inline">\(N_{1}=N_{12}+N_{21}\)</span>, y los que son observados exactamente dos veces, <span class="math inline">\(N_{2}=N_{11}\)</span>, de la distribución de conteos truncada en cero. El estimador del tamaño poblacional propuesto por Zelterman es:</p>
+<p><span class="math display">\[
+\hat{N}_{\text{Zel}} = \frac{\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}}{1 - \exp\left(-\frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}\right)}
+\]</span></p>
+<p>y con aproximación de la varianza dada por:</p>
+<p><span class="math display">\[
+\hat{V}(\hat{N}_{\text{Zel}}) = \left( \frac{(\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}) \cdot \exp(-\lambda)}{1 - \exp(-\lambda)} \right)^2 \cdot \left( \frac{4 \hat{N}_{11}^2}{(\hat{N}_{12} + \hat{N}_{21})^4} + \frac{2}{(\hat{N}_{12} + \hat{N}_{21})^2} \right)
+\]</span></p>
+<p>donde</p>
+<p><span class="math display">\[\lambda = \frac{2\hat{N}_{11}}{\hat{N}_{12} + \hat{N}_{21}}.\]</span></p>
+<p><span class="citation">Brittain and Böhning (<a href="#ref-brittain2009estimators">2009</a>)</span> presentaron una versión alternativa del estimador cuando se tienen dos fuentes. En este contexto, aplican el mismo método utilizado por Zelterman a la verosimilitud binomial mixta, con parámetro de tamaño 2, truncada en los ceros, dado que los casos que no aparecen en ninguna de las dos fuentes, y esto se incorpora en el estimador de Horvitz–Thompson para obtener el estimador de Zelterman del tamaño poblacional en el contexto binomial, que sería más apropiado en el contexto de una encuesta postcensal, y que puede expresarse como:</p>
+<p><span class="math display">\[\hat{N}_{\text{Zel}} = \frac{\hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21}}
+{1 - \left(\frac{\hat{N}_{12}+\hat{N}_{21}}{\hat{N}_{12}+\hat{N}_{21}+2\hat{N}_{11}}\right)^2}.\]</span></p>
+</div>
+</div>
+<div id="modelos-log-lineales" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Modelos log-lineales<a href="cap6.html#modelos-log-lineales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los modelos log-lineales proporcionan un enfoque alternativo y generalizado para estimar la población total en estudios de captura y recaptura, y se pueden usar cuando hay dos o más fuentes o listas <span class="citation">(<a href="#ref-fienberg1972multiple">Fienberg 1972</a>; <a href="#ref-cormack1989log">Cormack 1989</a>)</span>. Para el caso de un sistema de estimación dual, el modelo log-lineal, puede representarse como un modelo lineal generalizado de Poisson (GLM), aplicado sobre los tres conteos observados, <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{12}\)</span>, y <span class="math inline">\(N_{21}\)</span>, así:</p>
+<p><span class="math display">\[N_{ij} \sim Poisson(\theta_{ij})\]</span></p>
+<p><span class="math display">\[
+\log(\theta_{ij}) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)}
+\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\lambda\)</span>: parámetro de intercepto general.</li>
+<li><span class="math inline">\(\lambda_1^{(i)}\)</span>: mide el efecto de estar en el censo.</li>
+<li><span class="math inline">\(\lambda_2^{(j)}\)</span>: mide el efecto de estar en la muestra de cobertura.</li>
+</ul>
+<p>De esta forma <span class="math inline">\(\hat{N}_{22}=\exp(\hat{\lambda})\)</span>, donde <span class="math inline">\(\hat{\lambda}\)</span> es el estimador de máxima verosimilitud de <span class="math inline">\(\lambda\)</span>. Por lo tanto, el total poblacional estimado es:</p>
+<p><span class="math display">\[\hat{N} = \hat{N}_{11} + \hat{N}_{12} + \hat{N}_{21} + \hat{N}_{22}\]</span></p>
+<p>Este modelo asume independencia entre listas, es decir, que la probabilidad de ser observado en una lista no depende de haber sido observado en la otra. Si se sospecha alguna dependencia entre listas, que es una situación que podría ocurrir en contextos como censos y encuestas de cobertura, se incluye un término de interacción:</p>
+<p><span class="math display">\[
+\log(\theta_{ij}) = \lambda + \lambda_1^{(i)} + \lambda_2^{(j)} + \lambda_{12}^{(ij)}
+\]</span></p>
+<p>Aquí:</p>
+<ul>
+<li><span class="math inline">\(\lambda_{12}^{(ij)}\)</span>: representa la interacción entre pertenencia a la lista 1 y la lista 2.
+<ul>
+<li>Si <span class="math inline">\(\lambda_{12}^{(11)} &gt; 0\)</span>: hay dependencia positiva, es decir, más coincidencias de lo esperado.</li>
+<li>Si <span class="math inline">\(\lambda_{12}^{(11)} &lt; 0\)</span>: hay dependencia negativa, así que habrán menos coincidencias de lo esperado.</li>
+</ul></li>
+</ul>
+<p>El modelo se puede implementar en R con <code>Rcapture::closedp()</code>. Suponiendo que la muestra E y muestra P se han organizado en un <code>df</code> con las variables binarias lista1 y lista2 codificadas como 1 y 0, entonces se puede usar el siguiente código para realizar la estimación</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="cap6.html#cb64-1" tabindex="-1"></a><span class="fu">library</span>(Rcapture)</span>
+<span id="cb64-2"><a href="cap6.html#cb64-2" tabindex="-1"></a><span class="fu">closedp.t</span>(df, df<span class="sc">$</span>lista1, df<span class="sc">$</span>lista2)</span></code></pre></div>
+<p>En caso de contar con la tabla de frecuencias de las celdas <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{12}\)</span> y <span class="math inline">\(N_{21}\)</span> se puede hacer así:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="cap6.html#cb65-1" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,N11,</span>
+<span id="cb65-2"><a href="cap6.html#cb65-2" tabindex="-1"></a>                        <span class="dv">1</span>,<span class="dv">0</span>,N12,</span>
+<span id="cb65-3"><a href="cap6.html#cb65-3" tabindex="-1"></a>                        <span class="dv">0</span>,<span class="dv">1</span>,N21), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">ncol =</span> <span class="dv">3</span>))</span>
+<span id="cb65-4"><a href="cap6.html#cb65-4" tabindex="-1"></a><span class="fu">colnames</span>(tabla) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;E&quot;</span>, <span class="st">&quot;P&quot;</span>, <span class="st">&quot;freq&quot;</span>)</span>
+<span id="cb65-5"><a href="cap6.html#cb65-5" tabindex="-1"></a></span>
+<span id="cb65-6"><a href="cap6.html#cb65-6" tabindex="-1"></a><span class="fu">closedp</span>(tabla, <span class="at">dfreq =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Es importante destacar que existen diferentes enfoques que puede ser utilizados para realizar la estimación del total poblacional a partir de este tipo de modelos <span class="citation">(<a href="#ref-otis1978statistical">Otis et al. 1978</a>; <a href="#ref-rivest2007applications">Rivest and Baillargeon 2007</a>, <a href="#ref-rivest2014capture">2014</a>; <a href="#ref-baillargeon2007rcapture">Baillargeon and Rivest 2007</a>)</span>.</p>
+<div id="otros-modelos" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Otros modelos<a href="cap6.html#otros-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Modelo jerárquico bayesiano</strong></li>
+</ul>
+<p>Permiten incluir efectos del diseño muestral, efectos aleatorios por dominio y se usa especialmente cuando se tienen pocos datos o muchos grupos. Para su implementación se puede usar <code>Stan</code>, <code>JAGS</code> o <code>LCMCR</code>.</p>
+<ul>
+<li><strong>Estimadores basados en Estimación de Sistemas Multiples</strong></li>
+</ul>
+<p>Los modelos de Estimación de Sistemas Multiples (MSE por sus siglas en inglés), permiten incorporar más de dos fuentes, por ejemplo, es posible que se tenga acceso al censo, encuesta de cobertura y registros administrativos. Su implementación se puede realizar con paquetes de R como <code>LCMCR</code>.</p>
+<ul>
+<li><strong>Modelos de respuesta heterogénea</strong></li>
+</ul>
+<p>Suponen que las probabilidades de inclusión varían entre individuos. Se modela con distribuciones gamma o beta sobre la propensión a ser capturado. Algunos de estos son:</p>
+<ul>
+<li>Modelo Poisson-Gamma (bayesiano)</li>
+<li>NPMLE (Nonparametric Maximum Likelihood Estimation)</li>
+</ul>
+<p>La implementación en R se puede hacer con paquetes como <code>Rcapture</code>.</p>
+</div>
+<div id="notas-adicionales" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Notas adicionales<a href="cap6.html#notas-adicionales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Los estimadores suelen aplicarse usando post-estratos homogéneos, usualmente por edad, sexo, región, etc. Y de esta forma estimar el tamaño poblacional en cada post-estrato.</p>
+<p>Por ejemplo al aplicar el estimador de Chapman en cada post-estrato <span class="math inline">\(h\)</span>, se tendría:</p>
+<p><span class="math display">\[\hat{N}^{(h)} = \frac{(N_{1+}^{(h)} + 1)(N_{+1}^{(h)} + 1)}{N_{11}^{(h)} + 1} - 1\]</span></p>
+<p>Con lo cual el tamaño poblacional se obtiene como:</p>
+<p><span class="math display">\[\hat{N} = \sum_{h} \hat{N}^{(h)}\]</span></p>
+<p>Esto se presentará con más detalle en el capítulo <a href="#cap-reg"><strong>??</strong></a></p>
+</div>
+</div>
+<div id="cuadro-comparativo-de-los-estimadores" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Cuadro comparativo de los estimadores<a href="cap6.html#cuadro-comparativo-de-los-estimadores" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>La elección del estimador adecuado para el tamaño poblacional en un sistema de dual depende de varios factores que afectan la validez de los supuestos de cada modelo. Entre los más relevantes se encuentran:</p>
+<ul>
+<li><strong>Dependencia entre listas</strong>: Ocurre cuando la probabilidad de inclusión en una lista está relacionada con la inclusión en la otra, violando el supuesto de independencia del modelo clásico como el de Petersen.</li>
+<li><strong>Heterogeneidad en las probabilidades de captura</strong>: Las personas tienen diferentes probabilidades de ser capturadas debido a características individuales no observadas (edad, ubicación, comportamiento migratorio, etc.).</li>
+<li><strong>Diseño complejo de muestreo</strong>: La PES puede tener estratificación, conglomerados, y factores de expansión que deben ser incorporados en la estimación.</li>
+</ul>
+<p>El siguiente cuadro resume la relevancia de los distintos estimadores y cada uno, se indica si incorpora o ignora cada tipo de complejidad, y se sugiere su aplicabilidad en función del contexto de uso.</p>
+<table>
+<colgroup>
+<col width="22%" />
+<col width="17%" />
+<col width="18%" />
+<col width="11%" />
+<col width="29%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estimador</th>
+<th>Dependencia entre listas</th>
+<th>Heterogeneidad de captura</th>
+<th>Diseño complejo</th>
+<th>Aplicación recomendada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chapman post-estratificado</td>
+<td>❌</td>
+<td>❌</td>
+<td>✔</td>
+<td>Censos grandes con dominios definidos</td>
+</tr>
+<tr class="even">
+<td>Nour</td>
+<td>✔</td>
+<td>❌</td>
+<td>⚠</td>
+<td>Dependencia positiva esperada</td>
+</tr>
+<tr class="odd">
+<td>Chao</td>
+<td>✔</td>
+<td>✔</td>
+<td>⚠</td>
+<td>Estimación conservadora</td>
+</tr>
+<tr class="even">
+<td>Webster-Kemp</td>
+<td>✔</td>
+<td>❌</td>
+<td>⚠</td>
+<td>Baja recaptura entre listas</td>
+</tr>
+<tr class="odd">
+<td>Zelterman</td>
+<td>❌</td>
+<td>✔</td>
+<td>⚠</td>
+<td>Alta heterogeneidad, pocos recapturados</td>
+</tr>
+<tr class="even">
+<td>Modelo log-lineal</td>
+<td>✔✔</td>
+<td>✔</td>
+<td>⚠</td>
+<td>Modelado completo con dependencia</td>
+</tr>
+<tr class="odd">
+<td>Modelo bayesiano jerárquico</td>
+<td>✔✔</td>
+<td>✔✔</td>
+<td>✔</td>
+<td>Estimación por dominio, baja muestra</td>
+</tr>
+<tr class="even">
+<td>Estimadores MSE (3+ fuentes)</td>
+<td>✔✔</td>
+<td>✔</td>
+<td>✔</td>
+<td>Fuentes múltiples, registros administrativos</td>
+</tr>
+<tr class="odd">
+<td>Modelos NPMLE</td>
+<td>❌</td>
+<td>✔✔</td>
+<td>⚠</td>
+<td>Captura y recaptura con heterogeneidad fuerte</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>✔✔ : El estimador incorpora directamente el fenómeno (dependencia, heterogeneidad o diseño complejo).</li>
+<li>✔   : El estimador incorpora parcialmente el fenómeno o lo aborda de forma indirecta o limitada.</li>
+<li>❌  : El estimador asume que se cumple este requisito y no lo incorpora.</li>
+<li>⚠   : El estimador requiere de ajustes definidos por el usuario (como bootstrap, posestratificación o ponderación) para manejar adecuadamente el fenómeno.</li>
+</ul>
+
+</div>
+</div>
+<h3> Referencias<a href="referencias.html#referencias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-baillargeon2007rcapture" class="csl-entry">
+Baillargeon, Sophie, and Louis-Paul Rivest. 2007. <span>“Rcapture: Loglinear Models for Capture-Recapture in r.”</span> <em>Journal of Statistical Software</em> 19: 1–31.
+</div>
+<div id="ref-Binder_2011" class="csl-entry">
+Binder, David A. 2011. <span>“Estimating Model Parameters from a Complex Survey Under a Model-Design Randomization Framework.”</span> <em>Pakistan Journal of Statistics</em> 27 (4): 371–90.
+</div>
+<div id="ref-bishop2007discrete" class="csl-entry">
+Bishop, Yvonne M, Stephen E Fienberg, and Paul W Holland. 2007. <em>Discrete Multivariate Analysis: Theory and Practice</em>. Springer Science &amp; Business Media.
+</div>
+<div id="ref-brittain2009estimators" class="csl-entry">
+Brittain, Sarah, and Dankmar Böhning. 2009. <span>“Estimators in Capture–Recapture Studies with Two Sources.”</span> <em>AStA Advances in Statistical Analysis</em> 93 (1): 23–47.
+</div>
+<div id="ref-USCensusBureau_2022" class="csl-entry">
+Bureau, US Census. 2022. <span>“2020 Post-Enumeration Survey Estimation Design.”</span>
+</div>
+<div id="ref-CEPAL_2023" class="csl-entry">
+CEPAL. 2023. <em>Diseño y Análisis Estadístico de Las Encuestas de Hogares de América Latina</em>. Metodologías de La CEPAL.
+</div>
+<div id="ref-chao1987" class="csl-entry">
+Chao, Anne. 1987. <span>“Estimating the Population Size for Capture-Recapture Data with Unequal Catchability.”</span> <em>Biometrics</em>, 783–91.
+</div>
+<div id="ref-chao1989" class="csl-entry">
+———. 1989. <span>“Estimating Population Size for Sparse Data in Capture-Recapture Experiments.”</span> <em>Biometrics</em>, 427–38.
+</div>
+<div id="ref-chapman1951some" class="csl-entry">
+Chapman, Douglas George. 1951. <span>“Some Properties of the Hypergeometric Distribution with Applications to Zoological Censuses.”</span> <em>Univ. Calif. Stat.</em> 1: 60–131.
+</div>
+<div id="ref-cormack1989log" class="csl-entry">
+Cormack, Richard M. 1989. <span>“Log-Linear Models for Capture-Recapture.”</span> <em>Biometrics</em>, 395–413.
+</div>
+<div id="ref-fienberg1972multiple" class="csl-entry">
+Fienberg, Stephen E. 1972. <span>“The Multiple Recapture Census for Closed Populations and Incomplete 2k Contingency Tables.”</span> <em>Biometrika</em> 59 (3): 591–603.
+</div>
+<div id="ref-Gutierrez_2016" class="csl-entry">
+Gutiérrez, Hugo Andrés. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Estimación de Parámetros</em>. Segunda edición. Ediciones de la U.
+</div>
+<div id="ref-nour1982estimation" class="csl-entry">
+Nour, El-Sayed. 1982. <span>“On the Estimation of the Total Number of Vital Events with Data from Dual Collection Systems.”</span> <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em> 145 (1): 106–16.
+</div>
+<div id="ref-otis1978statistical" class="csl-entry">
+Otis, David L, Kenneth P Burnham, Gary C White, and David R Anderson. 1978. <span>“Statistical Inference from Capture Data on Closed Animal Populations.”</span> <em>Wildlife Monographs</em>, no. 62: 3–135.
+</div>
+<div id="ref-petersen1896" class="csl-entry">
+Petersen, Carl G. J. 1896. <span>“The Yearly Immigration of Young Plaice into the Limfjord from the German Sea.”</span> <em>Report of the Danish Biological Station</em> 6: 1–48.
+</div>
+<div id="ref-rivest2007applications" class="csl-entry">
+Rivest, Louis-Paul, and Sophie Baillargeon. 2007. <span>“Applications and Extensions of Chao’s Moment Estimator for the Size of a Closed Population.”</span> <em>Biometrics</em> 63 (4): 999–1006.
+</div>
+<div id="ref-rivest2014capture" class="csl-entry">
+———. 2014. <span>“Capture-Recapture Methods for Estimating the Size of a Population: Dealing with Variable Capture Probabilities.”</span> <em>Statistics in Action: A Canadian Outlook</em> 40: 289–304.
+</div>
+<div id="ref-sadinle2009transformed" class="csl-entry">
+Sadinle, Mauricio. 2009. <span>“Transformed Logit Confidence Intervals for Small Populations in Single Capture–Recapture Estimation.”</span> <em>Communications in Statistics-Simulation and Computation</em> 38 (9): 1909–24.
+</div>
+<div id="ref-seber1982estimation" class="csl-entry">
+Seber, George Arthur Frederick. 1982. <em>The Estimation of Animal Abundance and Related Parameters</em>.
+</div>
+<div id="ref-webster2013estimating" class="csl-entry">
+Webster, Anthony J, and Richard Kemp. 2013. <span>“Estimating Omissions from Searches.”</span> <em>The American Statistician</em> 67 (2): 82–89.
+</div>
+<div id="ref-wolter1986coverage" class="csl-entry">
+Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
+</div>
+<div id="ref-zelterman1988robust" class="csl-entry">
+Zelterman, Daniel. 1988. <span>“Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.”</span> <em>Journal of Statistical Planning and Inference</em> 18 (2): 225–37.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="cap5.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="referencias.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/psirusteam/PESguidelines/06pse.rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Encuesta PostCensal.pdf", "Encuesta PostCensal.epub", "Encuesta PostCensal.mobi"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
