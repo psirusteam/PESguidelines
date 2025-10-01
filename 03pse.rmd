@@ -185,7 +185,7 @@ El primero está relacionado con la eficiencia del diseño muestral, buscando as
 
 El segundo objetivo de la estratificación se vincula con la necesidad de obtener información desagregada para distintos dominios geográficos. En estos casos, se recomienda que dentro de cada estrato se aplique una subestratificación adicional, siguiendo los lineamientos previamente definidos, para garantizar que la muestra represente todos los subdominios de interés. 
 
-### Diseño de muestreo
+### Selección
 
 Con el marco de muestreo y la estratificación apropiada para las UPM, es necesario realizar el proceso de muestreo para la selección final de los hogares. Este proceso de selección debe inducir insesgamiento, además de ser eficiente. Esto quiere decir que la inclusión de las unidades en la muestra estará supeditada a un esquema probabilístico libre de cualquier sesgo. Además de esto, se necesita que este mecanismo genere la menor dispersión posible en el proceso inferencial posterior. 
 

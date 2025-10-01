@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
 
 
-<meta name="date" content="2025-09-29" />
+<meta name="date" content="2025-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -185,10 +185,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="cap4.html"><a href="cap4.html"><i class="fa fa-check"></i><b>4</b> Enumeraciones y procedimientos</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cap4.html"><a href="cap4.html#la-muestra-e-y-la-muestra-p"><i class="fa fa-check"></i><b>4.1</b> La muestra E y la muestra P</a></li>
-<li class="chapter" data-level="4.2" data-path="cap4.html"><a href="cap4.html#enumeraciones-correctas-con-la-muestra-e"><i class="fa fa-check"></i><b>4.2</b> Enumeraciones correctas con la muestra E</a></li>
-<li class="chapter" data-level="4.3" data-path="cap4.html"><a href="cap4.html#sec-procedimientos"><i class="fa fa-check"></i><b>4.3</b> Reconstrucción de los hogares con la muestra P</a></li>
-<li class="chapter" data-level="4.4" data-path="cap4.html"><a href="cap4.html#componentes-de-la-cobertura-censal"><i class="fa fa-check"></i><b>4.4</b> Componentes de la cobertura censal</a></li>
+<li class="chapter" data-level="4.1" data-path="cap4.html"><a href="cap4.html#enumeraciones-correctas-con-la-muestra-e"><i class="fa fa-check"></i><b>4.1</b> Enumeraciones correctas con la muestra E</a></li>
+<li class="chapter" data-level="4.2" data-path="cap4.html"><a href="cap4.html#sec-procedimientos"><i class="fa fa-check"></i><b>4.2</b> Reconstrucción de los hogares con la muestra P</a></li>
+<li class="chapter" data-level="4.3" data-path="cap4.html"><a href="cap4.html#componentes-de-la-cobertura-censal"><i class="fa fa-check"></i><b>4.3</b> Componentes de la cobertura censal</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cap5.html"><a href="cap5.html"><i class="fa fa-check"></i><b>5</b> Emparejamiento estadístico</a>
 <ul>
@@ -202,6 +201,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.2" data-path="cap6.html"><a href="cap6.html#otros-estimadores-del-sistema-dual"><i class="fa fa-check"></i><b>6.2</b> Otros estimadores del sistema dual</a></li>
 <li class="chapter" data-level="6.3" data-path="cap6.html"><a href="cap6.html#modelos-log-lineales"><i class="fa fa-check"></i><b>6.3</b> Modelos log-lineales</a></li>
 <li class="chapter" data-level="6.4" data-path="cap6.html"><a href="cap6.html#cuadro-comparativo-de-los-estimadores"><i class="fa fa-check"></i><b>6.4</b> Cuadro comparativo de los estimadores</a></li>
+<li class="chapter" data-level="6.5" data-path="06pse.html"><a href="#modelos-de-regresi%C3%B3n-en-el-sistema-dual"><i class="fa fa-check"></i><b>6.5</b> Modelos de regresión en el sistema dual</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>7</b> Referencias</a></li>
 <li class="divider"></li>
@@ -293,7 +293,7 @@ d_i = \frac{\hat{N}_{1+}}{\hat{N}_{11}}
 <p><span class="math display">\[
 \hat{N}_{++}^{ratio} = \frac{N_{1+}^0}{\hat{N}_{1+}^0} \frac{\hat{N}_{1+} \cdot \hat{N}_{+1}}{\hat{N}_{11}}
 \]</span></p>
-<p>De la misma manera, es posible refinar el estimador usando la postestratificación <span class="citation">(<a href="#ref-Gutierrez_2016">Gutiérrez 2016</a>)</span>. Esta es una técnica que particiona la población en subgrupos homogéneos y que permite minimizar el impacto del sesgo de correlación (que los individuos que no fueron enumerados en el censo serán más propensos a no ser incluidos en la encuesta). Como se mencionó anteriormente, es usual utilizar al menos las divisiones administrativas mayores, los grupos de edad y el sexo. Cada una de las particiones inducidas por el cruce de estas variables se conoce como post-estratos. Suponiendo que existen <span class="math inline">\(G\)</span> postestratos, entonces el estimador de razón post-estratificada toma la siguiente forma:</p>
+<p>De la misma manera, es posible refinar el estimador usando la postestratificación <span class="citation">(<a href="#ref-Gutierrez_2016">H. A. Gutiérrez 2016</a>)</span>. Esta es una técnica que particiona la población en subgrupos homogéneos y que permite minimizar el impacto del sesgo de correlación (que los individuos que no fueron enumerados en el censo serán más propensos a no ser incluidos en la encuesta). Como se mencionó anteriormente, es usual utilizar al menos las divisiones administrativas mayores, los grupos de edad y el sexo. Cada una de las particiones inducidas por el cruce de estas variables se conoce como post-estratos. Suponiendo que existen <span class="math inline">\(G\)</span> postestratos, entonces el estimador de razón post-estratificada toma la siguiente forma:</p>
 <p><span class="math display">\[
 \hat{N}_{++}^{post} = \sum_{g=1}^G \left[ \frac{N_{g1+}^0}{\hat{N}_{g1+}^0} \frac{\hat{N}_{g1+} \cdot \hat{N}_{g+1}}{\hat{N}_{g11}} \right] =
 \sum_{g=1}^G \left[N_{g1+}^0 \frac{\hat{p}_{g1+}}{\hat{p}_{g11}}  \right]
@@ -470,15 +470,15 @@ Por lo tanto</p>
 </ul></li>
 </ul>
 <p>El modelo se puede implementar en R con <code>Rcapture::closedp()</code>. Suponiendo que la muestra E y muestra P se han organizado en un <code>df</code> con las variables binarias lista1 y lista2 codificadas como 1 y 0, entonces se puede usar el siguiente código para realizar la estimación</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="cap6.html#cb64-1" tabindex="-1"></a><span class="fu">library</span>(Rcapture)</span>
-<span id="cb64-2"><a href="cap6.html#cb64-2" tabindex="-1"></a><span class="fu">closedp.t</span>(df, df<span class="sc">$</span>lista1, df<span class="sc">$</span>lista2)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="cap6.html#cb11-1" tabindex="-1"></a><span class="fu">library</span>(Rcapture)</span>
+<span id="cb11-2"><a href="cap6.html#cb11-2" tabindex="-1"></a><span class="fu">closedp.t</span>(df, df<span class="sc">$</span>lista1, df<span class="sc">$</span>lista2)</span></code></pre></div>
 <p>En caso de contar con la tabla de frecuencias de las celdas <span class="math inline">\(N_{11}\)</span>, <span class="math inline">\(N_{12}\)</span> y <span class="math inline">\(N_{21}\)</span> se puede hacer así:</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="cap6.html#cb65-1" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,N11,</span>
-<span id="cb65-2"><a href="cap6.html#cb65-2" tabindex="-1"></a>                        <span class="dv">1</span>,<span class="dv">0</span>,N12,</span>
-<span id="cb65-3"><a href="cap6.html#cb65-3" tabindex="-1"></a>                        <span class="dv">0</span>,<span class="dv">1</span>,N21), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">ncol =</span> <span class="dv">3</span>))</span>
-<span id="cb65-4"><a href="cap6.html#cb65-4" tabindex="-1"></a><span class="fu">colnames</span>(tabla) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;E&quot;</span>, <span class="st">&quot;P&quot;</span>, <span class="st">&quot;freq&quot;</span>)</span>
-<span id="cb65-5"><a href="cap6.html#cb65-5" tabindex="-1"></a></span>
-<span id="cb65-6"><a href="cap6.html#cb65-6" tabindex="-1"></a><span class="fu">closedp</span>(tabla, <span class="at">dfreq =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="cap6.html#cb12-1" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,N11,</span>
+<span id="cb12-2"><a href="cap6.html#cb12-2" tabindex="-1"></a>                        <span class="dv">1</span>,<span class="dv">0</span>,N12,</span>
+<span id="cb12-3"><a href="cap6.html#cb12-3" tabindex="-1"></a>                        <span class="dv">0</span>,<span class="dv">1</span>,N21), <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">ncol =</span> <span class="dv">3</span>))</span>
+<span id="cb12-4"><a href="cap6.html#cb12-4" tabindex="-1"></a><span class="fu">colnames</span>(tabla) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;E&quot;</span>, <span class="st">&quot;P&quot;</span>, <span class="st">&quot;freq&quot;</span>)</span>
+<span id="cb12-5"><a href="cap6.html#cb12-5" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="cap6.html#cb12-6" tabindex="-1"></a><span class="fu">closedp</span>(tabla, <span class="at">dfreq =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Es importante destacar que existen diferentes enfoques que puede ser utilizados para realizar la estimación del total poblacional a partir de este tipo de modelos <span class="citation">(<a href="#ref-otis1978statistical">Otis et al. 1978</a>; <a href="#ref-rivest2007applications">Rivest and Baillargeon 2007</a>, <a href="#ref-rivest2014capture">2014</a>; <a href="#ref-baillargeon2007rcapture">Baillargeon and Rivest 2007</a>)</span>.</p>
 <div id="otros-modelos" class="section level3 hasAnchor" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> Otros modelos<a href="cap6.html#otros-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -608,7 +608,167 @@ Por lo tanto</p>
 <li>❌  : El estimador asume que se cumple este requisito y no lo incorpora.</li>
 <li>⚠   : El estimador requiere de ajustes definidos por el usuario (como bootstrap, posestratificación o ponderación) para manejar adecuadamente el fenómeno.</li>
 </ul>
+</div>
+<div id="modelos-de-regresión-en-el-sistema-dual" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> Modelos de regresión en el sistema dual<a href="#modelos-de-regresi%C3%B3n-en-el-sistema-dual" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El sistema de estimación dual (DSE) fue descrito en el capítulo <a href="#cap-dual"><strong>??</strong></a>, mientras que los diferentes enfoques para la estimación fueron presentados en el capítulo <a href="#cap-estim"><strong>??</strong></a>. El estimador más clásico del DSE es el de Lincoln-Petersen <span class="citation">(<a href="#ref-petersen1896">Petersen 1896</a>)</span>, que se escribe como:</p>
+<p><span class="math display">\[\hat{N}_{LP} = \hat{N}_{1+} \left( \frac{\hat{N}_{+1}}{\hat{N}_{11}} \right)\]</span></p>
+<p>En donde el inverso del término entre paréntesis se denomina tasa de coincidencia (<em>match rate</em>). Sin embargo, el término
+<span class="math inline">\(\hat{N}_{1+}\)</span> requiere requiere ser ajustado para considerar la calidad de los registros censales. En la práctica, no todos los registros del censo son igualmente confiables, algunos corresponden a enumeraciones correctas, otros son registros con información incompleta o incluso duplicados. Para resolver este problema se define:</p>
+<ul>
+<li><p><span class="math inline">\(c_i\)</span>: Indica que el registro <span class="math inline">\(i\)</span> es de persona con una enumeración correcta, es decir, está incluido con precisión en el censo y en el lugar en el que la persona debería haber sido contada.</p></li>
+<li><p><span class="math inline">\(d_i\)</span>: Indica que el registro <span class="math inline">\(i\)</span> es persona que se considera definido por datos, esto es, que el registro contiene suficiente información para ser aceptado en el procesamiento censal<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>. Lo cual es una condición necesaria para que la persona se considere como una enumeración correcta.</p></li>
+<li><p><span class="math inline">\(m_i\)</span>: Indica que el registro <span class="math inline">\(i\)</span> es una coincidencia real (emparejamiento) con la PES.</p></li>
+</ul>
+<p>La idea es asignar a cada registro censal un peso proporcional a la probabilidad de que sea válido. Para ello, se define el factor de corrección por cobertura como:</p>
+<p><span class="math display">\[a_i = \frac{p_{d_i}\cdot p_{c_i}}{p_{m_i}} \]</span></p>
+<p>En donde <span class="math inline">\(p_{d_i}\)</span>, <span class="math inline">\(p_{c_i}\)</span> y <span class="math inline">\(p_{m_i}\)</span> son las probabilidades estimadas de que el registro <span class="math inline">\(i\)</span> esté definido por los datos, sea una enumeración correcta y una coincidencia respectivamente.</p>
+<p>En algunas ocasiones, cuando se comparan los resultados de la PES con el Análisis Demográfico (AD), se observa que las proporciones de hombres y mujeres no coinciden. Esto debido a que los análisis son independientes y el AD tiene sus propias estimaciones de cuántos hombres y mujeres debería haber en cada grupo de edad, mientras que la PES depende exclusivamente del emparejamiento con el censo, lo que puede generar una proporción distinta, ya sea por omisiones diferenciales o errores en el censo. Por ejemplo, si la PES estima que hay 95 hombres por cada 100 mujeres, pero el AD indica que deberían ser 98, esa diferencia puede reflejar sesgos de correlación (hombres más difíciles de enumerar, errores de emparejamiento, etc.).</p>
+<p>Para reducir estos sesgos, se puede introducir un término adicional para ajustar las estimaciones de la PES de manera que las razones de sexo coincidan con las del AD, así:</p>
+<p><span class="math display">\[a_{i}^s = a_i \cdot r.\]</span>
+En donde <span class="math inline">\(r\)</span> es el ajuste por la razón de las proporciones del sexo, y de esta forma las estimaciones de la proporción de hombres y mujeres de la PES se alinean con el AD.</p>
+<div id="post-estratificación" class="section level3 hasAnchor" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> Post-estratificación<a href="#post-estratificaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La estimación por sistema dual asume que las probabilidades de inclusión de cada individuo en el censo y en la encuesta son independientes <span class="citation">(<a href="#ref-wolter1986coverage">Wolter 1986</a>)</span>. El sesgo de correlación resulta de la falta de cumplimiento de este supuesto de independencia en el que se basan los DSE, debido a:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Dependencia causal</strong>: el hecho de estar incluido en el censo hace que una persona tenga más o menos probabilidad de ser incluida en la PES.</p></li>
+<li><p><strong>Heterogeneidad</strong>: las probabilidades de inclusión en el censo y en la PES varían entre personas.</p></li>
+</ol>
+<p>La dependencia causal puede generar tanto subestimaciones como sobreestimaciones en el DSE. Este fenómeno se conoce como sesgo negativo o positivo, y surge cuando la probabilidad de no ser contado en el censo incrementa (o reduce) la probabilidad de no ser contado también en la PES. Asimismo, la heterogeneidad en las probabilidades de inclusión de las personas dentro de un mismo grupo de estimación tiende a producir subestimaciones, es decir, un sesgo negativo en el DSE.</p>
+<p>En algunas encuestas de cobertura se recurre a la post-estratificación con el fin de reducir el impacto derivado del incumplimiento de estos supuestos. Este procedimiento consiste en dividir a la población en grupos con probabilidades de inclusión censal similares, aplicar el modelo DSE dentro de cada post-estrato y, posteriormente, agregar los resultados para obtener la estimación global. El objetivo de la post-estratificación es reducir la heterogeneidad y, por lo tanto,
+disminuir el sesgo de correlación.</p>
+<p>Al dividir la población en <span class="math inline">\(J\)</span> post-estratos, <span class="citation">Zamora (<a href="#ref-zamora2022pesdesign">2022</a>)</span> presenta el siguiente estimador :</p>
+<p><span class="math display" id="eq:post">\[\begin{equation}
+\hat{N}_{++} = \sum_{j \in J} \left[ N_{d_j} \, \frac{\hat{N}_{c_j}}{\hat{N}_{t_{dj}}} \, \cdot \frac{\hat{N}_{+1,j}}{\hat{N}_{11,j}} \right]
+\tag{6.1}
+\end{equation}\]</span></p>
+<ul>
+<li><span class="math inline">\(N_{d_j}\)</span> es la cantidad de enumeraciones definidas por los datos en el censo en el post-estrato <span class="math inline">\(j\)</span>.</li>
+<li><span class="math inline">\(\hat{N}_{c_j}\)</span> es el total estimado de enumeraciones correctas en el post-estrato <span class="math inline">\(j\)</span>.</li>
+<li><span class="math inline">\(\hat{N}_{t_{dj}}\)</span> es el total estimado de las enumeraciones definidas por los datos en el censo, incluyendo las enumeraciones erróneas en el post-estrato <span class="math inline">\(j\)</span>.</li>
+</ul>
+<p>En este caso se usa <span class="math inline">\(N_{d_j} \, \frac{\hat{N}_{c_j}}{\hat{N}_{t_{dj}}}\)</span> como estimador de <span class="math inline">\(N_{1+, j}\)</span>. La ecuación <a href="cap6.html#eq:post">(6.1)</a> se puede simplicar así:</p>
+<p><span class="math display">\[\begin{align*}
+\hat{N}_{++} &amp;= \sum_{j \in J} \left[ N_{d_j} \frac{\hat{N}_{c_j}/\hat{N}_{11,j}}{\hat{N}_{t_{dj}}/\hat{N}_{+1,j}}  \right] \\
+             &amp;= \sum_{j \in J} \left[ N_{d_j} \frac{\hat{R}_{c,j}}{\hat{R}_{m,j}}  \right]
+\end{align*}\]</span></p>
+<p>En donde <span class="math inline">\(\hat{R}_{c,j}\)</span> y <span class="math inline">\(\hat{R}_{m,j}\)</span> son los estimadores de razón de la enumeraciones correctas y emparejamientos en el post-estrato <span class="math inline">\(j\)</span>. Utilizando este estimador post-estratificado, es posible estimar el tamaño poblacional para un área o dominio <span class="math inline">\(t\)</span> con la siguiente fórmula:</p>
+<p><span class="math display">\[\hat{N}_t = \sum_{j \in J} \left[ N_{t, d_j} \frac{\hat{R}_{c,j}}{\hat{R}_{m,j}} \right]\]</span></p>
+<p>En donde <span class="math inline">\(\hat{N}_t\)</span> es la estimación del total poblacional obtenida por el modelo de sistema de estimación dual en el área o dominio <span class="math inline">\(t\)</span>, y <span class="math inline">\(N_{t, d_j}\)</span> es la cantidad de registros definidos por los datos en el post-estrato <span class="math inline">\(j\)</span> y en el área o dominio <span class="math inline">\(t\)</span>.</p>
+<p>La implementación de este enfoque resulta desafiante en la práctica, ya que exige fragmentar la población en numerosas celdas de tamaño reducido, lo que incrementa la incertidumbre y puede dejar fuera dinámicas relevantes dentro de los post-estratos. Asimismo, presenta varias limitaciones, entre ellas, que el número de factores (covariables) que pueden incorporarse es restringido, dado que cada nueva variable o cruce de clasificaciones aumenta el número de estratos y, en consecuencia, reduce el tamaño de muestra disponible en cada uno; otra limitación es que admite únicamente variables categóricas o, en su defecto, variables continuas previamente agrupadas.</p>
+</div>
+<div id="regresión-logística" class="section level3 hasAnchor" number="6.5.2">
+<h3><span class="header-section-number">6.5.2</span> Regresión logística<a href="#regresi%C3%B3n-log%C3%ADstica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La regresión logística constituye una alternativa más flexible que la post-estratificación y ha demostrado reducir de manera más efectiva el sesgo en las estimaciones de la población total <span class="citation">(<a href="#ref-OlsonSands2012">Olson and Sands 2012</a>)</span>. A diferencia de la post-estratificación, que requiere dividir la población en celdas y, por ende, introducir interacciones de alto orden muchas veces innecesarias, la regresión logística permite modelar directamente la relación entre las covariables y la probabilidad de inclusión. Esto reduce el sesgo de correlación sin necesidad de recurrir a estructuras excesivamente complejas.</p>
+<p>Otra ventaja importante es que este enfoque admite la incorporación de un mayor número de covariables, tanto categóricas como continuas, ampliando así el conjunto de predictores potenciales que pueden contribuir a mejorar la precisión del ajuste. Asimismo, facilita procesos de selección de variables y comparación de modelos, lo que refuerza su utilidad práctica en aplicaciones de estimación poblacional.</p>
+<p>El modelo de regresión logística permite predecir la probabilidad de que una enumeración censal sea correcta y la probabilidad de coincidencia en el emparejamiento. Además, permite incluir variables continuas y utilizar únicamente los términos de interacción estadísticamente significativos, lo que contribuye a reducir tanto el sesgo por heterogeneidad como el error de muestreo. De forma análoga al enfoque de post-estratificación, la muestra E se utiliza para modelar la probabilidad de una enumeración correcta en el censo, mientras que la muestra P se emplea para modelar la probabilidad de coincidencia. En ambos casos se debe usar el diseño muestral para estimar los parámetros.</p>
+<p>Considere la variable binaria <span class="math inline">\(y_i\)</span> que en la muestra E se puede definir como:</p>
+<p><span class="math display">\[
+y_i \;=\;
+\begin{cases}
+1, &amp; \text{si la enumeración $i$ es correcta}\\
+0, &amp; \text{en caso contrario.}
+\end{cases}
+\]</span></p>
+<p>Del mismo modo, se podría definir la variable <span class="math inline">\(z_i\)</span> como indicar binario en la muestra P como</p>
+<p><span class="math display">\[
+z_i \;=\;
+\begin{cases}
+1, &amp; \text{si el registro $i$ es un emparejado}\\
+0, &amp; \text{si el registro $i$ es una omisión}
+\end{cases}
+\]</span></p>
+<p>La probabilidad aproximada del suceso se expresa mediante la función logística:</p>
+<p><span class="math display" id="eq:prob">\[\begin{equation}
+\pi(\textbf{x})= Pr(y = 1 | \textbf{x}) = \frac{\exp\{\textbf{x}&#39;\boldsymbol{\beta}\}}{1+\exp\{\textbf{x}&#39;\boldsymbol{\beta}\}}
+\tag{6.2}
+\end{equation}\]</span></p>
+<p>Usando técnicas apropiadas que incluyan el diseño de muestreo complejo en la inferencia, la probabilidad estimada de que la variable de interés tome el valor uno, que a su vez es también la esperanza de la variable de interés, en un modelo de regresión logística es la siguiente:</p>
+<p><span class="math display">\[
+\hat{\pi}(\textbf{x})= \frac{\exp\{\textbf{x}&#39;\hat{\boldsymbol{\beta}}\}}{1+\exp\{\textbf{x}&#39;\hat{\boldsymbol{\beta}\}}}
+\]</span></p>
+<p>La varianza de los parámetros estimados se calcula a partir de la siguiente expresión:</p>
+<p><span class="math display">\[
+var\left(\boldsymbol{\hat{B}}\right)=\boldsymbol{J}^{-1}var\left(S\left(\hat{\boldsymbol{B}}\right)\right)\boldsymbol{J}^{-1}
+\]</span></p>
+<p>En donde</p>
+<p><span class="math display">\[
+S\left(B\right)=\sum_{h}\sum_{a}\sum_{i}w_{hai}\boldsymbol{D}_{hai}^{t}\left[\left(\pi_{hai}\left(\boldsymbol{B}\right)\right)\left(1-\pi_{hai}\left(\boldsymbol{B}\right)\right)\right]^{-1}\left(y_{hai}-\pi_{hai}\left(\boldsymbol{B}\right)\right)=0
+\]</span>
+y,</p>
+<p><span class="math display">\[
+D_{hai} = \frac{\delta\left(\pi_{hai}\left(\boldsymbol{B}\right)\right)}{\delta B_{j}}
+\]</span></p>
+<p>Donde <span class="math inline">\(j=0,\dots,p\)</span>. Dado que el modelo tiene enlace logaritmo, para construir los intervalos de confianza se debe aplicar el función exponencial a cada parámetro,</p>
+<p><span class="math display">\[
+\hat{\psi}=\exp\left(\hat{B}_{1}\right)
+\]</span></p>
+<p>Por ende, el intervalo de confianza estará dado por la siguiente expresión:</p>
+<p><span class="math display">\[
+CI\left(\psi\right)=\exp\left(\hat{B}_{j}\pm t_{df,1-\frac{\alpha}{2}}se\left(\hat{B}_{j}\right)\right)
+\]</span></p>
+<p>Para el ajuste del modelo es fundamental tener en cuenta el diseño muestral. Por esta razón, la estimación de los parámetros debe realizarse mediante la función <code>svyglm()</code> del paquete <code>survey</code> <span class="citation">(<a href="#ref-Lumley2010">Lumley 2010</a>)</span>. Para una explicación más detallada sobre el ajuste de modelos de regresión logística considerando el diseño muestral, puede consultarse <span class="citation">A. Gutiérrez, Téllez, and Guerrero (<a href="#ref-gutierrez2025generalizados">2025</a>)</span>.</p>
+<p>Usando las probabilidades predichas a partir de la regresión logística, calculadas como en la ecuación <a href="cap6.html#eq:prob">(6.2)</a>, el estimador del total para un dominio o área <span class="math inline">\(t\)</span> se puede escribir como:</p>
+<p><span class="math display" id="eq:lestimator">\[\begin{equation}
+\hat{N}_{t} = \sum_{j \in t} \left( I_{d,j} \cdot \frac{\hat{\pi}_{c,j}}{\hat{\pi}_{m,j}} \right)  
+\tag{6.3}
+\end{equation}\]</span></p>
+<p>En donde:</p>
+<ul>
+<li><span class="math inline">\(\hat{N}_{t}\)</span> es la estimación del total poblacional usando el modelo DSE en el área o dominio <span class="math inline">\(t\)</span>.<br />
+</li>
+<li><span class="math inline">\(I_{d,j}\)</span> es una variable indicadora que toma el valor de 1 cuando la enumeración censal <span class="math inline">\(j\)</span> está definida por los datos, y 0 en caso contrario.<br />
+</li>
+<li><span class="math inline">\(\hat{\pi}_{c,j}\)</span> es la probabilidad predicha de que la enumeración <span class="math inline">\(j\)</span> sea una enumeración correcta.<br />
+</li>
+<li><span class="math inline">\(\hat{\pi}_{m,j}\)</span> es la probabilidad predicha de que la enumeración <span class="math inline">\(j\)</span> corresponda a un emparejamiento (<em>match</em>).</li>
+</ul>
+<p>A pesar de que <span class="math inline">\(I_{d,j}\)</span> es conocido para todo <span class="math inline">\(j\)</span> en el censo, censos como el de Estados Unidos usó en la PES el siguiente estimador</p>
+<p><span class="math display" id="eq:lestimator2">\[\begin{equation}
+\hat{N}_{t} = \sum_{j \in t} \left( \hat{\pi}_{d,j} \cdot \frac{\hat{\pi}_{c,j}}{\hat{\pi}_{m,j}} \right)
+\tag{6.4}
+\end{equation}\]</span></p>
+<p>En donde <span class="math inline">\(\hat{\pi}_{d,j}\)</span> representa la probabilidad predicha de que la enumeración <span class="math inline">\(j\)</span> esté definida por los datos, estimada a partir de un modelo de regresión logística. Dado que este modelo se ejecuta sobre todo el censo, no requiere de pesos de muestreo.</p>
+<p>Los estimadores de las ecuaciones <a href="cap6.html#eq:lestimator">(6.3)</a> y <a href="cap6.html#eq:lestimator2">(6.4)</a> generan diferencias mínimas en las estimaciones poblacionales de dominios grandes. Sin embargo, el estimador de la ecuación <a href="cap6.html#eq:lestimator">(6.3)</a> puede producir estimaciones demasiado bajas en dominios pequeños con un número reducido de casos definidos por los datos <span class="citation">(<a href="#ref-mulry2008direct">Mulry et al. 2008</a>)</span>.</p>
+<p>Combinando las probabilidades predichas según la ecuación <a href="cap6.html#eq:lestimator2">(6.4)</a>, para cada enumeración censal se obtiene el factor de corrección de cobertura (<span class="math inline">\(a_i\)</span>) y puede ser sumado para generar una estimación usando el modelo DSE en cualquier dominio, así:</p>
+<p><span class="math display" id="eq:ccf">\[\begin{equation}
+a_{i} = \hat{\pi}_{d,i} \frac{\hat{\pi}_{c,i}}{\hat{\pi}_{m,i}}
+\tag{6.5}
+\end{equation}\]</span></p>
+<p>De este modo, la estimación de la población en un área o dominio <span class="math inline">\(t\)</span> se obtiene como:</p>
+<p><span class="math display" id="eq:ccfdse">\[\begin{equation}
+\hat{N}_{t} = \sum_{i \in t} a_{i}
+\tag{6.6}
+\end{equation}\]</span></p>
+</div>
+<div id="ajuste-por-información-demográfica" class="section level3 hasAnchor" number="6.5.3">
+<h3><span class="header-section-number">6.5.3</span> Ajuste por información demográfica<a href="#ajuste-por-informaci%C3%B3n-demogr%C3%A1fica" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En caso de que exista disponibilidad de información auxiliar basado en proyecciones o análisis demográficos (AD), se puede usar un factor de corrección, para reducir el sesgo de correlación. El objetivo es usar la razón de sexos (hombres/mujeres) en las estimaciones y así lograr una coherencia con los AD. Este procedimiento mitiga el sesgo de correlación al incrementar las estimaciones de sistema dual (DSE) regularmente en los hombres <span class="citation">(<a href="#ref-Konicki2012">Konicki 2012</a>)</span>.</p>
+<p>Los países regularmente cuentan con AD que utilizan diversas fuentes de información, tales como estadísticas administrativas de nacimientos, defunciones, migración internacional legal, afiliaciones sistemas de salud, así como estimaciones de emigración legal y migración no autorizada. Estas estimaciones se generan por sexo y edad simple. Aunque las estimaciones de DA tienen errores y limitaciones, se considera que estos errores no difieren por sexo <span class="citation">(<a href="#ref-zamora2022pesdesign">Zamora 2022</a>)</span>.</p>
+<p>El factor de ajuste se calcula para cada grupo<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>, así:</p>
+<p><span class="math display">\[r_{k,H} = \frac{\sum_{i \in k} a_i}{\sum_{i \in H \cap k} a_i} \cdot \frac{P_{k,H}}{P_k}\]</span></p>
+<p><span class="math display">\[r_{k,M} = \frac{\sum_{i \in k} a_i}{\sum_{i \in M \cap k} a_i} \cdot \frac{P_{k,M}}{P_k}\]</span></p>
+<p>En donde:</p>
+<ul>
+<li><span class="math inline">\(P_k\)</span> es la estimación o proyección demográfica de la población total (hombres y mujeres) en el grupo <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(P_{k,H}\)</span> y <span class="math inline">\(P_{k,M}\)</span> son las estimaciones o proyecciones demográficas para hombres y mujeres, respectivamente, en el grupo <span class="math inline">\(k\)</span>.</li>
+<li><span class="math inline">\(a_i\)</span> es el factor de corrección de cobertura para la enumeración <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\(r_{k,H}\)</span> y <span class="math inline">\(r_{k,M}\)</span> son los factores de ajuste por razón de sexo para hombres y mujeres en el grupo <span class="math inline">\(k\)</span>.</li>
+</ul>
+<p>Con este ajuste, el estimador de sistema dual de la ecuación <a href="cap6.html#eq:ccfdse">(6.6)</a> se redefine como:</p>
+<p><span class="math display" id="eq:dseadj">\[\begin{equation}
+\hat{N}_t = \sum_{i \in t} (a_i \cdot r_i)
+\tag{6.7}
+\end{equation}\]</span></p>
+<p>En donde:</p>
+<ul>
+<li><span class="math inline">\(\hat{N}_t\)</span> es la estimación de sistema dual para el dominio o área <span class="math inline">\(t\)</span>.</li>
+<li><span class="math inline">\(a_i\)</span> es el factor de corrección de cobertura para la enumeración <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\(r_i\)</span> es el factor de ajuste por sesgo de correlación aplicado a la enumeración <span class="math inline">\(i\)</span>, que pertenece al grupo <span class="math inline">\(k\)</span> según su sexo.</li>
+</ul>
+<p>Para información sobre el ajuste por razón de sexos aplicado regularmente en los censos, y específicamente en el caso del PES de Estados Unidos del año 2020, así como sobre los detalles de la investigación que condujo a dicho ajuste, véase <span class="citation">Heim (<a href="#ref-Heim2022">2022</a>)</span> y <span class="citation">Heim and Hill (<a href="#ref-HeimHill2022">2022</a>)</span>.</p>
 
+</div>
 </div>
 </div>
 <h3> Referencias<a href="referencias.html#referencias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -646,11 +806,32 @@ Cormack, Richard M. 1989. <span>“Log-Linear Models for Capture-Recapture.”</
 <div id="ref-fienberg1972multiple" class="csl-entry">
 Fienberg, Stephen E. 1972. <span>“The Multiple Recapture Census for Closed Populations and Incomplete 2k Contingency Tables.”</span> <em>Biometrika</em> 59 (3): 591–603.
 </div>
+<div id="ref-gutierrez2025generalizados" class="csl-entry">
+Gutiérrez, Andrés, Cristian Téllez, and Stalyn Guerrero. 2025. <span>“Capítulo 8: Generalizados.”</span> In <em>Análisis de Encuestas de Hogares Con r</em>. <a href="https://github.com/psirusteam/LibroAEHR/blob/main/08-Generalizados.Rmd" class="uri">https://github.com/psirusteam/LibroAEHR/blob/main/08-Generalizados.Rmd</a>.
+</div>
 <div id="ref-Gutierrez_2016" class="csl-entry">
 Gutiérrez, Hugo Andrés. 2016. <em>Estrategias de Muestreo: Diseño de Encuestas y Estimación de Parámetros</em>. Segunda edición. Ediciones de la U.
 </div>
+<div id="ref-Heim2022" class="csl-entry">
+Heim, K. 2022. <span>“2020 Post-Enumeration Survey Estimation Methods: Net Coverage Estimation.”</span> DSSD 2020 Post-Enumeration Survey Memorandum Series 2020-J-07. U.S. Census Bureau.
+</div>
+<div id="ref-HeimHill2022" class="csl-entry">
+Heim, K., and C. Hill. 2022. <span>“Research on Reducing Correlation Bias in Dual-System Estimates.”</span> In <em>Proceedings of the Survey Research Methods Section, American Statistical Association</em>. Alexandria, VA.
+</div>
+<div id="ref-Konicki2012" class="csl-entry">
+Konicki, S. 2012. <span>“2010 Census Coverage Measurement Estimation Report: Adjustment for Correlation Bias.”</span> DSSD 2010 Census Coverage Measurement Memorandum Series 2010-G-11. U.S. Census Bureau.
+</div>
+<div id="ref-Lumley2010" class="csl-entry">
+Lumley, Thomas. 2010. <em>Complex Surveys: A Guide to Analysis Using r: A Guide to Analysis Using r</em>. John Wiley; Sons.
+</div>
+<div id="ref-mulry2008direct" class="csl-entry">
+Mulry, Mary H, Bruce D Spencer, Tom Mule, and Nganha Nguyen. 2008. <span>“Direct Estimates as a Diagnostic for Dual System Estimators Based on Logistic Regression.”</span> In <em>Joint Statistical Meetings</em>. American Statistical Association.
+</div>
 <div id="ref-nour1982estimation" class="csl-entry">
 Nour, El-Sayed. 1982. <span>“On the Estimation of the Total Number of Vital Events with Data from Dual Collection Systems.”</span> <em>Journal of the Royal Statistical Society Series A: Statistics in Society</em> 145 (1): 106–16.
+</div>
+<div id="ref-OlsonSands2012" class="csl-entry">
+Olson, D., and R. Sands. 2012. <span>“2010 Census Coverage Measurement Estimation Report: Net Coverage Comparison with Post-Stratification.”</span> DSSD 2010 Census Coverage Measurement Memorandum Series 2010-G-12. U.S. Census Bureau.
 </div>
 <div id="ref-otis1978statistical" class="csl-entry">
 Otis, David L, Kenneth P Burnham, Gary C White, and David R Anderson. 1978. <span>“Statistical Inference from Capture Data on Closed Animal Populations.”</span> <em>Wildlife Monographs</em>, no. 62: 3–135.
@@ -676,9 +857,19 @@ Webster, Anthony J, and Richard Kemp. 2013. <span>“Estimating Omissions from S
 <div id="ref-wolter1986coverage" class="csl-entry">
 Wolter, Kirk M. 1986. <span>“Some Coverage Error Models for Census Data.”</span> <em>Journal of the American Statistical Association</em> 81 (394): 338–46. <a href="https://doi.org/10.2307/2289222">https://doi.org/10.2307/2289222</a>.
 </div>
+<div id="ref-zamora2022pesdesign" class="csl-entry">
+Zamora, J. 2022. <span>“2020 Post-Enumeration Survey: Estimation Design.”</span> 2020-J-03. DSSD 2020 Post-Enumeration Survey Memorandum Series. U.S. Census Bureau.
+</div>
 <div id="ref-zelterman1988robust" class="csl-entry">
 Zelterman, Daniel. 1988. <span>“Robust Estimation in Truncated Discrete Distributions with Application to Capture-Recapture Experiments.”</span> <em>Journal of Statistical Planning and Inference</em> 18 (2): 225–37.
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>Este concepto se aplica para cada registro individual de personas, obtenido como parte de una respuesta en el censo, y debe responder a la pregunta: ¿el registro de la persona contiene suficiente información?. Algunos registros de personas pueden contener respuestas válidas para el censo pero carecen de algunas o de todas las características que permiten identificar con precisión a una persona. La ONE debe determinar si un registro a nivel de persona se considera “definido por datos”, y en caso contrario, dicho registro debe pasar por un proceso de imputación. Por lo tanto, la cantidad de registros definidos por los datos es una cantidad conocida porque esta es una actividad que aplica para toda la base censal.<a href="cap6.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Los grupos se suelen construir por la interacción entre rangos de edad y raza o grupo étnico<a href="cap6.html#fnref5" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

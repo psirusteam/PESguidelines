@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
 
 
-<meta name="date" content="2025-09-29" />
+<meta name="date" content="2025-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -185,10 +185,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="cap4.html"><a href="cap4.html"><i class="fa fa-check"></i><b>4</b> Enumeraciones y procedimientos</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cap4.html"><a href="cap4.html#la-muestra-e-y-la-muestra-p"><i class="fa fa-check"></i><b>4.1</b> La muestra E y la muestra P</a></li>
-<li class="chapter" data-level="4.2" data-path="cap4.html"><a href="cap4.html#enumeraciones-correctas-con-la-muestra-e"><i class="fa fa-check"></i><b>4.2</b> Enumeraciones correctas con la muestra E</a></li>
-<li class="chapter" data-level="4.3" data-path="cap4.html"><a href="cap4.html#sec-procedimientos"><i class="fa fa-check"></i><b>4.3</b> Reconstrucción de los hogares con la muestra P</a></li>
-<li class="chapter" data-level="4.4" data-path="cap4.html"><a href="cap4.html#componentes-de-la-cobertura-censal"><i class="fa fa-check"></i><b>4.4</b> Componentes de la cobertura censal</a></li>
+<li class="chapter" data-level="4.1" data-path="cap4.html"><a href="cap4.html#enumeraciones-correctas-con-la-muestra-e"><i class="fa fa-check"></i><b>4.1</b> Enumeraciones correctas con la muestra E</a></li>
+<li class="chapter" data-level="4.2" data-path="cap4.html"><a href="cap4.html#sec-procedimientos"><i class="fa fa-check"></i><b>4.2</b> Reconstrucción de los hogares con la muestra P</a></li>
+<li class="chapter" data-level="4.3" data-path="cap4.html"><a href="cap4.html#componentes-de-la-cobertura-censal"><i class="fa fa-check"></i><b>4.3</b> Componentes de la cobertura censal</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cap5.html"><a href="cap5.html"><i class="fa fa-check"></i><b>5</b> Emparejamiento estadístico</a>
 <ul>
@@ -202,6 +201,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.2" data-path="cap6.html"><a href="cap6.html#otros-estimadores-del-sistema-dual"><i class="fa fa-check"></i><b>6.2</b> Otros estimadores del sistema dual</a></li>
 <li class="chapter" data-level="6.3" data-path="cap6.html"><a href="cap6.html#modelos-log-lineales"><i class="fa fa-check"></i><b>6.3</b> Modelos log-lineales</a></li>
 <li class="chapter" data-level="6.4" data-path="cap6.html"><a href="cap6.html#cuadro-comparativo-de-los-estimadores"><i class="fa fa-check"></i><b>6.4</b> Cuadro comparativo de los estimadores</a></li>
+<li class="chapter" data-level="6.5" data-path="03pse.html"><a href="#modelos-de-regresi%C3%B3n-en-el-sistema-dual"><i class="fa fa-check"></i><b>6.5</b> Modelos de regresión en el sistema dual</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>7</b> Referencias</a></li>
 <li class="divider"></li>
@@ -259,7 +259,7 @@ div.csl-indent {
 </div>
 <div id="diseño-del-cuestionario" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Diseño del cuestionario<a href="#dise%C3%B1o-del-cuestionario" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>El cuestionario del PES constituye un instrumento central, pues es el medio a través del cual la información se transfiere de los hogares a los analistas de la encuesta. Debe diseñarse tomando como referencia el cuestionario censal definitivo y, en particular, de acuerdo con el procedimiento de emparejamiento que se adoptará (véase la Sección <a href="cap4.html#sec-procedimientos">4.3</a>). Su diseño es crucial, ya que traduce las necesidades de información en preguntas operativas y constituye la base de entrada para el procesamiento de datos <span class="citation">(<a href="#ref-UnitedNations_2010">UN 2010</a>; <a href="#ref-baffour2013modern">Baffour, King, and Valente 2013</a>)</span>.</p>
+<p>El cuestionario del PES constituye un instrumento central, pues es el medio a través del cual la información se transfiere de los hogares a los analistas de la encuesta. Debe diseñarse tomando como referencia el cuestionario censal definitivo y, en particular, de acuerdo con el procedimiento de emparejamiento que se adoptará (véase la Sección <a href="cap4.html#sec-procedimientos">4.2</a>). Su diseño es crucial, ya que traduce las necesidades de información en preguntas operativas y constituye la base de entrada para el procesamiento de datos <span class="citation">(<a href="#ref-UnitedNations_2010">UN 2010</a>; <a href="#ref-baffour2013modern">Baffour, King, and Valente 2013</a>)</span>.</p>
 <p>El cuestionario debe ser estructurado y claro, acompañado de instrucciones precisas para los enumeradores. Algunas características deseables son:</p>
 <ul>
 <li><strong>Pertinencia</strong>: Permitir la recolección de datos que satisfagan las necesidades de los usuarios.</li>
@@ -283,7 +283,7 @@ div.csl-indent {
 <p>Las direcciones recopiladas durante la entrevista que son proporcionadas por el encuestado, pueden clasificarse como direcciones de inmigrante (<em>in-movers</em>) o direcciones alternas. Las direcciones de inmigrante se recopilan cuando alguien que actualmente vive en la dirección de la muestra había vivido en otro lugar el día del censo. Mientras que las direcciones alternas se dan cuando alguien vive en otro lugar por razones laborales, estudios, servicio militar, entre otras.</p>
 <p>La encuesta debe diseñarse para levantar la mayor cantidad posible de direcciones alternas con el fin de identificar todos los lugares donde una persona pudo haber sido contada en el censo y determinar si fue contabilizada más de una vez. Es posible que el encuestado no pueda proporcionar la dirección completa, en esos casos se debe intentar obtener cualquier información de referencia próximos a la dirección, lo cual facilitará el emparejamiento entre la PES y el censo.</p>
 <p>Es importante que cada persona sea asignada a un departamento y municipio de residencia en la PES y el día del censo. Esto permite identificar dónde debía haberse contado a la persona el día del censo, también se debe agregar una codificación para identificar si la persona se mudó. Se recomienda dejar una casilla de observaciones para que el encuestador agregue cualquier referencia que considere relevante para los revisores clericales durante el emparejamiento.</p>
-<p>El proceso de emparejamiento es una de las etapas más desafiantes del proceso, y resulta vital en la aplicación de la Estimación por Sistema Dual. Este proceso debe estar diseñado para determinar si las personas de la PES fueron enumeradas en el censo, tuvieron errores de enumeración u omisiones. Por ejemplo, en el procedimiento C (véase Sección <a href="cap4.html#sec-procedimientos">4.3</a>), que es uno de los más utilizados y el que aquí se sugiere, el cuestionario debe permitir clasificar a cada persona en una de las siguientes categorías</p>
+<p>El proceso de emparejamiento es una de las etapas más desafiantes del proceso, y resulta vital en la aplicación de la Estimación por Sistema Dual. Este proceso debe estar diseñado para determinar si las personas de la PES fueron enumeradas en el censo, tuvieron errores de enumeración u omisiones. Por ejemplo, en el procedimiento C (véase Sección <a href="cap4.html#sec-procedimientos">4.2</a>), que es uno de los más utilizados y el que aquí se sugiere, el cuestionario debe permitir clasificar a cada persona en una de las siguientes categorías</p>
 <table>
 <thead>
 <tr class="header">
@@ -444,8 +444,8 @@ div.csl-indent {
 <p>El primero está relacionado con la eficiencia del diseño muestral, buscando asegurar una mayor precisión de las estimaciones. Para cumplir este objetivo, los estratos deben considerar áreas geográficas que puedan presentar diferentes niveles de cobertura. Por ejemplo, se pueden diferenciar áreas urbanas, centros poblados, zonas rurales dispersas o regiones con población étnica de difícil acceso, donde es más probable que las omisiones o errores de cobertura sean distintos respecto a otras áreas. Esta diferenciación permite diseñar la muestra de manera que se reduzca la incertidumbre de las estimaciones dentro de cada estrato, optimizando así la eficiencia del muestreo.</p>
 <p>El segundo objetivo de la estratificación se vincula con la necesidad de obtener información desagregada para distintos dominios geográficos. En estos casos, se recomienda que dentro de cada estrato se aplique una subestratificación adicional, siguiendo los lineamientos previamente definidos, para garantizar que la muestra represente todos los subdominios de interés.</p>
 </div>
-<div id="diseño-de-muestreo" class="section level3 hasAnchor" number="3.3.4">
-<h3><span class="header-section-number">3.3.4</span> Diseño de muestreo<a href="#dise%C3%B1o-de-muestreo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="selección" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Selección<a href="#selecci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Con el marco de muestreo y la estratificación apropiada para las UPM, es necesario realizar el proceso de muestreo para la selección final de los hogares. Este proceso de selección debe inducir insesgamiento, además de ser eficiente. Esto quiere decir que la inclusión de las unidades en la muestra estará supeditada a un esquema probabilístico libre de cualquier sesgo. Además de esto, se necesita que este mecanismo genere la menor dispersión posible en el proceso inferencial posterior.</p>
 <p>El procedimiento de muestreo le asigna una probabilidad de selección conocida a cada posible muestra. Al diseñar un muestreo probabilístico, el investigador es el encargado de asignar estas probabilidades, mediante la definición del diseño de muestreo <span class="citation">(<a href="#ref-Sarndal_Swensson_Wretman_2003">Särndal, Swensson, and Wretman 2003</a>)</span>. Aunque esta asignación de probabilidades se realiza de manera teórica, el equipo técnico deberá establecer cuál es la mejor forma de selección, y sobre esta escoger el mejor algoritmo de muestreo. Luego de establecer este conjunto de probabilidades, una única muestra es escogida mediante un mecanismo aleatorio que siga a cabalidad esta configuración estocástica inducida por el diseño de muestreo.</p>
 <p>Es fundamental que estas probabilidades sean distintas de cero, ya que de lo contrario no se podría garantizar una inferencia insesgada, al excluir segmentos cartográficos del país. Además, estas mismas probabilidades se utilizan para calcular los factores de expansión, que sostienen todo el proceso de estimación, así como para el cálculo de los errores de muestreo, asegurando la validez y precisión de las cifras derivadas de la encuesta.</p>

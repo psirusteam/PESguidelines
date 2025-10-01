@@ -23,7 +23,7 @@
 <meta name="author" content="Andrés Gutiérrez, Giovany Babativa-Márquez" />
 
 
-<meta name="date" content="2025-09-29" />
+<meta name="date" content="2025-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -185,10 +185,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="4" data-path="cap4.html"><a href="cap4.html"><i class="fa fa-check"></i><b>4</b> Enumeraciones y procedimientos</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cap4.html"><a href="cap4.html#la-muestra-e-y-la-muestra-p"><i class="fa fa-check"></i><b>4.1</b> La muestra E y la muestra P</a></li>
-<li class="chapter" data-level="4.2" data-path="cap4.html"><a href="cap4.html#enumeraciones-correctas-con-la-muestra-e"><i class="fa fa-check"></i><b>4.2</b> Enumeraciones correctas con la muestra E</a></li>
-<li class="chapter" data-level="4.3" data-path="cap4.html"><a href="cap4.html#sec-procedimientos"><i class="fa fa-check"></i><b>4.3</b> Reconstrucción de los hogares con la muestra P</a></li>
-<li class="chapter" data-level="4.4" data-path="cap4.html"><a href="cap4.html#componentes-de-la-cobertura-censal"><i class="fa fa-check"></i><b>4.4</b> Componentes de la cobertura censal</a></li>
+<li class="chapter" data-level="4.1" data-path="cap4.html"><a href="cap4.html#enumeraciones-correctas-con-la-muestra-e"><i class="fa fa-check"></i><b>4.1</b> Enumeraciones correctas con la muestra E</a></li>
+<li class="chapter" data-level="4.2" data-path="cap4.html"><a href="cap4.html#sec-procedimientos"><i class="fa fa-check"></i><b>4.2</b> Reconstrucción de los hogares con la muestra P</a></li>
+<li class="chapter" data-level="4.3" data-path="cap4.html"><a href="cap4.html#componentes-de-la-cobertura-censal"><i class="fa fa-check"></i><b>4.3</b> Componentes de la cobertura censal</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="cap5.html"><a href="cap5.html"><i class="fa fa-check"></i><b>5</b> Emparejamiento estadístico</a>
 <ul>
@@ -202,6 +201,7 @@ div.csl-indent {
 <li class="chapter" data-level="6.2" data-path="cap6.html"><a href="cap6.html#otros-estimadores-del-sistema-dual"><i class="fa fa-check"></i><b>6.2</b> Otros estimadores del sistema dual</a></li>
 <li class="chapter" data-level="6.3" data-path="cap6.html"><a href="cap6.html#modelos-log-lineales"><i class="fa fa-check"></i><b>6.3</b> Modelos log-lineales</a></li>
 <li class="chapter" data-level="6.4" data-path="cap6.html"><a href="cap6.html#cuadro-comparativo-de-los-estimadores"><i class="fa fa-check"></i><b>6.4</b> Cuadro comparativo de los estimadores</a></li>
+<li class="chapter" data-level="6.5" data-path="05pse.html"><a href="#modelos-de-regresi%C3%B3n-en-el-sistema-dual"><i class="fa fa-check"></i><b>6.5</b> Modelos de regresión en el sistema dual</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>7</b> Referencias</a></li>
 <li class="divider"></li>
@@ -304,31 +304,49 @@ Figure 5.2: Flujo general del proceso de emparejamiento en la PES
 <div id="geolocalización" class="section level3 hasAnchor" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Geolocalización<a href="#geolocalizaci%C3%B3n" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>El primer paso consiste en geocodificar las direcciones proporcionadas por los encuestados y verificar que las mismas coinciden con los segmentos cartográficos seleccionados. En caso de que algunas direcciones no tengan una precisión a nivel de segmento cartográfico, entonces será necesaria una revisión clerical para verificar las direcciones proporcionadas por los encuestados.</p>
-<p>El paquete <code>tidygeocoder</code> <span class="citation">(<a href="#ref-tidygeocoder">Cambon et al. 2021</a>)</span> puede ser útil para esa tarea, a continuación se presenta un ejemplo de juguete con cinco (5) direcciones en el departamento de Chuquisaca, Bolivia.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="cap5.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb1-2"><a href="cap5.html#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="cap5.html#cb1-3" tabindex="-1"></a><span class="fu">p_load</span>(dplyr, tidygeocoder)</span>
-<span id="cb1-4"><a href="cap5.html#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="cap5.html#cb1-5" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb1-6"><a href="cap5.html#cb1-6" tabindex="-1"></a>  <span class="sc">~</span>DIRECCION, <span class="sc">~</span>MUNICIPIO,</span>
-<span id="cb1-7"><a href="cap5.html#cb1-7" tabindex="-1"></a>  <span class="st">&quot;Av. Jaime Mendoza 123&quot;</span>, <span class="st">&quot;Sucre&quot;</span>,</span>
-<span id="cb1-8"><a href="cap5.html#cb1-8" tabindex="-1"></a>  <span class="st">&quot;Calle Bolívar 456&quot;</span>, <span class="st">&quot;Monteagudo&quot;</span>,</span>
-<span id="cb1-9"><a href="cap5.html#cb1-9" tabindex="-1"></a>  <span class="st">&quot;Plaza 25 de Mayo 789&quot;</span>, <span class="st">&quot;Camargo&quot;</span>,</span>
-<span id="cb1-10"><a href="cap5.html#cb1-10" tabindex="-1"></a>  <span class="st">&quot;Av. del Maestro 321&quot;</span>, <span class="st">&quot;Villa Serrano&quot;</span>,</span>
-<span id="cb1-11"><a href="cap5.html#cb1-11" tabindex="-1"></a>  <span class="st">&quot;Calle Potosí 654&quot;</span>, <span class="st">&quot;Zudáñez&quot;</span></span>
-<span id="cb1-12"><a href="cap5.html#cb1-12" tabindex="-1"></a>)</span>
-<span id="cb1-13"><a href="cap5.html#cb1-13" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="cap5.html#cb1-14" tabindex="-1"></a>datos <span class="sc">|&gt;</span></span>
-<span id="cb1-15"><a href="cap5.html#cb1-15" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">addrs =</span> <span class="fu">paste0</span>(DIRECCION, <span class="st">&quot;, &quot;</span>, MUNICIPIO, <span class="st">&quot;, Bolivia&quot;</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1-16"><a href="cap5.html#cb1-16" tabindex="-1"></a>  <span class="fu">geocode</span>(addrs, <span class="at">method =</span> <span class="st">&quot;arcgis&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 5 × 5
-##   DIRECCION             MUNICIPIO     addrs                            lat  long
-##   &lt;chr&gt;                 &lt;chr&gt;         &lt;chr&gt;                          &lt;dbl&gt; &lt;dbl&gt;
-## 1 Av. Jaime Mendoza 123 Sucre         Av. Jaime Mendoza 123, Sucre,… -19.0 -65.3
-## 2 Calle Bolívar 456     Monteagudo    Calle Bolívar 456, Monteagudo… -19.8 -64.0
-## 3 Plaza 25 de Mayo 789  Camargo       Plaza 25 de Mayo 789, Camargo… -18.0 -62.7
-## 4 Av. del Maestro 321   Villa Serrano Av. del Maestro 321, Villa Se… -19.1 -64.3
-## 5 Calle Potosí 654      Zudáñez       Calle Potosí 654, Zudáñez, Bo… -19.0 -64.8</code></pre>
+<p>El siguiente ejemplo, muestra un conjunto de datos con cinco direcciones en distintos municipios d eun país. Cada dirección se combina con el nombre del municipio y el país para formar una dirección completa. Luego, se obtiene la <strong>georreferenciación</strong>; es decir, las coordenadas de latitud y longitud correspondientes a cada ubicación. La tabla resultante se vería así:</p>
+<table>
+<thead>
+<tr class="header">
+<th>DIRECCION</th>
+<th>MUNICIPIO</th>
+<th>LATITUD</th>
+<th>LONGITUD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Av. Jaime Mendoza 123</td>
+<td>Sucre</td>
+<td>-19.0333</td>
+<td>-65.2622</td>
+</tr>
+<tr class="even">
+<td>Calle Bolívar 456</td>
+<td>Monteagudo</td>
+<td>-19.7700</td>
+<td>-63.4100</td>
+</tr>
+<tr class="odd">
+<td>Plaza 25 de Mayo 789</td>
+<td>Camargo</td>
+<td>-20.0500</td>
+<td>-64.5500</td>
+</tr>
+<tr class="even">
+<td>Av. del Maestro 321</td>
+<td>Villa Serrano</td>
+<td>-20.4333</td>
+<td>-64.5500</td>
+</tr>
+<tr class="odd">
+<td>Calle Potosí 654</td>
+<td>Zudáñez</td>
+<td>-19.9000</td>
+<td>-64.8500</td>
+</tr>
+</tbody>
+</table>
 <p>En caso de que algunos de los puntos de longitud y latitud no queden dentro de los segmentos de la muestra P, los revisores clericales deben verificar las direcciones y establecer si hay descritos algunos puntos de referencia que no se usaron durante el procesamiento automatizado que hubiera afectado la precisión del proceso automático. Los resultados de la geocodificación se utilizan durante el proceso de emparejamiento para identificar áreas de búsqueda alrededor de la dirección proporcionada por el encuestado.</p>
 <p>Durante el proceso de geocodificación manual, los revisores asignan una coordenada que permita una mayor precisión. Si no es posible lograr una precisión que apunte a una UPM específica de la muestra P, entonces la misma podrá asociarse a más de una UPM para crear áreas de búsqueda que abarquen dicha dirección. Asimismo, es recomendable que se asigne un código que refleje el nivel de confianza que el revisor manual considera que hay en que la dirección se encuentra dentro del área de búsqueda.</p>
 <p>Es recomendable que el emparejamiento automático de personas incluya los geocódigos asignados a las direcciones proporcionadas por los encuestados, así como los nombres, apellidos, la edad, el sexo, el día y mes de nacimiento. Otra información que puede ser usada en el proceso son: los números de teléfono de los encuestados del hogar, datos geográficos como el departamento, municipio o código del segmento. Con este propósito se puede usar un modelo de vinculación probabilística de registros conocido como <em>record linkage</em>.</p>
@@ -353,26 +371,24 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 </p>
 </div>
 <p>Para ilustrar las tareas involucradas a lo largo del proceso de emparejamiento de registros, se utilizará un ejemplo compuesto por dos tablas de datos artificiales.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="cap5.html#cb3-1" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/censo.rda&quot;</span>)</span>
-<span id="cb3-2"><a href="cap5.html#cb3-2" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;data/encuesta.rda&quot;</span>)</span></code></pre></div>
 <p>A continuación se presenta la estructura para los primeros registros de la tabla censo:</p>
-<div id="knwiuuhufc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#knwiuuhufc table {
+<div id="ytdhswhgqn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ytdhswhgqn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#knwiuuhufc thead, #knwiuuhufc tbody, #knwiuuhufc tfoot, #knwiuuhufc tr, #knwiuuhufc td, #knwiuuhufc th {
+#ytdhswhgqn thead, #ytdhswhgqn tbody, #ytdhswhgqn tfoot, #ytdhswhgqn tr, #ytdhswhgqn td, #ytdhswhgqn th {
   border-style: none;
 }
 
-#knwiuuhufc p {
+#ytdhswhgqn p {
   margin: 0;
   padding: 0;
 }
 
-#knwiuuhufc .gt_table {
+#ytdhswhgqn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -398,12 +414,12 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-left-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_caption {
+#ytdhswhgqn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#knwiuuhufc .gt_title {
+#ytdhswhgqn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -415,7 +431,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-width: 0;
 }
 
-#knwiuuhufc .gt_subtitle {
+#ytdhswhgqn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -427,7 +443,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-width: 0;
 }
 
-#knwiuuhufc .gt_heading {
+#ytdhswhgqn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -439,13 +455,13 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_bottom_border {
+#ytdhswhgqn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_col_headings {
+#ytdhswhgqn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -460,7 +476,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_col_heading {
+#ytdhswhgqn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -480,7 +496,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#knwiuuhufc .gt_column_spanner_outer {
+#ytdhswhgqn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -492,15 +508,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 4px;
 }
 
-#knwiuuhufc .gt_column_spanner_outer:first-child {
+#ytdhswhgqn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#knwiuuhufc .gt_column_spanner_outer:last-child {
+#ytdhswhgqn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#knwiuuhufc .gt_column_spanner {
+#ytdhswhgqn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -512,11 +528,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   width: 100%;
 }
 
-#knwiuuhufc .gt_spanner_row {
+#ytdhswhgqn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#knwiuuhufc .gt_group_heading {
+#ytdhswhgqn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -542,7 +558,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   text-align: left;
 }
 
-#knwiuuhufc .gt_empty_group_heading {
+#ytdhswhgqn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -557,15 +573,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: middle;
 }
 
-#knwiuuhufc .gt_from_md > :first-child {
+#ytdhswhgqn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#knwiuuhufc .gt_from_md > :last-child {
+#ytdhswhgqn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#knwiuuhufc .gt_row {
+#ytdhswhgqn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -584,7 +600,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#knwiuuhufc .gt_stub {
+#ytdhswhgqn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -597,7 +613,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#knwiuuhufc .gt_stub_row_group {
+#ytdhswhgqn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -611,15 +627,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: top;
 }
 
-#knwiuuhufc .gt_row_group_first td {
+#ytdhswhgqn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#knwiuuhufc .gt_row_group_first th {
+#ytdhswhgqn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#knwiuuhufc .gt_summary_row {
+#ytdhswhgqn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -629,16 +645,16 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#knwiuuhufc .gt_first_summary_row {
+#ytdhswhgqn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_first_summary_row.thick {
+#ytdhswhgqn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#knwiuuhufc .gt_last_summary_row {
+#ytdhswhgqn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -648,7 +664,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_grand_summary_row {
+#ytdhswhgqn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -658,7 +674,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#knwiuuhufc .gt_first_grand_summary_row {
+#ytdhswhgqn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -668,7 +684,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_last_grand_summary_row_top {
+#ytdhswhgqn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -678,11 +694,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_striped {
+#ytdhswhgqn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#knwiuuhufc .gt_table_body {
+#ytdhswhgqn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -691,7 +707,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_footnotes {
+#ytdhswhgqn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -705,7 +721,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_footnote {
+#ytdhswhgqn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -714,7 +730,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#knwiuuhufc .gt_sourcenotes {
+#ytdhswhgqn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -728,7 +744,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#knwiuuhufc .gt_sourcenote {
+#ytdhswhgqn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -736,72 +752,72 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#knwiuuhufc .gt_left {
+#ytdhswhgqn .gt_left {
   text-align: left;
 }
 
-#knwiuuhufc .gt_center {
+#ytdhswhgqn .gt_center {
   text-align: center;
 }
 
-#knwiuuhufc .gt_right {
+#ytdhswhgqn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#knwiuuhufc .gt_font_normal {
+#ytdhswhgqn .gt_font_normal {
   font-weight: normal;
 }
 
-#knwiuuhufc .gt_font_bold {
+#ytdhswhgqn .gt_font_bold {
   font-weight: bold;
 }
 
-#knwiuuhufc .gt_font_italic {
+#ytdhswhgqn .gt_font_italic {
   font-style: italic;
 }
 
-#knwiuuhufc .gt_super {
+#ytdhswhgqn .gt_super {
   font-size: 65%;
 }
 
-#knwiuuhufc .gt_footnote_marks {
+#ytdhswhgqn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#knwiuuhufc .gt_asterisk {
+#ytdhswhgqn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#knwiuuhufc .gt_indent_1 {
+#ytdhswhgqn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#knwiuuhufc .gt_indent_2 {
+#ytdhswhgqn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#knwiuuhufc .gt_indent_3 {
+#ytdhswhgqn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#knwiuuhufc .gt_indent_4 {
+#ytdhswhgqn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#knwiuuhufc .gt_indent_5 {
+#ytdhswhgqn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#knwiuuhufc .katex-display {
+#ytdhswhgqn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#knwiuuhufc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ytdhswhgqn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -890,23 +906,23 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 </table>
 </div>
 <p>La tabla encuesta presenta la siguiente estructura para los primeros registros:</p>
-<div id="ymqcqxjuis" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ymqcqxjuis table {
+<div id="vzgtyozbwq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vzgtyozbwq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ymqcqxjuis thead, #ymqcqxjuis tbody, #ymqcqxjuis tfoot, #ymqcqxjuis tr, #ymqcqxjuis td, #ymqcqxjuis th {
+#vzgtyozbwq thead, #vzgtyozbwq tbody, #vzgtyozbwq tfoot, #vzgtyozbwq tr, #vzgtyozbwq td, #vzgtyozbwq th {
   border-style: none;
 }
 
-#ymqcqxjuis p {
+#vzgtyozbwq p {
   margin: 0;
   padding: 0;
 }
 
-#ymqcqxjuis .gt_table {
+#vzgtyozbwq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -932,12 +948,12 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-left-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_caption {
+#vzgtyozbwq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ymqcqxjuis .gt_title {
+#vzgtyozbwq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -949,7 +965,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-width: 0;
 }
 
-#ymqcqxjuis .gt_subtitle {
+#vzgtyozbwq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -961,7 +977,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-width: 0;
 }
 
-#ymqcqxjuis .gt_heading {
+#vzgtyozbwq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -973,13 +989,13 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_bottom_border {
+#vzgtyozbwq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_col_headings {
+#vzgtyozbwq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -994,7 +1010,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_col_heading {
+#vzgtyozbwq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1014,7 +1030,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#ymqcqxjuis .gt_column_spanner_outer {
+#vzgtyozbwq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1026,15 +1042,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 4px;
 }
 
-#ymqcqxjuis .gt_column_spanner_outer:first-child {
+#vzgtyozbwq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ymqcqxjuis .gt_column_spanner_outer:last-child {
+#vzgtyozbwq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ymqcqxjuis .gt_column_spanner {
+#vzgtyozbwq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1046,11 +1062,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   width: 100%;
 }
 
-#ymqcqxjuis .gt_spanner_row {
+#vzgtyozbwq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ymqcqxjuis .gt_group_heading {
+#vzgtyozbwq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1076,7 +1092,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   text-align: left;
 }
 
-#ymqcqxjuis .gt_empty_group_heading {
+#vzgtyozbwq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1091,15 +1107,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: middle;
 }
 
-#ymqcqxjuis .gt_from_md > :first-child {
+#vzgtyozbwq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ymqcqxjuis .gt_from_md > :last-child {
+#vzgtyozbwq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ymqcqxjuis .gt_row {
+#vzgtyozbwq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1118,7 +1134,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#ymqcqxjuis .gt_stub {
+#vzgtyozbwq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1131,7 +1147,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#ymqcqxjuis .gt_stub_row_group {
+#vzgtyozbwq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1145,15 +1161,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: top;
 }
 
-#ymqcqxjuis .gt_row_group_first td {
+#vzgtyozbwq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ymqcqxjuis .gt_row_group_first th {
+#vzgtyozbwq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ymqcqxjuis .gt_summary_row {
+#vzgtyozbwq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1163,16 +1179,16 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#ymqcqxjuis .gt_first_summary_row {
+#vzgtyozbwq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_first_summary_row.thick {
+#vzgtyozbwq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ymqcqxjuis .gt_last_summary_row {
+#vzgtyozbwq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1182,7 +1198,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_grand_summary_row {
+#vzgtyozbwq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1192,7 +1208,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#ymqcqxjuis .gt_first_grand_summary_row {
+#vzgtyozbwq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1202,7 +1218,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_last_grand_summary_row_top {
+#vzgtyozbwq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1212,11 +1228,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_striped {
+#vzgtyozbwq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ymqcqxjuis .gt_table_body {
+#vzgtyozbwq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1225,7 +1241,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_footnotes {
+#vzgtyozbwq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1239,7 +1255,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_footnote {
+#vzgtyozbwq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1248,7 +1264,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#ymqcqxjuis .gt_sourcenotes {
+#vzgtyozbwq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1262,7 +1278,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#ymqcqxjuis .gt_sourcenote {
+#vzgtyozbwq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1270,72 +1286,72 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#ymqcqxjuis .gt_left {
+#vzgtyozbwq .gt_left {
   text-align: left;
 }
 
-#ymqcqxjuis .gt_center {
+#vzgtyozbwq .gt_center {
   text-align: center;
 }
 
-#ymqcqxjuis .gt_right {
+#vzgtyozbwq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ymqcqxjuis .gt_font_normal {
+#vzgtyozbwq .gt_font_normal {
   font-weight: normal;
 }
 
-#ymqcqxjuis .gt_font_bold {
+#vzgtyozbwq .gt_font_bold {
   font-weight: bold;
 }
 
-#ymqcqxjuis .gt_font_italic {
+#vzgtyozbwq .gt_font_italic {
   font-style: italic;
 }
 
-#ymqcqxjuis .gt_super {
+#vzgtyozbwq .gt_super {
   font-size: 65%;
 }
 
-#ymqcqxjuis .gt_footnote_marks {
+#vzgtyozbwq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ymqcqxjuis .gt_asterisk {
+#vzgtyozbwq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ymqcqxjuis .gt_indent_1 {
+#vzgtyozbwq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ymqcqxjuis .gt_indent_2 {
+#vzgtyozbwq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ymqcqxjuis .gt_indent_3 {
+#vzgtyozbwq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ymqcqxjuis .gt_indent_4 {
+#vzgtyozbwq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ymqcqxjuis .gt_indent_5 {
+#vzgtyozbwq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ymqcqxjuis .katex-display {
+#vzgtyozbwq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ymqcqxjuis div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vzgtyozbwq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1418,49 +1434,35 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 </ol>
 <div id="limpieza-de-los-datos" class="section level4 hasAnchor" number="5.2.3.1">
 <h4><span class="header-section-number">5.2.3.1</span> Limpieza de los datos<a href="cap5.html#limpieza-de-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>En este paso implementamos una función que nos permita remover los caracteres raros y así limpiar el texto, esta función se ha denominado <code>limpiar_texto()</code> y en cada línea hemos documentado el objetivo, es importante señalar que pueden existir otras estructuras que pueden ser removidas.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="cap5.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb4-2"><a href="cap5.html#cb4-2" tabindex="-1"></a><span class="fu">p_load</span>(dplyr, tidyr, stringr, stringi, assertr)</span>
-<span id="cb4-3"><a href="cap5.html#cb4-3" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="cap5.html#cb4-4" tabindex="-1"></a>limpiar_texto <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb4-5"><a href="cap5.html#cb4-5" tabindex="-1"></a>  x <span class="sc">|&gt;</span> </span>
-<span id="cb4-6"><a href="cap5.html#cb4-6" tabindex="-1"></a>    <span class="fu">iconv</span>(<span class="at">from =</span> <span class="st">&quot;&quot;</span>, <span class="at">to =</span> <span class="st">&quot;UTF-8&quot;</span>, <span class="at">sub =</span> <span class="st">&quot;&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-7"><a href="cap5.html#cb4-7" tabindex="-1"></a>    <span class="fu">str_to_lower</span>() <span class="sc">|&gt;</span>                            <span class="co"># Convertir a minúsculas</span></span>
-<span id="cb4-8"><a href="cap5.html#cb4-8" tabindex="-1"></a>    <span class="fu">stri_trans_general</span>(<span class="st">&quot;Latin-ASCII&quot;</span>) <span class="sc">|&gt;</span>         <span class="co"># Quitar acentos</span></span>
-<span id="cb4-9"><a href="cap5.html#cb4-9" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">&quot;[[:punct:]]&quot;</span>, <span class="st">&quot; &quot;</span>) <span class="sc">|&gt;</span>       <span class="co"># Quitar puntuación</span></span>
-<span id="cb4-10"><a href="cap5.html#cb4-10" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot; &quot;</span>) <span class="sc">|&gt;</span>              <span class="co"># Espacios múltiples</span></span>
-<span id="cb4-11"><a href="cap5.html#cb4-11" tabindex="-1"></a>    <span class="fu">str_trim</span>()                                   <span class="co"># Quitar espacios extremos</span></span>
-<span id="cb4-12"><a href="cap5.html#cb4-12" tabindex="-1"></a>}</span></code></pre></div>
-<p>De igual manera el investigador puede establecer un vector de palabras vacías o irrelevantes, que prefiere eliminar de las cadena de texto. Por ejemplo, a continuación se crea el vector <code>stop_words</code> con varias palabras y se aplica la función <code>eliminar_stopwords()</code> para eliminarlas.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="cap5.html#cb5-1" tabindex="-1"></a>stop_words <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;de&quot;</span>, <span class="st">&quot;del&quot;</span>, <span class="st">&quot;la&quot;</span>, <span class="st">&quot;los&quot;</span>, <span class="st">&quot;las&quot;</span>, <span class="st">&quot;el&quot;</span>, <span class="st">&quot;y&quot;</span>)</span>
-<span id="cb5-2"><a href="cap5.html#cb5-2" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="cap5.html#cb5-3" tabindex="-1"></a>eliminar_stopwords <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">palabras =</span> stop_words) {</span>
-<span id="cb5-4"><a href="cap5.html#cb5-4" tabindex="-1"></a>  palabras_pattern <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">b(&quot;</span>, <span class="fu">paste</span>(palabras, <span class="at">collapse =</span> <span class="st">&quot;|&quot;</span>), <span class="st">&quot;)</span><span class="sc">\\</span><span class="st">b&quot;</span>)</span>
-<span id="cb5-5"><a href="cap5.html#cb5-5" tabindex="-1"></a>  <span class="fu">str_remove_all</span>(x, palabras_pattern) <span class="sc">%&gt;%</span></span>
-<span id="cb5-6"><a href="cap5.html#cb5-6" tabindex="-1"></a>    <span class="fu">str_replace_all</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">s+&quot;</span>, <span class="st">&quot; &quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-7"><a href="cap5.html#cb5-7" tabindex="-1"></a>    <span class="fu">str_trim</span>()</span>
-<span id="cb5-8"><a href="cap5.html#cb5-8" tabindex="-1"></a>}</span></code></pre></div>
+<p>Es posible implementar una rutina de limpieza que limpie y estandarice un texto para que sea más fácil de analizar. A continuación se ejemplifican los pasos para esta limpieza:</p>
+<ul>
+<li>En primer lugar, se debe asegurar que el texto esté en una codificación estándar, lo cual evita que aparezcan símbolos extraños; por ejemplo, un nombre como “JosÃ©” se convierte correctamente en “José”.</li>
+<li>Luego se transforman todas las letras a minúsculas para uniformar el estilo, de modo que nombres como “Andrés”, “ANDRÉS” y “andrés” queden todos representados como “andrés”.</li>
+<li>Después elimina los acentos y signos diacríticos, de manera que “José” se convierte en “jose” y “María” en “maria”.</li>
+<li>El siguiente paso reemplaza todos los signos de puntuación por espacios; así, un nombre escrito como “Juan-Camilo!” se transforma en “juan camilo”.</li>
+<li>Posteriormente, se reducen los espacios múltiples a un solo espacio, de modo que “Luis Fernando” se corrige a “luis fernando”.</li>
+<li>Finalmente, se eliminan los espacios sobrantes al inicio y al final del texto, de manera que “ Catalina Gómez ” queda como “catalina gomez”.</li>
+</ul>
+<p>Como resultado, se obtiene un texto limpio y homogéneo, listo para análisis posterior o procesamiento automático de datos.</p>
+<p>De igual manera, el investigador puede definir un conjunto de palabras que considera vacías o irrelevantes para el análisis y que prefiere eliminar de las cadenas de texto. Estas palabras suelen ser artículos, preposiciones o conjunciones que no aportan información significativa, como “de”, “del”, “la”, “los”, “las”, “el” o “y”. Una vez definido este conjunto de palabras, se procede a recorrer el texto y eliminar todas las ocurrencias de estas palabras, asegurándose de que no queden espacios sobrantes ni múltiples espacios consecutivos. Finalmente, se recortan los espacios al inicio y al final de cada texto, de modo que el resultado sea una cadena limpia, homogénea y lista para un análisis más preciso.</p>
 <p>Ahora podemos aplicar nuestras funciones sobre las variables de interés en los conjuntos de datos. Es importante destacar que el proceso de preprocesamiento de datos no debe sobrescribir los datos originales y en su lugar, se deben crear nuevos atributos que contengan los datos limpios y estandarizados, o generar nuevas tablas de datos que contengan los datos limpios y estandarizados.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="cap5.html#cb6-1" tabindex="-1"></a>censo_limpio <span class="ot">&lt;-</span> censo <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="cap5.html#cb6-2" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido, parentesco, sexo),</span>
-<span id="cb6-3"><a href="cap5.html#cb6-3" tabindex="-1"></a>                              <span class="sc">~</span><span class="fu">eliminar_stopwords</span>(<span class="fu">limpiar_texto</span>(.))))</span></code></pre></div>
-<div id="piqjjobczz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#piqjjobczz table {
+<div id="pmzvyhkchb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pmzvyhkchb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#piqjjobczz thead, #piqjjobczz tbody, #piqjjobczz tfoot, #piqjjobczz tr, #piqjjobczz td, #piqjjobczz th {
+#pmzvyhkchb thead, #pmzvyhkchb tbody, #pmzvyhkchb tfoot, #pmzvyhkchb tr, #pmzvyhkchb td, #pmzvyhkchb th {
   border-style: none;
 }
 
-#piqjjobczz p {
+#pmzvyhkchb p {
   margin: 0;
   padding: 0;
 }
 
-#piqjjobczz .gt_table {
+#pmzvyhkchb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1486,12 +1488,12 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-left-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_caption {
+#pmzvyhkchb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#piqjjobczz .gt_title {
+#pmzvyhkchb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1503,7 +1505,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-width: 0;
 }
 
-#piqjjobczz .gt_subtitle {
+#pmzvyhkchb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1515,7 +1517,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-width: 0;
 }
 
-#piqjjobczz .gt_heading {
+#pmzvyhkchb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1527,13 +1529,13 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_bottom_border {
+#pmzvyhkchb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_col_headings {
+#pmzvyhkchb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1548,7 +1550,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_col_heading {
+#pmzvyhkchb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1568,7 +1570,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#piqjjobczz .gt_column_spanner_outer {
+#pmzvyhkchb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1580,15 +1582,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 4px;
 }
 
-#piqjjobczz .gt_column_spanner_outer:first-child {
+#pmzvyhkchb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#piqjjobczz .gt_column_spanner_outer:last-child {
+#pmzvyhkchb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#piqjjobczz .gt_column_spanner {
+#pmzvyhkchb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1600,11 +1602,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   width: 100%;
 }
 
-#piqjjobczz .gt_spanner_row {
+#pmzvyhkchb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#piqjjobczz .gt_group_heading {
+#pmzvyhkchb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1630,7 +1632,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   text-align: left;
 }
 
-#piqjjobczz .gt_empty_group_heading {
+#pmzvyhkchb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1645,15 +1647,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: middle;
 }
 
-#piqjjobczz .gt_from_md > :first-child {
+#pmzvyhkchb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#piqjjobczz .gt_from_md > :last-child {
+#pmzvyhkchb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#piqjjobczz .gt_row {
+#pmzvyhkchb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1672,7 +1674,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#piqjjobczz .gt_stub {
+#pmzvyhkchb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1685,7 +1687,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#piqjjobczz .gt_stub_row_group {
+#pmzvyhkchb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1699,15 +1701,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: top;
 }
 
-#piqjjobczz .gt_row_group_first td {
+#pmzvyhkchb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#piqjjobczz .gt_row_group_first th {
+#pmzvyhkchb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#piqjjobczz .gt_summary_row {
+#pmzvyhkchb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1717,16 +1719,16 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#piqjjobczz .gt_first_summary_row {
+#pmzvyhkchb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_first_summary_row.thick {
+#pmzvyhkchb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#piqjjobczz .gt_last_summary_row {
+#pmzvyhkchb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1736,7 +1738,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_grand_summary_row {
+#pmzvyhkchb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1746,7 +1748,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#piqjjobczz .gt_first_grand_summary_row {
+#pmzvyhkchb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1756,7 +1758,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_last_grand_summary_row_top {
+#pmzvyhkchb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1766,11 +1768,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_striped {
+#pmzvyhkchb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#piqjjobczz .gt_table_body {
+#pmzvyhkchb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1779,7 +1781,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_footnotes {
+#pmzvyhkchb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1793,7 +1795,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_footnote {
+#pmzvyhkchb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1802,7 +1804,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#piqjjobczz .gt_sourcenotes {
+#pmzvyhkchb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1816,7 +1818,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#piqjjobczz .gt_sourcenote {
+#pmzvyhkchb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1824,72 +1826,72 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#piqjjobczz .gt_left {
+#pmzvyhkchb .gt_left {
   text-align: left;
 }
 
-#piqjjobczz .gt_center {
+#pmzvyhkchb .gt_center {
   text-align: center;
 }
 
-#piqjjobczz .gt_right {
+#pmzvyhkchb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#piqjjobczz .gt_font_normal {
+#pmzvyhkchb .gt_font_normal {
   font-weight: normal;
 }
 
-#piqjjobczz .gt_font_bold {
+#pmzvyhkchb .gt_font_bold {
   font-weight: bold;
 }
 
-#piqjjobczz .gt_font_italic {
+#pmzvyhkchb .gt_font_italic {
   font-style: italic;
 }
 
-#piqjjobczz .gt_super {
+#pmzvyhkchb .gt_super {
   font-size: 65%;
 }
 
-#piqjjobczz .gt_footnote_marks {
+#pmzvyhkchb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#piqjjobczz .gt_asterisk {
+#pmzvyhkchb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#piqjjobczz .gt_indent_1 {
+#pmzvyhkchb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#piqjjobczz .gt_indent_2 {
+#pmzvyhkchb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#piqjjobczz .gt_indent_3 {
+#pmzvyhkchb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#piqjjobczz .gt_indent_4 {
+#pmzvyhkchb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#piqjjobczz .gt_indent_5 {
+#pmzvyhkchb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#piqjjobczz .katex-display {
+#pmzvyhkchb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#piqjjobczz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pmzvyhkchb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1978,29 +1980,23 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 </table>
 </div>
 <p>En el caso de la tabla de la encuesta, primero se separa el nombre_completo en varias variables para generar la misma estructura que la tabla del censo, o podría unirse las variables del censo para generar un nombre_unico, lo importante es dejar las tablas en la misma estructura. De igual forma para la fecha de nacimiento. Paso seguido se aplican las funciones sobre las variables de interés.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="cap5.html#cb7-1" tabindex="-1"></a>encuesta_limpia <span class="ot">&lt;-</span> encuesta <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="cap5.html#cb7-2" tabindex="-1"></a>                   <span class="fu">separate</span>(nombre_completo, <span class="fu">c</span>(<span class="st">&quot;nombre&quot;</span>, <span class="st">&quot;apellido&quot;</span>), <span class="at">sep=</span><span class="st">&quot; &quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a href="cap5.html#cb7-3" tabindex="-1"></a>                   <span class="fu">separate</span>(fecha_nacimiento, <span class="fu">c</span>(<span class="st">&quot;anio_nac&quot;</span>, <span class="st">&quot;mes_nac&quot;</span>, <span class="st">&quot;dia_nac&quot;</span>), <span class="at">sep=</span><span class="st">&quot;-&quot;</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-4"><a href="cap5.html#cb7-4" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">&quot;anio_nac&quot;</span>, <span class="st">&quot;mes_nac&quot;</span>, <span class="st">&quot;dia_nac&quot;</span>), <span class="sc">~</span><span class="fu">as.numeric</span>(.))) <span class="sc">|&gt;</span>   </span>
-<span id="cb7-5"><a href="cap5.html#cb7-5" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido, parentesco, sexo),</span>
-<span id="cb7-6"><a href="cap5.html#cb7-6" tabindex="-1"></a>                                 <span class="sc">~</span><span class="fu">eliminar_stopwords</span>(<span class="fu">limpiar_texto</span>(.))))</span></code></pre></div>
-<div id="itudjxalsr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#itudjxalsr table {
+<div id="ctlwaeeiqd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ctlwaeeiqd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#itudjxalsr thead, #itudjxalsr tbody, #itudjxalsr tfoot, #itudjxalsr tr, #itudjxalsr td, #itudjxalsr th {
+#ctlwaeeiqd thead, #ctlwaeeiqd tbody, #ctlwaeeiqd tfoot, #ctlwaeeiqd tr, #ctlwaeeiqd td, #ctlwaeeiqd th {
   border-style: none;
 }
 
-#itudjxalsr p {
+#ctlwaeeiqd p {
   margin: 0;
   padding: 0;
 }
 
-#itudjxalsr .gt_table {
+#ctlwaeeiqd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2026,12 +2022,12 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-left-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_caption {
+#ctlwaeeiqd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#itudjxalsr .gt_title {
+#ctlwaeeiqd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2043,7 +2039,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-width: 0;
 }
 
-#itudjxalsr .gt_subtitle {
+#ctlwaeeiqd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2055,7 +2051,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-width: 0;
 }
 
-#itudjxalsr .gt_heading {
+#ctlwaeeiqd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2067,13 +2063,13 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_bottom_border {
+#ctlwaeeiqd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_col_headings {
+#ctlwaeeiqd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2088,7 +2084,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_col_heading {
+#ctlwaeeiqd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2108,7 +2104,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#itudjxalsr .gt_column_spanner_outer {
+#ctlwaeeiqd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2120,15 +2116,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 4px;
 }
 
-#itudjxalsr .gt_column_spanner_outer:first-child {
+#ctlwaeeiqd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#itudjxalsr .gt_column_spanner_outer:last-child {
+#ctlwaeeiqd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#itudjxalsr .gt_column_spanner {
+#ctlwaeeiqd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2140,11 +2136,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   width: 100%;
 }
 
-#itudjxalsr .gt_spanner_row {
+#ctlwaeeiqd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#itudjxalsr .gt_group_heading {
+#ctlwaeeiqd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2170,7 +2166,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   text-align: left;
 }
 
-#itudjxalsr .gt_empty_group_heading {
+#ctlwaeeiqd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2185,15 +2181,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: middle;
 }
 
-#itudjxalsr .gt_from_md > :first-child {
+#ctlwaeeiqd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#itudjxalsr .gt_from_md > :last-child {
+#ctlwaeeiqd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#itudjxalsr .gt_row {
+#ctlwaeeiqd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2212,7 +2208,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#itudjxalsr .gt_stub {
+#ctlwaeeiqd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2225,7 +2221,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#itudjxalsr .gt_stub_row_group {
+#ctlwaeeiqd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2239,15 +2235,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: top;
 }
 
-#itudjxalsr .gt_row_group_first td {
+#ctlwaeeiqd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#itudjxalsr .gt_row_group_first th {
+#ctlwaeeiqd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#itudjxalsr .gt_summary_row {
+#ctlwaeeiqd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2257,16 +2253,16 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#itudjxalsr .gt_first_summary_row {
+#ctlwaeeiqd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_first_summary_row.thick {
+#ctlwaeeiqd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#itudjxalsr .gt_last_summary_row {
+#ctlwaeeiqd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2276,7 +2272,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_grand_summary_row {
+#ctlwaeeiqd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2286,7 +2282,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#itudjxalsr .gt_first_grand_summary_row {
+#ctlwaeeiqd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2296,7 +2292,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_last_grand_summary_row_top {
+#ctlwaeeiqd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2306,11 +2302,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_striped {
+#ctlwaeeiqd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#itudjxalsr .gt_table_body {
+#ctlwaeeiqd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2319,7 +2315,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_footnotes {
+#ctlwaeeiqd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2333,7 +2329,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_footnote {
+#ctlwaeeiqd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2342,7 +2338,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#itudjxalsr .gt_sourcenotes {
+#ctlwaeeiqd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2356,7 +2352,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#itudjxalsr .gt_sourcenote {
+#ctlwaeeiqd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2364,72 +2360,72 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#itudjxalsr .gt_left {
+#ctlwaeeiqd .gt_left {
   text-align: left;
 }
 
-#itudjxalsr .gt_center {
+#ctlwaeeiqd .gt_center {
   text-align: center;
 }
 
-#itudjxalsr .gt_right {
+#ctlwaeeiqd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#itudjxalsr .gt_font_normal {
+#ctlwaeeiqd .gt_font_normal {
   font-weight: normal;
 }
 
-#itudjxalsr .gt_font_bold {
+#ctlwaeeiqd .gt_font_bold {
   font-weight: bold;
 }
 
-#itudjxalsr .gt_font_italic {
+#ctlwaeeiqd .gt_font_italic {
   font-style: italic;
 }
 
-#itudjxalsr .gt_super {
+#ctlwaeeiqd .gt_super {
   font-size: 65%;
 }
 
-#itudjxalsr .gt_footnote_marks {
+#ctlwaeeiqd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#itudjxalsr .gt_asterisk {
+#ctlwaeeiqd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#itudjxalsr .gt_indent_1 {
+#ctlwaeeiqd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#itudjxalsr .gt_indent_2 {
+#ctlwaeeiqd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#itudjxalsr .gt_indent_3 {
+#ctlwaeeiqd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#itudjxalsr .gt_indent_4 {
+#ctlwaeeiqd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#itudjxalsr .gt_indent_5 {
+#ctlwaeeiqd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#itudjxalsr .katex-display {
+#ctlwaeeiqd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#itudjxalsr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ctlwaeeiqd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2577,7 +2573,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 <li>Si el código resultante tiene más de tres dígitos, se trunca para que tenga una longitud final de cuatro caracteres (letra + tres dígitos).</li>
 <li>Si tiene menos de tres dígitos, se rellena con ceros.</li>
 </ul>
-<p>La siguiente tabla presenta un ejemplo de codificación con el algoritmo soundex. Se observa que, a pesar de que algunos nombres suenan igual, el algoritmo los diferencia según la primera letra.</p>
+<p>Este algoritmo se puede implementar en R con el paquete <code>phonics</code> <span class="citation">(<a href="#ref-howard2020phonetic">Howard et al. 2020</a>)</span>. La siguiente tabla presenta un ejemplo de codificación con el algoritmo soundex. Se observa que, a pesar de que algunos nombres suenan igual, el algoritmo los diferencia según la primera letra.</p>
 <table>
 <thead>
 <tr class="header">
@@ -2634,16 +2630,6 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 </tr>
 </tbody>
 </table>
-<p>El algoritmo se puede implementar en R con el paquete <code>phonics</code> <span class="citation">(<a href="#ref-howard2020phonetic">Howard et al. 2020</a>)</span> de la siguiente manera</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="cap5.html#cb8-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb8-2"><a href="cap5.html#cb8-2" tabindex="-1"></a><span class="fu">p_load</span>(phonics)</span>
-<span id="cb8-3"><a href="cap5.html#cb8-3" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="cap5.html#cb8-4" tabindex="-1"></a>nombres <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Catalina&quot;</span>, <span class="st">&quot;Katalina&quot;</span>, <span class="st">&quot;Yovana&quot;</span>, <span class="st">&quot;Jovanna&quot;</span>, <span class="st">&quot;Giovanna&quot;</span>, <span class="st">&quot;Yenny&quot;</span>, <span class="st">&quot;Yeni&quot;</span>, <span class="st">&quot;Gonzalez&quot;</span>, <span class="st">&quot;Gonzales&quot;</span>)</span>
-<span id="cb8-5"><a href="cap5.html#cb8-5" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="cap5.html#cb8-6" tabindex="-1"></a>codigos_soundex <span class="ot">&lt;-</span> <span class="fu">soundex</span>(<span class="fu">limpiar_texto</span>(nombres))  </span>
-<span id="cb8-7"><a href="cap5.html#cb8-7" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="cap5.html#cb8-8" tabindex="-1"></a><span class="fu">names</span>(codigos_soundex) <span class="ot">&lt;-</span> nombres</span>
-<span id="cb8-9"><a href="cap5.html#cb8-9" tabindex="-1"></a>codigos_soundex</span></code></pre></div>
 <pre><code>## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez 
 ##   &quot;C345&quot;   &quot;K345&quot;   &quot;Y150&quot;   &quot;J150&quot;   &quot;G150&quot;   &quot;Y500&quot;   &quot;Y500&quot;   &quot;G524&quot; 
 ## Gonzales 
@@ -2655,10 +2641,6 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 <p>Una ventaja clave de Metaphone es que no asigna códigos numéricos sino representaciones fonéticas alfabéticas, lo que permite una mayor precisión fonética, especialmente para consonantes. El algoritmo captura 16 sonidos consonánticos comunes en múltiples idiomas y los representa en la transcripción resultante.</p>
 <p>No obstante, como fue diseñado originalmente para el inglés, su aplicación en nombres de origen hispano o indígena puede ser limitada. Para superar estas limitaciones, se desarrollaron algoritmos posteriores como Double Metaphone, que permite hasta dos codificaciones por palabra para capturar variaciones fonéticas adicionales, especialmente útiles en bases de datos que tienen varios idiomas <span class="citation">(<a href="#ref-christen2012data">P. Christen 2012</a>)</span>.</p>
 <p>El algoritmo se puede implementar en R con el paquete <code>phonics</code> de la siguiente manera:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="cap5.html#cb10-1" tabindex="-1"></a>codigos_metaphone <span class="ot">&lt;-</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(nombres))</span>
-<span id="cb10-2"><a href="cap5.html#cb10-2" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="cap5.html#cb10-3" tabindex="-1"></a><span class="fu">names</span>(codigos_metaphone) <span class="ot">&lt;-</span> nombres</span>
-<span id="cb10-4"><a href="cap5.html#cb10-4" tabindex="-1"></a>codigos_metaphone</span></code></pre></div>
 <pre><code>## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez 
 ##   &quot;KTLN&quot;   &quot;KTLN&quot;    &quot;YFN&quot;    &quot;JFN&quot;    &quot;JFN&quot;     &quot;YN&quot;     &quot;YN&quot;  &quot;KNSLS&quot; 
 ## Gonzales 
@@ -2676,10 +2658,6 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 <li>No recodifica letras individuales, lo que disminuye la carga computacional.</li>
 <li>Proporciona una forma simplificada de agrupación fonética que no depende del idioma, a diferencia de algoritmos como Soundex o Metaphone.</li>
 </ol>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="cap5.html#cb12-1" tabindex="-1"></a>codigos_statcan <span class="ot">&lt;-</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(nombres))</span>
-<span id="cb12-2"><a href="cap5.html#cb12-2" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="cap5.html#cb12-3" tabindex="-1"></a><span class="fu">names</span>(codigos_statcan) <span class="ot">&lt;-</span> nombres</span>
-<span id="cb12-4"><a href="cap5.html#cb12-4" tabindex="-1"></a>codigos_statcan</span></code></pre></div>
 <pre><code>## Catalina Katalina   Yovana  Jovanna Giovanna    Yenny     Yeni Gonzalez 
 ##   &quot;CTLN&quot;   &quot;KTLN&quot;    &quot;YVN&quot;    &quot;JVN&quot;    &quot;GVN&quot;     &quot;YN&quot;     &quot;YN&quot;   &quot;GNZL&quot; 
 ## Gonzales 
@@ -2699,58 +2677,24 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 <li>Conversión de v a b, y de z a s, fonéticamente indistinguibles en la mayoría de los dialectos del español latino.</li>
 </ol>
 <p>El orden en que se aplican las transformaciones también juega un rol especial, el usuario puede ampliar las reglas si así lo desea, incorporando nuevas líneas.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="cap5.html#cb14-1" tabindex="-1"></a><span class="fu">require</span>(stringi)</span>
-<span id="cb14-2"><a href="cap5.html#cb14-2" tabindex="-1"></a><span class="fu">require</span>(stringr)</span>
-<span id="cb14-3"><a href="cap5.html#cb14-3" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="cap5.html#cb14-4" tabindex="-1"></a>codif_fonetico <span class="ot">&lt;-</span> <span class="cf">function</span>(nombre) {</span>
-<span id="cb14-5"><a href="cap5.html#cb14-5" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">tolower</span>(nombre)</span>
-<span id="cb14-6"><a href="cap5.html#cb14-6" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;lly&quot;</span>, <span class="st">&quot;li&quot;</span>, nombre)</span>
-<span id="cb14-7"><a href="cap5.html#cb14-7" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;ll&quot;</span>, <span class="st">&quot;y&quot;</span>, nombre)</span>
-<span id="cb14-8"><a href="cap5.html#cb14-8" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;yn$&quot;</span>, <span class="st">&quot;in&quot;</span>, nombre)</span>
-<span id="cb14-9"><a href="cap5.html#cb14-9" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^hu&quot;</span>, <span class="st">&quot;w&quot;</span>, nombre) </span>
-<span id="cb14-10"><a href="cap5.html#cb14-10" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^hua&quot;</span>, <span class="st">&quot;wa&quot;</span>, nombre)</span>
-<span id="cb14-11"><a href="cap5.html#cb14-11" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^qui|^qhi&quot;</span>, <span class="st">&quot;ki&quot;</span>, nombre)</span>
-<span id="cb14-12"><a href="cap5.html#cb14-12" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^xi&quot;</span>, <span class="st">&quot;ji&quot;</span>, nombre)</span>
-<span id="cb14-13"><a href="cap5.html#cb14-13" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^j&quot;</span>, <span class="st">&quot;y&quot;</span>, nombre) </span>
-<span id="cb14-14"><a href="cap5.html#cb14-14" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;^gio&quot;</span>, <span class="st">&quot;yo&quot;</span>, nombre)</span>
-<span id="cb14-15"><a href="cap5.html#cb14-15" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;y$&quot;</span>, <span class="st">&quot;i&quot;</span>, nombre) </span>
-<span id="cb14-16"><a href="cap5.html#cb14-16" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">b(</span><span class="sc">\\</span><span class="st">w*)hui(</span><span class="sc">\\</span><span class="st">w*)</span><span class="sc">\\</span><span class="st">b&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1wi</span><span class="sc">\\</span><span class="st">2&quot;</span>, nombre)</span>
-<span id="cb14-17"><a href="cap5.html#cb14-17" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;ch&quot;</span>, <span class="st">&quot;x&quot;</span>, nombre)</span>
-<span id="cb14-18"><a href="cap5.html#cb14-18" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;[aeiouh]&quot;</span>, <span class="st">&quot;&quot;</span>, nombre)</span>
-<span id="cb14-19"><a href="cap5.html#cb14-19" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;v&quot;</span>, <span class="st">&quot;b&quot;</span>, nombre)</span>
-<span id="cb14-20"><a href="cap5.html#cb14-20" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;z&quot;</span>, <span class="st">&quot;s&quot;</span>, nombre)</span>
-<span id="cb14-21"><a href="cap5.html#cb14-21" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(nombre, <span class="st">&quot;c(?=[ei])&quot;</span>, <span class="st">&quot;s&quot;</span>)  </span>
-<span id="cb14-22"><a href="cap5.html#cb14-22" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;k&quot;</span>, nombre)          </span>
-<span id="cb14-23"><a href="cap5.html#cb14-23" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;qu&quot;</span>, <span class="st">&quot;k&quot;</span>, nombre)</span>
-<span id="cb14-24"><a href="cap5.html#cb14-24" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(nombre, <span class="st">&quot;g(?=[ei])&quot;</span>, <span class="st">&quot;j&quot;</span>)</span>
-<span id="cb14-25"><a href="cap5.html#cb14-25" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;gue|gui&quot;</span>, <span class="st">&quot;gi&quot;</span>, nombre)</span>
-<span id="cb14-26"><a href="cap5.html#cb14-26" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">stri_trans_general</span>(nombre, <span class="st">&quot;Latin-ASCII&quot;</span>)  </span>
-<span id="cb14-27"><a href="cap5.html#cb14-27" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;(.)</span><span class="sc">\\</span><span class="st">1+&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>, nombre)  </span>
-<span id="cb14-28"><a href="cap5.html#cb14-28" tabindex="-1"></a>  nombre <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&quot;[aeiou]&quot;</span>, <span class="st">&quot;&quot;</span>, nombre)</span>
-<span id="cb14-29"><a href="cap5.html#cb14-29" tabindex="-1"></a>  </span>
-<span id="cb14-30"><a href="cap5.html#cb14-30" tabindex="-1"></a>  <span class="fu">toupper</span>(nombre)</span>
-<span id="cb14-31"><a href="cap5.html#cb14-31" tabindex="-1"></a>}</span></code></pre></div>
 <p>A continuación se presenta la aplicación para nuestro ejemplo</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="cap5.html#cb15-1" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nombre =</span> nombres) <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="cap5.html#cb15-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">nombre =</span> <span class="fu">limpiar_texto</span>(nombre)) <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="cap5.html#cb15-3" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">codif =</span> <span class="fu">codif_fonetico</span>(nombre))</span></code></pre></div>
-<div id="nffjhlcdxq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nffjhlcdxq table {
+<div id="biybqkynaz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#biybqkynaz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nffjhlcdxq thead, #nffjhlcdxq tbody, #nffjhlcdxq tfoot, #nffjhlcdxq tr, #nffjhlcdxq td, #nffjhlcdxq th {
+#biybqkynaz thead, #biybqkynaz tbody, #biybqkynaz tfoot, #biybqkynaz tr, #biybqkynaz td, #biybqkynaz th {
   border-style: none;
 }
 
-#nffjhlcdxq p {
+#biybqkynaz p {
   margin: 0;
   padding: 0;
 }
 
-#nffjhlcdxq .gt_table {
+#biybqkynaz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2776,12 +2720,12 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-left-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_caption {
+#biybqkynaz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nffjhlcdxq .gt_title {
+#biybqkynaz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2793,7 +2737,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-width: 0;
 }
 
-#nffjhlcdxq .gt_subtitle {
+#biybqkynaz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2805,7 +2749,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-width: 0;
 }
 
-#nffjhlcdxq .gt_heading {
+#biybqkynaz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2817,13 +2761,13 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_bottom_border {
+#biybqkynaz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_col_headings {
+#biybqkynaz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2838,7 +2782,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_col_heading {
+#biybqkynaz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2858,7 +2802,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#nffjhlcdxq .gt_column_spanner_outer {
+#biybqkynaz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2870,15 +2814,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 4px;
 }
 
-#nffjhlcdxq .gt_column_spanner_outer:first-child {
+#biybqkynaz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nffjhlcdxq .gt_column_spanner_outer:last-child {
+#biybqkynaz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nffjhlcdxq .gt_column_spanner {
+#biybqkynaz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2890,11 +2834,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   width: 100%;
 }
 
-#nffjhlcdxq .gt_spanner_row {
+#biybqkynaz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nffjhlcdxq .gt_group_heading {
+#biybqkynaz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2920,7 +2864,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   text-align: left;
 }
 
-#nffjhlcdxq .gt_empty_group_heading {
+#biybqkynaz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2935,15 +2879,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: middle;
 }
 
-#nffjhlcdxq .gt_from_md > :first-child {
+#biybqkynaz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nffjhlcdxq .gt_from_md > :last-child {
+#biybqkynaz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nffjhlcdxq .gt_row {
+#biybqkynaz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2962,7 +2906,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#nffjhlcdxq .gt_stub {
+#biybqkynaz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2975,7 +2919,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#nffjhlcdxq .gt_stub_row_group {
+#biybqkynaz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2989,15 +2933,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: top;
 }
 
-#nffjhlcdxq .gt_row_group_first td {
+#biybqkynaz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nffjhlcdxq .gt_row_group_first th {
+#biybqkynaz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nffjhlcdxq .gt_summary_row {
+#biybqkynaz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3007,16 +2951,16 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#nffjhlcdxq .gt_first_summary_row {
+#biybqkynaz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_first_summary_row.thick {
+#biybqkynaz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nffjhlcdxq .gt_last_summary_row {
+#biybqkynaz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3026,7 +2970,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_grand_summary_row {
+#biybqkynaz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3036,7 +2980,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#nffjhlcdxq .gt_first_grand_summary_row {
+#biybqkynaz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3046,7 +2990,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_last_grand_summary_row_top {
+#biybqkynaz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3056,11 +3000,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_striped {
+#biybqkynaz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nffjhlcdxq .gt_table_body {
+#biybqkynaz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3069,7 +3013,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_footnotes {
+#biybqkynaz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3083,7 +3027,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_footnote {
+#biybqkynaz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3092,7 +3036,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#nffjhlcdxq .gt_sourcenotes {
+#biybqkynaz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3106,7 +3050,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#nffjhlcdxq .gt_sourcenote {
+#biybqkynaz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3114,72 +3058,72 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#nffjhlcdxq .gt_left {
+#biybqkynaz .gt_left {
   text-align: left;
 }
 
-#nffjhlcdxq .gt_center {
+#biybqkynaz .gt_center {
   text-align: center;
 }
 
-#nffjhlcdxq .gt_right {
+#biybqkynaz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nffjhlcdxq .gt_font_normal {
+#biybqkynaz .gt_font_normal {
   font-weight: normal;
 }
 
-#nffjhlcdxq .gt_font_bold {
+#biybqkynaz .gt_font_bold {
   font-weight: bold;
 }
 
-#nffjhlcdxq .gt_font_italic {
+#biybqkynaz .gt_font_italic {
   font-style: italic;
 }
 
-#nffjhlcdxq .gt_super {
+#biybqkynaz .gt_super {
   font-size: 65%;
 }
 
-#nffjhlcdxq .gt_footnote_marks {
+#biybqkynaz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nffjhlcdxq .gt_asterisk {
+#biybqkynaz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nffjhlcdxq .gt_indent_1 {
+#biybqkynaz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nffjhlcdxq .gt_indent_2 {
+#biybqkynaz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nffjhlcdxq .gt_indent_3 {
+#biybqkynaz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nffjhlcdxq .gt_indent_4 {
+#biybqkynaz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nffjhlcdxq .gt_indent_5 {
+#biybqkynaz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nffjhlcdxq .katex-display {
+#biybqkynaz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nffjhlcdxq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#biybqkynaz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3214,28 +3158,23 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 </table>
 </div>
 <p>Considere otro ejemplo. La siguiente tabla presenta el resultado de aplicar los algoritmos fonéticos al campo del nombre. En este caso, se puede observar que el método propuesto, columna <em>nom_latino</em>, origina un mejor resultado que los otros algoritmos.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="cap5.html#cb16-1" tabindex="-1"></a>nom <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="cap5.html#cb16-2" tabindex="-1"></a>       <span class="fu">mutate</span>(<span class="at">soundex =</span><span class="fu">soundex</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
-<span id="cb16-3"><a href="cap5.html#cb16-3" tabindex="-1"></a>              <span class="at">metaphone =</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
-<span id="cb16-4"><a href="cap5.html#cb16-4" tabindex="-1"></a>              <span class="at">statcan =</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
-<span id="cb16-5"><a href="cap5.html#cb16-5" tabindex="-1"></a>              <span class="at">latino =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(nombre)))</span></code></pre></div>
-<div id="tsehnjpscj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tsehnjpscj table {
+<div id="cgrzqdviwd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cgrzqdviwd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tsehnjpscj thead, #tsehnjpscj tbody, #tsehnjpscj tfoot, #tsehnjpscj tr, #tsehnjpscj td, #tsehnjpscj th {
+#cgrzqdviwd thead, #cgrzqdviwd tbody, #cgrzqdviwd tfoot, #cgrzqdviwd tr, #cgrzqdviwd td, #cgrzqdviwd th {
   border-style: none;
 }
 
-#tsehnjpscj p {
+#cgrzqdviwd p {
   margin: 0;
   padding: 0;
 }
 
-#tsehnjpscj .gt_table {
+#cgrzqdviwd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3261,12 +3200,12 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-left-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_caption {
+#cgrzqdviwd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tsehnjpscj .gt_title {
+#cgrzqdviwd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3278,7 +3217,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-width: 0;
 }
 
-#tsehnjpscj .gt_subtitle {
+#cgrzqdviwd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3290,7 +3229,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-width: 0;
 }
 
-#tsehnjpscj .gt_heading {
+#cgrzqdviwd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3302,13 +3241,13 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_bottom_border {
+#cgrzqdviwd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_col_headings {
+#cgrzqdviwd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3323,7 +3262,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_col_heading {
+#cgrzqdviwd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3343,7 +3282,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#tsehnjpscj .gt_column_spanner_outer {
+#cgrzqdviwd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3355,15 +3294,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 4px;
 }
 
-#tsehnjpscj .gt_column_spanner_outer:first-child {
+#cgrzqdviwd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tsehnjpscj .gt_column_spanner_outer:last-child {
+#cgrzqdviwd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tsehnjpscj .gt_column_spanner {
+#cgrzqdviwd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3375,11 +3314,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   width: 100%;
 }
 
-#tsehnjpscj .gt_spanner_row {
+#cgrzqdviwd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tsehnjpscj .gt_group_heading {
+#cgrzqdviwd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3405,7 +3344,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   text-align: left;
 }
 
-#tsehnjpscj .gt_empty_group_heading {
+#cgrzqdviwd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3420,15 +3359,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: middle;
 }
 
-#tsehnjpscj .gt_from_md > :first-child {
+#cgrzqdviwd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tsehnjpscj .gt_from_md > :last-child {
+#cgrzqdviwd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tsehnjpscj .gt_row {
+#cgrzqdviwd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3447,7 +3386,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#tsehnjpscj .gt_stub {
+#cgrzqdviwd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3460,7 +3399,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#tsehnjpscj .gt_stub_row_group {
+#cgrzqdviwd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3474,15 +3413,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: top;
 }
 
-#tsehnjpscj .gt_row_group_first td {
+#cgrzqdviwd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tsehnjpscj .gt_row_group_first th {
+#cgrzqdviwd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tsehnjpscj .gt_summary_row {
+#cgrzqdviwd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3492,16 +3431,16 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#tsehnjpscj .gt_first_summary_row {
+#cgrzqdviwd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_first_summary_row.thick {
+#cgrzqdviwd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tsehnjpscj .gt_last_summary_row {
+#cgrzqdviwd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3511,7 +3450,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_grand_summary_row {
+#cgrzqdviwd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3521,7 +3460,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#tsehnjpscj .gt_first_grand_summary_row {
+#cgrzqdviwd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3531,7 +3470,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_last_grand_summary_row_top {
+#cgrzqdviwd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3541,11 +3480,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_striped {
+#cgrzqdviwd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tsehnjpscj .gt_table_body {
+#cgrzqdviwd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3554,7 +3493,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_footnotes {
+#cgrzqdviwd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3568,7 +3507,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_footnote {
+#cgrzqdviwd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3577,7 +3516,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#tsehnjpscj .gt_sourcenotes {
+#cgrzqdviwd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3591,7 +3530,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#tsehnjpscj .gt_sourcenote {
+#cgrzqdviwd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3599,72 +3538,72 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#tsehnjpscj .gt_left {
+#cgrzqdviwd .gt_left {
   text-align: left;
 }
 
-#tsehnjpscj .gt_center {
+#cgrzqdviwd .gt_center {
   text-align: center;
 }
 
-#tsehnjpscj .gt_right {
+#cgrzqdviwd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tsehnjpscj .gt_font_normal {
+#cgrzqdviwd .gt_font_normal {
   font-weight: normal;
 }
 
-#tsehnjpscj .gt_font_bold {
+#cgrzqdviwd .gt_font_bold {
   font-weight: bold;
 }
 
-#tsehnjpscj .gt_font_italic {
+#cgrzqdviwd .gt_font_italic {
   font-style: italic;
 }
 
-#tsehnjpscj .gt_super {
+#cgrzqdviwd .gt_super {
   font-size: 65%;
 }
 
-#tsehnjpscj .gt_footnote_marks {
+#cgrzqdviwd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tsehnjpscj .gt_asterisk {
+#cgrzqdviwd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tsehnjpscj .gt_indent_1 {
+#cgrzqdviwd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tsehnjpscj .gt_indent_2 {
+#cgrzqdviwd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tsehnjpscj .gt_indent_3 {
+#cgrzqdviwd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tsehnjpscj .gt_indent_4 {
+#cgrzqdviwd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tsehnjpscj .gt_indent_5 {
+#cgrzqdviwd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tsehnjpscj .katex-display {
+#cgrzqdviwd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tsehnjpscj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cgrzqdviwd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3775,28 +3714,23 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 </table>
 </div>
 <p>En el caso del apellido, es fundamental tener en cuenta las particularidades culturales de cada región, ya que pueden influir significativamente en la forma en que son escritos o pronunciados. Estas variaciones hacen que ningún algoritmo de codificación fonética sea completamente robusto por sí solo, por lo que es recomendable adaptar o complementar los métodos según el contexto local.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="cap5.html#cb17-1" tabindex="-1"></a>apell <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a href="cap5.html#cb17-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">soundex =</span><span class="fu">soundex</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
-<span id="cb17-3"><a href="cap5.html#cb17-3" tabindex="-1"></a>                <span class="at">metaphone =</span> <span class="fu">metaphone</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
-<span id="cb17-4"><a href="cap5.html#cb17-4" tabindex="-1"></a>                <span class="at">statcan =</span> <span class="fu">statcan</span>(<span class="fu">limpiar_texto</span>(apellido)),</span>
-<span id="cb17-5"><a href="cap5.html#cb17-5" tabindex="-1"></a>                <span class="at">latino =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(apellido)))</span></code></pre></div>
-<div id="hdwryeoofw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hdwryeoofw table {
+<div id="ddcojrbwch" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ddcojrbwch table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hdwryeoofw thead, #hdwryeoofw tbody, #hdwryeoofw tfoot, #hdwryeoofw tr, #hdwryeoofw td, #hdwryeoofw th {
+#ddcojrbwch thead, #ddcojrbwch tbody, #ddcojrbwch tfoot, #ddcojrbwch tr, #ddcojrbwch td, #ddcojrbwch th {
   border-style: none;
 }
 
-#hdwryeoofw p {
+#ddcojrbwch p {
   margin: 0;
   padding: 0;
 }
 
-#hdwryeoofw .gt_table {
+#ddcojrbwch .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3822,12 +3756,12 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-left-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_caption {
+#ddcojrbwch .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hdwryeoofw .gt_title {
+#ddcojrbwch .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3839,7 +3773,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-width: 0;
 }
 
-#hdwryeoofw .gt_subtitle {
+#ddcojrbwch .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3851,7 +3785,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-width: 0;
 }
 
-#hdwryeoofw .gt_heading {
+#ddcojrbwch .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3863,13 +3797,13 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_bottom_border {
+#ddcojrbwch .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_col_headings {
+#ddcojrbwch .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3884,7 +3818,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_col_heading {
+#ddcojrbwch .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3904,7 +3838,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#hdwryeoofw .gt_column_spanner_outer {
+#ddcojrbwch .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3916,15 +3850,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 4px;
 }
 
-#hdwryeoofw .gt_column_spanner_outer:first-child {
+#ddcojrbwch .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hdwryeoofw .gt_column_spanner_outer:last-child {
+#ddcojrbwch .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hdwryeoofw .gt_column_spanner {
+#ddcojrbwch .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3936,11 +3870,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   width: 100%;
 }
 
-#hdwryeoofw .gt_spanner_row {
+#ddcojrbwch .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hdwryeoofw .gt_group_heading {
+#ddcojrbwch .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3966,7 +3900,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   text-align: left;
 }
 
-#hdwryeoofw .gt_empty_group_heading {
+#ddcojrbwch .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3981,15 +3915,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: middle;
 }
 
-#hdwryeoofw .gt_from_md > :first-child {
+#ddcojrbwch .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hdwryeoofw .gt_from_md > :last-child {
+#ddcojrbwch .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hdwryeoofw .gt_row {
+#ddcojrbwch .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4008,7 +3942,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#hdwryeoofw .gt_stub {
+#ddcojrbwch .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4021,7 +3955,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#hdwryeoofw .gt_stub_row_group {
+#ddcojrbwch .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4035,15 +3969,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: top;
 }
 
-#hdwryeoofw .gt_row_group_first td {
+#ddcojrbwch .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hdwryeoofw .gt_row_group_first th {
+#ddcojrbwch .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hdwryeoofw .gt_summary_row {
+#ddcojrbwch .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4053,16 +3987,16 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#hdwryeoofw .gt_first_summary_row {
+#ddcojrbwch .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_first_summary_row.thick {
+#ddcojrbwch .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hdwryeoofw .gt_last_summary_row {
+#ddcojrbwch .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4072,7 +4006,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_grand_summary_row {
+#ddcojrbwch .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4082,7 +4016,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#hdwryeoofw .gt_first_grand_summary_row {
+#ddcojrbwch .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4092,7 +4026,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_last_grand_summary_row_top {
+#ddcojrbwch .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4102,11 +4036,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_striped {
+#ddcojrbwch .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hdwryeoofw .gt_table_body {
+#ddcojrbwch .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4115,7 +4049,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_footnotes {
+#ddcojrbwch .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4129,7 +4063,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_footnote {
+#ddcojrbwch .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4138,7 +4072,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#hdwryeoofw .gt_sourcenotes {
+#ddcojrbwch .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4152,7 +4086,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#hdwryeoofw .gt_sourcenote {
+#ddcojrbwch .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4160,72 +4094,72 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#hdwryeoofw .gt_left {
+#ddcojrbwch .gt_left {
   text-align: left;
 }
 
-#hdwryeoofw .gt_center {
+#ddcojrbwch .gt_center {
   text-align: center;
 }
 
-#hdwryeoofw .gt_right {
+#ddcojrbwch .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hdwryeoofw .gt_font_normal {
+#ddcojrbwch .gt_font_normal {
   font-weight: normal;
 }
 
-#hdwryeoofw .gt_font_bold {
+#ddcojrbwch .gt_font_bold {
   font-weight: bold;
 }
 
-#hdwryeoofw .gt_font_italic {
+#ddcojrbwch .gt_font_italic {
   font-style: italic;
 }
 
-#hdwryeoofw .gt_super {
+#ddcojrbwch .gt_super {
   font-size: 65%;
 }
 
-#hdwryeoofw .gt_footnote_marks {
+#ddcojrbwch .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hdwryeoofw .gt_asterisk {
+#ddcojrbwch .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hdwryeoofw .gt_indent_1 {
+#ddcojrbwch .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hdwryeoofw .gt_indent_2 {
+#ddcojrbwch .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hdwryeoofw .gt_indent_3 {
+#ddcojrbwch .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hdwryeoofw .gt_indent_4 {
+#ddcojrbwch .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hdwryeoofw .gt_indent_5 {
+#ddcojrbwch .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hdwryeoofw .katex-display {
+#ddcojrbwch .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hdwryeoofw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ddcojrbwch div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4336,26 +4270,23 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 </table>
 </div>
 <p>La siguiente tabla muestra el resultado de aplicar la función <code>codif_fonetico</code> tanto al nombre como al apellido. No obstante, se recomienda utilizar en cada campo el algoritmo fonético que mejor se adapte a las características lingüísticas y culturales del caso específico.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="cap5.html#cb18-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> </span>
-<span id="cb18-2"><a href="cap5.html#cb18-2" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">nom_cod =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(nombre)),</span>
-<span id="cb18-3"><a href="cap5.html#cb18-3" tabindex="-1"></a>                <span class="at">ape_cod =</span> <span class="fu">codif_fonetico</span>(<span class="fu">limpiar_texto</span>(apellido)))</span></code></pre></div>
-<div id="oecsgqtpun" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oecsgqtpun table {
+<div id="lsalhgrbwv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lsalhgrbwv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oecsgqtpun thead, #oecsgqtpun tbody, #oecsgqtpun tfoot, #oecsgqtpun tr, #oecsgqtpun td, #oecsgqtpun th {
+#lsalhgrbwv thead, #lsalhgrbwv tbody, #lsalhgrbwv tfoot, #lsalhgrbwv tr, #lsalhgrbwv td, #lsalhgrbwv th {
   border-style: none;
 }
 
-#oecsgqtpun p {
+#lsalhgrbwv p {
   margin: 0;
   padding: 0;
 }
 
-#oecsgqtpun .gt_table {
+#lsalhgrbwv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -4381,12 +4312,12 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-left-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_caption {
+#lsalhgrbwv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oecsgqtpun .gt_title {
+#lsalhgrbwv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4398,7 +4329,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-width: 0;
 }
 
-#oecsgqtpun .gt_subtitle {
+#lsalhgrbwv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4410,7 +4341,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-width: 0;
 }
 
-#oecsgqtpun .gt_heading {
+#lsalhgrbwv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4422,13 +4353,13 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_bottom_border {
+#lsalhgrbwv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_col_headings {
+#lsalhgrbwv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4443,7 +4374,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_col_heading {
+#lsalhgrbwv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4463,7 +4394,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#oecsgqtpun .gt_column_spanner_outer {
+#lsalhgrbwv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4475,15 +4406,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 4px;
 }
 
-#oecsgqtpun .gt_column_spanner_outer:first-child {
+#lsalhgrbwv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oecsgqtpun .gt_column_spanner_outer:last-child {
+#lsalhgrbwv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oecsgqtpun .gt_column_spanner {
+#lsalhgrbwv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4495,11 +4426,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   width: 100%;
 }
 
-#oecsgqtpun .gt_spanner_row {
+#lsalhgrbwv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oecsgqtpun .gt_group_heading {
+#lsalhgrbwv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4525,7 +4456,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   text-align: left;
 }
 
-#oecsgqtpun .gt_empty_group_heading {
+#lsalhgrbwv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4540,15 +4471,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: middle;
 }
 
-#oecsgqtpun .gt_from_md > :first-child {
+#lsalhgrbwv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oecsgqtpun .gt_from_md > :last-child {
+#lsalhgrbwv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oecsgqtpun .gt_row {
+#lsalhgrbwv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4567,7 +4498,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   overflow-x: hidden;
 }
 
-#oecsgqtpun .gt_stub {
+#lsalhgrbwv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4580,7 +4511,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#oecsgqtpun .gt_stub_row_group {
+#lsalhgrbwv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4594,15 +4525,15 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   vertical-align: top;
 }
 
-#oecsgqtpun .gt_row_group_first td {
+#lsalhgrbwv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oecsgqtpun .gt_row_group_first th {
+#lsalhgrbwv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oecsgqtpun .gt_summary_row {
+#lsalhgrbwv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4612,16 +4543,16 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#oecsgqtpun .gt_first_summary_row {
+#lsalhgrbwv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_first_summary_row.thick {
+#lsalhgrbwv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oecsgqtpun .gt_last_summary_row {
+#lsalhgrbwv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4631,7 +4562,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_grand_summary_row {
+#lsalhgrbwv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4641,7 +4572,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#oecsgqtpun .gt_first_grand_summary_row {
+#lsalhgrbwv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4651,7 +4582,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-top-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_last_grand_summary_row_top {
+#lsalhgrbwv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -4661,11 +4592,11 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_striped {
+#lsalhgrbwv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oecsgqtpun .gt_table_body {
+#lsalhgrbwv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4674,7 +4605,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-bottom-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_footnotes {
+#lsalhgrbwv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4688,7 +4619,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_footnote {
+#lsalhgrbwv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -4697,7 +4628,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#oecsgqtpun .gt_sourcenotes {
+#lsalhgrbwv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4711,7 +4642,7 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   border-right-color: #D3D3D3;
 }
 
-#oecsgqtpun .gt_sourcenote {
+#lsalhgrbwv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -4719,72 +4650,72 @@ Figure 5.3: Flujo general del proceso de emparejamiento
   padding-right: 5px;
 }
 
-#oecsgqtpun .gt_left {
+#lsalhgrbwv .gt_left {
   text-align: left;
 }
 
-#oecsgqtpun .gt_center {
+#lsalhgrbwv .gt_center {
   text-align: center;
 }
 
-#oecsgqtpun .gt_right {
+#lsalhgrbwv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oecsgqtpun .gt_font_normal {
+#lsalhgrbwv .gt_font_normal {
   font-weight: normal;
 }
 
-#oecsgqtpun .gt_font_bold {
+#lsalhgrbwv .gt_font_bold {
   font-weight: bold;
 }
 
-#oecsgqtpun .gt_font_italic {
+#lsalhgrbwv .gt_font_italic {
   font-style: italic;
 }
 
-#oecsgqtpun .gt_super {
+#lsalhgrbwv .gt_super {
   font-size: 65%;
 }
 
-#oecsgqtpun .gt_footnote_marks {
+#lsalhgrbwv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oecsgqtpun .gt_asterisk {
+#lsalhgrbwv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oecsgqtpun .gt_indent_1 {
+#lsalhgrbwv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oecsgqtpun .gt_indent_2 {
+#lsalhgrbwv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oecsgqtpun .gt_indent_3 {
+#lsalhgrbwv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oecsgqtpun .gt_indent_4 {
+#lsalhgrbwv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oecsgqtpun .gt_indent_5 {
+#lsalhgrbwv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#oecsgqtpun .katex-display {
+#lsalhgrbwv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#oecsgqtpun div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lsalhgrbwv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -4863,11 +4794,6 @@ Figure 5.3: Flujo general del proceso de emparejamiento
 </table>
 </div>
 <p>Ahora aplicaremos la función <code>codif_fonetico</code> a nuestros conjuntos de datos del censo y de la encuesta</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="cap5.html#cb19-1" tabindex="-1"></a>censo_limpio <span class="ot">&lt;-</span> censo_limpio <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a href="cap5.html#cb19-2" tabindex="-1"></a>                <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido), <span class="sc">~</span><span class="fu">codif_fonetico</span>(.), <span class="at">.names =</span> <span class="st">&quot;{.col}_cod&quot;</span>))</span>
-<span id="cb19-3"><a href="cap5.html#cb19-3" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="cap5.html#cb19-4" tabindex="-1"></a>encuesta_limpia <span class="ot">&lt;-</span> encuesta_limpia <span class="sc">|&gt;</span> </span>
-<span id="cb19-5"><a href="cap5.html#cb19-5" tabindex="-1"></a>                   <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(nombre, apellido), <span class="sc">~</span><span class="fu">codif_fonetico</span>(.), <span class="at">.names =</span> <span class="st">&quot;{.col}_cod&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -5096,71 +5022,320 @@ d[i - 1, j - 1] + 1
 <h3><span class="header-section-number">5.3.1</span> Deduplicación de registros<a href="#deduplicaci%C3%B3n-de-registros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Una etapa clave en el cálculo de la omisión censal, es asegurar que la base de enumeración de la PES no tiene duplicados. Poder identificar si una persona ha sido enumerada más de una vez en el censo, se conoce como proceso de deduplicación.</p>
 <p><strong>Ejemplo usando el paquete RecordLinkage</strong></p>
-<p>Para ilustrar este procedimiento se implementará un análisis supervisado utilizando los datos simulados <code>RLdata500</code> incluidos en el paquete <code>RecordLinkage</code>. El conjunto de datos contiene 500 registros simulados, incluyendo nombres, apellidos, fechas de nacimiento y un identificador de la persona real (<code>identity.RLdata500</code>). Suponga que este es un conjunto de entrenamiento que fue seleccionado con unos registros del censo, y en el cual se realizó un proceso de identificación y revisión clerical para identificar con certeza si un registro es duplicado o no, de esta manera es posible entrenar un modelo, realizar evaluaciones de precisión y entender mejor las decisiones del algoritmo.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="cap5.html#cb20-1" tabindex="-1"></a><span class="fu">library</span>(RecordLinkage)</span>
-<span id="cb20-2"><a href="cap5.html#cb20-2" tabindex="-1"></a><span class="fu">data</span>(RLdata500)</span>
-<span id="cb20-3"><a href="cap5.html#cb20-3" tabindex="-1"></a><span class="fu">head</span>(RLdata500)</span></code></pre></div>
-<pre><code>##   fname_c1 fname_c2 lname_c1 lname_c2   by bm bd
-## 1  CARSTEN     &lt;NA&gt;    MEIER     &lt;NA&gt; 1949  7 22
-## 2     GERD     &lt;NA&gt;    BAUER     &lt;NA&gt; 1968  7 27
-## 3   ROBERT     &lt;NA&gt; HARTMANN     &lt;NA&gt; 1930  4 30
-## 4   STEFAN     &lt;NA&gt;    WOLFF     &lt;NA&gt; 1957  9  2
-## 5     RALF     &lt;NA&gt;  KRUEGER     &lt;NA&gt; 1966  1 13
-## 6  JUERGEN     &lt;NA&gt;   FRANKE     &lt;NA&gt; 1929  7  4</code></pre>
+<p>Para ilustrar este procedimiento se implementará un análisis supervisado utilizando los datos simulados <code>RLdata500</code> incluidos en el paquete <code>RecordLinkage</code> de R. El conjunto de datos contiene 500 registros simulados, incluyendo nombres, apellidos, fechas de nacimiento y un identificador de la persona real (<code>identity.RLdata500</code>). Suponga que este es un conjunto de entrenamiento que fue seleccionado con unos registros del censo, y en el cual se realizó un proceso de identificación y revisión clerical para identificar con certeza si un registro es duplicado o no, de esta manera es posible entrenar un modelo, realizar evaluaciones de precisión y entender mejor las decisiones del algoritmo.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">fname_c1</th>
+<th align="left">fname_c2</th>
+<th align="left">lname_c1</th>
+<th align="left">lname_c2</th>
+<th align="right">by</th>
+<th align="right">bm</th>
+<th align="right">bd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CARSTEN</td>
+<td align="left">NA</td>
+<td align="left">MEIER</td>
+<td align="left">NA</td>
+<td align="right">1949</td>
+<td align="right">7</td>
+<td align="right">22</td>
+</tr>
+<tr class="even">
+<td align="left">GERD</td>
+<td align="left">NA</td>
+<td align="left">BAUER</td>
+<td align="left">NA</td>
+<td align="right">1968</td>
+<td align="right">7</td>
+<td align="right">27</td>
+</tr>
+<tr class="odd">
+<td align="left">ROBERT</td>
+<td align="left">NA</td>
+<td align="left">HARTMANN</td>
+<td align="left">NA</td>
+<td align="right">1930</td>
+<td align="right">4</td>
+<td align="right">30</td>
+</tr>
+<tr class="even">
+<td align="left">STEFAN</td>
+<td align="left">NA</td>
+<td align="left">WOLFF</td>
+<td align="left">NA</td>
+<td align="right">1957</td>
+<td align="right">9</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">RALF</td>
+<td align="left">NA</td>
+<td align="left">KRUEGER</td>
+<td align="left">NA</td>
+<td align="right">1966</td>
+<td align="right">1</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="left">JUERGEN</td>
+<td align="left">NA</td>
+<td align="left">FRANKE</td>
+<td align="left">NA</td>
+<td align="right">1929</td>
+<td align="right">7</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
 <p>En caso de realizar todas la comparaciones por pares, serían necesarias 124.750 comparaciones:</p>
-<p><span class="math display">\[\binom{500}{2} = 124.750\]</span>
+<p><span class="math display">\[\binom{N}{2} = \binom{500}{2} = 124.750\]</span>
 Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de censos o encuestas de cobertura no resulta viable aplicar el total de comparaciones, por lo que será necesario realizar una indexación con unos bloques de comparación.</p>
 <p>Como se ha mencionado antes, el bloqueo consiste en agrupar los registros en bloques más pequeños usando una o más variables, de manera que solo se comparan registros dentro del mismo bloque. En este ejemplo se usará la primera letra del apellido como clave de bloqueo.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="cap5.html#cb22-1" tabindex="-1"></a>inic_apell <span class="ot">&lt;-</span> <span class="fu">substr</span>(RLdata500[,<span class="st">&quot;lname_c1&quot;</span>], <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb22-2"><a href="cap5.html#cb22-2" tabindex="-1"></a>(tbl <span class="ot">&lt;-</span> <span class="fu">table</span>(inic_apell))</span></code></pre></div>
-<pre><code>## inic_apell
-##   A   B   D   E   F   G   H   J   K   L   M   N   O   P   R   S   T   V   W   Z 
-##   5  56   2   6  38  12  32   8  46  13  76   8   4   6   7 115   2   7  52   5</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">D</th>
+<th align="right">E</th>
+<th align="right">F</th>
+<th align="right">G</th>
+<th align="right">H</th>
+<th align="right">J</th>
+<th align="right">K</th>
+<th align="right">L</th>
+<th align="right">M</th>
+<th align="right">N</th>
+<th align="right">O</th>
+<th align="right">P</th>
+<th align="right">R</th>
+<th align="right">S</th>
+<th align="right">T</th>
+<th align="right">V</th>
+<th align="right">W</th>
+<th align="right">Z</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">56</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">38</td>
+<td align="right">12</td>
+<td align="right">32</td>
+<td align="right">8</td>
+<td align="right">46</td>
+<td align="right">13</td>
+<td align="right">76</td>
+<td align="right">8</td>
+<td align="right">4</td>
+<td align="right">6</td>
+<td align="right">7</td>
+<td align="right">115</td>
+<td align="right">2</td>
+<td align="right">7</td>
+<td align="right">52</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
 <p>Lo anterior genera 20 bloques, donde el número de registros por bloque puede ser diferente. Como ahora el número de comparaciones se realiza dentro de cada bloque, esto reduce drásticamente el número total de comparaciones que se tienen que realizar. Sin embargo, es recomendable evitar una alta variación en el número de registros por bloque, esto debido a que algunos bloques con un alto número de registros puede incremetar fuertemente el costo computacional. En este caso el número de registros por bloque varía entre 2 y 115.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="cap5.html#cb24-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(<span class="fu">table</span>(inic_apell)))</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    2.00    5.75    8.00   25.00   40.00  115.00</code></pre>
 <p>A pesar de lo anterior, el número de pares posibles tras aplicar el bloqueo baja de 1.2475^{5} a 1.4805^{4} pares. Esta reducción es crucial para el rendimiento computacional del algoritmo. A continuación se observa el número de comparaciones por bloque.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="cap5.html#cb26-1" tabindex="-1"></a><span class="fu">sapply</span>(tbl, choose, <span class="at">k=</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>##    A    B    D    E    F    G    H    J    K    L    M    N    O    P    R    S 
-##   10 1540    1   15  703   66  496   28 1035   78 2850   28    6   15   21 6555 
-##    T    V    W    Z 
-##    1   21 1326   10</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="4%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
+<col width="5%" />
+<col width="4%" />
+<col width="5%" />
+<col width="4%" />
+<col width="6%" />
+<col width="4%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
+<col width="6%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">D</th>
+<th align="right">E</th>
+<th align="right">F</th>
+<th align="right">G</th>
+<th align="right">H</th>
+<th align="right">J</th>
+<th align="right">K</th>
+<th align="right">L</th>
+<th align="right">M</th>
+<th align="right">N</th>
+<th align="right">O</th>
+<th align="right">P</th>
+<th align="right">R</th>
+<th align="right">S</th>
+<th align="right">T</th>
+<th align="right">V</th>
+<th align="right">W</th>
+<th align="right">Z</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">1540</td>
+<td align="right">1</td>
+<td align="right">15</td>
+<td align="right">703</td>
+<td align="right">66</td>
+<td align="right">496</td>
+<td align="right">28</td>
+<td align="right">1035</td>
+<td align="right">78</td>
+<td align="right">2850</td>
+<td align="right">28</td>
+<td align="right">6</td>
+<td align="right">15</td>
+<td align="right">21</td>
+<td align="right">6555</td>
+<td align="right">1</td>
+<td align="right">21</td>
+<td align="right">1326</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
 <p>Para entrenar el modelo, se agrega a la tabla de datos el id de cada persona y se quita la información redundante:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="cap5.html#cb28-1" tabindex="-1"></a>RLdata500c <span class="ot">&lt;-</span> RLdata500 <span class="sc">|&gt;</span>  </span>
-<span id="cb28-2"><a href="cap5.html#cb28-2" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">id =</span> identity.RLdata500) <span class="sc">|&gt;</span> </span>
-<span id="cb28-3"><a href="cap5.html#cb28-3" tabindex="-1"></a>              <span class="fu">select</span>(<span class="sc">-</span>fname_c2, <span class="sc">-</span>lname_c2)</span></code></pre></div>
 <p>Ahora es sencillo filtrar los duplicados reales, esto permite examinar cómo se presentan las inconsistencias reales en los datos y elegir los métodos más apropiados en el entrenamiento del modelo.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="cap5.html#cb29-1" tabindex="-1"></a>dup_set <span class="ot">&lt;-</span> RLdata500c <span class="sc">|&gt;</span> </span>
-<span id="cb29-2"><a href="cap5.html#cb29-2" tabindex="-1"></a>           <span class="fu">group_by</span>(id) <span class="sc">|&gt;</span> </span>
-<span id="cb29-3"><a href="cap5.html#cb29-3" tabindex="-1"></a>           <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb29-4"><a href="cap5.html#cb29-4" tabindex="-1"></a>           <span class="fu">ungroup</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb29-5"><a href="cap5.html#cb29-5" tabindex="-1"></a>           <span class="fu">arrange</span>(id)</span>
-<span id="cb29-6"><a href="cap5.html#cb29-6" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="cap5.html#cb29-7" tabindex="-1"></a><span class="fu">tail</span>(dup_set)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 6
-##   fname_c1  lname_c1    by    bm    bd    id
-##   &lt;chr&gt;     &lt;chr&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
-## 1 RENATE    SCHUTE    1940    12    29   436
-## 2 RENATE    SCHULTE   1940    12    29   436
-## 3 CHRISTINE PETERS    1993     2     5   442
-## 4 CHRISTINE PETERS    1993     2     6   442
-## 5 CHRISTA   SCHWARZ   1965     7    13   444
-## 6 CHRISTAH  SCHWARZ   1965     7    13   444</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">fname_c1</th>
+<th align="left">lname_c1</th>
+<th align="right">by</th>
+<th align="right">bm</th>
+<th align="right">bd</th>
+<th align="right">id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">RENATE</td>
+<td align="left">SCHUTE</td>
+<td align="right">1940</td>
+<td align="right">12</td>
+<td align="right">29</td>
+<td align="right">436</td>
+</tr>
+<tr class="even">
+<td align="left">RENATE</td>
+<td align="left">SCHULTE</td>
+<td align="right">1940</td>
+<td align="right">12</td>
+<td align="right">29</td>
+<td align="right">436</td>
+</tr>
+<tr class="odd">
+<td align="left">CHRISTINE</td>
+<td align="left">PETERS</td>
+<td align="right">1993</td>
+<td align="right">2</td>
+<td align="right">5</td>
+<td align="right">442</td>
+</tr>
+<tr class="even">
+<td align="left">CHRISTINE</td>
+<td align="left">PETERS</td>
+<td align="right">1993</td>
+<td align="right">2</td>
+<td align="right">6</td>
+<td align="right">442</td>
+</tr>
+<tr class="odd">
+<td align="left">CHRISTA</td>
+<td align="left">SCHWARZ</td>
+<td align="right">1965</td>
+<td align="right">7</td>
+<td align="right">13</td>
+<td align="right">444</td>
+</tr>
+<tr class="even">
+<td align="left">CHRISTAH</td>
+<td align="left">SCHWARZ</td>
+<td align="right">1965</td>
+<td align="right">7</td>
+<td align="right">13</td>
+<td align="right">444</td>
+</tr>
+</tbody>
+</table>
 <p>Al calcular la distancia de Levenshtein observamos que la similaridad aún está lejana de 1, mientras que la métrica de Jaro y Winkler produce un mejor resultado de la similaridad.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="cap5.html#cb31-1" tabindex="-1"></a><span class="fu">levenshteinSim</span>(<span class="fu">c</span>(<span class="st">&quot;SCHUTE&quot;</span>, <span class="st">&quot;SCHULTE&quot;</span>),</span>
-<span id="cb31-2"><a href="cap5.html#cb31-2" tabindex="-1"></a>               <span class="fu">c</span>(<span class="st">&quot;CHRISTA&quot;</span>, <span class="st">&quot;CHRISTAH&quot;</span>))</span></code></pre></div>
-<pre><code>## [1] 0.2857143 0.2500000</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="cap5.html#cb33-1" tabindex="-1"></a><span class="fu">jarowinkler</span>(<span class="fu">c</span>(<span class="st">&quot;SCHUTE&quot;</span>, <span class="st">&quot;SCHULTE&quot;</span>),</span>
-<span id="cb33-2"><a href="cap5.html#cb33-2" tabindex="-1"></a>            <span class="fu">c</span>(<span class="st">&quot;CHRISTA&quot;</span>, <span class="st">&quot;CHRISTAH&quot;</span>))</span></code></pre></div>
-<pre><code>## [1] 0.6428571 0.6011905</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Cadena 1</th>
+<th>Cadena 2</th>
+<th>Levenshtein</th>
+<th>Jaro-Winkler</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SCHUTE</td>
+<td>SCHULTE</td>
+<td>0.86</td>
+<td>0.94</td>
+</tr>
+<tr class="even">
+<td>CHRISTA</td>
+<td>CHRISTAH</td>
+<td>0.88</td>
+<td>0.95</td>
+</tr>
+</tbody>
+</table>
 <p>El algoritmo de Jaro-Winkler tiende a funcionar mejor cuando los errores son de tipeo o diferencias leves. También se puede aplicar codificación fonética como <code>soundex()</code> o cualquiera de las presentadas en este capítulo.</p>
-<p>En el siguiente paso se realiza la comparación de pares con bloqueo supervisado, toda vez que el resultado que identifica si es un duplicado o no es observado. La función <code>compare.dedup()</code> crea un objeto con la comparación entre pares de registros dentro de cada bloque. En este ejemplo se generan pares comparables según los bloques definidos por la primera letra del nombre y año de nacimiento (posiciones 1 y 3). Cada par se compara por igualdad de campos y similitud textual cuando se especifica.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="cap5.html#cb35-1" tabindex="-1"></a>entrenamiento <span class="ot">&lt;-</span> <span class="fu">compare.dedup</span>(RLdata500c[,<span class="sc">-</span><span class="dv">6</span>], </span>
-<span id="cb35-2"><a href="cap5.html#cb35-2" tabindex="-1"></a>                               <span class="at">blockfld =</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">3</span>),  </span>
-<span id="cb35-3"><a href="cap5.html#cb35-3" tabindex="-1"></a>                               <span class="at">identity =</span> identity.RLdata500)</span></code></pre></div>
+<p>En el siguiente paso se lleva a cabo la comparación de pares utilizando un enfoque de bloqueo supervisado, dado que se dispone de información que indica si cada par de registros corresponde a un duplicado o no. Primero, se organizan los registros en bloques basados en criterios específicos, en este caso la primera letra del nombre y el año de nacimiento, de manera que solo se comparan registros dentro de cada bloque. Luego, se realiza la comparación de los pares dentro de cada bloque, evaluando tanto la igualdad exacta de algunos campos como la similitud textual en aquellos que lo requieren. El resultado es un conjunto de comparaciones que refleja para cada par cuán similares son los registros, considerando la información supervisada disponible para identificar duplicados.</p>
 <p>Ahora se calculan pesos probabilísticos para cada par comparado. Este paso estima la probabilidad de que cada par sea un match verdadero, usando un modelo probabilístico basado en la teoría de Fellegi-Sunter.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="cap5.html#cb36-1" tabindex="-1"></a>prob <span class="ot">&lt;-</span> <span class="fu">epiWeights</span>(entrenamiento)</span></code></pre></div>
 <p>A partir de las probabilidades se clasifica automáticamente los pares en tres categorías:</p>
 <ul>
 <li><strong>P</strong>: Positivo (match verdadero).</li>
@@ -5168,8 +5343,6 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <li><strong>L</strong>: Incertidumbre (requiere revisión clerical).</li>
 </ul>
 <p>En este caso se especifica un umbral de 0.7, es decir, los pares con probabilidad superior a ese valor se clasifican como positivos.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="cap5.html#cb37-1" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">epiClassify</span>(prob, <span class="fl">0.7</span>)</span>
-<span id="cb37-2"><a href="cap5.html#cb37-2" tabindex="-1"></a><span class="fu">summary</span>(res)</span></code></pre></div>
 <pre><code>## 
 ## Deduplication Data Set
 ## 
@@ -5203,51 +5376,143 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 ## true status    N    P    L
 ##       FALSE 2659    0    0
 ##       TRUE     4    0   46</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Concepto</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Número de registros</td>
+<td>500</td>
+</tr>
+<tr class="even">
+<td>Número de pares de registros</td>
+<td>2,709</td>
+</tr>
+<tr class="odd">
+<td>Pares que coinciden (matches)</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>Pares que no coinciden</td>
+<td>2,659</td>
+</tr>
+<tr class="odd">
+<td>Pares con estado desconocido</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 <p>Se observa que la gran mayoría de los pares comparados presentan baja evidencia de coincidencia, con 2318 pares concentrados en el intervalo de peso [0.2, 0.25]. Por otra parte, solo 46 pares alcanzan un peso mayor a 0.7, lo que sugiere una alta probabilidad de ser duplicados.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Estado verdadero</th>
+<th>N (No)</th>
+<th>P (Posible)</th>
+<th>L (Link)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FALSE</td>
+<td>2,659</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>TRUE</td>
+<td>4</td>
+<td>0</td>
+<td>46</td>
+</tr>
+</tbody>
+</table>
 <p>Según la matriz de clasificación, de los 50 pares realmente duplicados, el modelo identificó correctamente a 46, mientras que 4 no fueron detectados, lo que corresponde a una tasa de falsos negativos de <span class="math inline">\(\alpha = 8\)</span>%. Por otro lado, la tasa de falsos positivos es cero, ya que ningún par no duplicado fue clasificado erróneamente como duplicado.</p>
 <p>En conjunto, el modelo alcanzó una exactitud del 99.85%, lo que indica un alto rendimiento en la tarea de deduplicación.</p>
 <p>Una vez se ha entrenado el modelo, se puede aplicar una comparación difusa (fuzzy) a todos los datos, para ampliar las posibilidades del ejemplo se usará con la métrica de Jaro-Winkler para todas las variables de cadena (<code>strcmp = TRUE</code>). Se omite el uso de funciones fonéticas (<code>phonetic = FALSE</code>), lo cual es útil cuando queremos detectar errores ortográficos leves y los bloques se arman solo por año de nacimiento. Aunque en la práctica se debe especificar el modelo entrenado.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="cap5.html#cb39-1" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">compare.dedup</span>(RLdata500c[,<span class="sc">-</span><span class="dv">6</span>],</span>
-<span id="cb39-2"><a href="cap5.html#cb39-2" tabindex="-1"></a>                        <span class="at">phonetic =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb39-3"><a href="cap5.html#cb39-3" tabindex="-1"></a>                        <span class="at">blockfld =</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">3</span>),</span>
-<span id="cb39-4"><a href="cap5.html#cb39-4" tabindex="-1"></a>                        <span class="at">strcmp =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb39-5"><a href="cap5.html#cb39-5" tabindex="-1"></a>                        <span class="at">strcmpfun =</span> jarowinkler)</span></code></pre></div>
 <p>En conclusión, el uso de bloqueo combinado con comparaciones textuales permite reducir significativamente el esfuerzo computacional, en este caso, más del 90%, al evitar comparaciones innecesarias entre todos los registros. Además, este enfoque es efectivo para detectar duplicados incluso cuando existen errores de tipeo o inconsistencias en los datos, logrando una clasificación precisa de los pares potencialmente duplicados.</p>
 <p>Se recomienda ajustar adecuadamente el argumento blockfld para optimizar la eficiencia del proceso, y seleccionar el método de comparación textual (por ejemplo, Jaro-Winkler o Levenshtein) de acuerdo con la calidad y naturaleza de los nombres en los datos.</p>
 <p>Finalmente, es importante validar los resultados obtenidos, ya sea mediante revisión clerical o a través de otras reglas, para asegurar la confiabilidad del proceso de deduplicación.</p>
 <p><strong>Ejemplo usando el paquete fastLink</strong></p>
 <p>Para explorar otras opciones, en este ejemplo se usará el conjunto de datos <code>RLdata10000</code> del paquete <code>RecordLinkage</code>, el cual contiene 10.000 registros con 1.000 duplicados y 8.000 no duplicados.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="cap5.html#cb40-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb40-2"><a href="cap5.html#cb40-2" tabindex="-1"></a><span class="fu">p_load</span>(tidyverse, janitor, fastLink, RecordLinkage, parallel)</span>
-<span id="cb40-3"><a href="cap5.html#cb40-3" tabindex="-1"></a></span>
-<span id="cb40-4"><a href="cap5.html#cb40-4" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;RLdata10000&quot;</span>)</span>
-<span id="cb40-5"><a href="cap5.html#cb40-5" tabindex="-1"></a><span class="fu">head</span>(RLdata10000)</span></code></pre></div>
-<pre><code>##   fname_c1 fname_c2   lname_c1 lname_c2   by bm bd
-## 1    FRANK     &lt;NA&gt;    MUELLER     &lt;NA&gt; 1967  9 27
-## 2   MARTIN     &lt;NA&gt;    SCHWARZ     &lt;NA&gt; 1967  2 17
-## 3  HERBERT     &lt;NA&gt; ZIMMERMANN     &lt;NA&gt; 1961 11  6
-## 4     HANS     &lt;NA&gt;    SCHMITT     &lt;NA&gt; 1945  8 14
-## 5      UWE     &lt;NA&gt;     KELLER     &lt;NA&gt; 2000  7  5
-## 6   DANIEL     &lt;NA&gt;   HEINRICH     &lt;NA&gt; 1967  5  6</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">fname_c1</th>
+<th align="left">fname_c2</th>
+<th align="left">lname_c1</th>
+<th align="left">lname_c2</th>
+<th align="right">by</th>
+<th align="right">bm</th>
+<th align="right">bd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">FRANK</td>
+<td align="left">NA</td>
+<td align="left">MUELLER</td>
+<td align="left">NA</td>
+<td align="right">1967</td>
+<td align="right">9</td>
+<td align="right">27</td>
+</tr>
+<tr class="even">
+<td align="left">MARTIN</td>
+<td align="left">NA</td>
+<td align="left">SCHWARZ</td>
+<td align="left">NA</td>
+<td align="right">1967</td>
+<td align="right">2</td>
+<td align="right">17</td>
+</tr>
+<tr class="odd">
+<td align="left">HERBERT</td>
+<td align="left">NA</td>
+<td align="left">ZIMMERMANN</td>
+<td align="left">NA</td>
+<td align="right">1961</td>
+<td align="right">11</td>
+<td align="right">6</td>
+</tr>
+<tr class="even">
+<td align="left">HANS</td>
+<td align="left">NA</td>
+<td align="left">SCHMITT</td>
+<td align="left">NA</td>
+<td align="right">1945</td>
+<td align="right">8</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="left">UWE</td>
+<td align="left">NA</td>
+<td align="left">KELLER</td>
+<td align="left">NA</td>
+<td align="right">2000</td>
+<td align="right">7</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="left">DANIEL</td>
+<td align="left">NA</td>
+<td align="left">HEINRICH</td>
+<td align="left">NA</td>
+<td align="right">1967</td>
+<td align="right">5</td>
+<td align="right">6</td>
+</tr>
+</tbody>
+</table>
 <p>Al igual que en el ejemplo anterior, suponga que un subconjunto de los datos de la muestra E fue revisado de forma manual para establecer la coincidencia con la muestra P, y que ha conservado un id único que permite realizar el emparejamiento exacto.</p>
 <p>En el caso de <code>RLdata10000</code> se cuenta con el vector <code>identity.RLdata10000</code> que conserva el id único de cada registro, esto con fines de entrenamiento de un modelo o como en este caso, para mostrar el uso de los procedimientos. Note que solo hay 9.000 identificadores únicos, por lo que 1.000 son duplicados, el desafío es que los métodos de emparejamiento los identifique con el menor error.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="cap5.html#cb42-1" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(identity.RLdata10000))</span></code></pre></div>
 <pre><code>## [1] 9000</code></pre>
 <p>Se define el vector <code>var</code> con todas las variables que se hará el emparejamiento, en el vector <code>char_vars</code> se conservan las variables de cadena donde es posible hacer cálculos con métricas de similaridad, <code>cal_simil</code> especifica para cuales de las variables de <code>char_vars</code> no se exige coincidencias exactas. La métrica que se usa por defecto es Jaro-Winkler, pero hay otras opciones que se pueden implementar.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="cap5.html#cb44-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>, <span class="st">&quot;by&quot;</span>, <span class="st">&quot;bm&quot;</span>, <span class="st">&quot;bd&quot;</span>)</span>
-<span id="cb44-2"><a href="cap5.html#cb44-2" tabindex="-1"></a>char_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>)</span>
-<span id="cb44-3"><a href="cap5.html#cb44-3" tabindex="-1"></a>cal_simil <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;fname_c1&quot;</span>, <span class="st">&quot;lname_c1&quot;</span>)</span></code></pre></div>
 <p>La función <code>fastLink</code> permite identificar los duplicados usando los mismos datos en los argumentos de los <code>dfA</code> y <code>dfB</code>, y cuenta con un argumento para distribuir en varios cores el procesamiento. <code>cut.a</code> es el umbral mínimo de probabilidad posterior para aceptar un <em>emparejamiento</em> y <code>cut.p</code> es el umbral inferior para considerar un registro como <em>emparejamiento potencial</em> (que pase a revisión clerical), es decir, si la probabilidad está entre <code>cut.p</code> y <code>cut.a</code>, el par se considera un <em>emparejamiento potencial</em> que requiere revisión manual. Si la probabilidad es menor que <code>cut.p</code>, el registro se considera como <em>no emparejado</em>. Se debe tener en cuenta que un valor muy alto de <code>cut.a</code> puede originar más precisión pero menos emparejamientos, pero si <code>cut.a</code> es bajo entonces se espera un mayor <em>recall</em> y un mayor riesgo de falsos positivos.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="cap5.html#cb45-1" tabindex="-1"></a>nCores <span class="ot">&lt;-</span> <span class="fu">detectCores</span>()</span>
-<span id="cb45-2"><a href="cap5.html#cb45-2" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">fastLink</span>(<span class="at">dfA =</span> RLdata10000, <span class="at">dfB =</span> RLdata10000,</span>
-<span id="cb45-3"><a href="cap5.html#cb45-3" tabindex="-1"></a>                <span class="at">varnames =</span> vars,</span>
-<span id="cb45-4"><a href="cap5.html#cb45-4" tabindex="-1"></a>                <span class="at">stringdist.match =</span> char_vars,</span>
-<span id="cb45-5"><a href="cap5.html#cb45-5" tabindex="-1"></a>                <span class="at">stringdist.method =</span> <span class="st">&quot;jw&quot;</span>,</span>
-<span id="cb45-6"><a href="cap5.html#cb45-6" tabindex="-1"></a>                <span class="at">partial.match =</span> cal_simil,</span>
-<span id="cb45-7"><a href="cap5.html#cb45-7" tabindex="-1"></a>                <span class="at">cut.a =</span> <span class="fl">0.94</span>,</span>
-<span id="cb45-8"><a href="cap5.html#cb45-8" tabindex="-1"></a>                <span class="at">cut.p =</span> <span class="fl">0.84</span>,</span>
-<span id="cb45-9"><a href="cap5.html#cb45-9" tabindex="-1"></a>                <span class="at">dedupe =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb45-10"><a href="cap5.html#cb45-10" tabindex="-1"></a>                <span class="at">n.cores =</span> nCores <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## 
 ## ==================== 
 ## fastLink(): Fast Probabilistic Record Linkage
@@ -5257,38 +5522,150 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 ## dfA and dfB are identical, assuming deduplication of a single data set.
 ## Setting return.all to FALSE.
 ## 
-## Calculating matches for each variable.</code></pre>
-<pre><code>## Getting counts for parameter estimation.
+## Calculating matches for each variable.
+## Getting counts for parameter estimation.
+##     Parallelizing calculation using OpenMP. 1 threads out of 8 are used.
 ## Running the EM algorithm.
 ## Getting the indices of estimated matches.
+##     Parallelizing calculation using OpenMP. 1 threads out of 8 are used.
 ## Calculating the posterior for each pair of matched observations.
 ## Getting the match patterns for each estimated match.</code></pre>
 <p>El procedimiento genera la variable <code>dedupe.ids</code> para todo el conjunto de datos. La función <code>getMatches</code> permite extraer el conjunto de datos con la variable de identificación.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="cap5.html#cb48-1" tabindex="-1"></a>index_dup <span class="ot">&lt;-</span> <span class="fu">getMatches</span>(<span class="at">dfA =</span> RLdata10000, <span class="at">dfB =</span> RLdata10000, <span class="at">fl.out =</span> res) </span>
-<span id="cb48-2"><a href="cap5.html#cb48-2" tabindex="-1"></a>index_dup <span class="ot">&lt;-</span> index_dup <span class="sc">|&gt;</span> <span class="fu">bind_cols</span>(<span class="fu">data.frame</span>(<span class="at">id =</span> identity.RLdata10000))</span>
-<span id="cb48-3"><a href="cap5.html#cb48-3" tabindex="-1"></a></span>
-<span id="cb48-4"><a href="cap5.html#cb48-4" tabindex="-1"></a>duplicados <span class="ot">&lt;-</span> <span class="fu">get_dupes</span>(index_dup, dedupe.ids)</span>
-<span id="cb48-5"><a href="cap5.html#cb48-5" tabindex="-1"></a><span class="fu">head</span>(duplicados)</span></code></pre></div>
-<pre><code>##   dedupe.ids dupe_count fname_c1 fname_c2   lname_c1 lname_c2   by bm bd   id
-## 1        549          5    KLAUS     &lt;NA&gt;    SCHMIDT     &lt;NA&gt; 2003 12 10 3608
-## 2        549          5    KLAUS     &lt;NA&gt;    SCHMIDT     &lt;NA&gt; 1978 12 16  696
-## 3        549          5   KLAUSN     &lt;NA&gt;    SCHMIDT     &lt;NA&gt; 2003 12 10 3608
-## 4        549          5    KLAUS     &lt;NA&gt;    SCHMIDT     &lt;NA&gt; 1969 12 25 3280
-## 5        549          5    KLAUS     &lt;NA&gt;    SCHMIST     &lt;NA&gt; 1969 12 25 3280
-## 6         28          4    PETER     ROLF ZIMMERMANN     &lt;NA&gt; 1945 11 21  558</code></pre>
+<pre><code>##   dedupe.ids dupe_count fname_c1 fname_c2    lname_c1 lname_c2   by bm bd   id
+## 1        420          3 GUENTHER     &lt;NA&gt; ZIMMERMWANN     &lt;NA&gt; 1971  6 23 1794
+## 2        420          3 GUENTHER     &lt;NA&gt;  ZIMMERMANN     &lt;NA&gt; 1992  6 23 1864
+## 3        420          3 GUENTHER     &lt;NA&gt;  ZIMMERMANN     &lt;NA&gt; 1971  6 23 1794
+## 4       3969          3  GERTRUD     &lt;NA&gt;     MUELLER     &lt;NA&gt; 1964  7 27 8970
+## 5       3969          3  GERTRUD     &lt;NA&gt;     MUELOER     &lt;NA&gt; 1964  7 11 7616
+## 6       3969          3  GERTRUD     &lt;NA&gt;     MUELLER     &lt;NA&gt; 1964  7 11 7616</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="12%" />
+<col width="10%" />
+<col width="15%" />
+<col width="13%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>dedupe.ids</th>
+<th>dupe_count</th>
+<th>fname_c1</th>
+<th>fname_c2</th>
+<th>lname_c1</th>
+<th>lname_c2</th>
+<th>by</th>
+<th>bm</th>
+<th>bd</th>
+<th>id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>420</td>
+<td>3</td>
+<td>GUENTHER</td>
+<td><NA></td>
+<td>ZIMMERMWANN</td>
+<td><NA></td>
+<td>1971</td>
+<td>6</td>
+<td>23</td>
+<td>1794</td>
+</tr>
+<tr class="even">
+<td>420</td>
+<td>3</td>
+<td>GUENTHER</td>
+<td><NA></td>
+<td>ZIMMERMANN</td>
+<td><NA></td>
+<td>1992</td>
+<td>6</td>
+<td>23</td>
+<td>1864</td>
+</tr>
+<tr class="odd">
+<td>420</td>
+<td>3</td>
+<td>GUENTHER</td>
+<td><NA></td>
+<td>ZIMMERMANN</td>
+<td><NA></td>
+<td>1971</td>
+<td>6</td>
+<td>23</td>
+<td>1794</td>
+</tr>
+<tr class="even">
+<td>3969</td>
+<td>3</td>
+<td>GERTRUD</td>
+<td><NA></td>
+<td>MUELLER</td>
+<td><NA></td>
+<td>1964</td>
+<td>7</td>
+<td>27</td>
+<td>8970</td>
+</tr>
+<tr class="odd">
+<td>3969</td>
+<td>3</td>
+<td>GERTRUD</td>
+<td><NA></td>
+<td>MUELOER</td>
+<td><NA></td>
+<td>1964</td>
+<td>7</td>
+<td>11</td>
+<td>7616</td>
+</tr>
+<tr class="even">
+<td>3969</td>
+<td>3</td>
+<td>GERTRUD</td>
+<td><NA></td>
+<td>MUELLER</td>
+<td><NA></td>
+<td>1964</td>
+<td>7</td>
+<td>11</td>
+<td>7616</td>
+</tr>
+</tbody>
+</table>
 <p>El desempeño del modelo se puede evaluar mediante una matriz de confusión que compara las predicciones del modelo con los valores reales. En este caso, el modelo identificó correctamente 982 verdaderos positivos, es decir, observaciones que efectivamente eran duplicados. Sin embargo, también generó 18 falsos negativos, que son casos verdaderos que el modelo no logró identificar correctamente. Además, el modelo produjo 63 falsos positivos, es decir, casos que fueron clasificados como verdaderos por el modelo, pero en realidad no eran duplicados.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="cap5.html#cb50-1" tabindex="-1"></a>ids_duplicados <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">table</span>(identity.RLdata10000))[<span class="fu">table</span>(identity.RLdata10000) <span class="sc">&gt;</span> <span class="dv">1</span>]</span>
-<span id="cb50-2"><a href="cap5.html#cb50-2" tabindex="-1"></a>todos_ids <span class="ot">&lt;-</span> <span class="fu">union</span>(<span class="fu">unique</span>(duplicados<span class="sc">$</span>id), <span class="fu">unique</span>(ids_duplicados))</span>
-<span id="cb50-3"><a href="cap5.html#cb50-3" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="cap5.html#cb50-4" tabindex="-1"></a>dupes_model <span class="ot">&lt;-</span> todos_ids <span class="sc">%in%</span> <span class="fu">unique</span>(duplicados<span class="sc">$</span>id)</span>
-<span id="cb50-5"><a href="cap5.html#cb50-5" tabindex="-1"></a>dupes_real <span class="ot">&lt;-</span> todos_ids <span class="sc">%in%</span> ids_duplicados</span>
-<span id="cb50-6"><a href="cap5.html#cb50-6" tabindex="-1"></a></span>
-<span id="cb50-7"><a href="cap5.html#cb50-7" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="at">Real =</span> dupes_real, <span class="at">Modelo =</span> dupes_model)</span>
-<span id="cb50-8"><a href="cap5.html#cb50-8" tabindex="-1"></a><span class="fu">print</span>(matriz)</span></code></pre></div>
 <pre><code>##        Modelo
 ## Real    FALSE TRUE
-##   FALSE     0 1159
-##   TRUE     98  902</code></pre>
+##   FALSE     0   63
+##   TRUE     18  982</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Real / Predicho</th>
+<th>FALSE</th>
+<th>TRUE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FALSE</td>
+<td>0</td>
+<td>63</td>
+</tr>
+<tr class="even">
+<td>TRUE</td>
+<td>18</td>
+<td>982</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="vinculación-de-registros" class="section level3 hasAnchor" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> Vinculación de registros<a href="#vinculaci%C3%B3n-de-registros" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -5297,50 +5674,120 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <p>La forma de implementar este procedimiento es análoga al utilizado previamente para la detección de duplicados dentro de una misma base de datos. La diferencia principal radica en los conjuntos de datos que se introducen en los argumentos de la función de emparejamiento: en lugar de comparar una base consigo misma, en este caso se contrasta la muestra E frente a la muestra P. De esta manera, se logra identificar registros compartidos entre las dos muestras, manteniendo la misma lógica de comparación, pero adaptada a un contexto de integración de fuentes.</p>
 <p>En el caso del paquete <code>RecordLinkage</code>, se cuenta con dos funciones para la creación de patrones de comparación a partir de conjuntos de datos: <code>compare.dedup()</code> o <code>RLBigDataDedup()</code>, para la deduplicación de un único conjunto de datos como se presentó en la sección anterior, y <code>compare.linkage()</code> o <code>RLBigDataLinkage()</code>, para vincular dos conjuntos de datos diferentes, la diferencia es que la segunda función está diseñada para grandes conjuntos de datos.</p>
 <p>Considere los conjuntos de datos de la muestra E y de la muestra P, almacenados previamente en los objetos <code>censo_limpio</code> y <code>encuesta_limpia</code>. Ahora se creará la variable de fecha con el valor de la fecha de nacimiento.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="cap5.html#cb52-1" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb52-2"><a href="cap5.html#cb52-2" tabindex="-1"></a><span class="fu">p_load</span>(tidyverse, RecordLinkage, lubridate)</span>
-<span id="cb52-3"><a href="cap5.html#cb52-3" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="cap5.html#cb52-4" tabindex="-1"></a>df_censo <span class="ot">&lt;-</span> censo_limpio <span class="sc">|&gt;</span> </span>
-<span id="cb52-5"><a href="cap5.html#cb52-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fecha_nacimiento =</span> <span class="fu">make_date</span>(<span class="at">year =</span> anio_nac, <span class="at">month =</span> mes_nac, <span class="at">day =</span> dia_nac)) <span class="sc">|&gt;</span> </span>
-<span id="cb52-6"><a href="cap5.html#cb52-6" tabindex="-1"></a>    <span class="fu">select</span>(id_segmento, <span class="fu">ends_with</span>(<span class="st">&quot;cod&quot;</span>), sexo, fecha_nacimiento)</span>
-<span id="cb52-7"><a href="cap5.html#cb52-7" tabindex="-1"></a></span>
-<span id="cb52-8"><a href="cap5.html#cb52-8" tabindex="-1"></a>df_encuesta <span class="ot">&lt;-</span> encuesta_limpia <span class="sc">|&gt;</span> </span>
-<span id="cb52-9"><a href="cap5.html#cb52-9" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">fecha_nacimiento =</span> <span class="fu">make_date</span>(<span class="at">year =</span> anio_nac, <span class="at">month =</span> mes_nac, <span class="at">day =</span> dia_nac)) <span class="sc">|&gt;</span> </span>
-<span id="cb52-10"><a href="cap5.html#cb52-10" tabindex="-1"></a>    <span class="fu">select</span>(id_segmento, <span class="fu">ends_with</span>(<span class="st">&quot;cod&quot;</span>), sexo, fecha_nacimiento)</span></code></pre></div>
 <p>Para el ejemplo se usará el paquete <code>RecordLinkage</code>. En este caso la muestra P contiene 54 registros y la muestra E contiene 97 registros, en este caso se aplicará una indexación usando como bloques el <code>id_segmento</code>. La estructura de la base de la muestra E es la siguiente</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="cap5.html#cb53-1" tabindex="-1"></a><span class="fu">head</span>(df_censo)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 5
-##   id_segmento nombre_cod apellido_cod sexo  fecha_nacimiento
-##         &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt; &lt;date&gt;          
-## 1         101 KRLS       PRS          m     1947-01-01      
-## 2         101 LK         KSTR         f     1975-01-01      
-## 3         101 KML        KSTR         f     2012-01-01      
-## 4         101 MR         KSTR         f     1959-01-01      
-## 5         102 YRG        GMS          m     1954-01-01      
-## 6         102 SF         RMRS         f     2000-01-01</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id_segmento</th>
+<th align="left">nombre_cod</th>
+<th align="left">apellido_cod</th>
+<th align="left">sexo</th>
+<th align="left">fecha_nacimiento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">101</td>
+<td align="left">KRLS</td>
+<td align="left">PRS</td>
+<td align="left">m</td>
+<td align="left">1947-01-01</td>
+</tr>
+<tr class="even">
+<td align="right">101</td>
+<td align="left">LK</td>
+<td align="left">KSTR</td>
+<td align="left">f</td>
+<td align="left">1975-01-01</td>
+</tr>
+<tr class="odd">
+<td align="right">101</td>
+<td align="left">KML</td>
+<td align="left">KSTR</td>
+<td align="left">f</td>
+<td align="left">2012-01-01</td>
+</tr>
+<tr class="even">
+<td align="right">101</td>
+<td align="left">MR</td>
+<td align="left">KSTR</td>
+<td align="left">f</td>
+<td align="left">1959-01-01</td>
+</tr>
+<tr class="odd">
+<td align="right">102</td>
+<td align="left">YRG</td>
+<td align="left">GMS</td>
+<td align="left">m</td>
+<td align="left">1954-01-01</td>
+</tr>
+<tr class="even">
+<td align="right">102</td>
+<td align="left">SF</td>
+<td align="left">RMRS</td>
+<td align="left">f</td>
+<td align="left">2000-01-01</td>
+</tr>
+</tbody>
+</table>
 <p>Mientras que la muestra P es la siguiente, es de recordar que los conjuntos de datos ya fueron sometidos a un preprocesamiento, y note que los conjuntos de datos se han alineado para que las variables se denominen de la misma forma:</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="cap5.html#cb55-1" tabindex="-1"></a><span class="fu">head</span>(df_encuesta)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 5
-##   id_segmento nombre_cod apellido_cod sexo  fecha_nacimiento
-##         &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt; &lt;date&gt;          
-## 1         101 MR         KSTR         f     1959-01-01      
-## 2         101 KRLS       PRS          m     1947-01-01      
-## 3         101 LK         KSTR         f     1975-01-01      
-## 4         101 KML        RMRS         f     2010-01-01      
-## 5         101 SF         KSTR         f     1966-01-01      
-## 6         101 N          MRTNS        f     1973-01-01</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">id_segmento</th>
+<th align="left">nombre_cod</th>
+<th align="left">apellido_cod</th>
+<th align="left">sexo</th>
+<th align="left">fecha_nacimiento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">101</td>
+<td align="left">MR</td>
+<td align="left">KSTR</td>
+<td align="left">f</td>
+<td align="left">1959-01-01</td>
+</tr>
+<tr class="even">
+<td align="right">101</td>
+<td align="left">KRLS</td>
+<td align="left">PRS</td>
+<td align="left">m</td>
+<td align="left">1947-01-01</td>
+</tr>
+<tr class="odd">
+<td align="right">101</td>
+<td align="left">LK</td>
+<td align="left">KSTR</td>
+<td align="left">f</td>
+<td align="left">1975-01-01</td>
+</tr>
+<tr class="even">
+<td align="right">101</td>
+<td align="left">KML</td>
+<td align="left">RMRS</td>
+<td align="left">f</td>
+<td align="left">2010-01-01</td>
+</tr>
+<tr class="odd">
+<td align="right">101</td>
+<td align="left">SF</td>
+<td align="left">KSTR</td>
+<td align="left">f</td>
+<td align="left">1966-01-01</td>
+</tr>
+<tr class="even">
+<td align="right">101</td>
+<td align="left">N</td>
+<td align="left">MRTNS</td>
+<td align="left">f</td>
+<td align="left">1973-01-01</td>
+</tr>
+</tbody>
+</table>
 <p>La función <code>compare.linkage()</code> construye los patrones para la vinculación de los registros, en este caso se compara la muestra E y la muestra P usando como bloque el segmento.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="cap5.html#cb57-1" tabindex="-1"></a>empareja <span class="ot">&lt;-</span> <span class="fu">compare.linkage</span>(<span class="at">dataset1 =</span> df_encuesta,</span>
-<span id="cb57-2"><a href="cap5.html#cb57-2" tabindex="-1"></a>                            <span class="at">dataset2 =</span> df_censo,</span>
-<span id="cb57-3"><a href="cap5.html#cb57-3" tabindex="-1"></a>                            <span class="at">blockfld =</span> <span class="dv">1</span>, <span class="co">#Bloque por id_segmento</span></span>
-<span id="cb57-4"><a href="cap5.html#cb57-4" tabindex="-1"></a>                            <span class="at">strcmp =</span> <span class="fu">c</span>(<span class="st">&quot;nombre_cod&quot;</span>, <span class="st">&quot;apellido_cod&quot;</span>, <span class="st">&quot;sexo&quot;</span>),</span>
-<span id="cb57-5"><a href="cap5.html#cb57-5" tabindex="-1"></a>                            <span class="at">exclude =</span> <span class="st">&quot;id_segmento&quot;</span></span>
-<span id="cb57-6"><a href="cap5.html#cb57-6" tabindex="-1"></a>                            )</span></code></pre></div>
 <p>Una vez realizadas las comparaciones utilizando los criterios especificados, se aplica el algoritmo para calcular la probabilidad de coincidencia. Para ello, el paquete <code>RecordLinkage</code> cuenta con los algoritmos de Fellegi-Sunter, EpiLink y EM.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="cap5.html#cb58-1" tabindex="-1"></a>empareja_fs <span class="ot">&lt;-</span> RecordLinkage<span class="sc">::</span><span class="fu">fsWeights</span>(empareja)</span>
-<span id="cb58-2"><a href="cap5.html#cb58-2" tabindex="-1"></a><span class="co">#empareja_em &lt;- RecordLinkage::emWeights(empareja)</span></span>
-<span id="cb58-3"><a href="cap5.html#cb58-3" tabindex="-1"></a><span class="co">#empareja_ep &lt;- RecordLinkage::epiWeights(empareja)</span></span>
-<span id="cb58-4"><a href="cap5.html#cb58-4" tabindex="-1"></a><span class="fu">summary</span>(empareja_fs)</span></code></pre></div>
 <pre><code>## 
 ## Linkage Data Set
 ## 
@@ -5359,33 +5806,99 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 ##       743         0       601       114         0       217         0         1 
 ##     (0,2]     (2,4]     (4,6]     (6,8]    (8,10]   (10,12]   (12,14] 
 ##         0        18         2         0         1         0        53</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th>Intervalo de peso</th>
+<th>Número de pares</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>-16 – -14</td>
+<td>743</td>
+</tr>
+<tr class="even">
+<td>-14 – -12</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>-12 – -10</td>
+<td>601</td>
+</tr>
+<tr class="even">
+<td>-10 – -8</td>
+<td>114</td>
+</tr>
+<tr class="odd">
+<td>-8 – -6</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>-6 – -4</td>
+<td>217</td>
+</tr>
+<tr class="odd">
+<td>-4 – -2</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>-2 – 0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>0 – 2</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2 – 4</td>
+<td>18</td>
+</tr>
+<tr class="odd">
+<td>4 – 6</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>6 – 8</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>8 – 10</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>10 – 12</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>12 – 14</td>
+<td>53</td>
+</tr>
+</tbody>
+</table>
 <p>El análisis de la distribución de los pesos muestra que, aunque la mayoría de los pares se concentran en valores negativos, lo que indica una baja similitud y, por tanto, una baja probabilidad de coincidencia. Hay algunos pares que alcanzan valores positivos, y dentro de estos, se observa que algunos se ubican en el rango más alto, por lo que tienen una alta probabilidad de ser emparejamientos verdaderos.</p>
 <p>Cuando los conjuntos de datos son muy grandes, se puede usar un enfoque basado en la función <code>RLBigDataLinkage</code> en vez de <code>compare.linkage</code>, solo debe tener en cuenta que al ser objetos S4 debe ver los resultados usando el simbolo <code>@</code>, por ejemplo <code>summary(empareja_fs@Wdata)</code>.</p>
 <p>Los algoritmos calculan la probabilidad de coincidencia para cada registro en <code>df_encuesta</code> con cada registro en el conjunto de <code>df_censo</code> cuando pertenecen al mismo segmento, basándose en los patrones de comparación especificados. Ahora, es necesario realizar la clasificación como <em>emparejado</em>, <em>emparejamiento potencial</em> o <em>no emparejado</em>. Para hacer esta clasificación, es necesario establecer el umbral de clasificación.</p>
 <p>La elección del umbral suele ser un aspecto relevante. Si es muy bajo, se podría estar aceptando demasiados falsos positivos; si es muy alto, se podría perder verdaderos emparejados. una de las herramientas del paquete <code>RecordLinkage</code> es la función <code>getParetoThreshold()</code>, que puede ser útil para identificar el umbral de aceptación. Sin embargo, con conjuntos de datos grandes podría tardar mucho en ejecutarse.</p>
 <p>La siguiente gráfica es interactiva y permite observar cómo cambia la vida residual media a medida que sube el umbral. Se ha comentado la línea debido a que no puede compilarse por bookdown, y se ha tomado el umbral automático. La idea básica es identificar el punto de cambio de la pendiente en la curva, para ello puede usar un criterio como el del codo.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="cap5.html#cb60-1" tabindex="-1"></a><span class="co">#Este es un diagrama interactivo, por lo que se comenta la línea </span></span>
-<span id="cb60-2"><a href="cap5.html#cb60-2" tabindex="-1"></a><span class="co">#umbral &lt;- getParetoThreshold(empareja_fs) </span></span>
-<span id="cb60-3"><a href="cap5.html#cb60-3" tabindex="-1"></a>umbral <span class="ot">&lt;-</span> <span class="fl">5.86</span></span></code></pre></div>
 <p>Una vez definido el umbral, se puede extraer en un conjunto de datos a los registros clasificados como <em>emparejados</em>. La primera fila corresponde al registro en <code>df_encuesta</code> mientras que el segundo corresponde al registro en <code>df_censo</code>.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="cap5.html#cb61-1" tabindex="-1"></a>emparejado <span class="ot">&lt;-</span> <span class="fu">getPairs</span>(empareja_fs, <span class="at">min.weight =</span> umbral)</span></code></pre></div>
-<div id="czsxkuxqfn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
-<style>#czsxkuxqfn table {
+<div id="uruxksarop" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
+<style>#uruxksarop table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#czsxkuxqfn thead, #czsxkuxqfn tbody, #czsxkuxqfn tfoot, #czsxkuxqfn tr, #czsxkuxqfn td, #czsxkuxqfn th {
+#uruxksarop thead, #uruxksarop tbody, #uruxksarop tfoot, #uruxksarop tr, #uruxksarop td, #uruxksarop th {
   border-style: none;
 }
 
-#czsxkuxqfn p {
+#uruxksarop p {
   margin: 0;
   padding: 0;
 }
 
-#czsxkuxqfn .gt_table {
+#uruxksarop .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5411,12 +5924,12 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-left-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_caption {
+#uruxksarop .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#czsxkuxqfn .gt_title {
+#uruxksarop .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5428,7 +5941,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-bottom-width: 0;
 }
 
-#czsxkuxqfn .gt_subtitle {
+#uruxksarop .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5440,7 +5953,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-top-width: 0;
 }
 
-#czsxkuxqfn .gt_heading {
+#uruxksarop .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5452,13 +5965,13 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-right-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_bottom_border {
+#uruxksarop .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_col_headings {
+#uruxksarop .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5473,7 +5986,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-right-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_col_heading {
+#uruxksarop .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5493,7 +6006,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   overflow-x: hidden;
 }
 
-#czsxkuxqfn .gt_column_spanner_outer {
+#uruxksarop .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5505,15 +6018,15 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 4px;
 }
 
-#czsxkuxqfn .gt_column_spanner_outer:first-child {
+#uruxksarop .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#czsxkuxqfn .gt_column_spanner_outer:last-child {
+#uruxksarop .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#czsxkuxqfn .gt_column_spanner {
+#uruxksarop .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5525,11 +6038,11 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   width: 100%;
 }
 
-#czsxkuxqfn .gt_spanner_row {
+#uruxksarop .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#czsxkuxqfn .gt_group_heading {
+#uruxksarop .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5555,7 +6068,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   text-align: left;
 }
 
-#czsxkuxqfn .gt_empty_group_heading {
+#uruxksarop .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5570,15 +6083,15 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   vertical-align: middle;
 }
 
-#czsxkuxqfn .gt_from_md > :first-child {
+#uruxksarop .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#czsxkuxqfn .gt_from_md > :last-child {
+#uruxksarop .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#czsxkuxqfn .gt_row {
+#uruxksarop .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5597,7 +6110,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   overflow-x: hidden;
 }
 
-#czsxkuxqfn .gt_stub {
+#uruxksarop .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5610,7 +6123,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 5px;
 }
 
-#czsxkuxqfn .gt_stub_row_group {
+#uruxksarop .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5624,15 +6137,15 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   vertical-align: top;
 }
 
-#czsxkuxqfn .gt_row_group_first td {
+#uruxksarop .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#czsxkuxqfn .gt_row_group_first th {
+#uruxksarop .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#czsxkuxqfn .gt_summary_row {
+#uruxksarop .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5642,16 +6155,16 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 5px;
 }
 
-#czsxkuxqfn .gt_first_summary_row {
+#uruxksarop .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_first_summary_row.thick {
+#uruxksarop .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#czsxkuxqfn .gt_last_summary_row {
+#uruxksarop .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5661,7 +6174,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-bottom-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_grand_summary_row {
+#uruxksarop .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5671,7 +6184,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 5px;
 }
 
-#czsxkuxqfn .gt_first_grand_summary_row {
+#uruxksarop .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5681,7 +6194,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-top-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_last_grand_summary_row_top {
+#uruxksarop .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5691,11 +6204,11 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-bottom-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_striped {
+#uruxksarop .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#czsxkuxqfn .gt_table_body {
+#uruxksarop .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5704,7 +6217,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-bottom-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_footnotes {
+#uruxksarop .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5718,7 +6231,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-right-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_footnote {
+#uruxksarop .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5727,7 +6240,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 5px;
 }
 
-#czsxkuxqfn .gt_sourcenotes {
+#uruxksarop .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5741,7 +6254,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-right-color: #D3D3D3;
 }
 
-#czsxkuxqfn .gt_sourcenote {
+#uruxksarop .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5749,72 +6262,72 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 5px;
 }
 
-#czsxkuxqfn .gt_left {
+#uruxksarop .gt_left {
   text-align: left;
 }
 
-#czsxkuxqfn .gt_center {
+#uruxksarop .gt_center {
   text-align: center;
 }
 
-#czsxkuxqfn .gt_right {
+#uruxksarop .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#czsxkuxqfn .gt_font_normal {
+#uruxksarop .gt_font_normal {
   font-weight: normal;
 }
 
-#czsxkuxqfn .gt_font_bold {
+#uruxksarop .gt_font_bold {
   font-weight: bold;
 }
 
-#czsxkuxqfn .gt_font_italic {
+#uruxksarop .gt_font_italic {
   font-style: italic;
 }
 
-#czsxkuxqfn .gt_super {
+#uruxksarop .gt_super {
   font-size: 65%;
 }
 
-#czsxkuxqfn .gt_footnote_marks {
+#uruxksarop .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#czsxkuxqfn .gt_asterisk {
+#uruxksarop .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#czsxkuxqfn .gt_indent_1 {
+#uruxksarop .gt_indent_1 {
   text-indent: 5px;
 }
 
-#czsxkuxqfn .gt_indent_2 {
+#uruxksarop .gt_indent_2 {
   text-indent: 10px;
 }
 
-#czsxkuxqfn .gt_indent_3 {
+#uruxksarop .gt_indent_3 {
   text-indent: 15px;
 }
 
-#czsxkuxqfn .gt_indent_4 {
+#uruxksarop .gt_indent_4 {
   text-indent: 20px;
 }
 
-#czsxkuxqfn .gt_indent_5 {
+#uruxksarop .gt_indent_5 {
   text-indent: 25px;
 }
 
-#czsxkuxqfn .katex-display {
+#uruxksarop .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#czsxkuxqfn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#uruxksarop div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -6982,7 +7495,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <td headers="apellido_cod" class="gt_row gt_left">KSTR</td>
 <td headers="sexo" class="gt_row gt_left">m</td>
 <td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
-<td headers="Weight" class="gt_row gt_right"> 5.860738686676608</td></tr>
+<td headers="Weight" class="gt_row gt_right"> 5.860738686676607</td></tr>
     <tr><td headers="id" class="gt_row gt_right"></td>
 <td headers="id_segmento" class="gt_row gt_right"></td>
 <td headers="nombre_cod" class="gt_row gt_left"></td>
@@ -7003,7 +7516,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <td headers="apellido_cod" class="gt_row gt_left">GMS</td>
 <td headers="sexo" class="gt_row gt_left">m</td>
 <td headers="fecha_nacimiento" class="gt_row gt_right">2009-01-01</td>
-<td headers="Weight" class="gt_row gt_right"> 5.860738686676608</td></tr>
+<td headers="Weight" class="gt_row gt_right"> 5.860738686676607</td></tr>
     <tr><td headers="id" class="gt_row gt_right"></td>
 <td headers="id_segmento" class="gt_row gt_right"></td>
 <td headers="nombre_cod" class="gt_row gt_left"></td>
@@ -7016,40 +7529,23 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 </table>
 </div>
 <p>De igual forma, usando la misma gráfica obtenida con <code>getParetoThreshold()</code> se puede establecer un umbral más flexible, y encontrar los <em>emparejamientos potenciales</em>. En nuestro ejemplo se tomarán como aquellos registros que tienen un ponderador entre 1.2 y el umbral, los cuales pasarán a una revisión clerical para establecer si se clasifican como <em>emparejados</em> o <em>no emparejados</em></p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="cap5.html#cb62-1" tabindex="-1"></a>posibles <span class="ot">&lt;-</span> <span class="fu">getPairs</span>(empareja_fs, <span class="at">min.weight =</span> <span class="fl">1.2</span>, <span class="at">max.weight =</span> umbral)</span></code></pre></div>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="cap5.html#cb63-1" tabindex="-1"></a>posibles <span class="sc">%&gt;%</span></span>
-<span id="cb63-2"><a href="cap5.html#cb63-2" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb63-3"><a href="cap5.html#cb63-3" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb63-4"><a href="cap5.html#cb63-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Emparejamientos potenciales&quot;</span></span>
-<span id="cb63-5"><a href="cap5.html#cb63-5" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb63-6"><a href="cap5.html#cb63-6" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb63-7"><a href="cap5.html#cb63-7" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
-<span id="cb63-8"><a href="cap5.html#cb63-8" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">&quot;#f9f9f9&quot;</span>),</span>
-<span id="cb63-9"><a href="cap5.html#cb63-9" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">&quot;bold&quot;</span>)</span>
-<span id="cb63-10"><a href="cap5.html#cb63-10" tabindex="-1"></a>    ),</span>
-<span id="cb63-11"><a href="cap5.html#cb63-11" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_column_labels</span>()</span>
-<span id="cb63-12"><a href="cap5.html#cb63-12" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb63-13"><a href="cap5.html#cb63-13" tabindex="-1"></a>  <span class="fu">tab_options</span>(</span>
-<span id="cb63-14"><a href="cap5.html#cb63-14" tabindex="-1"></a>    <span class="at">table.width =</span> <span class="fu">pct</span>(<span class="dv">100</span>),</span>
-<span id="cb63-15"><a href="cap5.html#cb63-15" tabindex="-1"></a>    <span class="at">container.height =</span> <span class="fu">px</span>(<span class="dv">400</span>) </span>
-<span id="cb63-16"><a href="cap5.html#cb63-16" tabindex="-1"></a>  )</span></code></pre></div>
-<div id="vfwbswtpzi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
-<style>#vfwbswtpzi table {
+<div id="lfvzvgftfu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:400px;">
+<style>#lfvzvgftfu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vfwbswtpzi thead, #vfwbswtpzi tbody, #vfwbswtpzi tfoot, #vfwbswtpzi tr, #vfwbswtpzi td, #vfwbswtpzi th {
+#lfvzvgftfu thead, #lfvzvgftfu tbody, #lfvzvgftfu tfoot, #lfvzvgftfu tr, #lfvzvgftfu td, #lfvzvgftfu th {
   border-style: none;
 }
 
-#vfwbswtpzi p {
+#lfvzvgftfu p {
   margin: 0;
   padding: 0;
 }
 
-#vfwbswtpzi .gt_table {
+#lfvzvgftfu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -7075,12 +7571,12 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-left-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_caption {
+#lfvzvgftfu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vfwbswtpzi .gt_title {
+#lfvzvgftfu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -7092,7 +7588,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-bottom-width: 0;
 }
 
-#vfwbswtpzi .gt_subtitle {
+#lfvzvgftfu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -7104,7 +7600,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-top-width: 0;
 }
 
-#vfwbswtpzi .gt_heading {
+#lfvzvgftfu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -7116,13 +7612,13 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-right-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_bottom_border {
+#lfvzvgftfu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_col_headings {
+#lfvzvgftfu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7137,7 +7633,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-right-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_col_heading {
+#lfvzvgftfu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7157,7 +7653,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   overflow-x: hidden;
 }
 
-#vfwbswtpzi .gt_column_spanner_outer {
+#lfvzvgftfu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7169,15 +7665,15 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 4px;
 }
 
-#vfwbswtpzi .gt_column_spanner_outer:first-child {
+#lfvzvgftfu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vfwbswtpzi .gt_column_spanner_outer:last-child {
+#lfvzvgftfu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vfwbswtpzi .gt_column_spanner {
+#lfvzvgftfu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -7189,11 +7685,11 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   width: 100%;
 }
 
-#vfwbswtpzi .gt_spanner_row {
+#lfvzvgftfu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vfwbswtpzi .gt_group_heading {
+#lfvzvgftfu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7219,7 +7715,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   text-align: left;
 }
 
-#vfwbswtpzi .gt_empty_group_heading {
+#lfvzvgftfu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -7234,15 +7730,15 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   vertical-align: middle;
 }
 
-#vfwbswtpzi .gt_from_md > :first-child {
+#lfvzvgftfu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vfwbswtpzi .gt_from_md > :last-child {
+#lfvzvgftfu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vfwbswtpzi .gt_row {
+#lfvzvgftfu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7261,7 +7757,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   overflow-x: hidden;
 }
 
-#vfwbswtpzi .gt_stub {
+#lfvzvgftfu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7274,7 +7770,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 5px;
 }
 
-#vfwbswtpzi .gt_stub_row_group {
+#lfvzvgftfu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -7288,15 +7784,15 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   vertical-align: top;
 }
 
-#vfwbswtpzi .gt_row_group_first td {
+#lfvzvgftfu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vfwbswtpzi .gt_row_group_first th {
+#lfvzvgftfu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vfwbswtpzi .gt_summary_row {
+#lfvzvgftfu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7306,16 +7802,16 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 5px;
 }
 
-#vfwbswtpzi .gt_first_summary_row {
+#lfvzvgftfu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_first_summary_row.thick {
+#lfvzvgftfu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vfwbswtpzi .gt_last_summary_row {
+#lfvzvgftfu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7325,7 +7821,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-bottom-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_grand_summary_row {
+#lfvzvgftfu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -7335,7 +7831,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 5px;
 }
 
-#vfwbswtpzi .gt_first_grand_summary_row {
+#lfvzvgftfu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7345,7 +7841,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-top-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_last_grand_summary_row_top {
+#lfvzvgftfu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -7355,11 +7851,11 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-bottom-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_striped {
+#lfvzvgftfu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vfwbswtpzi .gt_table_body {
+#lfvzvgftfu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -7368,7 +7864,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-bottom-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_footnotes {
+#lfvzvgftfu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7382,7 +7878,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-right-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_footnote {
+#lfvzvgftfu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -7391,7 +7887,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 5px;
 }
 
-#vfwbswtpzi .gt_sourcenotes {
+#lfvzvgftfu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -7405,7 +7901,7 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   border-right-color: #D3D3D3;
 }
 
-#vfwbswtpzi .gt_sourcenote {
+#lfvzvgftfu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -7413,72 +7909,72 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
   padding-right: 5px;
 }
 
-#vfwbswtpzi .gt_left {
+#lfvzvgftfu .gt_left {
   text-align: left;
 }
 
-#vfwbswtpzi .gt_center {
+#lfvzvgftfu .gt_center {
   text-align: center;
 }
 
-#vfwbswtpzi .gt_right {
+#lfvzvgftfu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vfwbswtpzi .gt_font_normal {
+#lfvzvgftfu .gt_font_normal {
   font-weight: normal;
 }
 
-#vfwbswtpzi .gt_font_bold {
+#lfvzvgftfu .gt_font_bold {
   font-weight: bold;
 }
 
-#vfwbswtpzi .gt_font_italic {
+#lfvzvgftfu .gt_font_italic {
   font-style: italic;
 }
 
-#vfwbswtpzi .gt_super {
+#lfvzvgftfu .gt_super {
   font-size: 65%;
 }
 
-#vfwbswtpzi .gt_footnote_marks {
+#lfvzvgftfu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vfwbswtpzi .gt_asterisk {
+#lfvzvgftfu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vfwbswtpzi .gt_indent_1 {
+#lfvzvgftfu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vfwbswtpzi .gt_indent_2 {
+#lfvzvgftfu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vfwbswtpzi .gt_indent_3 {
+#lfvzvgftfu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vfwbswtpzi .gt_indent_4 {
+#lfvzvgftfu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vfwbswtpzi .gt_indent_5 {
+#lfvzvgftfu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vfwbswtpzi .katex-display {
+#lfvzvgftfu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vfwbswtpzi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lfvzvgftfu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -7890,9 +8386,6 @@ Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de c
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-bleiholder2009data" class="csl-entry">
 Bleiholder, Jens, and Felix Naumann. 2009. <span>“Data Fusion.”</span> <em>ACM Computing Surveys (CSUR)</em> 41 (1): 1–41.
-</div>
-<div id="ref-tidygeocoder" class="csl-entry">
-Cambon, Jesse, Diego Hernangómez, Christopher Belanger, and Daniel Possenriede. 2021. <span>“Tidygeocoder: An r Package for Geocoding.”</span> <em>Journal of Open Source Software</em> 6 (65): 3544. <a href="https://doi.org/10.21105/joss.03544">https://doi.org/10.21105/joss.03544</a>.
 </div>
 <div id="ref-christen2012data" class="csl-entry">
 Christen, Peter. 2012. <em>Data Matching Concepts and Techniques for Record Linkage, Entity Resolution, and Duplicate Detection</em>. Springer.

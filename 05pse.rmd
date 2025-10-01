@@ -139,27 +139,15 @@ El emparejamiento de registros frecuentemente involucra información sensible co
 
 El primer paso consiste en geocodificar las direcciones proporcionadas por los encuestados y verificar que las mismas coinciden con los segmentos cartográficos seleccionados. En caso de que algunas direcciones no tengan una precisión a nivel de segmento cartográfico, entonces será necesaria una revisión clerical para verificar las direcciones proporcionadas por los encuestados.
 
-El paquete `tidygeocoder` [@tidygeocoder] puede ser útil para esa tarea, a continuación se presenta un ejemplo de juguete con cinco (5) direcciones en el departamento de Chuquisaca, Bolivia.
+El siguiente ejemplo, muestra un conjunto de datos con cinco direcciones en distintos municipios d eun país. Cada dirección se combina con el nombre del municipio y el país para formar una dirección completa. Luego, se obtiene la **georreferenciación**; es decir, las coordenadas de latitud y longitud correspondientes a cada ubicación. La tabla resultante se vería así:  
 
-```{r, warning=FALSE, message=FALSE}
-library(pacman)
-
-p_load(dplyr, tidygeocoder)
-
-datos <- tribble(
-  ~DIRECCION, ~MUNICIPIO,
-  "Av. Jaime Mendoza 123", "Sucre",
-  "Calle Bolívar 456", "Monteagudo",
-  "Plaza 25 de Mayo 789", "Camargo",
-  "Av. del Maestro 321", "Villa Serrano",
-  "Calle Potosí 654", "Zudáñez"
-)
-
-datos |>
-  mutate(addrs = paste0(DIRECCION, ", ", MUNICIPIO, ", Bolivia")) |>
-  geocode(addrs, method = "arcgis")
-```
-
+| DIRECCION              | MUNICIPIO      | LATITUD    | LONGITUD    |
+|------------------------|----------------|-----------|------------|
+| Av. Jaime Mendoza 123  | Sucre          | -19.0333  | -65.2622   |
+| Calle Bolívar 456      | Monteagudo     | -19.7700  | -63.4100   |
+| Plaza 25 de Mayo 789   | Camargo        | -20.0500  | -64.5500   |
+| Av. del Maestro 321    | Villa Serrano  | -20.4333  | -64.5500   |
+| Calle Potosí 654       | Zudáñez        | -19.9000  | -64.8500   |
 
 En caso de que algunos de los puntos de longitud y latitud no queden dentro de los segmentos de la muestra P, los revisores clericales deben verificar las direcciones y establecer si hay descritos algunos puntos de referencia que no se usaron durante el procesamiento automatizado que hubiera afectado la precisión del proceso automático. Los resultados de la geocodificación se utilizan durante el proceso de emparejamiento para identificar áreas de búsqueda alrededor de la dirección proporcionada por el encuestado. 
 
@@ -191,7 +179,7 @@ knitr::include_graphics("images/FlujoMatch2.png")
 
 Para ilustrar las tareas involucradas a lo largo del proceso de emparejamiento de registros, se utilizará un ejemplo compuesto por dos tablas de  datos artificiales.
 
-```{r}
+```{r, echo=FALSE}
 load("data/censo.rda")
 load("data/encuesta.rda")
 ```
@@ -258,9 +246,18 @@ Existen al menos cinco pasos que son necesarios (aunque probablemente no suficie
 
 #### Limpieza de los datos
 
-En este paso implementamos una función que nos permita remover los caracteres raros y así limpiar el texto, esta función se ha denominado `limpiar_texto()` y en cada línea hemos documentado el objetivo, es importante señalar que pueden existir otras estructuras que pueden ser removidas.
+Es posible implementar una rutina de limpieza que limpie y estandarice un texto para que sea más fácil de analizar. A continuación se ejemplifican los pasos para esta limpieza:
 
-```{r}
+- En primer lugar, se debe asegurar que el texto esté en una codificación estándar, lo cual evita que aparezcan símbolos extraños; por ejemplo, un nombre como “JosÃ©” se convierte correctamente en “José”.
+- Luego se transforman todas las letras a minúsculas para uniformar el estilo, de modo que nombres como “Andrés”, “ANDRÉS” y “andrés” queden todos representados como “andrés”. 
+- Después elimina los acentos y signos diacríticos, de manera que “José” se convierte en “jose” y “María” en “maria”. 
+- El siguiente paso reemplaza todos los signos de puntuación por espacios; así, un nombre escrito como “Juan-Camilo!” se transforma en “juan camilo”. 
+- Posteriormente, se reducen los espacios múltiples a un solo espacio, de modo que “Luis    Fernando” se corrige a “luis fernando”. 
+- Finalmente, se eliminan los espacios sobrantes al inicio y al final del texto, de manera que “ Catalina Gómez ” queda como “catalina gomez”. 
+
+Como resultado, se obtiene un texto limpio y homogéneo, listo para análisis posterior o procesamiento automático de datos.
+
+```{r, echo=FALSE}
 library(pacman)
 p_load(dplyr, tidyr, stringr, stringi, assertr)
 
@@ -275,9 +272,9 @@ limpiar_texto <- function(x) {
 }
 ```
 
-De igual manera el investigador puede establecer un vector de palabras vacías o irrelevantes, que prefiere eliminar de las cadena de texto. Por ejemplo, a continuación se crea el vector `stop_words` con varias palabras y se aplica la función `eliminar_stopwords()` para eliminarlas.
+De igual manera, el investigador puede definir un conjunto de palabras que considera vacías o irrelevantes para el análisis y que prefiere eliminar de las cadenas de texto. Estas palabras suelen ser artículos, preposiciones o conjunciones que no aportan información significativa, como “de”, “del”, “la”, “los”, “las”, “el” o “y”. Una vez definido este conjunto de palabras, se procede a recorrer el texto y eliminar todas las ocurrencias de estas palabras, asegurándose de que no queden espacios sobrantes ni múltiples espacios consecutivos. Finalmente, se recortan los espacios al inicio y al final de cada texto, de modo que el resultado sea una cadena limpia, homogénea y lista para un análisis más preciso.
 
-```{r}
+```{r, echo=FALSE}
 stop_words <- c("de", "del", "la", "los", "las", "el", "y")
 
 eliminar_stopwords <- function(x, palabras = stop_words) {
@@ -290,7 +287,7 @@ eliminar_stopwords <- function(x, palabras = stop_words) {
 
 Ahora podemos aplicar nuestras funciones sobre las variables de interés en los conjuntos de datos. Es importante destacar que el proceso de preprocesamiento de datos no debe sobrescribir los datos originales y en su lugar, se deben crear nuevos atributos que contengan los datos limpios y estandarizados, o generar nuevas tablas de datos que contengan los datos limpios y estandarizados.
 
-```{r}
+```{r, echo=FALSE}
 censo_limpio <- censo |> 
                 mutate(across(c(nombre, apellido, parentesco, sexo),
                               ~eliminar_stopwords(limpiar_texto(.))))
@@ -316,7 +313,7 @@ head(censo_limpio) %>%
 
 En el caso de la tabla de la encuesta, primero se separa el nombre_completo en varias variables para generar la misma estructura que la tabla del censo, o podría unirse las variables del censo para generar un nombre_unico, lo importante es dejar las tablas en la misma estructura. De igual forma para la fecha de nacimiento. Paso seguido se aplican las funciones sobre las variables de interés.
 
-```{r}
+```{r, echo=FALSE}
 encuesta_limpia <- encuesta |> 
                    separate(nombre_completo, c("nombre", "apellido"), sep=" ") |> 
                    separate(fecha_nacimiento, c("anio_nac", "mes_nac", "dia_nac"), sep="-") |> 
@@ -379,7 +376,7 @@ Las reglas del algoritmo son:
 - Si el código resultante tiene más de tres dígitos, se trunca para que tenga una longitud final de cuatro caracteres (letra + tres dígitos).
 - Si tiene menos de tres dígitos, se rellena con ceros.
 
-La siguiente tabla presenta un ejemplo de codificación con el algoritmo soundex. Se observa que, a pesar de que algunos nombres suenan igual, el algoritmo los diferencia según la primera letra.
+Este algoritmo se puede implementar en R con el paquete `phonics` [@howard2020phonetic]. La siguiente tabla presenta un ejemplo de codificación con el algoritmo soundex. Se observa que, a pesar de que algunos nombres suenan igual, el algoritmo los diferencia según la primera letra.
 
 | Nombre    | Codificación                          | Resultado Final |
 |-----------|----------------------------------------|-----------------|
@@ -393,9 +390,9 @@ La siguiente tabla presenta un ejemplo de codificación con el algoritmo soundex
 | Gonzales  | G, 0, 5, 2, 4, 2                       | G524            |
 | Gonzalez  | G, 0, 5, 2, 4, 2                       | G524            |
 
-El algoritmo se puede implementar en R con el paquete `phonics` [@howard2020phonetic] de la siguiente manera
 
-```{r}
+
+```{r, echo=FALSE}
 library(pacman)
 p_load(phonics)
 
@@ -418,7 +415,7 @@ No obstante, como fue diseñado originalmente para el inglés, su aplicación en
 
 El algoritmo se puede implementar en R con el paquete `phonics` de la siguiente manera:
 
-```{r}
+```{r, echo=FALSE}
 codigos_metaphone <- metaphone(limpiar_texto(nombres))
 
 names(codigos_metaphone) <- nombres
@@ -439,7 +436,7 @@ Entre las características principales del algoritmo se encuentran:
 3. No recodifica letras individuales, lo que disminuye la carga computacional.
 4. Proporciona una forma simplificada de agrupación fonética que no depende del idioma, a diferencia de algoritmos como Soundex o Metaphone.
 
-```{r}
+```{r, echo=FALSE}
 codigos_statcan <- statcan(limpiar_texto(nombres))
 
 names(codigos_statcan) <- nombres
@@ -465,7 +462,7 @@ La función `codif_fonetico()` fue diseñada por los autores de este material pa
 
 El orden en que se aplican las transformaciones también juega un rol especial, el usuario puede ampliar las reglas si así lo desea, incorporando nuevas líneas. 
 
-```{r}
+```{r, echo=FALSE}
 require(stringi)
 require(stringr)
 
@@ -501,7 +498,7 @@ codif_fonetico <- function(nombre) {
 
 A continuación se presenta la aplicación para nuestro ejemplo
 
-```{r}
+```{r, echo=FALSE}
 datos <- data.frame(nombre = nombres) |> 
          mutate(nombre = limpiar_texto(nombre)) |> 
          mutate(codif = codif_fonetico(nombre))
@@ -538,7 +535,7 @@ df <- data.frame(
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 nom <- df |> 
        mutate(soundex =soundex(limpiar_texto(nombre)),
               metaphone = metaphone(limpiar_texto(nombre)),
@@ -561,7 +558,7 @@ nom %>%
 En el caso del apellido, es fundamental tener en cuenta las particularidades culturales de cada región, ya que pueden influir significativamente en la forma en que son escritos o pronunciados. Estas variaciones hacen que ningún algoritmo de codificación fonética sea completamente robusto por sí solo, por lo que es recomendable adaptar o complementar los métodos según el contexto local.
 
 
-```{r}
+```{r, echo=FALSE}
 apell <- df |> 
          mutate(soundex =soundex(limpiar_texto(apellido)),
                 metaphone = metaphone(limpiar_texto(apellido)),
@@ -586,7 +583,7 @@ apell %>%
 
 La siguiente tabla muestra el resultado de aplicar la función `codif_fonetico` tanto al nombre como al apellido. No obstante, se recomienda utilizar en cada campo el algoritmo fonético que mejor se adapte a las características lingüísticas y culturales del caso específico.
 
-```{r}
+```{r, echo=FALSE}
 res <- df |> 
          mutate(nom_cod = codif_fonetico(limpiar_texto(nombre)),
                 ape_cod = codif_fonetico(limpiar_texto(apellido)))
@@ -607,7 +604,7 @@ res %>%
 
 Ahora aplicaremos la función `codif_fonetico` a nuestros conjuntos de datos del censo y de la encuesta
 
-```{r}
+```{r, echo=FALSE}
 censo_limpio <- censo_limpio |> 
                 mutate(across(c(nombre, apellido), ~codif_fonetico(.), .names = "{.col}_cod"))
 
@@ -859,30 +856,30 @@ Una etapa clave en el cálculo de la omisión censal, es asegurar que la base de
 
 **Ejemplo usando el paquete RecordLinkage**
 
-Para ilustrar este procedimiento se implementará un análisis supervisado utilizando los datos simulados `RLdata500` incluidos en el paquete `RecordLinkage`. El conjunto de datos contiene 500 registros simulados, incluyendo nombres, apellidos, fechas de nacimiento y un identificador de la persona real (`identity.RLdata500`). Suponga que este es un conjunto de entrenamiento que fue seleccionado con unos registros del censo, y en el cual se realizó un proceso de identificación y revisión clerical para identificar con certeza si un registro es duplicado o no, de esta manera es posible entrenar un modelo, realizar evaluaciones de precisión y entender mejor las decisiones del algoritmo.
+Para ilustrar este procedimiento se implementará un análisis supervisado utilizando los datos simulados `RLdata500` incluidos en el paquete `RecordLinkage` de R. El conjunto de datos contiene 500 registros simulados, incluyendo nombres, apellidos, fechas de nacimiento y un identificador de la persona real (`identity.RLdata500`). Suponga que este es un conjunto de entrenamiento que fue seleccionado con unos registros del censo, y en el cual se realizó un proceso de identificación y revisión clerical para identificar con certeza si un registro es duplicado o no, de esta manera es posible entrenar un modelo, realizar evaluaciones de precisión y entender mejor las decisiones del algoritmo.
 
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 library(RecordLinkage)
 data(RLdata500)
-head(RLdata500)
+knitr::kable(head(RLdata500), format = "markdown")
 ```
 
 En caso de realizar todas la comparaciones por pares, serían necesarias 124.750 comparaciones:
 
-$$\binom{500}{2} = 124.750$$
+$$\binom{N}{2} = \binom{500}{2} = 124.750$$
 Lo anterior es manejable en conjuntos de datos pequeños, pero en los casos de censos o encuestas de cobertura no resulta viable aplicar el total de comparaciones, por lo que será necesario realizar una indexación con unos bloques de comparación.
 
 Como se ha mencionado antes, el bloqueo consiste en agrupar los registros en bloques más pequeños usando una o más variables, de manera que solo se comparan registros dentro del mismo bloque. En este ejemplo se usará la primera letra del apellido como clave de bloqueo. 
 
-```{r}
+```{r, echo=FALSE}
 inic_apell <- substr(RLdata500[,"lname_c1"], 1, 1)
-(tbl <- table(inic_apell))
+t(tbl <- table(inic_apell)) %>% kable()
 ```
 Lo anterior genera `r length(unique(inic_apell))` bloques, donde el número de registros por bloque puede ser diferente. Como ahora el número de comparaciones se realiza dentro de cada bloque, esto reduce drásticamente el número total de comparaciones que se tienen que realizar. Sin embargo, es recomendable evitar una alta variación en el número de registros por bloque, esto debido a que algunos bloques con un alto número de registros puede incremetar fuertemente el costo computacional. En este caso el número de registros por bloque varía entre 2 y 115.
 
-```{r}
-summary(as.numeric(table(inic_apell)))
+```{r, echo=FALSE}
+summary(as.numeric(table(inic_apell))) 
 ```
 
 ```{r, echo=FALSE}
@@ -891,12 +888,12 @@ options(scipen = 9999)
 
 A pesar de lo anterior, el número de pares posibles tras aplicar el bloqueo baja de `r choose(500,2)` a `r sum(sapply(tbl, choose, k=2))` pares. Esta reducción es crucial para el rendimiento computacional del algoritmo. A continuación se observa el número de comparaciones por bloque.
 
-```{r}
-sapply(tbl, choose, k=2)
+```{r, echo=FALSE}
+t(sapply(tbl, choose, k=2)) %>% kable()
 ```
 Para entrenar el modelo, se agrega a la tabla de datos el id de cada persona y se quita la información redundante:
 
-```{r}
+```{r, echo=FALSE}
 RLdata500c <- RLdata500 |>  
               mutate(id = identity.RLdata500) |> 
               select(-fname_c2, -lname_c2)
@@ -905,36 +902,31 @@ RLdata500c <- RLdata500 |>
 
 Ahora es sencillo filtrar los duplicados reales, esto permite examinar cómo se presentan las inconsistencias reales en los datos y elegir los métodos más apropiados en el entrenamiento del modelo.
 
-```{r}
+```{r, echo=FALSE}
 dup_set <- RLdata500c |> 
            group_by(id) |> 
            filter(n() > 1) |>
            ungroup() |> 
            arrange(id)
 
-tail(dup_set)
+tail(dup_set) %>% kable()
 ```
 
 Al calcular la distancia de Levenshtein observamos que la similaridad aún está lejana de 1, mientras que la métrica de Jaro y Winkler produce un mejor resultado de la similaridad. 
 
-```{r}
-levenshteinSim(c("SCHUTE", "SCHULTE"),
-               c("CHRISTA", "CHRISTAH"))
-```
+| Cadena 1   | Cadena 2   | Levenshtein | Jaro-Winkler |
+|------------|------------|------------|--------------|
+| SCHUTE     | SCHULTE   | 0.86       | 0.94         |
+| CHRISTA    | CHRISTAH  | 0.88       | 0.95         |
 
 
-```{r}
-jarowinkler(c("SCHUTE", "SCHULTE"),
-            c("CHRISTA", "CHRISTAH"))
-
-```
 El algoritmo de Jaro-Winkler tiende a funcionar mejor cuando los errores son de tipeo o diferencias leves. También se puede aplicar codificación fonética como `soundex()` o cualquiera de las presentadas en este capítulo.
 
 
-En el siguiente paso se realiza la comparación de pares con bloqueo supervisado, toda vez que el resultado que identifica si es un duplicado o no es observado. La función `compare.dedup()` crea un objeto con la comparación entre pares de registros dentro de cada bloque. En este ejemplo se generan pares comparables según los bloques definidos por la primera letra del nombre y año de nacimiento (posiciones 1 y 3). Cada par se compara por igualdad de campos y similitud textual cuando se especifica.
+En el siguiente paso se lleva a cabo la comparación de pares utilizando un enfoque de bloqueo supervisado, dado que se dispone de información que indica si cada par de registros corresponde a un duplicado o no. Primero, se organizan los registros en bloques basados en criterios específicos, en este caso la primera letra del nombre y el año de nacimiento, de manera que solo se comparan registros dentro de cada bloque. Luego, se realiza la comparación de los pares dentro de cada bloque, evaluando tanto la igualdad exacta de algunos campos como la similitud textual en aquellos que lo requieren. El resultado es un conjunto de comparaciones que refleja para cada par cuán similares son los registros, considerando la información supervisada disponible para identificar duplicados.
 
 
-```{r}
+```{r, echo=FALSE}
 entrenamiento <- compare.dedup(RLdata500c[,-6], 
                                blockfld = list(1, 3),  
                                identity = identity.RLdata500)
@@ -943,7 +935,7 @@ entrenamiento <- compare.dedup(RLdata500c[,-6],
   
 Ahora se calculan pesos probabilísticos para cada par comparado. Este paso estima la probabilidad de que cada par sea un match verdadero, usando un modelo probabilístico basado en la teoría de Fellegi-Sunter.
 
-```{r}
+```{r, echo=FALSE}
 prob <- epiWeights(entrenamiento)
 ```
 
@@ -956,12 +948,27 @@ A partir de las probabilidades se clasifica automáticamente los pares en tres c
 En este caso se especifica un umbral de 0.7, es decir, los pares con probabilidad superior a ese valor se clasifican como positivos.
 
 
-```{r}
+```{r, echo=FALSE}
 res <- epiClassify(prob, 0.7)
 summary(res)
 ```
 
+| Concepto                       | Valor      |
+|--------------------------------|-----------|
+| Número de registros             | 500       |
+| Número de pares de registros    | 2,709     |
+| Pares que coinciden (matches)   | 50        |
+| Pares que no coinciden          | 2,659     |
+| Pares con estado desconocido    | 0         |
+
+
 Se observa que la gran mayoría de los pares comparados presentan baja evidencia de coincidencia, con 2318 pares concentrados en el intervalo de peso [0.2, 0.25]. Por otra parte, solo 46 pares alcanzan un peso mayor a 0.7, lo que sugiere una alta probabilidad de ser duplicados.
+
+| Estado verdadero | N (No) | P (Posible) | L (Link) |
+|-----------------|--------|-------------|----------|
+| FALSE            | 2,659  | 0           | 0        |
+| TRUE             | 4      | 0           | 46       |
+
 
 Según la matriz de clasificación, de los 50 pares realmente duplicados, el modelo identificó correctamente a 46, mientras que 4 no fueron detectados, lo que corresponde a una tasa de falsos negativos de $\alpha = 8$%. Por otro lado, la tasa de falsos positivos es cero, ya que ningún par no duplicado fue clasificado erróneamente como duplicado.
 
@@ -969,7 +976,7 @@ En conjunto, el modelo alcanzó una exactitud del 99.85%, lo que indica un alto 
 
 Una vez se ha entrenado el modelo, se puede aplicar una comparación difusa (fuzzy) a todos los datos, para ampliar las posibilidades del ejemplo se usará con la métrica de Jaro-Winkler para todas las variables de cadena (`strcmp = TRUE`). Se omite el uso de funciones fonéticas (`phonetic = FALSE`), lo cual es útil cuando queremos detectar errores ortográficos leves y los bloques se arman solo por año de nacimiento. Aunque en la práctica se debe especificar el modelo entrenado.
 
-```{r}
+```{r, echo=FALSE}
 modelo <- compare.dedup(RLdata500c[,-6],
                         phonetic = FALSE,
                         blockfld = list(1, 3),
@@ -987,26 +994,26 @@ Finalmente, es importante validar los resultados obtenidos, ya sea mediante revi
 
 Para explorar otras opciones, en este ejemplo se usará el conjunto de datos `RLdata10000` del paquete `RecordLinkage`, el cual contiene 10.000 registros con 1.000 duplicados y 8.000 no duplicados.
 
-```{r}
+```{r, echo=FALSE}
 library(pacman)
 p_load(tidyverse, janitor, fastLink, RecordLinkage, parallel)
 
 data("RLdata10000")
-head(RLdata10000)
+head(RLdata10000) %>% kable()
 ```
 
 Al igual que en el ejemplo anterior, suponga que un subconjunto de los datos de la muestra E fue revisado de forma manual para establecer la coincidencia con la muestra P, y que ha conservado un id único que permite realizar el emparejamiento exacto. 
 
 En el caso de `RLdata10000` se cuenta con el vector `identity.RLdata10000` que conserva el id único de cada registro, esto con fines de entrenamiento de un modelo o como en este caso, para mostrar el uso de los procedimientos. Note que solo hay 9.000 identificadores únicos, por lo que 1.000 son duplicados, el desafío es que los métodos de emparejamiento los identifique con el menor error.
 
-```{r}
+```{r, echo=FALSE}
 length(unique(identity.RLdata10000))
 ```
 
 Se define el vector `var` con todas las variables que se hará el emparejamiento, en el vector `char_vars` se conservan las variables de cadena donde es posible hacer cálculos con métricas de similaridad, `cal_simil` especifica para cuales de las variables de `char_vars` no se exige coincidencias exactas. La métrica que se usa por defecto es Jaro-Winkler, pero hay otras opciones que se pueden implementar.
 
 
-```{r}
+```{r, echo=FALSE}
 vars <- c("fname_c1", "lname_c1", "by", "bm", "bd")
 char_vars <- c("fname_c1", "lname_c1")
 cal_simil <- c("fname_c1", "lname_c1")
@@ -1016,7 +1023,7 @@ cal_simil <- c("fname_c1", "lname_c1")
 La función `fastLink` permite identificar los duplicados usando los mismos datos en los argumentos de los `dfA` y `dfB`, y cuenta con un argumento para distribuir en varios cores el procesamiento. `cut.a` es el umbral mínimo de probabilidad posterior para aceptar un _emparejamiento_ y `cut.p` es el umbral inferior para considerar un registro como _emparejamiento potencial_ (que pase a revisión clerical), es decir, si  la probabilidad está entre `cut.p` y `cut.a`, el par se considera un _emparejamiento potencial_  que requiere revisión manual. Si la probabilidad es menor que `cut.p`, el registro se considera como _no emparejado_. Se debe tener en cuenta que un valor muy alto de `cut.a` puede originar más precisión pero menos emparejamientos, pero si `cut.a` es bajo entonces se espera un mayor _recall_ y un mayor riesgo de falsos positivos.
 
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 nCores <- detectCores()
 res <- fastLink(dfA = RLdata10000, dfB = RLdata10000,
                 varnames = vars,
@@ -1033,7 +1040,7 @@ El procedimiento genera la variable `dedupe.ids` para todo el conjunto de datos.
 
 
 
-```{r}
+```{r, echo=FALSE}
 index_dup <- getMatches(dfA = RLdata10000, dfB = RLdata10000, fl.out = res) 
 index_dup <- index_dup |> bind_cols(data.frame(id = identity.RLdata10000))
 
@@ -1041,11 +1048,20 @@ duplicados <- get_dupes(index_dup, dedupe.ids)
 head(duplicados)
 ```
 
+| dedupe.ids | dupe_count | fname_c1  | fname_c2 | lname_c1     | lname_c2   | by   | bm | bd | id   |
+|------------|------------|-----------|----------|--------------|------------|------|----|----|------|
+| 420        | 3          | GUENTHER  | <NA>     | ZIMMERMWANN  | <NA>       | 1971 | 6  | 23 | 1794 |
+| 420        | 3          | GUENTHER  | <NA>     | ZIMMERMANN   | <NA>       | 1992 | 6  | 23 | 1864 |
+| 420        | 3          | GUENTHER  | <NA>     | ZIMMERMANN   | <NA>       | 1971 | 6  | 23 | 1794 |
+| 3969       | 3          | GERTRUD   | <NA>     | MUELLER      | <NA>       | 1964 | 7  | 27 | 8970 |
+| 3969       | 3          | GERTRUD   | <NA>     | MUELOER      | <NA>       | 1964 | 7  | 11 | 7616 |
+| 3969       | 3          | GERTRUD   | <NA>     | MUELLER      | <NA>       | 1964 | 7  | 11 | 7616 |
+
 
 El desempeño del modelo se puede evaluar mediante una matriz de confusión que compara las predicciones del modelo con los valores reales. En este caso, el modelo identificó correctamente 982 verdaderos positivos, es decir, observaciones que efectivamente eran duplicados. Sin embargo, también generó 18 falsos negativos, que son casos verdaderos que el modelo no logró identificar correctamente. Además, el modelo produjo 63 falsos positivos, es decir, casos que fueron clasificados como verdaderos por el modelo, pero en realidad no eran duplicados. 
 
 
-```{r}
+```{r, echo=FALSE}
 ids_duplicados <- names(table(identity.RLdata10000))[table(identity.RLdata10000) > 1]
 todos_ids <- union(unique(duplicados$id), unique(ids_duplicados))
 
@@ -1055,6 +1071,12 @@ dupes_real <- todos_ids %in% ids_duplicados
 matriz <- table(Real = dupes_real, Modelo = dupes_model)
 print(matriz)
 ```
+
+
+| Real / Predicho | FALSE | TRUE |
+|-----------------|-------|------|
+| FALSE           | 0     | 63   |
+| TRUE            | 18    | 982  |
 
 
 ### Vinculación de registros
@@ -1070,7 +1092,7 @@ En el caso del paquete `RecordLinkage`, se cuenta con dos funciones para la crea
 Considere los conjuntos de datos de la muestra E y de la muestra P, almacenados previamente en los objetos `censo_limpio` y `encuesta_limpia`. Ahora se creará la variable de fecha con el valor de la fecha de nacimiento. 
 
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
 library(pacman)
 p_load(tidyverse, RecordLinkage, lubridate)
 
@@ -1087,18 +1109,18 @@ df_encuesta <- encuesta_limpia |>
 
 Para el ejemplo se usará el paquete `RecordLinkage`. En este caso la muestra P contiene `r nrow(df_encuesta)` registros y la muestra E contiene `r nrow(df_censo)` registros, en este caso se aplicará una indexación usando como bloques el `id_segmento`. La estructura de la base de la muestra E es la siguiente
 
-```{r}
-head(df_censo)
+```{r, echo=FALSE}
+head(df_censo) %>% kable()
 ```
 Mientras que la muestra P es la siguiente, es de recordar que los conjuntos de datos ya fueron sometidos a un preprocesamiento, y note que los conjuntos de datos se han alineado para que las variables se denominen de la misma forma:
 
-```{r}
-head(df_encuesta)
+```{r, echo=FALSE}
+head(df_encuesta) %>% kable()
 ```
 
 La función `compare.linkage()` construye los patrones para la vinculación de los registros, en este caso se compara la muestra E y la muestra P usando como bloque el segmento.
 
-```{r}
+```{r, echo=FALSE}
 empareja <- compare.linkage(dataset1 = df_encuesta,
                             dataset2 = df_censo,
                             blockfld = 1, #Bloque por id_segmento
@@ -1109,12 +1131,30 @@ empareja <- compare.linkage(dataset1 = df_encuesta,
 
 Una vez realizadas las comparaciones utilizando los criterios especificados, se aplica el algoritmo para calcular la probabilidad de coincidencia. Para ello,  el paquete `RecordLinkage` cuenta con los algoritmos de Fellegi-Sunter, EpiLink y EM.
 
-```{r}
+```{r, echo=FALSE}
 empareja_fs <- RecordLinkage::fsWeights(empareja)
 #empareja_em <- RecordLinkage::emWeights(empareja)
 #empareja_ep <- RecordLinkage::epiWeights(empareja)
 summary(empareja_fs)
 ```
+| Intervalo de peso | Número de pares |
+|------------------|----------------|
+| -16 – -14        | 743            |
+| -14 – -12        | 0              |
+| -12 – -10        | 601            |
+| -10 – -8         | 114            |
+| -8 – -6          | 0              |
+| -6 – -4          | 217            |
+| -4 – -2          | 0              |
+| -2 – 0           | 1              |
+| 0 – 2            | 0              |
+| 2 – 4            | 18             |
+| 4 – 6            | 2              |
+| 6 – 8            | 0              |
+| 8 – 10           | 1              |
+| 10 – 12          | 0              |
+| 12 – 14          | 53             |
+
 
 El análisis de la distribución de los pesos muestra que, aunque la mayoría de los pares se concentran en valores negativos, lo que indica una baja similitud y, por tanto, una baja probabilidad de coincidencia. Hay algunos pares que alcanzan valores positivos, y dentro de estos, se observa que algunos  se ubican en el rango más alto, por lo que tienen una alta probabilidad de ser emparejamientos verdaderos.
 
@@ -1127,7 +1167,7 @@ La elección del umbral suele ser un aspecto relevante. Si es muy bajo, se podr�
 
 La siguiente gráfica es interactiva y permite observar cómo cambia la vida residual media a medida que sube el umbral. Se ha comentado la línea debido a que no puede compilarse por bookdown, y se ha tomado el umbral automático. La idea básica es identificar el punto de cambio de la pendiente en la curva, para ello puede usar un criterio como el del codo.
 
-```{r}
+```{r, echo=FALSE}
 #Este es un diagrama interactivo, por lo que se comenta la línea 
 #umbral <- getParetoThreshold(empareja_fs) 
 umbral <- 5.86
@@ -1136,7 +1176,7 @@ umbral <- 5.86
 Una vez definido el umbral, se puede extraer en un conjunto de datos a los registros clasificados como _emparejados_. La primera fila corresponde al registro en `df_encuesta` mientras que el segundo corresponde al registro en `df_censo`. 
 
 
-```{r}
+```{r, echo=FALSE}
 emparejado <- getPairs(empareja_fs, min.weight = umbral)
 ```
 
@@ -1164,11 +1204,11 @@ emparejado %>%
 
 De igual forma, usando la misma gráfica obtenida con `getParetoThreshold()` se puede establecer un umbral más flexible, y encontrar los _emparejamientos potenciales_. En nuestro ejemplo se tomarán como aquellos registros que tienen un ponderador entre 1.2 y el umbral, los cuales pasarán a una revisión clerical para establecer si se clasifican como _emparejados_ o _no emparejados_
 
-```{r}
+```{r, echo=FALSE}
 posibles <- getPairs(empareja_fs, min.weight = 1.2, max.weight = umbral)
 ```
 
-```{r}
+```{r, echo=FALSE}
 posibles %>%
   gt() %>%
   tab_header(

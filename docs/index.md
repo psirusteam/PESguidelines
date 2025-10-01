@@ -1,7 +1,7 @@
 ---
 title: "Fundamentos estadísticos para el diseño y análisis de encuestas de postenumeración censal"
 author: "Andrés Gutiérrez^[Asesor Técnico - Comisión Económica para América Latina y el Caribe (CEPAL) -  andres.gutierrez@cepal.org], Giovany Babativa-Márquez^[Consultor - Comisión Económica para América Latina y el Caribe (CEPAL) -  gbabativam@gmail.com]"
-date: "2025-09-29"
+date: "2025-10-01"
 documentclass: book
 bibliography: book.bib
 biblio-style: apalike
